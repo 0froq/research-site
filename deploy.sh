@@ -16,11 +16,18 @@ git push origin main
 
 # 3. Deploy _output to gh-pages branch
 DEPLOY_DIR="$(mktemp -d)"
-trap 'rm -rf "$DEPLOY_DIR"' EXIT
+cleanup() {
+  cd "$SCRIPT_DIR"
+  git worktree prune
+  rm -rf "$DEPLOY_DIR"
+}
+trap cleanup EXIT
 
 echo "==> Preparing gh-pages branch..."
+# Clean any stale worktree locks first
+git worktree prune
 if git rev-parse --verify gh-pages >/dev/null 2>&1; then
-  git worktree add "$DEPLOY_DIR" gh-pages
+  git worktree add --force "$DEPLOY_DIR" gh-pages
   # Clean existing content (keep .git)
   find "$DEPLOY_DIR" -mindepth 1 -not -name '.git' -delete
 else
