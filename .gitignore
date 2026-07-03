@@ -14,3 +14,6 @@ shared/assets/
 *.swo
 *~
 .session.vim
+
+/.quarto/
+**/*.quarto_ipynb
