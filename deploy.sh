@@ -18,7 +18,7 @@ if git rev-parse --verify gh-pages >/dev/null 2>&1; then
   # Clean existing content (keep .git)
   find "$DEPLOY_DIR" -mindepth 1 -not -name '.git' -delete
 else
-  git worktree add --orphan "$DEPLOY_DIR" gh-pages
+  git worktree add --orphan -b gh-pages "$DEPLOY_DIR"
 fi
 
 echo "==> Copying _output to gh-pages..."
