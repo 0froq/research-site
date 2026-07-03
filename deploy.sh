@@ -8,7 +8,13 @@ cd "$SCRIPT_DIR"
 echo "==> Rendering Quarto site..."
 quarto render
 
-# 2. Deploy _output to gh-pages branch
+# 2. Commit & push source changes to main
+echo "==> Pushing source to main..."
+git add -A
+git commit -m "Update $(date -u +'%Y-%m-%d %H:%M UTC')" || echo "(nothing to commit)"
+git push origin main
+
+# 3. Deploy _output to gh-pages branch
 DEPLOY_DIR="$(mktemp -d)"
 trap 'rm -rf "$DEPLOY_DIR"' EXIT
 
