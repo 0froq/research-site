@@ -1,0 +1,9 @@
+---
+title: "Research"
+---
+
+# Welcome
+
+This site contains my research explorations, drafts, and progress logs.
+
+Current project: **Hiatus** — lake temperature decadal variability.

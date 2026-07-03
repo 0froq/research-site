@@ -1,0 +1,795 @@
+# Regional decomposition {#sec-regional}
+
+```{r}
+#| label: setup-figures-regional
+#| include: false
+
+source("../../../../shared/R/figure-style.R")
+```
+
+## Continental overview
+
+| Continent | n | Warming | Accel | Warming % | Accel % |
+|---|---:|---:|---:|---:|---:|
+| North America | 49,589 | 0.59 ± 0.64 | -0.53 ± 1.19 | 83.4% | 28.6% |
+| Europe | 35,140 | 0.98 ± 0.87 | 1.38 ± 1.21 | 88.0% | 86.8% |
+| Asia | 3,980 | 0.59 ± 0.54 | 0.58 ± 0.98 | 89.9% | 71.9% |
+| South America | 2,406 | 0.39 ± 0.26 | 0.91 ± 0.53 | 92.6% | 96.4% |
+| Africa | 712 | 0.50 ± 0.27 | 0.27 ± 0.64 | 99.9% | 66.6% |
+| Oceania | 366 | 0.57 ± 0.29 | 0.77 ± 1.00 | 94.3% | 73.8% |
+
+Warming is raw annual Sen warming in °C / 40 yr. Accel is Sen acceleration of
+STL trend first difference in 10^-3^ °C / yr^2^.
+
+::: {.callout-note}
+## Finding 10
+North America is the only continent with negative mean acceleration (-0.53 ×
+10^-3^ °C / yr^2^), meaning most lakes there are warming but decelerating.
+Europe has the strongest acceleration (+1.38).
+:::
+
+Continental labels are convenient for description but do not correspond to
+natural units of climate response. A lake in southern North America may share
+more with a lake in northern South America than with a lake in northern Canada.
+We therefore move from continental description to climate-based classification.
+
+## Temporal response types
+
+We classify lakes by the shape of their 40-year STL trend, combined with their
+mean temperature. Each lake's annual STL trend is z-scored to remove mean and
+scale, then combined with the normalised mean STL temperature. The resulting
+feature vector is classified by $k$-means clustering ($K = 8$).
+
+The clusters describe temporal response types: lakes with similar warming
+trajectories and temperature regimes are grouped together regardless of
+continental labels.
+
+::: {.callout-note}
+## Finding 11
+Eight temporal response types are identified. Most clusters are geographically
+coherent and physically interpretable: cold northwestern North America (C3,
+C7), eastern North America (C6), warm and cold European regimes (C2, C8), and
+a tropical belt (C4).
+:::
+
+```{r}
+#| label: fig-ts-cluster-map-ridges
+#| fig-cap: "Spatial distribution of the eight time-series response clusters. Marginal ridgelines show longitude and latitude density by cluster."
+#| fig-width: 12
+#| fig-height: 7.4
+
+# --- Shared cluster data ---
+cluster_data <- prepare_cluster_data(include_area = TRUE)
+trend_sub <- cluster_data$trend_sub
+trend_mat <- cluster_data$trend_mat
+year_cols <- cluster_data$year_cols
+cluster_meta <- trend_sub %>%
+  group_by(cluster_label) %>%
+  summarise(
+    n = n(),
+    mean_temp = mean(mean_temp),
+    mean_warming = mean(raw_sen_warming_40yr),
+    .groups = "drop"
+  )
+cluster_order <- cluster_data$cluster_order$cluster
+new_labels <- paste0("C", 1:8)
+names(new_labels) <- as.character(cluster_order)
+cluster_cols <- pal_cluster
+cluster_labels <- paste0(
+  new_labels[as.character(cluster_order)], ": ",
+  comma(cluster_meta$n[order(cluster_meta$mean_temp)]), " lakes, ",
+  sprintf("%.1f", cluster_meta$mean_temp[order(cluster_meta$mean_temp)]), "°C"
+)
+names(cluster_labels) <- new_labels[as.character(cluster_order)]
+coast <- read_csv(file.path(rdata, "coastline.csv"), show_col_types = FALSE)
+
+
+# --- Ridge parameters ---
+ridge_levels <- new_labels[as.character(cluster_order)]
+ridge_height <- 0.92
+ridge_gap <- 0.54
+smooth_count <- function(x) {
+  smoothed <- as.numeric(stats::filter(x, rep(1 / 3, 3), sides = 2))
+  ifelse(is.na(smoothed), x, smoothed)
+}
+ridge_base <- rev(seq_along(ridge_levels)) * ridge_gap
+names(ridge_base) <- ridge_levels
+
+lon_min <- -180; lon_max <- 180; lat_min <- -90; lat_max <- 90
+bin_width <- 2
+lon_centers <- seq(lon_min + bin_width / 2, lon_max - bin_width / 2, by = bin_width)
+lat_centers <- seq(lat_min + bin_width / 2, lat_max - bin_width / 2, by = bin_width)
+
+# --- Ridge data ---
+lon_counts <- trend_sub %>%
+  mutate(lon_center = lon_min + floor((lon - lon_min) / bin_width) * bin_width + bin_width / 2) %>%
+  filter(lon_center >= min(lon_centers), lon_center <= max(lon_centers)) %>%
+  count(cluster_label, lon_center, name = "n") %>%
+  tidyr::complete(cluster_label = ridge_levels, lon_center = lon_centers, fill = list(n = 0)) %>%
+  group_by(cluster_label) %>%
+  mutate(n_smooth = smooth_count(sqrt(n)), baseline = ridge_base[cluster_label]) %>%
+  ungroup()
+
+lon_global_max <- max(lon_counts$n_smooth, na.rm = TRUE)
+lon_counts <- lon_counts %>%
+  mutate(n_scaled = n_smooth / lon_global_max, y = baseline + n_scaled * ridge_height) %>%
+  arrange(desc(baseline), lon_center)
+
+lat_counts <- trend_sub %>%
+  mutate(lat_center = lat_min + floor((lat - lat_min) / bin_width) * bin_width + bin_width / 2) %>%
+  filter(lat_center >= min(lat_centers), lat_center <= max(lat_centers)) %>%
+  count(cluster_label, lat_center, name = "n") %>%
+  tidyr::complete(cluster_label = ridge_levels, lat_center = lat_centers, fill = list(n = 0)) %>%
+  group_by(cluster_label) %>%
+  mutate(n_smooth = smooth_count(sqrt(n)), baseline = ridge_base[cluster_label]) %>%
+  ungroup()
+
+lat_global_max <- max(lat_counts$n_smooth, na.rm = TRUE)
+lat_counts <- lat_counts %>%
+  mutate(n_scaled = n_smooth / lat_global_max, x = baseline + n_scaled * ridge_height) %>%
+  arrange(desc(baseline), lat_center)
+
+ridge_base_df <- tibble(cluster_label = ridge_levels, baseline = ridge_base)
+
+# --- Build plots ---
+theme_map <- theme_atomic_map()
+
+main_plot <- ggplot() +
+  geom_path(data = coast, aes(x = lon, y = lat, group = segment), color = "grey35", linewidth = 0.18) +
+  geom_point(data = trend_sub, aes(x = lon, y = lat, colour = cluster_label, size = point_size), alpha = 0.48, stroke = 0.1) +
+  scale_color_manual(values = cluster_cols, labels = cluster_labels, name = NULL) +
+  scale_size_identity(guide = "none") +
+  coord_fixed(ratio = 1, xlim = c(lon_min, lon_max), ylim = c(lat_min, lat_max), expand = FALSE) +
+  labs(x = NULL, y = NULL) +
+  theme_map +
+  theme(
+    legend.position = "right",
+    axis.title = element_blank(), axis.text = element_blank(), axis.ticks = element_blank(),
+    plot.margin = margin(0, 0, 0, 0)
+  )
+
+ridge_theme <- theme_void(base_size = 8) + theme(plot.margin = margin(0, 0, 0, 0), legend.position = "none")
+
+top_plot <- ggplot(lon_counts, aes(x = lon_center, group = cluster_label, color = cluster_label, fill = cluster_label)) +
+  geom_ribbon(aes(ymin = baseline, ymax = y), alpha = 0.24, color = NA) +
+  geom_line(aes(y = y), linewidth = 0.52, alpha = 0.96) +
+  geom_hline(data = ridge_base_df, aes(yintercept = baseline, color = cluster_label), linewidth = 0.18, alpha = 0.40) +
+  scale_color_manual(values = cluster_cols, guide = "none") +
+  scale_fill_manual(values = cluster_cols, guide = "none") +
+  scale_x_continuous(limits = c(lon_min, lon_max), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0.45, max(ridge_base) + ridge_height + 0.28), expand = c(0, 0)) +
+  ridge_theme
+
+right_plot <- ggplot(lat_counts, aes(y = lat_center, group = cluster_label, color = cluster_label, fill = cluster_label)) +
+  geom_ribbon(aes(xmin = baseline, xmax = x), orientation = "y", alpha = 0.24, color = NA) +
+  geom_line(aes(x = x), linewidth = 0.52, alpha = 0.96, orientation = "y") +
+  geom_vline(data = ridge_base_df, aes(xintercept = baseline, color = cluster_label), linewidth = 0.18, alpha = 0.40) +
+  scale_color_manual(values = cluster_cols, guide = "none") +
+  scale_fill_manual(values = cluster_cols, guide = "none") +
+  scale_y_continuous(limits = c(lat_min, lat_max), expand = c(0, 0)) +
+  scale_x_continuous(limits = c(0.45, max(ridge_base) + ridge_height + 0.28), expand = c(0, 0)) +
+  ridge_theme
+
+# --- Extract legend ---
+legend_grob <- get_legend(
+  main_plot +
+    guides(color = guide_legend(override.aes = list(size = 2.6, alpha = 0.9), ncol = 1)) +
+    theme(legend.position = "right")
+)
+main_plot <- main_plot + theme(legend.position = "none")
+
+# --- Layout ---
+figure_width <- 12
+figure_height <- 7.4
+main_x <- 0.07; main_y <- 0.12
+main_w <- 0.68; main_h <- main_w * figure_width / 2 / figure_height
+top_h <- 0.20
+right_w <- top_h * figure_height / figure_width * 1.15
+gap <- 0.025
+top_y <- main_y + main_h + gap
+right_x <- main_x + main_w + gap
+legend_x <- right_x - 0.002
+legend_y <- top_y + 0.035
+
+p <- ggdraw() +
+  draw_label("Time-series shape clustering of global lakes (K=8, shape+temp)",
+             x = main_x, y = 0.98, hjust = 0, vjust = 1, fontface = "bold", size = 14, color = col_text) +
+  draw_label("K-means on z-scored annual STL trend + mean temperature. Clusters ordered by mean temperature. Point size = lake area.",
+             x = main_x, y = 0.94, hjust = 0, vjust = 1, size = 9.5, color = col_subtitle) +
+  draw_plot(top_plot, x = main_x, y = top_y, width = main_w, height = top_h) +
+  draw_plot(main_plot, x = main_x, y = main_y, width = main_w, height = main_h) +
+  draw_plot(right_plot, x = right_x, y = main_y, width = right_w, height = main_h) +
+  draw_plot(legend_grob, x = legend_x, y = legend_y, width = 0.25, height = 0.22)
+
+save_figure("fig-ts-cluster-map-ridges.png", p, width = figure_width, height = figure_height)
+p
+```
+
+### Cluster descriptions
+
+**C1: Cold high-latitude North America.** This is the coldest cluster, with a
+mean STL trend of 1.8 °C. Warming is moderate (+0.36 °C / 40 yr, 99% positive)
+and acceleration is weakly positive (+0.13 × 10^-3^ °C / yr^2^, 60% positive).
+It is concentrated in northern North America (97%) with high spatial coherence
+(Moran's I = 0.65). Regime-shift peaks occur in 1990--91 and 2006 (warming),
+and 1997--99 (cooling).
+
+**C2: Decelerating high-latitude North America.** Mean temperature is 2.8 °C.
+Warming is moderate (+0.35 °C / 40 yr, 99% positive), but acceleration is
+strongly negative (-1.33 × 10^-3^ °C / yr^2^, only 1% positive), meaning most
+lakes in this cluster are warming but decelerating. It is concentrated in
+northern North America (96%) with Moran's I = 0.70. Regime-shift peaks occur in
+2003--05 (warming), 1997 (cooling), and 2010--12 (cooling).
+
+**C3: Strongly accelerating Europe.** Mean temperature is 3.1 °C. Warming is
+strong (+0.71 °C / 40 yr, 99% positive), and acceleration is the highest among
+all clusters (+1.98 × 10^-3^ °C / yr^2^, 98% positive). It is dominated by
+Europe (74%) with Moran's I = 0.65. Regime-shift peaks occur in 1989 and
+2013--15 (warming), and 1989--93 and 2006 (cooling).
+
+**C4: Cold decelerating North America.** Mean temperature is 3.4 °C. Warming is
+weak (+0.29 °C / 40 yr, 99% positive), and acceleration is strongly negative
+(-1.02 × 10^-3^ °C / yr^2^, only 5% positive). It is the most spatially coherent
+cluster (Moran's I = 0.93), concentrated almost entirely in North America
+(99%). Regime-shift peaks occur in 2005--07 (warming), 1998 (cooling), and
+2013--14 (cooling).
+
+**C5: Warming Europe.** This is the largest cluster (21,493 lakes). Mean
+temperature is 4.3 °C. Warming is strong (+0.84 °C / 40 yr, 100% positive), and
+acceleration is weakly positive (+0.37 × 10^-3^ °C / yr^2^, 65% positive). It is
+dominated by Europe (68%) with Moran's I = 0.61. Regime-shift peaks occur in
+1998--99 and 2013--14 (warming), and 1992 and 2005--07 (cooling).
+
+**C6: Decelerating eastern North America.** Mean temperature is 5.0 °C. Warming
+is moderate (+0.46 °C / 40 yr, 100% positive), but acceleration is strongly
+negative (-1.02 × 10^-3^ °C / yr^2^, only 12% positive). It is concentrated in
+North America (97%) with Moran's I = 0.80. Regime-shift peaks occur in 1992--95
+(warming) and 1999--02 (cooling).
+
+**C7: Strongly accelerating Europe.** Mean temperature is 5.0 °C. Warming is
+moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is strongly
+positive (+1.83 × 10^-3^ °C / yr^2^, 95% positive). It is dominated by Europe
+(88%) with Moran's I = 0.72. Regime-shift peaks occur in 1997--2000 (warming)
+and 2005--08 (cooling).
+
+**C8: Warm tropical/subtropical lakes.** This is the warmest cluster (mean
+21.9 °C). Warming is moderate (+0.57 °C / 40 yr, 99% positive), and
+acceleration is positive (+0.69 × 10^-3^ °C / yr^2^, 85% positive). It is
+geographically dispersed but concentrated in the subtropical latitude band
+(Moran's I = 0.67). Regime-shift peaks occur in 2009--12 (warming), 1989--91
+(cooling), and 2000 (cooling).
+
+### Cluster summary
+
+```{r}
+#| label: fig-cluster-continent-heatmap
+#| fig-cap: "Cluster--continent allocation. Each row sums to 100%. Right column = total lakes per cluster. Bottom row = total lakes per continent."
+#| fig-width: 4
+#| fig-height: 4
+
+# --- Shared cluster data ---
+cluster_data <- prepare_cluster_data()
+trend_sub <- cluster_data$trend_sub
+
+# --- Cluster × Continent counts ---
+raw_counts <- trend_sub %>%
+  count(cluster_label, Continent, name = "n")
+
+row_totals <- raw_counts %>% group_by(cluster_label) %>% summarise(total = sum(n), .groups = "drop")
+col_totals <- raw_counts %>% group_by(Continent) %>% summarise(total = sum(n), .groups = "drop")
+grand_total <- sum(raw_counts$n)
+
+cluster_levels <- paste0("C", 1:8)
+cont_levels <- col_totals %>% arrange(desc(total)) %>% pull(Continent)
+
+# --- Main heatmap cells ---
+main_cells <- raw_counts %>%
+  left_join(row_totals, by = "cluster_label") %>%
+  left_join(col_totals, by = "Continent", suffix = c("_row", "_col")) %>%
+  mutate(
+    frac_row = n / total_row,  # row-normalized: fraction of cluster across continents
+    frac_col = n / total_col,  # col-normalized: fraction of clusters within continent
+  ) %>%
+  mutate(
+    cluster_label = factor(cluster_label, levels = c(cluster_levels, "Total")),
+    Continent = factor(Continent, levels = c(as.character(cont_levels), "Total")),
+    display = comma(n)
+  )
+
+# --- Row totals (right column) ---
+row_total_cells <- row_totals %>%
+  mutate(
+    cluster_label = factor(cluster_label, levels = c(cluster_levels, "Total")),
+    Continent = factor("Total", levels = c(as.character(cont_levels), "Total")),
+    frac = total / grand_total,
+    display = comma(total)
+  )
+
+# --- Column totals (bottom row) ---
+col_total_cells <- col_totals %>%
+  mutate(
+    cluster_label = factor("Total", levels = c(cluster_levels, "Total")),
+    Continent = factor(Continent, levels = c(as.character(cont_levels), "Total")),
+    frac = total / grand_total,
+    display = comma(total)
+  )
+
+# --- Grand total ---
+grand_cell <- tibble(
+  cluster_label = factor("Total", levels = c(cluster_levels, "Total")),
+  Continent = factor("Total", levels = c(as.character(cont_levels), "Total")),
+  frac = 1, display = comma(grand_total)
+)
+
+# --- Row bar data (horizontal bars per cluster) ---
+row_bars <- main_cells %>%
+  mutate(
+    x_num = as.numeric(Continent),
+    y_num = as.numeric(cluster_label)
+  ) %>%
+  group_by(cluster_label) %>%
+  mutate(
+    # Bar width fills cell, height = fraction directly (rows sum to 100%)
+    bar_left = x_num - 0.5,
+    bar_right = x_num - 0.5 + 1.0,
+    bar_bottom = y_num - 0.5,
+    bar_top = y_num - 0.5 + 0.8 * frac_row
+  ) %>%
+  ungroup()
+
+# --- Column bar data (vertical bars per continent) ---
+col_bars <- main_cells %>%
+  mutate(
+    x_num = as.numeric(Continent),
+    y_num = as.numeric(cluster_label)
+  ) %>%
+  group_by(Continent) %>%
+  mutate(
+    # Bar height fills cell, width = fraction directly (columns sum to 100%)
+    bar_left = x_num - 0.5,
+    bar_right = x_num - 0.5 + 0.8 * frac_col,
+    bar_bottom = y_num - 0.5,
+    bar_top = y_num + 0.5
+  ) %>%
+  ungroup()
+
+# --- Combine all cells ---
+all_cells <- bind_rows(
+  main_cells %>% mutate(cell_type = "main"),
+  row_total_cells %>% mutate(cell_type = "row_total"),
+  col_total_cells %>% mutate(cell_type = "col_total"),
+  grand_cell %>% mutate(cell_type = "grand_total")
+) %>%
+  mutate(
+    text_color = case_when(
+      cell_type == "main" ~ col_text,
+      TRUE ~ col_text_soft
+    )
+  )
+
+# --- Plot ---
+p <- ggplot() +
+  # Main heatmap tiles (white background)
+  geom_tile(
+    data = all_cells %>% filter(cell_type == "main"),
+    aes(x = Continent, y = cluster_label),
+    fill = "white", color = "grey85", linewidth = 0.3
+  ) +
+  # Total cells: grey background
+  geom_tile(
+    data = all_cells %>% filter(cell_type != "main"),
+    aes(x = Continent, y = cluster_label),
+    fill = "grey92", color = "white", linewidth = 0.4
+  ) +
+  # Row bars (horizontal, from bottom edge)
+  geom_rect(
+    data = row_bars,
+    aes(xmin = bar_left, xmax = bar_right, ymin = bar_bottom, ymax = bar_top),
+    fill = alpha(pal_direction[["warming"]], 0.5), color = NA
+  ) +
+  # Column bars (vertical, from left edge)
+  geom_rect(
+    data = col_bars,
+    aes(xmin = bar_left, xmax = bar_right, ymin = bar_bottom, ymax = bar_top),
+    fill = alpha(pal_direction[["cooling"]], 0.5), color = NA
+  ) +
+  # Text labels
+  geom_text(
+    data = all_cells,
+    aes(x = Continent, y = cluster_label, label = display, color = text_color),
+    size = 2.8
+  ) +
+  scale_fill_identity() +
+  scale_color_identity() +
+  scale_x_discrete(expand = c(0, 0)) +
+  scale_y_discrete(expand = c(0, 0)) +
+  labs(
+    x = NULL, y = "Cluster"
+  ) +
+  theme_atomic_base() +
+  theme(
+    axis.text.x = element_text(angle = 30, hjust = 1, size = 8),
+    axis.text.y = element_text(size = 8),
+    axis.title.y = element_text(size = 9, face = "bold"),
+    legend.position = "none",
+    plot.margin = margin(6, 6, 4, 4)
+  )
+
+save_figure("fig-cluster-continent-heatmap.png", p, width = 4, height = 4)
+p
+```
+
+| Cluster | n | Temp | Warming | Accel | Dominant | Moran's I |
+|---|---:|---:|---:|---:|---|---:|
+| C1 | 8,636 | 1.8 °C | +0.36 | +0.13 | NA 97% | 0.65 |
+| C2 | 7,855 | 2.8 °C | +0.35 | -1.33 | NA 96% | 0.70 |
+| C3 | 16,401 | 3.1 °C | +0.71 | +1.98 | EU 74% | 0.65 |
+| C4 | 9,667 | 3.4 °C | +0.29 | -1.02 | NA 99% | 0.93 |
+| C5 | 21,493 | 4.3 °C | +0.84 | +0.37 | EU 68% | 0.61 |
+| C6 | 13,768 | 5.0 °C | +0.46 | -1.02 | NA 97% | 0.80 |
+| C7 | 8,649 | 5.0 °C | +0.57 | +1.83 | EU 88% | 0.72 |
+| C8 | 5,776 | 21.9 °C | +0.57 | +0.69 | SA 30% | 0.67 |
+
+Temp is mean STL trend in °C. Warming is Sen slope of annual STL trend in
+°C / 40 yr. Accel is Sen slope of first-differenced STL trend in 10^-3^
+°C / yr^2^. Dominant is the continent with the highest fraction of lakes.
+
+## Regime-shift timing by response type
+
+Each cluster has its own characteristic regime-shift timing. If the clustering
+captures real differences in climate response, lakes within the same cluster
+should share similar shift-year patterns.
+
+::: {.callout-note}
+## Finding 12
+Each cluster shows distinct shift-year peaks. The eight clusters differ not
+only in spatial pattern but also in physical characteristics. Temperature
+level, warming rate, acceleration, and regime-shift timing all vary
+systematically across clusters. STL trend shapes and shift timing are
+consistent within clusters and distinct between clusters.
+:::
+
+```{r}
+#| label: fig-cluster-characteristics
+#| fig-cap: "Cluster characteristics: distributions of temperature, warming, and acceleration, plus mean STL trend by cluster."
+#| fig-width: 10
+#| fig-height: 7.2
+
+# --- Shared cluster data ---
+cluster_data <- prepare_cluster_data(include_accel = TRUE, include_warming = TRUE)
+trend_sub <- cluster_data$trend_sub
+trend_mat <- cluster_data$trend_mat
+year_cols <- cluster_data$year_cols
+cluster_meta <- cluster_data$cluster_meta
+label_map <- cluster_data$label_map
+cluster_cols <- pal_cluster
+direction_fills <- pal_direction_fill
+direction_cols_line <- pal_direction
+all_clusters <- paste0("C", 1:8)
+shifts <- read_csv(file.path(rdata, "shifts_L7_p005.csv"), show_col_types = FALSE)
+
+# --- Shift timing data ---
+shifts_cluster <- shifts %>%
+  inner_join(trend_sub %>% select(lake_id, cluster_label), by = "lake_id") %>%
+  mutate(direction = factor(direction, levels = c("warming", "cooling")))
+
+year_range <- 1988:2020
+year_dist <- shifts_cluster %>%
+  count(cluster_label, year, direction) %>%
+  tidyr::complete(cluster_label = paste0("C", 1:8), year = year_range, direction = c("warming", "cooling"), fill = list(n = 0)) %>%
+  filter(year >= 1989) %>%
+  mutate(
+    signed_n = if_else(direction == "warming", n, -n),
+    direction = factor(direction, levels = c("warming", "cooling")),
+    cluster_label = factor(cluster_label, levels = paste0("C", 1:8))
+  )
+
+# ============================================================
+# LEFT COLUMN: 4 panels, compact
+
+# --- Peak detection algorithm ---
+# For each cluster+direction: smooth with 3-year rolling mean, find local maxima,
+# filter by 75th percentile threshold.
+detect_peaks <- function(years, counts) {
+  n <- length(counts)
+  if (n < 5) return(tibble(year = integer(), peak_count = numeric(), is_range = logical()))
+  
+  # 3-year rolling mean
+  smoothed <- as.numeric(stats::filter(counts, rep(1/3, 3), sides = 2))
+  smoothed[is.na(smoothed)] <- counts[is.na(smoothed)]
+  
+  # Threshold: 90th percentile of positive smoothed values
+  pos_vals <- smoothed[smoothed > 0]
+  if (length(pos_vals) < 3) return(tibble(year = integer(), peak_count = numeric(), is_range = logical()))
+  threshold <- quantile(pos_vals, 0.75, na.rm = TRUE)
+  
+  # All years above threshold
+  above_idx <- which(smoothed >= threshold)
+  if (length(above_idx) == 0) return(tibble(year = integer(), peak_count = numeric(), is_range = logical()))
+  
+  peak_years <- years[above_idx]
+  peak_counts <- smoothed[above_idx]
+  
+  # Group consecutive years (gap > 2 = new group)
+  groups <- cumsum(c(1, diff(peak_years) > 2))
+  result <- list()
+  for (g in unique(groups)) {
+    idx <- which(groups == g)
+    yrs <- peak_years[idx]
+    cnts <- peak_counts[idx]
+    best <- which.max(cnts)
+    if (length(yrs) == 1) {
+      result[[length(result) + 1]] <- tibble(year = yrs, peak_count = cnts, is_range = FALSE)
+    } else {
+      result[[length(result) + 1]] <- tibble(
+        year = yrs[best], peak_count = cnts[best],
+        is_range = TRUE, range_min = min(yrs), range_max = max(yrs)
+      )
+    }
+  }
+  bind_rows(result)
+}
+
+# Detect peaks for each cluster+direction
+peaks <- year_dist %>%
+  group_by(cluster_label, direction) %>%
+  group_modify(~ detect_peaks(.x$year, .x$n)) %>%
+  ungroup() %>%
+  mutate(
+    label = if_else(is_range,
+      paste0(range_min, "-", substr(range_max, 3, 4)),
+      as.character(year)
+    ),
+    y_label = if_else(direction == "warming", peak_count * 1.15, -peak_count * 1.15)
+  )
+
+# Peak ranges for shading
+peak_ranges <- peaks %>%
+  filter(is_range) %>%
+  mutate(
+    x_min = range_min,
+    x_max = range_max
+  ) %>%
+  select(cluster_label, direction, x_min, x_max)
+
+# ============================================================
+
+make_violin <- function(data, y_col, y_label, title_text) {
+  ggplot(data, aes(x = cluster_label, y = .data[[y_col]])) +
+    geom_violin(aes(color = cluster_label), fill = NA, scale = "width", linewidth = 0.35) +
+    geom_boxplot(width = 0.10, fill = "white", color = "grey30", linewidth = 0.25, outlier.shape = NA) +
+    geom_hline(yintercept = 0, color = "grey50", linewidth = 0.2, linetype = "dashed") +
+    scale_color_manual(values = cluster_cols, guide = "none") +
+    scale_x_discrete(labels = label_map) +
+    labs(x = NULL, y = y_label, title = title_text) +
+    theme_atomic_base(grid = FALSE) +
+    theme(
+      axis.text.x = element_text(angle = 35, hjust = 1, size = 5.5),
+      axis.text.y = element_text(size = 6),
+      axis.title.y = element_text(size = 7, face = "bold"),
+      plot.title = element_text(size = 8, face = "bold"),
+      plot.margin = margin(1, 2, 1, 1)
+    )
+}
+
+p_v1 <- make_violin(trend_sub, "mean_temp", "Mean STL trend (\u00b0C)", "Temperature level")
+p_v2 <- make_violin(trend_sub, "warming", "Warming rate (\u00b0C/40yr)", "Warming rate")
+p_v3 <- make_violin(trend_sub, "accel", expression("Acceleration (10"^-3 * " °C/yr"^2 * ")"), "Acceleration")
+
+# --- STL trend panels ---
+cluster_ts <- trend_sub %>%
+  select(cluster_label, all_of(year_cols)) %>%
+  group_by(cluster_label) %>%
+  summarise(
+    across(all_of(year_cols), list(mean = ~ mean(.x, na.rm = TRUE), sd = ~ sd(.x, na.rm = TRUE))),
+    .groups = "drop"
+  ) %>%
+  pivot_longer(-cluster_label, names_to = "col_name", values_to = "value") %>%
+  mutate(
+    stat = if_else(grepl("_mean$", col_name), "mean", "sd"),
+    year = as.integer(gsub("trend_|_(mean|sd)$", "", col_name))
+  ) %>%
+  select(cluster_label, year, stat, value) %>%
+  pivot_wider(names_from = stat, values_from = value) %>%
+  filter(!is.na(year))
+
+# C1-C7: y-axis from full mean ± SD range
+y_range_1_7 <- cluster_ts %>% filter(cluster_label != "C8") %>%
+  { range(c(.$mean - .$sd, .$mean + .$sd), na.rm = TRUE) }
+y_pad_1_7 <- diff(y_range_1_7) * 0.03
+y_limits_1_7 <- c(y_range_1_7[1] - y_pad_1_7, y_range_1_7[2] + y_pad_1_7)
+
+y_range_all <- range(c(cluster_ts$mean - cluster_ts$sd, cluster_ts$mean + cluster_ts$sd), na.rm = TRUE)
+y_pad_all <- diff(y_range_all) * 0.05
+y_limits_all <- c(y_range_all[1] - y_pad_all, y_range_all[2] + y_pad_all)
+
+trend_panels <- list()
+
+for (i in 1:8) {
+  highlight <- all_clusters[i]
+  y_lim <- if (i == 8) y_limits_all else y_limits_1_7
+  range_sub <- peak_ranges %>% filter(cluster_label == highlight)
+  # Only draw individual peak lines for non-range peaks
+  peak_sub <- peaks %>% filter(cluster_label == highlight, !is_range)
+  
+  p <- ggplot() +
+    # Peak range shading (higher alpha)
+    {if (nrow(range_sub) > 0) geom_rect(
+      data = range_sub,
+      aes(xmin = x_min, xmax = x_max, ymin = -Inf, ymax = Inf, fill = direction),
+      inherit.aes = FALSE, alpha = 0.18
+    )} +
+    # Range boundary lines (dashed, thin, at start and end of each range)
+    {if (nrow(range_sub) > 0) geom_vline(
+      data = range_sub %>% pivot_longer(c(x_min, x_max), values_to = "x_pos"),
+      aes(xintercept = x_pos, color = direction),
+      inherit.aes = FALSE, linewidth = 0.3, linetype = "dashed", alpha = 0.5
+    )} +
+    # Grey lines for other clusters
+    geom_line(
+      data = cluster_ts %>% filter(cluster_label != highlight),
+      aes(x = year, y = mean, group = cluster_label),
+      color = "grey65", linewidth = 0.25, alpha = 0.5
+    ) +
+    # SD ribbon for highlighted cluster
+    geom_ribbon(
+      data = cluster_ts %>% filter(cluster_label == highlight),
+      aes(x = year, ymin = mean - sd, ymax = mean + sd),
+      fill = cluster_cols[highlight], alpha = 0.2, color = NA
+    ) +
+    # Mean line for highlighted cluster
+    geom_line(
+      data = cluster_ts %>% filter(cluster_label == highlight),
+      aes(x = year, y = mean),
+      color = cluster_cols[highlight], linewidth = 0.6
+    ) +
+    # Peak year lines (thin, semi-transparent)
+    {if (nrow(peak_sub) > 0) geom_vline(
+      data = peak_sub,
+      aes(xintercept = year, color = direction),
+      linewidth = 0.3, linetype = "dashed", alpha = 0.5
+    )} +
+    # Peak year labels
+    {if (nrow(peak_sub) > 0) geom_text(
+      data = peak_sub,
+      aes(x = year, y = Inf, label = label, color = direction),
+      vjust = 1.5, hjust = 0.5, size = 2, fontface = "bold"
+    )} +
+    scale_color_manual(values = direction_cols_line, guide = "none") +
+    scale_fill_manual(values = direction_fills, guide = "none") +
+    scale_x_continuous(breaks = seq(1985, 2020, by = 10)) +
+    scale_y_continuous(limits = y_lim, breaks = pretty_breaks(3)) +
+    labs(title = highlight) +
+    theme_void(base_size = 7) +
+    theme(
+      plot.title = element_text(size = 7, face = "bold", color = cluster_cols[highlight], hjust = 0.5),
+      axis.text.y = element_text(size = 5, color = "grey50"),
+      axis.ticks.y = element_line(color = "grey50", linewidth = 0.15),
+      axis.line.y = element_line(color = "grey50", linewidth = 0.15),
+      plot.margin = margin(1, 1, 1, 1)
+    )
+  
+  trend_panels[[i]] <- p
+}
+
+p_trends <- wrap_plots(trend_panels, ncol = 1) +
+  plot_annotation(
+    subtitle = "C1-C7: shared y-axis. C8: own y-axis.",
+    theme = theme(
+      plot.subtitle = element_text(size = 6, color = col_subtitle)
+    )
+  )
+
+# --- Info panel for bottom-left ---
+info_text <- paste0(
+  "Cluster summary\n\n",
+  paste0(
+    cluster_meta$cluster_label, ": ",
+    comma(cluster_meta$n), " lakes, ",
+    sprintf("%.1f", cluster_meta$mt), "°C",
+    collapse = "\n"
+  )
+)
+p_info <- ggplot() +
+  annotate("text", x = 0.5, y = 0.95, label = "Cluster summary",
+           size = 4.5, fontface = "bold", color = col_text, hjust = 0.5, vjust = 1) +
+  annotate("text", x = 0.5, y = 0.82, label = info_text,
+           size = 3.0, color = col_text_soft, hjust = 0.5, vjust = 1, family = "mono", lineheight = 1.1) +
+  xlim(0, 1) + ylim(0, 1) +
+  theme_void() +
+  theme(plot.margin = margin(4, 4, 4, 4))
+
+p_left <- p_v1 / p_v2 / p_v3 / p_info +
+  plot_layout(heights = c(1, 1, 1, 1))
+
+# ============================================================
+# RIGHT COLUMN: 8 shift timing charts
+# ============================================================
+
+shift_panels <- list()
+for (i in 1:8) {
+  cl <- all_clusters[i]
+  sub <- year_dist %>% filter(cluster_label == cl)
+  # Prepare peak annotations: range = horizontal segment, single = vertical line
+  peak_sub <- peaks %>% filter(cluster_label == cl)
+  range_sub <- peak_ranges %>% filter(cluster_label == cl)
+  
+  # Compute y offset for directed peak marks (small fraction of max count)
+  max_n <- max(abs(sub$signed_n), na.rm = TRUE)
+  y_off <- max_n * 0.08
+  
+  range_marks <- NULL
+  single_marks <- NULL
+  
+  p <- ggplot(sub, aes(x = year, y = signed_n, fill = direction)) +
+    # Low-alpha cluster color background
+    annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
+             fill = cluster_cols[cl], alpha = 0.15) +
+    # Peak range shading
+    {if (nrow(range_sub) > 0) geom_rect(
+      data = range_sub,
+      aes(xmin = x_min, xmax = x_max, ymin = -Inf, ymax = Inf, fill = direction),
+      inherit.aes = FALSE, alpha = 0.1
+    )} +
+    geom_col(width = 0.82, alpha = 0.65, linewidth = 0) +
+    geom_col(width = 0.82, fill = NA, aes(color = direction), linewidth = 0.2) +
+    geom_hline(yintercept = 0, color = "grey30", linewidth = 0.15) +
+    scale_fill_manual(values = c(direction_fills, direction_fills), guide = "none") +
+    scale_color_manual(values = direction_cols_line, guide = "none") +
+    scale_x_continuous(breaks = seq(1990, 2020, by = 10), limits = c(1988.5, 2020.5), expand = c(0, 0)) +
+    scale_y_continuous(labels = label_number(big.mark = ",")) +
+    labs(title = cl, x = NULL, y = NULL) +
+    theme_atomic_base(grid = FALSE) +
+    theme(
+      plot.title = element_text(size = 7, face = "bold", color = cluster_cols[cl], hjust = 0.5),
+      plot.background = element_rect(fill = "white", color = NA),
+      axis.text = element_text(size = 4.5),
+      axis.text.x = element_text(angle = 0),
+      plot.margin = margin(2, 3, 2, 3)
+    )
+  
+  shift_panels[[i]] <- p
+}
+
+p_right <- wrap_plots(shift_panels, ncol = 1) +
+  plot_annotation(
+    subtitle = "Positive = warming-direction; negative = cooling-direction.",
+    theme = theme(
+      plot.subtitle = element_text(size = 6, color = col_subtitle)
+    )
+  )
+
+# ============================================================
+# COMPOSE: characteristics panels
+# ============================================================
+p_characteristics <- p_left | p_trends +
+  plot_layout(widths = c(1, 1.15))
+
+save_figure("fig-cluster-characteristics.png", p_characteristics, width = 10, height = 7.2)
+p_characteristics
+```
+
+```{r}
+#| label: fig-cluster-shift-timing
+#| fig-cap: "Regime-shift timing by cluster. Positive bars are warming shifts; negative bars are cooling shifts."
+#| fig-width: 7.2
+#| fig-height: 8.8
+
+save_figure("fig-cluster-shift-timing.png", p_right, width = 7.2, height = 8.8)
+p_right
+```
+
+## Spatial coherence
+
+The eight clusters exhibit different spatial coherence patterns. Some form
+tight geographic clusters; others form latitudinal bands spanning multiple
+continents.
+
+::: {.callout-note}
+## Finding 13
+Five clusters (C2, C3, C5, C6, C7) form tight geographic clusters, with more
+than 80% of lakes within ±30° of their centroid. Two clusters (C1, C8) form
+latitudinal bands spanning the full longitude range at high latitudes. One
+cluster (C4, tropical) is globally dispersed but concentrated in the
+subtropical latitude band.
+:::

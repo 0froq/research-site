@@ -1,0 +1,26 @@
+---
+title: "Hiatus — Metrics"
+---
+
+# Metric definitions
+
+## Warming
+
+Raw monthly LSWT → annual mean → Theil–Sen slope × 40 years.
+
+## Acceleration
+
+Sen slope of first-differenced annual STL trend.
+
+## STARS
+
+L=7, p=0.05. Minimum regime length 7 years, shift significance p < 0.05.
+
+## Clustering
+
+K=8, z-scored annual STL trend + normalised mean temperature.
+Cluster ordering by mean temperature (C1=coldest → C8=hottest).
+
+## Teleconnection indices
+
+ENSO (Nino3.4), PDO, AMO, NAO, AO. Annual means from monthly NOAA data.

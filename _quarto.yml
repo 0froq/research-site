@@ -1,0 +1,60 @@
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Research"
+  chapters:
+    - index.qmd
+    - part: "Hiatus"
+      chapters:
+        - projects/hiatus/draft/index.qmd
+        - projects/hiatus/draft/chapters/01-descriptive.qmd
+        - projects/hiatus/draft/chapters/02-regional.qmd
+        - projects/hiatus/draft/chapters/03-teleconnection.qmd
+        - projects/hiatus/metrics/index.qmd
+        - projects/hiatus/log/index.qmd
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    code-fold: false
+    code-tools: false
+  pdf:
+    documentclass: report
+    papersize: a4
+    fontsize: 11pt
+    geometry:
+      - top=2.5cm
+      - bottom=2.5cm
+      - left=2.5cm
+      - right=2.5cm
+    include-in-header:
+      text: |
+        \usepackage{booktabs}
+        \usepackage{float}
+        \floatplacement{figure}{H}
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    number-sections: true
+
+execute:
+  freeze: auto
+  echo: false
+  warning: false
+  message: false
+
+bibliography: zotero.bib
+
+crossref:
+  fig-prefix: "Figure"
+  tbl-prefix: "Table"
+  eq-prefix: "Equation"
+  sec-prefix: "Section"
