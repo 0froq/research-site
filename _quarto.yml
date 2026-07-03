@@ -1,34 +1,74 @@
 project:
-  type: book
+  type: website
   output-dir: _output
 
-book:
+website:
   title: "Research"
-  chapters:
-    - index.qmd
-    - part: "Hiatus"
-      chapters:
-        - projects/hiatus/draft/index.qmd
-        - projects/hiatus/draft/chapters/01-descriptive.qmd
-        - projects/hiatus/draft/chapters/02-regional.qmd
-        - projects/hiatus/draft/chapters/03-teleconnection.qmd
-        - projects/hiatus/metrics/index.qmd
-        - projects/hiatus/log/index.qmd
+  site-url: https://0froq.github.io/research-site/
+  repo-url: https://github.com/0froq/research-site
+  favicon: assets/favicon.svg
+  open-graph: true
+  twitter-card: true
+
+  page-navigation: true
+  back-to-top-navigation: true
+
+  navbar:
+    title: "Research"
+    search: true
+    pinned: true
+    right:
+      - icon: github
+        href: https://github.com/0froq/research-site
+        aria-label: GitHub
+
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - text: "Home"
+        href: index.qmd
+      - section: "Hiatus"
+        contents:
+          - section: "Draft"
+            contents:
+              - text: "Overview"
+                href: projects/hiatus/draft/index.qmd
+              - text: "1. Descriptive overview"
+                href: projects/hiatus/draft/chapters/01-descriptive.qmd
+              - text: "2. Regional decomposition"
+                href: projects/hiatus/draft/chapters/02-regional.qmd
+              - text: "3. Teleconnection"
+                href: projects/hiatus/draft/chapters/03-teleconnection.qmd
+          - text: "Metrics"
+            href: projects/hiatus/metrics/index.qmd
+          - text: "Dev Log"
+            href: projects/hiatus/log/index.qmd
+
+  page-footer:
+    border: true
+    center:
+      - text: "Built with Quarto"
+        href: https://quarto.org
+    right:
+      - icon: github
+        href: https://github.com/0froq/research-site
+        aria-label: GitHub
 
 format:
   html:
     theme:
-      light: cosmo
+      light: flatly
       dark: darkly
     toc: true
     toc-depth: 3
-    number-sections: true
+    number-sections: false
     fig-cap-location: bottom
     tbl-cap-location: top
     code-fold: false
     code-tools: false
   pdf:
-    documentclass: report
+    documentclass: article
     papersize: a4
     fontsize: 11pt
     geometry:
@@ -57,4 +97,3 @@ crossref:
   fig-prefix: "Figure"
   tbl-prefix: "Table"
   eq-prefix: "Equation"
-  sec-prefix: "Section"

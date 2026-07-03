@@ -17,3 +17,4 @@ shared/assets/
 
 /.quarto/
 **/*.quarto_ipynb
+deploy.log
