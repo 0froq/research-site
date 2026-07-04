@@ -1,0 +1,110 @@
+/*-- scss:defaults --*/
+
+// === Typography — same as light ===
+$font-family-sans-serif: "Alegreya Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+$headings-font-family: "EB Garamond", "Noto Serif SC", Georgia, "Times New Roman", serif;
+$font-family-monospace: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+
+$font-size-root: 18px;
+$line-height-base: 1.7;
+$headings-font-weight: 500;
+
+// === Colors — stone-on-dark with emerald accent ===
+$body-bg: #0c0a09;
+$body-color: #d6d3d1;
+$link-color: #34d399;
+$link-hover-color: #6ee7b7;
+
+// Bootstrap primary → emerald dark
+$primary: #34d399;
+
+// Navbar
+$navbar-bg: #0c0a09;
+$navbar-fg: #d6d3d1;
+$navbar-hl: #34d399;
+
+// Sidebar
+$sidebar-bg: #1c1917;
+$sidebar-fg: #d6d3d1;
+$sidebar-hl: #34d399;
+
+// Footer
+$footer-bg: #1c1917;
+$footer-fg: #78716c;
+
+// Code
+$code-block-bg: #1c1917;
+$code-block-border-left: #44403c;
+$code-bg: #292524;
+$code-color: #a8a29e;
+
+// Table of Contents
+$toc-color: #78716c;
+$toc-active-border: #34d399;
+$toc-inactive-border: #44403c;
+
+// Callouts
+$callout-color-note: #34d399;
+$callout-color-tip: #34d399;
+
+/*-- scss:rules --*/
+
+// === Google Fonts ===
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+// === Link style ===
+a:not(.nav-link):not(.navbar-brand):not(.btn):not(.page-link):not(.dropdown-item) {
+  text-decoration-style: dashed;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+
+  &:hover {
+    text-decoration-style: solid;
+  }
+}
+
+// === Headings ===
+h1, h2, h3, h4, h5, h6 {
+  color: #e7e5e4;
+}
+
+h1 {
+  font-weight: 600;
+}
+
+// === Blockquote ===
+blockquote {
+  border-left-color: #57534e;
+  background: rgba(250, 250, 249, 0.03);
+  font-style: italic;
+  font-family: "EB Garamond", "Noto Serif SC", Georgia, serif;
+}
+
+// === Inline code ===
+code:not(pre code) {
+  color: #a8a29e;
+  background: #292524;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+// === Tables ===
+table {
+  thead {
+    border-bottom: 2px solid #d6d3d1;
+  }
+  tbody tr {
+    border-bottom: 1px solid #292524;
+  }
+}
+
+// === Sidebar ===
+.sidebar.sidebar-navigation {
+  border-right-color: #292524;
+}
+
+// === Page footer ===
+.page-footer {
+  border-top: 1px solid #292524;
+}

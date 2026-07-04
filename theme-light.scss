@@ -1,0 +1,119 @@
+/*-- scss:defaults --*/
+
+// === Typography ===
+// froQ's choice: Alegreya Sans (body) + EB Garamond (headings) + JetBrains Mono (code)
+$font-family-sans-serif: "Alegreya Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+$headings-font-family: "EB Garamond", "Noto Serif SC", Georgia, "Times New Roman", serif;
+$font-family-monospace: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+
+$font-size-root: 18px;
+$line-height-base: 1.7;
+$headings-font-weight: 500;
+
+// === Colors — stone palette with emerald accent ===
+$body-bg: #fafaf9;
+$body-color: #44403c;
+$link-color: #059669;
+$link-hover-color: #047857;
+
+// Bootstrap primary → emerald
+$primary: #059669;
+
+// Navbar — subtle, matches body
+$navbar-bg: #fafaf9;
+$navbar-fg: #44403c;
+$navbar-hl: #059669;
+
+// Sidebar
+$sidebar-bg: #f5f5f4;
+$sidebar-fg: #44403c;
+$sidebar-hl: #059669;
+
+// Footer
+$footer-bg: #f5f5f4;
+$footer-fg: #78716c;
+
+// Code
+$code-block-bg: #f5f5f4;
+$code-block-border-left: #d6d3d1;
+$code-bg: #e7e5e4;
+$code-color: #57534e;
+
+// Table of Contents
+$toc-color: #78716c;
+$toc-active-border: #059669;
+$toc-inactive-border: #d6d3d1;
+
+// Callouts — use emerald for note/tip, keep others
+$callout-color-note: #059669;
+$callout-color-tip: #059669;
+
+/*-- scss:rules --*/
+
+// === Google Fonts ===
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+// === Link style — dashed underline ===
+a:not(.nav-link):not(.navbar-brand):not(.btn):not(.page-link):not(.dropdown-item) {
+  text-decoration-style: dashed;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+
+  &:hover {
+    text-decoration-style: solid;
+  }
+}
+
+// === Headings ===
+h1, h2, h3, h4, h5, h6 {
+  color: #292524;
+}
+
+h1 {
+  font-weight: 600;
+}
+
+// === Blockquote ===
+blockquote {
+  border-left-color: #a8a29e;
+  background: rgba(12, 10, 9, 0.03);
+  font-style: italic;
+  font-family: "EB Garamond", "Noto Serif SC", Georgia, serif;
+}
+
+// === Inline code ===
+code:not(pre code) {
+  color: #57534e;
+  background: #e7e5e4;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+// === Tables ===
+table {
+  thead {
+    border-bottom: 2px solid #44403c;
+  }
+  tbody tr {
+    border-bottom: 1px solid #e7e5e4;
+  }
+}
+
+// === Navbar logo size ===
+.navbar-brand img {
+  max-height: 42px;
+  width: auto;
+}
+
+// === Sidebar tweaks ===
+.sidebar.sidebar-navigation {
+  width: 280px;
+  border-right-color: #e7e5e4;
+}
+
+// === Page footer ===
+.page-footer {
+  font-size: 0.85rem;
+  border-top: 1px solid #e7e5e4;
+}
