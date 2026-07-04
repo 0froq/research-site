@@ -116,7 +116,7 @@ $callout-color-caution: #dc2626;
 }
 
 #TOC a.active {
-  color: #44403c;
+  color: #44403c !important;
   border-left-color: #c2410c;
   font-weight: 600;
 }
@@ -167,4 +167,48 @@ table thead {
 #quarto-back-to-top:hover {
   border-color: #a8a29e;
   color: #292524;
+}
+
+// Responsive navigation cleanup: when sidebar collapses, do not squeeze search
+// into the breadcrumb row; keep secondary nav chromatically consistent.
+.quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb a,
+.quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb-item a,
+.quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb-item.active {
+  color: #78716c;
+  transition: color 160ms ease;
+}
+
+.quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb a:hover,
+.quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb-item a:hover {
+  color: #44403c;
+}
+
+.quarto-secondary-nav .quarto-btn-toggle,
+.quarto-secondary-nav .quarto-search-button,
+.navbar-toggler,
+.quarto-color-scheme-toggle {
+  color: #78716c;
+  border-color: transparent;
+  box-shadow: none !important;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.quarto-secondary-nav .quarto-btn-toggle:hover,
+.quarto-secondary-nav .quarto-search-button:hover,
+.navbar-toggler:hover,
+.quarto-color-scheme-toggle:hover {
+  color: #44403c;
+  background: transparent;
+}
+
+.navbar-toggler:focus,
+.quarto-secondary-nav .quarto-btn-toggle:focus,
+.quarto-secondary-nav .quarto-search-button:focus {
+  box-shadow: none !important;
+}
+
+@media (max-width: 991.98px) {
+  .quarto-secondary-nav .quarto-search-button {
+    display: none !important;
+  }
 }
