@@ -1,52 +1,66 @@
 /*-- scss:defaults --*/
 
-// Minimal Quarto dark theme: keep defaults, only align palette.
+@import "palette";
 
+// === Semantic color tokens ===
+$surface: $neutral-950;
+$surface-muted: #111111;
+$surface-soft: $stone-900;
+$text: $stone-300;
+$text-strong: $stone-200;
+$text-muted: $stone-400;
+$text-faint: $stone-600;
+$line: $stone-800;
+$line-soft: $stone-900;
+$line-strong: $stone-600;
+$accent-active-border: $orange-400;
+
+// === Bootstrap / Quarto variables ===
 $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
 $font-family-monospace: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
 
-$body-bg: #0a0a0a;
-$body-color: #d6d3d1;
-$link-color: #a8a29e;
-$link-hover-color: #e7e5e4;
-$primary: #a8a29e;
-$secondary: #a8a29e;
+$body-bg: $surface;
+$body-color: $text;
+$link-color: $text-muted;
+$link-hover-color: $text-strong;
+$primary: $text-muted;
+$secondary: $text-muted;
 
-$navbar-bg: #0a0a0a;
-$navbar-fg: #a8a29e;
-$navbar-hl: #e7e5e4;
+$navbar-bg: $surface;
+$navbar-fg: $text-muted;
+$navbar-hl: $text-strong;
 
-$sidebar-bg: #0a0a0a;
-$sidebar-fg: #a8a29e;
-$sidebar-hl: #e7e5e4;
+$sidebar-bg: $surface;
+$sidebar-fg: $text-muted;
+$sidebar-hl: $text-strong;
 
-$footer-bg: #0a0a0a;
-$footer-fg: #78716c;
+$footer-bg: $surface;
+$footer-fg: $stone-500;
 
-$border-color: #292524;
+$border-color: $line;
 
-$code-block-bg: #111111;
-$code-bg: #1c1917;
-$code-color: #a8a29e;
+$code-block-bg: $surface-muted;
+$code-bg: $surface-soft;
+$code-color: $text-muted;
 
-$toc-color: #78716c;
-$toc-active-border: #fb923c;
-$toc-inactive-border: #292524;
+$toc-color: $stone-500;
+$toc-active-border: $accent-active-border;
+$toc-inactive-border: $line;
 
-$breadcrumb-divider-color: #44403c;
-$breadcrumb-active-color: #78716c;
+$breadcrumb-divider-color: $stone-700;
+$breadcrumb-active-color: $stone-500;
 
 $callout-border-width: 3px;
-$callout-color-note: #a8a29e;
-$callout-color-tip: #818cf8;
-$callout-color-warning: #facc15;
-$callout-color-important: #c084fc;
-$callout-color-caution: #f87171;
+$callout-color-note: $stone-400;
+$callout-color-tip: $indigo-400;
+$callout-color-warning: $yellow-400;
+$callout-color-important: $violet-400;
+$callout-color-caution: $red-400;
 
 /*-- scss:rules --*/
 
 .navbar {
-  border-bottom: 1px solid #1c1917;
+  border-bottom: 1px solid $line-soft;
   box-shadow: none;
 }
 
@@ -57,11 +71,11 @@ $callout-color-caution: #f87171;
 }
 
 .sidebar.sidebar-navigation {
-  border-right: 1px solid #1c1917;
+  border-right: 1px solid $line-soft;
 }
 
 .page-footer {
-  border-top: 1px solid #1c1917;
+  border-top: 1px solid $line-soft;
 }
 
 // Remove remaining Bootstrap blue from Quarto navigation surfaces.
@@ -72,7 +86,7 @@ $callout-color-caution: #f87171;
 .pagination-link,
 .nav-page a,
 .nav-page-text {
-  color: #a8a29e;
+  color: $text-muted;
 }
 
 .breadcrumb a:hover,
@@ -81,43 +95,43 @@ $callout-color-caution: #f87171;
 .pagination-link:hover,
 .nav-page a:hover,
 .nav-page a:hover .nav-page-text {
-  color: #e7e5e4;
+  color: $text-strong;
 }
 
 // Sidebar keeps Quarto's native tree style; only tune color and motion.
 .sidebar a,
 .sidebar .sidebar-item-toggle,
 .sidebar .sidebar-item-text {
-  color: #a8a29e;
+  color: $text-muted;
   transition: color 160ms ease, background-color 160ms ease;
 }
 
 .sidebar a:hover,
 .sidebar .sidebar-item-toggle:hover,
 .sidebar .sidebar-item-text:hover {
-  color: #e7e5e4;
+  color: $text-strong;
 }
 
 .sidebar .active,
 .sidebar .sidebar-item-container .active,
 .sidebar .sidebar-link.active {
-  color: #fb923c;
+  color: $accent-active-border;
   font-weight: 600;
 }
 
 // Right TOC is a page-local scale, so it keeps the active left indicator.
 #TOC a {
-  color: #57534e;
+  color: $text-faint;
   transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
 }
 
 #TOC a:hover {
-  color: #a8a29e;
+  color: $text-muted;
 }
 
 #TOC a.active {
-  color: #e7e5e4 !important;
-  border-left-color: #fb923c;
+  color: $text-strong;
+  border-left-color: $accent-active-border;
   font-weight: 600;
 }
 
@@ -125,22 +139,22 @@ $callout-color-caution: #f87171;
 .quarto-page-breadcrumbs .breadcrumb a,
 .quarto-page-breadcrumbs .breadcrumb-item a,
 .quarto-page-breadcrumbs .breadcrumb-item.active {
-  color: #a8a29e;
+  color: $text-muted;
   transition: color 160ms ease;
 }
 
 .quarto-page-breadcrumbs .breadcrumb a:hover,
 .quarto-page-breadcrumbs .breadcrumb-item a:hover {
-  color: #e7e5e4;
+  color: $text-strong;
 }
 
 main.content a:not(.btn):not(.anchorjs-link) {
-  color: #a8a29e;
+  color: $text-muted;
   text-underline-offset: 0.18em;
 }
 
 main.content a:not(.btn):not(.anchorjs-link):hover {
-  color: #e7e5e4;
+  color: $text-strong;
 }
 
 code:not(pre code) {
@@ -149,24 +163,24 @@ code:not(pre code) {
 
 pre.sourceCode,
 div.sourceCode {
-  border: 1px solid #292524;
+  border: 1px solid $line;
 }
 
 table thead {
-  border-bottom-color: #57534e;
+  border-bottom-color: $line-strong;
 }
 
 // Classic blog-style back-to-top: no shadow, just a border.
 #quarto-back-to-top {
   box-shadow: none !important;
-  border: 1px solid #44403c;
-  background: #0a0a0a;
-  color: #a8a29e;
+  border: 1px solid $stone-700;
+  background: $surface;
+  color: $text-muted;
 }
 
 #quarto-back-to-top:hover {
-  border-color: #78716c;
-  color: #e7e5e4;
+  border-color: $stone-500;
+  color: $text-strong;
 }
 
 // Responsive navigation cleanup: when sidebar collapses, do not squeeze search
@@ -174,20 +188,20 @@ table thead {
 .quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb a,
 .quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb-item a,
 .quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb-item.active {
-  color: #a8a29e;
+  color: $text-muted;
   transition: color 160ms ease;
 }
 
 .quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb a:hover,
 .quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb-item a:hover {
-  color: #e7e5e4;
+  color: $text-strong;
 }
 
 .quarto-secondary-nav .quarto-btn-toggle,
 .quarto-secondary-nav .quarto-search-button,
 .navbar-toggler,
 .quarto-color-scheme-toggle {
-  color: #a8a29e;
+  color: $text-muted;
   border-color: transparent;
   box-shadow: none !important;
   transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
@@ -197,7 +211,7 @@ table thead {
 .quarto-secondary-nav .quarto-search-button:hover,
 .navbar-toggler:hover,
 .quarto-color-scheme-toggle:hover {
-  color: #e7e5e4;
+  color: $text-strong;
   background: transparent;
 }
 

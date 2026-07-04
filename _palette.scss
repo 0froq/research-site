@@ -1,0 +1,46 @@
+// Tailwind / UnoCSS classic color palette subset used by this Quarto site.
+// Keep this file atomic: no semantic meanings, only color-scale tokens.
+
+// stone
+$stone-50: #fafaf9;
+$stone-100: #f5f5f4;
+$stone-200: #e7e5e4;
+$stone-300: #d6d3d1;
+$stone-400: #a8a29e;
+$stone-500: #78716c;
+$stone-600: #57534e;
+$stone-700: #44403c;
+$stone-800: #292524;
+$stone-900: #1c1917;
+$stone-950: #0c0a09;
+
+// neutral
+$neutral-950: #0a0a0a;
+$neutral-900: #171717;
+
+// orange
+$orange-300: #fdba74;
+$orange-400: #fb923c;
+$orange-600: #ea580c;
+$orange-700: #c2410c;
+$orange-800: #9a3412;
+
+// indigo
+$indigo-400: #818cf8;
+$indigo-600: #4f46e5;
+
+// yellow
+$yellow-400: #facc15;
+$yellow-600: #ca8a04;
+
+// violet
+$violet-400: #c084fc;
+$violet-600: #7c3aed;
+
+// red
+$red-400: #f87171;
+$red-600: #dc2626;
+
+// white / black
+$white: #ffffff;
+$black: #000000;
