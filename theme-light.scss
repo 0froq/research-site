@@ -7,17 +7,18 @@ $font-family-monospace: "JetBrains Mono", "SFMono-Regular", ui-monospace, monosp
 
 $body-bg: #ffffff;
 $body-color: #44403c;
-$link-color: #047857;
-$link-hover-color: #065f46;
-$primary: #047857;
+$link-color: #c2410c;
+$link-hover-color: #9a3412;
+$primary: #c2410c;
+$secondary: #78716c;
 
 $navbar-bg: #ffffff;
 $navbar-fg: #57534e;
-$navbar-hl: #047857;
+$navbar-hl: #c2410c;
 
 $sidebar-bg: #ffffff;
 $sidebar-fg: #57534e;
-$sidebar-hl: #047857;
+$sidebar-hl: #c2410c;
 
 $footer-bg: #ffffff;
 $footer-fg: #78716c;
@@ -29,12 +30,12 @@ $code-bg: #f5f5f4;
 $code-color: #57534e;
 
 $toc-color: #78716c;
-$toc-active-border: #047857;
+$toc-active-border: #c2410c;
 $toc-inactive-border: #e7e5e4;
 
 $callout-border-width: 3px;
-$callout-color-note: #047857;
-$callout-color-tip: #047857;
+$callout-color-note: #c2410c;
+$callout-color-tip: #c2410c;
 
 /*-- scss:rules --*/
 
@@ -46,6 +47,7 @@ $callout-color-tip: #047857;
 .navbar-brand img {
   max-height: 48px;
   width: auto;
+  filter: none;
 }
 
 .sidebar.sidebar-navigation {
@@ -56,8 +58,54 @@ $callout-color-tip: #047857;
   border-top: 1px solid #f5f5f4;
 }
 
+// Remove remaining Bootstrap blue from Quarto navigation surfaces.
+.breadcrumb a,
+.breadcrumb-item a,
+.breadcrumb-item.active,
+.page-navigation a,
+.pagination-link,
+.nav-page a,
+.nav-page-text,
+.sidebar a,
+#TOC a {
+  color: #57534e;
+}
+
+.breadcrumb a:hover,
+.breadcrumb-item a:hover,
+.page-navigation a:hover,
+.pagination-link:hover,
+.nav-page a:hover,
+.sidebar a:hover,
+#TOC a:hover {
+  color: #c2410c;
+}
+
+.sidebar .active,
+.sidebar .sidebar-item-container .active,
+.sidebar .sidebar-link.active,
+.nav-page a:hover .nav-page-text {
+  color: #c2410c;
+}
+
+// Active TOC should be stronger, inactive should recede.
+#TOC a {
+  color: #a8a29e;
+}
+
+#TOC a.active {
+  color: #44403c;
+  border-left-color: #c2410c;
+  font-weight: 600;
+}
+
 main.content a:not(.btn):not(.anchorjs-link) {
+  color: #c2410c;
   text-underline-offset: 0.18em;
+}
+
+main.content a:not(.btn):not(.anchorjs-link):hover {
+  color: #9a3412;
 }
 
 code:not(pre code) {
@@ -71,4 +119,17 @@ div.sourceCode {
 
 table thead {
   border-bottom-color: #a8a29e;
+}
+
+// Classic blog-style back-to-top: no shadow, just a border.
+#quarto-back-to-top {
+  box-shadow: none !important;
+  border: 1px solid #d6d3d1;
+  background: #ffffff;
+  color: #57534e;
+}
+
+#quarto-back-to-top:hover {
+  border-color: #c2410c;
+  color: #c2410c;
 }

@@ -13,18 +13,22 @@ website:
   page-navigation: true
   back-to-top-navigation: true
 
+  search:
+    location: sidebar
+    type: textbox
+
   navbar:
     title: false
     logo: assets/favicon.svg
-    search: true
-    pinned: true
+    search: false
+    pinned: false
     right:
       - icon: github
         href: https://github.com/0froq/research-site
         aria-label: GitHub
 
   sidebar:
-    style: docked
+    style: floating
     search: true
     contents:
       - text: "Home"
@@ -49,8 +53,8 @@ website:
   page-footer:
     border: true
     center:
-      - text: "Built with Quarto"
-        href: https://quarto.org
+      - text: "froq.me"
+        href: https://froq.me
     right:
       - icon: github
         href: https://github.com/0froq/research-site
