@@ -1,110 +1,212 @@
 /*-- scss:defaults --*/
 
-// === Typography — same as light ===
-$font-family-sans-serif: "Alegreya Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-$headings-font-family: "EB Garamond", "Noto Serif SC", Georgia, "Times New Roman", serif;
-$font-family-monospace: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
+$headings-font-family: "EB Garamond", "Noto Serif SC", Georgia, serif;
+$font-family-monospace: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
 
-$font-size-root: 18px;
-$line-height-base: 1.7;
+$font-size-root: 17px;
+$line-height-base: 1.68;
 $headings-font-weight: 500;
 
-// === Colors — stone-on-dark with emerald accent ===
-$body-bg: #0c0a09;
+$body-bg: #0a0a0a;
 $body-color: #d6d3d1;
 $link-color: #34d399;
 $link-hover-color: #6ee7b7;
-
-// Bootstrap primary → emerald dark
 $primary: #34d399;
 
-// Navbar
-$navbar-bg: #0c0a09;
-$navbar-fg: #d6d3d1;
+$navbar-bg: #0a0a0a;
+$navbar-fg: #a8a29e;
 $navbar-hl: #34d399;
 
-// Sidebar
-$sidebar-bg: #1c1917;
-$sidebar-fg: #d6d3d1;
+$sidebar-bg: #0a0a0a;
+$sidebar-fg: #a8a29e;
 $sidebar-hl: #34d399;
 
-// Footer
-$footer-bg: #1c1917;
+$footer-bg: #0a0a0a;
 $footer-fg: #78716c;
 
-// Code
-$code-block-bg: #1c1917;
-$code-block-border-left: #44403c;
-$code-bg: #292524;
+$code-block-bg: #111111;
+$code-block-border-left: false;
+$code-bg: #1c1917;
 $code-color: #a8a29e;
 
-// Table of Contents
 $toc-color: #78716c;
 $toc-active-border: #34d399;
-$toc-inactive-border: #44403c;
+$toc-inactive-border: #292524;
 
-// Callouts
+$callout-border-width: 2px;
 $callout-color-note: #34d399;
 $callout-color-tip: #34d399;
 
 /*-- scss:rules --*/
 
-// === Google Fonts ===
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
-// === Link style ===
-a:not(.nav-link):not(.navbar-brand):not(.btn):not(.page-link):not(.dropdown-item) {
-  text-decoration-style: dashed;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-
-  &:hover {
-    text-decoration-style: solid;
-  }
+body {
+  letter-spacing: 0.005em;
 }
 
-// === Headings ===
+#quarto-content {
+  padding-top: 1rem;
+}
+
+main.content {
+  max-width: 820px;
+}
+
+.navbar {
+  border-bottom: 1px solid #1c1917;
+  box-shadow: none;
+}
+
+.navbar-brand {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.navbar-brand img {
+  max-height: 54px;
+  width: auto;
+  filter: invert(0.88);
+}
+
+.navbar .nav-link,
+.navbar .quarto-navbar-tools .quarto-navigation-tool {
+  color: #a8a29e;
+}
+
+.navbar .nav-link:hover,
+.navbar .quarto-navbar-tools .quarto-navigation-tool:hover {
+  color: #34d399;
+}
+
+.sidebar.sidebar-navigation {
+  width: 270px;
+  border-right: 1px solid #1c1917;
+  padding-top: 1.25rem;
+}
+
+.sidebar nav[role="doc-toc"] ul > li > a.active,
+.sidebar .sidebar-item-container .active {
+  color: #34d399;
+  font-weight: 500;
+}
+
+.sidebar .sidebar-item-text {
+  font-size: 0.92rem;
+}
+
+.sidebar .sidebar-section .sidebar-item-text.sidebar-link {
+  color: #a8a29e;
+}
+
+#TOC a {
+  color: #78716c;
+}
+
+#TOC a.active {
+  color: #34d399;
+  border-left-color: #34d399;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: #e7e5e4;
+  letter-spacing: 0.01em;
 }
 
+h1.title,
 h1 {
-  font-weight: 600;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  line-height: 1.08;
+  margin-bottom: 1.6rem;
 }
 
-// === Blockquote ===
-blockquote {
-  border-left-color: #57534e;
-  background: rgba(250, 250, 249, 0.03);
-  font-style: italic;
-  font-family: "EB Garamond", "Noto Serif SC", Georgia, serif;
+h2 {
+  margin-top: 2.8rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid #1c1917;
 }
 
-// === Inline code ===
-code:not(pre code) {
+h3 {
+  margin-top: 2rem;
+}
+
+p {
+  margin-bottom: 1.05rem;
+}
+
+main.content a:not(.btn):not(.anchorjs-link) {
+  color: #34d399;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+main.content a:not(.btn):not(.anchorjs-link):hover {
+  color: #6ee7b7;
+  text-decoration-style: solid;
+}
+
+figure img,
+p > img {
+  border: 1px solid #292524;
+}
+
+figcaption,
+.figure-caption,
+.table-caption,
+.caption {
   color: #a8a29e;
-  background: #292524;
-  padding: 0.1em 0.3em;
+  font-family: "EB Garamond", "Noto Serif SC", Georgia, serif;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+code:not(pre code) {
+  background: #1c1917;
+  color: #a8a29e;
   border-radius: 3px;
-  font-size: 0.9em;
+  padding: 0.08em 0.3em;
+  font-size: 0.88em;
 }
 
-// === Tables ===
+pre.sourceCode,
+div.sourceCode {
+  background: #111111;
+  border: 1px solid #292524;
+  border-radius: 0;
+}
+
+pre code {
+  font-size: 0.86rem;
+}
+
 table {
-  thead {
-    border-bottom: 2px solid #d6d3d1;
-  }
-  tbody tr {
-    border-bottom: 1px solid #292524;
-  }
+  font-size: 0.92rem;
 }
 
-// === Sidebar ===
-.sidebar.sidebar-navigation {
-  border-right-color: #292524;
+table thead {
+  border-top: 1.5px solid #d6d3d1;
+  border-bottom: 1px solid #57534e;
 }
 
-// === Page footer ===
+table tbody tr {
+  border-bottom: 1px solid #1c1917;
+}
+
+.callout {
+  border-radius: 0;
+  background: #111111;
+}
+
+.callout.callout-style-default > .callout-header {
+  background: transparent;
+}
+
 .page-footer {
-  border-top: 1px solid #292524;
+  margin-top: 4rem;
+  border-top: 1px solid #1c1917;
+  font-size: 0.82rem;
+  color: #78716c;
 }
