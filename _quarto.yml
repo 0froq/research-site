@@ -14,7 +14,8 @@ website:
   back-to-top-navigation: true
 
   navbar:
-    title: "Research"
+    title: false
+    logo: assets/favicon.svg
     search: true
     pinned: true
     right:
@@ -58,8 +59,8 @@ website:
 format:
   html:
     theme:
-      light: flatly
-      dark: darkly
+      light: [flatly, styles.scss]
+      dark: [darkly, styles.scss]
     toc: true
     toc-depth: 3
     number-sections: false
