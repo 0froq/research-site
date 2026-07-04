@@ -84,26 +84,37 @@ $callout-color-caution: #dc2626;
   color: #292524;
 }
 
-// Sidebar and right TOC share the same visual grammar.
-.sidebar .sidebar-item-container > a,
+// Sidebar keeps Quarto's native tree style; only tune color and motion.
+.sidebar a,
 .sidebar .sidebar-item-toggle,
+.sidebar .sidebar-item-text {
+  color: #57534e;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.sidebar a:hover,
+.sidebar .sidebar-item-toggle:hover,
+.sidebar .sidebar-item-text:hover {
+  color: #292524;
+}
+
+.sidebar .active,
+.sidebar .sidebar-item-container .active,
+.sidebar .sidebar-link.active {
+  color: #c2410c;
+  font-weight: 600;
+}
+
+// Right TOC is a page-local scale, so it keeps the active left indicator.
 #TOC a {
   color: #a8a29e;
-  border-left: 2px solid #e7e5e4;
-  padding-left: 0.65rem;
   transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
 }
 
-.sidebar .sidebar-item-container > a:hover,
-.sidebar .sidebar-item-toggle:hover,
 #TOC a:hover {
   color: #57534e;
-  border-left-color: #d6d3d1;
 }
 
-.sidebar .sidebar-item-container > a.active,
-.sidebar .sidebar-item-container > a.sidebar-link.active,
-.sidebar .sidebar-item-container > a[aria-current="page"],
 #TOC a.active {
   color: #44403c;
   border-left-color: #c2410c;
