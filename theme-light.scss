@@ -3,17 +3,17 @@
 @import "palette";
 
 // === Semantic color tokens ===
-$surface: $white;
-$surface-muted: $stone-50;
-$surface-soft: $stone-100;
-$text: $stone-700;
-$text-strong: $stone-800;
-$text-muted: $stone-500;
-$text-faint: $stone-400;
-$line: $stone-200;
-$line-soft: $stone-100;
-$line-strong: $stone-400;
-$accent-active-border: $orange-700;
+$surface: $hex-white;
+$surface-muted: $hex-stone-50;
+$surface-soft: $hex-stone-100;
+$text: $hex-stone-700;
+$text-strong: $hex-stone-800;
+$text-muted: $hex-stone-500;
+$text-faint: $hex-stone-400;
+$line: $hex-stone-200;
+$line-soft: $hex-stone-100;
+$line-strong: $hex-stone-400;
+$accent-active-border: $hex-orange-700;
 
 // === Bootstrap / Quarto variables ===
 $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
@@ -21,17 +21,17 @@ $font-family-monospace: "JetBrains Mono", "SFMono-Regular", ui-monospace, monosp
 
 $body-bg: $surface;
 $body-color: $text;
-$link-color: $stone-600;
+$link-color: $hex-stone-600;
 $link-hover-color: $text-strong;
-$primary: $stone-500;
-$secondary: $stone-500;
+$primary: $hex-stone-500;
+$secondary: $hex-stone-500;
 
 $navbar-bg: $surface;
-$navbar-fg: $stone-600;
+$navbar-fg: $hex-stone-600;
 $navbar-hl: $text-strong;
 
 $sidebar-bg: $surface;
-$sidebar-fg: $stone-600;
+$sidebar-fg: $hex-stone-600;
 $sidebar-hl: $text-strong;
 
 $footer-bg: $surface;
@@ -41,21 +41,21 @@ $border-color: $line;
 
 $code-block-bg: $surface-muted;
 $code-bg: $surface-soft;
-$code-color: $stone-600;
+$code-color: $hex-stone-600;
 
 $toc-color: $text-muted;
 $toc-active-border: $accent-active-border;
 $toc-inactive-border: $line;
 
-$breadcrumb-divider-color: $stone-300;
+$breadcrumb-divider-color: $hex-stone-300;
 $breadcrumb-active-color: $text-muted;
 
 $callout-border-width: 3px;
-$callout-color-note: $stone-500;
-$callout-color-tip: $indigo-600;
-$callout-color-warning: $yellow-600;
-$callout-color-important: $violet-600;
-$callout-color-caution: $red-600;
+$callout-color-note: $hex-stone-500;
+$callout-color-tip: $hex-indigo-600;
+$callout-color-warning: $hex-yellow-600;
+$callout-color-important: $hex-violet-600;
+$callout-color-caution: $hex-red-600;
 
 /*-- scss:rules --*/
 
@@ -86,7 +86,7 @@ $callout-color-caution: $red-600;
 .pagination-link,
 .nav-page a,
 .nav-page-text {
-  color: $stone-600;
+  color: $tw-stone-600;
 }
 
 .breadcrumb a:hover,
@@ -102,7 +102,7 @@ $callout-color-caution: $red-600;
 .sidebar a,
 .sidebar .sidebar-item-toggle,
 .sidebar .sidebar-item-text {
-  color: $stone-600;
+  color: $tw-stone-600;
   transition: color 160ms ease, background-color 160ms ease;
 }
 
@@ -126,7 +126,7 @@ $callout-color-caution: $red-600;
 }
 
 #TOC a:hover {
-  color: $stone-600;
+  color: $tw-stone-600;
 }
 
 #TOC a.active {
@@ -149,7 +149,7 @@ $callout-color-caution: $red-600;
 }
 
 main.content a:not(.btn):not(.anchorjs-link) {
-  color: $stone-600;
+  color: $tw-stone-600;
   text-underline-offset: 0.18em;
 }
 
@@ -173,9 +173,9 @@ table thead {
 // Classic blog-style back-to-top: no shadow, just a border.
 #quarto-back-to-top {
   box-shadow: none !important;
-  border: 1px solid $stone-300;
+  border: 1px solid $tw-stone-300;
   background: $surface;
-  color: $stone-600;
+  color: $tw-stone-600;
 }
 
 #quarto-back-to-top:hover {

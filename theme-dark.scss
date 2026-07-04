@@ -3,17 +3,17 @@
 @import "palette";
 
 // === Semantic color tokens ===
-$surface: $neutral-950;
+$surface: $hex-neutral-950;
 $surface-muted: #111111;
-$surface-soft: $stone-900;
-$text: $stone-300;
-$text-strong: $stone-200;
-$text-muted: $stone-400;
-$text-faint: $stone-600;
-$line: $stone-800;
-$line-soft: $stone-900;
-$line-strong: $stone-600;
-$accent-active-border: $orange-400;
+$surface-soft: $hex-stone-900;
+$text: $hex-stone-300;
+$text-strong: $hex-stone-200;
+$text-muted: $hex-stone-400;
+$text-faint: $hex-stone-600;
+$line: $hex-stone-800;
+$line-soft: $hex-stone-900;
+$line-strong: $hex-stone-600;
+$accent-active-border: $hex-orange-400;
 
 // === Bootstrap / Quarto variables ===
 $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
@@ -35,7 +35,7 @@ $sidebar-fg: $text-muted;
 $sidebar-hl: $text-strong;
 
 $footer-bg: $surface;
-$footer-fg: $stone-500;
+$footer-fg: $hex-stone-500;
 
 $border-color: $line;
 
@@ -43,19 +43,19 @@ $code-block-bg: $surface-muted;
 $code-bg: $surface-soft;
 $code-color: $text-muted;
 
-$toc-color: $stone-500;
+$toc-color: $hex-stone-500;
 $toc-active-border: $accent-active-border;
 $toc-inactive-border: $line;
 
-$breadcrumb-divider-color: $stone-700;
-$breadcrumb-active-color: $stone-500;
+$breadcrumb-divider-color: $hex-stone-700;
+$breadcrumb-active-color: $hex-stone-500;
 
 $callout-border-width: 3px;
-$callout-color-note: $stone-400;
-$callout-color-tip: $indigo-400;
-$callout-color-warning: $yellow-400;
-$callout-color-important: $violet-400;
-$callout-color-caution: $red-400;
+$callout-color-note: $hex-stone-400;
+$callout-color-tip: $hex-indigo-400;
+$callout-color-warning: $hex-yellow-400;
+$callout-color-important: $hex-violet-400;
+$callout-color-caution: $hex-red-400;
 
 /*-- scss:rules --*/
 
@@ -173,13 +173,13 @@ table thead {
 // Classic blog-style back-to-top: no shadow, just a border.
 #quarto-back-to-top {
   box-shadow: none !important;
-  border: 1px solid $stone-700;
+  border: 1px solid $tw-stone-700;
   background: $surface;
   color: $text-muted;
 }
 
 #quarto-back-to-top:hover {
-  border-color: $stone-500;
+  border-color: $tw-stone-500;
   color: $text-strong;
 }
 
