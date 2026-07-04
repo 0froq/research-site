@@ -33,9 +33,15 @@ $toc-color: #78716c;
 $toc-active-border: #c2410c;
 $toc-inactive-border: #e7e5e4;
 
+$breadcrumb-divider-color: #d6d3d1;
+$breadcrumb-active-color: #78716c;
+
 $callout-border-width: 3px;
-$callout-color-note: #c2410c;
-$callout-color-tip: #c2410c;
+$callout-color-note: #78716c;
+$callout-color-tip: #4f46e5;
+$callout-color-warning: #ca8a04;
+$callout-color-important: #7c3aed;
+$callout-color-caution: #dc2626;
 
 /*-- scss:rules --*/
 
@@ -71,8 +77,6 @@ $callout-color-tip: #c2410c;
   color: #57534e;
 }
 
-.breadcrumb a:hover,
-.breadcrumb-item a:hover,
 .page-navigation a:hover,
 .pagination-link:hover,
 .nav-page a:hover,
@@ -86,6 +90,27 @@ $callout-color-tip: #c2410c;
 .sidebar .sidebar-link.active,
 .nav-page a:hover .nav-page-text {
   color: #c2410c;
+}
+
+// Make left sidebar hover behavior consistent with the right TOC.
+.sidebar a,
+.sidebar .sidebar-item-toggle,
+.sidebar .sidebar-item-text,
+#TOC a {
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+// Breadcrumb is contextual text, not a theme-accent surface.
+.quarto-page-breadcrumbs .breadcrumb a,
+.quarto-page-breadcrumbs .breadcrumb-item a,
+.quarto-page-breadcrumbs .breadcrumb-item.active {
+  color: #78716c;
+  transition: color 160ms ease;
+}
+
+.quarto-page-breadcrumbs .breadcrumb a:hover,
+.quarto-page-breadcrumbs .breadcrumb-item a:hover {
+  color: #44403c;
 }
 
 // Active TOC should be stronger, inactive should recede.
