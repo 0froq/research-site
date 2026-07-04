@@ -1,15 +1,9 @@
 /*-- scss:defaults --*/
 
-// Quiet academic page, aligned with froQ's personal site by palette and typography,
-// not by copying every ornamental detail.
+// Minimal Quarto theme: keep Bootstrap/Quarto defaults, only align palette.
 
 $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
-$headings-font-family: "EB Garamond", "Noto Serif SC", Georgia, serif;
 $font-family-monospace: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
-
-$font-size-root: 17px;
-$line-height-base: 1.68;
-$headings-font-weight: 500;
 
 $body-bg: #ffffff;
 $body-color: #44403c;
@@ -26,10 +20,11 @@ $sidebar-fg: #57534e;
 $sidebar-hl: #047857;
 
 $footer-bg: #ffffff;
-$footer-fg: #a8a29e;
+$footer-fg: #78716c;
+
+$border-color: #e7e5e4;
 
 $code-block-bg: #fafaf9;
-$code-block-border-left: false;
 $code-bg: #f5f5f4;
 $code-color: #57534e;
 
@@ -37,193 +32,43 @@ $toc-color: #78716c;
 $toc-active-border: #047857;
 $toc-inactive-border: #e7e5e4;
 
-$callout-border-width: 2px;
+$callout-border-width: 3px;
 $callout-color-note: #047857;
 $callout-color-tip: #047857;
 
 /*-- scss:rules --*/
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
-
-body {
-  letter-spacing: 0.005em;
-}
-
-#quarto-content {
-  padding-top: 1rem;
-}
-
-main.content {
-  max-width: 820px;
-}
-
-// Navbar: let the signature breathe, no heavy app-bar feeling.
 .navbar {
   border-bottom: 1px solid #f5f5f4;
   box-shadow: none;
 }
 
-.navbar-brand {
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-}
-
 .navbar-brand img {
-  max-height: 54px;
+  max-height: 48px;
   width: auto;
 }
 
-.navbar .nav-link,
-.navbar .quarto-navbar-tools .quarto-navigation-tool {
-  color: #78716c;
-}
-
-.navbar .nav-link:hover,
-.navbar .quarto-navbar-tools .quarto-navigation-tool:hover {
-  color: #047857;
-}
-
-// Sidebar: index-like, not dashboard-like.
 .sidebar.sidebar-navigation {
-  width: 270px;
   border-right: 1px solid #f5f5f4;
-  padding-top: 1.25rem;
 }
 
-.sidebar nav[role="doc-toc"] ul > li > a.active,
-.sidebar .sidebar-item-container .active {
-  color: #047857;
-  font-weight: 500;
+.page-footer {
+  border-top: 1px solid #f5f5f4;
 }
 
-.sidebar .sidebar-item-text {
-  font-size: 0.92rem;
-}
-
-.sidebar .sidebar-section .sidebar-item-text.sidebar-link {
-  color: #57534e;
-}
-
-// Right TOC: subdued marginalia.
-#quarto-margin-sidebar .toc-actions,
-#quarto-margin-sidebar .quarto-other-links {
-  font-size: 0.82rem;
-}
-
-#TOC a {
-  color: #78716c;
-}
-
-#TOC a.active {
-  color: #047857;
-  border-left-color: #047857;
-}
-
-// Typography: serif headings, clean body.
-h1, h2, h3, h4, h5, h6 {
-  color: #292524;
-  letter-spacing: 0.01em;
-}
-
-h1.title,
-h1 {
-  font-size: clamp(2.1rem, 4vw, 3.2rem);
-  line-height: 1.08;
-  margin-bottom: 1.6rem;
-}
-
-h2 {
-  margin-top: 2.8rem;
-  padding-bottom: 0.25rem;
-  border-bottom: 1px solid #f5f5f4;
-}
-
-h3 {
-  margin-top: 2rem;
-}
-
-p {
-  margin-bottom: 1.05rem;
-}
-
-// Links: personal-site-like dashed line, but less ornamental.
 main.content a:not(.btn):not(.anchorjs-link) {
-  color: #047857;
-  text-decoration-line: underline;
-  text-decoration-style: dashed;
-  text-underline-offset: 0.22em;
-  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 
-main.content a:not(.btn):not(.anchorjs-link):hover {
-  color: #065f46;
-  text-decoration-style: solid;
-}
-
-// Figures and captions.
-figure img,
-p > img {
-  border: 1px solid #e7e5e4;
-}
-
-figcaption,
-.figure-caption,
-.table-caption,
-.caption {
-  color: #78716c;
-  font-family: "EB Garamond", "Noto Serif SC", Georgia, serif;
-  font-size: 0.95rem;
-  text-align: center;
-}
-
-// Code: paper-like, not IDE-like.
 code:not(pre code) {
-  background: #f5f5f4;
-  color: #57534e;
-  border-radius: 3px;
-  padding: 0.08em 0.3em;
-  font-size: 0.88em;
+  border-radius: 0.2rem;
 }
 
 pre.sourceCode,
 div.sourceCode {
-  background: #fafaf9;
   border: 1px solid #e7e5e4;
-  border-radius: 0;
-}
-
-pre code {
-  font-size: 0.86rem;
-}
-
-// Tables: booktabs-ish.
-table {
-  font-size: 0.92rem;
 }
 
 table thead {
-  border-top: 1.5px solid #44403c;
-  border-bottom: 1px solid #a8a29e;
-}
-
-table tbody tr {
-  border-bottom: 1px solid #e7e5e4;
-}
-
-// Callouts: remove Bootstrap loudness.
-.callout {
-  border-radius: 0;
-  background: #fafaf9;
-}
-
-.callout.callout-style-default > .callout-header {
-  background: transparent;
-}
-
-// Footer.
-.page-footer {
-  margin-top: 4rem;
-  border-top: 1px solid #f5f5f4;
-  font-size: 0.82rem;
-  color: #a8a29e;
+  border-bottom-color: #a8a29e;
 }
