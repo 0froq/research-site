@@ -7,18 +7,18 @@ $font-family-monospace: "JetBrains Mono", "SFMono-Regular", ui-monospace, monosp
 
 $body-bg: #0a0a0a;
 $body-color: #d6d3d1;
-$link-color: #fb923c;
-$link-hover-color: #fdba74;
-$primary: #fb923c;
+$link-color: #a8a29e;
+$link-hover-color: #e7e5e4;
+$primary: #a8a29e;
 $secondary: #a8a29e;
 
 $navbar-bg: #0a0a0a;
 $navbar-fg: #a8a29e;
-$navbar-hl: #fb923c;
+$navbar-hl: #e7e5e4;
 
 $sidebar-bg: #0a0a0a;
 $sidebar-fg: #a8a29e;
-$sidebar-hl: #fb923c;
+$sidebar-hl: #e7e5e4;
 
 $footer-bg: #0a0a0a;
 $footer-fg: #78716c;
@@ -71,33 +71,43 @@ $callout-color-caution: #f87171;
 .page-navigation a,
 .pagination-link,
 .nav-page a,
-.nav-page-text,
-.sidebar a,
-#TOC a {
+.nav-page-text {
   color: #a8a29e;
 }
 
+.breadcrumb a:hover,
+.breadcrumb-item a:hover,
 .page-navigation a:hover,
 .pagination-link:hover,
 .nav-page a:hover,
-.sidebar a:hover,
-#TOC a:hover {
-  color: #fb923c;
-}
-
-.sidebar .active,
-.sidebar .sidebar-item-container .active,
-.sidebar .sidebar-link.active,
 .nav-page a:hover .nav-page-text {
-  color: #fb923c;
+  color: #e7e5e4;
 }
 
-// Make left sidebar hover behavior consistent with the right TOC.
-.sidebar a,
+// Sidebar and right TOC share the same visual grammar.
+.sidebar .sidebar-item-container > a,
 .sidebar .sidebar-item-toggle,
-.sidebar .sidebar-item-text,
 #TOC a {
+  color: #57534e;
+  border-left: 2px solid #292524;
+  padding-left: 0.65rem;
   transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.sidebar .sidebar-item-container > a:hover,
+.sidebar .sidebar-item-toggle:hover,
+#TOC a:hover {
+  color: #a8a29e;
+  border-left-color: #44403c;
+}
+
+.sidebar .sidebar-item-container > a.active,
+.sidebar .sidebar-item-container > a.sidebar-link.active,
+.sidebar .sidebar-item-container > a[aria-current="page"],
+#TOC a.active {
+  color: #e7e5e4;
+  border-left-color: #fb923c;
+  font-weight: 600;
 }
 
 // Breadcrumb is contextual text, not a theme-accent surface.
@@ -113,24 +123,13 @@ $callout-color-caution: #f87171;
   color: #e7e5e4;
 }
 
-// Active TOC should be stronger, inactive should recede.
-#TOC a {
-  color: #57534e;
-}
-
-#TOC a.active {
-  color: #e7e5e4;
-  border-left-color: #fb923c;
-  font-weight: 600;
-}
-
 main.content a:not(.btn):not(.anchorjs-link) {
-  color: #fb923c;
+  color: #a8a29e;
   text-underline-offset: 0.18em;
 }
 
 main.content a:not(.btn):not(.anchorjs-link):hover {
-  color: #fdba74;
+  color: #e7e5e4;
 }
 
 code:not(pre code) {
@@ -155,6 +154,6 @@ table thead {
 }
 
 #quarto-back-to-top:hover {
-  border-color: #fb923c;
-  color: #fb923c;
+  border-color: #78716c;
+  color: #e7e5e4;
 }
