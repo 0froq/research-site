@@ -19,3 +19,5 @@ shared/assets/
 **/*.quarto_ipynb
 deploy.log
 *_files/
+
+_quarto_internal_scss_error.scss

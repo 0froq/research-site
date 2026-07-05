@@ -1,22 +1,32 @@
 /*-- scss:defaults --*/
 
 @import "palette";
+/* eb-garamond-latin-wght-italic */
+@font-face {
+  font-family: 'EB Garamond Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400 800;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/eb-garamond:vf@latest/latin-wght-italic.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
 
 // === Semantic color tokens ===
-$surface: $hex-neutral-950;
-$surface-muted: #111111;
-$surface-soft: $hex-stone-900;
-$text: $hex-stone-300;
-$text-strong: $hex-stone-200;
-$text-muted: $hex-stone-400;
+$surface: $hex-stone-950;
+$surface-muted: $hex-stone-950;
+$surface-soft: $hex-stone-950;
+$text: $hex-stone-400;
+$text-strong: $hex-stone-50;
+$text-muted: $hex-stone-500;
 $text-faint: $hex-stone-600;
 $line: $hex-stone-800;
 $line-soft: $hex-stone-900;
 $line-strong: $hex-stone-600;
-$accent-active-border: $hex-orange-400;
+$accent-active-border: $tw-green-400;
 
 // === Bootstrap / Quarto variables ===
 $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
+$font-family-serif: "EB Garamond Variable", "Songti SC", "Times New Roma", serif;
 $font-family-monospace: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
 
 $body-bg: $surface;
@@ -35,23 +45,23 @@ $sidebar-fg: $text-muted;
 $sidebar-hl: $text-strong;
 
 $footer-bg: $surface;
-$footer-fg: $hex-stone-500;
+$footer-fg: $text;
 
 $border-color: $line;
 
-$code-block-bg: $surface-muted;
-$code-bg: $surface-soft;
+$code-block-bg: $surface;
+$code-bg: $line;
 $code-color: $text-muted;
 
-$toc-color: $hex-stone-500;
+$toc-color: $text-strong;
 $toc-active-border: $accent-active-border;
 $toc-inactive-border: $line;
 
-$breadcrumb-divider-color: $hex-stone-700;
-$breadcrumb-active-color: $hex-stone-500;
+$breadcrumb-divider-color: $text-muted;
+$breadcrumb-active-color: $text;
 
 $callout-border-width: 3px;
-$callout-color-note: $hex-stone-400;
+$callout-color-note: $hex-stone-200;
 $callout-color-tip: $hex-indigo-400;
 $callout-color-warning: $hex-yellow-400;
 $callout-color-important: $hex-violet-400;
@@ -60,22 +70,27 @@ $callout-color-caution: $hex-red-400;
 /*-- scss:rules --*/
 
 .navbar {
-  border-bottom: 1px solid $line-soft;
+  border-bottom: 1px dashed $line-soft;
   box-shadow: none;
 }
 
 .navbar-brand img {
   max-height: 48px;
   width: auto;
-  filter: invert(1);
+}
+
+.navbar-brand .navbar-title {
+  font-family: $font-family-serif;
+  color: $text-strong;
+  font-style: italic;
 }
 
 .sidebar.sidebar-navigation {
-  border-right: 1px solid $line-soft;
+  border-right: 1px dashed $line;
 }
 
 .page-footer {
-  border-top: 1px solid $line-soft;
+  border-top: 1px dashed $line;
 }
 
 // Remove remaining Bootstrap blue from Quarto navigation surfaces.
@@ -87,15 +102,10 @@ $callout-color-caution: $hex-red-400;
 .nav-page a,
 .nav-page-text {
   color: $text-muted;
-}
 
-.breadcrumb a:hover,
-.breadcrumb-item a:hover,
-.page-navigation a:hover,
-.pagination-link:hover,
-.nav-page a:hover,
-.nav-page a:hover .nav-page-text {
-  color: $text-strong;
+  &:hover {
+    color: $text-strong;
+  }
 }
 
 // Sidebar keeps Quarto's native tree style; only tune color and motion.
@@ -104,19 +114,17 @@ $callout-color-caution: $hex-red-400;
 .sidebar .sidebar-item-text {
   color: $text-muted;
   transition: color 160ms ease, background-color 160ms ease;
-}
 
-.sidebar a:hover,
-.sidebar .sidebar-item-toggle:hover,
-.sidebar .sidebar-item-text:hover {
-  color: $text-strong;
+  &:hover {
+    color: $text-strong;
+  }
 }
 
 .sidebar .active,
 .sidebar .sidebar-item-container .active,
 .sidebar .sidebar-link.active {
-  color: $accent-active-border;
-  font-weight: 600;
+  color: $text-strong;
+  font-weight: 400;
 }
 
 // Right TOC is a page-local scale, so it keeps the active left indicator.
@@ -132,7 +140,7 @@ $callout-color-caution: $hex-red-400;
 #TOC a.active {
   color: $text-strong;
   border-left-color: $accent-active-border;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 // Breadcrumb is contextual text, not a theme-accent surface.
@@ -222,7 +230,7 @@ table thead {
 }
 
 @media (max-width: 991.98px) {
-  .quarto-secondary-nav .quarto-search-button {
+  .quarto-secondary-nav {
     display: none !important;
   }
 }
