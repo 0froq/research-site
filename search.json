@@ -4,284 +4,325 @@
     "href": "index.html",
     "title": "Research",
     "section": "",
-    "text": "1 Welcome\nThis site contains my research explorations, drafts, and progress logs.\nCurrent project: Hiatus — lake temperature decadal variability.",
+    "text": "Welcome\nThis site contains my research explorations, drafts, and progress logs.\nCurrent project: Hiatus — lake temperature decadal variability.\n\n\n\n\n Back to top",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Research</span>"
+      "Home"
     ]
   },
   {
     "objectID": "projects/hiatus/draft/index.html",
     "href": "projects/hiatus/draft/index.html",
-    "title": "2  Hiatus — Draft",
+    "title": "Hiatus — Draft",
     "section": "",
-    "text": "3 Hiatus\n92,245 lakes, GLAST + HydroLAKES + ERA5-land, STL, STARS.",
+    "text": "Hiatus\n92,245 lakes, GLAST + HydroLAKES + ERA5-land, STL, STARS.\n\n\n\n\n Back to top",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Hiatus — Draft</span>"
+      "Draft",
+      "Overview"
     ]
   },
   {
     "objectID": "projects/hiatus/draft/chapters/01-descriptive.html",
     "href": "projects/hiatus/draft/chapters/01-descriptive.html",
-    "title": "3  Descriptive overview",
+    "title": "Descriptive overview",
     "section": "",
-    "text": "3.1 Sample coverage\nGLAST: 92,245 lakes, 1981–2020.\n37 lakes have no data. The least complete year still has valid observations for 96.6% of lakes, with 3,145 lakes missing.\nFigure 3.1: Annual data availability.",
+    "text": "test the code block\ntest, link\n\n\n\n\n\n\nWarningFinding 2\n\n\n\nMean warming from Sen’s slope of annual mean is 0.730 ± 0.748 °C / 40 yr. Median warming is 0.69 °C / 40 yr, with Q1–Q3 of 0.26–1.15 °C / 40 yr.\n\n\nGLAST: 92,245 lakes, 1981–2020.\n37 lakes have no data. The least complete year still has valid observations for 96.6% of lakes, with 3,145 lakes missing.\n\n\n\n\n\n\n\n\nFigure 1: Annual data availability.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 1\n\n\n\n79,178 / 92,208 lakes (85.9%) are warming by Sen’s slope of annual mean; 13,030 are cooling.\n\n\n\n\n\n\n\n\nNoteFinding 2\n\n\n\nMean warming from Sen’s slope of annual mean is 0.730 ± 0.748 °C / 40 yr. Median warming is 0.69 °C / 40 yr, with Q1–Q3 of 0.26–1.15 °C / 40 yr.\n\n\n\n\n\n\n\n\nNoteFinding 3\n\n\n\nMean warming from Sen’s slope of STL trend is 0.573 ± 0.320 °C / 40 yr. Median warming is 0.52 °C / 40 yr, with Q1–Q3 of 0.34–0.75 °C / 40 yr.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 4\n\n\n\n50,614 / 92,193 lakes (54.9%) show positive acceleration, measured as Sen’s slope of first-differenced STL trend. 41,579 show negative acceleration.\nHere “acceleration” means faster and faster warming, slower and slower cooling, or a transition toward warming.\n\n\n\n\n\n\n\n\nNoteFinding 5\n\n\n\nMean acceleration is 0.294 ± 1.486 × 10-3 °C / yr2. Median acceleration is 0.20 × 10-3 °C / yr2, with Q1–Q3 of -0.84–1.31 × 10-3 °C / yr2.\n\n\n\n\n\n\n\n\nState\nn\n%\n\n\n\n\nwarming + accelerating\n44,857\n48.66%\n\n\nwarming + decelerating\n34,312\n37.22%\n\n\ncooling + accelerating (slower and slower cooling)\n5,757\n6.24%\n\n\ncooling + decelerating\n7,267\n7.88%\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Joint warming–acceleration density. Cells show log10 lake counts; marginal curves summarise one-dimensional distributions and reference quartiles.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Median lake temperature in warming–acceleration space. Marginal profiles show binned median temperature with interquartile ribbons and linear fits.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Hex-binned maps of lake warming and acceleration. Each hexagon summarises lakes within an approximately 5° spatial bin.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Geographic distribution of the four warming–acceleration states, with marginal longitude and latitude ridgelines and global state proportions.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 6\n\n\n\nWarming-direction shifts have higher RSI than cooling-direction shifts: median 1.25 vs 1.11. Cooling shifts are more concentrated at lower intensities.\n\n\n\n\n\nSTL trend -&gt; annual mean -&gt; first-differenced -&gt; STARS (\\(L = 7\\), \\(p = 0.05\\)).\n\n\n\n\n\n\nNoteFinding 7\n\n\n\n273,216 regime shifts are detected, or 2.96 per lake. Warming-direction shifts account for 143,323 (52.5%); cooling-direction shifts account for 129,893 (47.5%).\n\n\n\n\n\n\n\n\n\n\nFigure 6: Distribution of STARS-detected breakpoint counts per lake. Counts are grouped as 0, 1, 2, 3, and at least 4 breakpoints.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 8\n\n\n\nThe 273,216 regime shifts divide the 92,245 lake time series into 365,425 regimes. The median regime length is 8 years; Q1–Q3 is 7–12 years. The most common regime length is 7 years, matching the STARS window length \\(L = 7\\).\n\n\n\n\n\n\n\n\n\n\nFigure 7: Distribution of regime lengths between STARS-detected shift points. Dashed lines mark the mean and median.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 9\n\n\n\nThe largest shift-year counts are 1999 (16,918 shifts) and 2014 (16,852 shifts), followed by 2006, 2013, and 1990.\n\n\n\n\n\n\n\n\n\n\nFigure 8: STARS-detected regime shifts by year (\\(L = 7\\), \\(p = 0.05\\)). Red = warming-direction shift; blue = cooling-direction shift. Black line = mean signed RSI. Grey band = mean ± SD.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Descriptive overview</span>"
+      "Draft",
+      "1. Descriptive overview"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#sample-coverage",
+    "href": "projects/hiatus/draft/chapters/01-descriptive.html#sample-coverage",
+    "title": "Descriptive overview",
+    "section": "",
+    "text": "test the code block\ntest, link\n\n\n\n\n\n\nWarningFinding 2\n\n\n\nMean warming from Sen’s slope of annual mean is 0.730 ± 0.748 °C / 40 yr. Median warming is 0.69 °C / 40 yr, with Q1–Q3 of 0.26–1.15 °C / 40 yr.\n\n\nGLAST: 92,245 lakes, 1981–2020.\n37 lakes have no data. The least complete year still has valid observations for 96.6% of lakes, with 3,145 lakes missing.\n\n\n\n\n\n\n\n\nFigure 1: Annual data availability.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "1. Descriptive overview"
     ]
   },
   {
     "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#long-term-warming",
     "href": "projects/hiatus/draft/chapters/01-descriptive.html#long-term-warming",
-    "title": "3  Descriptive overview",
-    "section": "3.2 Long-term warming",
-    "text": "3.2 Long-term warming\n\n\n\n\n\n\nNoteFinding 1\n\n\n\n79,178 / 92,208 lakes (85.9%) are warming by Sen’s slope of annual mean; 13,030 are cooling.\n\n\n\n\n\n\n\n\nNoteFinding 2\n\n\n\nMean warming from Sen’s slope of annual mean is 0.730 ± 0.748 °C / 40 yr. Median warming is 0.69 °C / 40 yr, with Q1–Q3 of 0.26–1.15 °C / 40 yr.\n\n\n\n\n\n\n\n\nNoteFinding 3\n\n\n\nMean warming from Sen’s slope of STL trend is 0.573 ± 0.320 °C / 40 yr. Median warming is 0.52 °C / 40 yr, with Q1–Q3 of 0.34–0.75 °C / 40 yr.",
+    "title": "Descriptive overview",
+    "section": "",
+    "text": "NoteFinding 1\n\n\n\n79,178 / 92,208 lakes (85.9%) are warming by Sen’s slope of annual mean; 13,030 are cooling.\n\n\n\n\n\n\n\n\nNoteFinding 2\n\n\n\nMean warming from Sen’s slope of annual mean is 0.730 ± 0.748 °C / 40 yr. Median warming is 0.69 °C / 40 yr, with Q1–Q3 of 0.26–1.15 °C / 40 yr.\n\n\n\n\n\n\n\n\nNoteFinding 3\n\n\n\nMean warming from Sen’s slope of STL trend is 0.573 ± 0.320 °C / 40 yr. Median warming is 0.52 °C / 40 yr, with Q1–Q3 of 0.34–0.75 °C / 40 yr.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Descriptive overview</span>"
+      "Draft",
+      "1. Descriptive overview"
     ]
   },
   {
     "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#long-term-acceleration",
     "href": "projects/hiatus/draft/chapters/01-descriptive.html#long-term-acceleration",
-    "title": "3  Descriptive overview",
-    "section": "3.3 Long-term acceleration",
-    "text": "3.3 Long-term acceleration\n\n\n\n\n\n\nNoteFinding 4\n\n\n\n50,614 / 92,193 lakes (54.9%) show positive acceleration, measured as Sen’s slope of first-differenced STL trend. 41,579 show negative acceleration.\nHere “acceleration” means faster and faster warming, slower and slower cooling, or a transition toward warming.\n\n\n\n\n\n\n\n\nNoteFinding 5\n\n\n\nMean acceleration is 0.294 ± 1.486 × 10-3 °C / yr2. Median acceleration is 0.20 × 10-3 °C / yr2, with Q1–Q3 of -0.84–1.31 × 10-3 °C / yr2.",
+    "title": "Descriptive overview",
+    "section": "",
+    "text": "NoteFinding 4\n\n\n\n50,614 / 92,193 lakes (54.9%) show positive acceleration, measured as Sen’s slope of first-differenced STL trend. 41,579 show negative acceleration.\nHere “acceleration” means faster and faster warming, slower and slower cooling, or a transition toward warming.\n\n\n\n\n\n\n\n\nNoteFinding 5\n\n\n\nMean acceleration is 0.294 ± 1.486 × 10-3 °C / yr2. Median acceleration is 0.20 × 10-3 °C / yr2, with Q1–Q3 of -0.84–1.31 × 10-3 °C / yr2.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Descriptive overview</span>"
+      "Draft",
+      "1. Descriptive overview"
     ]
   },
   {
     "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#joint-warming-and-acceleration-states",
     "href": "projects/hiatus/draft/chapters/01-descriptive.html#joint-warming-and-acceleration-states",
-    "title": "3  Descriptive overview",
-    "section": "3.4 Joint warming and acceleration states",
-    "text": "3.4 Joint warming and acceleration states\n\n\n\nState\nn\n%\n\n\n\n\nwarming + accelerating\n44,857\n48.66%\n\n\nwarming + decelerating\n34,312\n37.22%\n\n\ncooling + accelerating (slower and slower cooling)\n5,757\n6.24%\n\n\ncooling + decelerating\n7,267\n7.88%\n\n\n\n\n\n\n\n\n\n\n\nFigure 3.2: Joint warming–acceleration density. Cells show log10 lake counts; marginal curves summarise one-dimensional distributions and reference quartiles.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3.3: Median lake temperature in warming–acceleration space. Marginal profiles show binned median temperature with interquartile ribbons and linear fits.",
+    "title": "Descriptive overview",
+    "section": "",
+    "text": "State\nn\n%\n\n\n\n\nwarming + accelerating\n44,857\n48.66%\n\n\nwarming + decelerating\n34,312\n37.22%\n\n\ncooling + accelerating (slower and slower cooling)\n5,757\n6.24%\n\n\ncooling + decelerating\n7,267\n7.88%\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Joint warming–acceleration density. Cells show log10 lake counts; marginal curves summarise one-dimensional distributions and reference quartiles.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Median lake temperature in warming–acceleration space. Marginal profiles show binned median temperature with interquartile ribbons and linear fits.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Descriptive overview</span>"
+      "Draft",
+      "1. Descriptive overview"
     ]
   },
   {
     "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#spatial-pattern",
     "href": "projects/hiatus/draft/chapters/01-descriptive.html#spatial-pattern",
-    "title": "3  Descriptive overview",
-    "section": "3.5 Spatial pattern",
-    "text": "3.5 Spatial pattern\n\n\n\n\n\n\n\n\nFigure 3.4: Hex-binned maps of lake warming and acceleration. Each hexagon summarises lakes within an approximately 5° spatial bin.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3.5: Geographic distribution of the four warming–acceleration states, with marginal longitude and latitude ridgelines and global state proportions.",
+    "title": "Descriptive overview",
+    "section": "",
+    "text": "Figure 4: Hex-binned maps of lake warming and acceleration. Each hexagon summarises lakes within an approximately 5° spatial bin.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Geographic distribution of the four warming–acceleration states, with marginal longitude and latitude ridgelines and global state proportions.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Descriptive overview</span>"
+      "Draft",
+      "1. Descriptive overview"
     ]
   },
   {
     "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#rsi-intensity",
     "href": "projects/hiatus/draft/chapters/01-descriptive.html#rsi-intensity",
-    "title": "3  Descriptive overview",
-    "section": "3.6 RSI intensity",
-    "text": "3.6 RSI intensity\n\n\n\n\n\n\nNoteFinding 6\n\n\n\nWarming-direction shifts have higher RSI than cooling-direction shifts: median 1.25 vs 1.11. Cooling shifts are more concentrated at lower intensities.",
+    "title": "Descriptive overview",
+    "section": "",
+    "text": "NoteFinding 6\n\n\n\nWarming-direction shifts have higher RSI than cooling-direction shifts: median 1.25 vs 1.11. Cooling shifts are more concentrated at lower intensities.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Descriptive overview</span>"
+      "Draft",
+      "1. Descriptive overview"
     ]
   },
   {
     "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#first-summary-of-detected-regime-shifts",
     "href": "projects/hiatus/draft/chapters/01-descriptive.html#first-summary-of-detected-regime-shifts",
-    "title": "3  Descriptive overview",
-    "section": "3.7 First summary of detected regime shifts",
-    "text": "3.7 First summary of detected regime shifts\nSTL trend -&gt; annual mean -&gt; first-differenced -&gt; STARS (\\(L = 7\\), \\(p = 0.05\\)).\n\n\n\n\n\n\nNoteFinding 7\n\n\n\n273,216 regime shifts are detected, or 2.96 per lake. Warming-direction shifts account for 143,323 (52.5%); cooling-direction shifts account for 129,893 (47.5%).\n\n\n\n\n\n\n\n\n\n\nFigure 3.6: Distribution of STARS-detected breakpoint counts per lake. Counts are grouped as 0, 1, 2, 3, and at least 4 breakpoints.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 8\n\n\n\nThe 273,216 regime shifts divide the 92,245 lake time series into 365,425 regimes. The median regime length is 8 years; Q1–Q3 is 7–12 years. The most common regime length is 7 years, matching the STARS window length \\(L = 7\\).\n\n\n\n\n\n\n\n\n\n\nFigure 3.7: Distribution of regime lengths between STARS-detected shift points. Dashed lines mark the mean and median.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 9\n\n\n\nThe largest shift-year counts are 1999 (16,918 shifts) and 2014 (16,852 shifts), followed by 2006, 2013, and 1990.\n\n\n\n\n\n\n\n\n\n\nFigure 3.8: STARS-detected regime shifts by year (\\(L = 7\\), \\(p = 0.05\\)). Red = warming-direction shift; blue = cooling-direction shift. Black line = mean signed RSI. Grey band = mean ± SD.",
-    "crumbs": [
-      "Hiatus",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Descriptive overview</span>"
-    ]
-  },
-  {
-    "objectID": "projects/hiatus/draft/chapters/02-regional.html",
-    "href": "projects/hiatus/draft/chapters/02-regional.html",
-    "title": "4  Regional decomposition",
+    "title": "Descriptive overview",
     "section": "",
-    "text": "4.1 Continental overview\nWarming is raw annual Sen warming in °C / 40 yr. Accel is Sen acceleration of STL trend first difference in 10-3 °C / yr2.\nContinental labels are convenient for description but do not correspond to natural units of climate response. A lake in southern North America may share more with a lake in northern South America than with a lake in northern Canada. We therefore move from continental description to climate-based classification.",
+    "text": "STL trend -&gt; annual mean -&gt; first-differenced -&gt; STARS (\\(L = 7\\), \\(p = 0.05\\)).\n\n\n\n\n\n\nNoteFinding 7\n\n\n\n273,216 regime shifts are detected, or 2.96 per lake. Warming-direction shifts account for 143,323 (52.5%); cooling-direction shifts account for 129,893 (47.5%).\n\n\n\n\n\n\n\n\n\n\nFigure 6: Distribution of STARS-detected breakpoint counts per lake. Counts are grouped as 0, 1, 2, 3, and at least 4 breakpoints.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 8\n\n\n\nThe 273,216 regime shifts divide the 92,245 lake time series into 365,425 regimes. The median regime length is 8 years; Q1–Q3 is 7–12 years. The most common regime length is 7 years, matching the STARS window length \\(L = 7\\).\n\n\n\n\n\n\n\n\n\n\nFigure 7: Distribution of regime lengths between STARS-detected shift points. Dashed lines mark the mean and median.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 9\n\n\n\nThe largest shift-year counts are 1999 (16,918 shifts) and 2014 (16,852 shifts), followed by 2006, 2013, and 1990.\n\n\n\n\n\n\n\n\n\n\nFigure 8: STARS-detected regime shifts by year (\\(L = 7\\), \\(p = 0.05\\)). Red = warming-direction shift; blue = cooling-direction shift. Black line = mean signed RSI. Grey band = mean ± SD.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Regional decomposition</span>"
-    ]
-  },
-  {
-    "objectID": "projects/hiatus/draft/chapters/02-regional.html#continental-overview",
-    "href": "projects/hiatus/draft/chapters/02-regional.html#continental-overview",
-    "title": "4  Regional decomposition",
-    "section": "",
-    "text": "Continent\nn\nWarming\nAccel\nWarming %\nAccel %\n\n\n\n\nNorth America\n49,589\n0.59 ± 0.64\n-0.53 ± 1.19\n83.4%\n28.6%\n\n\nEurope\n35,140\n0.98 ± 0.87\n1.38 ± 1.21\n88.0%\n86.8%\n\n\nAsia\n3,980\n0.59 ± 0.54\n0.58 ± 0.98\n89.9%\n71.9%\n\n\nSouth America\n2,406\n0.39 ± 0.26\n0.91 ± 0.53\n92.6%\n96.4%\n\n\nAfrica\n712\n0.50 ± 0.27\n0.27 ± 0.64\n99.9%\n66.6%\n\n\nOceania\n366\n0.57 ± 0.29\n0.77 ± 1.00\n94.3%\n73.8%\n\n\n\n\n\n\n\n\n\n\nNoteFinding 10\n\n\n\nNorth America is the only continent with negative mean acceleration (-0.53 × 10-3 °C / yr2), meaning most lakes there are warming but decelerating. Europe has the strongest acceleration (+1.38).",
-    "crumbs": [
-      "Hiatus",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Regional decomposition</span>"
-    ]
-  },
-  {
-    "objectID": "projects/hiatus/draft/chapters/02-regional.html#temporal-response-types",
-    "href": "projects/hiatus/draft/chapters/02-regional.html#temporal-response-types",
-    "title": "4  Regional decomposition",
-    "section": "4.2 Temporal response types",
-    "text": "4.2 Temporal response types\nWe classify lakes by the shape of their 40-year STL trend, combined with their mean temperature. Each lake’s annual STL trend is z-scored to remove mean and scale, then combined with the normalised mean STL temperature. The resulting feature vector is classified by \\(k\\)-means clustering (\\(K = 8\\)).\nThe clusters describe temporal response types: lakes with similar warming trajectories and temperature regimes are grouped together regardless of continental labels.\n\n\n\n\n\n\nNoteFinding 11\n\n\n\nEight temporal response types are identified. Most clusters are geographically coherent and physically interpretable: cold northwestern North America (C3, C7), eastern North America (C6), warm and cold European regimes (C2, C8), and a tropical belt (C4).\n\n\n\n\n\n\n\n\n\n\nFigure 4.1: Spatial distribution of the eight time-series response clusters. Marginal ridgelines show longitude and latitude density by cluster.\n\n\n\n\n\n\n4.2.1 Cluster descriptions\nC1: Cold high-latitude North America. This is the coldest cluster, with a mean STL trend of 1.8 °C. Warming is moderate (+0.36 °C / 40 yr, 99% positive) and acceleration is weakly positive (+0.13 × 10-3 °C / yr2, 60% positive). It is concentrated in northern North America (97%) with high spatial coherence (Moran’s I = 0.65). Regime-shift peaks occur in 1990–91 and 2006 (warming), and 1997–99 (cooling).\nC2: Decelerating high-latitude North America. Mean temperature is 2.8 °C. Warming is moderate (+0.35 °C / 40 yr, 99% positive), but acceleration is strongly negative (-1.33 × 10-3 °C / yr2, only 1% positive), meaning most lakes in this cluster are warming but decelerating. It is concentrated in northern North America (96%) with Moran’s I = 0.70. Regime-shift peaks occur in 2003–05 (warming), 1997 (cooling), and 2010–12 (cooling).\nC3: Strongly accelerating Europe. Mean temperature is 3.1 °C. Warming is strong (+0.71 °C / 40 yr, 99% positive), and acceleration is the highest among all clusters (+1.98 × 10-3 °C / yr2, 98% positive). It is dominated by Europe (74%) with Moran’s I = 0.65. Regime-shift peaks occur in 1989 and 2013–15 (warming), and 1989–93 and 2006 (cooling).\nC4: Cold decelerating North America. Mean temperature is 3.4 °C. Warming is weak (+0.29 °C / 40 yr, 99% positive), and acceleration is strongly negative (-1.02 × 10-3 °C / yr2, only 5% positive). It is the most spatially coherent cluster (Moran’s I = 0.93), concentrated almost entirely in North America (99%). Regime-shift peaks occur in 2005–07 (warming), 1998 (cooling), and 2013–14 (cooling).\nC5: Warming Europe. This is the largest cluster (21,493 lakes). Mean temperature is 4.3 °C. Warming is strong (+0.84 °C / 40 yr, 100% positive), and acceleration is weakly positive (+0.37 × 10-3 °C / yr2, 65% positive). It is dominated by Europe (68%) with Moran’s I = 0.61. Regime-shift peaks occur in 1998–99 and 2013–14 (warming), and 1992 and 2005–07 (cooling).\nC6: Decelerating eastern North America. Mean temperature is 5.0 °C. Warming is moderate (+0.46 °C / 40 yr, 100% positive), but acceleration is strongly negative (-1.02 × 10-3 °C / yr2, only 12% positive). It is concentrated in North America (97%) with Moran’s I = 0.80. Regime-shift peaks occur in 1992–95 (warming) and 1999–02 (cooling).\nC7: Strongly accelerating Europe. Mean temperature is 5.0 °C. Warming is moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is strongly positive (+1.83 × 10-3 °C / yr2, 95% positive). It is dominated by Europe (88%) with Moran’s I = 0.72. Regime-shift peaks occur in 1997–2000 (warming) and 2005–08 (cooling).\nC8: Warm tropical/subtropical lakes. This is the warmest cluster (mean 21.9 °C). Warming is moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is positive (+0.69 × 10-3 °C / yr2, 85% positive). It is geographically dispersed but concentrated in the subtropical latitude band (Moran’s I = 0.67). Regime-shift peaks occur in 2009–12 (warming), 1989–91 (cooling), and 2000 (cooling).\n\n\n4.2.2 Cluster summary\n\n\n\n\n\n\n\n\nFigure 4.2: Cluster–continent allocation. Each row sums to 100%. Right column = total lakes per cluster. Bottom row = total lakes per continent.\n\n\n\n\n\n\n\n\nCluster\nn\nTemp\nWarming\nAccel\nDominant\nMoran’s I\n\n\n\n\nC1\n8,636\n1.8 °C\n+0.36\n+0.13\nNA 97%\n0.65\n\n\nC2\n7,855\n2.8 °C\n+0.35\n-1.33\nNA 96%\n0.70\n\n\nC3\n16,401\n3.1 °C\n+0.71\n+1.98\nEU 74%\n0.65\n\n\nC4\n9,667\n3.4 °C\n+0.29\n-1.02\nNA 99%\n0.93\n\n\nC5\n21,493\n4.3 °C\n+0.84\n+0.37\nEU 68%\n0.61\n\n\nC6\n13,768\n5.0 °C\n+0.46\n-1.02\nNA 97%\n0.80\n\n\nC7\n8,649\n5.0 °C\n+0.57\n+1.83\nEU 88%\n0.72\n\n\nC8\n5,776\n21.9 °C\n+0.57\n+0.69\nSA 30%\n0.67\n\n\n\nTemp is mean STL trend in °C. Warming is Sen slope of annual STL trend in °C / 40 yr. Accel is Sen slope of first-differenced STL trend in 10-3 °C / yr2. Dominant is the continent with the highest fraction of lakes.",
-    "crumbs": [
-      "Hiatus",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Regional decomposition</span>"
-    ]
-  },
-  {
-    "objectID": "projects/hiatus/draft/chapters/02-regional.html#regime-shift-timing-by-response-type",
-    "href": "projects/hiatus/draft/chapters/02-regional.html#regime-shift-timing-by-response-type",
-    "title": "4  Regional decomposition",
-    "section": "4.3 Regime-shift timing by response type",
-    "text": "4.3 Regime-shift timing by response type\nEach cluster has its own characteristic regime-shift timing. If the clustering captures real differences in climate response, lakes within the same cluster should share similar shift-year patterns.\n\n\n\n\n\n\nNoteFinding 12\n\n\n\nEach cluster shows distinct shift-year peaks. The eight clusters differ not only in spatial pattern but also in physical characteristics. Temperature level, warming rate, acceleration, and regime-shift timing all vary systematically across clusters. STL trend shapes and shift timing are consistent within clusters and distinct between clusters.\n\n\n\n\n\n\n\n\n\n\nFigure 4.3: Cluster characteristics: distributions of temperature, warming, and acceleration, plus mean STL trend by cluster.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4.4: Regime-shift timing by cluster. Positive bars are warming shifts; negative bars are cooling shifts.",
-    "crumbs": [
-      "Hiatus",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Regional decomposition</span>"
-    ]
-  },
-  {
-    "objectID": "projects/hiatus/draft/chapters/02-regional.html#spatial-coherence",
-    "href": "projects/hiatus/draft/chapters/02-regional.html#spatial-coherence",
-    "title": "4  Regional decomposition",
-    "section": "4.4 Spatial coherence",
-    "text": "4.4 Spatial coherence\nThe eight clusters exhibit different spatial coherence patterns. Some form tight geographic clusters; others form latitudinal bands spanning multiple continents.\n\n\n\n\n\n\nNoteFinding 13\n\n\n\nFive clusters (C2, C3, C5, C6, C7) form tight geographic clusters, with more than 80% of lakes within ±30° of their centroid. Two clusters (C1, C8) form latitudinal bands spanning the full longitude range at high latitudes. One cluster (C4, tropical) is globally dispersed but concentrated in the subtropical latitude band.",
-    "crumbs": [
-      "Hiatus",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Regional decomposition</span>"
-    ]
-  },
-  {
-    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html",
-    "href": "projects/hiatus/draft/chapters/03-teleconnection.html",
-    "title": "5  Teleconnection attribution",
-    "section": "",
-    "text": "5.1 Background\nLarge-scale climate modes influence lake thermal regimes through atmospheric and oceanic teleconnections. We evaluate how five major teleconnection indices–ENSO (Nino3.4), PDO, AMO, NAO, and AO–contribute to the observed STL trend and its first difference across the eight temporal response types.\nThe analysis proceeds in two levels: (1) regression of the annual STL trend on the five indices, and (2) regression of the first-differenced STL trend on the same indices. Level 1 captures which indices drive the long-term trend level; Level 2 captures which indices drive year-to-year changes in trend slope.",
-    "crumbs": [
-      "Hiatus",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Teleconnection attribution</span>"
-    ]
-  },
-  {
-    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#level-1-trend-attribution",
-    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#level-1-trend-attribution",
-    "title": "5  Teleconnection attribution",
-    "section": "5.2 Level 1: Trend attribution",
-    "text": "5.2 Level 1: Trend attribution\n\n\n\n\n\n\nNoteFinding 14\n\n\n\nAMO is the dominant driver of STL trend across all clusters. The global mean standardised coefficient is \\(\\beta = 0.56\\), with a partial \\(R^2\\) of 0.34. PDO is the second strongest driver (\\(\\beta = -0.18\\), partial \\(R^2 = 0.05\\)). ENSO, NAO, and AO have weak independent effects.\n\n\n\n\n\n\n\n\nNoteFinding 15\n\n\n\nAMO dominance varies by cluster. C5 (warming Europe) has the highest AMO coefficient (\\(\\beta = 0.69\\), partial \\(R^2 = 0.49\\)). C4 (decelerating North America) has the lowest AMO effect but the strongest PDO effect (\\(\\beta = -0.31\\)).\n\n\n\n\n\n\n\n\n\n\nFigure 5.1: Teleconnection attribution by cluster: standardised coefficients, partial \\(R^2\\), and annual teleconnection index histories.",
-    "crumbs": [
-      "Hiatus",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Teleconnection attribution</span>"
-    ]
-  },
-  {
-    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#level-2-acceleration-attribution",
-    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#level-2-acceleration-attribution",
-    "title": "5  Teleconnection attribution",
-    "section": "5.3 Level 2: Acceleration attribution",
-    "text": "5.3 Level 2: Acceleration attribution\n\n\n\n\n\n\nNoteFinding 16\n\n\n\nThe five indices explain less variance in the first-differenced STL trend (mean \\(R^2 = 0.26\\)) than in the trend level (mean \\(R^2 = 0.43\\)). This suggests that teleconnection indices are better at explaining long-term trend levels than year-to-year changes in trend slope.\n\n\n\n\n\n\n\n\nNoteFinding 17\n\n\n\nThe standardised coefficients for the first-differenced model are uniformly small (\\(|\\beta| &lt; 0.1\\) at the global level). This indicates that no single teleconnection index strongly drives the acceleration or deceleration of lake warming at the global scale.",
-    "crumbs": [
-      "Hiatus",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Teleconnection attribution</span>"
-    ]
-  },
-  {
-    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#interpretation",
-    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#interpretation",
-    "title": "5  Teleconnection attribution",
-    "section": "5.4 Interpretation",
-    "text": "5.4 Interpretation\nThe strong AMO signal across all clusters is consistent with the known role of Atlantic multidecadal variability in driving Northern Hemisphere temperature trends. The weak ENSO signal is expected: ENSO is an interannual phenomenon with limited persistence on the 40-year timescale of the STL trend.\nThe cluster-level variation in teleconnection response confirms that the eight temporal response types capture genuinely different climate sensitivities, not just statistical noise. Lakes in C5 (warming Europe) are most strongly influenced by AMO, while lakes in C4 (decelerating North America) are most strongly influenced by PDO.",
-    "crumbs": [
-      "Hiatus",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Teleconnection attribution</span>"
+      "Draft",
+      "1. Descriptive overview"
     ]
   },
   {
     "objectID": "projects/hiatus/metrics/index.html",
     "href": "projects/hiatus/metrics/index.html",
-    "title": "6  Hiatus — Metrics",
+    "title": "Hiatus — Metrics",
     "section": "",
-    "text": "7 Metric definitions",
+    "text": "Raw monthly LSWT → annual mean → Theil–Sen slope × 40 years.\n\n\n\nSen slope of first-differenced annual STL trend.\n\n\n\nL=7, p=0.05. Minimum regime length 7 years, shift significance p &lt; 0.05.\n\n\n\nK=8, z-scored annual STL trend + normalised mean temperature. Cluster ordering by mean temperature (C1=coldest → C8=hottest).\n\n\n\nENSO (Nino3.4), PDO, AMO, NAO, AO. Annual means from monthly NOAA data.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Hiatus — Metrics</span>"
+      "Metrics"
     ]
   },
   {
     "objectID": "projects/hiatus/metrics/index.html#warming",
     "href": "projects/hiatus/metrics/index.html#warming",
-    "title": "6  Hiatus — Metrics",
-    "section": "7.1 Warming",
-    "text": "7.1 Warming\nRaw monthly LSWT → annual mean → Theil–Sen slope × 40 years.",
+    "title": "Hiatus — Metrics",
+    "section": "",
+    "text": "Raw monthly LSWT → annual mean → Theil–Sen slope × 40 years.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Hiatus — Metrics</span>"
+      "Metrics"
     ]
   },
   {
     "objectID": "projects/hiatus/metrics/index.html#acceleration",
     "href": "projects/hiatus/metrics/index.html#acceleration",
-    "title": "6  Hiatus — Metrics",
-    "section": "7.2 Acceleration",
-    "text": "7.2 Acceleration\nSen slope of first-differenced annual STL trend.",
+    "title": "Hiatus — Metrics",
+    "section": "",
+    "text": "Sen slope of first-differenced annual STL trend.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Hiatus — Metrics</span>"
+      "Metrics"
     ]
   },
   {
     "objectID": "projects/hiatus/metrics/index.html#stars",
     "href": "projects/hiatus/metrics/index.html#stars",
-    "title": "6  Hiatus — Metrics",
-    "section": "7.3 STARS",
-    "text": "7.3 STARS\nL=7, p=0.05. Minimum regime length 7 years, shift significance p &lt; 0.05.",
+    "title": "Hiatus — Metrics",
+    "section": "",
+    "text": "L=7, p=0.05. Minimum regime length 7 years, shift significance p &lt; 0.05.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Hiatus — Metrics</span>"
+      "Metrics"
     ]
   },
   {
     "objectID": "projects/hiatus/metrics/index.html#clustering",
     "href": "projects/hiatus/metrics/index.html#clustering",
-    "title": "6  Hiatus — Metrics",
-    "section": "7.4 Clustering",
-    "text": "7.4 Clustering\nK=8, z-scored annual STL trend + normalised mean temperature. Cluster ordering by mean temperature (C1=coldest → C8=hottest).",
+    "title": "Hiatus — Metrics",
+    "section": "",
+    "text": "K=8, z-scored annual STL trend + normalised mean temperature. Cluster ordering by mean temperature (C1=coldest → C8=hottest).",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Hiatus — Metrics</span>"
+      "Metrics"
     ]
   },
   {
     "objectID": "projects/hiatus/metrics/index.html#teleconnection-indices",
     "href": "projects/hiatus/metrics/index.html#teleconnection-indices",
-    "title": "6  Hiatus — Metrics",
-    "section": "7.5 Teleconnection indices",
-    "text": "7.5 Teleconnection indices\nENSO (Nino3.4), PDO, AMO, NAO, AO. Annual means from monthly NOAA data.",
+    "title": "Hiatus — Metrics",
+    "section": "",
+    "text": "ENSO (Nino3.4), PDO, AMO, NAO, AO. Annual means from monthly NOAA data.",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Hiatus — Metrics</span>"
+      "Metrics"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html",
+    "href": "projects/hiatus/draft/chapters/03-teleconnection.html",
+    "title": "Teleconnection attribution",
+    "section": "",
+    "text": "Large-scale climate modes influence lake thermal regimes through atmospheric and oceanic teleconnections. We evaluate how five major teleconnection indices–ENSO (Nino3.4), PDO, AMO, NAO, and AO–contribute to the observed STL trend and its first difference across the eight temporal response types.\nThe analysis proceeds in two levels: (1) regression of the annual STL trend on the five indices, and (2) regression of the first-differenced STL trend on the same indices. Level 1 captures which indices drive the long-term trend level; Level 2 captures which indices drive year-to-year changes in trend slope.\n\n\n\n\n\n\n\n\n\nNoteFinding 14\n\n\n\nAMO is the dominant driver of STL trend across all clusters. The global mean standardised coefficient is \\(\\beta = 0.56\\), with a partial \\(R^2\\) of 0.34. PDO is the second strongest driver (\\(\\beta = -0.18\\), partial \\(R^2 = 0.05\\)). ENSO, NAO, and AO have weak independent effects.\n\n\n\n\n\n\n\n\nNoteFinding 15\n\n\n\nAMO dominance varies by cluster. C5 (warming Europe) has the highest AMO coefficient (\\(\\beta = 0.69\\), partial \\(R^2 = 0.49\\)). C4 (decelerating North America) has the lowest AMO effect but the strongest PDO effect (\\(\\beta = -0.31\\)).\n\n\n\n\n\n\n\n\n\n\nFigure 1: Teleconnection attribution by cluster: standardised coefficients, partial \\(R^2\\), and annual teleconnection index histories.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 16\n\n\n\nThe five indices explain less variance in the first-differenced STL trend (mean \\(R^2 = 0.26\\)) than in the trend level (mean \\(R^2 = 0.43\\)). This suggests that teleconnection indices are better at explaining long-term trend levels than year-to-year changes in trend slope.\n\n\n\n\n\n\n\n\nNoteFinding 17\n\n\n\nThe standardised coefficients for the first-differenced model are uniformly small (\\(|\\beta| &lt; 0.1\\) at the global level). This indicates that no single teleconnection index strongly drives the acceleration or deceleration of lake warming at the global scale.\n\n\n\n\n\nThe strong AMO signal across all clusters is consistent with the known role of Atlantic multidecadal variability in driving Northern Hemisphere temperature trends. The weak ENSO signal is expected: ENSO is an interannual phenomenon with limited persistence on the 40-year timescale of the STL trend.\nThe cluster-level variation in teleconnection response confirms that the eight temporal response types capture genuinely different climate sensitivities, not just statistical noise. Lakes in C5 (warming Europe) are most strongly influenced by AMO, while lakes in C4 (decelerating North America) are most strongly influenced by PDO.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "3. Teleconnection"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#background",
+    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#background",
+    "title": "Teleconnection attribution",
+    "section": "",
+    "text": "Large-scale climate modes influence lake thermal regimes through atmospheric and oceanic teleconnections. We evaluate how five major teleconnection indices–ENSO (Nino3.4), PDO, AMO, NAO, and AO–contribute to the observed STL trend and its first difference across the eight temporal response types.\nThe analysis proceeds in two levels: (1) regression of the annual STL trend on the five indices, and (2) regression of the first-differenced STL trend on the same indices. Level 1 captures which indices drive the long-term trend level; Level 2 captures which indices drive year-to-year changes in trend slope.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "3. Teleconnection"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#level-1-trend-attribution",
+    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#level-1-trend-attribution",
+    "title": "Teleconnection attribution",
+    "section": "",
+    "text": "NoteFinding 14\n\n\n\nAMO is the dominant driver of STL trend across all clusters. The global mean standardised coefficient is \\(\\beta = 0.56\\), with a partial \\(R^2\\) of 0.34. PDO is the second strongest driver (\\(\\beta = -0.18\\), partial \\(R^2 = 0.05\\)). ENSO, NAO, and AO have weak independent effects.\n\n\n\n\n\n\n\n\nNoteFinding 15\n\n\n\nAMO dominance varies by cluster. C5 (warming Europe) has the highest AMO coefficient (\\(\\beta = 0.69\\), partial \\(R^2 = 0.49\\)). C4 (decelerating North America) has the lowest AMO effect but the strongest PDO effect (\\(\\beta = -0.31\\)).\n\n\n\n\n\n\n\n\n\n\nFigure 1: Teleconnection attribution by cluster: standardised coefficients, partial \\(R^2\\), and annual teleconnection index histories.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "3. Teleconnection"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#level-2-acceleration-attribution",
+    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#level-2-acceleration-attribution",
+    "title": "Teleconnection attribution",
+    "section": "",
+    "text": "NoteFinding 16\n\n\n\nThe five indices explain less variance in the first-differenced STL trend (mean \\(R^2 = 0.26\\)) than in the trend level (mean \\(R^2 = 0.43\\)). This suggests that teleconnection indices are better at explaining long-term trend levels than year-to-year changes in trend slope.\n\n\n\n\n\n\n\n\nNoteFinding 17\n\n\n\nThe standardised coefficients for the first-differenced model are uniformly small (\\(|\\beta| &lt; 0.1\\) at the global level). This indicates that no single teleconnection index strongly drives the acceleration or deceleration of lake warming at the global scale.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "3. Teleconnection"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#interpretation",
+    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#interpretation",
+    "title": "Teleconnection attribution",
+    "section": "",
+    "text": "The strong AMO signal across all clusters is consistent with the known role of Atlantic multidecadal variability in driving Northern Hemisphere temperature trends. The weak ENSO signal is expected: ENSO is an interannual phenomenon with limited persistence on the 40-year timescale of the STL trend.\nThe cluster-level variation in teleconnection response confirms that the eight temporal response types capture genuinely different climate sensitivities, not just statistical noise. Lakes in C5 (warming Europe) are most strongly influenced by AMO, while lakes in C4 (decelerating North America) are most strongly influenced by PDO.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "3. Teleconnection"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/02-regional.html",
+    "href": "projects/hiatus/draft/chapters/02-regional.html",
+    "title": "Regional decomposition",
+    "section": "",
+    "text": "Continent\nn\nWarming\nAccel\nWarming %\nAccel %\n\n\n\n\nNorth America\n49,589\n0.59 ± 0.64\n-0.53 ± 1.19\n83.4%\n28.6%\n\n\nEurope\n35,140\n0.98 ± 0.87\n1.38 ± 1.21\n88.0%\n86.8%\n\n\nAsia\n3,980\n0.59 ± 0.54\n0.58 ± 0.98\n89.9%\n71.9%\n\n\nSouth America\n2,406\n0.39 ± 0.26\n0.91 ± 0.53\n92.6%\n96.4%\n\n\nAfrica\n712\n0.50 ± 0.27\n0.27 ± 0.64\n99.9%\n66.6%\n\n\nOceania\n366\n0.57 ± 0.29\n0.77 ± 1.00\n94.3%\n73.8%\n\n\n\nWarming is raw annual Sen warming in °C / 40 yr. Accel is Sen acceleration of STL trend first difference in 10-3 °C / yr2.\n\n\n\n\n\n\nNoteFinding 10\n\n\n\nNorth America is the only continent with negative mean acceleration (-0.53 × 10-3 °C / yr2), meaning most lakes there are warming but decelerating. Europe has the strongest acceleration (+1.38).\n\n\nContinental labels are convenient for description but do not correspond to natural units of climate response. A lake in southern North America may share more with a lake in northern South America than with a lake in northern Canada. We therefore move from continental description to climate-based classification.\n\n\n\nWe classify lakes by the shape of their 40-year STL trend, combined with their mean temperature. Each lake’s annual STL trend is z-scored to remove mean and scale, then combined with the normalised mean STL temperature. The resulting feature vector is classified by \\(k\\)-means clustering (\\(K = 8\\)).\nThe clusters describe temporal response types: lakes with similar warming trajectories and temperature regimes are grouped together regardless of continental labels.\n\n\n\n\n\n\nNoteFinding 11\n\n\n\nEight temporal response types are identified. Most clusters are geographically coherent and physically interpretable: cold northwestern North America (C3, C7), eastern North America (C6), warm and cold European regimes (C2, C8), and a tropical belt (C4).\n\n\n\n\n\n\n\n\n\n\nFigure 1: Spatial distribution of the eight time-series response clusters. Marginal ridgelines show longitude and latitude density by cluster.\n\n\n\n\n\n\n\nC1: Cold high-latitude North America. This is the coldest cluster, with a mean STL trend of 1.8 °C. Warming is moderate (+0.36 °C / 40 yr, 99% positive) and acceleration is weakly positive (+0.13 × 10-3 °C / yr2, 60% positive). It is concentrated in northern North America (97%) with high spatial coherence (Moran’s I = 0.65). Regime-shift peaks occur in 1990–91 and 2006 (warming), and 1997–99 (cooling).\nC2: Decelerating high-latitude North America. Mean temperature is 2.8 °C. Warming is moderate (+0.35 °C / 40 yr, 99% positive), but acceleration is strongly negative (-1.33 × 10-3 °C / yr2, only 1% positive), meaning most lakes in this cluster are warming but decelerating. It is concentrated in northern North America (96%) with Moran’s I = 0.70. Regime-shift peaks occur in 2003–05 (warming), 1997 (cooling), and 2010–12 (cooling).\nC3: Strongly accelerating Europe. Mean temperature is 3.1 °C. Warming is strong (+0.71 °C / 40 yr, 99% positive), and acceleration is the highest among all clusters (+1.98 × 10-3 °C / yr2, 98% positive). It is dominated by Europe (74%) with Moran’s I = 0.65. Regime-shift peaks occur in 1989 and 2013–15 (warming), and 1989–93 and 2006 (cooling).\nC4: Cold decelerating North America. Mean temperature is 3.4 °C. Warming is weak (+0.29 °C / 40 yr, 99% positive), and acceleration is strongly negative (-1.02 × 10-3 °C / yr2, only 5% positive). It is the most spatially coherent cluster (Moran’s I = 0.93), concentrated almost entirely in North America (99%). Regime-shift peaks occur in 2005–07 (warming), 1998 (cooling), and 2013–14 (cooling).\nC5: Warming Europe. This is the largest cluster (21,493 lakes). Mean temperature is 4.3 °C. Warming is strong (+0.84 °C / 40 yr, 100% positive), and acceleration is weakly positive (+0.37 × 10-3 °C / yr2, 65% positive). It is dominated by Europe (68%) with Moran’s I = 0.61. Regime-shift peaks occur in 1998–99 and 2013–14 (warming), and 1992 and 2005–07 (cooling).\nC6: Decelerating eastern North America. Mean temperature is 5.0 °C. Warming is moderate (+0.46 °C / 40 yr, 100% positive), but acceleration is strongly negative (-1.02 × 10-3 °C / yr2, only 12% positive). It is concentrated in North America (97%) with Moran’s I = 0.80. Regime-shift peaks occur in 1992–95 (warming) and 1999–02 (cooling).\nC7: Strongly accelerating Europe. Mean temperature is 5.0 °C. Warming is moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is strongly positive (+1.83 × 10-3 °C / yr2, 95% positive). It is dominated by Europe (88%) with Moran’s I = 0.72. Regime-shift peaks occur in 1997–2000 (warming) and 2005–08 (cooling).\nC8: Warm tropical/subtropical lakes. This is the warmest cluster (mean 21.9 °C). Warming is moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is positive (+0.69 × 10-3 °C / yr2, 85% positive). It is geographically dispersed but concentrated in the subtropical latitude band (Moran’s I = 0.67). Regime-shift peaks occur in 2009–12 (warming), 1989–91 (cooling), and 2000 (cooling).\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Cluster–continent allocation. Each row sums to 100%. Right column = total lakes per cluster. Bottom row = total lakes per continent.\n\n\n\n\n\n\n\n\nCluster\nn\nTemp\nWarming\nAccel\nDominant\nMoran’s I\n\n\n\n\nC1\n8,636\n1.8 °C\n+0.36\n+0.13\nNA 97%\n0.65\n\n\nC2\n7,855\n2.8 °C\n+0.35\n-1.33\nNA 96%\n0.70\n\n\nC3\n16,401\n3.1 °C\n+0.71\n+1.98\nEU 74%\n0.65\n\n\nC4\n9,667\n3.4 °C\n+0.29\n-1.02\nNA 99%\n0.93\n\n\nC5\n21,493\n4.3 °C\n+0.84\n+0.37\nEU 68%\n0.61\n\n\nC6\n13,768\n5.0 °C\n+0.46\n-1.02\nNA 97%\n0.80\n\n\nC7\n8,649\n5.0 °C\n+0.57\n+1.83\nEU 88%\n0.72\n\n\nC8\n5,776\n21.9 °C\n+0.57\n+0.69\nSA 30%\n0.67\n\n\n\nTemp is mean STL trend in °C. Warming is Sen slope of annual STL trend in °C / 40 yr. Accel is Sen slope of first-differenced STL trend in 10-3 °C / yr2. Dominant is the continent with the highest fraction of lakes.\n\n\n\n\nEach cluster has its own characteristic regime-shift timing. If the clustering captures real differences in climate response, lakes within the same cluster should share similar shift-year patterns.\n\n\n\n\n\n\nNoteFinding 12\n\n\n\nEach cluster shows distinct shift-year peaks. The eight clusters differ not only in spatial pattern but also in physical characteristics. Temperature level, warming rate, acceleration, and regime-shift timing all vary systematically across clusters. STL trend shapes and shift timing are consistent within clusters and distinct between clusters.\n\n\n\n\n\n\n\n\n\n\nFigure 3: Cluster characteristics: distributions of temperature, warming, and acceleration, plus mean STL trend by cluster.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Regime-shift timing by cluster. Positive bars are warming shifts; negative bars are cooling shifts.\n\n\n\n\n\n\n\n\nThe eight clusters exhibit different spatial coherence patterns. Some form tight geographic clusters; others form latitudinal bands spanning multiple continents.\n\n\n\n\n\n\nNoteFinding 13\n\n\n\nFive clusters (C2, C3, C5, C6, C7) form tight geographic clusters, with more than 80% of lakes within ±30° of their centroid. Two clusters (C1, C8) form latitudinal bands spanning the full longitude range at high latitudes. One cluster (C4, tropical) is globally dispersed but concentrated in the subtropical latitude band.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "2. Regional decomposition"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/02-regional.html#continental-overview",
+    "href": "projects/hiatus/draft/chapters/02-regional.html#continental-overview",
+    "title": "Regional decomposition",
+    "section": "",
+    "text": "Continent\nn\nWarming\nAccel\nWarming %\nAccel %\n\n\n\n\nNorth America\n49,589\n0.59 ± 0.64\n-0.53 ± 1.19\n83.4%\n28.6%\n\n\nEurope\n35,140\n0.98 ± 0.87\n1.38 ± 1.21\n88.0%\n86.8%\n\n\nAsia\n3,980\n0.59 ± 0.54\n0.58 ± 0.98\n89.9%\n71.9%\n\n\nSouth America\n2,406\n0.39 ± 0.26\n0.91 ± 0.53\n92.6%\n96.4%\n\n\nAfrica\n712\n0.50 ± 0.27\n0.27 ± 0.64\n99.9%\n66.6%\n\n\nOceania\n366\n0.57 ± 0.29\n0.77 ± 1.00\n94.3%\n73.8%\n\n\n\nWarming is raw annual Sen warming in °C / 40 yr. Accel is Sen acceleration of STL trend first difference in 10-3 °C / yr2.\n\n\n\n\n\n\nNoteFinding 10\n\n\n\nNorth America is the only continent with negative mean acceleration (-0.53 × 10-3 °C / yr2), meaning most lakes there are warming but decelerating. Europe has the strongest acceleration (+1.38).\n\n\nContinental labels are convenient for description but do not correspond to natural units of climate response. A lake in southern North America may share more with a lake in northern South America than with a lake in northern Canada. We therefore move from continental description to climate-based classification.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "2. Regional decomposition"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/02-regional.html#temporal-response-types",
+    "href": "projects/hiatus/draft/chapters/02-regional.html#temporal-response-types",
+    "title": "Regional decomposition",
+    "section": "",
+    "text": "We classify lakes by the shape of their 40-year STL trend, combined with their mean temperature. Each lake’s annual STL trend is z-scored to remove mean and scale, then combined with the normalised mean STL temperature. The resulting feature vector is classified by \\(k\\)-means clustering (\\(K = 8\\)).\nThe clusters describe temporal response types: lakes with similar warming trajectories and temperature regimes are grouped together regardless of continental labels.\n\n\n\n\n\n\nNoteFinding 11\n\n\n\nEight temporal response types are identified. Most clusters are geographically coherent and physically interpretable: cold northwestern North America (C3, C7), eastern North America (C6), warm and cold European regimes (C2, C8), and a tropical belt (C4).\n\n\n\n\n\n\n\n\n\n\nFigure 1: Spatial distribution of the eight time-series response clusters. Marginal ridgelines show longitude and latitude density by cluster.\n\n\n\n\n\n\n\nC1: Cold high-latitude North America. This is the coldest cluster, with a mean STL trend of 1.8 °C. Warming is moderate (+0.36 °C / 40 yr, 99% positive) and acceleration is weakly positive (+0.13 × 10-3 °C / yr2, 60% positive). It is concentrated in northern North America (97%) with high spatial coherence (Moran’s I = 0.65). Regime-shift peaks occur in 1990–91 and 2006 (warming), and 1997–99 (cooling).\nC2: Decelerating high-latitude North America. Mean temperature is 2.8 °C. Warming is moderate (+0.35 °C / 40 yr, 99% positive), but acceleration is strongly negative (-1.33 × 10-3 °C / yr2, only 1% positive), meaning most lakes in this cluster are warming but decelerating. It is concentrated in northern North America (96%) with Moran’s I = 0.70. Regime-shift peaks occur in 2003–05 (warming), 1997 (cooling), and 2010–12 (cooling).\nC3: Strongly accelerating Europe. Mean temperature is 3.1 °C. Warming is strong (+0.71 °C / 40 yr, 99% positive), and acceleration is the highest among all clusters (+1.98 × 10-3 °C / yr2, 98% positive). It is dominated by Europe (74%) with Moran’s I = 0.65. Regime-shift peaks occur in 1989 and 2013–15 (warming), and 1989–93 and 2006 (cooling).\nC4: Cold decelerating North America. Mean temperature is 3.4 °C. Warming is weak (+0.29 °C / 40 yr, 99% positive), and acceleration is strongly negative (-1.02 × 10-3 °C / yr2, only 5% positive). It is the most spatially coherent cluster (Moran’s I = 0.93), concentrated almost entirely in North America (99%). Regime-shift peaks occur in 2005–07 (warming), 1998 (cooling), and 2013–14 (cooling).\nC5: Warming Europe. This is the largest cluster (21,493 lakes). Mean temperature is 4.3 °C. Warming is strong (+0.84 °C / 40 yr, 100% positive), and acceleration is weakly positive (+0.37 × 10-3 °C / yr2, 65% positive). It is dominated by Europe (68%) with Moran’s I = 0.61. Regime-shift peaks occur in 1998–99 and 2013–14 (warming), and 1992 and 2005–07 (cooling).\nC6: Decelerating eastern North America. Mean temperature is 5.0 °C. Warming is moderate (+0.46 °C / 40 yr, 100% positive), but acceleration is strongly negative (-1.02 × 10-3 °C / yr2, only 12% positive). It is concentrated in North America (97%) with Moran’s I = 0.80. Regime-shift peaks occur in 1992–95 (warming) and 1999–02 (cooling).\nC7: Strongly accelerating Europe. Mean temperature is 5.0 °C. Warming is moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is strongly positive (+1.83 × 10-3 °C / yr2, 95% positive). It is dominated by Europe (88%) with Moran’s I = 0.72. Regime-shift peaks occur in 1997–2000 (warming) and 2005–08 (cooling).\nC8: Warm tropical/subtropical lakes. This is the warmest cluster (mean 21.9 °C). Warming is moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is positive (+0.69 × 10-3 °C / yr2, 85% positive). It is geographically dispersed but concentrated in the subtropical latitude band (Moran’s I = 0.67). Regime-shift peaks occur in 2009–12 (warming), 1989–91 (cooling), and 2000 (cooling).\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Cluster–continent allocation. Each row sums to 100%. Right column = total lakes per cluster. Bottom row = total lakes per continent.\n\n\n\n\n\n\n\n\nCluster\nn\nTemp\nWarming\nAccel\nDominant\nMoran’s I\n\n\n\n\nC1\n8,636\n1.8 °C\n+0.36\n+0.13\nNA 97%\n0.65\n\n\nC2\n7,855\n2.8 °C\n+0.35\n-1.33\nNA 96%\n0.70\n\n\nC3\n16,401\n3.1 °C\n+0.71\n+1.98\nEU 74%\n0.65\n\n\nC4\n9,667\n3.4 °C\n+0.29\n-1.02\nNA 99%\n0.93\n\n\nC5\n21,493\n4.3 °C\n+0.84\n+0.37\nEU 68%\n0.61\n\n\nC6\n13,768\n5.0 °C\n+0.46\n-1.02\nNA 97%\n0.80\n\n\nC7\n8,649\n5.0 °C\n+0.57\n+1.83\nEU 88%\n0.72\n\n\nC8\n5,776\n21.9 °C\n+0.57\n+0.69\nSA 30%\n0.67\n\n\n\nTemp is mean STL trend in °C. Warming is Sen slope of annual STL trend in °C / 40 yr. Accel is Sen slope of first-differenced STL trend in 10-3 °C / yr2. Dominant is the continent with the highest fraction of lakes.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "2. Regional decomposition"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/02-regional.html#regime-shift-timing-by-response-type",
+    "href": "projects/hiatus/draft/chapters/02-regional.html#regime-shift-timing-by-response-type",
+    "title": "Regional decomposition",
+    "section": "",
+    "text": "Each cluster has its own characteristic regime-shift timing. If the clustering captures real differences in climate response, lakes within the same cluster should share similar shift-year patterns.\n\n\n\n\n\n\nNoteFinding 12\n\n\n\nEach cluster shows distinct shift-year peaks. The eight clusters differ not only in spatial pattern but also in physical characteristics. Temperature level, warming rate, acceleration, and regime-shift timing all vary systematically across clusters. STL trend shapes and shift timing are consistent within clusters and distinct between clusters.\n\n\n\n\n\n\n\n\n\n\nFigure 3: Cluster characteristics: distributions of temperature, warming, and acceleration, plus mean STL trend by cluster.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Regime-shift timing by cluster. Positive bars are warming shifts; negative bars are cooling shifts.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "2. Regional decomposition"
+    ]
+  },
+  {
+    "objectID": "projects/hiatus/draft/chapters/02-regional.html#spatial-coherence",
+    "href": "projects/hiatus/draft/chapters/02-regional.html#spatial-coherence",
+    "title": "Regional decomposition",
+    "section": "",
+    "text": "The eight clusters exhibit different spatial coherence patterns. Some form tight geographic clusters; others form latitudinal bands spanning multiple continents.\n\n\n\n\n\n\nNoteFinding 13\n\n\n\nFive clusters (C2, C3, C5, C6, C7) form tight geographic clusters, with more than 80% of lakes within ±30° of their centroid. Two clusters (C1, C8) form latitudinal bands spanning the full longitude range at high latitudes. One cluster (C4, tropical) is globally dispersed but concentrated in the subtropical latitude band.",
+    "crumbs": [
+      "Hiatus",
+      "Draft",
+      "2. Regional decomposition"
     ]
   },
   {
     "objectID": "projects/hiatus/log/index.html",
     "href": "projects/hiatus/log/index.html",
-    "title": "7  Hiatus — Log",
+    "title": "Hiatus — Log",
     "section": "",
-    "text": "8 Progress log",
+    "text": "Migrated from Typst to Quarto\nCompleted teleconnection three-level attribution\nAMO dominant driver (β=0.56, partial R²=0.34)\nRestructured project as multi-project research site",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hiatus — Log</span>"
+      "Dev Log"
     ]
   },
   {
     "objectID": "projects/hiatus/log/index.html#section",
     "href": "projects/hiatus/log/index.html#section",
-    "title": "7  Hiatus — Log",
-    "section": "8.1 2026-07-03",
-    "text": "8.1 2026-07-03\n\nMigrated from Typst to Quarto\nCompleted teleconnection three-level attribution\nAMO dominant driver (β=0.56, partial R²=0.34)\nRestructured project as multi-project research site",
+    "title": "Hiatus — Log",
+    "section": "",
+    "text": "Migrated from Typst to Quarto\nCompleted teleconnection three-level attribution\nAMO dominant driver (β=0.56, partial R²=0.34)\nRestructured project as multi-project research site",
     "crumbs": [
       "Hiatus",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Hiatus — Log</span>"
+      "Dev Log"
     ]
   }
 ]

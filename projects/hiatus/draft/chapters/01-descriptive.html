@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Descriptive overview – Research</title>
+<title>descriptive – Research</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -35,20 +70,21 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../../../../">
 <link href="../../../../projects/hiatus/draft/chapters/02-regional.html" rel="next">
 <link href="../../../../projects/hiatus/draft/index.html" rel="prev">
+<link href="../../../../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-e9fc6a94ef31585fd0cabe86ae5e2f96.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-efb0671faf21d0116d696f9501e79374.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-e9fc6a94ef31585fd0cabe86ae5e2f96.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../../site_libs/bootstrap/bootstrap-dark-aa873432a3c62897e6c2091c0d30a948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-697045197c7731af7d08c25dc4fdb46d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-0deb30166cf992e024bc8b852855c35a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../../site_libs/bootstrap/bootstrap-697045197c7731af7d08c25dc4fdb46d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -61,7 +97,6 @@ ul.task-list li input[type="checkbox"] {
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -107,9 +142,19 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="Research">
+<meta property="og:image" content="https://0froq.github.io/research-site/projects/hiatus/draft/chapters/01-descriptive_files/figure-html/fig-data-availability-1.png">
+<meta property="og:site_name" content="Research">
+<meta property="og:image:height" content="2520">
+<meta property="og:image:width" content="4800">
+<meta name="twitter:title" content="Research">
+<meta name="twitter:image" content="https://0froq.github.io/research-site/projects/hiatus/draft/chapters/01-descriptive_files/figure-html/fig-data-availability-1.png">
+<meta name="twitter:image-height" content="2520">
+<meta name="twitter:image-width" content="4800">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -275,12 +320,36 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../index.html">
+    <span class="navbar-title">Exploration</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/0froq/research-site"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../projects/hiatus/draft/index.html">Hiatus</a></li><li class="breadcrumb-item"><a href="../../../../projects/hiatus/draft/chapters/01-descriptive.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive overview</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Hiatus</li><li class="breadcrumb-item"><a href="../../../../projects/hiatus/draft/index.html">Draft</a></li><li class="breadcrumb-item"><a href="../../../../projects/hiatus/draft/chapters/01-descriptive.html">1. Descriptive overview</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -290,17 +359,9 @@ window.Quarto = {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../../../../">Research</a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
-    </div>
-      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -311,7 +372,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Research</span></span></a>
+ <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -323,40 +384,51 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Draft</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hiatus/draft/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hiatus — Draft</span></span></a>
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hiatus/draft/chapters/01-descriptive.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive overview</span></span></a>
+ <span class="menu-text">1. Descriptive overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hiatus/draft/chapters/02-regional.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Regional decomposition</span></span></a>
+ <span class="menu-text">2. Regional decomposition</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hiatus/draft/chapters/03-teleconnection.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Teleconnection attribution</span></span></a>
+ <span class="menu-text">3. Teleconnection</span></a>
   </div>
 </li>
+      </ul>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hiatus/metrics/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Hiatus — Metrics</span></span></a>
+ <span class="menu-text">Metrics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../projects/hiatus/log/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hiatus — Log</span></span></a>
+ <span class="menu-text">Dev Log</span></a>
   </div>
 </li>
       </ul>
@@ -368,44 +440,48 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sample-coverage" id="toc-sample-coverage" class="nav-link active" data-scroll-target="#sample-coverage"><span class="header-section-number">3.1</span> Sample coverage</a></li>
-  <li><a href="#long-term-warming" id="toc-long-term-warming" class="nav-link" data-scroll-target="#long-term-warming"><span class="header-section-number">3.2</span> Long-term warming</a></li>
-  <li><a href="#long-term-acceleration" id="toc-long-term-acceleration" class="nav-link" data-scroll-target="#long-term-acceleration"><span class="header-section-number">3.3</span> Long-term acceleration</a></li>
-  <li><a href="#joint-warming-and-acceleration-states" id="toc-joint-warming-and-acceleration-states" class="nav-link" data-scroll-target="#joint-warming-and-acceleration-states"><span class="header-section-number">3.4</span> Joint warming and acceleration states</a></li>
-  <li><a href="#spatial-pattern" id="toc-spatial-pattern" class="nav-link" data-scroll-target="#spatial-pattern"><span class="header-section-number">3.5</span> Spatial pattern</a></li>
-  <li><a href="#rsi-intensity" id="toc-rsi-intensity" class="nav-link" data-scroll-target="#rsi-intensity"><span class="header-section-number">3.6</span> RSI intensity</a></li>
-  <li><a href="#first-summary-of-detected-regime-shifts" id="toc-first-summary-of-detected-regime-shifts" class="nav-link" data-scroll-target="#first-summary-of-detected-regime-shifts"><span class="header-section-number">3.7</span> First summary of detected regime shifts</a></li>
+  <li><a href="#sec-descriptive" id="toc-sec-descriptive" class="nav-link active" data-scroll-target="#sec-descriptive">Descriptive overview</a>
+  <ul class="collapse">
+  <li><a href="#sample-coverage" id="toc-sample-coverage" class="nav-link" data-scroll-target="#sample-coverage">Sample coverage</a></li>
+  <li><a href="#long-term-warming" id="toc-long-term-warming" class="nav-link" data-scroll-target="#long-term-warming">Long-term warming</a></li>
+  <li><a href="#long-term-acceleration" id="toc-long-term-acceleration" class="nav-link" data-scroll-target="#long-term-acceleration">Long-term acceleration</a></li>
+  <li><a href="#joint-warming-and-acceleration-states" id="toc-joint-warming-and-acceleration-states" class="nav-link" data-scroll-target="#joint-warming-and-acceleration-states">Joint warming and acceleration states</a></li>
+  <li><a href="#spatial-pattern" id="toc-spatial-pattern" class="nav-link" data-scroll-target="#spatial-pattern">Spatial pattern</a></li>
+  <li><a href="#rsi-intensity" id="toc-rsi-intensity" class="nav-link" data-scroll-target="#rsi-intensity">RSI intensity</a></li>
+  <li><a href="#first-summary-of-detected-regime-shifts" id="toc-first-summary-of-detected-regime-shifts" class="nav-link" data-scroll-target="#first-summary-of-detected-regime-shifts">First summary of detected regime shifts</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="01-descriptive.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Hiatus</li><li class="breadcrumb-item"><a href="../../../../projects/hiatus/draft/index.html">Draft</a></li><li class="breadcrumb-item"><a href="../../../../projects/hiatus/draft/chapters/01-descriptive.html">1. Descriptive overview</a></li></ol></nav></header>
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../projects/hiatus/draft/index.html">Hiatus</a></li><li class="breadcrumb-item"><a href="../../../../projects/hiatus/draft/chapters/01-descriptive.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive overview</span></a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title"><span id="sec-descriptive" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive overview</span></span></h1>
+
+
+
+<section id="sec-descriptive" class="level1">
+<h1>Descriptive overview</h1>
+<section id="sample-coverage" class="level2">
+<h2 class="anchored" data-anchor-id="sample-coverage">Sample coverage</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>test the code block</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>test</code>, <a href="https://froq.me">link</a></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="sample-coverage" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sample-coverage"><span class="header-section-number">3.1</span> Sample coverage</h2>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Finding 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Mean warming from Sen’s slope of annual mean is 0.730 ± 0.748 °C / 40 yr. Median warming is 0.69 °C / 40 yr, with Q1–Q3 of 0.26–1.15 °C / 40 yr.</p>
+</div>
+</div>
 <p>GLAST: 92,245 lakes, 1981–2020.</p>
 <p>37 lakes have no data. The least complete year still has valid observations for 96.6% of lakes, with 3,145 lakes missing.</p>
 <div class="cell">
@@ -416,15 +492,15 @@ window.Quarto = {
 <img src="01-descriptive_files/figure-html/fig-data-availability-1.png" class="img-fluid figure-img" width="2400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-availability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Annual data availability.
+Figure&nbsp;1: Annual data availability.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="long-term-warming" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="long-term-warming"><span class="header-section-number">3.2</span> Long-term warming</h2>
+<section id="long-term-warming" class="level2">
+<h2 class="anchored" data-anchor-id="long-term-warming">Long-term warming</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -465,8 +541,8 @@ Figure&nbsp;3.1: Annual data availability.
 </div>
 </div>
 </section>
-<section id="long-term-acceleration" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="long-term-acceleration"><span class="header-section-number">3.3</span> Long-term acceleration</h2>
+<section id="long-term-acceleration" class="level2">
+<h2 class="anchored" data-anchor-id="long-term-acceleration">Long-term acceleration</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -495,8 +571,8 @@ Figure&nbsp;3.1: Annual data availability.
 </div>
 </div>
 </section>
-<section id="joint-warming-and-acceleration-states" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="joint-warming-and-acceleration-states"><span class="header-section-number">3.4</span> Joint warming and acceleration states</h2>
+<section id="joint-warming-and-acceleration-states" class="level2">
+<h2 class="anchored" data-anchor-id="joint-warming-and-acceleration-states">Joint warming and acceleration states</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -536,7 +612,7 @@ Figure&nbsp;3.1: Annual data availability.
 <img src="01-descriptive_files/figure-html/fig-global-state-scatter-1.png" class="img-fluid figure-img" width="2340">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-global-state-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: Joint warming–acceleration density. Cells show log10 lake counts; marginal curves summarise one-dimensional distributions and reference quartiles.
+Figure&nbsp;2: Joint warming–acceleration density. Cells show log10 lake counts; marginal curves summarise one-dimensional distributions and reference quartiles.
 </figcaption>
 </figure>
 </div>
@@ -550,15 +626,15 @@ Figure&nbsp;3.2: Joint warming–acceleration density. Cells show log10 lake cou
 <img src="01-descriptive_files/figure-html/fig-grid-median-temp-1.png" class="img-fluid figure-img" width="2880">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grid-median-temp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.3: Median lake temperature in warming–acceleration space. Marginal profiles show binned median temperature with interquartile ribbons and linear fits.
+Figure&nbsp;3: Median lake temperature in warming–acceleration space. Marginal profiles show binned median temperature with interquartile ribbons and linear fits.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="spatial-pattern" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="spatial-pattern"><span class="header-section-number">3.5</span> Spatial pattern</h2>
+<section id="spatial-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-pattern">Spatial pattern</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-map-hex-warming-accel" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -567,7 +643,7 @@ Figure&nbsp;3.3: Median lake temperature in warming–acceleration space. Margin
 <img src="01-descriptive_files/figure-html/fig-map-hex-warming-accel-1.png" class="img-fluid figure-img" width="3600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-hex-warming-accel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.4: Hex-binned maps of lake warming and acceleration. Each hexagon summarises lakes within an approximately 5° spatial bin.
+Figure&nbsp;4: Hex-binned maps of lake warming and acceleration. Each hexagon summarises lakes within an approximately 5° spatial bin.
 </figcaption>
 </figure>
 </div>
@@ -581,15 +657,15 @@ Figure&nbsp;3.4: Hex-binned maps of lake warming and acceleration. Each hexagon 
 <img src="01-descriptive_files/figure-html/fig-map-state-points-ridgelines-1.png" class="img-fluid figure-img" width="3600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-state-points-ridgelines-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.5: Geographic distribution of the four warming–acceleration states, with marginal longitude and latitude ridgelines and global state proportions.
+Figure&nbsp;5: Geographic distribution of the four warming–acceleration states, with marginal longitude and latitude ridgelines and global state proportions.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="rsi-intensity" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="rsi-intensity"><span class="header-section-number">3.6</span> RSI intensity</h2>
+<section id="rsi-intensity" class="level2">
+<h2 class="anchored" data-anchor-id="rsi-intensity">RSI intensity</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -604,8 +680,8 @@ Figure&nbsp;3.5: Geographic distribution of the four warming–acceleration stat
 </div>
 </div>
 </section>
-<section id="first-summary-of-detected-regime-shifts" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="first-summary-of-detected-regime-shifts"><span class="header-section-number">3.7</span> First summary of detected regime shifts</h2>
+<section id="first-summary-of-detected-regime-shifts" class="level2">
+<h2 class="anchored" data-anchor-id="first-summary-of-detected-regime-shifts">First summary of detected regime shifts</h2>
 <p>STL trend -&gt; annual mean -&gt; first-differenced -&gt; STARS (<span class="math inline">\(L = 7\)</span>, <span class="math inline">\(p = 0.05\)</span>).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -628,7 +704,7 @@ Figure&nbsp;3.5: Geographic distribution of the four warming–acceleration stat
 <img src="01-descriptive_files/figure-html/fig-stars-breakpoint-count-bar-1.png" class="img-fluid figure-img" width="2040">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stars-breakpoint-count-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.6: Distribution of STARS-detected breakpoint counts per lake. Counts are grouped as 0, 1, 2, 3, and at least 4 breakpoints.
+Figure&nbsp;6: Distribution of STARS-detected breakpoint counts per lake. Counts are grouped as 0, 1, 2, 3, and at least 4 breakpoints.
 </figcaption>
 </figure>
 </div>
@@ -655,7 +731,7 @@ Figure&nbsp;3.6: Distribution of STARS-detected breakpoint counts per lake. Coun
 <img src="01-descriptive_files/figure-html/fig-regime-length-distribution-1.png" class="img-fluid figure-img" width="2400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regime-length-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.7: Distribution of regime lengths between STARS-detected shift points. Dashed lines mark the mean and median.
+Figure&nbsp;7: Distribution of regime lengths between STARS-detected shift points. Dashed lines mark the mean and median.
 </figcaption>
 </figure>
 </div>
@@ -682,7 +758,7 @@ Figure&nbsp;3.7: Distribution of regime lengths between STARS-detected shift poi
 <img src="01-descriptive_files/figure-html/fig-shifts-L7-rsi-1.png" class="img-fluid figure-img" width="3150">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shifts-L7-rsi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.8: STARS-detected regime shifts by year (<span class="math inline">\(L = 7\)</span>, <span class="math inline">\(p = 0.05\)</span>). Red = warming-direction shift; blue = cooling-direction shift. Black line = mean signed RSI. Grey band = mean ± SD.
+Figure&nbsp;8: STARS-detected regime shifts by year (<span class="math inline">\(L = 7\)</span>, <span class="math inline">\(p = 0.05\)</span>). Red = warming-direction shift; blue = cooling-direction shift. Black line = mean signed RSI. Grey band = mean ± SD.
 </figcaption>
 </figure>
 </div>
@@ -691,8 +767,9 @@ Figure&nbsp;3.8: STARS-detected regime shifts by year (<span class="math inline"
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -779,7 +856,7 @@ Figure&nbsp;3.8: STARS-detected regime shifts by year (<span class="math inline"
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/0froq\.github\.io\/research-site\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1108,17 +1185,43 @@ Figure&nbsp;3.8: STARS-detected regime shifts by year (<span class="math inline"
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../../projects/hiatus/draft/index.html" class="pagination-link" aria-label="Hiatus — Draft">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Hiatus — Draft</span></span>
+      <a href="../../../../projects/hiatus/draft/index.html" class="pagination-link" aria-label="Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../../projects/hiatus/draft/chapters/02-regional.html" class="pagination-link" aria-label="Regional decomposition">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Regional decomposition</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../../projects/hiatus/draft/chapters/02-regional.html" class="pagination-link" aria-label="2. Regional decomposition">
+        <span class="nav-page-text">2. Regional decomposition</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://froq.me">
+<p>froq.me</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/0froq/research-site">
+      <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 
