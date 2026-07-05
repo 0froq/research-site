@@ -178,7 +178,7 @@ code:not(pre code) {
 }
 
 div.sourceCode {
-  border: 1px solid $line-soft;
+  border: 1px solid $line;
   border-radius: 0;
 }
 
@@ -190,6 +190,7 @@ table thead {
 #quarto-back-to-top {
   box-shadow: none !important;
   border: 1px solid $tw-stone-700;
+  border-radius: 0;
   background: $surface;
   color: $text-muted;
 }
