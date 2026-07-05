@@ -1,57 +1,69 @@
 /*-- scss:defaults --*/
 
 @import "palette";
+/* eb-garamond-latin-wght-italic */
+@font-face {
+  font-family: 'EB Garamond Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400 800;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/eb-garamond:vf@latest/latin-wght-italic.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
 
 // === Semantic color tokens ===
-$surface: $hex-white;
+// Symmetric with theme-dark.scss: 50 ↔ 950, 100 ↔ 900, 200 ↔ 800,
+// 300 ↔ 700, 400 ↔ 600, 500 ↔ 500.
+$surface: $hex-stone-50;
 $surface-muted: $hex-stone-50;
-$surface-soft: $hex-stone-100;
-$text: $hex-stone-700;
-$text-strong: $hex-stone-800;
+$surface-soft: $hex-stone-50;
+$text: $hex-stone-600;
+$text-strong: $hex-stone-950;
 $text-muted: $hex-stone-500;
 $text-faint: $hex-stone-400;
 $line: $hex-stone-200;
 $line-soft: $hex-stone-100;
 $line-strong: $hex-stone-400;
-$accent-active-border: $hex-orange-700;
+$accent-active-border: $tw-stone-950;
 
 // === Bootstrap / Quarto variables ===
 $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
+$font-family-serif: "EB Garamond Variable", "Songti SC", "Times New Roma", serif;
 $font-family-monospace: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
 
 $body-bg: $surface;
 $body-color: $text;
-$link-color: $hex-stone-600;
+$link-color: $text-muted;
 $link-hover-color: $text-strong;
-$primary: $hex-stone-500;
-$secondary: $hex-stone-500;
+$primary: $text-muted;
+$secondary: $text-muted;
 
 $navbar-bg: $surface;
-$navbar-fg: $hex-stone-600;
+$navbar-fg: $text-muted;
 $navbar-hl: $text-strong;
 
 $sidebar-bg: $surface;
-$sidebar-fg: $hex-stone-600;
+$sidebar-fg: $text-muted;
 $sidebar-hl: $text-strong;
 
 $footer-bg: $surface;
-$footer-fg: $text-muted;
+$footer-fg: $text;
 
 $border-color: $line;
 
-$code-block-bg: $surface-muted;
-$code-bg: $surface-soft;
-$code-color: $hex-stone-600;
+$code-block-bg: $surface;
+$code-bg: $line;
+$code-color: $text-muted;
 
-$toc-color: $text-muted;
+$toc-color: $text-strong;
 $toc-active-border: $accent-active-border;
 $toc-inactive-border: $line;
 
-$breadcrumb-divider-color: $hex-stone-300;
-$breadcrumb-active-color: $text-muted;
+$breadcrumb-divider-color: $text-muted;
+$breadcrumb-active-color: $text;
 
 $callout-border-width: 3px;
-$callout-color-note: $hex-stone-500;
+$callout-color-note: $hex-stone-800;
 $callout-color-tip: $hex-indigo-600;
 $callout-color-warning: $hex-yellow-600;
 $callout-color-important: $hex-violet-600;
@@ -60,22 +72,27 @@ $callout-color-caution: $hex-red-600;
 /*-- scss:rules --*/
 
 .navbar {
-  border-bottom: 1px solid $line-soft;
+  border-bottom: 1px dashed $line-soft;
   box-shadow: none;
 }
 
 .navbar-brand img {
   max-height: 48px;
   width: auto;
-  filter: none;
+}
+
+.navbar-brand .navbar-title {
+  font-family: $font-family-serif;
+  color: $text-strong;
+  font-style: italic;
 }
 
 .sidebar.sidebar-navigation {
-  border-right: 1px solid $line-soft;
+  border-right: 1px dashed $line;
 }
 
 .page-footer {
-  border-top: 1px solid $line-soft;
+  border-top: 1px dashed $line;
 }
 
 // Remove remaining Bootstrap blue from Quarto navigation surfaces.
@@ -86,37 +103,30 @@ $callout-color-caution: $hex-red-600;
 .pagination-link,
 .nav-page a,
 .nav-page-text {
-  color: $tw-stone-600;
-}
+  color: $text-muted;
 
-.breadcrumb a:hover,
-.breadcrumb-item a:hover,
-.page-navigation a:hover,
-.pagination-link:hover,
-.nav-page a:hover,
-.nav-page a:hover .nav-page-text {
-  color: $text-strong;
+  &:hover {
+    color: $text-strong;
+  }
 }
 
 // Sidebar keeps Quarto's native tree style; only tune color and motion.
 .sidebar a,
 .sidebar .sidebar-item-toggle,
 .sidebar .sidebar-item-text {
-  color: $tw-stone-600;
+  color: $text-muted;
   transition: color 160ms ease, background-color 160ms ease;
-}
 
-.sidebar a:hover,
-.sidebar .sidebar-item-toggle:hover,
-.sidebar .sidebar-item-text:hover {
-  color: $text-strong;
+  &:hover {
+    color: $text-strong;
+  }
 }
 
 .sidebar .active,
 .sidebar .sidebar-item-container .active,
 .sidebar .sidebar-link.active {
-  color: $accent-active-border;
-  font-weight: 600;
+  color: $text-strong;
+  font-weight: 400;
 }
 
 // Right TOC is a page-local scale, so it keeps the active left indicator.
@@ -126,13 +136,13 @@ $callout-color-caution: $hex-red-600;
 }
 
 #TOC a:hover {
-  color: $tw-stone-600;
+  color: $text-muted;
 }
 
 #TOC a.active {
-  color: $text;
+  color: $text-strong;
   border-left-color: $accent-active-border;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 // Breadcrumb is contextual text, not a theme-accent surface.
@@ -145,25 +155,33 @@ $callout-color-caution: $hex-red-600;
 
 .quarto-page-breadcrumbs .breadcrumb a:hover,
 .quarto-page-breadcrumbs .breadcrumb-item a:hover {
-  color: $text;
-}
-
-main.content a:not(.btn):not(.anchorjs-link) {
-  color: $tw-stone-600;
-  text-underline-offset: 0.18em;
-}
-
-main.content a:not(.btn):not(.anchorjs-link):hover {
   color: $text-strong;
 }
 
-code:not(pre code) {
-  border-radius: 0.2rem;
+main.content a:not(.btn):not(.anchorjs-link) {
+  color: $text-strong;
+  text-decoration: none;
+  font-family: $font-family-serif;
+  font-style: italic;
+
+  border-bottom: 1px dashed $tw-stone-500;
+
+  transition: all 0.3s;
+
+  &:hover {
+    color: $text-strong;
+    border-bottom: 1px solid $tw-stone-900;
+  }
 }
 
-pre.sourceCode,
+code:not(pre code) {
+  padding: 0 0.25rem !important;
+  border-radius: 0.1rem;
+}
+
 div.sourceCode {
-  border: 1px solid $line;
+  border: 1px solid $line-soft;
+  border-radius: 0;
 }
 
 table thead {
@@ -175,11 +193,11 @@ table thead {
   box-shadow: none !important;
   border: 1px solid $tw-stone-300;
   background: $surface;
-  color: $tw-stone-600;
+  color: $text-muted;
 }
 
 #quarto-back-to-top:hover {
-  border-color: $text-faint;
+  border-color: $tw-stone-500;
   color: $text-strong;
 }
 
@@ -194,7 +212,7 @@ table thead {
 
 .quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb a:hover,
 .quarto-secondary-nav .quarto-page-breadcrumbs .breadcrumb-item a:hover {
-  color: $text;
+  color: $text-strong;
 }
 
 .quarto-secondary-nav .quarto-btn-toggle,
@@ -211,7 +229,7 @@ table thead {
 .quarto-secondary-nav .quarto-search-button:hover,
 .navbar-toggler:hover,
 .quarto-color-scheme-toggle:hover {
-  color: $text;
+  color: $text-strong;
   background: transparent;
 }
 
@@ -219,6 +237,217 @@ table thead {
 .quarto-secondary-nav .quarto-btn-toggle:focus,
 .quarto-secondary-nav .quarto-search-button:focus {
   box-shadow: none !important;
+}
+
+// === Light theme polish (symmetric with dark theme) ===
+
+// 1. Strong text and headings should use the strongest text color.
+strong,
+b,
+.quarto-title h1,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $text-strong;
+}
+
+// 2. Page navigation hover: keep arrow and text equally readable.
+.page-navigation .pagination-link:hover,
+.page-navigation .pagination-link:hover .nav-page-text,
+.page-navigation .pagination-link:hover i,
+.nav-page a:hover,
+.nav-page a:hover .nav-page-text,
+.nav-page a:hover i {
+  color: $text-strong !important;
+}
+
+// 3. Remove h2 divider line.
+main.content h2,
+h2 {
+  border-bottom: 0 !important;
+  padding-bottom: 0;
+}
+
+// 4. Callout title should match heading/strong hierarchy.
+.callout .callout-header,
+.callout .callout-title,
+.callout .callout-title-container,
+.callout.callout-style-default > .callout-header {
+  color: $text-strong;
+}
+
+.callout .callout-header *,
+.callout .callout-title *,
+.callout .callout-title-container * {
+  color: inherit;
+}
+
+// 5. Center figure and table captions.
+figcaption,
+.figure-caption,
+.table-caption,
+caption,
+.quarto-float-caption,
+.quarto-table-caption {
+  text-align: center;
+  color: $text-muted;
+}
+
+// 6. Sidebar search input focus border should be stronger.
+.sidebar-search input,
+.sidebar-search .aa-Input,
+#quarto-search input,
+#quarto-search .aa-Input,
+#quarto-search .aa-Form {
+  border-color: $line;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.sidebar-search input:focus,
+.sidebar-search .aa-Input:focus,
+#quarto-search input:focus,
+#quarto-search .aa-Input:focus,
+#quarto-search .aa-Form:focus-within {
+  border-color: $text-muted !important;
+  box-shadow: none !important;
+}
+
+// 7. Give vertical rhythm a bit more breathing room.
+main.content p,
+main.content ul,
+main.content ol,
+main.content blockquote,
+main.content figure,
+main.content table,
+main.content .callout,
+main.content div.sourceCode {
+  margin-top: 1.15rem;
+  margin-bottom: 1.15rem;
+}
+
+main.content h2 {
+  margin-top: 2.6rem;
+  margin-bottom: 1.15rem;
+}
+
+main.content h3 {
+  margin-top: 2.1rem;
+  margin-bottom: 1rem;
+}
+
+// 8. Tables: booktabs-like hierarchy.
+main.content table {
+  border-collapse: collapse;
+  border-top: 2px solid $text-muted;
+  border-bottom: 2px solid $text-muted;
+}
+
+main.content table thead {
+  border-bottom: 1.5px solid $line-strong;
+}
+
+main.content table tbody tr {
+  border-bottom: 1px solid $line;
+}
+
+main.content table tbody tr:last-child {
+  border-bottom: 0;
+}
+
+main.content table th,
+main.content table td {
+  border-left: 0;
+  border-right: 0;
+}
+
+// Code copy button: keep it in grayscale, not the theme accent color.
+.code-copy-button,
+.code-copy-button i,
+.code-copy-button .bi,
+button.code-copy-button {
+  color: $text-muted !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.code-copy-button:hover,
+.code-copy-button:hover i,
+.code-copy-button:hover .bi,
+button.code-copy-button:hover,
+.code-copy-button:focus,
+button.code-copy-button:focus,
+.code-copy-button.code-copy-button-checked,
+button.code-copy-button.code-copy-button-checked {
+  color: $text-strong !important;
+  border-color: $line-strong !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+// Quarto renders copy icons as data-URI background images with hard-coded
+// colors. Override the image with a mask so hover color follows our grayscale
+// token system instead of the theme accent.
+div.code-copy-outer-scaffold:hover > .code-copy-button > .bi::before {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  content: "";
+  background-image: none !important;
+  background-color: $text-muted !important;
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  -webkit-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>') center / 1rem 1rem no-repeat;
+  mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>') center / 1rem 1rem no-repeat;
+}
+
+div.code-copy-outer-scaffold:hover > .code-copy-button:hover > .bi::before {
+  background-image: none !important;
+  background-color: $text-strong !important;
+}
+
+div.code-copy-outer-scaffold:hover > .code-copy-button-checked > .bi::before {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  content: "";
+  background-image: none !important;
+  background-color: $text-muted !important;
+  -webkit-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>') center / 1rem 1rem no-repeat;
+  mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>') center / 1rem 1rem no-repeat;
+}
+
+div.code-copy-outer-scaffold:hover > .code-copy-button-checked:hover > .bi::before {
+  background-image: none !important;
+  background-color: $text-strong !important;
+}
+
+// Bootstrap tooltip shown after copying code. In light mode, keep it dark for
+// conventional contrast.
+.code-copy-button-tooltip .tooltip-inner {
+  color: $hex-stone-50;
+  background-color: $hex-stone-950;
+  border: 1px solid $hex-stone-700;
+}
+
+.code-copy-button-tooltip.bs-tooltip-start .tooltip-arrow::before {
+  border-left-color: $hex-stone-950;
+}
+
+.code-copy-button-tooltip.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: $hex-stone-950;
+}
+
+.code-copy-button-tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: $hex-stone-950;
+}
+
+.code-copy-button-tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: $hex-stone-950;
 }
 
 @media (max-width: 991.98px) {
