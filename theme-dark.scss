@@ -22,7 +22,7 @@ $text-faint: $hex-stone-600;
 $line: $hex-stone-800;
 $line-soft: $hex-stone-900;
 $line-strong: $hex-stone-600;
-$accent-active-border: $tw-green-400;
+$accent-active-border: $tw-stone-50;
 
 // === Bootstrap / Quarto variables ===
 $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
@@ -321,8 +321,7 @@ main.content blockquote,
 main.content figure,
 main.content table,
 main.content .callout,
-main.content div.sourceCode,
-main.content pre.sourceCode {
+main.content div.sourceCode {
   margin-top: 1.15rem;
   margin-bottom: 1.15rem;
 }
@@ -360,6 +359,56 @@ main.content table th,
 main.content table td {
   border-left: 0;
   border-right: 0;
+}
+
+// Code copy button: keep it in grayscale, not the theme accent color.
+.code-copy-button,
+.code-copy-button i,
+.code-copy-button .bi,
+button.code-copy-button {
+  color: $text-muted !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.code-copy-button:hover,
+.code-copy-button:hover i,
+.code-copy-button:hover .bi,
+button.code-copy-button:hover,
+.code-copy-button:focus,
+button.code-copy-button:focus,
+.code-copy-button.code-copy-button-checked,
+button.code-copy-button.code-copy-button-checked {
+  color: $text-strong !important;
+  border-color: $line-strong !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+// Bootstrap tooltip shown after copying code. In dark mode, invert it to a
+// light tooltip for readability.
+.code-copy-button-tooltip .tooltip-inner {
+  color: $hex-stone-950;
+  background-color: $hex-stone-100;
+  border: 1px solid $hex-stone-300;
+}
+
+.code-copy-button-tooltip.bs-tooltip-start .tooltip-arrow::before {
+  border-left-color: $hex-stone-100;
+}
+
+.code-copy-button-tooltip.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: $hex-stone-100;
+}
+
+.code-copy-button-tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: $hex-stone-100;
+}
+
+.code-copy-button-tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: $hex-stone-100;
 }
 
 @media (max-width: 991.98px) {
