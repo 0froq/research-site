@@ -157,21 +157,29 @@ $callout-color-caution: $hex-red-400;
 }
 
 main.content a:not(.btn):not(.anchorjs-link) {
-  color: $text-muted;
-  text-underline-offset: 0.18em;
-}
-
-main.content a:not(.btn):not(.anchorjs-link):hover {
   color: $text-strong;
+  text-decoration: none;
+  font-family: $font-family-serif;
+  font-style: italic;
+
+  border-bottom: 1px dashed $tw-stone-500;
+
+  transition: all 0.3s;
+
+  &:hover {
+    color: $text-strong;
+    border-bottom: 1px solid $tw-stone-100;
+  }
 }
 
 code:not(pre code) {
-  border-radius: 0.2rem;
+  padding: 0 0.25rem !important;
+  border-radius: 0.1rem;
 }
 
-pre.sourceCode,
 div.sourceCode {
-  border: 1px solid $line;
+  border: 1px solid $line-soft;
+  border-radius: 0;
 }
 
 table thead {
@@ -227,6 +235,131 @@ table thead {
 .quarto-secondary-nav .quarto-btn-toggle:focus,
 .quarto-secondary-nav .quarto-search-button:focus {
   box-shadow: none !important;
+}
+
+// === Dark theme polish ===
+
+// 1. Strong text and headings should use the strongest text color.
+strong,
+b,
+.quarto-title h1,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $text-strong;
+}
+
+// 2. Page navigation hover: keep arrow and text equally readable.
+.page-navigation .pagination-link:hover,
+.page-navigation .pagination-link:hover .nav-page-text,
+.page-navigation .pagination-link:hover i,
+.nav-page a:hover,
+.nav-page a:hover .nav-page-text,
+.nav-page a:hover i {
+  color: $text-strong !important;
+}
+
+// 3. Remove h2 divider line.
+main.content h2,
+h2 {
+  border-bottom: 0 !important;
+  padding-bottom: 0;
+}
+
+// 4. Callout title should match heading/strong hierarchy.
+.callout .callout-header,
+.callout .callout-title,
+.callout .callout-title-container,
+.callout.callout-style-default > .callout-header {
+  color: $text-strong;
+}
+
+.callout .callout-header *,
+.callout .callout-title *,
+.callout .callout-title-container * {
+  color: inherit;
+}
+
+// 5. Center figure and table captions.
+figcaption,
+.figure-caption,
+.table-caption,
+caption,
+.quarto-float-caption,
+.quarto-table-caption {
+  text-align: center;
+  color: $text-muted;
+}
+
+// 6. Sidebar search input focus border should be brighter.
+.sidebar-search input,
+.sidebar-search .aa-Input,
+#quarto-search input,
+#quarto-search .aa-Input,
+#quarto-search .aa-Form {
+  border-color: $line;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.sidebar-search input:focus,
+.sidebar-search .aa-Input:focus,
+#quarto-search input:focus,
+#quarto-search .aa-Input:focus,
+#quarto-search .aa-Form:focus-within {
+  border-color: $text-muted !important;
+  box-shadow: none !important;
+}
+
+// 7. Give vertical rhythm a bit more breathing room.
+main.content p,
+main.content ul,
+main.content ol,
+main.content blockquote,
+main.content figure,
+main.content table,
+main.content .callout,
+main.content div.sourceCode,
+main.content pre.sourceCode {
+  margin-top: 1.15rem;
+  margin-bottom: 1.15rem;
+}
+
+main.content h2 {
+  margin-top: 2.6rem;
+  margin-bottom: 1.15rem;
+}
+
+main.content h3 {
+  margin-top: 2.1rem;
+  margin-bottom: 1rem;
+}
+
+// 8. Tables: booktabs-like hierarchy.
+main.content table {
+  border-collapse: collapse;
+  border-top: 2px solid $text-muted;
+  border-bottom: 2px solid $text-muted;
+}
+
+main.content table thead {
+  border-bottom: 1.5px solid $line-strong;
+}
+
+main.content table tbody tr {
+  border-bottom: 1px solid $line;
+}
+
+main.content table tbody tr:last-child {
+  border-bottom: 0;
+}
+
+main.content table th,
+main.content table td {
+  border-left: 0;
+  border-right: 0;
 }
 
 @media (max-width: 991.98px) {
