@@ -9,6 +9,18 @@ source("../../../../shared/R/figure-style.R")
 
 ## Sample coverage
 
+```js
+test the code block
+```
+
+`test`, [link](https://froq.me)
+
+::: {.callout-warning}
+## Finding 2
+Mean warming from Sen's slope of annual mean is 0.730 ± 0.748 °C / 40 yr.
+Median warming is 0.69 °C / 40 yr, with Q1--Q3 of 0.26--1.15 °C / 40 yr.
+:::
+
 GLAST: 92,245 lakes, 1981--2020.
 
 37 lakes have no data. The least complete year still has valid observations for

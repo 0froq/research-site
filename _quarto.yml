@@ -18,8 +18,8 @@ website:
     type: textbox
 
   navbar:
-    title: false
-    logo: assets/favicon.svg
+    title: "Exploration"
+    # logo: assets/favicon.svg
     search: false
     pinned: false
     right:
