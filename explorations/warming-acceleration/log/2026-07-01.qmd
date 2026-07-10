@@ -1,0 +1,15 @@
+---
+title: "2026-07-01"
+---
+
+Discussed with advisor. Several points to deal.
+
+Ice. In previous explore,
+I don't even remember how I dealed with the 0 temperature data.
+Need to calculate the ice cover days in monthly and annual scale.
+
+Clustering. Too many clusters, hard to explain the meaning of each cluster.
+
+Attribution. Teleconnection analysis showed that the 5 teleconnection indices
+are not significantly correlated with the wamring speed and acceleration.
+Maybe we need to consider the local climate factors or geographical factors.

@@ -1,58 +1,402 @@
-# Regional decomposition {#sec-regional}
+---
+title: Regional
+draft: true
+---
 
 ```{r}
 #| label: setup-figures-regional
 #| include: false
 
-source("../../../../shared/R/figure-style.R")
+source("../../../shared/R/figure-style.R")
 ```
-
-## Continental overview
-
-| Continent | n | Warming | Accel | Warming % | Accel % |
-|---|---:|---:|---:|---:|---:|
-| North America | 49,589 | 0.59 ± 0.64 | -0.53 ± 1.19 | 83.4% | 28.6% |
-| Europe | 35,140 | 0.98 ± 0.87 | 1.38 ± 1.21 | 88.0% | 86.8% |
-| Asia | 3,980 | 0.59 ± 0.54 | 0.58 ± 0.98 | 89.9% | 71.9% |
-| South America | 2,406 | 0.39 ± 0.26 | 0.91 ± 0.53 | 92.6% | 96.4% |
-| Africa | 712 | 0.50 ± 0.27 | 0.27 ± 0.64 | 99.9% | 66.6% |
-| Oceania | 366 | 0.57 ± 0.29 | 0.77 ± 1.00 | 94.3% | 73.8% |
-
-Warming is raw annual Sen warming in °C / 40 yr. Accel is Sen acceleration of
-STL trend first difference in 10^-3^ °C / yr^2^.
-
-::: {.callout-note}
-## Finding 10
-North America is the only continent with negative mean acceleration (-0.53 ×
-10^-3^ °C / yr^2^), meaning most lakes there are warming but decelerating.
-Europe has the strongest acceleration (+1.38).
-:::
-
-Continental labels are convenient for description but do not correspond to
-natural units of climate response. A lake in southern North America may share
-more with a lake in northern South America than with a lake in northern Canada.
-We therefore move from continental description to climate-based classification.
 
 ## Temporal response types
 
-We classify lakes by the shape of their 40-year STL trend, combined with their
-mean temperature. Each lake's annual STL trend is z-scored to remove mean and
-scale, then combined with the normalised mean STL temperature. The resulting
-feature vector is classified by $k$-means clustering ($K = 8$).
+We classify lakes by the shape of their 1981--2020 annual STL-trend response.
+The current canonical classification uses per-lake baseline anomalies relative
+to 1981--1990, PCA retaining 95% of the trajectory variance, and $k$-means
+clustering. The selected solution has five clusters ($K = 5$).
 
-The clusters describe temporal response types: lakes with similar warming
-trajectories and temperature regimes are grouped together regardless of
+These clusters describe low-frequency lake-surface-temperature response types:
+lakes with similar STL-trend trajectories are grouped together regardless of
 continental labels.
 
 ::: {.callout-note}
-## Finding 11
-Eight temporal response types are identified. Most clusters are geographically
-coherent and physically interpretable: cold northwestern North America (C3,
-C7), eastern North America (C6), warm and cold European regimes (C2, C8), and
-a tropical belt (C4).
+## Finding 10
+Five STL-trend response types are identified. The classes separate weak or
+plateauing responses from late-accelerating and sustained-warming trajectories;
+their spatial distributions provide an external check on whether the data-driven
+classification corresponds to coherent regional climate-response patterns.
 :::
 
 ```{r}
+#| label: fig-stl-cluster-map-violins
+#| fig-cap: "STL-trend response clusters and their thermal metric distributions. (A) Global spatial distribution of the five clusters. (B-D) Violin plots of mean temperature, Sen slope, and STL-trend difference slope by cluster."
+#| fig-width: 12
+#| fig-height: 9
+#| cache: true
+
+cluster_dir <- file.path(
+  data,
+  "07-warming-response-clustering",
+  "output",
+  "stl_trend_period12_robustfalse_ni5_no0_nt199_baseline1981_1990_pca095_k4-8"
+)
+
+clusters <- read_csv(
+  file.path(cluster_dir, "lake_clusters_recommended.csv"),
+  show_col_types = FALSE
+) %>%
+  mutate(
+    cluster_label = paste0("C", cluster),
+    cluster_label = factor(cluster_label, levels = paste0("C", 1:5))
+  )
+
+profiles <- read_csv(
+  file.path(cluster_dir, "cluster_profiles_K5.csv"),
+  show_col_types = FALSE
+) %>%
+  mutate(cluster_label = factor(paste0("C", cluster), levels = paste0("C", 1:5)))
+
+lake_meta <- read_csv(
+  file.path(data, "00-lake-metadata", "output", "lake_metadata.csv"),
+  show_col_types = FALSE,
+  col_select = c(lake_id, Lake_area, log_Lake_area, Continent)
+)
+
+regional_metric_data <- read_csv(
+  file.path(
+    data,
+    "06-lake-warming-metrics",
+    "output",
+    "period12_robustfalse_ni5_no0_nt199",
+    "lake_warming_metrics.csv"
+  ),
+  show_col_types = FALSE,
+  col_select = c(
+    lake_id,
+    mean_temp = raw_annual_mean_temp_mean,
+    warming_speed = raw_annual_mean_temp_sen_slope_40yr,
+    acceleration = stl_annual_trend_diff_sen_slope_1e3
+  )
+)
+
+cluster_cols <- c(
+  C1 = "#9e2a2f", C2 = "#d4770b", C3 = "#2d8659", C4 = "#00a5cf", C5 = "#7b4d9e"
+)
+
+cluster_names <- c(
+  C1 = "Late-accelerating moderate warming",
+  C2 = "Early decline / late rebound",
+  C3 = "Strong sustained warming",
+  C4 = "Weak / near-stable warming",
+  C5 = "Early warming then plateau"
+)
+
+cluster_interpretations <- c(
+  C1 = "Slow early change followed by stronger post-2000 warming",
+  C2 = "Flat or slightly negative early trajectory, then late warming rebound",
+  C3 = "Persistent warming throughout the full 40-year record",
+  C4 = "Largest low-response class, close to baseline through time",
+  C5 = "Early warming followed by flattening or slight decline"
+)
+
+plot_df <- clusters %>%
+  left_join(lake_meta, by = "lake_id") %>%
+  left_join(regional_metric_data, by = "lake_id") %>%
+  mutate(
+    point_size = scales::rescale(
+      pmin(pmax(log_Lake_area, 0), 2),
+      to = c(0.35, 1.35),
+      from = c(0, 2)
+    ),
+    point_size = if_else(is.finite(point_size), point_size, 0.45)
+  )
+
+cluster_summary <- plot_df %>%
+  group_by(cluster_label) %>%
+  summarise(
+    n = n(),
+    mean_temp = mean(mean_temp, na.rm = TRUE),
+    warming_speed = mean(warming_speed, na.rm = TRUE),
+    acceleration = mean(acceleration, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  left_join(
+    profiles %>%
+      group_by(cluster_label) %>%
+      summarise(
+        anomaly_2020 = anomaly_mean[year == 2020][1],
+        .groups = "drop"
+      ),
+    by = "cluster_label"
+  ) %>%
+  mutate(
+    response_type = unname(cluster_names[as.character(cluster_label)]),
+    short_interpretation = unname(cluster_interpretations[as.character(cluster_label)]),
+    label = paste0(
+      as.character(cluster_label), ": ",
+      response_type, "\n",
+      comma(n), " lakes; 2020 anomaly ", sprintf("%+.2f", anomaly_2020), " °C"
+    )
+  ) %>%
+  arrange(cluster_label)
+
+cluster_table_value <- function(cluster, column) {
+  row <- match(cluster, as.character(cluster_summary$cluster_label))
+  if (is.na(row)) {
+    return(NA)
+  }
+  cluster_summary[[column]][[row]]
+}
+
+cluster_table_count <- function(cluster) {
+  comma(cluster_table_value(cluster, "n"))
+}
+
+cluster_table_anomaly <- function(cluster) {
+  paste0(sprintf("%+.2f", cluster_table_value(cluster, "anomaly_2020")), " °C")
+}
+
+cluster_labels <- cluster_summary$label
+names(cluster_labels) <- as.character(cluster_summary$cluster_label)
+
+coast <- ne_coastline(scale = 110, returnclass = "sf") %>%
+  st_cast("LINESTRING") %>%
+  st_coordinates() %>%
+  as_tibble() %>%
+  rename(lon = X, lat = Y, segment = L1)
+
+lon_min <- -180; lon_max <- 180; lat_min <- -60; lat_max <- 90
+
+plot_df_map <- plot_df %>%
+  filter(lat >= lat_min, lat <= lat_max) %>%
+  mutate(
+    cluster_label = factor(cluster_label, levels = paste0("C", 1:5))
+  )
+coast_plot <- coast %>% filter(lat >= lat_min, lat <= lat_max)
+
+# --- Map (no side panels) ---
+map_plot <- ggplot() +
+  geom_path(
+    data = coast_plot,
+    aes(x = lon, y = lat, group = segment),
+    color = "grey10",
+    linewidth = 0.3
+  ) +
+  geom_point(
+    data = plot_df_map,
+    aes(x = lon, y = lat, colour = cluster_label, size = point_size),
+    alpha = 0.43,
+    stroke = 0
+  ) +
+  scale_color_manual(
+    values = cluster_cols,
+    labels = cluster_labels,
+    name = NULL
+  ) +
+  scale_size_identity(guide = "none") +
+  scale_x_continuous(breaks = seq(-180, 180, by = 60), expand = c(0, 0)) +
+  scale_y_continuous(breaks = seq(-60, 90, by = 30), expand = c(0, 0)) +
+  coord_cartesian(xlim = c(lon_min, lon_max), ylim = c(lat_min, lat_max), expand = FALSE) +
+  labs(
+    title = "A  Spatial distribution of STL-trend response clusters (K=5)",
+    x = "Longitude",
+    y = "Latitude"
+  ) +
+  guides(color = guide_legend(override.aes = list(size = 2.6, alpha = 0.9), nrow = 1)) +
+  theme_atomic_base(base_size = 9, grid = FALSE) +
+  theme(
+    panel.grid = element_line(color = "grey85", linewidth = 0.3, linetype = "dashed"),
+    legend.position = "bottom",
+    legend.direction = "horizontal",
+    legend.key.height = unit(3, "mm"),
+    legend.key.width = unit(7, "mm"),
+    legend.text = element_text(size = 7.2),
+    legend.background = element_blank()
+  )
+
+# --- Violin plots ---
+cluster_metric_long <- plot_df %>%
+  transmute(
+    cluster_label,
+    `Mean temperature\n(°C)` = mean_temp,
+    `Sen slope\n(°C / 40 yr)` = warming_speed,
+    `STL trend diff slope\n(10-3 °C / yr2)` = acceleration
+  ) %>%
+  pivot_longer(
+    cols = -cluster_label,
+    names_to = "metric",
+    values_to = "value"
+  ) %>%
+  filter(is.finite(value)) %>%
+  mutate(
+    metric = factor(
+      metric,
+      levels = c(
+        "Mean temperature\n(°C)",
+        "Sen slope\n(°C / 40 yr)",
+        "STL trend diff slope\n(10-3 °C / yr2)"
+      )
+    )
+  )
+
+violin_theme <- theme_atomic_base(base_size = 8, grid = TRUE) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    strip.background = element_rect(fill = "grey92", color = "grey75", linewidth = 0.25),
+    strip.text = element_text(size = 7.2, face = "bold", color = col_text),
+    axis.text.x = element_text(size = 7, color = col_text),
+    axis.text.y = element_text(size = 6.8, color = col_text_soft),
+    axis.title.x = element_text(size = 8, color = col_text),
+    plot.margin = margin(4, 4, 4, 4)
+  )
+
+violin_base <- ggplot(
+  cluster_metric_long,
+  aes(x = cluster_label, y = value, fill = cluster_label, color = cluster_label)
+) +
+  geom_violin(
+    scale = "width",
+    trim = TRUE,
+    alpha = 0.20,
+    linewidth = 0.35,
+    na.rm = TRUE
+  ) +
+  geom_boxplot(
+    width = 0.13,
+    outlier.shape = NA,
+    alpha = 0.55,
+    linewidth = 0.25,
+    color = col_line,
+    na.rm = TRUE
+  ) +
+  facet_wrap(~metric, scales = "free_y", nrow = 1) +
+  scale_fill_manual(values = cluster_cols, guide = "none") +
+  scale_color_manual(values = cluster_cols, guide = "none") +
+  labs(x = "Cluster", y = NULL) +
+  violin_theme
+
+# --- Combined patchwork layout ---
+p_combined <- map_plot / violin_base +
+  plot_layout(heights = c(2.2, 1)) +
+  plot_annotation(
+    title = "STL-trend response clusters of global lakes (K=5)",
+    theme = theme(
+      plot.title = element_text(size = 13, face = "bold", color = col_text)
+    )
+  )
+
+save_figure("fig-stl-cluster-map-ridges.png", p_combined, width = 12, height = 9)
+p_combined
+```
+
+::: {#tbl-stl-cluster-summary .list-table}
+
+- - Cluster
+  - Response type
+  - n lakes
+  - 2020 anomaly
+  - Short interpretation
+- - C1
+  - `r cluster_table_value("C1", "response_type")`
+  - `r cluster_table_count("C1")`
+  - `r cluster_table_anomaly("C1")`
+  - `r cluster_table_value("C1", "short_interpretation")`
+- - C2
+  - `r cluster_table_value("C2", "response_type")`
+  - `r cluster_table_count("C2")`
+  - `r cluster_table_anomaly("C2")`
+  - `r cluster_table_value("C2", "short_interpretation")`
+- - C3
+  - `r cluster_table_value("C3", "response_type")`
+  - `r cluster_table_count("C3")`
+  - `r cluster_table_anomaly("C3")`
+  - `r cluster_table_value("C3", "short_interpretation")`
+- - C4
+  - `r cluster_table_value("C4", "response_type")`
+  - `r cluster_table_count("C4")`
+  - `r cluster_table_anomaly("C4")`
+  - `r cluster_table_value("C4", "short_interpretation")`
+- - C5
+  - `r cluster_table_value("C5", "response_type")`
+  - `r cluster_table_count("C5")`
+  - `r cluster_table_anomaly("C5")`
+  - `r cluster_table_value("C5", "short_interpretation")`
+
+:::
+
+```{r}
+#| label: fig-cluster-density-contours
+#| fig-cap: "Two-dimensional density of warming speed and acceleration by STL-trend response cluster. Contour lines show per-cluster density; marginal panels show univariate density by cluster."
+#| fig-width: 8
+#| fig-height: 7
+#| cache: true
+
+density_df <- plot_df %>%
+  filter(
+    is.finite(warming_speed),
+    is.finite(acceleration),
+    between(warming_speed, -1, 4),
+    between(acceleration, -3, 4)
+  )
+
+ggplot(
+  density_df,
+  aes(x = warming_speed, y = acceleration, colour = cluster_label)
+) +
+  geom_density_2d(
+    breaks = seq(0.1, 0.45, length.out = 5),
+    linewidth = 0.6,
+    alpha = 0.88,
+    na.rm = TRUE
+  ) +
+  geom_xsidedensity(
+    aes(x = warming_speed, fill = cluster_label, group = cluster_label),
+    alpha = 0.28,
+    linewidth = 0.55
+  ) +
+  geom_ysidedensity(
+    aes(y = acceleration, fill = cluster_label, group = cluster_label),
+    alpha = 0.28,
+    linewidth = 0.55,
+    orientation = "y"
+  ) +
+  scale_color_manual(
+    values = cluster_cols,
+    labels = cluster_labels,
+    name = NULL
+  ) +
+  scale_xfill_manual(values = cluster_cols, guide = "none") +
+  scale_yfill_manual(values = cluster_cols, guide = "none") +
+  scale_xsidey_continuous(expand = c(0, 0)) +
+  scale_ysidex_continuous(expand = c(0, 0)) +
+  labs(
+    x = "Sen slope (°C / 40 yr)",
+    y = "Acceleration (10⁻³ °C / yr²)"
+  ) +
+  guides(color = guide_legend(override.aes = list(size = 2.6, alpha = 0.9))) +
+  theme_atomic_facet(base_size = 9) +
+  theme(
+    panel.grid = element_line(color = "grey85", linewidth = 0.3, linetype = "dashed"),
+    plot.margin = margin(8, 12, 8, 8),
+    legend.position = "bottom",
+    legend.direction = "horizontal",
+    legend.key.height = unit(3, "mm"),
+    legend.key.width = unit(7, "mm"),
+    legend.text = element_text(size = 7.2),
+    legend.background = element_blank(),
+    ggside.axis.text = element_blank(),
+    ggside.axis.ticks = element_blank(),
+    ggside.axis.title = element_blank(),
+    ggside.panel.grid = element_blank(),
+    ggside.panel.scale.x = 1.3 / 5,
+    ggside.panel.scale.y = 1.3 / 5
+  )
+```
+
+<!-- ```{r}
 #| label: fig-ts-cluster-map-ridges
 #| fig-cap: "Spatial distribution of the eight time-series response clusters. Marginal ridgelines show longitude and latitude density by cluster."
 #| fig-width: 12
@@ -203,65 +547,34 @@ p <- ggdraw() +
 
 save_figure("fig-ts-cluster-map-ridges.png", p, width = figure_width, height = figure_height)
 p
-```
+``` -->
 
 ### Cluster descriptions
 
-**C1: Cold high-latitude North America.** This is the coldest cluster, with a
-mean STL trend of 1.8 °C. Warming is moderate (+0.36 °C / 40 yr, 99% positive)
-and acceleration is weakly positive (+0.13 × 10^-3^ °C / yr^2^, 60% positive).
-It is concentrated in northern North America (97%) with high spatial coherence
-(Moran's I = 0.65). Regime-shift peaks occur in 1990--91 and 2006 (warming),
-and 1997--99 (cooling).
+**C1: Late-accelerating moderate warming.** This cluster contains 20,444 lakes.
+The mean STL-trend anomaly rises slowly during the first half of the record and
+more strongly after 2000, reaching about +0.86 °C in 2020 relative to the
+1981--1990 baseline.
 
-**C2: Decelerating high-latitude North America.** Mean temperature is 2.8 °C.
-Warming is moderate (+0.35 °C / 40 yr, 99% positive), but acceleration is
-strongly negative (-1.33 × 10^-3^ °C / yr^2^, only 1% positive), meaning most
-lakes in this cluster are warming but decelerating. It is concentrated in
-northern North America (96%) with Moran's I = 0.70. Regime-shift peaks occur in
-2003--05 (warming), 1997 (cooling), and 2010--12 (cooling).
+**C2: Early decline / late rebound.** This cluster contains 12,072 lakes. The
+mean trajectory is flat to slightly negative through the 1990s, then turns
+upward after the early 2000s and reaches about +0.67 °C by 2020.
 
-**C3: Strongly accelerating Europe.** Mean temperature is 3.1 °C. Warming is
-strong (+0.71 °C / 40 yr, 99% positive), and acceleration is the highest among
-all clusters (+1.98 × 10^-3^ °C / yr^2^, 98% positive). It is dominated by
-Europe (74%) with Moran's I = 0.65. Regime-shift peaks occur in 1989 and
-2013--15 (warming), and 1989--93 and 2006 (cooling).
+**C3: Strong sustained warming.** This is the smallest but strongest warming
+cluster, with 8,581 lakes. The mean STL-trend anomaly increases steadily across
+the full 40-year record and reaches about +1.15 °C in 2020.
 
-**C4: Cold decelerating North America.** Mean temperature is 3.4 °C. Warming is
-weak (+0.29 °C / 40 yr, 99% positive), and acceleration is strongly negative
-(-1.02 × 10^-3^ °C / yr^2^, only 5% positive). It is the most spatially coherent
-cluster (Moran's I = 0.93), concentrated almost entirely in North America
-(99%). Regime-shift peaks occur in 2005--07 (warming), 1998 (cooling), and
-2013--14 (cooling).
+**C4: Weak / near-stable warming.** This is the largest cluster, with 29,657
+lakes. The mean response remains close to the baseline throughout the record,
+with only weak warming and a 2020 anomaly of about +0.15 °C.
 
-**C5: Warming Europe.** This is the largest cluster (21,493 lakes). Mean
-temperature is 4.3 °C. Warming is strong (+0.84 °C / 40 yr, 100% positive), and
-acceleration is weakly positive (+0.37 × 10^-3^ °C / yr^2^, 65% positive). It is
-dominated by Europe (68%) with Moran's I = 0.61. Regime-shift peaks occur in
-1998--99 and 2013--14 (warming), and 1992 and 2005--07 (cooling).
-
-**C6: Decelerating eastern North America.** Mean temperature is 5.0 °C. Warming
-is moderate (+0.46 °C / 40 yr, 100% positive), but acceleration is strongly
-negative (-1.02 × 10^-3^ °C / yr^2^, only 12% positive). It is concentrated in
-North America (97%) with Moran's I = 0.80. Regime-shift peaks occur in 1992--95
-(warming) and 1999--02 (cooling).
-
-**C7: Strongly accelerating Europe.** Mean temperature is 5.0 °C. Warming is
-moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is strongly
-positive (+1.83 × 10^-3^ °C / yr^2^, 95% positive). It is dominated by Europe
-(88%) with Moran's I = 0.72. Regime-shift peaks occur in 1997--2000 (warming)
-and 2005--08 (cooling).
-
-**C8: Warm tropical/subtropical lakes.** This is the warmest cluster (mean
-21.9 °C). Warming is moderate (+0.57 °C / 40 yr, 99% positive), and
-acceleration is positive (+0.69 × 10^-3^ °C / yr^2^, 85% positive). It is
-geographically dispersed but concentrated in the subtropical latitude band
-(Moran's I = 0.67). Regime-shift peaks occur in 2009--12 (warming), 1989--91
-(cooling), and 2000 (cooling).
+**C5: Early warming then plateau.** This cluster contains 21,491 lakes. The
+mean trajectory rises through the 1990s and early 2000s, then flattens or
+slightly declines, ending near +0.31 °C in 2020.
 
 ### Cluster summary
 
-```{r}
+<!-- ```{r}
 #| label: fig-cluster-continent-heatmap
 #| fig-cap: "Cluster--continent allocation. Each row sums to 100%. Right column = total lakes per cluster. Bottom row = total lakes per continent."
 #| fig-width: 4
@@ -417,7 +730,7 @@ p <- ggplot() +
 
 save_figure("fig-cluster-continent-heatmap.png", p, width = 4, height = 4)
 p
-```
+``` -->
 
 | Cluster | n | Temp | Warming | Accel | Dominant | Moran's I |
 |---|---:|---:|---:|---:|---|---:|
@@ -449,7 +762,7 @@ systematically across clusters. STL trend shapes and shift timing are
 consistent within clusters and distinct between clusters.
 :::
 
-```{r}
+<!-- ```{r}
 #| label: fig-cluster-characteristics
 #| fig-cap: "Cluster characteristics: distributions of temperature, warming, and acceleration, plus mean STL trend by cluster."
 #| fig-width: 10
@@ -493,23 +806,23 @@ year_dist <- shifts_cluster %>%
 detect_peaks <- function(years, counts) {
   n <- length(counts)
   if (n < 5) return(tibble(year = integer(), peak_count = numeric(), is_range = logical()))
-  
+
   # 3-year rolling mean
   smoothed <- as.numeric(stats::filter(counts, rep(1/3, 3), sides = 2))
   smoothed[is.na(smoothed)] <- counts[is.na(smoothed)]
-  
+
   # Threshold: 90th percentile of positive smoothed values
   pos_vals <- smoothed[smoothed > 0]
   if (length(pos_vals) < 3) return(tibble(year = integer(), peak_count = numeric(), is_range = logical()))
   threshold <- quantile(pos_vals, 0.75, na.rm = TRUE)
-  
+
   # All years above threshold
   above_idx <- which(smoothed >= threshold)
   if (length(above_idx) == 0) return(tibble(year = integer(), peak_count = numeric(), is_range = logical()))
-  
+
   peak_years <- years[above_idx]
   peak_counts <- smoothed[above_idx]
-  
+
   # Group consecutive years (gap > 2 = new group)
   groups <- cumsum(c(1, diff(peak_years) > 2))
   result <- list()
@@ -611,7 +924,7 @@ for (i in 1:8) {
   range_sub <- peak_ranges %>% filter(cluster_label == highlight)
   # Only draw individual peak lines for non-range peaks
   peak_sub <- peaks %>% filter(cluster_label == highlight, !is_range)
-  
+
   p <- ggplot() +
     # Peak range shading (higher alpha)
     {if (nrow(range_sub) > 0) geom_rect(
@@ -668,7 +981,7 @@ for (i in 1:8) {
       axis.line.y = element_line(color = "grey50", linewidth = 0.15),
       plot.margin = margin(1, 1, 1, 1)
     )
-  
+
   trend_panels[[i]] <- p
 }
 
@@ -713,14 +1026,14 @@ for (i in 1:8) {
   # Prepare peak annotations: range = horizontal segment, single = vertical line
   peak_sub <- peaks %>% filter(cluster_label == cl)
   range_sub <- peak_ranges %>% filter(cluster_label == cl)
-  
+
   # Compute y offset for directed peak marks (small fraction of max count)
   max_n <- max(abs(sub$signed_n), na.rm = TRUE)
   y_off <- max_n * 0.08
-  
+
   range_marks <- NULL
   single_marks <- NULL
-  
+
   p <- ggplot(sub, aes(x = year, y = signed_n, fill = direction)) +
     # Low-alpha cluster color background
     annotate("rect", xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf,
@@ -747,7 +1060,7 @@ for (i in 1:8) {
       axis.text.x = element_text(angle = 0),
       plot.margin = margin(2, 3, 2, 3)
     )
-  
+
   shift_panels[[i]] <- p
 }
 
@@ -767,9 +1080,9 @@ p_characteristics <- p_left | p_trends +
 
 save_figure("fig-cluster-characteristics.png", p_characteristics, width = 10, height = 7.2)
 p_characteristics
-```
+``` -->
 
-```{r}
+<!-- ```{r}
 #| label: fig-cluster-shift-timing
 #| fig-cap: "Regime-shift timing by cluster. Positive bars are warming shifts; negative bars are cooling shifts."
 #| fig-width: 7.2
@@ -777,7 +1090,7 @@ p_characteristics
 
 save_figure("fig-cluster-shift-timing.png", p_right, width = 7.2, height = 8.8)
 p_right
-```
+``` -->
 
 ## Spatial coherence
 

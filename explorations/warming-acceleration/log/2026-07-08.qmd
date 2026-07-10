@@ -1,0 +1,45 @@
+---
+title: "2026-07-08"
+---
+
+After deal with the ice cover days, result changes a little,
+but not much.
+
+Try to use 1981--1990 as the baseline period to normalize the time series.
+And then do PCA and clustering.
+
+Should I use the raw series or the STL trend to do PCA and clustering?
+
+## Thoughts
+
+Let's figure all the things out.
+
+Mean and trend can be calculated from the temperature time series.
+Mean means the average temperature level, and trend means the warming speed.
+
+If we do a first-difference on it, we can get the overall acceleration by
+the trend of the 1st-difference series.
+E.g., the acceleration is i °C/year^2^,
+meaning that the warming speed increases i °C/year every year on average.
+
+And, since we have the great STARS algorithm, we can also detect the regime
+shifts in the 1st-difference (hereinafter referred to as 1d) series.
+STARS detects the shifts in the mean of the series. Regimes differ in the mean.
+So if we apply STARS to the 1d series,
+we can detect the shifts in the warming speed,
+with each shifts representing a change in the warming speed.
+
+## Current
+
+First of all, almost all lakes are warming, but among all lakes:
+- warming speed is different
+- acceleration is different
+
+For one lake, the warming speed is not constant, it changes over time.
+So we can detect the shifts in the warming speed.
+
+About the clustering, we now use the STL trend to compute the annual anomaly
+relative to a baseline period, which is 1981--1990.
+Then we do PCA and clustering on the anomaly series.
+
+K-means clustring, K=5 is the best parameter.

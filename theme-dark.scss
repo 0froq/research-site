@@ -69,6 +69,11 @@ $callout-color-caution: $hex-red-400;
 
 /*-- scss:rules --*/
 
+#quarto-content,
+body {
+  background-color: $body-bg;
+}
+
 .navbar {
   border-bottom: 1px dashed $line-soft;
   box-shadow: none;
@@ -94,6 +99,39 @@ $callout-color-caution: $hex-red-400;
 }
 
 // Remove remaining Bootstrap blue from Quarto navigation surfaces.
+.page-navigation .nav-page {
+  width: 50%;
+
+  &.nav-page-previous a {
+    justify-content: start;
+  }
+
+  &.nav-page-next a {
+    justify-content: end;
+  }
+}
+
+.breadcrumb {
+  flex-wrap: nowrap;
+}
+
+.breadcrumb-item {
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 1;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+
+  & a {
+    max-width: 100%;
+    display: inline-block;
+  }
+
+  &::before {
+    position: relative;
+  }
+}
+
 .breadcrumb a,
 .breadcrumb-item a,
 .breadcrumb-item.active,
@@ -102,6 +140,9 @@ $callout-color-caution: $hex-red-400;
 .nav-page a,
 .nav-page-text {
   color: $text-muted;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   &:hover {
     color: $text-strong;
@@ -360,6 +401,28 @@ main.content table th,
 main.content table td {
   border-left: 0;
   border-right: 0;
+}
+
+// 9. Underline
+u {
+  color: $tw-stone-100;
+  text-decoration: 1px wavy underline;
+  text-underline-offset: 2px;
+}
+
+// 10. blockquote
+main.content blockquote {
+  color: $text;
+  margin: 1rem 0;
+  position: relative;
+  padding: 0 0 0 1rem;
+  background-color: color-mix(in oklab, $tw-stone-50 5%, transparent);
+  border-left: 1px solid $tw-stone-500;
+}
+
+// 11. figure
+main.content figure img {
+  border: 1px solid $tw-stone-700;
 }
 
 // Code copy button: keep it in grayscale, not the theme accent color.

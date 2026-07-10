@@ -1,0 +1,35 @@
+---
+title: "Latest Log"
+---
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+::: {.style}
+Wait for redirection.
+:::
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('a[href]');
+  const dates = [...links]
+    .map(a => a.getAttribute('href'))
+    .filter(h => /\d{4}-\d{2}-\d{2}\.html$/.test(h))
+    .sort();
+  if (dates.length) window.location.replace(dates[dates.length - 1]);
+});
+</script>
+```
+
+<style>
+.style {
+  text-align: center;
+  font-size: 3rem;
+  font-style: italic;
+  font-family: "EB Garamond Variable", "Songti SC", "Times New Roma", serif;
+}
+</style>

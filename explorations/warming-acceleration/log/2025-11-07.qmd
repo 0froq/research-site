@@ -1,0 +1,9 @@
+---
+title: "2025-11-07"
+---
+
+3-year is too short. Lots of mutation located at 1980, kind of "edge effect".
+(Honestly what should I call it?)
+
+Use Mann-Kendall to detect mutation of trend.
+

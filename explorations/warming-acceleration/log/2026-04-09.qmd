@@ -1,0 +1,9 @@
+---
+title: "2026-04-09"
+---
+
+Time range of GloboLakes and ARC-Lake is limited,
+not covering the post-hiatus period.
+
+Use ESA CCI validate the post-hiatus trend.
+

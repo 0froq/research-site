@@ -1,0 +1,11 @@
+---
+title: "2026-03-31"
+---
+
+Finished 9 lake temperature / climate change literature notes.
+
+Key points:
+@xiao2023 (North Pacific SST 2013/14 regime shift),
+@pi2022 (GLAKES dataset),
+@cohen2014, @dai2018, @tong2023, @woolway2017, @xie2017
+

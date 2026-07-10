@@ -1,0 +1,8 @@
+---
+title: "2025-11-28"
+---
+
+I think it is needed to compare different algorithms and parameters.
+
+Suggestions from advisor: detrending; regional grouping.
+

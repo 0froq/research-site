@@ -1,0 +1,12 @@
+---
+title: "2025-12-10"
+---
+
+Use Yang's data to do clustering analysis.
+Use the similarity of mutational features (Δslope, Δmean, Δvar) to do clustering.
+
+Results of significance tests are all not significant,
+so maybe remove the significance constraint.
+
+Maybe first PCA?
+

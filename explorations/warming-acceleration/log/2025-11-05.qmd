@@ -1,0 +1,13 @@
+---
+title: "2025-11-05"
+---
+
+GEE is shit(sorry Google). Let's deal with ERA5-Land locally.
+
+Lake cover > 0.8 && connection > 2 -> lake.
+
+Directly use "lake mix-layer temperature" as lake surface temperature.
+
+Time range: 1978--2023, monthly scale.
+(3 years extended, better mutation detection)
+

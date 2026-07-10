@@ -1,0 +1,34 @@
+---
+title: "Explorations"
+---
+
+All explorations — finished, cancelled, in-progress, or not started.
+
+## Warming Acceleration
+
+::: {.align-center .text-xl}
+[prose](./warming-acceleration/prose/is-there-a-hiatus.qmd) ·
+[draft](./warming-acceleration/draft/01-descriptive.qmd) ·
+[log](./warming-acceleration/log/index.qmd)
+:::
+
+<style>
+.align-center {
+  text-align: center;
+}
+.text-xl {
+  font-size: 1.25rem;
+}
+</style>
+
+Do global lakes exhibit heterogeneous warming acceleration — or deceleration —
+across space and time, and what drives it?
+
+92,245 lakes, GLAST dataset, 1981–2020.
+
+Methods: STL decomposition, STARS regime shifts, K-means clustering,
+teleconnection attribution.
+
+The question began with the global warming hiatus as a starting point,
+but the focus has broadened to the full spatiotemporal structure of
+lake warming heterogeneity.

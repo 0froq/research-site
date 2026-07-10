@@ -3,13 +3,15 @@ project:
   output-dir: _output
 
 website:
-  title: "Research"
-  site-url: https://0froq.github.io/research-site/
+  title: "Exploration"
+  description: "Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on."
+  site-url: https://froq.me/research-site/
   repo-url: https://github.com/0froq/research-site
   favicon: assets/favicon.svg
   open-graph: true
   twitter-card: true
-
+  llms-txt: true
+  repo-actions: [edit, source, issue]
   page-navigation: true
   back-to-top-navigation: true
 
@@ -19,36 +21,56 @@ website:
 
   navbar:
     title: "Exploration"
-    # logo: assets/favicon.svg
     search: false
     pinned: false
-    right:
-      - icon: github
-        href: https://github.com/0froq/research-site
-        aria-label: GitHub
+    left:
+      - text: Explorations
+        href: explorations/index.qmd
+      - text: Metrics
+        href: metrics/index.qmd
+      - text: Notes
+        href: notes/index.qmd
+    right: []
 
   sidebar:
-    style: floating
-    search: true
-    contents:
-      - text: "Home"
-        href: index.qmd
-      - section: "Hiatus"
-        contents:
-          - section: "Draft"
-            contents:
-              - text: "Overview"
-                href: projects/hiatus/draft/index.qmd
-              - text: "1. Descriptive overview"
-                href: projects/hiatus/draft/chapters/01-descriptive.qmd
-              - text: "2. Regional decomposition"
-                href: projects/hiatus/draft/chapters/02-regional.qmd
-              - text: "3. Teleconnection"
-                href: projects/hiatus/draft/chapters/03-teleconnection.qmd
-          - text: "Metrics"
-            href: projects/hiatus/metrics/index.qmd
-          - text: "Dev Log"
-            href: projects/hiatus/log/index.qmd
+    - title: Explorations
+      style: floating
+      search: true
+      contents:
+        - section: Explorations
+          href: explorations/index.qmd
+          contents:
+            - section: Warming Acceleration
+              contents:
+                - section: Draft
+                  contents:
+                    - auto: explorations/warming-acceleration/draft/*.qmd
+                - section: Prose
+                  contents:
+                    - auto: explorations/warming-acceleration/prose/*.qmd
+                - section: Log
+                  contents:
+                    - explorations/warming-acceleration/log/index.qmd
+                    - auto: explorations/warming-acceleration/log/*.qmd
+    - title: Metrics
+      contents:
+        - section: Metrics
+          href: metrics/index.qmd
+          contents:
+            - auto: metrics/*.qmd
+    - title: Notes
+      contents:
+        - text: All Notes
+          href: notes/index.qmd
+        - section: Papers
+          contents:
+            - auto: notes/papers/*.qmd
+        - section: Points
+          contents:
+            - auto: notes/points/*.qmd
+        - text: Paper Collection
+          href: notes/paper-collection.qmd
+
 
   page-footer:
     border: true
@@ -72,23 +94,23 @@ format:
     tbl-cap-location: top
     code-fold: false
     code-tools: false
-  pdf:
-    documentclass: article
-    papersize: a4
-    fontsize: 11pt
-    geometry:
-      - top=2.5cm
-      - bottom=2.5cm
-      - left=2.5cm
-      - right=2.5cm
-    include-in-header:
-      text: |
-        \usepackage{booktabs}
-        \usepackage{float}
-        \floatplacement{figure}{H}
-    fig-cap-location: bottom
-    tbl-cap-location: top
-    number-sections: true
+  # pdf:
+  #   documentclass: article
+  #   papersize: a4
+  #   fontsize: 11pt
+  #   geometry:
+  #     - top=2.5cm
+  #     - bottom=2.5cm
+  #     - left=2.5cm
+  #     - right=2.5cm
+  #   include-in-header:
+  #     text: |
+  #       \usepackage{booktabs}
+  #       \usepackage{float}
+  #       \floatplacement{figure}{H}
+  #   fig-cap-location: bottom
+  #   tbl-cap-location: top
+  #   number-sections: true
 
 execute:
   freeze: auto

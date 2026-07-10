@@ -1,0 +1,23 @@
+---
+title: "Metrics"
+---
+
+Methods, algorithms, indices, data sources, and terminology.
+Not tied to any specific exploration.
+
+## [Algorithms](./algorithms.qmd)
+
+STL, STARS, K-means, Theil–Sen, Mann–Kendall, etc.
+
+## [Indices](./indices.qmd)
+
+ENSO, PDO, AMO, NAO, AO — large-scale climate oscillation indices.
+
+## [Data](./data.qmd)
+
+Datasets, variables, and measurement conventions.
+
+## [Terms](./terms.qmd)
+
+Definitions of recurring concepts
+(global warming hiatus, regime shift, etc.).

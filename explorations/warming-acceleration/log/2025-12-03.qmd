@@ -1,0 +1,6 @@
+---
+title: "2025-12-03"
+---
+
+First-difference. But may increase the noise. How about do a 3-year smooth?
+

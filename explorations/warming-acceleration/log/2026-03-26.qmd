@@ -1,0 +1,26 @@
+---
+title: "2026-03-26"
+---
+
+Congnitive update after 3 months of no record.
+
+Temporal scale of "hiatus" should be defined at decadal scale (10-15 years),
+previously misused 4-5 year window.
+
+We might need 3 layer to illustrate the regime shift:
+- Statistical layer: mean/slope mutation
+- Climate dynamics layer: PDO/NAO/... mode flip
+- Ecological mechanism layer: feedback change
+
+Core question: Are global lakes entering a warming acceleration phase after 2012?
+
+Use STL decomposition + STARS analysis:
+99.6% of lakes show overall warming, mean 0.58 °C.
+
+Shifts peak at 1990 (8.0%), not a boundary artifact.
+
+Big difference among regions.
+
+PDO lagged bimodal (0 month / 36 month);
+AMO dominant (R=0.52, 99.1% positive correlation)
+

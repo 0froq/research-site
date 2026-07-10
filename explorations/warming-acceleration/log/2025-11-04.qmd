@@ -1,0 +1,13 @@
+---
+title: "2025-11-04"
+---
+
+Thinking about using ERA5-Land to get lake surface temperature:
+MODIS LST + ERA5-Land vars to do ML.
+
+ERA5-Land has a var called lake cover,
+can be used to filter the "pure" water pixel.
+
+In this plan, we need to filter the area of the lakes,
+at least 1 ERA5-Land pixel, which is 0.1° grid.
+

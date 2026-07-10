@@ -1,0 +1,19 @@
+---
+title: "Notes"
+---
+
+Notes organised by form.
+
+## [Papers](./papers/index.qmd)
+
+Per-paper notes — one file per paper.
+
+## [Points](./points/index.qmd)
+
+Extracted observations, arguments, and claims from the literature.
+Not findings; views worth referencing.
+
+## [Hiatus Paper Collection](./hiatus-paper-collection.qmd)
+
+Collected sentences and excerpts from related papers,
+useful for writing.
