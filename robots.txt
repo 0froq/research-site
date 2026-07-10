@@ -1,1 +1,1 @@
-Sitemap: https://0froq.github.io/research-site/sitemap.xml
+Sitemap: https://froq.me/research-site/sitemap.xml

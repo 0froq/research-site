@@ -1,328 +1,952 @@
 [
   {
+    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html",
+    "href": "notes/points/lake-warming-hiatus-mechanisms.html",
+    "title": "Lake Warming Hiatus: Physical Mechanisms",
+    "section": "",
+    "text": "Understanding the physical mechanisms behind hiatus-period lake temperature response is essential — changepoint detection tells us when and how much, but not why.",
+    "crumbs": [
+      "Notes",
+      "Points",
+      "Lake Warming Hiatus: Physical Mechanisms"
+    ]
+  },
+  {
+    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html#surface-energy-balance-framework",
+    "href": "notes/points/lake-warming-hiatus-mechanisms.html#surface-energy-balance-framework",
+    "title": "Lake Warming Hiatus: Physical Mechanisms",
+    "section": "Surface energy balance framework",
+    "text": "Surface energy balance framework\nLake surface temperature is governed by (O’Reilly et al. 2015):\n\\[\\Delta T_{\\text{surface}} \\propto Q^* - Q_H - Q_E - \\Delta Q_S\\]\nwhere \\(Q^*\\) = net radiation, \\(Q_H\\) = sensible heat, \\(Q_E\\) = latent heat (evaporation), \\(\\Delta Q_S\\) = heat storage change. Any climate factor altering these four fluxes affects lake warming rate.",
+    "crumbs": [
+      "Notes",
+      "Points",
+      "Lake Warming Hiatus: Physical Mechanisms"
+    ]
+  },
+  {
+    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html#mechanisms",
+    "href": "notes/points/lake-warming-hiatus-mechanisms.html#mechanisms",
+    "title": "Lake Warming Hiatus: Physical Mechanisms",
+    "section": "Mechanisms",
+    "text": "Mechanisms\n\n1. Air temperature conduction (primary driver)\nLake SST is highly coupled to air temperature (O’Reilly et al. 2015: global lake summer SST warming at ~0.34 °C/decade). During the hiatus (1998–2012), global mean air warming slowed to ~0.05 °C/decade (long-term ~0.18 °C/decade). 83% of 155 lakes slowed warming accordingly (Winslow et al. 2018).\nBut conduction is not 1:1 — lakes have their own buffering and amplification.\n\n\n2. Evaporative cooling feedback ⭐⭐⭐\nZhou et al. (2023, Nature Communications) found: “the rate of lake heating slows as air warms”\nMechanism chain:\n\nAir warms → lake-air vapour pressure deficit increases\nEvaporation intensifies (Clausius-Clapeyron: ~7% per °C)\nEvaporation consumes latent heat (~2.45 MJ/kg) → surface cooling\nEvaporative cooling partially offsets radiative heating → net warming slows\n\nImplication for hiatus: if hiatus-era lakes were already warm, evaporative cooling acts as a negative feedback amplifying the hiatus signal.\n\n\n3. Solar dimming/brightening\n\n1950s–1980s: global dimming (aerosols reduce surface shortwave)\n1980s–2000s: global brightening (clean air legislation)\nPost-2000s: regional divergence (China brightening, India dimming)\n\nDuring hiatus, partial dimming return (post-1998 volcanic activity, China coal aerosols) reduced \\(Q^*\\) → weakened lake surface heating.\n\n\n4. Wind stilling\nGlobal terrestrial near-surface wind speed has declined ~0.1 m/s/decade since 1980s.\nEffects on lakes:\n\nWeakened turbulent mixing → shallower thermocline\nMore heat concentrated at surface → apparent surface warming may increase\nBut reduced wind also reduces evaporation → net effect is ambiguous\n\nWoolway et al. (2017): wind stilling extends stratification period and increases surface warming in UK lakes.\n\n\n5. Ice cover feedback\nFor seasonally frozen lakes (Magnuson et al. 2000):\n\nReduced winter/spring ice → earlier ice-off\nLow-albedo water surface exposed → more solar absorption\nEarlier heating → higher summer temperatures\nLater freeze-up → shorter ice season → positive feedback loop\n\nIf hiatus period saw continued ice reduction (winter temperatures did not stagnate), ice feedback may partially offset hiatus cooling.\n\n\n6. Large-scale teleconnections\n\n\n\n\n\n\n\n\nIndex\nKey phase during hiatus\nLake response\n\n\n\n\nPDO\nNegative (La Niña-like) from 1998\nCooler tropical Pacific → lower global temps\n\n\nAMO\nPositive from mid-1990s\nWarmer North Atlantic → offsets hiatus in N. Atlantic lakes\n\n\nENSO\nLa Niña dominant 1998–2012\nCooler global temps, esp. tropics/subtropics\n\n\nNAO\nVariable\nDominant control on European winter lake temperature\n\n\n\nCP years (e.g. 1998) align with PDO phase transitions — detected changepoints may capture natural variability phase shifts, not just “global warming hiatus”.\n\n\n7. Lake morphometry modulation\n\n\n\n\n\n\n\n\nFactor\nEffect\nMechanism\n\n\n\n\nDepth\nDeep lakes warm slower\nGreater thermal inertia\n\n\nArea\nLarge lakes: more evaporation\nLonger fetch → stronger latent heat loss\n\n\nTransparency\nClear lakes warm faster\nShortwave penetrates deeper\n\n\nAltitude\nHigh-altitude lakes more sensitive\nThinner atmosphere → stronger LW exchange\n\n\nTrophic state\nEutrophic: complex response\nAlgae absorb shortwave → surface heating\n\n\n\nWinslow et al. (2018): hiatus response showed no significant clustering by lake attributes — climate signal is strong enough to override morphometric differences.",
+    "crumbs": [
+      "Notes",
+      "Points",
+      "Lake Warming Hiatus: Physical Mechanisms"
+    ]
+  },
+  {
+    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html#integrated-framework",
+    "href": "notes/points/lake-warming-hiatus-mechanisms.html#integrated-framework",
+    "title": "Lake Warming Hiatus: Physical Mechanisms",
+    "section": "Integrated framework",
+    "text": "Integrated framework\n          Global radiative forcing (CO₂ + aerosols)\n                     │\n      ┌──────────────┼──────────────┐\n      ▼              ▼              ▼\n  Atmospheric      Surface        Cloud/radiation\n  circulation      air temp       changes\n (PDO/NAO/ENSO)      │              │\n      │              │              │\n      ▼              ▼              ▼\n┌──────────── Lake surface energy balance ────────────┐\n│  Q* (radiation)  Q_H (sensible)  Q_E (latent)  ΔQ_S │\n└──────────────────────┬──────────────────────────────┘\n                       │\n            ┌──────────┼──────────┐\n            ▼          ▼          ▼\n        Acceleration  Steady    Deceleration",
+    "crumbs": [
+      "Notes",
+      "Points",
+      "Lake Warming Hiatus: Physical Mechanisms"
+    ]
+  },
+  {
+    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html#sensitivity-analysis-implications",
+    "href": "notes/points/lake-warming-hiatus-mechanisms.html#sensitivity-analysis-implications",
+    "title": "Lake Warming Hiatus: Physical Mechanisms",
+    "section": "Sensitivity analysis implications",
+    "text": "Sensitivity analysis implications\nBased on the mechanism framework:\n\nEvaporation: ERA5 evaporation trends → test if enhanced evaporation correlates with more significant changepoints\nWind: ERA5 u10/v10 → wind trends vs hiatus response\nRadiation: ERA5 surface downward shortwave → radiation changes vs CP spatial consistency\nPDO/AMO: test CP significance after removing natural variability\nIce cover: GLAST/ERA5 ice data → do frozen lakes differ?",
+    "crumbs": [
+      "Notes",
+      "Points",
+      "Lake Warming Hiatus: Physical Mechanisms"
+    ]
+  },
+  {
+    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html#key-references",
+    "href": "notes/points/lake-warming-hiatus-mechanisms.html#key-references",
+    "title": "Lake Warming Hiatus: Physical Mechanisms",
+    "section": "Key references",
+    "text": "Key references\n\n\n\n\n\n\n\n\nReference\nCore finding\nRelevance\n\n\n\n\nWinslow et al. (2018) ERL\n155 lakes, 83% slowed during hiatus\nDirect predecessor\n\n\nZhou et al. (2023) Nature Comms\nLake warming slows as air warms (evaporative cooling)\nCore mechanism\n\n\nO’Reilly et al. (2015) GRL\nGlobal lake SST +0.34 °C/decade\nGLAST dataset origin\n\n\nWoolway et al. (2017) Climatic Change\nWind stilling → extended stratification\nWind stilling mechanism\n\n\nMagnuson et al. (2000) Science\nNorthern hemisphere ice season shortening\nIce cover feedback\n\n\nMedhaug et al. (2017) Nature\nHiatus multi-mechanism review\nClimate background\n\n\nLund et al. (2023) J. Climate\nClimate changepoint best practices\nMethodology",
+    "crumbs": [
+      "Notes",
+      "Points",
+      "Lake Warming Hiatus: Physical Mechanisms"
+    ]
+  },
+  {
+    "objectID": "notes/papers/xie2017.html#notes",
+    "href": "notes/papers/xie2017.html#notes",
+    "title": "xie2017: What Caused the Global Surface Warming Hiatus of 1998–2013?",
+    "section": "Notes",
+    "text": "Notes\nGlobal Surface Warming Hiatus(GSWH) is 1998-2013. Approx 0.027 - 0.086 degree Celsius per decade, which is much smaller than the 0.2 degree Celsius per decade during 1970s - 1990s.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "xie2017: What Caused the Global Surface Warming Hiatus of 1998–2013?"
+    ]
+  },
+  {
+    "objectID": "notes/papers/rodionov2004.html",
+    "href": "notes/papers/rodionov2004.html",
+    "title": "rodionov2004: A Sequential Algorithm for Testing Climate Regime Shifts",
+    "section": "",
+    "text": "An algorithm to detect climate regime shifts. Classic work, widely cited.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "rodionov2004: A Sequential Algorithm for Testing Climate Regime Shifts"
+    ]
+  },
+  {
+    "objectID": "notes/papers/rodionov2004.html#overview",
+    "href": "notes/papers/rodionov2004.html#overview",
+    "title": "rodionov2004: A Sequential Algorithm for Testing Climate Regime Shifts",
+    "section": "Overview",
+    "text": "Overview\nNo gonna describe it in great detail.\n\nFirst, it’s sequential, meaning it processes the time series in order, and different start points can lead to different results.\nSecond, it processes new data points as they come in. Every new data is checked immediately. so it’s kinda near-real-time.\nThird, since it deals the data points in a specific window, abnormal values won’t have a decisive influence on the results.\n\nAlgo accepts two parameters: cut-off length \\(l\\) and significance level \\(p\\).",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "rodionov2004: A Sequential Algorithm for Testing Climate Regime Shifts"
+    ]
+  },
+  {
+    "objectID": "notes/papers/rodionov2004.html#breif-intro",
+    "href": "notes/papers/rodionov2004.html#breif-intro",
+    "title": "rodionov2004: A Sequential Algorithm for Testing Climate Regime Shifts",
+    "section": "Breif Intro",
+    "text": "Breif Intro\n\nCalculate \\(diff\\) according to the series and \\(l\\): \\[\n  diff = t \\sqrt{2 \\sigma_l^2 / l} \\tag{1}\n\\] where \\(t\\) is the critical value of the Student’s t distribution with \\(2l-2\\) degrees of freedom at the significance level \\(p\\) (two-tailed), and \\(\\sigma_l^2\\) is the average variance of the series in running windows of length \\(l\\).\nCalculate the \\(\\overline{x}_{Rk}\\) where \\(Ri\\) is the \\(k\\)-th regime. Initially, \\(R1\\) is the first \\(l\\) data points.\nFor each new data point \\(x_i\\) where \\(i\\) starts from \\(l+1\\):\n\nIf \\(|\\overline{x}_{Rk} - x_i| &gt; diff\\), then a new possible regime is detected. The possible new regime \\(R_{k+1}\\) starts from \\(x_i\\). Move to 5.\nOtherwise, \\(x_i\\) is not significantly different from the current regime, meaning the current regime continues, and we should update \\(\\overline{x}_{Rk}\\) by including \\(x_i\\). Move back to 3 to check the next data point.\n\nFor the new possible regime \\(R_{k+1}\\) which starts from \\(i\\), calculate the \\(RSI_{i,i}\\) to \\(RSI_{i+l-1,i}\\). \\(RSI\\) is calculated as: \\[\n  RSI_{i,j} = \\sum_{i=j}^{j+m} \\frac{x_i^*} {l \\sigma_l}, m=0,1,\\dots,l-1 \\tag{2}\n\\] where \\(x_i^* = x_i - \\overline{x}_{Rk} - diff\\) if the shift is up, \\(x_i^* = \\overline{x}_{Rk} - x_i - diff\\) if the shift is down.\n\nIf any of them is negetive, then the possible new regime is rejected. Update the current regime \\(R_k\\) by including \\(x_i\\) and move back to 3 to check the next data point.\nOtherwise, all the \\(RSI\\)s are positive, then the possible new regime is accepted. New regime \\(R_{k+1}\\) starts from \\(x_i\\) and move back to 3 to check the next data point.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "rodionov2004: A Sequential Algorithm for Testing Climate Regime Shifts"
+    ]
+  },
+  {
+    "objectID": "notes/papers/rodionov2004.html#little-notes",
+    "href": "notes/papers/rodionov2004.html#little-notes",
+    "title": "rodionov2004: A Sequential Algorithm for Testing Climate Regime Shifts",
+    "section": "Little notes",
+    "text": "Little notes\nNote that once a new regime is detected, the next to-be-checked data point is the next point of the regime shift point, no plus \\(l\\). For instance, if the 1950 is detected as a regine shift, meaning \\(RSI_{1950,1950}\\) to \\(RSI_{1959,1950}\\) are all positive, then the next to-be-checked data point is still 1951, not 1960. This simply means that a regime is not necessarily \\(l\\) long, it can be shorter, and the next regime can start at any point after the shift point.\nHowever, the shift point is usually unlikely to exist in the first \\(l\\) data points after previous shift point, because points in \\(l\\) length window are not likely to be significantly different from the current regime.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "rodionov2004: A Sequential Algorithm for Testing Climate Regime Shifts"
+    ]
+  },
+  {
+    "objectID": "notes/papers/xiao2023.html#notes",
+    "href": "notes/papers/xiao2023.html#notes",
+    "title": "xiao2023: A Regime Shift in North Pacific Annual Mean Sea Surface Temperature in 2013/14",
+    "section": "Notes",
+    "text": "Notes\nSea Surface Temperature (SST) in the North Pacific (NP) has experienced a regime shift in 2013/14, with a significant increase in the annual mean SST.\nNot related to PDO and IPO, but Victoria Mode, which is defined as the second EOF mode of the annual mean SST in the NP, and is characterized by a horseshoe pattern of SST anomalies.\nSays that might indicate hiatus is over.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "xiao2023: A Regime Shift in North Pacific Annual Mean Sea Surface Temperature in 2013/14"
+    ]
+  },
+  {
+    "objectID": "notes/papers/yan2016.html#this-is-a-review",
+    "href": "notes/papers/yan2016.html#this-is-a-review",
+    "title": "yan2016: The Global Warming Hiatus: Slowdown or Redistribution?",
+    "section": "This is a review",
+    "text": "This is a review\nDifferend researches define the “hiatus” differently. For instance, IPCC AR5 claimed hiatus should be 1998-2012, comparing with 1951-2012.\nGlobal surface mean temperature increased slowly from 1951-1970. Then there was a rapid in mid-1970s, which was probably due to positive phase of PDO and AMO.\nIf we are talking about “global warming hiatus”, it should refer to a pause in the rate of increase of heat energy in the Earth’s system, not just rate of increase in surface temperature.\n\nArguably, the most appropriate single variable in the Earth’s system that can be used to monitor global warming is ocean heat content (OHC), integrated from the surface to the bottom of the ocean.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "yan2016: The Global Warming Hiatus: Slowdown or Redistribution?"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Research",
+    "title": "Hola!",
     "section": "",
-    "text": "Welcome\nThis site contains my research explorations, drafts, and progress logs.\nCurrent project: Hiatus — lake temperature decadal variability.\n\n\n\n\n Back to top",
+    "text": "This site contains my research explorations, drafts, and progress logs.\nThese materials were previously hosted on my main personal website. However, to separate my research content from my personal content, all research and academic exploration materials are now hosted on this site.\nCheck all explorations, including the finished, cancelled, not started or in-progress ones. Each exploration has its own draft, prose, and log.\nI list frequently discussed metrics (methods, algorithms, parameters, decision records), trying not to make anyone confused.\nNotes collect literature notes, mechanism summaries, and useful excerpts for writing.\n\nTo learn more about me, visit froq.me.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-04-13.html",
+    "href": "explorations/warming-acceleration/log/2026-04-13.html",
+    "title": "2026-04-13",
+    "section": "",
+    "text": "92,245 lakes in GlAST, 36% of which are in the Arctic (lowering the global mean).\nThere is a Hylak_id field in GlAST, corresponding to HydroLAKES v1.0, which can be used for attribute filtering.\n\n\n\n Back to top",
     "crumbs": [
-      "Home"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-04-13"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/index.html",
-    "href": "projects/hiatus/draft/index.html",
-    "title": "Hiatus — Draft",
+    "objectID": "explorations/warming-acceleration/log/2025-11-07.html",
+    "href": "explorations/warming-acceleration/log/2025-11-07.html",
+    "title": "2025-11-07",
     "section": "",
-    "text": "Hiatus\n92,245 lakes, GLAST + HydroLAKES + ERA5-land, STL, STARS.\n\n\n\n\n Back to top",
+    "text": "3-year is too short. Lots of mutation located at 1980, kind of “edge effect”. (Honestly what should I call it?)\nUse Mann-Kendall to detect mutation of trend.\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "Overview"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2025-11-07"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/01-descriptive.html",
-    "href": "projects/hiatus/draft/chapters/01-descriptive.html",
-    "title": "Descriptive overview",
+    "objectID": "explorations/warming-acceleration/log/2026-04-10.html",
+    "href": "explorations/warming-acceleration/log/2026-04-10.html",
+    "title": "2026-04-10",
     "section": "",
-    "text": "test the code block\ntest, link\n\n\n\n\n\n\nWarningFinding 2\n\n\n\nMean warming from Sen’s slope of annual mean is 0.730 ± 0.748 °C / 40 yr. Median warming is 0.69 °C / 40 yr, with Q1–Q3 of 0.26–1.15 °C / 40 yr.\n\n\nGLAST: 92,245 lakes, 1981–2020.\n37 lakes have no data. The least complete year still has valid observations for 96.6% of lakes, with 3,145 lakes missing.\n\n\n\n\n\n\n\n\nFigure 1: Annual data availability.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 1\n\n\n\n79,178 / 92,208 lakes (85.9%) are warming by Sen’s slope of annual mean; 13,030 are cooling.\n\n\n\n\n\n\n\n\nNoteFinding 2\n\n\n\nMean warming from Sen’s slope of annual mean is 0.730 ± 0.748 °C / 40 yr. Median warming is 0.69 °C / 40 yr, with Q1–Q3 of 0.26–1.15 °C / 40 yr.\n\n\n\n\n\n\n\n\nNoteFinding 3\n\n\n\nMean warming from Sen’s slope of STL trend is 0.573 ± 0.320 °C / 40 yr. Median warming is 0.52 °C / 40 yr, with Q1–Q3 of 0.34–0.75 °C / 40 yr.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 4\n\n\n\n50,614 / 92,193 lakes (54.9%) show positive acceleration, measured as Sen’s slope of first-differenced STL trend. 41,579 show negative acceleration.\nHere “acceleration” means faster and faster warming, slower and slower cooling, or a transition toward warming.\n\n\n\n\n\n\n\n\nNoteFinding 5\n\n\n\nMean acceleration is 0.294 ± 1.486 × 10-3 °C / yr2. Median acceleration is 0.20 × 10-3 °C / yr2, with Q1–Q3 of -0.84–1.31 × 10-3 °C / yr2.\n\n\n\n\n\n\n\n\nState\nn\n%\n\n\n\n\nwarming + accelerating\n44,857\n48.66%\n\n\nwarming + decelerating\n34,312\n37.22%\n\n\ncooling + accelerating (slower and slower cooling)\n5,757\n6.24%\n\n\ncooling + decelerating\n7,267\n7.88%\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Joint warming–acceleration density. Cells show log10 lake counts; marginal curves summarise one-dimensional distributions and reference quartiles.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Median lake temperature in warming–acceleration space. Marginal profiles show binned median temperature with interquartile ribbons and linear fits.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Hex-binned maps of lake warming and acceleration. Each hexagon summarises lakes within an approximately 5° spatial bin.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Geographic distribution of the four warming–acceleration states, with marginal longitude and latitude ridgelines and global state proportions.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 6\n\n\n\nWarming-direction shifts have higher RSI than cooling-direction shifts: median 1.25 vs 1.11. Cooling shifts are more concentrated at lower intensities.\n\n\n\n\n\nSTL trend -&gt; annual mean -&gt; first-differenced -&gt; STARS (\\(L = 7\\), \\(p = 0.05\\)).\n\n\n\n\n\n\nNoteFinding 7\n\n\n\n273,216 regime shifts are detected, or 2.96 per lake. Warming-direction shifts account for 143,323 (52.5%); cooling-direction shifts account for 129,893 (47.5%).\n\n\n\n\n\n\n\n\n\n\nFigure 6: Distribution of STARS-detected breakpoint counts per lake. Counts are grouped as 0, 1, 2, 3, and at least 4 breakpoints.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 8\n\n\n\nThe 273,216 regime shifts divide the 92,245 lake time series into 365,425 regimes. The median regime length is 8 years; Q1–Q3 is 7–12 years. The most common regime length is 7 years, matching the STARS window length \\(L = 7\\).\n\n\n\n\n\n\n\n\n\n\nFigure 7: Distribution of regime lengths between STARS-detected shift points. Dashed lines mark the mean and median.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 9\n\n\n\nThe largest shift-year counts are 1999 (16,918 shifts) and 2014 (16,852 shifts), followed by 2006, 2013, and 1990.\n\n\n\n\n\n\n\n\n\n\nFigure 8: STARS-detected regime shifts by year (\\(L = 7\\), \\(p = 0.05\\)). Red = warming-direction shift; blue = cooling-direction shift. Black line = mean signed RSI. Grey band = mean ± SD.",
+    "text": "Got 15th of each month ESA CCI water temperature data (global raster is too complete and too large).\nComparing 4 datasets: similar trend, but GLAST is lower (contains many polar lakes).\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "1. Descriptive overview"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-04-10"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#sample-coverage",
-    "href": "projects/hiatus/draft/chapters/01-descriptive.html#sample-coverage",
-    "title": "Descriptive overview",
+    "objectID": "explorations/warming-acceleration/log/2025-11-04.html",
+    "href": "explorations/warming-acceleration/log/2025-11-04.html",
+    "title": "2025-11-04",
     "section": "",
-    "text": "test the code block\ntest, link\n\n\n\n\n\n\nWarningFinding 2\n\n\n\nMean warming from Sen’s slope of annual mean is 0.730 ± 0.748 °C / 40 yr. Median warming is 0.69 °C / 40 yr, with Q1–Q3 of 0.26–1.15 °C / 40 yr.\n\n\nGLAST: 92,245 lakes, 1981–2020.\n37 lakes have no data. The least complete year still has valid observations for 96.6% of lakes, with 3,145 lakes missing.\n\n\n\n\n\n\n\n\nFigure 1: Annual data availability.",
+    "text": "Thinking about using ERA5-Land to get lake surface temperature: MODIS LST + ERA5-Land vars to do ML.\nERA5-Land has a var called lake cover, can be used to filter the “pure” water pixel.\nIn this plan, we need to filter the area of the lakes, at least 1 ERA5-Land pixel, which is 0.1° grid.\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "1. Descriptive overview"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2025-11-04"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#long-term-warming",
-    "href": "projects/hiatus/draft/chapters/01-descriptive.html#long-term-warming",
-    "title": "Descriptive overview",
+    "objectID": "explorations/warming-acceleration/log/2026-06-12.html",
+    "href": "explorations/warming-acceleration/log/2026-06-12.html",
+    "title": "2026-06-12",
     "section": "",
-    "text": "NoteFinding 1\n\n\n\n79,178 / 92,208 lakes (85.9%) are warming by Sen’s slope of annual mean; 13,030 are cooling.\n\n\n\n\n\n\n\n\nNoteFinding 2\n\n\n\nMean warming from Sen’s slope of annual mean is 0.730 ± 0.748 °C / 40 yr. Median warming is 0.69 °C / 40 yr, with Q1–Q3 of 0.26–1.15 °C / 40 yr.\n\n\n\n\n\n\n\n\nNoteFinding 3\n\n\n\nMean warming from Sen’s slope of STL trend is 0.573 ± 0.320 °C / 40 yr. Median warming is 0.52 °C / 40 yr, with Q1–Q3 of 0.34–0.75 °C / 40 yr.",
+    "text": "Feedback from advisor: the paper is “rather flat”, needs to refine and highlight novel points.\nBut recent 2 weeks are spent in Dongshan station.\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "1. Descriptive overview"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-06-12"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#long-term-acceleration",
-    "href": "projects/hiatus/draft/chapters/01-descriptive.html#long-term-acceleration",
-    "title": "Descriptive overview",
+    "objectID": "explorations/warming-acceleration/log/2026-05-31.html",
+    "href": "explorations/warming-acceleration/log/2026-05-31.html",
+    "title": "2026-05-31",
     "section": "",
-    "text": "NoteFinding 4\n\n\n\n50,614 / 92,193 lakes (54.9%) show positive acceleration, measured as Sen’s slope of first-differenced STL trend. 41,579 show negative acceleration.\nHere “acceleration” means faster and faster warming, slower and slower cooling, or a transition toward warming.\n\n\n\n\n\n\n\n\nNoteFinding 5\n\n\n\nMean acceleration is 0.294 ± 1.486 × 10-3 °C / yr2. Median acceleration is 0.20 × 10-3 °C / yr2, with Q1–Q3 of -0.84–1.31 × 10-3 °C / yr2.",
+    "text": "On the business trip again, limited progress.\nSTL can only run on my Mac mini (~1 hour/run). So it has to be moved back home for long-term internet connection.\nFramework is temporarily determined, will continue to advance after returning.\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "1. Descriptive overview"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-05-31"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#joint-warming-and-acceleration-states",
-    "href": "projects/hiatus/draft/chapters/01-descriptive.html#joint-warming-and-acceleration-states",
-    "title": "Descriptive overview",
+    "objectID": "explorations/warming-acceleration/log/2025-10-22.html",
+    "href": "explorations/warming-acceleration/log/2025-10-22.html",
+    "title": "2025-10-22",
     "section": "",
-    "text": "State\nn\n%\n\n\n\n\nwarming + accelerating\n44,857\n48.66%\n\n\nwarming + decelerating\n34,312\n37.22%\n\n\ncooling + accelerating (slower and slower cooling)\n5,757\n6.24%\n\n\ncooling + decelerating\n7,267\n7.88%\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Joint warming–acceleration density. Cells show log10 lake counts; marginal curves summarise one-dimensional distributions and reference quartiles.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Median lake temperature in warming–acceleration space. Marginal profiles show binned median temperature with interquartile ribbons and linear fits.",
+    "text": "Adjustment: The key point is not extract the water boundary precisely, but to get lake surface temperature efficiently. Consider the lake as a uniform water unit, so we just need to make sure the pixel is water pixel.\n\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "1. Descriptive overview"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2025-10-22"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#spatial-pattern",
-    "href": "projects/hiatus/draft/chapters/01-descriptive.html#spatial-pattern",
-    "title": "Descriptive overview",
+    "objectID": "explorations/warming-acceleration/log/index.html",
+    "href": "explorations/warming-acceleration/log/index.html",
+    "title": "Latest Log",
     "section": "",
-    "text": "Figure 4: Hex-binned maps of lake warming and acceleration. Each hexagon summarises lakes within an approximately 5° spatial bin.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Geographic distribution of the four warming–acceleration states, with marginal longitude and latitude ridgelines and global state proportions.",
+    "text": "Wait for redirection.\n\n\n\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "1. Descriptive overview"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "Latest Log"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#rsi-intensity",
-    "href": "projects/hiatus/draft/chapters/01-descriptive.html#rsi-intensity",
-    "title": "Descriptive overview",
+    "objectID": "explorations/warming-acceleration/log/2025-12-03.html",
+    "href": "explorations/warming-acceleration/log/2025-12-03.html",
+    "title": "2025-12-03",
     "section": "",
-    "text": "NoteFinding 6\n\n\n\nWarming-direction shifts have higher RSI than cooling-direction shifts: median 1.25 vs 1.11. Cooling shifts are more concentrated at lower intensities.",
+    "text": "First-difference. But may increase the noise. How about do a 3-year smooth?\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "1. Descriptive overview"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2025-12-03"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/01-descriptive.html#first-summary-of-detected-regime-shifts",
-    "href": "projects/hiatus/draft/chapters/01-descriptive.html#first-summary-of-detected-regime-shifts",
-    "title": "Descriptive overview",
+    "objectID": "explorations/warming-acceleration/log/2025-12-10.html",
+    "href": "explorations/warming-acceleration/log/2025-12-10.html",
+    "title": "2025-12-10",
     "section": "",
-    "text": "STL trend -&gt; annual mean -&gt; first-differenced -&gt; STARS (\\(L = 7\\), \\(p = 0.05\\)).\n\n\n\n\n\n\nNoteFinding 7\n\n\n\n273,216 regime shifts are detected, or 2.96 per lake. Warming-direction shifts account for 143,323 (52.5%); cooling-direction shifts account for 129,893 (47.5%).\n\n\n\n\n\n\n\n\n\n\nFigure 6: Distribution of STARS-detected breakpoint counts per lake. Counts are grouped as 0, 1, 2, 3, and at least 4 breakpoints.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 8\n\n\n\nThe 273,216 regime shifts divide the 92,245 lake time series into 365,425 regimes. The median regime length is 8 years; Q1–Q3 is 7–12 years. The most common regime length is 7 years, matching the STARS window length \\(L = 7\\).\n\n\n\n\n\n\n\n\n\n\nFigure 7: Distribution of regime lengths between STARS-detected shift points. Dashed lines mark the mean and median.\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 9\n\n\n\nThe largest shift-year counts are 1999 (16,918 shifts) and 2014 (16,852 shifts), followed by 2006, 2013, and 1990.\n\n\n\n\n\n\n\n\n\n\nFigure 8: STARS-detected regime shifts by year (\\(L = 7\\), \\(p = 0.05\\)). Red = warming-direction shift; blue = cooling-direction shift. Black line = mean signed RSI. Grey band = mean ± SD.",
+    "text": "Use Yang’s data to do clustering analysis. Use the similarity of mutational features (Δslope, Δmean, Δvar) to do clustering.\nResults of significance tests are all not significant, so maybe remove the significance constraint.\nMaybe first PCA?\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "1. Descriptive overview"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2025-12-10"
     ]
   },
   {
-    "objectID": "projects/hiatus/metrics/index.html",
-    "href": "projects/hiatus/metrics/index.html",
-    "title": "Hiatus — Metrics",
+    "objectID": "explorations/warming-acceleration/log/2026-04-26.html",
+    "href": "explorations/warming-acceleration/log/2026-04-26.html",
+    "title": "2026-04-26",
     "section": "",
-    "text": "Raw monthly LSWT → annual mean → Theil–Sen slope × 40 years.\n\n\n\nSen slope of first-differenced annual STL trend.\n\n\n\nL=7, p=0.05. Minimum regime length 7 years, shift significance p &lt; 0.05.\n\n\n\nK=8, z-scored annual STL trend + normalised mean temperature. Cluster ordering by mean temperature (C1=coldest → C8=hottest).\n\n\n\nENSO (Nino3.4), PDO, AMO, NAO, AO. Annual means from monthly NOAA data.",
+    "text": "Hiatus frame -&gt; 3-segment structure identification\nApply mutation detection to each lake temperature time series: 1998±4 and 2012±4 windows, find a breakpoint in each, cut into pre/mid/post segments.\nConfirmed high heterogeneity in lake responses to hiatus, some lakes show no obvious response\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-04-26"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-04-22.html",
+    "href": "explorations/warming-acceleration/log/2026-04-22.html",
+    "title": "2026-04-22",
+    "section": "",
+    "text": "The “hiatus” concept is controversial: Medhaug et al. (2017) (apparent), Lewandowsky et al. (2015) (nonexistent), Fyfe et al. (2016) (real but short-term modulation).\nSo, 1998-2012 is not a good reference period for global warming acceleration.\n\n\n\n\n Back to topReferences\n\nFyfe, John C., Gerald A. Meehl, Matthew H. England, et al. 2016. “Making Sense of the Early-2000s Warming Slowdown.” Nature Climate Change 6 (3): 224–28. https://doi.org/10.1038/nclimate2938.\n\n\nLewandowsky, Stephan, James S. Risbey, and Naomi Oreskes. 2015. “On the Definition and Identifiability of the Alleged ‘Hiatus’ in Global Warming.” Scientific Reports 5 (1): 16784. https://doi.org/10.1038/srep16784.\n\n\nMedhaug, Iselin, Martin B. Stolpe, Erich M. Fischer, and Reto Knutti. 2017. “Reconciling Controversies about the ‘Global Warming Hiatus’.” Nature 545 (7652): 41–47. https://doi.org/10.1038/nature22315.",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-04-22"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html",
+    "href": "metrics/algorithms.html",
+    "title": "Algorithms",
+    "section": "",
+    "text": "Seasonal-Trend decomposition using LOESS (Cleveland et al. 1990). Decomposes a time series into seasonal, trend, and remainder components.\nKey parameters:\n\nPeriod: seasonal cycle length (12 for monthly data)\nnt: width of the trend LOESS window — controls smoothness. Larger nt → smoother trend, less short-term detail. Sensitivity to nt should always be tested.\nni / no: inner/outer iterations for robustness\n\nUsed in: warming-acceleration.",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html#stl",
+    "href": "metrics/algorithms.html#stl",
+    "title": "Algorithms",
+    "section": "",
+    "text": "Seasonal-Trend decomposition using LOESS (Cleveland et al. 1990). Decomposes a time series into seasonal, trend, and remainder components.\nKey parameters:\n\nPeriod: seasonal cycle length (12 for monthly data)\nnt: width of the trend LOESS window — controls smoothness. Larger nt → smoother trend, less short-term detail. Sensitivity to nt should always be tested.\nni / no: inner/outer iterations for robustness\n\nUsed in: warming-acceleration.",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html#stars",
+    "href": "metrics/algorithms.html#stars",
+    "title": "Algorithms",
+    "section": "STARS",
+    "text": "STARS\nSequential T-test Analysis of Regime Shifts (Rodionov 2004). Detects abrupt shifts in the mean of a time series.\n\nSequential: processes data in order, near-real-time capable\nTwo parameters: cut-off length \\(l\\) and significance level \\(p\\)\nUses a moving window to estimate local variance; robust to isolated outliers\nRegime length is not necessarily \\(l\\); a new regime can start at any point after the shift\n\nOriginally designed for PDO regime shifts. Applied to lake surface temperature by Woolway et al. (2017).\nAlternatives: Bai-Perron (multiple breakpoints, regression-based), Pettitt (single shift, rank-based), CUSUM (cumulative sum). All are sensitive to algorithm choice and parameterisation; STARS is favoured for its simplicity and climatological track record.\nPaper notes: Rodionov (2004).\nUsed in: warming-acceleration.",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html#k-means-clustering",
+    "href": "metrics/algorithms.html#k-means-clustering",
+    "title": "Algorithms",
+    "section": "K-means clustering",
+    "text": "K-means clustering\nPartitions \\(n\\) observations into \\(K\\) groups by minimising within-cluster sum of squared distances. Requires pre-specification of \\(K\\); sensitive to feature scaling.\nCommon workflow: z-score features → run K-means → order clusters by a meaningful axis (e.g. mean temperature).",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html#theilsen-slope",
+    "href": "metrics/algorithms.html#theilsen-slope",
+    "title": "Algorithms",
+    "section": "Theil–Sen slope",
+    "text": "Theil–Sen slope\nNon-parametric slope estimator: median of all pairwise slopes. Robust to outliers, no normality assumption. Widely used in climate trend analysis.",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html#mannkendall-test",
+    "href": "metrics/algorithms.html#mannkendall-test",
+    "title": "Algorithms",
+    "section": "Mann–Kendall test",
+    "text": "Mann–Kendall test\nNon-parametric trend test. Tests whether a monotonic trend exists. Often paired with Theil–Sen for trend magnitude. Sensitive to autocorrelation — pre-whitening may be needed.",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/index.html",
+    "href": "metrics/index.html",
+    "title": "Metrics",
+    "section": "",
+    "text": "Methods, algorithms, indices, data sources, and terminology. Not tied to any specific exploration.",
+    "crumbs": [
       "Metrics"
     ]
   },
   {
-    "objectID": "projects/hiatus/metrics/index.html#warming",
-    "href": "projects/hiatus/metrics/index.html#warming",
-    "title": "Hiatus — Metrics",
-    "section": "",
-    "text": "Raw monthly LSWT → annual mean → Theil–Sen slope × 40 years.",
+    "objectID": "metrics/index.html#algorithms",
+    "href": "metrics/index.html#algorithms",
+    "title": "Metrics",
+    "section": "Algorithms",
+    "text": "Algorithms\nSTL, STARS, K-means, Theil–Sen, Mann–Kendall, etc.",
     "crumbs": [
-      "Hiatus",
       "Metrics"
     ]
   },
   {
-    "objectID": "projects/hiatus/metrics/index.html#acceleration",
-    "href": "projects/hiatus/metrics/index.html#acceleration",
-    "title": "Hiatus — Metrics",
-    "section": "",
-    "text": "Sen slope of first-differenced annual STL trend.",
+    "objectID": "metrics/index.html#indices",
+    "href": "metrics/index.html#indices",
+    "title": "Metrics",
+    "section": "Indices",
+    "text": "Indices\nENSO, PDO, AMO, NAO, AO — large-scale climate oscillation indices.",
     "crumbs": [
-      "Hiatus",
       "Metrics"
     ]
   },
   {
-    "objectID": "projects/hiatus/metrics/index.html#stars",
-    "href": "projects/hiatus/metrics/index.html#stars",
-    "title": "Hiatus — Metrics",
-    "section": "",
-    "text": "L=7, p=0.05. Minimum regime length 7 years, shift significance p &lt; 0.05.",
+    "objectID": "metrics/index.html#data",
+    "href": "metrics/index.html#data",
+    "title": "Metrics",
+    "section": "Data",
+    "text": "Data\nDatasets, variables, and measurement conventions.",
     "crumbs": [
-      "Hiatus",
       "Metrics"
     ]
   },
   {
-    "objectID": "projects/hiatus/metrics/index.html#clustering",
-    "href": "projects/hiatus/metrics/index.html#clustering",
-    "title": "Hiatus — Metrics",
-    "section": "",
-    "text": "K=8, z-scored annual STL trend + normalised mean temperature. Cluster ordering by mean temperature (C1=coldest → C8=hottest).",
+    "objectID": "metrics/index.html#terms",
+    "href": "metrics/index.html#terms",
+    "title": "Metrics",
+    "section": "Terms",
+    "text": "Terms\nDefinitions of recurring concepts (global warming hiatus, regime shift, etc.).",
     "crumbs": [
-      "Hiatus",
       "Metrics"
     ]
   },
   {
-    "objectID": "projects/hiatus/metrics/index.html#teleconnection-indices",
-    "href": "projects/hiatus/metrics/index.html#teleconnection-indices",
-    "title": "Hiatus — Metrics",
+    "objectID": "metrics/terms.html",
+    "href": "metrics/terms.html",
+    "title": "Terms",
     "section": "",
-    "text": "ENSO (Nino3.4), PDO, AMO, NAO, AO. Annual means from monthly NOAA data.",
+    "text": "The period roughly 1998–2012 during which the rate of global mean surface temperature increase slowed relative to the preceding and following decades. Attributed to a combination of ocean heat uptake, internal variability (PDO negative phase), volcanic aerosols, and incomplete radiative forcing accounting (Medhaug et al. 2017, Nature).\nNot a pause in warming — total heat content continued to rise — but a slowdown in the rate of surface temperature increase.",
     "crumbs": [
-      "Hiatus",
-      "Metrics"
+      "Metrics",
+      "Terms"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html",
-    "href": "projects/hiatus/draft/chapters/03-teleconnection.html",
-    "title": "Teleconnection attribution",
+    "objectID": "metrics/terms.html#global-warming-hiatus",
+    "href": "metrics/terms.html#global-warming-hiatus",
+    "title": "Terms",
     "section": "",
-    "text": "Large-scale climate modes influence lake thermal regimes through atmospheric and oceanic teleconnections. We evaluate how five major teleconnection indices–ENSO (Nino3.4), PDO, AMO, NAO, and AO–contribute to the observed STL trend and its first difference across the eight temporal response types.\nThe analysis proceeds in two levels: (1) regression of the annual STL trend on the five indices, and (2) regression of the first-differenced STL trend on the same indices. Level 1 captures which indices drive the long-term trend level; Level 2 captures which indices drive year-to-year changes in trend slope.\n\n\n\n\n\n\n\n\n\nNoteFinding 14\n\n\n\nAMO is the dominant driver of STL trend across all clusters. The global mean standardised coefficient is \\(\\beta = 0.56\\), with a partial \\(R^2\\) of 0.34. PDO is the second strongest driver (\\(\\beta = -0.18\\), partial \\(R^2 = 0.05\\)). ENSO, NAO, and AO have weak independent effects.\n\n\n\n\n\n\n\n\nNoteFinding 15\n\n\n\nAMO dominance varies by cluster. C5 (warming Europe) has the highest AMO coefficient (\\(\\beta = 0.69\\), partial \\(R^2 = 0.49\\)). C4 (decelerating North America) has the lowest AMO effect but the strongest PDO effect (\\(\\beta = -0.31\\)).\n\n\n\n\n\n\n\n\n\n\nFigure 1: Teleconnection attribution by cluster: standardised coefficients, partial \\(R^2\\), and annual teleconnection index histories.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteFinding 16\n\n\n\nThe five indices explain less variance in the first-differenced STL trend (mean \\(R^2 = 0.26\\)) than in the trend level (mean \\(R^2 = 0.43\\)). This suggests that teleconnection indices are better at explaining long-term trend levels than year-to-year changes in trend slope.\n\n\n\n\n\n\n\n\nNoteFinding 17\n\n\n\nThe standardised coefficients for the first-differenced model are uniformly small (\\(|\\beta| &lt; 0.1\\) at the global level). This indicates that no single teleconnection index strongly drives the acceleration or deceleration of lake warming at the global scale.\n\n\n\n\n\nThe strong AMO signal across all clusters is consistent with the known role of Atlantic multidecadal variability in driving Northern Hemisphere temperature trends. The weak ENSO signal is expected: ENSO is an interannual phenomenon with limited persistence on the 40-year timescale of the STL trend.\nThe cluster-level variation in teleconnection response confirms that the eight temporal response types capture genuinely different climate sensitivities, not just statistical noise. Lakes in C5 (warming Europe) are most strongly influenced by AMO, while lakes in C4 (decelerating North America) are most strongly influenced by PDO.",
+    "text": "The period roughly 1998–2012 during which the rate of global mean surface temperature increase slowed relative to the preceding and following decades. Attributed to a combination of ocean heat uptake, internal variability (PDO negative phase), volcanic aerosols, and incomplete radiative forcing accounting (Medhaug et al. 2017, Nature).\nNot a pause in warming — total heat content continued to rise — but a slowdown in the rate of surface temperature increase.",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "3. Teleconnection"
+      "Metrics",
+      "Terms"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#background",
-    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#background",
-    "title": "Teleconnection attribution",
-    "section": "",
-    "text": "Large-scale climate modes influence lake thermal regimes through atmospheric and oceanic teleconnections. We evaluate how five major teleconnection indices–ENSO (Nino3.4), PDO, AMO, NAO, and AO–contribute to the observed STL trend and its first difference across the eight temporal response types.\nThe analysis proceeds in two levels: (1) regression of the annual STL trend on the five indices, and (2) regression of the first-differenced STL trend on the same indices. Level 1 captures which indices drive the long-term trend level; Level 2 captures which indices drive year-to-year changes in trend slope.",
+    "objectID": "metrics/terms.html#regime-shift",
+    "href": "metrics/terms.html#regime-shift",
+    "title": "Terms",
+    "section": "Regime shift",
+    "text": "Regime shift\nAn abrupt, persistent change in the statistical properties (typically the mean) of a time series. Detected by algorithms such as STARS. Not the same as a trend change; a regime shift implies a relatively sudden transition between two quasi-stable states.",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "3. Teleconnection"
+      "Metrics",
+      "Terms"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#level-1-trend-attribution",
-    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#level-1-trend-attribution",
-    "title": "Teleconnection attribution",
-    "section": "",
-    "text": "NoteFinding 14\n\n\n\nAMO is the dominant driver of STL trend across all clusters. The global mean standardised coefficient is \\(\\beta = 0.56\\), with a partial \\(R^2\\) of 0.34. PDO is the second strongest driver (\\(\\beta = -0.18\\), partial \\(R^2 = 0.05\\)). ENSO, NAO, and AO have weak independent effects.\n\n\n\n\n\n\n\n\nNoteFinding 15\n\n\n\nAMO dominance varies by cluster. C5 (warming Europe) has the highest AMO coefficient (\\(\\beta = 0.69\\), partial \\(R^2 = 0.49\\)). C4 (decelerating North America) has the lowest AMO effect but the strongest PDO effect (\\(\\beta = -0.31\\)).\n\n\n\n\n\n\n\n\n\n\nFigure 1: Teleconnection attribution by cluster: standardised coefficients, partial \\(R^2\\), and annual teleconnection index histories.",
+    "objectID": "metrics/terms.html#warming",
+    "href": "metrics/terms.html#warming",
+    "title": "Terms",
+    "section": "Warming",
+    "text": "Warming\nIn the context of lake temperature: the total change in LSWT over a study period, typically estimated via Theil–Sen slope × period length.",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "3. Teleconnection"
+      "Metrics",
+      "Terms"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#level-2-acceleration-attribution",
-    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#level-2-acceleration-attribution",
-    "title": "Teleconnection attribution",
-    "section": "",
-    "text": "NoteFinding 16\n\n\n\nThe five indices explain less variance in the first-differenced STL trend (mean \\(R^2 = 0.26\\)) than in the trend level (mean \\(R^2 = 0.43\\)). This suggests that teleconnection indices are better at explaining long-term trend levels than year-to-year changes in trend slope.\n\n\n\n\n\n\n\n\nNoteFinding 17\n\n\n\nThe standardised coefficients for the first-differenced model are uniformly small (\\(|\\beta| &lt; 0.1\\) at the global level). This indicates that no single teleconnection index strongly drives the acceleration or deceleration of lake warming at the global scale.",
+    "objectID": "metrics/terms.html#acceleration",
+    "href": "metrics/terms.html#acceleration",
+    "title": "Terms",
+    "section": "Acceleration",
+    "text": "Acceleration\nThe rate of change of the warming trend. Positive acceleration means warming is speeding up; negative means warming is slowing (not cooling). Estimated via Sen slope of first-differenced STL trend.",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "3. Teleconnection"
+      "Metrics",
+      "Terms"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/03-teleconnection.html#interpretation",
-    "href": "projects/hiatus/draft/chapters/03-teleconnection.html#interpretation",
-    "title": "Teleconnection attribution",
+    "objectID": "metrics/indices.html",
+    "href": "metrics/indices.html",
+    "title": "Indices",
     "section": "",
-    "text": "The strong AMO signal across all clusters is consistent with the known role of Atlantic multidecadal variability in driving Northern Hemisphere temperature trends. The weak ENSO signal is expected: ENSO is an interannual phenomenon with limited persistence on the 40-year timescale of the STL trend.\nThe cluster-level variation in teleconnection response confirms that the eight temporal response types capture genuinely different climate sensitivities, not just statistical noise. Lakes in C5 (warming Europe) are most strongly influenced by AMO, while lakes in C4 (decelerating North America) are most strongly influenced by PDO.",
+    "text": "Large-scale climate oscillation indices, typically derived from sea surface temperature or atmospheric pressure fields.\n\n\n\n\n\n\n\n\n\nIndex\nFull name\nBasin / region\nDominant period\n\n\n\n\nENSO (Niño 3.4)\nEl Niño–Southern Oscillation\nTropical Pacific\n2–7 yr\n\n\nPDO\nPacific Decadal Oscillation\nNorth Pacific\n20–30 yr\n\n\nAMO\nAtlantic Multidecadal Oscillation\nNorth Atlantic\n65–80 yr\n\n\nNAO\nNorth Atlantic Oscillation\nNorth Atlantic\nYear-round\n\n\nAO\nArctic Oscillation\nHemispheric\nYear-round\n\n\n\nAll available as monthly time series from NOAA. Typically converted to annual means for long-term trend analysis.\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "3. Teleconnection"
+      "Metrics",
+      "Indices"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/02-regional.html",
-    "href": "projects/hiatus/draft/chapters/02-regional.html",
-    "title": "Regional decomposition",
+    "objectID": "metrics/data.html",
+    "href": "metrics/data.html",
+    "title": "Data",
     "section": "",
-    "text": "Continent\nn\nWarming\nAccel\nWarming %\nAccel %\n\n\n\n\nNorth America\n49,589\n0.59 ± 0.64\n-0.53 ± 1.19\n83.4%\n28.6%\n\n\nEurope\n35,140\n0.98 ± 0.87\n1.38 ± 1.21\n88.0%\n86.8%\n\n\nAsia\n3,980\n0.59 ± 0.54\n0.58 ± 0.98\n89.9%\n71.9%\n\n\nSouth America\n2,406\n0.39 ± 0.26\n0.91 ± 0.53\n92.6%\n96.4%\n\n\nAfrica\n712\n0.50 ± 0.27\n0.27 ± 0.64\n99.9%\n66.6%\n\n\nOceania\n366\n0.57 ± 0.29\n0.77 ± 1.00\n94.3%\n73.8%\n\n\n\nWarming is raw annual Sen warming in °C / 40 yr. Accel is Sen acceleration of STL trend first difference in 10-3 °C / yr2.\n\n\n\n\n\n\nNoteFinding 10\n\n\n\nNorth America is the only continent with negative mean acceleration (-0.53 × 10-3 °C / yr2), meaning most lakes there are warming but decelerating. Europe has the strongest acceleration (+1.38).\n\n\nContinental labels are convenient for description but do not correspond to natural units of climate response. A lake in southern North America may share more with a lake in northern South America than with a lake in northern Canada. We therefore move from continental description to climate-based classification.\n\n\n\nWe classify lakes by the shape of their 40-year STL trend, combined with their mean temperature. Each lake’s annual STL trend is z-scored to remove mean and scale, then combined with the normalised mean STL temperature. The resulting feature vector is classified by \\(k\\)-means clustering (\\(K = 8\\)).\nThe clusters describe temporal response types: lakes with similar warming trajectories and temperature regimes are grouped together regardless of continental labels.\n\n\n\n\n\n\nNoteFinding 11\n\n\n\nEight temporal response types are identified. Most clusters are geographically coherent and physically interpretable: cold northwestern North America (C3, C7), eastern North America (C6), warm and cold European regimes (C2, C8), and a tropical belt (C4).\n\n\n\n\n\n\n\n\n\n\nFigure 1: Spatial distribution of the eight time-series response clusters. Marginal ridgelines show longitude and latitude density by cluster.\n\n\n\n\n\n\n\nC1: Cold high-latitude North America. This is the coldest cluster, with a mean STL trend of 1.8 °C. Warming is moderate (+0.36 °C / 40 yr, 99% positive) and acceleration is weakly positive (+0.13 × 10-3 °C / yr2, 60% positive). It is concentrated in northern North America (97%) with high spatial coherence (Moran’s I = 0.65). Regime-shift peaks occur in 1990–91 and 2006 (warming), and 1997–99 (cooling).\nC2: Decelerating high-latitude North America. Mean temperature is 2.8 °C. Warming is moderate (+0.35 °C / 40 yr, 99% positive), but acceleration is strongly negative (-1.33 × 10-3 °C / yr2, only 1% positive), meaning most lakes in this cluster are warming but decelerating. It is concentrated in northern North America (96%) with Moran’s I = 0.70. Regime-shift peaks occur in 2003–05 (warming), 1997 (cooling), and 2010–12 (cooling).\nC3: Strongly accelerating Europe. Mean temperature is 3.1 °C. Warming is strong (+0.71 °C / 40 yr, 99% positive), and acceleration is the highest among all clusters (+1.98 × 10-3 °C / yr2, 98% positive). It is dominated by Europe (74%) with Moran’s I = 0.65. Regime-shift peaks occur in 1989 and 2013–15 (warming), and 1989–93 and 2006 (cooling).\nC4: Cold decelerating North America. Mean temperature is 3.4 °C. Warming is weak (+0.29 °C / 40 yr, 99% positive), and acceleration is strongly negative (-1.02 × 10-3 °C / yr2, only 5% positive). It is the most spatially coherent cluster (Moran’s I = 0.93), concentrated almost entirely in North America (99%). Regime-shift peaks occur in 2005–07 (warming), 1998 (cooling), and 2013–14 (cooling).\nC5: Warming Europe. This is the largest cluster (21,493 lakes). Mean temperature is 4.3 °C. Warming is strong (+0.84 °C / 40 yr, 100% positive), and acceleration is weakly positive (+0.37 × 10-3 °C / yr2, 65% positive). It is dominated by Europe (68%) with Moran’s I = 0.61. Regime-shift peaks occur in 1998–99 and 2013–14 (warming), and 1992 and 2005–07 (cooling).\nC6: Decelerating eastern North America. Mean temperature is 5.0 °C. Warming is moderate (+0.46 °C / 40 yr, 100% positive), but acceleration is strongly negative (-1.02 × 10-3 °C / yr2, only 12% positive). It is concentrated in North America (97%) with Moran’s I = 0.80. Regime-shift peaks occur in 1992–95 (warming) and 1999–02 (cooling).\nC7: Strongly accelerating Europe. Mean temperature is 5.0 °C. Warming is moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is strongly positive (+1.83 × 10-3 °C / yr2, 95% positive). It is dominated by Europe (88%) with Moran’s I = 0.72. Regime-shift peaks occur in 1997–2000 (warming) and 2005–08 (cooling).\nC8: Warm tropical/subtropical lakes. This is the warmest cluster (mean 21.9 °C). Warming is moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is positive (+0.69 × 10-3 °C / yr2, 85% positive). It is geographically dispersed but concentrated in the subtropical latitude band (Moran’s I = 0.67). Regime-shift peaks occur in 2009–12 (warming), 1989–91 (cooling), and 2000 (cooling).\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Cluster–continent allocation. Each row sums to 100%. Right column = total lakes per cluster. Bottom row = total lakes per continent.\n\n\n\n\n\n\n\n\nCluster\nn\nTemp\nWarming\nAccel\nDominant\nMoran’s I\n\n\n\n\nC1\n8,636\n1.8 °C\n+0.36\n+0.13\nNA 97%\n0.65\n\n\nC2\n7,855\n2.8 °C\n+0.35\n-1.33\nNA 96%\n0.70\n\n\nC3\n16,401\n3.1 °C\n+0.71\n+1.98\nEU 74%\n0.65\n\n\nC4\n9,667\n3.4 °C\n+0.29\n-1.02\nNA 99%\n0.93\n\n\nC5\n21,493\n4.3 °C\n+0.84\n+0.37\nEU 68%\n0.61\n\n\nC6\n13,768\n5.0 °C\n+0.46\n-1.02\nNA 97%\n0.80\n\n\nC7\n8,649\n5.0 °C\n+0.57\n+1.83\nEU 88%\n0.72\n\n\nC8\n5,776\n21.9 °C\n+0.57\n+0.69\nSA 30%\n0.67\n\n\n\nTemp is mean STL trend in °C. Warming is Sen slope of annual STL trend in °C / 40 yr. Accel is Sen slope of first-differenced STL trend in 10-3 °C / yr2. Dominant is the continent with the highest fraction of lakes.\n\n\n\n\nEach cluster has its own characteristic regime-shift timing. If the clustering captures real differences in climate response, lakes within the same cluster should share similar shift-year patterns.\n\n\n\n\n\n\nNoteFinding 12\n\n\n\nEach cluster shows distinct shift-year peaks. The eight clusters differ not only in spatial pattern but also in physical characteristics. Temperature level, warming rate, acceleration, and regime-shift timing all vary systematically across clusters. STL trend shapes and shift timing are consistent within clusters and distinct between clusters.\n\n\n\n\n\n\n\n\n\n\nFigure 3: Cluster characteristics: distributions of temperature, warming, and acceleration, plus mean STL trend by cluster.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Regime-shift timing by cluster. Positive bars are warming shifts; negative bars are cooling shifts.\n\n\n\n\n\n\n\n\nThe eight clusters exhibit different spatial coherence patterns. Some form tight geographic clusters; others form latitudinal bands spanning multiple continents.\n\n\n\n\n\n\nNoteFinding 13\n\n\n\nFive clusters (C2, C3, C5, C6, C7) form tight geographic clusters, with more than 80% of lakes within ±30° of their centroid. Two clusters (C1, C8) form latitudinal bands spanning the full longitude range at high latitudes. One cluster (C4, tropical) is globally dispersed but concentrated in the subtropical latitude band.",
+    "text": "Lake Surface Water Temperature. Satellite-derived skin temperature of lake surfaces.",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "2. Regional decomposition"
+      "Metrics",
+      "Data"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/02-regional.html#continental-overview",
-    "href": "projects/hiatus/draft/chapters/02-regional.html#continental-overview",
-    "title": "Regional decomposition",
+    "objectID": "metrics/data.html#lswt",
+    "href": "metrics/data.html#lswt",
+    "title": "Data",
     "section": "",
-    "text": "Continent\nn\nWarming\nAccel\nWarming %\nAccel %\n\n\n\n\nNorth America\n49,589\n0.59 ± 0.64\n-0.53 ± 1.19\n83.4%\n28.6%\n\n\nEurope\n35,140\n0.98 ± 0.87\n1.38 ± 1.21\n88.0%\n86.8%\n\n\nAsia\n3,980\n0.59 ± 0.54\n0.58 ± 0.98\n89.9%\n71.9%\n\n\nSouth America\n2,406\n0.39 ± 0.26\n0.91 ± 0.53\n92.6%\n96.4%\n\n\nAfrica\n712\n0.50 ± 0.27\n0.27 ± 0.64\n99.9%\n66.6%\n\n\nOceania\n366\n0.57 ± 0.29\n0.77 ± 1.00\n94.3%\n73.8%\n\n\n\nWarming is raw annual Sen warming in °C / 40 yr. Accel is Sen acceleration of STL trend first difference in 10-3 °C / yr2.\n\n\n\n\n\n\nNoteFinding 10\n\n\n\nNorth America is the only continent with negative mean acceleration (-0.53 × 10-3 °C / yr2), meaning most lakes there are warming but decelerating. Europe has the strongest acceleration (+1.38).\n\n\nContinental labels are convenient for description but do not correspond to natural units of climate response. A lake in southern North America may share more with a lake in northern South America than with a lake in northern Canada. We therefore move from continental description to climate-based classification.",
+    "text": "Lake Surface Water Temperature. Satellite-derived skin temperature of lake surfaces.",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "2. Regional decomposition"
+      "Metrics",
+      "Data"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/02-regional.html#temporal-response-types",
-    "href": "projects/hiatus/draft/chapters/02-regional.html#temporal-response-types",
-    "title": "Regional decomposition",
-    "section": "",
-    "text": "We classify lakes by the shape of their 40-year STL trend, combined with their mean temperature. Each lake’s annual STL trend is z-scored to remove mean and scale, then combined with the normalised mean STL temperature. The resulting feature vector is classified by \\(k\\)-means clustering (\\(K = 8\\)).\nThe clusters describe temporal response types: lakes with similar warming trajectories and temperature regimes are grouped together regardless of continental labels.\n\n\n\n\n\n\nNoteFinding 11\n\n\n\nEight temporal response types are identified. Most clusters are geographically coherent and physically interpretable: cold northwestern North America (C3, C7), eastern North America (C6), warm and cold European regimes (C2, C8), and a tropical belt (C4).\n\n\n\n\n\n\n\n\n\n\nFigure 1: Spatial distribution of the eight time-series response clusters. Marginal ridgelines show longitude and latitude density by cluster.\n\n\n\n\n\n\n\nC1: Cold high-latitude North America. This is the coldest cluster, with a mean STL trend of 1.8 °C. Warming is moderate (+0.36 °C / 40 yr, 99% positive) and acceleration is weakly positive (+0.13 × 10-3 °C / yr2, 60% positive). It is concentrated in northern North America (97%) with high spatial coherence (Moran’s I = 0.65). Regime-shift peaks occur in 1990–91 and 2006 (warming), and 1997–99 (cooling).\nC2: Decelerating high-latitude North America. Mean temperature is 2.8 °C. Warming is moderate (+0.35 °C / 40 yr, 99% positive), but acceleration is strongly negative (-1.33 × 10-3 °C / yr2, only 1% positive), meaning most lakes in this cluster are warming but decelerating. It is concentrated in northern North America (96%) with Moran’s I = 0.70. Regime-shift peaks occur in 2003–05 (warming), 1997 (cooling), and 2010–12 (cooling).\nC3: Strongly accelerating Europe. Mean temperature is 3.1 °C. Warming is strong (+0.71 °C / 40 yr, 99% positive), and acceleration is the highest among all clusters (+1.98 × 10-3 °C / yr2, 98% positive). It is dominated by Europe (74%) with Moran’s I = 0.65. Regime-shift peaks occur in 1989 and 2013–15 (warming), and 1989–93 and 2006 (cooling).\nC4: Cold decelerating North America. Mean temperature is 3.4 °C. Warming is weak (+0.29 °C / 40 yr, 99% positive), and acceleration is strongly negative (-1.02 × 10-3 °C / yr2, only 5% positive). It is the most spatially coherent cluster (Moran’s I = 0.93), concentrated almost entirely in North America (99%). Regime-shift peaks occur in 2005–07 (warming), 1998 (cooling), and 2013–14 (cooling).\nC5: Warming Europe. This is the largest cluster (21,493 lakes). Mean temperature is 4.3 °C. Warming is strong (+0.84 °C / 40 yr, 100% positive), and acceleration is weakly positive (+0.37 × 10-3 °C / yr2, 65% positive). It is dominated by Europe (68%) with Moran’s I = 0.61. Regime-shift peaks occur in 1998–99 and 2013–14 (warming), and 1992 and 2005–07 (cooling).\nC6: Decelerating eastern North America. Mean temperature is 5.0 °C. Warming is moderate (+0.46 °C / 40 yr, 100% positive), but acceleration is strongly negative (-1.02 × 10-3 °C / yr2, only 12% positive). It is concentrated in North America (97%) with Moran’s I = 0.80. Regime-shift peaks occur in 1992–95 (warming) and 1999–02 (cooling).\nC7: Strongly accelerating Europe. Mean temperature is 5.0 °C. Warming is moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is strongly positive (+1.83 × 10-3 °C / yr2, 95% positive). It is dominated by Europe (88%) with Moran’s I = 0.72. Regime-shift peaks occur in 1997–2000 (warming) and 2005–08 (cooling).\nC8: Warm tropical/subtropical lakes. This is the warmest cluster (mean 21.9 °C). Warming is moderate (+0.57 °C / 40 yr, 99% positive), and acceleration is positive (+0.69 × 10-3 °C / yr2, 85% positive). It is geographically dispersed but concentrated in the subtropical latitude band (Moran’s I = 0.67). Regime-shift peaks occur in 2009–12 (warming), 1989–91 (cooling), and 2000 (cooling).\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Cluster–continent allocation. Each row sums to 100%. Right column = total lakes per cluster. Bottom row = total lakes per continent.\n\n\n\n\n\n\n\n\nCluster\nn\nTemp\nWarming\nAccel\nDominant\nMoran’s I\n\n\n\n\nC1\n8,636\n1.8 °C\n+0.36\n+0.13\nNA 97%\n0.65\n\n\nC2\n7,855\n2.8 °C\n+0.35\n-1.33\nNA 96%\n0.70\n\n\nC3\n16,401\n3.1 °C\n+0.71\n+1.98\nEU 74%\n0.65\n\n\nC4\n9,667\n3.4 °C\n+0.29\n-1.02\nNA 99%\n0.93\n\n\nC5\n21,493\n4.3 °C\n+0.84\n+0.37\nEU 68%\n0.61\n\n\nC6\n13,768\n5.0 °C\n+0.46\n-1.02\nNA 97%\n0.80\n\n\nC7\n8,649\n5.0 °C\n+0.57\n+1.83\nEU 88%\n0.72\n\n\nC8\n5,776\n21.9 °C\n+0.57\n+0.69\nSA 30%\n0.67\n\n\n\nTemp is mean STL trend in °C. Warming is Sen slope of annual STL trend in °C / 40 yr. Accel is Sen slope of first-differenced STL trend in 10-3 °C / yr2. Dominant is the continent with the highest fraction of lakes.",
+    "objectID": "metrics/data.html#glast",
+    "href": "metrics/data.html#glast",
+    "title": "Data",
+    "section": "GLAST",
+    "text": "GLAST\nGlobal Lake Surface Temperature dataset. Daily LSWT for ~92,000 lakes globally, 1981–2020. Derived from satellite thermal infrared imagery.",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "2. Regional decomposition"
+      "Metrics",
+      "Data"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/02-regional.html#regime-shift-timing-by-response-type",
-    "href": "projects/hiatus/draft/chapters/02-regional.html#regime-shift-timing-by-response-type",
-    "title": "Regional decomposition",
-    "section": "",
-    "text": "Each cluster has its own characteristic regime-shift timing. If the clustering captures real differences in climate response, lakes within the same cluster should share similar shift-year patterns.\n\n\n\n\n\n\nNoteFinding 12\n\n\n\nEach cluster shows distinct shift-year peaks. The eight clusters differ not only in spatial pattern but also in physical characteristics. Temperature level, warming rate, acceleration, and regime-shift timing all vary systematically across clusters. STL trend shapes and shift timing are consistent within clusters and distinct between clusters.\n\n\n\n\n\n\n\n\n\n\nFigure 3: Cluster characteristics: distributions of temperature, warming, and acceleration, plus mean STL trend by cluster.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Regime-shift timing by cluster. Positive bars are warming shifts; negative bars are cooling shifts.",
+    "objectID": "metrics/data.html#era5-land",
+    "href": "metrics/data.html#era5-land",
+    "title": "Data",
+    "section": "ERA5-Land",
+    "text": "ERA5-Land\nReanalysis dataset from ECMWF. Provides land surface variables (temperature, radiation, wind, evaporation, etc.) at ~9 km resolution, hourly. Useful as auxiliary climate drivers for lake temperature analysis.",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "2. Regional decomposition"
+      "Metrics",
+      "Data"
     ]
   },
   {
-    "objectID": "projects/hiatus/draft/chapters/02-regional.html#spatial-coherence",
-    "href": "projects/hiatus/draft/chapters/02-regional.html#spatial-coherence",
-    "title": "Regional decomposition",
-    "section": "",
-    "text": "The eight clusters exhibit different spatial coherence patterns. Some form tight geographic clusters; others form latitudinal bands spanning multiple continents.\n\n\n\n\n\n\nNoteFinding 13\n\n\n\nFive clusters (C2, C3, C5, C6, C7) form tight geographic clusters, with more than 80% of lakes within ±30° of their centroid. Two clusters (C1, C8) form latitudinal bands spanning the full longitude range at high latitudes. One cluster (C4, tropical) is globally dispersed but concentrated in the subtropical latitude band.",
+    "objectID": "metrics/data.html#hydrolakes",
+    "href": "metrics/data.html#hydrolakes",
+    "title": "Data",
+    "section": "HydroLAKES",
+    "text": "HydroLAKES\nGlobal database of lake polygons and attributes (area, depth, volume, shoreline length, etc.). Used for lake morphometry and spatial classification.",
     "crumbs": [
-      "Hiatus",
-      "Draft",
-      "2. Regional decomposition"
+      "Metrics",
+      "Data"
     ]
   },
   {
-    "objectID": "projects/hiatus/log/index.html",
-    "href": "projects/hiatus/log/index.html",
-    "title": "Hiatus — Log",
+    "objectID": "explorations/warming-acceleration/log/2026-04-09.html",
+    "href": "explorations/warming-acceleration/log/2026-04-09.html",
+    "title": "2026-04-09",
     "section": "",
-    "text": "Migrated from Typst to Quarto\nCompleted teleconnection three-level attribution\nAMO dominant driver (β=0.56, partial R²=0.34)\nRestructured project as multi-project research site",
+    "text": "Time range of GloboLakes and ARC-Lake is limited, not covering the post-hiatus period.\nUse ESA CCI validate the post-hiatus trend.\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Dev Log"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-04-09"
     ]
   },
   {
-    "objectID": "projects/hiatus/log/index.html#section",
-    "href": "projects/hiatus/log/index.html#section",
-    "title": "Hiatus — Log",
+    "objectID": "explorations/warming-acceleration/log/2025-11-27.html",
+    "href": "explorations/warming-acceleration/log/2025-11-27.html",
+    "title": "2025-11-27",
     "section": "",
-    "text": "Migrated from Typst to Quarto\nCompleted teleconnection three-level attribution\nAMO dominant driver (β=0.56, partial R²=0.34)\nRestructured project as multi-project research site",
+    "text": "Results is parameters-sensitive. E.g., min-segment, different method.\nConsidering turning to quantitative analysis: calculate the slope or something.\n\n\n\n Back to top",
     "crumbs": [
-      "Hiatus",
-      "Dev Log"
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2025-11-27"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-05-28.html",
+    "href": "explorations/warming-acceleration/log/2026-05-28.html",
+    "title": "2026-05-28",
+    "section": "",
+    "text": "Rerun STL again. With nt=199, trend component is significantly smoothed, sawtooth basically eliminated.\nAnd do the STARS regime shift detection on the trend component.\n\n\n\n Back to top",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-05-28"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-07-01.html",
+    "href": "explorations/warming-acceleration/log/2026-07-01.html",
+    "title": "2026-07-01",
+    "section": "",
+    "text": "Discussed with advisor. Several points to deal.\nIce. In previous explore, I don’t even remember how I dealed with the 0 temperature data. Need to calculate the ice cover days in monthly and annual scale.\nClustering. Too many clusters, hard to explain the meaning of each cluster.\nAttribution. Teleconnection analysis showed that the 5 teleconnection indices are not significantly correlated with the wamring speed and acceleration. Maybe we need to consider the local climate factors or geographical factors.\n\n\n\n Back to top",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-07-01"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-05-08.html",
+    "href": "explorations/warming-acceleration/log/2026-05-08.html",
+    "title": "2026-05-08",
+    "section": "",
+    "text": "Feedback from advisor: progress is slow, prone to getting stuck in details; should quickly shift to a paper-writing\nAdjust the story. Not using the “hiatus” as the lead, but first describe “what is observed”, and then cautiously discuss “what it might mean”.\nSo the main parts of the paper should contain: - Global scale description - Regional and temporal scale description - Driving factors (optional) - Ecological effects (optional)\n\n\n\n Back to top",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-05-08"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-05-27.html",
+    "href": "explorations/warming-acceleration/log/2026-05-27.html",
+    "title": "2026-05-27",
+    "section": "",
+    "text": "Back from the “business trip”, relaunch the STL decomposition workflow (interrupted for nearly 3 weeks!).\nRerun STL with adjusted parameters, takes about 1 hour for one run.\nTOCHECK: whether the sawtooth in the trend component of the new decomposition result is improved\n\n\n\n Back to top",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-05-27"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-07-08.html",
+    "href": "explorations/warming-acceleration/log/2026-07-08.html",
+    "title": "2026-07-08",
+    "section": "",
+    "text": "After deal with the ice cover days, result changes a little, but not much.\nTry to use 1981–1990 as the baseline period to normalize the time series. And then do PCA and clustering.\nShould I use the raw series or the STL trend to do PCA and clustering?",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-07-08"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-07-08.html#thoughts",
+    "href": "explorations/warming-acceleration/log/2026-07-08.html#thoughts",
+    "title": "2026-07-08",
+    "section": "Thoughts",
+    "text": "Thoughts\nLet’s figure all the things out.\nMean and trend can be calculated from the temperature time series. Mean means the average temperature level, and trend means the warming speed.\nIf we do a first-difference on it, we can get the overall acceleration by the trend of the 1st-difference series. E.g., the acceleration is i °C/year2, meaning that the warming speed increases i °C/year every year on average.\nAnd, since we have the great STARS algorithm, we can also detect the regime shifts in the 1st-difference (hereinafter referred to as 1d) series. STARS detects the shifts in the mean of the series. Regimes differ in the mean. So if we apply STARS to the 1d series, we can detect the shifts in the warming speed, with each shifts representing a change in the warming speed.",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-07-08"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-07-08.html#current",
+    "href": "explorations/warming-acceleration/log/2026-07-08.html#current",
+    "title": "2026-07-08",
+    "section": "Current",
+    "text": "Current\nFirst of all, almost all lakes are warming, but among all lakes: - warming speed is different - acceleration is different\nFor one lake, the warming speed is not constant, it changes over time. So we can detect the shifts in the warming speed.\nAbout the clustering, we now use the STL trend to compute the annual anomaly relative to a baseline period, which is 1981–1990. Then we do PCA and clustering on the anomaly series.\nK-means clustring, K=5 is the best parameter.",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-07-08"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2025-11-28.html",
+    "href": "explorations/warming-acceleration/log/2025-11-28.html",
+    "title": "2025-11-28",
+    "section": "",
+    "text": "I think it is needed to compare different algorithms and parameters.\nSuggestions from advisor: detrending; regional grouping.\n\n\n\n Back to top",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2025-11-28"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-03-31.html",
+    "href": "explorations/warming-acceleration/log/2026-03-31.html",
+    "title": "2026-03-31",
+    "section": "",
+    "text": "Finished 9 lake temperature / climate change literature notes.\nKey points: Xiao and Ren (2023) (North Pacific SST 2013/14 regime shift), Pi et al. (2022) (GLAKES dataset), Cohen et al. (2014), Dai and Wang (2018), Tong et al. (2023), Woolway et al. (2017), Xie and Kosaka (2017)\n\n\n\n\n Back to topReferences\n\nCohen, Judah, James A. Screen, Jason C. Furtado, et al. 2014. “Recent Arctic Amplification and Extreme Mid-Latitude Weather.” Nature Geoscience 7 (9): 627–37. https://doi.org/10.1038/ngeo2234.\n\n\nDai, Xin-Gang, and Ping Wang. 2018. “Identifying the Early 2000s Hiatus Associated with Internal Climate Variability.” Scientific Reports 8 (1): 13602. https://doi.org/10.1038/s41598-018-31862-z.\n\n\nPi, Xuehui, Qiuqi Luo, Lian Feng, et al. 2022. “Mapping Global Lake Dynamics Reveals the Emerging Roles of Small Lakes.” Nature Communications 13 (1): 5777. https://doi.org/10.1038/s41467-022-33239-3.\n\n\nTong, Yan, Lian Feng, Xinchi Wang, Xuehui Pi, Wang Xu, and R. Iestyn Woolway. 2023. “Global Lakes Are Warming Slower Than Surface Air Temperature Due to Accelerated Evaporation.” Nature Water 1 (11): 929–40. https://doi.org/10.1038/s44221-023-00148-8.\n\n\nWoolway, R. Iestyn, Martin T. Dokulil, Wlodzimierz Marszelewski, Martin Schmid, Damien Bouffard, and Christopher J. Merchant. 2017. “Warming of Central European Lakes and Their Response to the 1980s Climate Regime Shift.” Climatic Change 142 (3): 505–20. https://doi.org/10.1007/s10584-017-1966-4.\n\n\nXiao, Dong, and Hong-Li Ren. 2023. “A Regime Shift in North Pacific Annual Mean Sea Surface Temperature in 2013/14.” Frontiers in Earth Science 10 (January): 987349. https://doi.org/10.3389/feart.2022.987349.\n\n\nXie, Shang-Ping, and Yu Kosaka. 2017. “What Caused the Global Surface Warming Hiatus of 1998–2013?” Current Climate Change Reports 3 (2): 128–40. https://doi.org/10.1007/s40641-017-0063-0.",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-03-31"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2025-11-05.html",
+    "href": "explorations/warming-acceleration/log/2025-11-05.html",
+    "title": "2025-11-05",
+    "section": "",
+    "text": "GEE is shit(sorry Google). Let’s deal with ERA5-Land locally.\nLake cover &gt; 0.8 && connection &gt; 2 -&gt; lake.\nDirectly use “lake mix-layer temperature” as lake surface temperature.\nTime range: 1978–2023, monthly scale. (3 years extended, better mutation detection)\n\n\n\n Back to top",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2025-11-05"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-03-26.html",
+    "href": "explorations/warming-acceleration/log/2026-03-26.html",
+    "title": "2026-03-26",
+    "section": "",
+    "text": "Congnitive update after 3 months of no record.\nTemporal scale of “hiatus” should be defined at decadal scale (10-15 years), previously misused 4-5 year window.\nWe might need 3 layer to illustrate the regime shift: - Statistical layer: mean/slope mutation - Climate dynamics layer: PDO/NAO/… mode flip - Ecological mechanism layer: feedback change\nCore question: Are global lakes entering a warming acceleration phase after 2012?\nUse STL decomposition + STARS analysis: 99.6% of lakes show overall warming, mean 0.58 °C.\nShifts peak at 1990 (8.0%), not a boundary artifact.\nBig difference among regions.\nPDO lagged bimodal (0 month / 36 month); AMO dominant (R=0.52, 99.1% positive correlation)\n\n\n\n Back to top",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-03-26"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-04-07.html",
+    "href": "explorations/warming-acceleration/log/2026-04-07.html",
+    "title": "2026-04-07",
+    "section": "",
+    "text": "Finished a draft.\nDownloading GloboLakes, ARC-Lake and HydroLAKES data.\n\n\n\n Back to top",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-04-07"
+    ]
+  },
+  {
+    "objectID": "explorations/index.html",
+    "href": "explorations/index.html",
+    "title": "Explorations",
+    "section": "",
+    "text": "All explorations — finished, cancelled, in-progress, or not started.",
+    "crumbs": [
+      "Explorations"
+    ]
+  },
+  {
+    "objectID": "explorations/index.html#warming-acceleration",
+    "href": "explorations/index.html#warming-acceleration",
+    "title": "Explorations",
+    "section": "Warming Acceleration",
+    "text": "Warming Acceleration\n\nprose · draft · log\n\n\nDo global lakes exhibit heterogeneous warming acceleration — or deceleration — across space and time, and what drives it?\n92,245 lakes, GLAST dataset, 1981–2020.\nMethods: STL decomposition, STARS regime shifts, K-means clustering, teleconnection attribution.\nThe question began with the global warming hiatus as a starting point, but the focus has broadened to the full spatiotemporal structure of lake warming heterogeneity.",
+    "crumbs": [
+      "Explorations"
+    ]
+  },
+  {
+    "objectID": "notes/paper-collection.html",
+    "href": "notes/paper-collection.html",
+    "title": "Hiatus Paper Collection",
+    "section": "",
+    "text": "Collected sentences and excerpts from related papers, useful for writing the warming acceleration paper.",
+    "crumbs": [
+      "Notes",
+      "Paper Collection"
+    ]
+  },
+  {
+    "objectID": "notes/paper-collection.html#winslow-et-al.-2018-erl",
+    "href": "notes/paper-collection.html#winslow-et-al.-2018-erl",
+    "title": "Hiatus Paper Collection",
+    "section": "Winslow et al. (2018) — ERL",
+    "text": "Winslow et al. (2018) — ERL\n\n155 lakes globally; 83% exhibited reduced warming rates during the hiatus\nTwo-period comparison (pre-hiatus vs hiatus) rather than changepoint detection\nLake-specific response heterogeneity not explained by morphometric attributes",
+    "crumbs": [
+      "Notes",
+      "Paper Collection"
+    ]
+  },
+  {
+    "objectID": "notes/paper-collection.html#zhou-et-al.-2023-nature-communications",
+    "href": "notes/paper-collection.html#zhou-et-al.-2023-nature-communications",
+    "title": "Hiatus Paper Collection",
+    "section": "Zhou et al. (2023) — Nature Communications",
+    "text": "Zhou et al. (2023) — Nature Communications\n\n“the rate of lake heating slows as air warms”\nEvaporative cooling as negative feedback on lake warming\nLocal climate (air temp, wind, humidity, irradiance), land cover, geomorphology, and water transparency explain &gt;30% of lake–air temperature difference variance\nClear, cold, deep, high-altitude, undisturbed lakes are most sensitive to air temperature changes",
+    "crumbs": [
+      "Notes",
+      "Paper Collection"
+    ]
+  },
+  {
+    "objectID": "notes/paper-collection.html#oreilly-et-al.-2015-grl",
+    "href": "notes/paper-collection.html#oreilly-et-al.-2015-grl",
+    "title": "Hiatus Paper Collection",
+    "section": "O’Reilly et al. (2015) — GRL",
+    "text": "O’Reilly et al. (2015) — GRL\n\nGlobal lake summer SST warming at ~0.34 °C/decade\nGLAST dataset: satellite-derived lake surface water temperature",
+    "crumbs": [
+      "Notes",
+      "Paper Collection"
+    ]
+  },
+  {
+    "objectID": "notes/paper-collection.html#woolway-et-al.-2017-climatic-change",
+    "href": "notes/paper-collection.html#woolway-et-al.-2017-climatic-change",
+    "title": "Hiatus Paper Collection",
+    "section": "Woolway et al. (2017) — Climatic Change",
+    "text": "Woolway et al. (2017) — Climatic Change\n\nWind stilling → extended stratification → surface warming amplification\nUK lake simulations",
+    "crumbs": [
+      "Notes",
+      "Paper Collection"
+    ]
+  },
+  {
+    "objectID": "notes/paper-collection.html#magnuson-et-al.-2000-science",
+    "href": "notes/paper-collection.html#magnuson-et-al.-2000-science",
+    "title": "Hiatus Paper Collection",
+    "section": "Magnuson et al. (2000) — Science",
+    "text": "Magnuson et al. (2000) — Science\n\nSystematic documentation of long-term ice season shortening in N. hemisphere lakes",
+    "crumbs": [
+      "Notes",
+      "Paper Collection"
+    ]
+  },
+  {
+    "objectID": "notes/paper-collection.html#medhaug-et-al.-2017-nature",
+    "href": "notes/paper-collection.html#medhaug-et-al.-2017-nature",
+    "title": "Hiatus Paper Collection",
+    "section": "Medhaug et al. (2017) — Nature",
+    "text": "Medhaug et al. (2017) — Nature\n\nMulti-mechanism review of the global warming hiatus\nOcean heat uptake, internal variability, incomplete forcings",
+    "crumbs": [
+      "Notes",
+      "Paper Collection"
+    ]
+  },
+  {
+    "objectID": "notes/paper-collection.html#lund-et-al.-2023-j.-climate",
+    "href": "notes/paper-collection.html#lund-et-al.-2023-j.-climate",
+    "title": "Hiatus Paper Collection",
+    "section": "Lund et al. (2023) — J. Climate",
+    "text": "Lund et al. (2023) — J. Climate\n\nBest practices for climate changepoint detection\nSensitivity to assumptions; external validation needed for attribution",
+    "crumbs": [
+      "Notes",
+      "Paper Collection"
+    ]
+  },
+  {
+    "objectID": "notes/papers/fyfe2016.html",
+    "href": "notes/papers/fyfe2016.html",
+    "title": "fyfe2016: Making Sense of the Early-2000s Warming Slowdown",
+    "section": "",
+    "text": "NCC commentary, slowdown was real, but not a stop, and mainly driven by internal decadal variability plus natural forcing.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "fyfe2016: Making Sense of the Early-2000s Warming Slowdown"
+    ]
+  },
+  {
+    "objectID": "notes/papers/fyfe2016.html#if-there-is-a-hiatus",
+    "href": "notes/papers/fyfe2016.html#if-there-is-a-hiatus",
+    "title": "fyfe2016: Making Sense of the Early-2000s Warming Slowdown",
+    "section": "If there is a “hiatus”?",
+    "text": "If there is a “hiatus”?\nSome paper argues that the “hiatus” or “slowdown” is not real, lack of statistical significance, or just a bais in the data.\nThis paper says it’s real, statistically observable.\nOne important point is that we should pick the baseline period carefully. Some papers pick 1950-1999 and argue that the slowdown is not there. But the period that has the similar physical processes and human influence with the under review period (about 2001-2014) should be 1972-2001.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "fyfe2016: Making Sense of the Early-2000s Warming Slowdown"
+    ]
+  },
+  {
+    "objectID": "notes/papers/fyfe2016.html#section",
+    "href": "notes/papers/fyfe2016.html#section",
+    "title": "fyfe2016: Making Sense of the Early-2000s Warming Slowdown",
+    "section": ".",
+    "text": ".\nThe vital scientific question is not “is there a hiatus/slowdown”, but “how do the internal variability and external forcing combine and influence the surface temperature trend”.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "fyfe2016: Making Sense of the Early-2000s Warming Slowdown"
+    ]
+  },
+  {
+    "objectID": "notes/papers/cohen2014.html",
+    "href": "notes/papers/cohen2014.html",
+    "title": "cohen2014: Recent Arctic Amplification and Extreme Mid-Latitude Weather",
+    "section": "",
+    "text": "Artic amplification.\n\n\ncitation_key: cohen2014 (Cohen et al. (2014))\ntitle: Recent Arctic Amplification and Extreme Mid-Latitude Weather\nauthor: Judah Cohen, James A. Screen, Jason C. Furtado, Mathew Barlow, David Whittleston, Dim Coumou, Jennifer Francis, Klaus Dethloff, Dara Entekhabi, James Overland, Justin Jones\njournal: Nature Geoscience\nyear: 2014\ndoi: 10.1038/ngeo2234\n\n\n\nThe Arctic region has warmed more than twice as fast as the global average — a phenomenon known as Arctic amplification. The rapid Arctic warming has contributed to dramatic melting of Arctic sea ice and spring snow cover, at a pace greater than that simulated by climate models.\n\n\n\n\n\n Back to topReferences\n\nCohen, Judah, James A. Screen, Jason C. Furtado, et al. 2014. “Recent Arctic Amplification and Extreme Mid-Latitude Weather.” Nature Geoscience 7 (9): 627–37. https://doi.org/10.1038/ngeo2234.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "cohen2014: Recent Arctic Amplification and Extreme Mid-Latitude Weather"
+    ]
+  },
+  {
+    "objectID": "notes/papers/dai2018.html",
+    "href": "notes/papers/dai2018.html",
+    "title": "dai2018: Identifying the Early 2000s Hiatus Associated with Internal Climate Variability",
+    "section": "",
+    "text": "citation_key: dai2018 (Dai and Wang (2018))\ntitle: Identifying the Early 2000s Hiatus Associated with Internal Climate Variability\nauthor: Xin-Gang Dai, Ping Wang\njournal: Scientific Reports\nyear: 2018\ndoi: 10.1038/s41598-018-31862-z\n\n\n\nThe hiatus is characterized as a near-zero trend on the decadal scale corresponding to the maximum P-value via an F-test in statistics.\n\n\nThe GWH is often attributed to internal climate variability, external forcing, or both. Recent cooling in the middle and eastern regions of the tropical Pacific has seemingly involved a phase change of the Interdecadal Pacific Oscillation (IPO) accompanying intensified trade winds. The GWH may also be associated with an increase in aerosols in the stratosphere during the period 2000–2010 because aerosols can increase optical depth, which generates countervailing forces against global warming. The GWH may also be explained in part by extensive heat uptake by the deep ocean or an extremely low number of sunspots during the latest solar activity cycle.\n\n\n…, which indicates that infilling and bias correction in the datasets increase the temperature, especially during the early 2000s, probably due to rapid warming in the Arctic region. Cohen et al. (2014)\n\n\n\n\ndai2018f1\n\n\n\n\n\n\n Back to topReferences\n\nCohen, Judah, James A. Screen, Jason C. Furtado, et al. 2014. “Recent Arctic Amplification and Extreme Mid-Latitude Weather.” Nature Geoscience 7 (9): 627–37. https://doi.org/10.1038/ngeo2234.\n\n\nDai, Xin-Gang, and Ping Wang. 2018. “Identifying the Early 2000s Hiatus Associated with Internal Climate Variability.” Scientific Reports 8 (1): 13602. https://doi.org/10.1038/s41598-018-31862-z.",
+    "crumbs": [
+      "Notes",
+      "Papers",
+      "dai2018: Identifying the Early 2000s Hiatus Associated with Internal Climate Variability"
+    ]
+  },
+  {
+    "objectID": "notes/index.html",
+    "href": "notes/index.html",
+    "title": "Notes",
+    "section": "",
+    "text": "Notes organised by form.",
+    "crumbs": [
+      "Notes",
+      "All Notes"
+    ]
+  },
+  {
+    "objectID": "notes/index.html#papers",
+    "href": "notes/index.html#papers",
+    "title": "Notes",
+    "section": "Papers",
+    "text": "Papers\nPer-paper notes — one file per paper.",
+    "crumbs": [
+      "Notes",
+      "All Notes"
+    ]
+  },
+  {
+    "objectID": "notes/index.html#points",
+    "href": "notes/index.html#points",
+    "title": "Notes",
+    "section": "Points",
+    "text": "Points\nExtracted observations, arguments, and claims from the literature. Not findings; views worth referencing.",
+    "crumbs": [
+      "Notes",
+      "All Notes"
+    ]
+  },
+  {
+    "objectID": "notes/index.html#hiatus-paper-collection",
+    "href": "notes/index.html#hiatus-paper-collection",
+    "title": "Notes",
+    "section": "Hiatus Paper Collection",
+    "text": "Hiatus Paper Collection\nCollected sentences and excerpts from related papers, useful for writing.",
+    "crumbs": [
+      "Notes",
+      "All Notes"
     ]
   }
 ]
