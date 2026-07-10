@@ -1,6 +1,5 @@
 ---
 title: Whether the Hiatus Actually Exists
-draft: true
 ---
 
 I previously believed that the "global warming hiatus"
