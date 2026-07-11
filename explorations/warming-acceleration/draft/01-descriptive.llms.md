@@ -57,11 +57,17 @@ The joint warming–acceleration states divide the lakes into four groups:
 
 Table 2: Joint warming and acceleration states.
 
+These four states summarize signs rather than effect sizes. In particular, a positive acceleration means that a trend is becoming more positive, not that a lake is necessarily warming rapidly. The pairwise distributions in [Figure 2](#fig-warming-acceleration-scatterplot-matrix) therefore show both the central structure and the sparse combinations that are obscured by the state counts in [Table 2](#tbl-joint-warming-acceleration-states).
+
 ![](01-descriptive_files/figure-html/fig-warming-acceleration-scatterplot-matrix-1.png)
 
-Figure 2: Pairwise relationships among mean temperature, warming speed, and acceleration. Diagonal panels show probability densities; upper panels show Pearson r (with significance stars), Spearman ρ, and LOESS pseudo-R; lower panels show scatter plots with LOESS smooths.
+Figure 2: Pairwise relationships among mean temperature, warming speed, and acceleration. Diagonal panels show probability densities; upper panels show Pearson r (with significance stars), Spearman ρ, and LOESS pseudo-R. Lower panels show KDE contours for observations above the 5th percentile of local density; lower-density observations are shown as points with opacity proportional to local density.
+
+Mean temperature is negatively associated with cumulative warming (\\r = -0.47\\), while the warming–acceleration association is much weaker (\\r = 0.19\\). Thus, the widespread warming reported in [Table 1 (b)](#tbl-warming-summary-stl-trend) does not imply a common temporal pathway: lakes with similar 40-year warming can be accelerating, decelerating, or changing little in their recent trend.
 
 ## Spatial pattern
+
+The hexagons in [Figure 3](#fig-spatial-warming-acceleration-hex) summarize lake-level estimates within 5° cells containing at least five lakes. Comparing the upper and lower panels separates where warming is strongest from where the underlying trend is becoming more or less positive; the two patterns need not coincide.
 
 ![](01-descriptive_files/figure-html/fig-spatial-warming-acceleration-hex-1.png)
 
@@ -77,5 +83,7 @@ Figure 3: Spatial pattern of lake warming and acceleration. Hexagons aggregate 
 | OC | 94.0% | 73.8% | 70.2% | 0.57 °C / 40 yr | 0.77 ×10⁻³ °C / yr² |
 
 Table 3: Continent-level spatial summary
+
+[Table 3](#tbl-spatial-continent-summary) reinforces this distinction. Europe combines high mean warming with predominantly positive acceleration, whereas North America has high warming prevalence but a negative mean acceleration. Continental values are descriptive aggregates: uneven lake coverage and within-continent spatial structure mean they should not be interpreted as area-weighted climate means.
 
 Back to top

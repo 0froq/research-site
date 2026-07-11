@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Regional – Exploration</title>
+<title>regional-visualisation-refactor – Exploration</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,30 +26,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html" rel="next">
-<link href="../../../explorations/warming-acceleration/draft/01-descriptive.html" rel="prev">
-<link href="../../../assets/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e9fc6a94ef31585fd0cabe86ae5e2f96.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-efb0671faf21d0116d696f9501e79374.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e9fc6a94ef31585fd0cabe86ae5e2f96.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-33f8c54c2431d042fdf68481eed37aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-176920a9fedb93692929dcd7d3039778.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-33f8c54c2431d042fdf68481eed37aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e9fc6a94ef31585fd0cabe86ae5e2f96.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-efb0671faf21d0116d696f9501e79374.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e9fc6a94ef31585fd0cabe86ae5e2f96.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-33f8c54c2431d042fdf68481eed37aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-176920a9fedb93692929dcd7d3039778.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-33f8c54c2431d042fdf68481eed37aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,51 +75,16 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Regional – Exploration">
+<meta property="og:title" content="Exploration">
 <meta property="og:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
-<meta property="og:image" content="https://froq.me/research-site/explorations/warming-acceleration/draft/02-regional_files/figure-html/fig-stl-cluster-map-violins-1.png">
 <meta property="og:site_name" content="Exploration">
-<meta property="og:image:height" content="3600">
-<meta property="og:image:width" content="4800">
-<meta name="twitter:title" content="Regional – Exploration">
+<meta name="twitter:title" content="Exploration">
 <meta name="twitter:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
-<meta name="twitter:image" content="https://froq.me/research-site/explorations/warming-acceleration/draft/02-regional_files/figure-html/fig-stl-cluster-map-violins-1.png">
-<meta name="twitter:image-height" content="3600">
-<meta name="twitter:image-width" content="4800">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -290,7 +253,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Exploration</span>
     </a>
   </div>
@@ -300,15 +263,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../../explorations/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../explorations/index.html"> 
 <span class="menu-text">Explorations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../metrics/index.html"> 
+    <a class="nav-link" href="../../metrics/index.html"> 
 <span class="menu-text">Metrics</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../notes/index.html"> 
+    <a class="nav-link" href="../../notes/index.html"> 
 <span class="menu-text">Notes</span></a>
   </li>  
 </ul>
@@ -320,380 +283,112 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/01-descriptive.html">Draft</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/02-regional.html">Regional</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../explorations/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Explorations</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Warming Acceleration</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Draft</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/draft/01-descriptive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Descriptive</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/draft/02-regional.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Regional</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Prose</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Whether the Hiatus Actually Exists</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Latest Log</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2025-10-22.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2025-10-22</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2025-11-04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2025-11-04</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2025-11-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2025-11-05</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2025-11-07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2025-11-07</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2025-11-27.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2025-11-27</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2025-11-28.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2025-11-28</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2025-12-03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2025-12-03</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2025-12-10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2025-12-10</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-03-26.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-03-26</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-03-31.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-03-31</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-04-07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-04-07</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-04-09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-04-09</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-04-10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-04-10</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-04-13.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-04-13</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-04-22.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-04-22</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-04-26.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-04-26</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-05-08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-05-08</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-05-27.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-05-27</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-05-28.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-05-28</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-05-31.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-05-31</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-06-12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-06-12</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-07-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-07-01</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-07-08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2026-07-08</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#temporal-response-types" id="toc-temporal-response-types" class="nav-link active" data-scroll-target="#temporal-response-types">Temporal response types</a></li>
+  <li><a href="#regional-visualization-refactor-implementation-plan" id="toc-regional-visualization-refactor-implementation-plan" class="nav-link active" data-scroll-target="#regional-visualization-refactor-implementation-plan">Regional Visualization Refactor Implementation Plan</a>
+  <ul class="collapse">
+  <li><a href="#task-1-remove-obsolete-experiments" id="toc-task-1-remove-obsolete-experiments" class="nav-link" data-scroll-target="#task-1-remove-obsolete-experiments">Task 1: Remove obsolete experiments</a></li>
+  <li><a href="#task-2-add-regional-data-helpers" id="toc-task-2-add-regional-data-helpers" class="nav-link" data-scroll-target="#task-2-add-regional-data-helpers">Task 2: Add regional data helpers</a></li>
+  <li><a href="#task-3-reduce-the-cluster-mapviolin-figure-to-plotting" id="toc-task-3-reduce-the-cluster-mapviolin-figure-to-plotting" class="nav-link" data-scroll-target="#task-3-reduce-the-cluster-mapviolin-figure-to-plotting">Task 3: Reduce the cluster map/violin figure to plotting</a></li>
+  <li><a href="#task-4-reduce-the-cluster-density-figure-to-plotting" id="toc-task-4-reduce-the-cluster-density-figure-to-plotting" class="nav-link" data-scroll-target="#task-4-reduce-the-cluster-density-figure-to-plotting">Task 4: Reduce the cluster-density figure to plotting</a></li>
+  <li><a href="#task-5-validate-rendered-figures" id="toc-task-5-validate-rendered-figures" class="nav-link" data-scroll-target="#task-5-validate-rendered-figures">Task 5: Validate rendered figures</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/explorations/warming-acceleration/draft/02-regional.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/explorations/warming-acceleration/draft/02-regional.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/docs/plans/2026-07-12-regional-visualisation-refactor.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/docs/plans/2026-07-12-regional-visualisation-refactor.md" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/01-descriptive.html">Draft</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/02-regional.html">Regional</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Regional</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
+<section id="regional-visualization-refactor-implementation-plan" class="level1">
+<h1>Regional Visualization Refactor Implementation Plan</h1>
+<blockquote class="blockquote">
+<p><strong>For Claude:</strong> REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.</p>
+</blockquote>
+<p><strong>Goal:</strong> Separate Chapter 2 regional rendering-time data preparation from plotting and remove obsolete commented experiments.</p>
+<p><strong>Architecture:</strong> Keep durable inputs in <code>data-process/</code>; add <code>shared/R/regional-helpers.R</code> for loading, joins, summary statistics, point-size derivation, metric-long data, and contour input preparation. Keep <code>02-regional.qmd</code> limited to helper calls, plot layers, Quarto tables, and explanatory text.</p>
+<p><strong>Tech Stack:</strong> Quarto, R, dplyr, tidyr, readr, ggplot2, GGally, patchwork, sf/rnaturalearth.</p>
+<hr>
+<section id="task-1-remove-obsolete-experiments" class="level3">
+<h3 class="anchored" data-anchor-id="task-1-remove-obsolete-experiments">Task 1: Remove obsolete experiments</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>explorations/warming-acceleration/draft/02-regional.qmd:431-1125</code></li>
+</ul>
+<p><strong>Step 1: Delete HTML-commented R blocks</strong></p>
+<p>Delete the four <code>&lt;!-- ```{r} ... ``` --&gt;</code> regions: the old cluster map/ridges, continent heatmap, regime-shift composition, and empty placeholder. Do not alter the rendered chapter text or the two active figures.</p>
+<p><strong>Step 2: Confirm cleanup</strong></p>
+<p>Run a structural scan and confirm no <code>&lt;!-- ```{r}</code> marker remains and that only active chunks remain.</p>
+</section>
+<section id="task-2-add-regional-data-helpers" class="level3">
+<h3 class="anchored" data-anchor-id="task-2-add-regional-data-helpers">Task 2: Add regional data helpers</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Create: <code>shared/R/regional-helpers.R</code></li>
+<li>Modify: <code>explorations/warming-acceleration/draft/02-regional.qmd:5-10</code></li>
+</ul>
+<p><strong>Step 1: Add stable response-type definitions</strong></p>
+<p>Define the K=5 cluster palette, names, and interpretations in the helper file. Keep these chapter-specific semantic definitions out of the generic figure-style file.</p>
+<p><strong>Step 2: Add <code>prepare_regional_cluster_data()</code></strong></p>
+<p>Read the three curated CSV inputs, join cluster assignment, metadata and thermal metrics, derive <code>point_size</code>, construct the cluster summary including the 2020 anomaly and display label, and return all data required by the map, violin plots, and inline table.</p>
+<p><strong>Step 3: Add <code>prepare_cluster_metric_long()</code> and <code>prepare_cluster_density_data()</code></strong></p>
+<p>Move metric reshaping, finite-value filtering, and density-panel limits to helpers. Return data frames only; keep density contour breaks and visual encodings in qmd.</p>
+<p><strong>Step 4: Source helpers and add an invisible setup chunk</strong></p>
+<p>Source <code>regional-helpers.R</code> from the Chapter 2 setup chunk. Add a cached, <code>include: false</code> setup chunk that calls the helper and exposes named objects for plotting and inline table access.</p>
+</section>
+<section id="task-3-reduce-the-cluster-mapviolin-figure-to-plotting" class="level3">
+<h3 class="anchored" data-anchor-id="task-3-reduce-the-cluster-mapviolin-figure-to-plotting">Task 3: Reduce the cluster map/violin figure to plotting</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>explorations/warming-acceleration/draft/02-regional.qmd:active cluster figure</code></li>
+</ul>
+<p><strong>Step 1: Delete local ingestion, joins, summary functions, coastline conversion, and violin reshaping</strong></p>
+<p>Replace them with the setup outputs. Keep <code>cluster_table_value()</code>, <code>cluster_table_count()</code> and <code>cluster_table_anomaly()</code> in the invisible setup because they serve inline Quarto table cells.</p>
+<p><strong>Step 2: Use shared map elements and tokens</strong></p>
+<p>Replace manual coastline conversion with <code>the_geom_coastline()</code>, and replace hardcoded coastline/grid styles with <code>theme_map_grid()</code> and tokens. Preserve the existing map extent, legend labels, point-size encoding, and composed output.</p>
+<p><strong>Step 3: Keep plot-specific style local</strong></p>
+<p>Leave patchwork geometry, violin width, alpha, legend override, title text and figure layout in qmd because they are part of the figure’s presentation rather than data preparation.</p>
+</section>
+<section id="task-4-reduce-the-cluster-density-figure-to-plotting" class="level3">
+<h3 class="anchored" data-anchor-id="task-4-reduce-the-cluster-density-figure-to-plotting">Task 4: Reduce the cluster-density figure to plotting</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>explorations/warming-acceleration/draft/02-regional.qmd:active density figure</code></li>
+</ul>
+<p><strong>Step 1: Consume helper-provided density data</strong></p>
+<p>Replace the in-chunk <code>density_df</code> filter with <code>cluster_density_data</code> from the invisible setup.</p>
+<p><strong>Step 2: Remove dead continuous-colour legend configuration</strong></p>
+<p>The current polygons and contours use discrete cluster colour plus alpha; the unused continuous <code>scale_colour_gradient()</code> conflicts conceptually with that encoding and should be removed. Preserve the native discrete cluster legend and the per-cluster normalized density contours.</p>
+<p><strong>Step 3: Use shared theme/token primitives</strong></p>
+<p>Use <code>theme_map_grid()</code> or a narrowly scoped theme built from <code>theme_base(grid = TRUE)</code>, replacing hardcoded grey grid/contour tokens where their shared equivalents express the same purpose.</p>
+</section>
+<section id="task-5-validate-rendered-figures" class="level3">
+<h3 class="anchored" data-anchor-id="task-5-validate-rendered-figures">Task 5: Validate rendered figures</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>shared/R/regional-helpers.R</code></li>
+<li>Modify: <code>explorations/warming-acceleration/draft/02-regional.qmd</code></li>
+</ul>
+<p><strong>Step 1: Execute active figure chunks</strong></p>
+<p>Source both shared helper files and run the Chapter 2 setup, map/violin, and density chunks in R.</p>
+<p><strong>Step 2: Render Chapter 2</strong></p>
+<p>Run Quarto render for <code>02-regional.qmd</code>; confirm both figures and the inline cluster summary table render without errors.</p>
+<p><strong>Step 3: Inspect output</strong></p>
+<p>Verify K=5 labels, map geography, violin facets, cluster colours, and contour panel legends remain semantically unchanged.</p>
 
 
-<section id="temporal-response-types" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="temporal-response-types">Temporal response types</h2>
-<p>We classify lakes by the shape of their 1981–2020 annual STL-trend response. The current canonical classification uses per-lake baseline anomalies relative to 1981–1990, PCA retaining 95% of the trajectory variance, and <span class="math inline">\(k\)</span>-means clustering. The selected solution has five clusters (<span class="math inline">\(K = 5\)</span>).</p>
-<p>These clusters describe low-frequency lake-surface-temperature response types: lakes with similar STL-trend trajectories are grouped together regardless of continental labels. They complement the lake-level warming and acceleration metrics in Chapter 1: those metrics summarize overall change and its recent evolution, whereas the clusters retain the sequence of change through time.</p>
-<p><a href="#fig-stl-cluster-map-violins" class="quarto-xref">Figure&nbsp;1</a> asks whether these trajectory types have geographic structure. The map and violin panels place each type in the broader distributions of mean temperature, cumulative warming, and acceleration; cluster labels should therefore be read as response descriptions rather than regional categories.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-stl-cluster-map-violins" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-stl-cluster-map-violins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-regional_files/figure-html/fig-stl-cluster-map-violins-1.png" class="img-fluid figure-img" width="2400">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stl-cluster-map-violins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: STL-trend response clusters and their thermal metric distributions. (A) Global spatial distribution of the five clusters. (B-D) Violin plots of mean temperature, Sen slope, and STL-trend difference slope by cluster.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div id="tbl-stl-cluster-summary" class="column-page-inset quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-stl-cluster-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Summary of STL-trend response clusters
-</figcaption>
-<div aria-describedby="tbl-stl-cluster-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-stl-cluster-summary" class="caption-top table">
-<thead>
-<tr class="header">
-<th>Cluster</th>
-<th>Response type</th>
-<th>n lakes</th>
-<th>2020 anomaly</th>
-<th>Short interpretation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>C1</td>
-<td>Late-accelerating moderate warming</td>
-<td>20,444</td>
-<td>+0.86 °C</td>
-<td>Slow early change followed by stronger post-2000 warming</td>
-</tr>
-<tr class="even">
-<td>C2</td>
-<td>Early decline / late rebound</td>
-<td>12,072</td>
-<td>+0.67 °C</td>
-<td>Flat or slightly negative early trajectory, then late warming rebound</td>
-</tr>
-<tr class="odd">
-<td>C3</td>
-<td>Strong sustained warming</td>
-<td>8,581</td>
-<td>+1.15 °C</td>
-<td>Persistent warming throughout the full 40-year record</td>
-</tr>
-<tr class="even">
-<td>C4</td>
-<td>Weak / near-stable warming</td>
-<td>29,657</td>
-<td>+0.15 °C</td>
-<td>Largest low-response class, close to baseline through time</td>
-</tr>
-<tr class="odd">
-<td>C5</td>
-<td>Early warming then plateau</td>
-<td>21,491</td>
-<td>+0.31 °C</td>
-<td>Early warming followed by flattening or slight decline</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-<p>As shown in <a href="#tbl-stl-cluster-summary" class="quarto-xref">Table&nbsp;1</a>, C4 is the largest class (29,657 lakes) and remains closest to its baseline by 2020. At the other end, C3 has the largest 2020 anomaly (+1.15 °C) and represents sustained warming. C1 and C2 concentrate the late-accelerating trajectories, while C5 captures early warming followed by a plateau. Their spatial pattern in <a href="#fig-stl-cluster-map-violins" class="quarto-xref">Figure&nbsp;1</a> is structured rather than uniformly mixed, but the classification itself was not fitted to geography.</p>
-<p><a href="#fig-cluster-density-contours" class="quarto-xref">Figure&nbsp;2</a> compares the joint distributions of warming speed and acceleration. Contours are normalized separately within each cluster, so they show where a cluster’s typical observations lie; they do not compare cluster sample sizes.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-cluster-density-contours" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cluster-density-contours-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-regional_files/figure-html/fig-cluster-density-contours-1.png" class="img-fluid figure-img" width="1800">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cluster-density-contours-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Two-dimensional density of warming speed and acceleration by STL-trend response cluster. Contour lines show per-cluster density; marginal panels show univariate density by cluster.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>The density fields in <a href="#fig-cluster-density-contours" class="quarto-xref">Figure&nbsp;2</a> overlap, indicating that no single pair of summary metrics fully reproduces the trajectory classification. Nevertheless, C1 and C2 occupy more positive-acceleration regions, whereas C4 and C5 extend toward negative acceleration. This separation is consistent with their contrasting late-period responses and shows why the full STL-trend trajectory adds information beyond a single Sen slope.</p>
-
-
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -1110,18 +805,6 @@ Figure&nbsp;2: Two-dimensional density of warming speed and acceleration by STL-
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../explorations/warming-acceleration/draft/01-descriptive.html" class="pagination-link" aria-label="Descriptive">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Descriptive</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html" class="pagination-link" aria-label="Whether the Hiatus Actually Exists">
-        <span class="nav-page-text">Whether the Hiatus Actually Exists</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1136,7 +819,7 @@ Figure&nbsp;2: Two-dimensional density of warming speed and acceleration by STL-
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/0froq/research-site/edit/main/explorations/warming-acceleration/draft/02-regional.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/explorations/warming-acceleration/draft/02-regional.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/0froq/research-site/edit/main/docs/plans/2026-07-12-regional-visualisation-refactor.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/docs/plans/2026-07-12-regional-visualisation-refactor.md" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

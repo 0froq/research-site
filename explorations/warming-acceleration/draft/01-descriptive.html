@@ -77,6 +77,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="Descriptive – Exploration">
 <meta property="og:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
@@ -584,7 +613,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-lake-density-map" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
 <div aria-describedby="fig-lake-density-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
-<img src="01-descriptive_files/figure-html/fig-lake-density-map-1.png" class="img-fluid figure-img column-body-outset-right" width="2400">
+<img src="01-descriptive_files/figure-html/fig-lake-density-map-1.png" class="img-fluid figure-img column-body-outset" width="2400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lake-density-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Lake density map with 1° × 1° grid cells.
@@ -739,23 +768,26 @@ Table&nbsp;2: Joint warming and acceleration states.
 </div>
 </figure>
 </div>
+<p>These four states summarize signs rather than effect sizes. In particular, a positive acceleration means that a trend is becoming more positive, not that a lake is necessarily warming rapidly. The pairwise distributions in <a href="#fig-warming-acceleration-scatterplot-matrix" class="quarto-xref">Figure&nbsp;2</a> therefore show both the central structure and the sparse combinations that are obscured by the state counts in <a href="#tbl-joint-warming-acceleration-states" class="quarto-xref">Table&nbsp;2</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-warming-acceleration-scatterplot-matrix" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-warming-acceleration-scatterplot-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-descriptive_files/figure-html/fig-warming-acceleration-scatterplot-matrix-1.png" class="img-fluid figure-img" width="1200">
+<img src="01-descriptive_files/figure-html/fig-warming-acceleration-scatterplot-matrix-1.png" class="img-fluid figure-img" width="1800">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-warming-acceleration-scatterplot-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Pairwise relationships among mean temperature, warming speed, and acceleration. Diagonal panels show probability densities; upper panels show Pearson r (with significance stars), Spearman ρ, and LOESS pseudo-R; lower panels show scatter plots with LOESS smooths.
+Figure&nbsp;2: Pairwise relationships among mean temperature, warming speed, and acceleration. Diagonal panels show probability densities; upper panels show Pearson r (with significance stars), Spearman ρ, and LOESS pseudo-R. Lower panels show KDE contours for observations above the 5th percentile of local density; lower-density observations are shown as points with opacity proportional to local density.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>Mean temperature is negatively associated with cumulative warming (<span class="math inline">\(r = -0.47\)</span>), while the warming–acceleration association is much weaker (<span class="math inline">\(r = 0.19\)</span>). Thus, the widespread warming reported in <a href="#tbl-warming-summary-stl-trend" class="quarto-xref">Table&nbsp;1 (b)</a> does not imply a common temporal pathway: lakes with similar 40-year warming can be accelerating, decelerating, or changing little in their recent trend.</p>
 </section>
 <section id="spatial-pattern" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="spatial-pattern">Spatial pattern</h2>
+<p>The hexagons in <a href="#fig-spatial-warming-acceleration-hex" class="quarto-xref">Figure&nbsp;3</a> summarize lake-level estimates within 5° cells containing at least five lakes. Comparing the upper and lower panels separates where warming is strongest from where the underlying trend is becoming more or less positive; the two patterns need not coincide.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-spatial-warming-acceleration-hex" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -843,6 +875,7 @@ Table&nbsp;3: Continent-level spatial summary
 </figure>
 </div>
 </div>
+<p><a href="#tbl-spatial-continent-summary" class="quarto-xref">Table&nbsp;3</a> reinforces this distinction. Europe combines high mean warming with predominantly positive acceleration, whereas North America has high warming prevalence but a negative mean acceleration. Continental values are descriptive aggregates: uneven lake coverage and within-continent spatial structure mean they should not be interpreted as area-weighted climate means.</p>
 
 
 </section>
