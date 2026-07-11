@@ -5,8 +5,10 @@ title: Descriptive
 ```{r}
 #| label: setup-figures
 #| include: false
+#| cache: false
 
 source("../../../shared/R/figure-style.R")
+source("../../../shared/R/descriptive-helpers.R")
 ```
 
 ## Sample coverage
@@ -52,140 +54,33 @@ GLAST: `r lakes_num` lakes, `r start_year`--`r end_year`.
 #| fig-cap: "Lake density map with 1° × 1° grid cells."
 #| fig-width: 8
 #| fig-height: 4
-#| column: body-outset-right
+#| column: body-outset
 #| cache: true
 
-lake_xy <- raw_monthly |>
-  select(lon, lat) |>
-  filter(is.finite(lon), is.finite(lat))
-
-lake_bins <- lake_xy |>
-  mutate(
-    lon_bin = pmin(floor(lon + 180), 359),
-    lat_bin = pmin(floor(lat + 90), 179),
-    lon = -179.5 + lon_bin,
-    lat = -89.5 + lat_bin
-  ) |>
-  count(lon, lat, name = "n")
-
-# Side panel counts by 1° geographic bands
-lon_band_counts <- lake_xy |>
-  mutate(lon_band = pmin(floor(lon + 180), 359) - 179.5) |>
-  count(lon_band, name = "n")
-
-lat_band_counts <- lake_xy |>
-  mutate(lat_band = pmin(floor(lat + 90), 179) - 89.5) |>
-  count(lat_band, name = "n")
-
-# Coastline from rnaturalearth
-coast <- ne_coastline(scale = 110, returnclass = "sf")
-coast_line <- st_cast(coast, "LINESTRING")
-coast_df <- st_coordinates(coast_line) |> as.data.frame()
-
-# Filter data
-lake_bins_plot <- lake_bins |> filter(lat >= -60)
-lat_band_counts_plot <- lat_band_counts |> filter(lat_band >= -60)
-coast_df_plot <- coast_df |> filter(Y >= -60)
-
-# Lake-count composition by continent. This remains a figure-level summary:
-# the data pipeline only provides lake-level metadata; the plot derives this
-# lightweight aggregation locally.
-continent_table <- lake_meta_data |>
-  mutate(
-    Continent = if_else(
-      is.na(Continent) | trimws(Continent) == "",
-      "Unknown",
-      Continent
-    )
-  ) |>
-  count(Continent, name = "n") |>
-  arrange(desc(n)) |>
-  mutate(
-    row = row_number(),
-    y = -row,
-    n_label = scales::comma(n)
-  )
-
-table_row_lines <- tibble(
-  y = -seq(0.5, nrow(continent_table) + 0.5, by = 1)
-)
-
-continent_bar <- ggplot() +
-  geom_segment(
-    data = table_row_lines,
-    aes(x = 0.03, xend = 0.97, y = y, yend = y),
-    color = scales::alpha("grey35", 0.25),
-    linewidth = 0.2
-  ) +
-  geom_text(
-    aes(x = 0.06, y = 0, label = "Continent"),
-    hjust = 0,
-    fontface = "bold",
-    size = 2.2,
-    color = "grey15"
-  ) +
-  geom_text(
-    aes(x = 0.96, y = 0, label = "Count"),
-    hjust = 1,
-    fontface = "bold",
-    size = 2.2,
-    color = "grey15"
-  ) +
-  geom_text(
-    data = continent_table,
-    aes(x = 0.06, y = y, label = Continent),
-    hjust = 0,
-    size = 2.05,
-    color = "grey15"
-  ) +
-  geom_text(
-    data = continent_table,
-    aes(x = 0.96, y = y, label = n_label),
-    hjust = 1,
-    size = 2.05,
-    color = "grey15"
-  ) +
-  coord_cartesian(
-    xlim = c(0, 1),
-    ylim = c(-nrow(continent_table) - 0.65, 0.65),
-    expand = FALSE,
-    clip = "off"
-  ) +
-  theme_void() +
-  theme(
-    plot.background = element_rect(
-      fill = "white",
-      color = "grey25",
-      linewidth = 0.3
-    ),
-    plot.margin = margin(4, 5, 4, 5)
-  )
+lake_density_data <- bin_lake_locations(raw_monthly |> select(lon, lat))
+continent_bar <- make_continent_inchart(make_continent_summary(lake_meta_data))
 
 # Main map with ggside (no legend)
 lake_density_figure <- ggplot() +
   geom_tile(
-    data = lake_bins_plot,
+    data = lake_density_data$bins,
     aes(x = lon, y = lat, fill = n),
     width = 1, height = 1, color = NA
   ) +
-  geom_path(
-    data = coast_df_plot,
-    aes(x = X, y = Y, group = L1),
-    color = "grey10", linewidth = 0.3
-  ) +
+  the_geom_coastline() +
   geom_xsideline(
-    data = lon_band_counts,
+    data = lake_density_data$lon_counts,
     aes(x = lon_band, y = n),
     inherit.aes = FALSE,
-    color = col_line,
-    linewidth = 0.3
+    color = col_inchart_line,
+    linewidth = wid_inchart_line
   ) +
   geom_ysideline(
-    data = lat_band_counts_plot,
+    data = lake_density_data$lat_counts,
     aes(x = n, y = lat_band),
     inherit.aes = FALSE,
-    color = col_line,
-    linewidth = 0.3
+    color = col_inchart_line,
+    linewidth = wid_inchart_line
   ) +
   scale_fill_paletteer_c(
     palette = "grDevices::TealRose",
@@ -198,7 +93,7 @@ lake_density_figure <- ggplot() +
     )
   ) +
   scale_x_continuous(breaks = seq(-180, 180, by = 60), expand = c(0, 0)) +
-  scale_y_continuous(breaks = seq(-60, 90, by = 60), expand = c(0, 0)) +
+  scale_y_continuous(breaks = seq(-60, 90, by = 30), expand = c(0, 0)) +
   scale_xsidey_continuous(
     breaks = c(600, 1200),
     limits = c(0, 1200),
@@ -212,31 +107,17 @@ lake_density_figure <- ggplot() +
   ) +
   coord_cartesian(xlim = c(-180, 180), ylim = c(-60, 90), expand = FALSE) +
   labs(x = "Longitude", y = "Latitude") +
-  theme_atomic_facet() +
+  theme_map_grid() +
+  theme_facet() + 
   theme(
-    panel.grid = element_line(
-      color = "grey85",
-      linewidth = 0.3,
-      linetype = "dashed"
-    ),
-    plot.margin = margin(10, 10, 10, 10),
     legend.position = c(0.54, 0),
-    legend.justification = c(0, 0),
-    legend.direction = "horizontal",
-    legend.title.position = "top",
-    legend.frame = element_rect(linewidth = 0.3, color = "grey10"),
-    legend.ticks = element_line(linewidth = 0.3),
-    legend.key.height = unit(3, "mm"),
-    legend.text = element_text(size = 6),
-    legend.title = element_text(size = 7),
-    legend.background = element_blank(),
     ggside.axis.ticks = element_line(),
     ggside.panel.scale.x = 1.5 / 5,
-    ggside.panel.scale.y = 1.5 / 12,
+    ggside.panel.scale.y = 1.5 / 12, 
   )
 
 lake_density_composite <- ggdraw(lake_density_figure) +
-  draw_plot(continent_bar, x = 0.10, y = 0.16, width = 0.16, height = 0.25)
+  draw_plot(continent_bar, x = 0.10, y = 0.16, width = 0.16, height = 0.25) 
 
 draw_fixed_aspect(lake_density_composite, aspect = 6 / 3)
 ```
@@ -268,7 +149,7 @@ summarise_warming <- function(x) {
     median = median(x),
     q25 = quantile(x, 0.25),
     q75 = quantile(x, 0.75)
-  )
+  ) 
 }
 
 raw_warming_summary <- summarise_warming(
@@ -459,11 +340,18 @@ The joint warming--acceleration states divide the lakes into four groups:
 Joint warming and acceleration states.
 :::
 
+These four states summarize signs rather than effect sizes. In particular, a
+positive acceleration means that a trend is becoming more positive, not that a
+lake is necessarily warming rapidly. The pairwise distributions in
+@fig-warming-acceleration-scatterplot-matrix therefore show both the central
+structure and the sparse combinations that are obscured by the state counts in
+@tbl-joint-warming-acceleration-states.
+
 ```{r}
 #| label: fig-warming-acceleration-scatterplot-matrix
-#| fig-cap: "Pairwise relationships among mean temperature, warming speed, and acceleration. Diagonal panels show probability densities; upper panels show Pearson r (with significance stars), Spearman ρ, and LOESS pseudo-R; lower panels show scatter plots with LOESS smooths."
-#| fig-width: 4
-#| fig-height: 4
+#| fig-cap: "Pairwise relationships among mean temperature, warming speed, and acceleration. Diagonal panels show probability densities; upper panels show Pearson r (with significance stars), Spearman ρ, and LOESS pseudo-R. Lower panels show KDE contours for observations above the 5th percentile of local density; lower-density observations are shown as points with opacity proportional to local density."
+#| fig-width: 6
+#| fig-height: 6
 #| cache: true
 
 library(GGally)
@@ -480,60 +368,44 @@ scatter_matrix_data <- lake_warming_metrics |>
     is.finite(Acceleration)
   )
 
-scatter_matrix_grid_theme <- theme_atomic_base(base_size = 7.5, grid = TRUE) +
-  theme(
-    panel.grid.major = element_line(
-      color = scales::alpha("grey70", 0.32),
-      linewidth = 0.22
-    ),
-    panel.grid.minor = element_blank(),
-    panel.border = element_rect(color = "grey76", linewidth = 0.28),
-    panel.background = element_rect(fill = "white", color = NA),
-    axis.text = element_text(size = 6.2, color = col_text_soft),
-    axis.title = element_blank(),
-    plot.margin = margin(1.5, 1.5, 1.5, 1.5)
-  )
 
-scatter_matrix_plain_theme <- theme_atomic_base(base_size = 7.5, grid = FALSE) +
-  theme(
-    panel.grid = element_blank(),
-    panel.border = element_rect(color = "grey76", linewidth = 0.28),
-    panel.background = element_rect(fill = "white", color = NA),
-    axis.text = element_text(size = 6.2, color = col_text_soft),
-    axis.title = element_blank(),
-    plot.margin = margin(1.5, 1.5, 1.5, 1.5)
-  )
-
-scatter_matrix_bin_density <- function(x, y, bins = 120) {
-  x_breaks <- seq(min(x), max(x), length.out = bins + 1)
-  y_breaks <- seq(min(y), max(y), length.out = bins + 1)
-  x_bin <- pmin(findInterval(x, x_breaks, all.inside = TRUE), bins)
-  y_bin <- pmin(findInterval(y, y_breaks, all.inside = TRUE), bins)
-  bin_id <- paste(x_bin, y_bin, sep = "_")
-  as.numeric(table(bin_id)[bin_id])
-}
+scatter_matrix_core_quantile <- 0.05
 
 scatter_matrix_lower <- function(data, mapping, ...) {
-  x <- rlang::eval_tidy(mapping$x, data)
-  y <- rlang::eval_tidy(mapping$y, data)
   panel_data <- tibble(
-    x = x,
-    y = y,
-    density = scatter_matrix_bin_density(x, y)
+    x = rlang::eval_tidy(mapping$x, data),
+    y = rlang::eval_tidy(mapping$y, data)
   ) |>
-    filter(is.finite(x), is.finite(y), is.finite(density))
+    filter(is.finite(x), is.finite(y))
+  kde <- split_kde_core(
+    panel_data,
+    core_quantile = scatter_matrix_core_quantile,
+    contour_n = 6
+  )
 
   set.seed(20260710)
-  smooth_data <- panel_data |>
-    slice_sample(prop = 0.1)
+  smooth_data <- kde$points |>
+    slice_sample(prop = 0.1) 
 
-  ggplot(panel_data, aes(x = x, y = y)) +
+  ggplot(kde$points, aes(x = x, y = y)) + 
     geom_point(
-      aes(color = density),
-      size = 0.42,
-      alpha = 0.32,
-      stroke = 0,
-      na.rm = TRUE
+      data = kde$outliers,
+      aes(alpha = density),
+      colour = col_text_soft,
+      size = 0.28,
+      stroke = 0
+    ) +
+    scale_alpha_continuous(
+      range = c(0.06, 0.55),
+      guide = "none"
+    ) +
+    geom_path(
+      data = kde$contours,
+      aes(x = x, y = y, group = group),
+      inherit.aes = FALSE,
+      colour = col_inchart_line,
+      linewidth = wid_inchart_line * 0.6,
+      alpha = 0.5
     ) +
     geom_smooth(
       data = smooth_data,
@@ -541,29 +413,24 @@ scatter_matrix_lower <- function(data, mapping, ...) {
       formula = y ~ x,
       se = TRUE,
       span = 0.65,
-      color = "grey10",
+      color = col_inchart_line,
       alpha = 0.8,
-      linewidth = 0.4,
+      linewidth = wid_inchart_line,
       na.rm = TRUE
     ) +
-    scale_color_paletteer_c(
-      palette = "grDevices::Spectral",
-      direction = -1,
-      guide = "none"
-    ) +
-    scatter_matrix_grid_theme
+    theme_scatter_matrix(grid = TRUE)
 }
 
 scatter_matrix_density <- function(data, mapping, ...) {
   ggplot(data = data, mapping = mapping) +
     geom_density(
       aes(y = after_stat(density)),
-      fill = scales::alpha("grey55", 0.28),
-      color = col_line,
-      linewidth = 0.4,
+      fill = scales::alpha(col_inchart_fill, 0.28),
+      color = col_inchart_line,
+      linewidth = wid_inchart_line,
       na.rm = TRUE
     ) +
-    scatter_matrix_plain_theme
+    theme_scatter_matrix(grid = FALSE)
 }
 
 scatter_matrix_cor <- function(data, mapping, ...) {
@@ -616,8 +483,8 @@ scatter_matrix_cor <- function(data, mapping, ...) {
     ) +
     scale_x_continuous(limits = c(0, 1), expand = c(0, 0)) +
     scale_y_continuous(limits = c(0, 1), expand = c(0, 0)) +
-    scatter_matrix_plain_theme +
-    theme(
+    theme_scatter_matrix(grid = FALSE) +
+    theme( 
       axis.text = element_blank(),
       axis.ticks = element_blank()
     )
@@ -637,129 +504,50 @@ scatter_matrix <- GGally::ggpairs(
   axisLabels = "show",
   progress = FALSE
 ) +
-  theme_atomic_base(base_size = 8, grid = TRUE) +
   theme(
-    strip.background = element_rect(fill = "grey92", color = "grey75", linewidth = 0.25),
-    strip.text = element_text(size = 6.8, face = "bold", color = col_text),
-    panel.grid = element_blank(),
-    panel.border = element_rect(color = "grey78", linewidth = 0.25),
-    axis.text = element_text(size = 6.2, color = col_text_soft),
-    axis.title = element_text(size = 7, color = col_text),
-    panel.spacing = unit(0.12, "lines"),
-    plot.margin = margin(3, 3, 3, 3)
+    panel.spacing = unit(0.12, "lines")
   )
 
 scatter_matrix
 ```
 
-
+Mean temperature is negatively associated with cumulative warming ($r = -0.47$),
+while the warming--acceleration association is much weaker ($r = 0.19$). Thus,
+the widespread warming reported in @tbl-warming-summary-stl-trend does not
+imply a common temporal pathway: lakes with similar 40-year warming can be
+accelerating, decelerating, or changing little in their recent trend.
 
 ## Spatial pattern
 
+The hexagons in @fig-spatial-warming-acceleration-hex summarize lake-level
+estimates within 5° cells containing at least five lakes. Comparing the upper
+and lower panels separates where warming is strongest from where the underlying
+trend is becoming more or less positive; the two patterns need not coincide.
+
 ```{r}
-#| label: fig-spatial-warming-acceleration-hex
-#| fig-cap: "Spatial pattern of lake warming and acceleration. Hexagons aggregate lake-level metrics in 5° geographic bins containing at least five lakes. Colors use a shared divergent scale normalized to fixed rounded mapping limits; the central colorbar shows warming values on the upper axis and acceleration values on the lower axis."
-#| fig-width: 8
-#| fig-height: 8
+#| label: spatial-warming-acceleration-hex-setup
+#| include: false
 #| cache: true
 
-spatial_metrics <- lake_warming_metrics |>
-  transmute(
-    lake_id,
-    warming_speed = raw_annual_mean_temp_sen_slope_40yr,
-    acceleration = stl_annual_trend_diff_sen_slope_1e3
-  ) |>
-  left_join(
-    lake_meta_data |>
-      select(lake_id, lon, lat),
-    by = "lake_id"
-  ) |>
-  filter(
-    is.finite(lon),
-    is.finite(lat),
-    is.finite(warming_speed),
-    is.finite(acceleration)
-  )
-
-coast_world <- ne_coastline(scale = 110, returnclass = "sf") |>
-  st_cast("LINESTRING") |>
-  st_coordinates() |>
-  as_tibble() |>
-  rename(lon = X, lat = Y, segment = L1)
-
-lon_min <- -180
-lon_max <- 180
-lat_min <- -60
-lat_max <- 85
-
-hex_height_deg <- 5
-hex_side_deg <- hex_height_deg / sqrt(3)
-
-hex_round <- function(q, r) {
-  x <- q
-  z <- r
-  y <- -x - z
-
-  rx <- round(x)
-  ry <- round(y)
-  rz <- round(z)
-
-  x_diff <- abs(rx - x)
-  y_diff <- abs(ry - y)
-  z_diff <- abs(rz - z)
-
-  choose_x <- x_diff > y_diff & x_diff > z_diff
-  choose_y <- !choose_x & y_diff > z_diff
-
-  rx <- ifelse(choose_x, -ry - rz, rx)
-  ry <- ifelse(choose_y, -rx - rz, ry)
-  rz <- ifelse(!choose_x & !choose_y, -rx - ry, rz)
-
-  list(q = rx, r = rz)
-}
-
-spatial_hex_points <- spatial_metrics |>
-  filter(
-    between(lon, lon_min, lon_max),
-    between(lat, lat_min, lat_max)
-  ) |>
-  mutate(
-    x = lon - lon_min,
-    y = lat - lat_min,
-    q_float = (2 / 3 * x) / hex_side_deg,
-    r_float = (-1 / 3 * x + sqrt(3) / 3 * y) / hex_side_deg
-  )
-
-spatial_hex_rounded <- hex_round(
-  spatial_hex_points$q_float,
-  spatial_hex_points$r_float
+spatial_hex <- prepare_spatial_hex(
+  metrics = lake_warming_metrics,
+  metadata = lake_meta_data,
+  hex_height = 5,
+  min_lakes = 5,
+  lon_limits = c(-180, 180),
+  lat_limits = c(-60, 85)
 )
 
-spatial_hex_points <- spatial_hex_points |>
-  mutate(
-    q_hex = spatial_hex_rounded$q,
-    r_hex = spatial_hex_rounded$r
-  )
-
-spatial_hex_summary <- spatial_hex_points |>
-  group_by(q_hex, r_hex) |>
-  summarise(
-    n = n(),
-    warming_speed = mean(warming_speed, na.rm = TRUE),
-    acceleration = mean(acceleration, na.rm = TRUE),
-    lon_c = lon_min + hex_side_deg * 3 / 2 * first(q_hex),
-    lat_c = lat_min + hex_side_deg * sqrt(3) *
-      (first(r_hex) + first(q_hex) / 2),
-    .groups = "drop"
-  ) |>
-  filter(
-    n >= 5,
-    between(lon_c, lon_min - hex_height_deg, lon_max + hex_height_deg),
-    between(lat_c, lat_min - hex_height_deg, lat_max + hex_height_deg)
-  )
+spatial_metrics <- spatial_hex$metrics
+spatial_hex_summary <- spatial_hex$summary |>
+  mutate(id = row_number())
+spatial_hex_poly <- spatial_hex$polygons
+lon_min <- spatial_hex$limits$lon[[1]]
+lon_max <- spatial_hex$limits$lon[[2]]
+lat_min <- spatial_hex$limits$lat[[1]]
+lat_max <- spatial_hex$limits$lat[[2]]
 
 # Fixed rounded mapping limits keep the two aligned legend axes readable.
-# Values beyond these limits are squished to the colourbar endpoints.
 warming_limit <- 2
 acceleration_limit <- 3
 
@@ -768,44 +556,30 @@ spatial_hex_summary <- spatial_hex_summary |>
     warming_scaled = warming_speed / warming_limit,
     acceleration_scaled = acceleration / acceleration_limit
   )
-
-make_hexagon <- function(cx, cy, side, id) {
-  theta <- pi / 180 * seq(0, 300, by = 60)
-  tibble(
-    id = id,
-    lon = cx + side * cos(theta),
-    lat = cy + side * sin(theta)
-  )
-}
-
-spatial_hex_poly <- bind_rows(lapply(seq_len(nrow(spatial_hex_summary)), function(i) {
-  make_hexagon(
-    spatial_hex_summary$lon_c[[i]],
-    spatial_hex_summary$lat_c[[i]],
-    hex_side_deg,
-    i
-  )
-})) |>
+spatial_hex_poly <- spatial_hex_poly |>
   left_join(
     spatial_hex_summary |>
-      mutate(id = row_number()),
+      select(id, warming_scaled, acceleration_scaled),
     by = "id"
   )
+```
+
+```{r}
+#| label: fig-spatial-warming-acceleration-hex
+#| fig-cap: "Spatial pattern of lake warming and acceleration.
+#|   Hexagons aggregate lake-level metrics in 5° geographic bins containing at least five lakes. Colors use a shared divergent scale normalized to fixed rounded mapping limits; the central colorbar shows warming values on the upper axis and acceleration values on the lower axis."
+#| fig-width: 8
+#| fig-height: 8
+#| cache: true
 
 spatial_map_base <- list(
-  geom_path(
-    data = coast_world |> filter(lat >= lat_min, lat <= lat_max),
-    aes(x = lon, y = lat, group = segment),
-    inherit.aes = FALSE,
-    color = "grey10",
-    linewidth = 0.3
-  ),
+  the_geom_coastline(),
   scale_x_continuous(
     breaks = seq(-180, 180, by = 60),
     expand = c(0, 0)
   ),
   scale_y_continuous(
-    breaks = seq(-60, 90, by = 60),
+    breaks = seq(-60, 90, by = 30),
     expand = c(0, 0)
   ),
   coord_cartesian(
@@ -814,25 +588,10 @@ spatial_map_base <- list(
     expand = FALSE
   ),
   labs(x = "Longitude", y = "Latitude"),
-  theme_atomic_map(base_size = 9),
+  theme_map_grid(base_size = 9),
   theme(
-    panel.grid = element_line(
-      color = "grey85",
-      linewidth = 0.3,
-      linetype = "dashed"
-    ),
     legend.position = "bottom",
-    legend.direction = "horizontal",
-    legend.text.position = "top",
-    legend.title = element_text(size = 6.4, color = col_text),
-    legend.frame = element_rect(linewidth = 0.3, color = "grey10"),
-    legend.ticks = element_line(linewidth = 0.3),
-    legend.key.width = unit(30, "mm"),
-    legend.key.height = unit(3.2, "mm"),
-    legend.text = element_text(size = 6),
-    legend.background = element_blank(),
-    plot.title = element_text(size = 10, face = "bold", color = col_text),
-    plot.margin = margin(4, 5, 4, 5)
+    legend.key.width = unit(20, "mm")
   )
 )
 
@@ -847,27 +606,13 @@ spatial_hex_layer <- function(value_col) {
   )
 }
 
-spatial_fmt_axis <- function(x, digits = 2) {
-  label <- formatC(x, format = "f", digits = digits)
-  label <- sub("0+$", "", label)
-  label <- sub("\\.$", "", label)
-  label[label == "-0"] <- "0"
-  label
-}
-
-spatial_fmt_axis_unit <- function(x, unit, digits = 2) {
-  label <- spatial_fmt_axis(x, digits)
-  label[length(label)] <- paste(label[length(label)], unit)
-  label
-}
-
 spatial_legend_breaks <- c(-1, -0.5, 0, 0.5, 1)
 
 spatial_legend_guide <- legendry::guide_colbar(
   first_guide = legendry::guide_axis_base(
     key = legendry::key_manual(
       aesthetic = spatial_legend_breaks,
-      label = spatial_fmt_axis_unit(
+      label = format_axis_last_unit(
         spatial_legend_breaks * warming_limit,
         "°C / 40 yr",
         1
@@ -878,7 +623,7 @@ spatial_legend_guide <- legendry::guide_colbar(
   second_guide = legendry::guide_axis_base(
     key = legendry::key_manual(
       aesthetic = spatial_legend_breaks,
-      label = spatial_fmt_axis_unit(
+      label = format_axis_last_unit(
         spatial_legend_breaks * acceleration_limit,
         "10⁻³ °C / yr²",
         1
@@ -906,13 +651,11 @@ spatial_warming_map <- ggplot() +
   spatial_hex_layer("warming_scaled") +
   spatial_map_base +
   spatial_shared_fill_scale()
-  # labs(title = "A  Warming speed")
 
 spatial_acceleration_map <- ggplot() +
   spatial_hex_layer("acceleration_scaled") +
   spatial_map_base +
   spatial_shared_fill_scale()
-  # labs(title = "B  Acceleration")
 
 (spatial_warming_map / guide_area() / spatial_acceleration_map) +
   plot_layout(
@@ -1035,267 +778,12 @@ Continent-level spatial summary
 :::
 :::
 
-```{r}
-#| label: fig-spatial-warming-acceleration-states
-#| fig-cap: "Geographic distribution of four warming--acceleration states. Points show lakes colored by state; marginal ridgelines show longitude and latitude counts in 2° bands."
-#| fig-width: 10.5
-#| fig-height: 6.8
-#| cache: true
-#| eval: false
-#| include: false
+@tbl-spatial-continent-summary reinforces this distinction. Europe combines
+high mean warming with predominantly positive acceleration, whereas North
+America has high warming prevalence but a negative mean acceleration.
+Continental values are descriptive aggregates: uneven lake coverage and
+within-continent spatial structure mean they should not be interpreted as
+area-weighted climate means.
 
-spatial_state_levels <- c(
-  "warming + accelerating",
-  "warming + decelerating",
-  "cooling + accelerating",
-  "cooling + decelerating"
-)
 
-spatial_state_labels <- c(
-  "warming + accelerating" = "Warming + accelerating",
-  "warming + decelerating" = "Warming + decelerating",
-  "cooling + accelerating" = "Cooling + accelerating",
-  "cooling + decelerating" = "Cooling + decelerating"
-)
-
-spatial_area_limits <- lake_meta_data |>
-  filter(is.finite(Lake_area), Lake_area > 0) |>
-  pull(Lake_area) |>
-  quantile(c(0.05, 0.95), na.rm = TRUE)
-
-spatial_state_data <- spatial_metrics |>
-  left_join(
-    lake_meta_data |>
-      select(lake_id, Lake_area),
-    by = "lake_id"
-  ) |>
-  filter(is.finite(Lake_area), Lake_area > 0) |>
-  mutate(
-    area_clipped = pmin(pmax(Lake_area, spatial_area_limits[[1]]), spatial_area_limits[[2]]),
-    point_size = rescale(
-      sqrt(log10(area_clipped)),
-      to = c(0.18, 1.2),
-      from = range(sqrt(log10(area_clipped)), na.rm = TRUE)
-    ),
-    state = case_when(
-      warming_speed > 0 & acceleration > 0 ~ spatial_state_levels[[1]],
-      warming_speed > 0 & acceleration <= 0 ~ spatial_state_levels[[2]],
-      warming_speed <= 0 & acceleration > 0 ~ spatial_state_levels[[3]],
-      warming_speed <= 0 & acceleration <= 0 ~ spatial_state_levels[[4]],
-      TRUE ~ NA_character_
-    ),
-    state = factor(state, levels = spatial_state_levels)
-  ) |>
-  filter(
-    !is.na(state),
-    is.finite(point_size),
-    between(lon, lon_min, lon_max),
-    between(lat, lat_min, lat_max)
-  )
-
-spatial_state_summary <- spatial_state_data |>
-  count(state, name = "n") |>
-  mutate(
-    prop = n / sum(n),
-    label = paste0(spatial_state_labels[as.character(state)], "\n", percent(prop, accuracy = 0.1))
-  )
-
-spatial_bin_width <- 2
-spatial_lon_centers <- seq(lon_min + spatial_bin_width / 2, lon_max - spatial_bin_width / 2,
-  by = spatial_bin_width
-)
-spatial_lat_centers <- seq(lat_min + spatial_bin_width / 2, lat_max - spatial_bin_width / 2,
-  by = spatial_bin_width
-)
-
-smooth_spatial_count <- function(x) {
-  smoothed <- as.numeric(stats::filter(x, rep(1 / 3, 3), sides = 2))
-  ifelse(is.na(smoothed), x, smoothed)
-}
-
-ridge_gap <- 0.55
-ridge_height <- 0.92
-ridge_baseline <- rev(seq_along(spatial_state_levels)) * ridge_gap
-names(ridge_baseline) <- spatial_state_levels
-
-spatial_lon_ridges <- spatial_state_data |>
-  mutate(
-    lon_bin = floor((lon - lon_min) / spatial_bin_width),
-    lon_center = lon_min + lon_bin * spatial_bin_width + spatial_bin_width / 2
-  ) |>
-  count(state, lon_center, name = "n") |>
-  complete(
-    state = factor(spatial_state_levels, levels = spatial_state_levels),
-    lon_center = spatial_lon_centers,
-    fill = list(n = 0)
-  ) |>
-  group_by(state) |>
-  mutate(
-    n_smooth = smooth_spatial_count(sqrt(n)),
-    baseline = ridge_baseline[as.character(state)]
-  ) |>
-  ungroup() |>
-  mutate(
-    n_scaled = n_smooth / max(n_smooth, na.rm = TRUE),
-    y = baseline + n_scaled * ridge_height
-  ) |>
-  arrange(desc(baseline), lon_center)
-
-spatial_lat_ridges <- spatial_state_data |>
-  mutate(
-    lat_bin = floor((lat - lat_min) / spatial_bin_width),
-    lat_center = lat_min + lat_bin * spatial_bin_width + spatial_bin_width / 2
-  ) |>
-  count(state, lat_center, name = "n") |>
-  complete(
-    state = factor(spatial_state_levels, levels = spatial_state_levels),
-    lat_center = spatial_lat_centers,
-    fill = list(n = 0)
-  ) |>
-  group_by(state) |>
-  mutate(
-    n_smooth = smooth_spatial_count(sqrt(n)),
-    baseline = ridge_baseline[as.character(state)]
-  ) |>
-  ungroup() |>
-  mutate(
-    n_scaled = n_smooth / max(n_smooth, na.rm = TRUE),
-    x = baseline + n_scaled * ridge_height
-  ) |>
-  arrange(desc(baseline), lat_center)
-
-state_map <- ggplot() +
-  geom_path(
-    data = coast_world |> filter(lat >= lat_min, lat <= lat_max),
-    aes(x = lon, y = lat, group = segment),
-    color = "grey35",
-    linewidth = 0.16
-  ) +
-  geom_point(
-    data = spatial_state_data,
-    aes(x = lon, y = lat, color = state, size = point_size),
-    alpha = 0.32,
-    stroke = 0
-  ) +
-  scale_color_manual(
-    values = pal_state,
-    labels = spatial_state_labels,
-    name = NULL
-  ) +
-  scale_size_identity(guide = "none") +
-  coord_fixed(
-    ratio = 1,
-    xlim = c(lon_min, lon_max),
-    ylim = c(lat_min, lat_max),
-    expand = FALSE
-  ) +
-  labs(x = NULL, y = NULL) +
-  theme_atomic_map(base_size = 9) +
-  theme(
-    legend.position = "right",
-    legend.text = element_text(size = 7),
-    axis.title = element_blank(),
-    axis.text = element_blank(),
-    axis.ticks = element_blank(),
-    plot.margin = margin(0, 0, 0, 0)
-  )
-
-ridge_theme <- theme_void(base_size = 8) +
-  theme(
-    legend.position = "none",
-    plot.margin = margin(0, 0, 0, 0)
-  )
-
-state_top_ridges <- ggplot(
-  spatial_lon_ridges,
-  aes(x = lon_center, group = state, color = state, fill = state)
-) +
-  geom_ribbon(aes(ymin = baseline, ymax = y), alpha = 0.23, color = NA) +
-  geom_line(aes(y = y), linewidth = 0.45) +
-  geom_hline(
-    data = tibble(
-      state = factor(spatial_state_levels, levels = spatial_state_levels),
-      baseline = ridge_baseline
-    ),
-    aes(yintercept = baseline, color = state),
-    linewidth = 0.18,
-    alpha = 0.45
-  ) +
-  scale_color_manual(values = pal_state, guide = "none") +
-  scale_fill_manual(values = pal_state, guide = "none") +
-  scale_x_continuous(limits = c(lon_min, lon_max), expand = c(0, 0)) +
-  scale_y_continuous(
-    limits = c(0.45, max(ridge_baseline) + ridge_height + 0.28),
-    expand = c(0, 0)
-  ) +
-  ridge_theme
-
-state_right_ridges <- ggplot(
-  spatial_lat_ridges,
-  aes(y = lat_center, group = state, color = state, fill = state)
-) +
-  geom_ribbon(aes(xmin = baseline, xmax = x), orientation = "y", alpha = 0.23, color = NA) +
-  geom_line(aes(x = x), linewidth = 0.45, orientation = "y") +
-  geom_vline(
-    data = tibble(
-      state = factor(spatial_state_levels, levels = spatial_state_levels),
-      baseline = ridge_baseline
-    ),
-    aes(xintercept = baseline, color = state),
-    linewidth = 0.18,
-    alpha = 0.45
-  ) +
-  scale_color_manual(values = pal_state, guide = "none") +
-  scale_fill_manual(values = pal_state, guide = "none") +
-  scale_y_continuous(limits = c(lat_min, lat_max), expand = c(0, 0)) +
-  scale_x_continuous(
-    limits = c(0.45, max(ridge_baseline) + ridge_height + 0.28),
-    expand = c(0, 0)
-  ) +
-  ridge_theme
-
-state_share_plot <- ggplot(spatial_state_summary, aes(x = prop, y = state, fill = state)) +
-  geom_col(width = 0.62, color = "white", linewidth = 0.25) +
-  geom_text(
-    aes(label = percent(prop, accuracy = 0.1)),
-    hjust = -0.08,
-    size = 2.5,
-    color = col_text
-  ) +
-  scale_fill_manual(values = pal_state, guide = "none") +
-  scale_x_continuous(labels = percent, expand = expansion(mult = c(0, 0.22))) +
-  scale_y_discrete(labels = spatial_state_labels) +
-  labs(x = NULL, y = NULL) +
-  theme_atomic_base(base_size = 8, grid = FALSE) +
-  theme(
-    axis.text.y = element_text(size = 6.6, color = col_text),
-    axis.text.x = element_text(size = 6.5, color = col_text_soft),
-    panel.grid.major.x = element_line(color = "grey85", linewidth = 0.25),
-    panel.grid.major.y = element_blank(),
-    legend.position = "none",
-    plot.margin = margin(2, 2, 2, 2)
-  )
-
-state_legend <- get_legend(state_map + theme(legend.position = "right"))
-state_map <- state_map + theme(legend.position = "none")
-
-state_figure <- ggdraw() +
-  draw_label(
-    "Geographic distribution of warming--acceleration states",
-    x = 0.07,
-    y = 0.98,
-    hjust = 0,
-    vjust = 1,
-    fontface = "bold",
-    size = 13,
-    color = col_text
-  ) +
-  draw_plot(state_top_ridges, x = 0.07, y = 0.72, width = 0.63, height = 0.18) +
-  draw_plot(state_map, x = 0.07, y = 0.14, width = 0.63, height = 0.56) +
-  draw_plot(state_right_ridges, x = 0.72, y = 0.14, width = 0.14, height = 0.56) +
-  draw_plot(state_share_plot, x = 0.72, y = 0.73, width = 0.23, height = 0.17) +
-  draw_plot(state_legend, x = 0.74, y = 0.42, width = 0.24, height = 0.22)
-
-state_figure
-```
 
