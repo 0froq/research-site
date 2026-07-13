@@ -1,5 +1,5 @@
 ---
-title: Descriptive
+title: Global Kinematics
 ---
 
 ```{r}
@@ -9,6 +9,7 @@ title: Descriptive
 
 source("../../../shared/R/figure-style.R")
 source("../../../shared/R/descriptive-helpers.R")
+source("../../../shared/R/kinematics-helpers.R")
 ```
 
 ## Sample coverage
@@ -16,33 +17,7 @@ source("../../../shared/R/descriptive-helpers.R")
 ```{r}
 #| cache: true
 
-# Setup for fig-lake-density-map
-raw_monthly <- read_csv(
-  file.path(data, "01-monthly-temperature", "output", "monthly_temperature.csv")
-)
-lake_meta_data <- read_csv(
-  file.path(data, "00-lake-metadata", "output", "lake_metadata.csv")
-)
-lake_warming_metrics <- read_csv(
-  file.path(
-    data,
-    "06-lake-warming-metrics",
-    "output",
-    "period12_robustfalse_ni5_no0_nt199",
-    "lake_warming_metrics.csv"
-  ),
-  col_select = c(
-    lake_id,
-    raw_annual_mean_temp_mean,
-    raw_annual_mean_temp_sen_slope_40yr,
-    stl_annual_trend_sen_slope_40yr,
-    stl_annual_trend_diff_sen_slope_1e3
-  )
-)
-
-lakes_num <- nrow(raw_monthly)
-start_year <- as.integer(sub(".*?(\\d{4}).*", "\\1", names(raw_monthly)[4]))
-end_year <- as.integer(sub(".*?(\\d{4}).*", "\\1", tail(names(raw_monthly), 1)))
+list2env(prepare_kinematics_data(), envir = environment())
 ```
 
 GLAST: `r lakes_num` lakes, `r start_year`--`r end_year`.
@@ -108,153 +83,42 @@ lake_density_figure <- ggplot() +
   coord_cartesian(xlim = c(-180, 180), ylim = c(-60, 90), expand = FALSE) +
   labs(x = "Longitude", y = "Latitude") +
   theme_map_grid() +
-  theme_facet() + 
+  theme_facet() +
   theme(
-    legend.position = c(0.54, 0),
+    legend.position = c(0.34, 0),
     ggside.axis.ticks = element_line(),
     ggside.panel.scale.x = 1.5 / 5,
     ggside.panel.scale.y = 1.5 / 12, 
   )
 
 lake_density_composite <- ggdraw(lake_density_figure) +
-  draw_plot(continent_bar, x = 0.10, y = 0.16, width = 0.16, height = 0.25) 
+  draw_plot(continent_bar, x = 0.08, y = 0.12, width = 0.16, height = 0.25)
 
 draw_fixed_aspect(lake_density_composite, aspect = 6 / 3)
 ```
 
-## Long-term warming && acceleration
+## Long-term warming speed and acceleration
+
+**Long-term warming speed** is the Theil--Sen slope of annual mean lake surface water temperature (LSWT) over 1982--2020, presented as a 40-year-equivalent change in °C. **Acceleration** is the Sen slope of the annual first difference of warming speed, measured in $10^{-3}$ °C yr$^{-2}$. Both metrics are computed directly from raw annual mean temperature without seasonal decomposition, thereby retaining the full spectrum of interannual climate variability (e.g. ENSO, PDO) that may contribute to observed warming heterogeneity.
+
+> 本章以年均 LSWT 为主要指标。**长期增温速率**为 Theil–Sen 斜率（40 年等效变化）；**加速度**为年际差分的 Sen 斜率。两者直接从原始年均温度计算，保留 ENSO/PDO 等年际变率信息。
 
 ```{r}
 #| include: false
 #| cache: true
 
-# Setup for long-term warming summaries
 fmt_count <- function(x) scales::comma(x, accuracy = 1)
 fmt_num <- function(x, digits = 2) formatC(x, format = "f", digits = digits)
 fmt_pct <- function(x, digits = 1) fmt_num(100 * x, digits)
-
-summarise_warming <- function(x) {
-  x <- x[is.finite(x)]
-  n_finite <- length(x)
-  n_warming <- sum(x > 0)
-  n_cooling <- sum(x <= 0)
-
-  tibble(
-    n_finite = n_finite,
-    n_warming = n_warming,
-    n_cooling = n_cooling,
-    prop_warming = n_warming / n_finite,
-    mean = mean(x),
-    sd = sd(x),
-    median = median(x),
-    q25 = quantile(x, 0.25),
-    q75 = quantile(x, 0.75)
-  ) 
-}
-
-raw_warming_summary <- summarise_warming(
-  lake_warming_metrics$raw_annual_mean_temp_sen_slope_40yr
-)
-stl_warming_summary <- summarise_warming(
-  lake_warming_metrics$stl_annual_trend_sen_slope_40yr
-)
 ```
 
-```{r}
-#| include: false
-#| cache: true
+@tbl-warming-summary-raw summarizes the warming metrics computed from raw annual mean LSWT. `r fmt_pct(raw_warming_summary$prop_warming)`% of lakes show positive long-term warming speed, with a median of `r fmt_num(raw_warming_summary$median, 2)` °C per 40 years. However, only `r fmt_pct(accel_summary$prop_positive)`% have positive acceleration, indicating that the direction and magnitude of long-term warming are largely decoupled from changes in warming speed.
 
-# Setup for long-term acceleration summaries
-summarise_acceleration <- function(x) {
-  x <- x[is.finite(x)]
-  n_finite <- length(x)
-  n_positive <- sum(x > 0)
-  n_negative <- sum(x <= 0)
+> @tbl-warming-summary-raw summarizes the warming metrics computed from raw annual mean LSWT% 湖泊呈正增温速率，但仅`r fmt_pct(accel_summary$prop_positive)`% 呈正加速度，增温方向与速度变化基本解耦。
 
-  tibble(
-    n_finite = n_finite,
-    n_positive = n_positive,
-    n_negative = n_negative,
-    prop_positive = n_positive / n_finite,
-    mean = mean(x),
-    sd = sd(x),
-    median = median(x),
-    q25 = quantile(x, 0.25),
-    q75 = quantile(x, 0.75)
-  )
-}
-
-accel_summary <- summarise_acceleration(
-  lake_warming_metrics$stl_annual_trend_diff_sen_slope_1e3
-)
-
-joint_state_summary <- lake_warming_metrics |>
-  transmute(
-    warming_speed = raw_annual_mean_temp_sen_slope_40yr,
-    acceleration = stl_annual_trend_diff_sen_slope_1e3,
-    state = case_when(
-      warming_speed > 0 & acceleration > 0 ~ "warming + accelerating",
-      warming_speed > 0 & acceleration <= 0 ~ "warming + decelerating",
-      warming_speed <= 0 & acceleration > 0 ~ "cooling + accelerating",
-      warming_speed <= 0 & acceleration <= 0 ~ "cooling + decelerating",
-      TRUE ~ NA_character_
-    )
-  ) |>
-  filter(is.finite(warming_speed), is.finite(acceleration), !is.na(state)) |>
-  count(state, name = "n") |>
-  mutate(
-    prop = n / sum(n),
-    state = factor(
-      state,
-      levels = c(
-        "warming + accelerating",
-        "warming + decelerating",
-        "cooling + accelerating",
-        "cooling + decelerating"
-      )
-    )
-  ) |>
-  arrange(state)
-
-state_count <- function(label) {
-  joint_state_summary |>
-    filter(state == label) |>
-    pull(n)
-}
-
-state_prop <- function(label) {
-  joint_state_summary |>
-    filter(state == label) |>
-    pull(prop)
-}
-```
-
-@tbl-warming-summary-raw and @tbl-warming-summary-stl-trend
-shows the statistics of warming.
-Compared with the raw annual mean temperature series,
-the STL trend component is smoother and more stable,
-so it identifies warming in more lakes
-(91,802 / 92,245, 99.5%, versus 85,569 / 92,245, 92.8% for the raw series).
-It also has a smaller standard deviation and a more concentrated quartile range,
-although its mean is lower (0.573 versus 0.881 for the raw series).
-
-::: {.column-margin}
-Use Sen's slope to determine whether a lake is warming
-and how is the trend like.
-:::
-
-Though almost all the lakes are warming,
-the warming is not uniform.
-Acceleration of `r fmt_count(accel_summary$n_positive)`
-(`r fmt_pct(accel_summary$prop_positive)`%) lakes is positive.
-Standard deviation and quartile range are also large, indicating that the acceleration varies widely across lakes.
-
-::: {.column-margin} 
-Here **acceleration** is measured as Sen's slope of the annual first-differenced STL trend. Positive values mean faster warming, slower cooling, or a transition toward warming.
-:::
 
 ::: {.column-page-inset}
-::: {#tbl-warming-summary layout-ncol=3}
+::: {#tbl-warming-summary layout-ncol=2}
 ::: {.list-table header-rows=0}
 
 - - Warming count
@@ -270,25 +134,7 @@ Here **acceleration** is measured as Sen's slope of the annual first-differenced
     `r fmt_num(raw_warming_summary$median, 2)`,
     `r fmt_num(raw_warming_summary$q75, 2)`
 
-Raw warming {#tbl-warming-summary-raw}
-:::
-
-::: {.list-table header-rows=0}
-
-- - Warming count
-  - `r fmt_count(stl_warming_summary$n_warming)`
-    (`r fmt_pct(stl_warming_summary$prop_warming)`%)
-
-- - Mean (°C/40yr)
-  - `r fmt_num(stl_warming_summary$mean, 3)` ±
-    `r fmt_num(stl_warming_summary$sd, 3)`
-
-- - Quartile (°C/40yr)
-  - `r fmt_num(stl_warming_summary$q25, 2)`,
-    `r fmt_num(stl_warming_summary$median, 2)`,
-    `r fmt_num(stl_warming_summary$q75, 2)`
-
-STL trend warming {#tbl-warming-summary-stl-trend}
+Raw annual warming speed {#tbl-warming-summary-raw}
 :::
 
 ::: {.list-table header-rows=0}
@@ -306,70 +152,33 @@ STL trend warming {#tbl-warming-summary-stl-trend}
     `r fmt_num(accel_summary$median, 2)`,
     `r fmt_num(accel_summary$q75, 2)`
 
-STL trend acceleration {#tbl-accel-summary}
+Acceleration {#tbl-accel-summary}
 :::
 
 Summary of warming status.
 :::
 :::
 
-The joint warming--acceleration states divide the lakes into four groups:
-
-::: {#tbl-joint-warming-acceleration-states .list-table}
-
-- - State
-  - n
-  - %
-
-- - warming + accelerating
-  - `r fmt_count(state_count("warming + accelerating"))`
-  - `r fmt_pct(state_prop("warming + accelerating"), 2)`
-
-- - warming + decelerating
-  - `r fmt_count(state_count("warming + decelerating"))`
-  - `r fmt_pct(state_prop("warming + decelerating"), 2)`
-
-- - cooling + accelerating
-  - `r fmt_count(state_count("cooling + accelerating"))`
-  - `r fmt_pct(state_prop("cooling + accelerating"), 2)`
-
-- - cooling + decelerating
-  - `r fmt_count(state_count("cooling + decelerating"))`
-  - `r fmt_pct(state_prop("cooling + decelerating"), 2)`
-
-Joint warming and acceleration states.
-:::
-
-These four states summarize signs rather than effect sizes. In particular, a
-positive acceleration means that a trend is becoming more positive, not that a
-lake is necessarily warming rapidly. The pairwise distributions in
-@fig-warming-acceleration-scatterplot-matrix therefore show both the central
-structure and the sparse combinations that are obscured by the state counts in
-@tbl-joint-warming-acceleration-states.
+A sign-only classification places
+`r fmt_pct(state_prop("warming + accelerating"), 1)`% of lakes in the warming
+and accelerating quadrant and
+`r fmt_pct(state_prop("warming + decelerating"), 1)`% in the warming and
+decelerating quadrant. These are descriptive sign counts, not stable response
+types: values close to zero can switch quadrant without a meaningful change in
+magnitude. The continuous relationships in
+@fig-warming-acceleration-scatterplot-matrix are therefore the primary summary.
 
 ```{r}
 #| label: fig-warming-acceleration-scatterplot-matrix
-#| fig-cap: "Pairwise relationships among mean temperature, warming speed, and acceleration. Diagonal panels show probability densities; upper panels show Pearson r (with significance stars), Spearman ρ, and LOESS pseudo-R. Lower panels show KDE contours for observations above the 5th percentile of local density; lower-density observations are shown as points with opacity proportional to local density."
+#| fig-cap: "Pairwise relationships among mean temperature, long-term warming speed (raw annual Theil–Sen slope), and acceleration. Diagonal panels show probability densities; upper panels show full-sample Pearson r and Spearman ρ, plus a LOESS pseudo-R estimated from a reproducible 15,000-lake sample. Lower panels show KDE contours for the same sample above the 5th percentile of local density; lower-density observations are shown as points with opacity proportional to local density."
 #| fig-width: 6
 #| fig-height: 6
 #| cache: true
 
 library(GGally)
 
-scatter_matrix_data <- lake_warming_metrics |>
-  transmute(
-    `Mean temperature` = raw_annual_mean_temp_mean,
-    `Warming speed` = raw_annual_mean_temp_sen_slope_40yr,
-    Acceleration = stl_annual_trend_diff_sen_slope_1e3
-  ) |>
-  filter(
-    is.finite(`Mean temperature`),
-    is.finite(`Warming speed`),
-    is.finite(Acceleration)
-  )
-
-
 scatter_matrix_core_quantile <- 0.05
+scatter_matrix_sample_n <- 15000L
 
 scatter_matrix_lower <- function(data, mapping, ...) {
   panel_data <- tibble(
@@ -377,13 +186,15 @@ scatter_matrix_lower <- function(data, mapping, ...) {
     y = rlang::eval_tidy(mapping$y, data)
   ) |>
     filter(is.finite(x), is.finite(y))
+  set.seed(20260710)
+  panel_data <- panel_data |>
+    slice_sample(n = min(scatter_matrix_sample_n, nrow(panel_data)))
   kde <- split_kde_core(
     panel_data,
     core_quantile = scatter_matrix_core_quantile,
     contour_n = 6
   )
 
-  set.seed(20260710)
   smooth_data <- kde$points |>
     slice_sample(prop = 0.1) 
 
@@ -441,32 +252,26 @@ scatter_matrix_cor <- function(data, mapping, ...) {
   x <- x[ok]
   y <- y[ok]
 
-  # Pearson correlation + p-value
-  pearson_test <- cor.test(x, y, method = "pearson")
-  r <- pearson_test$estimate
-  p <- pearson_test$p.value
+  # Descriptive Pearson correlation; with 92k lakes, nominal p-values add no information.
+  r <- cor(x, y, method = "pearson")
 
   # Spearman rank correlation
   rho <- cor(x, y, method = "spearman")
 
-  # LOESS pseudo-R (same span as lower-panel smooth)
-  loess_fit <- loess(y ~ x, span = 0.65)
+  # LOESS pseudo-R on same reproducible sample used by lower panels.
+  set.seed(20260710)
+  sample_index <- sample.int(length(x), min(scatter_matrix_sample_n, length(x)))
+  loess_x <- x[sample_index]
+  loess_y <- y[sample_index]
+  loess_fit <- loess(loess_y ~ loess_x, span = 0.65)
   y_pred <- predict(loess_fit)
-  ss_res <- sum((y - y_pred)^2)
-  ss_tot <- sum((y - mean(y))^2)
+  ss_res <- sum((loess_y - y_pred)^2)
+  ss_tot <- sum((loess_y - mean(loess_y))^2)
   r2_loess <- 1 - ss_res / ss_tot
   r_loess <- sign(r) * sqrt(max(0, r2_loess))
 
-  # Significance stars
-  stars <- dplyr::case_when(
-    p < 0.001 ~ "***",
-    p < 0.01  ~ "**",
-    p < 0.05  ~ "*",
-    .default  = ""
-  )
-
   label <- paste0(
-    "r = ", fmt_num(r, 2), stars, "\n",
+    "r = ", fmt_num(r, 2), "\n",
     "\u03C1 = ", fmt_num(rho, 2), "\n",
     "R[L] = ", fmt_num(r_loess, 2)
   )
@@ -495,7 +300,7 @@ scatter_matrix <- GGally::ggpairs(
   columns = 1:3,
   columnLabels = c(
     "Mean temperature\n(°C)",
-    "Warming speed\n(°C / 40 yr)",
+    "Long-term warming speed\n(raw; °C / 40 yr)",
     "Acceleration\n(10⁻³ °C / yr²)"
   ),
   upper = list(continuous = scatter_matrix_cor),
@@ -511,58 +316,27 @@ scatter_matrix <- GGally::ggpairs(
 scatter_matrix
 ```
 
-Mean temperature is negatively associated with cumulative warming ($r = -0.47$),
-while the warming--acceleration association is much weaker ($r = 0.19$). Thus,
-the widespread warming reported in @tbl-warming-summary-stl-trend does not
-imply a common temporal pathway: lakes with similar 40-year warming can be
-accelerating, decelerating, or changing little in their recent trend.
+Mean temperature is negatively associated with long-term warming speed
+($r = -0.47$), while the warming-speed--acceleration association is much weaker
+($r = 0.19$). Thus, widespread long-term warming does not imply a common
+temporal pathway: lakes with similar 40-year-equivalent trend change can be
+accelerating, decelerating, or changing little in their annual warming speed.
 
 ## Spatial pattern
 
 The hexagons in @fig-spatial-warming-acceleration-hex summarize lake-level
 estimates within 5° cells containing at least five lakes. Comparing the upper
-and lower panels separates where warming is strongest from where the underlying
-trend is becoming more or less positive; the two patterns need not coincide.
+and lower panels separates where long-term warming speed is strongest
+from where annual warming speed is becoming more or less positive; the two
+patterns need not coincide.The hexagons in @fig-spatial-warming-acceleration-hex summarize lake-level
+estimates within 5° cells containing at least five lakes. Comparing the upper
+and lower panels separates where long-term warming speed is strongest
+from where annual warming speed is becoming more or less positive; the two
+patterns need not coincide.
 
-```{r}
-#| label: spatial-warming-acceleration-hex-setup
-#| include: false
-#| cache: true
+> @fig-spatial-warming-acceleration-hex 用六边形汇总 5° 网格内的湖泊指标（≥5 个湖）。上下面板分别展示增温速率和加速度的空间格局，两者不必一致。
 
-spatial_hex <- prepare_spatial_hex(
-  metrics = lake_warming_metrics,
-  metadata = lake_meta_data,
-  hex_height = 5,
-  min_lakes = 5,
-  lon_limits = c(-180, 180),
-  lat_limits = c(-60, 85)
-)
 
-spatial_metrics <- spatial_hex$metrics
-spatial_hex_summary <- spatial_hex$summary |>
-  mutate(id = row_number())
-spatial_hex_poly <- spatial_hex$polygons
-lon_min <- spatial_hex$limits$lon[[1]]
-lon_max <- spatial_hex$limits$lon[[2]]
-lat_min <- spatial_hex$limits$lat[[1]]
-lat_max <- spatial_hex$limits$lat[[2]]
-
-# Fixed rounded mapping limits keep the two aligned legend axes readable.
-warming_limit <- 2
-acceleration_limit <- 3
-
-spatial_hex_summary <- spatial_hex_summary |>
-  mutate(
-    warming_scaled = warming_speed / warming_limit,
-    acceleration_scaled = acceleration / acceleration_limit
-  )
-spatial_hex_poly <- spatial_hex_poly |>
-  left_join(
-    spatial_hex_summary |>
-      select(id, warming_scaled, acceleration_scaled),
-    by = "id"
-  )
-```
 
 ```{r}
 #| label: fig-spatial-warming-acceleration-hex
@@ -664,69 +438,6 @@ spatial_acceleration_map <- ggplot() +
   )
 ```
 
-```{r}
-#| label: tbl-spatial-continent-summary-setup
-#| include: false
-#| cache: true
-
-spatial_continent_summary <- spatial_metrics |>
-  left_join(
-    lake_meta_data |>
-      select(lake_id, Continent),
-    by = "lake_id"
-  ) |>
-  mutate(
-    Continent = if_else(
-      is.na(Continent) | trimws(Continent) == "",
-      "Unknown",
-      Continent
-    ),
-    state = case_when(
-      warming_speed > 0 & acceleration > 0 ~ "warming + accelerating",
-      warming_speed > 0 & acceleration <= 0 ~ "warming + decelerating",
-      warming_speed <= 0 & acceleration > 0 ~ "cooling + accelerating",
-      warming_speed <= 0 & acceleration <= 0 ~ "cooling + decelerating",
-      TRUE ~ NA_character_
-    )
-  ) |>
-  filter(!is.na(state)) |>
-  group_by(Continent) |>
-  summarise(
-    n = n(),
-    warming_pct = mean(warming_speed > 0),
-    accelerating_pct = mean(acceleration > 0),
-    warming_accelerating_pct = mean(state == "warming + accelerating"),
-    mean_warming = mean(warming_speed, na.rm = TRUE),
-    mean_acceleration = mean(acceleration, na.rm = TRUE),
-    .groups = "drop"
-  ) |>
-  mutate(
-    continent_abbr = case_when(
-      Continent == "Africa" ~ "AF",
-      Continent == "Asia" ~ "AS",
-      Continent == "Europe" ~ "EU",
-      Continent == "North America" ~ "NA",
-      Continent == "South America" ~ "SA",
-      Continent == "Oceania" ~ "OC",
-      Continent == "Antarctica" ~ "AN",
-      Continent == "Unknown" ~ "UN",
-      TRUE ~ toupper(substr(Continent, 1, 2))
-    )
-  ) |>
-  arrange(desc(n))
-
-continent_stat <- function(abbr, column) {
-  value <- spatial_continent_summary |>
-    filter(continent_abbr == abbr) |>
-    pull({{ column }})
-
-  if (length(value) == 0 || !is.finite(value[[1]])) {
-    return(NA_real_)
-  }
-
-  value[[1]]
-}
-```
 
 ::: {.column-page-inset}
 ::: {#tbl-spatial-continent-summary .list-table}
@@ -779,11 +490,20 @@ Continent-level spatial summary
 :::
 
 @tbl-spatial-continent-summary reinforces this distinction. Europe combines
-high mean warming with predominantly positive acceleration, whereas North
-America has high warming prevalence but a negative mean acceleration.
-Continental values are descriptive aggregates: uneven lake coverage and
-within-continent spatial structure mean they should not be interpreted as
-area-weighted climate means.
+high mean long-term warming speed with predominantly positive acceleration,
+whereas North America has high warming prevalence but a negative mean
+acceleration. Continental values are descriptive aggregates: uneven lake coverage and within-continent spatial structure mean they
+should not be interpreted as area-weighted climate means.@tbl-spatial-continent-summary reinforces this distinction. Europe combines
+high mean long-term warming speed with predominantly positive acceleration,
+whereas North America has high warming prevalence but a negative mean
+acceleration. Continental values are descriptive aggregates: uneven lake coverage and within-continent spatial structure mean they
+should not be interpreted as area-weighted climate means.
+
+> @tbl-spatial-continent-summary 强化了大洲差异。欧洲高增温速率+正加速度，北美高增温比例但负均值加速度。大洲统计值为描述性汇总，非面积加权气候均值。
 
 
+These global metrics reduce each lake's annual warming-speed series to a
+long-term slope. They show whether warming speed tends to become more or less
+positive, but not how the temporal pattern of warming differs among lakes or what factors drive those differences. [Warming pattern decomposition](02-warming-patterns.qmd) therefore applies PCA to the full annual temperature trajectory to identify dominant modes of variation and their spatial organisation.
 
+> 全局指标将年增温速率压缩为长期斜率，但不能揭示增温时间模式的差异。[增温模式分解](02-warming-patterns.qmd)用 PCA 识别主要变异模态及其空间组织。

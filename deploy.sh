@@ -4,17 +4,33 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+	cat <<'EOF'
+Usage: ./deploy.sh [commit message]
+
+Renders the site, commits source changes to main, and deploys _output to gh-pages.
+When omitted, the source commit keeps the timestamp-based default message.
+EOF
+	exit 0
+fi
+
+COMMIT_MESSAGE="${*:-Update $(date -u +'%Y-%m-%d %H:%M UTC')}"
+
 # 0. Prune stale worktrees early (before slow render)
 git worktree prune
 
 # 1. Render
 echo "==> Rendering Quarto site..."
-quarto render
+quarto render --cache-refresh
 
 # 2. Commit & push source changes to main
 echo "==> Pushing source to main..."
 git add -A -- .gitignore '*.qmd' '*.R' '*.scss' '*.yml' '*.sh' '*.bib' '*.svg'
-git commit -m "Update $(date -u +'%Y-%m-%d %H:%M UTC')" || echo "(nothing to commit)"
+if git diff --cached --quiet; then
+	echo "(nothing to commit)"
+else
+	git commit -m "$COMMIT_MESSAGE"
+fi
 git push origin main
 
 # 3. Deploy _output to gh-pages branch
@@ -41,7 +57,11 @@ cp -R _output/* "$DEPLOY_DIR/"
 echo "==> Committing..."
 cd "$DEPLOY_DIR"
 git add -A
-git commit -m "Deploy $(date -u +'%Y-%m-%d %H:%M UTC')" || echo "(nothing to commit)"
+if git diff --cached --quiet; then
+	echo "(nothing to commit)"
+else
+	git commit -m "Deploy: $COMMIT_MESSAGE"
+fi
 
 echo "==> Pushing gh-pages..."
 git push origin gh-pages

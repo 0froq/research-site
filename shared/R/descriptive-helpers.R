@@ -91,7 +91,7 @@ prepare_spatial_hex <- function(
     transmute(
       lake_id,
       warming_speed = raw_annual_mean_temp_sen_slope_40yr,
-      acceleration = stl_annual_trend_diff_sen_slope_1e3
+      acceleration = raw_annual_mean_temp_diff_sen_slope_1e3
     ) |>
     left_join(metadata |> select(lake_id, lon, lat), by = "lake_id") |>
     filter(is.finite(lon), is.finite(lat), is.finite(warming_speed), is.finite(acceleration)) |>

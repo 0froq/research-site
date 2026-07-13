@@ -8,7 +8,7 @@ All explorations — finished, cancelled, in-progress, or not started.
 
 ::: {.align-center .text-xl}
 [prose](./warming-acceleration/prose/is-there-a-hiatus.qmd) ·
-[draft](./warming-acceleration/draft/01-descriptive.qmd) ·
+[draft](./warming-acceleration/draft/01-global-kinematics.qmd) ·
 [log](./warming-acceleration/log/index.qmd)
 :::
 

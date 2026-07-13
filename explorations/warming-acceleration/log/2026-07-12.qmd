@@ -1,0 +1,7 @@
+---
+title: "2026-07-12"
+---
+
+The former descriptive and regional chapters need reconstruction.
+The active replacements are [Global Kinematics](../draft/01-global-kinematics.qmd) and
+[Warming Pattern Decomposition](../draft/02-warming-patterns.qmd).

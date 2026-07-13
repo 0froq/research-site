@@ -65,11 +65,10 @@ website:
         - section: Papers
           contents:
             - auto: notes/papers/*.qmd
-        - section: Points
-          contents:
-            - auto: notes/points/*.qmd
-        - text: Paper Collection
-          href: notes/paper-collection.qmd
+        - text: Reading Queue
+          href: notes/reading-queue.qmd
+        - text: Research Dialogue
+          href: notes/research-dialogue.qmd
 
 
   page-footer:

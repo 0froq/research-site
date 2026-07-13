@@ -30,7 +30,7 @@ prepare_regional_cluster_data <- function(data_dir = data) {
     data_dir,
     "07-warming-response-clustering",
     "output",
-    "stl_trend_period12_robustfalse_ni5_no0_nt199_baseline1981_1990_pca095_k4-8"
+    "stl_trend_period12_robustfalse_ni5_no0_nt99_baseline1981_1990_pca095_k4-8"
   )
 
   clusters <- read_csv(
@@ -54,14 +54,14 @@ prepare_regional_cluster_data <- function(data_dir = data) {
   metrics <- read_csv(
     file.path(
       data_dir, "06-lake-warming-metrics", "output",
-      "period12_robustfalse_ni5_no0_nt199", "lake_warming_metrics.csv"
+      "period12_robustfalse_ni5_no0_nt99", "lake_warming_metrics.csv"
     ),
     show_col_types = FALSE,
     col_select = c(
       lake_id,
       mean_temp = raw_annual_mean_temp_mean,
       warming_speed = raw_annual_mean_temp_sen_slope_40yr,
-      acceleration = stl_annual_trend_diff_sen_slope_1e3
+      acceleration = raw_annual_mean_temp_diff_sen_slope_1e3
     )
   )
 
@@ -111,6 +111,7 @@ prepare_regional_cluster_data <- function(data_dir = data) {
   list(
     plot_data = plot_data,
     map_data = map_data,
+    profiles = profiles,
     summary = summary,
     colours = definitions$colours,
     levels = definitions$levels,
@@ -118,13 +119,35 @@ prepare_regional_cluster_data <- function(data_dir = data) {
   )
 }
 
+prepare_response_profile_panels <- function(profiles) {
+  cluster_levels <- levels(profiles$cluster_label)
+  profile_values <- profiles |>
+    transmute(
+      source_cluster = as.character(cluster_label),
+      year,
+      anomaly_mean,
+      anomaly_sd
+    )
+
+  tidyr::crossing(
+    panel_cluster = factor(cluster_levels, levels = cluster_levels),
+    source_cluster = cluster_levels
+  ) |>
+    left_join(profile_values, by = "source_cluster") |>
+    mutate(
+      source_cluster = factor(source_cluster, levels = cluster_levels),
+      is_focus = panel_cluster == source_cluster,
+      is_baseline = year <= 1990
+    )
+}
+
 prepare_cluster_metric_long <- function(plot_data) {
   plot_data |>
     transmute(
       cluster_label,
       `Mean temperature\n(°C)` = mean_temp,
-      `Sen slope\n(°C / 40 yr)` = warming_speed,
-      `STL trend diff slope\n(10-3 °C / yr2)` = acceleration
+      `Long-term warming speed\n(STL trend; °C / 40 yr)` = warming_speed,
+      `Acceleration\n(10⁻³ °C / yr²)` = acceleration
     ) |>
     pivot_longer(-cluster_label, names_to = "metric", values_to = "value") |>
     filter(is.finite(value)) |>
@@ -132,8 +155,8 @@ prepare_cluster_metric_long <- function(plot_data) {
       metric = factor(
         metric,
         levels = c(
-          "Mean temperature\n(°C)", "Sen slope\n(°C / 40 yr)",
-          "STL trend diff slope\n(10-3 °C / yr2)"
+          "Mean temperature\n(°C)", "Long-term warming speed\n(STL trend; °C / 40 yr)",
+          "Acceleration\n(10⁻³ °C / yr²)"
         )
       )
     )

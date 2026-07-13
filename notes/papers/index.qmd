@@ -1,0 +1,15 @@
+---
+title: Papers
+---
+
+These are user-reviewed per-paper notes. They are distinct from the reading queue: each page records material the user has read and chosen to retain.
+
+> 此处为用户已阅读并选择保留的逐篇笔记；它不同于候选文献队列。
+
+- [Cohen 2014: Arctic amplification](cohen2014.qmd)
+- [Dai & Wang 2018: Early-2000s hiatus](dai2018.qmd)
+- [Fyfe et al. 2016: Warming slowdown](fyfe2016.qmd)
+- [Rodionov 2004: Sequential regime-shift test](rodionov2004.qmd)
+- [Xiao & Ren 2023: North Pacific regime shift](xiao2023.qmd)
+- [Xie & Kosaka 2017: Causes of the warming hiatus](xie2017.qmd)
+- [Yan et al. 2016: Slowdown or redistribution](yan2016.qmd)
