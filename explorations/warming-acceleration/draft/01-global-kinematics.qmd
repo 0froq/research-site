@@ -449,41 +449,41 @@ spatial_acceleration_map <- ggplot() +
   - Mean warming
   - Mean acceleration
 - - **NA**
-  - `r fmt_pct(continent_stat("NA", warming_pct))`%
-  - **`r fmt_pct(continent_stat("NA", accelerating_pct))`%**
-  - **`r fmt_pct(continent_stat("NA", warming_accelerating_pct))`%**
-  - `r fmt_num(continent_stat("NA", mean_warming), 2)` °C / 40 yr
-  - **`r fmt_num(continent_stat("NA", mean_acceleration), 2)` ×10⁻³ °C / yr²**
+  - `r fmt_pct(continent_stat("NA", "warming_pct"))`%
+  - **`r fmt_pct(continent_stat("NA", "accelerating_pct"))`%**
+  - **`r fmt_pct(continent_stat("NA", "warming_accelerating_pct"))`%**
+  - `r fmt_num(continent_stat("NA", "mean_warming"), 2)` °C / 40 yr
+  - **`r fmt_num(continent_stat("NA", "mean_acceleration"), 2)` ×10⁻³ °C / yr²**
 - - EU
-  - `r fmt_pct(continent_stat("EU", warming_pct))`%
-  - `r fmt_pct(continent_stat("EU", accelerating_pct))`%
-  - `r fmt_pct(continent_stat("EU", warming_accelerating_pct))`%
-  - `r fmt_num(continent_stat("EU", mean_warming), 2)` °C / 40 yr
-  - `r fmt_num(continent_stat("EU", mean_acceleration), 2)` ×10⁻³ °C / yr²
+  - `r fmt_pct(continent_stat("EU", "warming_pct"))`%
+  - `r fmt_pct(continent_stat("EU", "accelerating_pct"))`%
+  - `r fmt_pct(continent_stat("EU", "warming_accelerating_pct"))`%
+  - `r fmt_num(continent_stat("EU", "mean_warming"), 2)` °C / 40 yr
+  - `r fmt_num(continent_stat("EU", "mean_acceleration"), 2)` ×10⁻³ °C / yr²
 - - AS
-  - `r fmt_pct(continent_stat("AS", warming_pct))`%
-  - `r fmt_pct(continent_stat("AS", accelerating_pct))`%
-  - `r fmt_pct(continent_stat("AS", warming_accelerating_pct))`%
-  - `r fmt_num(continent_stat("AS", mean_warming), 2)` °C / 40 yr
-  - `r fmt_num(continent_stat("AS", mean_acceleration), 2)` ×10⁻³ °C / yr²
+  - `r fmt_pct(continent_stat("AS", "warming_pct"))`%
+  - `r fmt_pct(continent_stat("AS", "accelerating_pct"))`%
+  - `r fmt_pct(continent_stat("AS", "warming_accelerating_pct"))`%
+  - `r fmt_num(continent_stat("AS", "mean_warming"), 2)` °C / 40 yr
+  - `r fmt_num(continent_stat("AS", "mean_acceleration"), 2)` ×10⁻³ °C / yr²
 - - SA
-  - `r fmt_pct(continent_stat("SA", warming_pct))`%
-  - `r fmt_pct(continent_stat("SA", accelerating_pct))`%
-  - `r fmt_pct(continent_stat("SA", warming_accelerating_pct))`%
-  - `r fmt_num(continent_stat("SA", mean_warming), 2)` °C / 40 yr
-  - `r fmt_num(continent_stat("SA", mean_acceleration), 2)` ×10⁻³ °C / yr²
+  - `r fmt_pct(continent_stat("SA", "warming_pct"))`%
+  - `r fmt_pct(continent_stat("SA", "accelerating_pct"))`%
+  - `r fmt_pct(continent_stat("SA", "warming_accelerating_pct"))`%
+  - `r fmt_num(continent_stat("SA", "mean_warming"), 2)` °C / 40 yr
+  - `r fmt_num(continent_stat("SA", "mean_acceleration"), 2)` ×10⁻³ °C / yr²
 - - AF
-  - `r fmt_pct(continent_stat("AF", warming_pct))`%
-  - `r fmt_pct(continent_stat("AF", accelerating_pct))`%
-  - `r fmt_pct(continent_stat("AF", warming_accelerating_pct))`%
-  - `r fmt_num(continent_stat("AF", mean_warming), 2)` °C / 40 yr
-  - `r fmt_num(continent_stat("AF", mean_acceleration), 2)` ×10⁻³ °C / yr²
+  - `r fmt_pct(continent_stat("AF", "warming_pct"))`%
+  - `r fmt_pct(continent_stat("AF", "accelerating_pct"))`%
+  - `r fmt_pct(continent_stat("AF", "warming_accelerating_pct"))`%
+  - `r fmt_num(continent_stat("AF", "mean_warming"), 2)` °C / 40 yr
+  - `r fmt_num(continent_stat("AF", "mean_acceleration"), 2)` ×10⁻³ °C / yr²
 - - OC
-  - `r fmt_pct(continent_stat("OC", warming_pct))`%
-  - `r fmt_pct(continent_stat("OC", accelerating_pct))`%
-  - `r fmt_pct(continent_stat("OC", warming_accelerating_pct))`%
-  - `r fmt_num(continent_stat("OC", mean_warming), 2)` °C / 40 yr
-  - `r fmt_num(continent_stat("OC", mean_acceleration), 2)` ×10⁻³ °C / yr²
+  - `r fmt_pct(continent_stat("OC", "warming_pct"))`%
+  - `r fmt_pct(continent_stat("OC", "accelerating_pct"))`%
+  - `r fmt_pct(continent_stat("OC", "warming_accelerating_pct"))`%
+  - `r fmt_num(continent_stat("OC", "mean_warming"), 2)` °C / 40 yr
+  - `r fmt_num(continent_stat("OC", "mean_acceleration"), 2)` ×10⁻³ °C / yr²
 
 Continent-level spatial summary
 :::
