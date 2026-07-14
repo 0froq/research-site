@@ -14,7 +14,7 @@ fmt_num <- function(x, digits = 2) formatC(x, format = "f", digits = digits)
 fmt_pct <- function(x, digits = 1) fmt_num(100 * x, digits)
 ```
 
-Long-term warming speed and acceleration compress each lake's 40-year temperature record into two summary statistics. While these summaries capture the direction and rate of change, they discard the temporal trajectory—when warming occurred, whether it was steady or intermittent, and how it relates to known climate modes. This chapter applies principal component analysis (PCA) to the full annual temperature anomaly trajectory, identifying the dominant modes of warming variation across `r scales::comma(nrow(lake_meta_data))` lakes.
+Long-term warming speed and acceleration compress each lake's 40-year temperature record into two summary statistics. While these summaries capture direction and rate of change, they discard the trajectory itself—when anomalies occurred and whether their timing was shared across lakes. This chapter applies principal component analysis (PCA) to the full annual temperature anomaly trajectory, identifying dominant temporal contrasts across `r scales::comma(nrow(lake_meta_data))` lakes.
 
 > 长期增温速率和加速度将每个湖泊 40 年的温度记录压缩为两个统计量。本章对完整的年温度异常轨迹做 PCA，识别全球 `r scales::comma(nrow(lake_meta_data))` 个湖泊增温变异的主要模态。
 
@@ -62,9 +62,9 @@ $$
 \Delta T_{\text{lake}}(t) \approx \sum_{k=1}^{5} \text{score}_k \times \text{loading}_k(t)
 $$
 
-The loading time series reveals what temporal pattern each component captures; the score reveals which lakes exhibit that pattern most strongly.
+The loading time series reveals a temporal contrast; the score reveals which lakes express it. PCA signs are arbitrary: multiplying both a component's loadings and all its scores by −1 leaves the reconstruction unchanged. Therefore, a component is identified by the score × loading pattern, not by a positive or negative score alone.
 
-> 每个成分对每年有一个**载荷**（权重），对每个湖泊有一个**分数**（表达强度）。湖泊在某年的温度异常 ≈ 各成分的分数×载荷之和。载荷揭示时间模式，分数揭示空间分布。
+> 每个成分对每年有一个**载荷**（权重），对每个湖泊有一个**分数**（表达强度）。湖泊在某年的温度异常 ≈ 各成分的分数×载荷之和。PCA 正负号可整体翻转；应解释“分数×载荷”的组合，而非孤立的正负分数。
 
 ```{r}
 #| label: fig-pca-loadings
@@ -89,11 +89,12 @@ loading_plot
 
 @fig-pca-loadings reveals the temporal structure of each component:
 
-- **PC1 (`r fmt_pct(var_pc1, 1)`%)** captures a contrast between early and late years. Loadings are weakly positive in the 1980s and strongly negative after 2015. Lakes with **negative** PC1 scores therefore have **stronger warming in recent decades** (negative score × negative loading = positive anomaly). This component represents **late-period warming acceleration**.
 
-- **PC2 (`r fmt_pct(var_pc2, 1)`%)** peaks around 1996--1998, corresponding to the strong El Niño years. Lakes with high PC2 scores experienced unusually warm conditions in the late 1990s relative to their baseline. This component captures **interannual climate variability**, particularly ENSO-related warming.
+- **PC1 (`r fmt_pct(var_pc1, 1)`%)** contrasts early weakly positive loadings with strongly negative loadings after 2015. Under the displayed sign convention, negative scores combine with negative late loadings to produce positive late-period anomalies. PC1 is therefore an **early-versus-late trajectory contrast**, not direct evidence of acceleration; reversing the PCA sign would reverse both labels without changing the lake trajectories.
 
-- **PC3 (`r fmt_pct(var_pc3, 1)`%)** has a negative peak around 2005--2006, corresponding to the global warming hiatus period. Lakes with negative PC3 scores experienced a more pronounced cooling or reduced warming during this period.
+- **PC2 (`r fmt_pct(var_pc2, 1)`%)** is dominated by a late-1990s excursion. Its scores identify lakes that differ in the magnitude and sign of that temporal feature relative to their baseline. The component alone does not identify its physical driver.
+
+- **PC3 (`r fmt_pct(var_pc3, 1)`%)** is dominated by a mid-2000s negative excursion. Its scores identify lakes that differ in this feature, without assigning it to a global pause or a specific forcing.
 
 - **PC4 (`r fmt_pct(var_pc4, 1)`%)** shows a dip around 1989--1992 and a peak around 2010--2012, suggesting a pattern of early cooling followed by recovery.
 
@@ -101,9 +102,9 @@ loading_plot
 
 > @fig-pca-loadings 揭示各成分的时间结构：
 >
-> - **PC1**：早期正载荷、后期强负载荷 → 代表**近年增温加速**
-> - **PC2**：1996–1998 峰值 → 代表 **ENSO 相关的年际变率**
-> - **PC3**：2005–2006 负峰 → 代表 **hiatus 期间的冷却**
+> - **PC1**：早期弱正、后期强负载荷；负分数与后期负载荷相乘产生正异常。这是早—晚轨迹对比，不直接等于加速。
+> - **PC2**：以 1990 年代末异常为主；不据此指定物理驱动。
+> - **PC3**：以 2000 年代中期负异常为主；不赋予特定过程名称或强迫。
 > - **PC4**：1989–1992 低谷 + 2010–2012 峰值 → 早期冷却后恢复
 > - **PC5**：多年代际振荡
 
@@ -111,7 +112,7 @@ loading_plot
 
 ```{r}
 #| label: fig-pca-score-maps
-#| fig-cap: "Spatial distribution of PC1--PC3 scores. Warm colours indicate positive scores (stronger expression of the component's pattern); cool colours indicate negative scores (opposite pattern). PC1 captures late-period acceleration; PC2 captures 1990s interannual variability; PC3 captures hiatus-period cooling."
+#| fig-cap: "Spatial distribution of PC1--PC3 scores. Warm colours indicate positive scores and cool colours negative scores under the displayed, arbitrary PCA sign convention. PC1 is an early-versus-late trajectory contrast; PC2 is dominated by a late-1990s excursion; PC3 by a mid-2000s negative excursion."
 #| fig-width: 12
 #| fig-height: 10
 #| cache: true
@@ -144,9 +145,9 @@ make_pca_map <- function(pc_col, title) {
     )
 }
 
-map_pc1 <- make_pca_map("pc1", paste0("PC1 (", fmt_pct(var_pc1, 1), "%): Late-period acceleration"))
-map_pc2 <- make_pca_map("pc2", paste0("PC2 (", fmt_pct(var_pc2, 1), "%): 1990s interannual variability"))
-map_pc3 <- make_pca_map("pc3", paste0("PC3 (", fmt_pct(var_pc3, 1), "%): Hiatus cooling"))
+map_pc1 <- make_pca_map("pc1", paste0("PC1 (", fmt_pct(var_pc1, 1), "%): Early–late contrast"))
+map_pc2 <- make_pca_map("pc2", paste0("PC2 (", fmt_pct(var_pc2, 1), "%): Late-1990s excursion"))
+map_pc3 <- make_pca_map("pc3", paste0("PC3 (", fmt_pct(var_pc3, 1), "%): Mid-2000s excursion"))
 
 (map_pc1 / map_pc2 / map_pc3) +
   plot_layout(guides = "collect") &
@@ -155,21 +156,22 @@ map_pc3 <- make_pca_map("pc3", paste0("PC3 (", fmt_pct(var_pc3, 1), "%): Hiatus 
 
 @fig-pca-score-maps reveals clear spatial patterns:
 
-- **PC1**: Europe and northern Asia show strongly negative scores, indicating pronounced late-period warming acceleration. The Americas and tropics show more positive scores, indicating relatively less late-period acceleration. This continental-scale contrast is the single most important mode of warming heterogeneity.
 
-- **PC2**: North America shows strongly positive scores, reflecting the pronounced 1990s warming signal. This is consistent with the strong El Niño influence on North American lake temperatures during 1997--1998.
+- **PC1**: Europe and northern Asia show negative scores, whereas the Americas and tropics are more positive. Under the displayed sign convention, this maps a continental contrast in the early-versus-late trajectory; it does not establish that one region accelerated more than another.
 
-- **PC3**: The spatial pattern is more diffuse, with scattered positive and negative scores across continents, consistent with the hiatus being a globally heterogeneous phenomenon rather than a coherent regional signal.
+- **PC2**: North America shows more positive scores, indicating a stronger expression of the late-1990s feature under the displayed convention. No physical driver is identified from this spatial pattern alone.
+
+- **PC3**: The spatial pattern is diffuse, with positive and negative scores across continents. The mid-2000s feature is therefore not a coherent regional mode in these data.
 
 > @fig-pca-score-maps 揭示清晰的空间格局：
 >
-> - **PC1**：欧洲和北亚强负分 → 近年加速最明显；美洲和热带正分 → 加速较弱。这是增温异质性最重要的模态。
-> - **PC2**：北美强正分 → 1990 年代增温信号突出，与 El Niño 影响一致。
-> - **PC3**：空间格局更分散，hiatus 冷却是全球异质性现象。
+> - **PC1**：欧洲和北亚偏负，美洲和热带偏正；表示早—晚轨迹对比的大陆差异，不等于相对加速。
+> - **PC2**：北美偏正；表示 1990 年代末特征更强，不指认驱动。
+> - **PC3**：空间更分散；2000 年代中期特征不构成一致区域模态。
 
 ```{r}
 #| label: fig-pc1-pc2-scatter
-#| fig-cap: "Joint distribution of PC1 and PC2 scores, coloured by continent. Ellipses show 68% confidence regions. PC1 captures late-period acceleration; PC2 captures 1990s interannual variability."
+#| fig-cap: "Joint distribution of PC1 and PC2 scores, coloured by continent. Ellipses show 68% confidence regions. PC1 is an early-versus-late trajectory contrast; PC2 is dominated by a late-1990s excursion."
 #| fig-width: 8
 #| fig-height: 6
 #| cache: true
@@ -182,8 +184,8 @@ pc_scatter <- ggplot(
   stat_ellipse(level = 0.68, linewidth = 0.8, geom = "polygon", alpha = 0.1) +
   scale_color_brewer(palette = "Set2", name = NULL) +
   labs(
-    x = paste0("PC1 (", fmt_pct(var_pc1, 1), "%): Late-period acceleration"),
-    y = paste0("PC2 (", fmt_pct(var_pc2, 1), "%): 1990s variability")
+    x = paste0("PC1 (", fmt_pct(var_pc1, 1), "%): Early–late contrast"),
+    y = paste0("PC2 (", fmt_pct(var_pc2, 1), "%): Late-1990s excursion")
   ) +
   theme_base(grid = TRUE) +
   theme(legend.position = "right")
@@ -192,9 +194,9 @@ save_figure("fig-pc1-pc2-scatter.png", pc_scatter, width = 10, height = 7)
 pc_scatter
 ```
 
-@fig-pc1-pc2-scatter confirms the continental clustering in PC space. European lakes occupy the lower-left quadrant (negative PC1, negative PC2), indicating late-period acceleration with moderate 1990s variability. North American lakes are more dispersed but shifted toward positive PC2, reflecting the strong 1990s warming signal. This separation in continuous PC space is more informative than discrete cluster labels: it reveals that the "European warming acceleration" and "North American 1990s peak" are not sharply distinct types but rather regions of a continuous distribution.
+@fig-pc1-pc2-scatter confirms continental structure in PC space. European lakes occupy the lower-left quadrant under the displayed sign convention, while North American lakes are more dispersed and shifted toward positive PC2. This is a continuous separation in trajectory contrasts, not evidence for discrete response types or a specified climate mechanism.
 
-> @fig-pc1-pc2-scatter 确认了 PC 空间中的大洲聚类。欧洲湖泊位于左下象限（PC1 负、PC2 负），北美偏向 PC2 正方向。这种连续空间中的分离比离散聚类标签更丰富。
+> @fig-pc1-pc2-scatter 显示 PC 空间存在连续的大洲结构。正负号受 PCA 约定影响；其表示轨迹对比，不指定离散类型或气候机制。
 
 ## Predictors of warming mode expression
 
@@ -207,9 +209,9 @@ What factors determine which warming pattern a lake exhibits? To answer this que
 ::: {#tbl-pca-regression-coefs .list-table}
 
 - - Predictor
-  - PC1 (late accel.)
-  - PC2 (1990s var.)
-  - PC3 (hiatus)
+  - PC1 (early–late)
+  - PC2 (late-1990s)
+  - PC3 (mid-2000s)
 - - Intercept
   - `r coefficient_cell("PC1", "(Intercept)")`
   - `r coefficient_cell("PC2", "(Intercept)")`
@@ -324,10 +326,12 @@ An alternative approach to characterising warming heterogeneity is $k$-means clu
 
 > 用 PCA 降维后的轨迹空间做 K 均值聚类是替代方案。详细比较见 [PCA vs. Clustering](../prose/pca-vs-clustering.qmd)。
 
-## Implications for attribution
+## Implications for future analysis
 
-The PCA decomposition reveals that lake warming patterns are not random: they are organised by geography (continent, latitude) and lake morphology (depth). The dominant mode (PC1) captures a continental-scale contrast in late-period warming acceleration, while PC2 captures interannual climate variability (likely ENSO-related).
+The PCA decomposition shows that trajectory contrasts are structured by geography and lake morphology. PC1 describes an early-versus-late contrast, while PC2 and PC3 describe localized temporal excursions. These are associations in a low-frequency temperature representation, not attribution to external climate modes.
 
-These findings motivate the attribution analysis in Chapter 3. The continuous PC scores provide a natural response variable for regression against teleconnection indices (ENSO, PDO, AO), local climate variables (precipitation, wind speed), and lake characteristics (depth, area, ice duration). Unlike discrete cluster labels, PC scores preserve the full spectrum of warming heterogeneity and allow for continuous, quantitative attribution.
+> PCA 显示轨迹对比受地理与湖泊形态组织：PC1 为早—晚对比，PC2/PC3 为局部时间异常。它们是低频温度表征中的关联，不是对外部气候模态的归因。
 
-> PCA 分解揭示增温模式由地理（大洲、纬度）和湖泊形态（深度）组织。PC1 捕捉大洲尺度的近年加速对比，PC2 捕捉年际气候变率。这些发现为第 3 章的归因分析奠定基础：PC 分数可直接作为响应变量，对遥相关指数、本地气候变量和湖泊特征做回归。
+PC scores can become response variables in a future model only after that model's predictors, temporal alignment, confounding control, and interpretation limits are specified. Chapter 3 is not yet an active attribution analysis.
+
+> PC 分数可在未来模型中作为响应变量，但须先明确预测变量、时间对齐、混杂控制与解释边界；Chapter 3 尚未进入归因分析。

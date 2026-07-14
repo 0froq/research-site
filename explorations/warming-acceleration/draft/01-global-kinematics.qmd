@@ -99,9 +99,9 @@ draw_fixed_aspect(lake_density_composite, aspect = 6 / 3)
 
 ## Long-term warming speed and acceleration
 
-**Long-term warming speed** is the Theil--Sen slope of annual mean lake surface water temperature (LSWT) over 1982--2020, presented as a 40-year-equivalent change in °C. **Acceleration** is the Sen slope of the annual first difference of warming speed, measured in $10^{-3}$ °C yr$^{-2}$. Both metrics are computed directly from raw annual mean temperature without seasonal decomposition, thereby retaining the full spectrum of interannual climate variability (e.g. ENSO, PDO) that may contribute to observed warming heterogeneity.
+**Long-term warming speed** is the Theil--Sen slope of annual mean lake surface water temperature (LSWT) over 1982--2020, presented as a 40-year-equivalent change in °C. **Acceleration** is presently the Sen slope of adjacent-year differences in raw annual mean temperature, measured in $10^{-3}$ °C yr$^{-2}$. Both metrics use raw annual means without seasonal decomposition.
 
-> 本章以年均 LSWT 为主要指标。**长期增温速率**为 Theil–Sen 斜率（40 年等效变化）；**加速度**为年际差分的 Sen 斜率。两者直接从原始年均温度计算，保留 ENSO/PDO 等年际变率信息。
+> 本章以年均 LSWT 为主要指标。**长期增温速率**为 Theil–Sen 斜率（40 年等效变化）；**加速度**暂定义为原始年均温度年际差分的 Sen 斜率。
 
 ```{r}
 #| include: false
@@ -116,6 +116,10 @@ fmt_pct <- function(x, digits = 1) fmt_num(100 * x, digits)
 
 > @tbl-warming-summary-raw summarizes the warming metrics computed from raw annual mean LSWT% 湖泊呈正增温速率，但仅`r fmt_pct(accel_summary$prop_positive)`% 呈正加速度，增温方向与速度变化基本解耦。
 
+The current acceleration distribution is extremely dispersed (`r fmt_num(accel_summary$mean, 3)` ± `r fmt_num(accel_summary$sd, 3)` ×10⁻³ °C yr⁻²). Adjacent-year differences retain substantial short-timescale variability, so this estimator is a provisional descriptive diagnostic rather than evidence for lake-level acceleration or deceleration. Its definition and robustness require revision before inferential use.
+
+> 当前加速度离散度极大；年际差分保留大量短时变率。因此现阶段仅作描述性诊断，不能据此判定单湖加速或减速；定义与稳健性待后续重审。
+
 
 ::: {.column-page-inset}
 ::: {#tbl-warming-summary layout-ncol=2}
@@ -125,11 +129,11 @@ fmt_pct <- function(x, digits = 1) fmt_num(100 * x, digits)
   - `r fmt_count(raw_warming_summary$n_warming)`
     (`r fmt_pct(raw_warming_summary$prop_warming)`%)
 
-- - Mean (°C/40yr)
+- - Mean (10⁻³ °C/yr²)
   - `r fmt_num(raw_warming_summary$mean, 3)` ±
     `r fmt_num(raw_warming_summary$sd, 3)`
 
-- - Quartile (°C/40yr)
+- - Quartile (10⁻³ °C/yr²)
   - `r fmt_num(raw_warming_summary$q25, 2)`,
     `r fmt_num(raw_warming_summary$median, 2)`,
     `r fmt_num(raw_warming_summary$q75, 2)`
