@@ -1,86 +1,102 @@
 [
   {
-    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html",
-    "href": "notes/points/lake-warming-hiatus-mechanisms.html",
-    "title": "Lake Warming Hiatus: Physical Mechanisms",
+    "objectID": "notes/reading-queue.html",
+    "href": "notes/reading-queue.html",
+    "title": "Reading Queue",
     "section": "",
-    "text": "Understanding the physical mechanisms behind hiatus-period lake temperature response is essential — changepoint detection tells us when and how much, but not why.",
+    "text": "This page tracks candidate readings for the warming-acceleration exploration. It is not a paper-note archive. A candidate becomes a notes/papers/*.qmd note only after the user reviews and accepts its brief.",
     "crumbs": [
       "Notes",
-      "Points",
-      "Lake Warming Hiatus: Physical Mechanisms"
+      "Reading Queue"
     ]
   },
   {
-    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html#surface-energy-balance-framework",
-    "href": "notes/points/lake-warming-hiatus-mechanisms.html#surface-energy-balance-framework",
-    "title": "Lake Warming Hiatus: Physical Mechanisms",
-    "section": "Surface energy balance framework",
-    "text": "Surface energy balance framework\nLake surface temperature is governed by (O’Reilly et al. 2015):\n\\[\\Delta T_{\\text{surface}} \\propto Q^* - Q_H - Q_E - \\Delta Q_S\\]\nwhere \\(Q^*\\) = net radiation, \\(Q_H\\) = sensible heat, \\(Q_E\\) = latent heat (evaporation), \\(\\Delta Q_S\\) = heat storage change. Any climate factor altering these four fluxes affects lake warming rate.",
+    "objectID": "notes/reading-queue.html#review-protocol",
+    "href": "notes/reading-queue.html#review-protocol",
+    "title": "Reading Queue",
+    "section": "Review protocol",
+    "text": "Review protocol\n\n\n\nState\nMeaning\nAllowed action\n\n\n\n\ncandidate\nBibliographic match; not yet read or summarised.\nQueue it with a question and relevance rationale.\n\n\nbriefed\nA two-paper reading brief has been prepared in conversation.\nUser accepts, rejects, or requests deeper reading.\n\n\naccepted\nUser confirms the paper should become a durable note.\nCreate one notes/papers/&lt;citation-key&gt;.qmd note from the reviewed brief.\n\n\nrejected\nNot useful for the present research question.\nKeep only a one-line reason in this queue; do not create a paper note.\n\n\n\n\ncandidate → briefed → accepted/rejected。未经审核，不创建 paper note，也不把模型摘要伪装成你的阅读笔记。",
     "crumbs": [
       "Notes",
-      "Points",
-      "Lake Warming Hiatus: Physical Mechanisms"
+      "Reading Queue"
     ]
   },
   {
-    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html#mechanisms",
-    "href": "notes/points/lake-warming-hiatus-mechanisms.html#mechanisms",
-    "title": "Lake Warming Hiatus: Physical Mechanisms",
-    "section": "Mechanisms",
-    "text": "Mechanisms\n\n1. Air temperature conduction (primary driver)\nLake SST is highly coupled to air temperature (O’Reilly et al. 2015: global lake summer SST warming at ~0.34 °C/decade). During the hiatus (1998–2012), global mean air warming slowed to ~0.05 °C/decade (long-term ~0.18 °C/decade). 83% of 155 lakes slowed warming accordingly (Winslow et al. 2018).\nBut conduction is not 1:1 — lakes have their own buffering and amplification.\n\n\n2. Evaporative cooling feedback ⭐⭐⭐\nZhou et al. (2023, Nature Communications) found: “the rate of lake heating slows as air warms”\nMechanism chain:\n\nAir warms → lake-air vapour pressure deficit increases\nEvaporation intensifies (Clausius-Clapeyron: ~7% per °C)\nEvaporation consumes latent heat (~2.45 MJ/kg) → surface cooling\nEvaporative cooling partially offsets radiative heating → net warming slows\n\nImplication for hiatus: if hiatus-era lakes were already warm, evaporative cooling acts as a negative feedback amplifying the hiatus signal.\n\n\n3. Solar dimming/brightening\n\n1950s–1980s: global dimming (aerosols reduce surface shortwave)\n1980s–2000s: global brightening (clean air legislation)\nPost-2000s: regional divergence (China brightening, India dimming)\n\nDuring hiatus, partial dimming return (post-1998 volcanic activity, China coal aerosols) reduced \\(Q^*\\) → weakened lake surface heating.\n\n\n4. Wind stilling\nGlobal terrestrial near-surface wind speed has declined ~0.1 m/s/decade since 1980s.\nEffects on lakes:\n\nWeakened turbulent mixing → shallower thermocline\nMore heat concentrated at surface → apparent surface warming may increase\nBut reduced wind also reduces evaporation → net effect is ambiguous\n\nWoolway et al. (2017): wind stilling extends stratification period and increases surface warming in UK lakes.\n\n\n5. Ice cover feedback\nFor seasonally frozen lakes (Magnuson et al. 2000):\n\nReduced winter/spring ice → earlier ice-off\nLow-albedo water surface exposed → more solar absorption\nEarlier heating → higher summer temperatures\nLater freeze-up → shorter ice season → positive feedback loop\n\nIf hiatus period saw continued ice reduction (winter temperatures did not stagnate), ice feedback may partially offset hiatus cooling.\n\n\n6. Large-scale teleconnections\n\n\n\n\n\n\n\n\nIndex\nKey phase during hiatus\nLake response\n\n\n\n\nPDO\nNegative (La Niña-like) from 1998\nCooler tropical Pacific → lower global temps\n\n\nAMO\nPositive from mid-1990s\nWarmer North Atlantic → offsets hiatus in N. Atlantic lakes\n\n\nENSO\nLa Niña dominant 1998–2012\nCooler global temps, esp. tropics/subtropics\n\n\nNAO\nVariable\nDominant control on European winter lake temperature\n\n\n\nCP years (e.g. 1998) align with PDO phase transitions — detected changepoints may capture natural variability phase shifts, not just “global warming hiatus”.\n\n\n7. Lake morphometry modulation\n\n\n\n\n\n\n\n\nFactor\nEffect\nMechanism\n\n\n\n\nDepth\nDeep lakes warm slower\nGreater thermal inertia\n\n\nArea\nLarge lakes: more evaporation\nLonger fetch → stronger latent heat loss\n\n\nTransparency\nClear lakes warm faster\nShortwave penetrates deeper\n\n\nAltitude\nHigh-altitude lakes more sensitive\nThinner atmosphere → stronger LW exchange\n\n\nTrophic state\nEutrophic: complex response\nAlgae absorb shortwave → surface heating\n\n\n\nWinslow et al. (2018): hiatus response showed no significant clustering by lake attributes — climate signal is strong enough to override morphometric differences.",
+    "objectID": "notes/reading-queue.html#daily-brief-routine",
+    "href": "notes/reading-queue.html#daily-brief-routine",
+    "title": "Reading Queue",
+    "section": "Daily brief routine",
+    "text": "Daily brief routine\nThere is no autonomous push scheduler in this workspace. On any day, start a brief by asking for 今日文献 brief or reading brief: &lt;topic&gt;. The response should contain at most two papers:\n\nwhy each paper was selected for the current analysis question;\na short evidence-bounded summary after reading the available primary text;\nconcrete implications, limitations, and whether it merits a user-authored paper note.\n\nThe first queue topic is seasonal LSWT, ice duration, and potential cold-inflow signatures. Candidate selection should favour studies that can constrain the diagnostic in Seasonal and Ice Diagnostics, not generic climate-hiatus papers.\n\n当前队列主题是季节 LSWT、冰期与潜在冷入流指纹。优先选择能约束诊断设计的研究，而非泛泛的 hiatus 文献。",
     "crumbs": [
       "Notes",
-      "Points",
-      "Lake Warming Hiatus: Physical Mechanisms"
+      "Reading Queue"
     ]
   },
   {
-    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html#integrated-framework",
-    "href": "notes/points/lake-warming-hiatus-mechanisms.html#integrated-framework",
-    "title": "Lake Warming Hiatus: Physical Mechanisms",
-    "section": "Integrated framework",
-    "text": "Integrated framework\n          Global radiative forcing (CO₂ + aerosols)\n                     │\n      ┌──────────────┼──────────────┐\n      ▼              ▼              ▼\n  Atmospheric      Surface        Cloud/radiation\n  circulation      air temp       changes\n (PDO/NAO/ENSO)      │              │\n      │              │              │\n      ▼              ▼              ▼\n┌──────────── Lake surface energy balance ────────────┐\n│  Q* (radiation)  Q_H (sensible)  Q_E (latent)  ΔQ_S │\n└──────────────────────┬──────────────────────────────┘\n                       │\n            ┌──────────┼──────────┐\n            ▼          ▼          ▼\n        Acceleration  Steady    Deceleration",
+    "objectID": "notes/reading-queue.html#current-candidates",
+    "href": "notes/reading-queue.html#current-candidates",
+    "title": "Reading Queue",
+    "section": "Current candidates",
+    "text": "Current candidates\n\n\n\nCitation\nState\nWhy it is queued\n\n\n\n\nAnderson et al. (2021)\ncandidate\nTests how a shortened winter and altered overturn/stratification change seasonal lake thermal structure; useful for separating ice-season pathways from a warm-season inflow hypothesis.\n\n\nWoolway and Merchant (2017)\ncandidate\nExamines amplified interannual summer LSWT responses in cold, deep lakes; useful for interpreting a JJA diagnostic without presuming glacier meltwater.\n\n\n\n\n两篇均只是候选，尚未形成摘要或正式 paper note。它们分别约束冰期路径与冷深湖夏季响应的替代解释。",
     "crumbs": [
       "Notes",
-      "Points",
-      "Lake Warming Hiatus: Physical Mechanisms"
+      "Reading Queue"
     ]
   },
   {
-    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html#sensitivity-analysis-implications",
-    "href": "notes/points/lake-warming-hiatus-mechanisms.html#sensitivity-analysis-implications",
-    "title": "Lake Warming Hiatus: Physical Mechanisms",
-    "section": "Sensitivity analysis implications",
-    "text": "Sensitivity analysis implications\nBased on the mechanism framework:\n\nEvaporation: ERA5 evaporation trends → test if enhanced evaporation correlates with more significant changepoints\nWind: ERA5 u10/v10 → wind trends vs hiatus response\nRadiation: ERA5 surface downward shortwave → radiation changes vs CP spatial consistency\nPDO/AMO: test CP significance after removing natural variability\nIce cover: GLAST/ERA5 ice data → do frozen lakes differ?",
+    "objectID": "notes/index.html",
+    "href": "notes/index.html",
+    "title": "Notes",
+    "section": "",
+    "text": "Notes are organised by provenance. Papers are the user-reviewed corpus.",
     "crumbs": [
       "Notes",
-      "Points",
-      "Lake Warming Hiatus: Physical Mechanisms"
+      "All Notes"
     ]
   },
   {
-    "objectID": "notes/points/lake-warming-hiatus-mechanisms.html#key-references",
-    "href": "notes/points/lake-warming-hiatus-mechanisms.html#key-references",
-    "title": "Lake Warming Hiatus: Physical Mechanisms",
-    "section": "Key references",
-    "text": "Key references\n\n\n\n\n\n\n\n\nReference\nCore finding\nRelevance\n\n\n\n\nWinslow et al. (2018) ERL\n155 lakes, 83% slowed during hiatus\nDirect predecessor\n\n\nZhou et al. (2023) Nature Comms\nLake warming slows as air warms (evaporative cooling)\nCore mechanism\n\n\nO’Reilly et al. (2015) GRL\nGlobal lake SST +0.34 °C/decade\nGLAST dataset origin\n\n\nWoolway et al. (2017) Climatic Change\nWind stilling → extended stratification\nWind stilling mechanism\n\n\nMagnuson et al. (2000) Science\nNorthern hemisphere ice season shortening\nIce cover feedback\n\n\nMedhaug et al. (2017) Nature\nHiatus multi-mechanism review\nClimate background\n\n\nLund et al. (2023) J. Climate\nClimate changepoint best practices\nMethodology",
+    "objectID": "notes/index.html#papers",
+    "href": "notes/index.html#papers",
+    "title": "Notes",
+    "section": "Papers",
+    "text": "Papers\nPer-paper notes — one file per paper.",
     "crumbs": [
       "Notes",
-      "Points",
-      "Lake Warming Hiatus: Physical Mechanisms"
+      "All Notes"
     ]
   },
   {
-    "objectID": "notes/papers/xie2017.html#notes",
-    "href": "notes/papers/xie2017.html#notes",
-    "title": "xie2017: What Caused the Global Surface Warming Hiatus of 1998–2013?",
-    "section": "Notes",
-    "text": "Notes\nGlobal Surface Warming Hiatus(GSWH) is 1998-2013. Approx 0.027 - 0.086 degree Celsius per decade, which is much smaller than the 0.2 degree Celsius per decade during 1970s - 1990s.",
+    "objectID": "notes/index.html#reading-queue",
+    "href": "notes/index.html#reading-queue",
+    "title": "Notes",
+    "section": "Reading Queue",
+    "text": "Reading Queue\nCandidate papers and reviewed reading briefs. A paper becomes a durable note only after review.",
+    "crumbs": [
+      "Notes",
+      "All Notes"
+    ]
+  },
+  {
+    "objectID": "notes/index.html#research-dialogue-protocol",
+    "href": "notes/index.html#research-dialogue-protocol",
+    "title": "Notes",
+    "section": "Research Dialogue Protocol",
+    "text": "Research Dialogue Protocol\nHow brainstorming, analysis review, decisions, and literature briefs become durable records.",
+    "crumbs": [
+      "Notes",
+      "All Notes"
+    ]
+  },
+  {
+    "objectID": "notes/papers/dai2018.html",
+    "href": "notes/papers/dai2018.html",
+    "title": "dai2018: Identifying the Early 2000s Hiatus Associated with Internal Climate Variability",
+    "section": "",
+    "text": "citation_key: dai2018 (Dai and Wang (2018))\ntitle: Identifying the Early 2000s Hiatus Associated with Internal Climate Variability\nauthor: Xin-Gang Dai, Ping Wang\njournal: Scientific Reports\nyear: 2018\ndoi: 10.1038/s41598-018-31862-z\n\n\n\nThe hiatus is characterized as a near-zero trend on the decadal scale corresponding to the maximum P-value via an F-test in statistics.\n\n\nThe GWH is often attributed to internal climate variability, external forcing, or both. Recent cooling in the middle and eastern regions of the tropical Pacific has seemingly involved a phase change of the Interdecadal Pacific Oscillation (IPO) accompanying intensified trade winds. The GWH may also be associated with an increase in aerosols in the stratosphere during the period 2000–2010 because aerosols can increase optical depth, which generates countervailing forces against global warming. The GWH may also be explained in part by extensive heat uptake by the deep ocean or an extremely low number of sunspots during the latest solar activity cycle.\n\n\n…, which indicates that infilling and bias correction in the datasets increase the temperature, especially during the early 2000s, probably due to rapid warming in the Arctic region. Cohen et al. (2014)\n\n\n\n\ndai2018f1\n\n\n\n\n\n\n Back to topReferences\n\nCohen, Judah, James A. Screen, Jason C. Furtado, et al. 2014. “Recent Arctic Amplification and Extreme Mid-Latitude Weather.” Nature Geoscience 7 (9): 627–37. https://doi.org/10.1038/ngeo2234.\n\n\nDai, Xin-Gang, and Ping Wang. 2018. “Identifying the Early 2000s Hiatus Associated with Internal Climate Variability.” Scientific Reports 8 (1): 13602. https://doi.org/10.1038/s41598-018-31862-z.",
     "crumbs": [
       "Notes",
       "Papers",
-      "xie2017: What Caused the Global Surface Warming Hiatus of 1998–2013?"
+      "dai2018: Identifying the Early 2000s Hiatus Associated with Internal Climate Variability"
     ]
   },
   {
@@ -156,30 +172,195 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Hola!",
+    "objectID": "docs/analysis-contract.html",
+    "href": "docs/analysis-contract.html",
+    "title": "Analysis Contract",
     "section": "",
-    "text": "This site contains my research explorations, drafts, and progress logs.\nThese materials were previously hosted on my main personal website. However, to separate my research content from my personal content, all research and academic exploration materials are now hosted on this site.\nCheck all explorations, including the finished, cancelled, not started or in-progress ones. Each exploration has its own draft, prose, and log.\nI list frequently discussed metrics (methods, algorithms, parameters, decision records), trying not to make anyone confused.\nNotes collect literature notes, mechanism summaries, and useful excerpts for writing.\n\nTo learn more about me, visit froq.me.\n\n\n\n Back to top"
+    "text": "This page is the canonical, human-readable contract for the active warming-acceleration analysis. It defines the quantities used in the draft chapters; producer-specific implementation and output provenance remain in data-process/steps/*/README.md and generated METADATA.md files."
   },
   {
-    "objectID": "explorations/index.html",
-    "href": "explorations/index.html",
-    "title": "Explorations",
+    "objectID": "docs/analysis-contract.html#active-analysis-definitions",
+    "href": "docs/analysis-contract.html#active-analysis-definitions",
+    "title": "Analysis Contract",
+    "section": "Active analysis definitions",
+    "text": "Active analysis definitions\n\n\n\nConcept\nCanonical definition\nRole\n\n\n\n\nAnnual temperature\nCalendar-year mean LSWT calculated directly from valid non-freezing daily GLAST observations.\nInput for all primary warming, warming-speed, and acceleration metrics.\n\n\nLong-term warming\nTheil–Sen slope of the raw annual mean LSWT series, reported as °C per 40 years.\nPrimary descriptive warming metric.\n\n\nAnnual warming speed\nAdjacent-year first difference of raw annual mean LSWT, in °C yr⁻¹.\nInput to the acceleration metric.\n\n\nAcceleration\nSen slope of annual warming speed over 1982–2020, in 10⁻³ °C yr⁻².\nPrimary measure of change in warming speed.\n\n\nPCA input\nAnnual mean of the STL trend with period=12, robust=false, ni=5, no=0, and nt=99; each lake is expressed as an anomaly from its 1981–1990 mean.\nLow-frequency trajectory representation only; not a substitute for the primary warming metrics.\n\n\nPCA interpretation set\nPC1–PC5.\nThe substantive modes shown, mapped, and interpreted in the chapter. The 95% variance threshold is a diagnostic, not a retention rule.\n\n\n\n\n原始年均温度负责描述增暖、年增暖速度与加速度；STL nt=99 只在 PCA 前提取低频轨迹。正文解释前 5 个主成分，不以累计 95% 方差作为保留阈值。"
+  },
+  {
+    "objectID": "docs/analysis-contract.html#explicit-exclusions",
+    "href": "docs/analysis-contract.html#explicit-exclusions",
+    "title": "Analysis Contract",
+    "section": "Explicit exclusions",
+    "text": "Explicit exclusions\nSTARS / ST_AIS persistent-regime detection is not part of the active analysis workflow. Historical Step 12 outputs and any helper code written for them are not inputs to the current chapters. Do not revive the method by accident through a default helper or an undocumented parameter branch.\n\nSTARS / ST_AIS 当前不属于分析流程。历史 Step 12 输出与对应 helper 不得作为正文输入，也不应因默认路径而被意外重新启用。"
+  },
+  {
+    "objectID": "docs/analysis-contract.html#provenance-and-change-rule",
+    "href": "docs/analysis-contract.html#provenance-and-change-rule",
+    "title": "Analysis Contract",
+    "section": "Provenance and change rule",
+    "text": "Provenance and change rule\nEvery chapter must name the producer branch it reads. A change to any definition above requires the same change in: this contract, the relevant data-process producer documentation, AGENTS.md, and the affected chapter prose/captions. If only a sensitivity analysis uses a different branch, label it as such rather than changing the canonical wording.\n\n每章应明确读取的 producer branch。改动本页定义时，要同步更新 Step 文档、AGENTS 和相关正文/图注；敏感性分支必须明确标记，不能替换 canonical 叙述。"
+  },
+  {
+    "objectID": "docs/analysis-contract.html#related-workflow",
+    "href": "docs/analysis-contract.html#related-workflow",
+    "title": "Analysis Contract",
+    "section": "Related workflow",
+    "text": "Related workflow\nFor the focused R workflow used to validate one figure’s rendering-time data preparation before a chapter render, see Debugging Figure Helpers."
+  },
+  {
+    "objectID": "docs/plans/2026-07-12-regional-visualisation-refactor.html",
+    "href": "docs/plans/2026-07-12-regional-visualisation-refactor.html",
+    "title": "Regional Visualization Refactor Implementation Plan",
     "section": "",
-    "text": "All explorations — finished, cancelled, in-progress, or not started.",
+    "text": "Regional Visualization Refactor Implementation Plan\n\nFor Claude: REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.\n\nGoal: Separate Chapter 2 regional rendering-time data preparation from plotting and remove obsolete commented experiments.\nArchitecture: Keep durable inputs in data-process/; add shared/R/regional-helpers.R for loading, joins, summary statistics, point-size derivation, metric-long data, and contour input preparation. Keep 02-regional.qmd limited to helper calls, plot layers, Quarto tables, and explanatory text.\nTech Stack: Quarto, R, dplyr, tidyr, readr, ggplot2, GGally, patchwork, sf/rnaturalearth.\n\n\nTask 1: Remove obsolete experiments\nFiles:\n\nModify: explorations/warming-acceleration/draft/02-regional.qmd:431-1125\n\nStep 1: Delete HTML-commented R blocks\nDelete the four &lt;!-- ```{r} ... ``` --&gt; regions: the old cluster map/ridges, continent heatmap, regime-shift composition, and empty placeholder. Do not alter the rendered chapter text or the two active figures.\nStep 2: Confirm cleanup\nRun a structural scan and confirm no &lt;!-- ```{r} marker remains and that only active chunks remain.\n\n\nTask 2: Add regional data helpers\nFiles:\n\nCreate: shared/R/regional-helpers.R\nModify: explorations/warming-acceleration/draft/02-regional.qmd:5-10\n\nStep 1: Add stable response-type definitions\nDefine the K=5 cluster palette, names, and interpretations in the helper file. Keep these chapter-specific semantic definitions out of the generic figure-style file.\nStep 2: Add prepare_regional_cluster_data()\nRead the three curated CSV inputs, join cluster assignment, metadata and thermal metrics, derive point_size, construct the cluster summary including the 2020 anomaly and display label, and return all data required by the map, violin plots, and inline table.\nStep 3: Add prepare_cluster_metric_long() and prepare_cluster_density_data()\nMove metric reshaping, finite-value filtering, and density-panel limits to helpers. Return data frames only; keep density contour breaks and visual encodings in qmd.\nStep 4: Source helpers and add an invisible setup chunk\nSource regional-helpers.R from the Chapter 2 setup chunk. Add a cached, include: false setup chunk that calls the helper and exposes named objects for plotting and inline table access.\n\n\nTask 3: Reduce the cluster map/violin figure to plotting\nFiles:\n\nModify: explorations/warming-acceleration/draft/02-regional.qmd:active cluster figure\n\nStep 1: Delete local ingestion, joins, summary functions, coastline conversion, and violin reshaping\nReplace them with the setup outputs. Keep cluster_table_value(), cluster_table_count() and cluster_table_anomaly() in the invisible setup because they serve inline Quarto table cells.\nStep 2: Use shared map elements and tokens\nReplace manual coastline conversion with the_geom_coastline(), and replace hardcoded coastline/grid styles with theme_map_grid() and tokens. Preserve the existing map extent, legend labels, point-size encoding, and composed output.\nStep 3: Keep plot-specific style local\nLeave patchwork geometry, violin width, alpha, legend override, title text and figure layout in qmd because they are part of the figure’s presentation rather than data preparation.\n\n\nTask 4: Reduce the cluster-density figure to plotting\nFiles:\n\nModify: explorations/warming-acceleration/draft/02-regional.qmd:active density figure\n\nStep 1: Consume helper-provided density data\nReplace the in-chunk density_df filter with cluster_density_data from the invisible setup.\nStep 2: Remove dead continuous-colour legend configuration\nThe current polygons and contours use discrete cluster colour plus alpha; the unused continuous scale_colour_gradient() conflicts conceptually with that encoding and should be removed. Preserve the native discrete cluster legend and the per-cluster normalized density contours.\nStep 3: Use shared theme/token primitives\nUse theme_map_grid() or a narrowly scoped theme built from theme_base(grid = TRUE), replacing hardcoded grey grid/contour tokens where their shared equivalents express the same purpose.\n\n\nTask 5: Validate rendered figures\nFiles:\n\nModify: shared/R/regional-helpers.R\nModify: explorations/warming-acceleration/draft/02-regional.qmd\n\nStep 1: Execute active figure chunks\nSource both shared helper files and run the Chapter 2 setup, map/violin, and density chunks in R.\nStep 2: Render Chapter 2\nRun Quarto render for 02-regional.qmd; confirm both figures and the inline cluster summary table render without errors.\nStep 3: Inspect output\nVerify K=5 labels, map geography, violin facets, cluster colours, and contour panel legends remain semantically unchanged.\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "docs/plans/2026-07-13-content-reset-and-research-workflow.html",
+    "href": "docs/plans/2026-07-13-content-reset-and-research-workflow.html",
+    "title": "Content Reset and Research Workflow Implementation Plan",
+    "section": "",
+    "text": "Content Reset and Research Workflow Implementation Plan\n\nFor Claude: REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.\n\nGoal: Establish evidence-bounded next analyses for seasonal ice and cooling hypotheses while preserving only user-reviewed literature notes.\nArchitecture: Put the glacier/ice question in a prose diagnostic protocol rather than treating it as a result. Keep per-paper notes as the only literature record, with a review queue and a structured conversation-to-log workflow for new ideas and decisions.\nTech Stack: Quarto, Markdown, existing Julia/R producer contracts.\n\n\nTask 1: Define the seasonal-ice diagnostic\nFiles:\n\nCreate: explorations/warming-acceleration/prose/seasonal-ice-diagnostics.qmd\n\nStep 1: State the glacial-meltwater explanation as a falsifiable hypothesis, not an attribution claim.\nStep 2: Specify full-period and late-period response definitions, JJA contrast tests, ice-duration contrasts, and required glacier-catchment evidence.\nStep 3: List alternative explanations and the conditions required before a mechanism claim.\n\n\nTask 2: Preserve note provenance\nFiles:\n\nDelete: notes/paper-collection.qmd\nDelete: notes/points/lake-warming-hiatus-mechanisms.qmd\nModify: notes/index.qmd\nModify: _quarto.yml\n\nStep 1: Remove the two non-user-reviewed aggregation notes and all navigation to them.\nStep 2: Retain notes/papers/*.qmd as the user-reviewed note corpus.\n\n\nTask 3: Create review and discussion records\nFiles:\n\nCreate: notes/reading-queue.qmd\nCreate: notes/research-dialogue.qmd\n\nStep 1: Define the candidate → briefed → accepted/rejected reading workflow and prohibition on creating paper notes before user approval.\nStep 2: Define a lightweight hypothesis, decision, and log-recording protocol for collaborative analysis discussions.\n\n\nTask 4: Update research history and validate\nFiles:\n\nModify: explorations/warming-acceleration/log/2026-07-12.qmd\nCreate: explorations/warming-acceleration/log/2026-07-13.qmd\n\nStep 1: Correct the obsolete Chapter 2 pathname in the prior log.\nStep 2: Record the raw-annual metric decision, PCA boundary, retired STARS workflow, helper refactor, and seasonal-ice diagnostic next step.\nStep 3: Render all new/edited QMD documentation and check navigation links.\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html",
+    "href": "explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html",
+    "title": "Seasonal and Ice Diagnostics for Cooling Trajectories",
+    "section": "",
+    "text": "Some lakes in mid- to high-latitude North America and mid-latitude Eurasia may show late-period cooling or a reduction in warming speed. One possible explanation is increased cold-season or warm-season inflow from glacier melt. This is a useful hypothesis, but the present lake-temperature and ice-duration outputs cannot establish it: they do not identify glacier-connected catchments or measure inflow temperature and discharge.\n\n北美中高纬度和欧亚中纬度部分湖泊可能在后期降温或减速。冰川融水冷入流是可检验假说，但当前数据没有 glacier-catchment 连通性、入流温度或流量，不能直接归因。\n\nThe immediate objective is therefore diagnostic: determine whether cooling or deceleration has the seasonal signature expected from a warm-season cold-inflow mechanism, and distinguish that signature from changes in lake ice duration or broader atmospheric forcing.\n\n近期目标是诊断而非归因：检验其季节性指纹是否符合暖季冷入流，并与冰期变化和大气强迫的替代解释区分。",
     "crumbs": [
-      "Explorations"
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Seasonal and Ice Diagnostics for Cooling Trajectories"
     ]
   },
   {
-    "objectID": "explorations/index.html#warming-acceleration",
-    "href": "explorations/index.html#warming-acceleration",
-    "title": "Explorations",
-    "section": "Warming Acceleration",
-    "text": "Warming Acceleration\n\nprose · draft · log\n\n\nDo global lakes exhibit heterogeneous warming acceleration — or deceleration — across space and time, and what drives it?\n92,245 lakes, GLAST dataset, 1981–2020.\nMethods: STL decomposition, STARS regime shifts, K-means clustering, teleconnection attribution.\nThe question began with the global warming hiatus as a starting point, but the focus has broadened to the full spatiotemporal structure of lake warming heterogeneity.",
+    "objectID": "explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html#question-and-evidentiary-boundary",
+    "href": "explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html#question-and-evidentiary-boundary",
+    "title": "Seasonal and Ice Diagnostics for Cooling Trajectories",
+    "section": "",
+    "text": "Some lakes in mid- to high-latitude North America and mid-latitude Eurasia may show late-period cooling or a reduction in warming speed. One possible explanation is increased cold-season or warm-season inflow from glacier melt. This is a useful hypothesis, but the present lake-temperature and ice-duration outputs cannot establish it: they do not identify glacier-connected catchments or measure inflow temperature and discharge.\n\n北美中高纬度和欧亚中纬度部分湖泊可能在后期降温或减速。冰川融水冷入流是可检验假说，但当前数据没有 glacier-catchment 连通性、入流温度或流量，不能直接归因。\n\nThe immediate objective is therefore diagnostic: determine whether cooling or deceleration has the seasonal signature expected from a warm-season cold-inflow mechanism, and distinguish that signature from changes in lake ice duration or broader atmospheric forcing.\n\n近期目标是诊断而非归因：检验其季节性指纹是否符合暖季冷入流，并与冰期变化和大气强迫的替代解释区分。",
     "crumbs": [
-      "Explorations"
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Seasonal and Ice Diagnostics for Cooling Trajectories"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html#predeclared-diagnostic-sequence",
+    "href": "explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html#predeclared-diagnostic-sequence",
+    "title": "Seasonal and Ice Diagnostics for Cooling Trajectories",
+    "section": "Predeclared diagnostic sequence",
+    "text": "Predeclared diagnostic sequence\n\n1. Define response cohorts before inspecting seasonal patterns\nUse raw annual mean LSWT, the canonical primary series. Report both a full-period and a late-period definition:\n\n\n\nCohort\nDefinition\nPurpose\n\n\n\n\nFull-period cooling\nRaw annual Theil–Sen slope over 1981–2020 is below zero.\nIdentifies lakes whose long-run annual LSWT decreases.\n\n\nFull-period deceleration\nSen slope of raw annual warming speed over 1982–2020 is below zero.\nIdentifies lakes whose annual warming speed becomes less positive or more negative.\n\n\nLate-period cooling\nTheil–Sen slope of raw annual LSWT over a predeclared late window, initially 2001–2020, is below zero.\nSeparates a late reversal from an overall cooling record.\n\n\nLate-period slowdown\nLate-window slope is lower than the corresponding early-window slope, initially 1981–2000.\nTests a change in trajectory without treating a detected breakpoint as a physical event.\n\n\n\n\n先定义湖泊 cohort，再看季节结果。全期与末段定义应并列报告；不要先看到 JJA 信号后再倒推筛选条件。\n\nThe current producer already supports full-period annual and seasonal slopes. Late-period slopes require an explicit parameterised producer extension or a documented analysis step; do not calculate them as an undocumented QMD-side convenience.\n\n当前 producer 已有全期年/季节趋势。末段趋势需要显式、可追溯的 producer 参数或分析步骤，不能在 qmd 中临时计算。\n\n\n\n2. Test the warm-season signature\nGlacier meltwater is expected to be most relevant during the warm season, when melt and discharge are largest. The primary seasonal diagnostic is therefore the JJA raw LSWT slope. For every cohort, compare JJA with DJF, MAM, and SON slopes rather than examining JJA alone.\n\n冰川融水的首要季节诊断是 JJA，但必须与 DJF、MAM、SON 并列比较，不能只挑选夏季结果。\n\nSupport for the hypothesis would require a coherent pattern: cooling/decelerating lakes should have disproportionately negative or weakened JJA trends relative to comparable non-cooling lakes, with an interpretable geographical concentration. A negative JJA slope alone is not sufficient.\n\n支持性证据应是连贯组合：冷却/减速 cohort 的 JJA 趋势相对对照组更负或更弱，并有可解释的空间集中；单独的 JJA 负趋势不够。\n\n\n\n3. Separate ice-state and liquid-water interpretations\nAnnual LSWT includes the 0 °C all-ice state. Compare annual ice-day trends and, where necessary, seasonal temperature trends within strata of baseline ice duration. The key question is whether annual cooling/deceleration is primarily associated with changing ice exposure or remains visible in the warm-season liquid-water signal.\n\n年均 LSWT 混合冰态与液态水温。应按基线冰期分层，比较年冰日趋势和季节温度趋势，判断信号是否仍存在于暖季液态水温中。\n\nUseful contrasts include:\n\nseasonally frozen versus low-ice lakes;\ndecreasing versus stable/increasing annual ice duration;\nsimilar latitude/elevation bands, to avoid treating the global thermal gradient as a mechanism.\n\n\n\n4. Require catchment evidence before invoking glacier meltwater\nAn eventual glacial-inflow claim requires at least one external glacier or catchment data source and a lake-to-upstream-catchment linkage. Geographic proximity to a glacier, latitude, elevation, or continent is not evidence of hydrological connection.\n\n若要声称冰川融水机制，至少需要外部冰川/流域数据和湖泊—上游流域连通关系。仅凭距冰川近、纬度、海拔或大洲都不是水文连通证据。\n\nThe minimum evidence chain is:\nglacier-connected catchment\n  → warm-season melt/discharge or cold-inflow indicator\n  → disproportionate JJA cooling or slowdown\n  → robustness after ice-duration and atmospheric-forcing contrasts",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Seasonal and Ice Diagnostics for Cooling Trajectories"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html#alternative-explanations-to-retain",
+    "href": "explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html#alternative-explanations-to-retain",
+    "title": "Seasonal and Ice Diagnostics for Cooling Trajectories",
+    "section": "Alternative explanations to retain",
+    "text": "Alternative explanations to retain\nThe same seasonal pattern could arise from cloud/radiation changes, precipitation and non-glacial runoff, wind-driven mixing, evaporative cooling, local land-cover change, satellite retrieval issues, or sampling/ice-state artefacts. The diagnostic should report these as alternatives, not as residual footnotes.\n\n相同季节信号也可能来自辐射、降水与非冰川径流、风混合、蒸发冷却、土地覆盖、遥感反演或冰态处理。它们应是并列替代解释，而非附注。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Seasonal and Ice Diagnostics for Cooling Trajectories"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html#planned-deliverables",
+    "href": "explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html#planned-deliverables",
+    "title": "Seasonal and Ice Diagnostics for Cooling Trajectories",
+    "section": "Planned deliverables",
+    "text": "Planned deliverables\n\nA cohort table with full-period and late-period definitions.\nA seasonal slope comparison for annual/DJF/MAM/JJA/SON, stratified by baseline ice duration.\nA map of the diagnostic cohorts, explicitly descriptive.\nA decision on whether the observed pattern justifies acquiring glacier-catchment data.\n\n\n交付物依次为：cohort 表、季节趋势对比、描述性空间图，以及是否值得引入 glacier-catchment 数据的决策。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Seasonal and Ice Diagnostics for Cooling Trajectories"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/prose/stars-limitations.html",
+    "href": "explorations/warming-acceleration/prose/stars-limitations.html",
+    "title": "Limitations of STARS regime-shift detection for lake warming analysis",
+    "section": "",
+    "text": "STARS (Sequential \\(t\\)-test Analysis of Regime Shifts; Rodionov 2004) detects persistent changes in the mean of a time series. Applied to annual warming speed (first difference of STL trend), a STARS shift marks a transition between mean warming-speed regimes. The canonical configuration uses cut-off length \\(L = 7\\) and significance level \\(p = 0.05\\).\n\nSTARS 检测时间序列均值的持久变化。应用于年增温速度（STL 趋势的一阶差分）时，变点标记增温速度均值体制间的转换。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Limitations of STARS regime-shift detection for lake warming analysis"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/prose/stars-limitations.html#what-stars-does",
+    "href": "explorations/warming-acceleration/prose/stars-limitations.html#what-stars-does",
+    "title": "Limitations of STARS regime-shift detection for lake warming analysis",
+    "section": "",
+    "text": "STARS (Sequential \\(t\\)-test Analysis of Regime Shifts; Rodionov 2004) detects persistent changes in the mean of a time series. Applied to annual warming speed (first difference of STL trend), a STARS shift marks a transition between mean warming-speed regimes. The canonical configuration uses cut-off length \\(L = 7\\) and significance level \\(p = 0.05\\).\n\nSTARS 检测时间序列均值的持久变化。应用于年增温速度（STL 趋势的一阶差分）时，变点标记增温速度均值体制间的转换。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Limitations of STARS regime-shift detection for lake warming analysis"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/prose/stars-limitations.html#observed-problems",
+    "href": "explorations/warming-acceleration/prose/stars-limitations.html#observed-problems",
+    "title": "Limitations of STARS regime-shift detection for lake warming analysis",
+    "section": "Observed problems",
+    "text": "Observed problems\n\nOver-detection with smooth trends\nWhen applied to the first difference of STL trend with nt=199 (the original canonical parameter), STARS detected regime shifts in 99% of lakes (92,006 of 92,245). The total number of detected events was 251,922, averaging 2.7 shifts per lake over 39 years. This is implausibly high and suggests that the smooth trend’s residual autocorrelation produces false positives.\n\nnt=199 时 STARS 在 99% 的湖泊中检测到变点（251,922 个事件），显然过度检测。\n\n\n\nUnder-detection with responsive trends\nWhen applied to nt=99 trend differences, STARS detected shifts in only 54% of lakes (54 of 100 test subset), with 71 total events. Many visually apparent speed changes were not flagged. The method’s confirmation rule (requiring \\(L\\) subsequent values to remain above the threshold) makes it insensitive to gradual transitions.\n\nnt=99 时仅 54% 湖泊检测到变点。确认规则（需 L 个后续值保持在阈值以上）使方法对渐变不敏感。\n\n\n\nSensitivity to nt parameter\nThe number of detected shifts varied by a factor of 3.5 between nt=199 and nt=99:\n\n\n\nParameter\nLakes with shifts\nTotal events\nShifts per lake\n\n\n\n\nnt=199\n99%\n251,922\n2.7\n\n\nnt=99\n54%\n71\n0.7\n\n\n\nThis extreme sensitivity to a parameter choice that is itself difficult to justify on physical grounds makes STARS results unreliable for comparative analysis.\n\n检测到的变点数量在 nt=199 和 nt=99 之间相差 3.5 倍，对参数选择极度敏感。\n\n\n\nBinary output\nSTARS classifies each year as either “in a regime” or “between regimes,” discarding the continuous information about warming speed magnitude. This is particularly problematic for attribution, where the relationship between predictors and speed changes is likely continuous rather than threshold-based.\n\nSTARS 将每年二值化为”体制内”或”体制间”，丢失了增温速度的连续信息，不利于归因分析。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Limitations of STARS regime-shift detection for lake warming analysis"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/prose/stars-limitations.html#example-visual-inspection-vs.-stars-detection",
+    "href": "explorations/warming-acceleration/prose/stars-limitations.html#example-visual-inspection-vs.-stars-detection",
+    "title": "Limitations of STARS regime-shift detection for lake warming analysis",
+    "section": "Example: visual inspection vs. STARS detection",
+    "text": "Example: visual inspection vs. STARS detection\nFor representative lakes tested with nt=99:\n\n\n\n\n\n\n\n\nLake\nVisual pattern\nSTARS detection\n\n\n\n\nCaspian Sea\nClear acceleration ~1996, deceleration ~2009\nNo shifts detected\n\n\nWinnipeg\nGradual speed increase\n1 shift (1994)\n\n\nHuron\nStrong 1996 peak, 2003 decline\n1 shift (2001)\n\n\nNicaragua\n2010 acceleration\n1 shift (2011)\n\n\n\nThe Caspian Sea case is particularly telling: the warming speed increases from near-zero in 1988 to +0.07 °C/yr in 2000, then declines to near-zero by 2013. This is a clear regime change by visual inspection, but STARS does not detect it because the transition is gradual rather than abrupt.\n\n里海案例：增温速度从 1988 年接近零增至 2000 年 +0.07 °C/yr，后降至 2013 年接近零。视觉上明显，但 STARS 未检出（渐变而非突变）。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Limitations of STARS regime-shift detection for lake warming analysis"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/prose/stars-limitations.html#why-pca-is-better-for-this-analysis",
+    "href": "explorations/warming-acceleration/prose/stars-limitations.html#why-pca-is-better-for-this-analysis",
+    "title": "Limitations of STARS regime-shift detection for lake warming analysis",
+    "section": "Why PCA is better for this analysis",
+    "text": "Why PCA is better for this analysis\nPCA addresses the limitations of STARS in several ways:\n\nContinuous output: PCA scores are continuous variables, preserving the full spectrum of warming heterogeneity.\nNo parameter sensitivity: PCA does not require choosing \\(L\\) or \\(p\\); the number of retained components is determined by variance explained.\nPhysically interpretable: Component loadings reveal what temporal pattern each score represents.\nDirectly usable for regression: PCA scores can be regressed against teleconnection indices, local climate variables, and lake characteristics.\n\n\nPCA 以连续输出、无参数敏感性、物理可解释性和直接可回归性替代 STARS。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Limitations of STARS regime-shift detection for lake warming analysis"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/prose/stars-limitations.html#recommendation",
+    "href": "explorations/warming-acceleration/prose/stars-limitations.html#recommendation",
+    "title": "Limitations of STARS regime-shift detection for lake warming analysis",
+    "section": "Recommendation",
+    "text": "Recommendation\nThe main analysis (Chapter 2) uses PCA scores as the primary characterisation of warming patterns. STARS results are available as supplementary material but are not used for the core attribution analysis. If regime-shift detection is needed for specific applications, it should be used with caution and accompanied by sensitivity analysis across the nt parameter.\n\n主分析使用 PCA 分数。STARS 结果可作为补充材料，但不用于核心归因分析。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Limitations of STARS regime-shift detection for lake warming analysis"
     ]
   },
   {
@@ -326,6 +507,19 @@
     ]
   },
   {
+    "objectID": "explorations/warming-acceleration/log/2026-07-12.html",
+    "href": "explorations/warming-acceleration/log/2026-07-12.html",
+    "title": "2026-07-12",
+    "section": "",
+    "text": "The former descriptive and regional chapters need reconstruction. The active replacements are Global Kinematics and Warming Pattern Decomposition.\n\n\n\n Back to top",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-07-12"
+    ]
+  },
+  {
     "objectID": "explorations/warming-acceleration/log/2026-05-28.html",
     "href": "explorations/warming-acceleration/log/2026-05-28.html",
     "title": "2026-05-28",
@@ -365,29 +559,364 @@
     ]
   },
   {
-    "objectID": "explorations/warming-acceleration/draft/02-regional.html",
-    "href": "explorations/warming-acceleration/draft/02-regional.html",
-    "title": "Regional",
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html",
+    "title": "Warming acceleration — execution plan",
     "section": "",
-    "text": "We classify lakes by the shape of their 1981–2020 annual STL-trend response. The current canonical classification uses per-lake baseline anomalies relative to 1981–1990, PCA retaining 95% of the trajectory variance, and \\(k\\)-means clustering. The selected solution has five clusters (\\(K = 5\\)).\nThese clusters describe low-frequency lake-surface-temperature response types: lakes with similar STL-trend trajectories are grouped together regardless of continental labels. They complement the lake-level warming and acceleration metrics in Chapter 1: those metrics summarize overall change and its recent evolution, whereas the clusters retain the sequence of change through time.\nFigure 1 asks whether these trajectory types have geographic structure. The map and violin panels place each type in the broader distributions of mean temperature, cumulative warming, and acceleration; cluster labels should therefore be read as response descriptions rather than regional categories.\n\n\n\n\n\n\n\n\nFigure 1: STL-trend response clusters and their thermal metric distributions. (A) Global spatial distribution of the five clusters. (B-D) Violin plots of mean temperature, Sen slope, and STL-trend difference slope by cluster.\n\n\n\n\n\n\n\n\nTable 1: Summary of STL-trend response clusters\n\n\n\n\n\nCluster\nResponse type\nn lakes\n2020 anomaly\nShort interpretation\n\n\n\n\nC1\nLate-accelerating moderate warming\n20,444\n+0.86 °C\nSlow early change followed by stronger post-2000 warming\n\n\nC2\nEarly decline / late rebound\n12,072\n+0.67 °C\nFlat or slightly negative early trajectory, then late warming rebound\n\n\nC3\nStrong sustained warming\n8,581\n+1.15 °C\nPersistent warming throughout the full 40-year record\n\n\nC4\nWeak / near-stable warming\n29,657\n+0.15 °C\nLargest low-response class, close to baseline through time\n\n\nC5\nEarly warming then plateau\n21,491\n+0.31 °C\nEarly warming followed by flattening or slight decline\n\n\n\n\n\n\nAs shown in Table 1, C4 is the largest class (29,657 lakes) and remains closest to its baseline by 2020. At the other end, C3 has the largest 2020 anomaly (+1.15 °C) and represents sustained warming. C1 and C2 concentrate the late-accelerating trajectories, while C5 captures early warming followed by a plateau. Their spatial pattern in Figure 1 is structured rather than uniformly mixed, but the classification itself was not fitted to geography.\nFigure 2 compares the joint distributions of warming speed and acceleration. Contours are normalized separately within each cluster, so they show where a cluster’s typical observations lie; they do not compare cluster sample sizes.\n\n\n\n\n\n\n\n\nFigure 2: Two-dimensional density of warming speed and acceleration by STL-trend response cluster. Contour lines show per-cluster density; marginal panels show univariate density by cluster.\n\n\n\n\n\nThe density fields in Figure 2 overlap, indicating that no single pair of summary metrics fully reproduces the trajectory classification. Nevertheless, C1 and C2 occupy more positive-acceleration regions, whereas C4 and C5 extend toward negative acceleration. This separation is consistent with their contrasting late-period responses and shows why the full STL-trend trajectory adds information beyond a single Sen slope.",
+    "text": "Status: implementation plan for subsequent agents.\nImplementation note (2026-07-12): Work package A is complete and 12-warming-speed-regimes has been implemented and run. The canonical L=7, p=0.05 branch yields 251,922 events across 92,245 lakes, or 2.73 shifts per lake, consistent with the established interpretation that a lake typically has roughly three warming-speed shifts. Its multiple_shifts prevalence represents sequential speed-regime dynamics, not an implementation failure. L=10 is retained only as a sensitivity branch. Chapter 02 should use the canonical L=7 output while explicitly explaining that a lake can traverse several speed regimes.\nScope: canonical data products, analysis scripts, and the site/explorations/warming-acceleration/draft/ narrative.\nDo not treat this as a results document. It separates established inputs, candidate signals, and results that require spatially robust modelling.\n\n\n\n\n\n\nsite/AGENTS.md does not exist. Use the repository-root AGENTS.md for site rules and data-process/AGENTS.md for producer-step rules.\nThe root AGENTS.md section headed “Current draft status” is historical and stale: it still describes K=8 clustering and an old teleconnection chapter. Do not restore those assumptions.\ndata-process/steps/*/output/ is the source of truth. QMD files may read curated outputs and make figure-scale joins/reshapes through site/shared/R/*-helpers.R; they must not create durable scientific data during render.\nDo not reuse paths mentioned only in data-process-audit.md such as old analysis/r-data/regime_* outputs. They are historical audit references, not canonical inputs.\n\n\n\n\n\nSample: 92,245 GLAST lakes, 1981–2020.\nCanonical low-frequency series: steps/05-annual-stl-trend/output/period12_robustfalse_ni5_no0_nt99/annual_stl_trend.csv.\nCanonical clusters: steps/07-warming-response-clustering/output/stl_trend_period12_robustfalse_ni5_no0_nt99_baseline1981_1990_pca095_k4-8/, selected K=5.\nCanonical joined predictor table: steps/11-warming-attribution-data/output/lake_warming_attribution_data.csv.\nERA5-Land precipitation has been corrected for the moda convention: monthly tp is m/day and annual/seasonal totals are day weighted. Preserve this interpretation in every subsequent figure and prose statement.\n\n\n\n\nFor lake i, let τ_i(t) be the annual STL trend in °C.\nv_i(t) = τ_i(t) − τ_i(t − 1)                 annual warming speed, °C/yr\nS_i    = SenSlope[τ_i(t)] × 40                long-term warming speed, °C/40 yr\na_i    = SenSlope[v_i(t)] × 1000              acceleration, 10⁻³ °C/yr²\nUse S_i and a_i together in the core narrative. Raw annual-temperature Sen slopes are valid robustness/descriptive quantities, but must not be labelled the main “warming speed” in a figure whose acceleration is derived from the STL trend.\n\n\n\n\na_i &gt; 0 means the low-frequency temperature trend becomes more positive through time. It does not by itself mean that the lake has the fastest absolute warming.\nSTARS on v(t) detects a persistent mean-level shift in warming speed.\nA segmented regression on v(t) detects a change in acceleration (a slope change of speed).\nPer-lake teleconnection correlation coefficients are outcome-derived sensitivity descriptors. Never put tele_*_r into a cross-sectional model explaining the same lake’s warming speed, acceleration, or cluster; that would be leakage.\nAll current forcing/teleconnection correlations are candidate signals. Do not call them causal effects before spatial block CV and residual spatial-autocorrelation checks.\n\n\n\n\n\n\nThe project’s central claim should be:\n\nGlobal lake warming is nearly universal, but its kinematics are heterogeneous: lakes warm at different long-term speeds, accelerate or decelerate differently, and undergo persistent changes in warming speed at different times and in different regions.\n\nBuild three chapters around that claim.\n\n\n\n\n\n\n\n\n\nChapter\nFile\nQuestion\nMain output type\n\n\n\n\n01\ndraft/01-global-kinematics.qmd\nHow widespread are warming, acceleration, and their spatial separation?\nGlobal descriptive distributions/maps\n\n\n02\ndraft/02-response-types.qmd\nHow do response types differ in temporal trajectory, spatial organisation, and warming-speed regime sequence?\nClusters + STARS event timing/spatial patterns\n\n\n03\ndraft/03-mechanisms.qmd (new)\nWhich geographic, morphometric, and local climatic conditions are associated with divergent pathways; which regions show teleconnection sensitivity?\nSpatially robust attribution + regional sensitivity\n\n\n\nDo not resurrect draft/03-teleconnection.qmd.bak wholesale. It belongs to an obsolete K=8 / prior-attribution structure and should be inspected only for reusable visual ideas.\n\n\n\n\n\n\nMake Chapter 01 establish the vocabulary and global descriptive evidence before any clustering or causal language.\n\n\n\n\nRename the section currently titled Long-term warming && acceleration to Global warming kinematics.\nReplace core uses of raw_annual_mean_temp_sen_slope_40yr labelled “warming speed” with stl_annual_trend_sen_slope_40yr.\nKeep raw annual-temperature slope only as a clearly labelled robustness comparison or move it to an appendix/supplement.\nAdd a compact conceptual figure before statistical summaries:\n\nPanel A: τ(t), annual STL trend\nPanel B: v(t) = Δτ(t), warming speed\nPanel C: three idealized examples: constant speed, accelerating warming, decelerating warming\nThe figure must explain why acceleration is a trend of v(t), not a second estimate of total warming. 5. Simplify the current raw/STL dual summary table. The chapter needs one canonical warming-speed summary, one acceleration summary, and perhaps a small robustness note. 6. Retain the spatial hex maps, but label panels consistently as STL-trend warming speed and acceleration. 7. Retain the continent table only as descriptive aggregation. Do not present it as area-weighted climate inference.\n\n\n\nfig-lake-density-map\nfig-kinematics-definition                 [new]\ntbl-stl-speed-acceleration-summary         [refactor existing tables]\nfig-warming-acceleration-scatterplot-matrix [simplify labels to STL speed]\nfig-spatial-warming-acceleration-hex\n\n\n\n\nNo main-text figure mixes raw annual slope as “speed” with STL-difference acceleration.\nEvery acceleration statement explicitly says it describes change in low-frequency warming speed.\nAll data joins / reusable summaries live in shared/R/descriptive-helpers.R; figure chunks contain composition and styling only.\nRender with quarto render explorations/warming-acceleration/draft/01-global-kinematics.qmd --to html.\n\n\n\n\n\n\n\n\nCreate the missing time layer: persistent transitions in each lake’s warming speed.\n\n\n\ndata-process/steps/12-warming-speed-regimes/\n  run.jl\n  README.md\n  output/&lt;parameter-signature&gt;/\nThis is parameter-sensitive and must follow data-process/AGENTS.md: --force, --test-n-lakes, METADATA.md, SUMMARY.md, and QC CSV.\n\n\n\nsteps/05-annual-stl-trend/output/period12_robustfalse_ni5_no0_nt99/\n  annual_stl_trend.csv\nsteps/00-lake-metadata/output/lake_metadata.csv  # only if continent is needed in summaries\nDo not input clusters at this stage. Step 12 should produce general lake-level events; cluster joins belong in the site helper or a later thin join step.\n\n\n\n--parameter-signature period12_robustfalse_ni5_no0_nt99\n--cutoff-length 7       # canonical\n--probability 0.05      # canonical\nRequired sensitivity runs:\nL = 5, 7, 10 at p = 0.05\nUse a parameter directory such as:\noutput/period12_robustfalse_ni5_no0_nt99_l7_p005/\n\n\n\n\nRead annual STL trend τ(t) for 1981–2020.\nDerive annual warming speed v(t) = τ(t) − τ(t−1) for 1982–2020.\nRun Rodionov STARS on v(t) to detect persistent shifts in its mean.\nFor every accepted shift, compute:\n\nshift_year\npre_regime_start / end / length\npost_regime_start / end / length\npre_speed_mean_C_per_yr\npost_speed_mean_C_per_yr\ndelta_speed_C_per_yr = post − pre\ndirection = speed_up / speed_down\npre_speed_sign = negative / near_zero / positive\npost_speed_sign = negative / near_zero / positive\nRSI or equivalent standardized shift magnitude\n\nDerive one lake-level pathway label from the ordered event sequence. Do not force a rich taxonomy before inspecting actual event counts. Start with:\n\nno_persistent_shift\nsingle_speed_up\nsingle_speed_down\nmultiple_shifts\nThen add crossing labels only if both pre/post signs are robustly classified.\n\nEmit a shift calendar by event year, direction, and signed count.\n\n\n\n\nlake_annual_warming_speed.csv                # lake_id,lat,lon,1982,...,2020\nlake_speed_regime_events.csv                 # one row per event\nlake_speed_regimes.csv                       # one row per lake × regime\nlake_speed_regime_pathways.csv               # one row per lake\nspeed_regime_shift_calendar.csv              # global event-year summary\nspeed_regime_qc.csv\nMETADATA.md\nSUMMARY.md\n\n\n\n\nMark the terminal detection window explicitly. With L=7, the final approximately seven years cannot be assessed with equivalent confidence. Any time plot must shade or omit this terminal zone.\nDo not interpret STARS events as instantaneous physical discontinuities; they are detected starts of persistent mean-speed regimes.\nIf the implementation supports autocorrelation adjustment, expose it as an explicit parameter and document the default. Do not silently prewhiten.\nDo not use old analysis/r-data/regime_* outputs as validation data.\n\n\n\n\n\nSmoke test 100 lakes.\nManually inspect 20 stratified lakes: no-shift, single-up, single-down, multiple, high-latitude frozen, tropical.\nConfirm delta_speed = post − pre and direction labels agree for every inspected event.\nCompare L=5/7/10 at global event-calendar and pathway-count level. The exact event count need not be invariant; the major temporal/region patterns should not be wholly parameter artifacts.\n\n\n\n\n\n\n\n\nThe canonical filename is 02-response-types.qmd; the former regional and temporal-response-mode filenames are retired because the chapter now unifies temporal trajectory, spatial organisation, and warming-speed regimes as properties of response types.\nResponse types\nThe present chapter is not yet genuinely “regional”; it is primarily a trajectory-mode chapter.\n\n\n\nRetain and refine existing content:\n\ncanonical K=5 STL baseline-anomaly clustering;\ncluster map + metric violins;\ncluster summary table;\ntwo-dimensional density of canonical STL warming speed and acceleration.\n\nChange helper data ingestion so warming_speed is stl_annual_trend_sen_slope_40yr, not raw annual slope.\n\n\n\nRead only Step 12 canonical output through a new shared/R/speed-regime-helpers.R.\nRequired figures:\n\nGlobal shift calendar\n\nx: event year\ny: number of speed-up minus speed-down shifts, or two signed bars\nshow global total and continent facets or carefully selected major regions\nterminal non-detectable years shaded\n\nCluster × pathway composition\n\nstacked proportion plot or heatmap\npaths: no persistent shift / speed-up / speed-down / multiple\nsupports or falsifies the interpretation of C1/C2 versus C4/C5\n\nCluster median speed curves\n\nmedian v(t) with IQR ribbon by cluster\nuse one panel/facet per cluster\nno 92k-line spaghetti plot\noptionally annotate group-level STARS events\n\nSpatial transition map\n\nshow modal pathway or proportion speed-up minus speed-down within 5° cells\nonly after pathway QC is stable\n\n\n\n\n\nUse segmented regression only on aggregated speed curves:\ncluster median speed curve\ncluster × continent median speed curve\nDo not fit flexible multi-breakpoint segmented models per lake.\nIf implemented, report:\nbreakpoint year\npre-break acceleration slope\npost-break acceleration slope\nslope change\nuncertainty/bootstrap interval\nThis section is optional. It should be added only if Step 12 shows a small number of coherent aggregate speed transitions. STARS is the canonical lake-level method.\n\n\n\n\nEvery figure distinguishes a shift in speed mean from a shift in acceleration slope.\nThe chapter answers: what modes exist, where they occur, and when speed states changed.\nIt does not claim drivers yet.\nRemove superseded HTML-commented code and stale legend experiments before final render.\n\n\n\n\n\n\n\n\nThe stated research question includes coast–interior contrast, but current Step 11 has no distance-to-coast measure. Latitude and longitude are insufficient substitutes.\n\n\n\ndata-process/steps/13-geographic-context/\n\n\n\nlake_id\nlat\nlon\ndistance_to_coast_km\ncoastal_class                    # predeclared bins, e.g. &lt;50, 50–200, &gt;200 km\nOptional only if a defensible source exists:\ncontinentality proxy\nbasin outlet/coastal routing class\n\n\n\n\nUse a documented coastline source and geodesic distance, not planar degree distance.\nPreserve lake coordinates from Step 00.\nState coastline resolution, land-mask assumptions, and treatment of islands.\nDo not compute it in a QMD.\n\n\n\n\nManually check representative known lakes: Great Lakes, inland Siberian lake, coastal Scandinavian lake, island lake.\nAfter validation, extend Step 11 to join this table. Do not edit the 308 MB attribution CSV manually; rerun Step 11 when this is a new predictor block.\n\n\n\n\n\n\n\nCreate:\nsite/explorations/warming-acceleration/draft/03-mechanisms.qmd\nsite/shared/R/mechanism-helpers.R\nThis chapter reads lake_warming_attribution_data.csv and later geographic-context output. Helpers may do figure-scale joins and predeclared transformations; model fitting / large resampling must live in a dedicated analysis script, not in QMD chunks.\n\n\n\nMain continuous outcome:\nacceleration = stl_annual_trend_diff_sen_slope_1e3\nSecondary continuous outcome:\nSTL warming speed = stl_annual_trend_sen_slope_40yr\nSupplementary categorical outcome:\nK=5 cluster membership\nDo not use both raw annual slope and STL speed as co-equal primary outcomes.\n\n\n\n\n\n\n\n\n\n\n\nBlock\nVariables\nRole\n\n\n\n\nSpatial background\nspherical lon/lat smooth, abs latitude, elevation, continent, distance to coast\nrequired baseline/confounding control\n\n\nMorphometry\nlog area, lake depth, shape factor, shoreline development, residence time, watershed area, reservoir\nlake response capacity\n\n\nLocal forcing\nwind / pressure / precipitation annual and seasonal means/trends\nregional climatic correlates\n\n\nTeleconnection\nindex-to-anomaly sensitivity only\nseparate temporal pathway analysis; not cross-sectional predictor\n\n\n\n\n\n\nDo not put all ERA5 annual + four-season means + trends into one model. They are strongly collinear.\nFor each region, predeclare a small hypothesis set based on current screening:\nEurope:        DJF precipitation trend, DJF/JJA pressure trends, AO/NAO sensitivity follow-up\nNorth America: annual/JJA precipitation trend, wind background\nAsia:          depth, seasonal wind trend\nSouth America: precipitation trend, ENSO sensitivity\nAfrica:         ENSO sensitivity, pressure background\nBefore model fitting:\n\ninspect pairwise correlation and VIF within each predictor block;\nretain one representative from highly redundant variables, or use a clearly documented block PCA;\ntransform skewed morphometric variables as already provided by Step 00;\nrecord exact feature sets in the model output metadata.\n\n\n\n\n\n\nFit a GAM or equivalent spatial model:\nacceleration ~\n  s(lon, lat, bs = \"sos\") +\n  s(abs_lat) +\n  s(Elevation) +\n  Continent\nPurpose: establish how much geographic structure is predictable before lake-specific properties.\n\n\n\nbaseline +\n  s(log_Lake_area) +\n  s(era5_lake_total_depth_m) +\n  s(era5_lake_shape_factor) +\n  is_reservoir\nTest region-specific depth effects where justified, e.g. s(depth, by = Continent) or separate continent models. Current screening suggests Europe/Asia differ from North America.\n\n\n\nFit regional models, not one indiscriminate global seasonal model. Compare against E2 by spatial-block CV.\nRequired reporting:\nout-of-fold R² / RMSE\nΔR² over previous block\nresidual Moran's I\npartial-effect curves with uncertainty\n\n\n\nUse multinomial logistic regression or a spatially blocked tree model to predict C1–C5. Report balanced accuracy and confusion matrix, not only overall accuracy because clusters are unbalanced.\n\n\n\n\nRandom split validation is forbidden as the primary metric.\nUse predeclared spatial blocks, for example:\n10° × 10° grid cells assigned to 5 folds\nor contiguous spatial folds with comparable lake counts\nReport:\nfold definition\nn lakes / n cells per fold\nout-of-fold performance\nresidual spatial autocorrelation\nThe model analysis script should save tables and metadata in a documented non-QMD analysis location. If it becomes a durable producer, convert it into a proper data-process/steps/&lt;nn&gt;/ producer rather than leaving opaque saved R objects.\n\n\n\nThese are preliminary screening hypotheses from the current corrected data:\nEurope / Asia: deeper lakes tend toward lower acceleration.\nNorth America: negative acceleration associates with increasing annual/JJA precipitation.\nEurope: negative acceleration associates with increasing DJF precipitation and seasonal pressure structure.\nThey become results only if effects remain under spatial block CV and after spatial background control.\n\n\n\n\n\n\n\nStep 10 computes annual-index to detrended LSWT-residual correlations for AMO, AO, NAO, Niño3.4, PDO and lags 0–2 years.\n\n\n\n\nmaps of regional sensitivity;\ncluster/continent distributions of r;\nselecting theory-supported region/index/lag pairs;\ntesting whether local forcing anomalies carry the same index signal.\n\n\n\n\n\npredictor columns in E1–E4 cross-sectional acceleration models;\nglobal counts of nominal p &lt; 0.05 as evidence of a global teleconnection effect;\ncausal claims from simple lake-index correlation.\n\n\n\n\nEurope:        AO lag1 and NAO lag0, especially C2 versus C3\nSouth America: Niño3.4 lag0 / lag1\nAfrica:        Niño3.4 lag1\n\n\n\nCreate after Step 12 and before writing strong teleconnection prose. It should:\n\nderive annual detrended anomalies of wind, pressure, and corrected precipitation from Step 08 annual outputs;\ncorrelate them with the same indices/lags using the same valid-year logic as Step 10;\noutput lake-level associations and regional summaries;\nallow a three-link descriptive test:\n\nindex → local forcing anomaly\nlocal forcing anomaly → LSWT anomaly\nindex → LSWT anomaly\nCall this a pathway-consistency or mediation hypothesis, not formal causal mediation unless all temporal/confounding assumptions are explicitly modelled.\n\n\n\n\nEurope: AO lag1 sensitivity map + C2/C3 distributions.\nSouth America/Africa: Niño3.4 regional sensitivity maps with correct lag labels.\nA compact pathway panel only after forcing–teleconnection association outputs exist.\n\n\n\n\n\n\n\nKeep figures in QMD; factor all reusable loading, joins, derived labels, and table accessors into chapter helpers.\nUse save_figure() only as a cached asset; every figure must render inline.\nUse @fig-* / @tbl-* references; do not write “the figure above”.\nEvery map of a spatially aggregated statistic must state grid size/minimum lake count and that it is descriptive.\nEvery cluster contour must state that ndensity normalizes each cluster independently and does not show relative cluster abundance.\nNever use significance stars for 92k lake-level correlations as the main evidence. Prefer effect size, regional consistency, and spatially blocked validation.\nRemove dead HTML-commented plotting code and generated *_cache/, *_files/, and Rplots.pdf artifacts from source control after confirming they are not required.\n\n\n\n\n\n\n\n\nUpdate Chapter 01 and regional helper to use STL warming speed consistently.\nAdd kinematics definition figure and prose.\nRender 01.\n\n\n\n\n\nImplement Step 12 with L=7 canonical run and L=5/10 sensitivity runs.\nInspect stratified lake examples and event QC.\nBuild speed-regime-helpers.R.\nExpand/render 02.\n\n\n\n\n\nImplement/validate coast-distance context if the variable is retained.\nJoin it through Step 11 by rerunning producer, never manual editing.\nBuild spatial-block attribution analysis outside QMD.\nCreate/render 03-mechanisms.qmd with only validated block comparisons.\n\n\n\n\n\nCreate forcing–teleconnection association producer.\nRestrict analyses to theory-supported regions/lags.\nAdd regional sensitivity figures only after local-forcing pathway consistency is checked.\n\n\n\n\ncd site\nquarto render explorations/warming-acceleration/draft/01-global-kinematics.qmd --to html\nquarto render explorations/warming-acceleration/draft/02-response-types.qmd --to html\nquarto render explorations/warming-acceleration/draft/03-mechanisms.qmd --to html\nBefore handing back:\n\nRead generated SUMMARY.md, METADATA.md, and *_qc.csv for every new/changed producer.\nConfirm no raw/archived output was silently used.\nState which findings are descriptive, which survive spatial CV, and which remain hypotheses.\nStage source files changed in the current session; do not stage generated _output/ render artifacts."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html#contracts-current-truth-and-non-negotiable-rules",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html#contracts-current-truth-and-non-negotiable-rules",
+    "title": "Warming acceleration — execution plan",
+    "section": "",
+    "text": "site/AGENTS.md does not exist. Use the repository-root AGENTS.md for site rules and data-process/AGENTS.md for producer-step rules.\nThe root AGENTS.md section headed “Current draft status” is historical and stale: it still describes K=8 clustering and an old teleconnection chapter. Do not restore those assumptions.\ndata-process/steps/*/output/ is the source of truth. QMD files may read curated outputs and make figure-scale joins/reshapes through site/shared/R/*-helpers.R; they must not create durable scientific data during render.\nDo not reuse paths mentioned only in data-process-audit.md such as old analysis/r-data/regime_* outputs. They are historical audit references, not canonical inputs.\n\n\n\n\n\nSample: 92,245 GLAST lakes, 1981–2020.\nCanonical low-frequency series: steps/05-annual-stl-trend/output/period12_robustfalse_ni5_no0_nt99/annual_stl_trend.csv.\nCanonical clusters: steps/07-warming-response-clustering/output/stl_trend_period12_robustfalse_ni5_no0_nt99_baseline1981_1990_pca095_k4-8/, selected K=5.\nCanonical joined predictor table: steps/11-warming-attribution-data/output/lake_warming_attribution_data.csv.\nERA5-Land precipitation has been corrected for the moda convention: monthly tp is m/day and annual/seasonal totals are day weighted. Preserve this interpretation in every subsequent figure and prose statement.\n\n\n\n\nFor lake i, let τ_i(t) be the annual STL trend in °C.\nv_i(t) = τ_i(t) − τ_i(t − 1)                 annual warming speed, °C/yr\nS_i    = SenSlope[τ_i(t)] × 40                long-term warming speed, °C/40 yr\na_i    = SenSlope[v_i(t)] × 1000              acceleration, 10⁻³ °C/yr²\nUse S_i and a_i together in the core narrative. Raw annual-temperature Sen slopes are valid robustness/descriptive quantities, but must not be labelled the main “warming speed” in a figure whose acceleration is derived from the STL trend.\n\n\n\n\na_i &gt; 0 means the low-frequency temperature trend becomes more positive through time. It does not by itself mean that the lake has the fastest absolute warming.\nSTARS on v(t) detects a persistent mean-level shift in warming speed.\nA segmented regression on v(t) detects a change in acceleration (a slope change of speed).\nPer-lake teleconnection correlation coefficients are outcome-derived sensitivity descriptors. Never put tele_*_r into a cross-sectional model explaining the same lake’s warming speed, acceleration, or cluster; that would be leakage.\nAll current forcing/teleconnection correlations are candidate signals. Do not call them causal effects before spatial block CV and residual spatial-autocorrelation checks."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html#narrative-target-and-chapter-architecture",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html#narrative-target-and-chapter-architecture",
+    "title": "Warming acceleration — execution plan",
+    "section": "",
+    "text": "The project’s central claim should be:\n\nGlobal lake warming is nearly universal, but its kinematics are heterogeneous: lakes warm at different long-term speeds, accelerate or decelerate differently, and undergo persistent changes in warming speed at different times and in different regions.\n\nBuild three chapters around that claim.\n\n\n\n\n\n\n\n\n\nChapter\nFile\nQuestion\nMain output type\n\n\n\n\n01\ndraft/01-global-kinematics.qmd\nHow widespread are warming, acceleration, and their spatial separation?\nGlobal descriptive distributions/maps\n\n\n02\ndraft/02-response-types.qmd\nHow do response types differ in temporal trajectory, spatial organisation, and warming-speed regime sequence?\nClusters + STARS event timing/spatial patterns\n\n\n03\ndraft/03-mechanisms.qmd (new)\nWhich geographic, morphometric, and local climatic conditions are associated with divergent pathways; which regions show teleconnection sensitivity?\nSpatially robust attribution + regional sensitivity\n\n\n\nDo not resurrect draft/03-teleconnection.qmd.bak wholesale. It belongs to an obsolete K=8 / prior-attribution structure and should be inspected only for reusable visual ideas."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-a-unify-chapter-01-around-stl-kinematics",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-a-unify-chapter-01-around-stl-kinematics",
+    "title": "Warming acceleration — execution plan",
+    "section": "",
+    "text": "Make Chapter 01 establish the vocabulary and global descriptive evidence before any clustering or causal language.\n\n\n\n\nRename the section currently titled Long-term warming && acceleration to Global warming kinematics.\nReplace core uses of raw_annual_mean_temp_sen_slope_40yr labelled “warming speed” with stl_annual_trend_sen_slope_40yr.\nKeep raw annual-temperature slope only as a clearly labelled robustness comparison or move it to an appendix/supplement.\nAdd a compact conceptual figure before statistical summaries:\n\nPanel A: τ(t), annual STL trend\nPanel B: v(t) = Δτ(t), warming speed\nPanel C: three idealized examples: constant speed, accelerating warming, decelerating warming\nThe figure must explain why acceleration is a trend of v(t), not a second estimate of total warming. 5. Simplify the current raw/STL dual summary table. The chapter needs one canonical warming-speed summary, one acceleration summary, and perhaps a small robustness note. 6. Retain the spatial hex maps, but label panels consistently as STL-trend warming speed and acceleration. 7. Retain the continent table only as descriptive aggregation. Do not present it as area-weighted climate inference.\n\n\n\nfig-lake-density-map\nfig-kinematics-definition                 [new]\ntbl-stl-speed-acceleration-summary         [refactor existing tables]\nfig-warming-acceleration-scatterplot-matrix [simplify labels to STL speed]\nfig-spatial-warming-acceleration-hex\n\n\n\n\nNo main-text figure mixes raw annual slope as “speed” with STL-difference acceleration.\nEvery acceleration statement explicitly says it describes change in low-frequency warming speed.\nAll data joins / reusable summaries live in shared/R/descriptive-helpers.R; figure chunks contain composition and styling only.\nRender with quarto render explorations/warming-acceleration/draft/01-global-kinematics.qmd --to html."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-b-create-canonical-step-12-warming-speed-regimes",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-b-create-canonical-step-12-warming-speed-regimes",
+    "title": "Warming acceleration — execution plan",
+    "section": "",
+    "text": "Create the missing time layer: persistent transitions in each lake’s warming speed.\n\n\n\ndata-process/steps/12-warming-speed-regimes/\n  run.jl\n  README.md\n  output/&lt;parameter-signature&gt;/\nThis is parameter-sensitive and must follow data-process/AGENTS.md: --force, --test-n-lakes, METADATA.md, SUMMARY.md, and QC CSV.\n\n\n\nsteps/05-annual-stl-trend/output/period12_robustfalse_ni5_no0_nt99/\n  annual_stl_trend.csv\nsteps/00-lake-metadata/output/lake_metadata.csv  # only if continent is needed in summaries\nDo not input clusters at this stage. Step 12 should produce general lake-level events; cluster joins belong in the site helper or a later thin join step.\n\n\n\n--parameter-signature period12_robustfalse_ni5_no0_nt99\n--cutoff-length 7       # canonical\n--probability 0.05      # canonical\nRequired sensitivity runs:\nL = 5, 7, 10 at p = 0.05\nUse a parameter directory such as:\noutput/period12_robustfalse_ni5_no0_nt99_l7_p005/\n\n\n\n\nRead annual STL trend τ(t) for 1981–2020.\nDerive annual warming speed v(t) = τ(t) − τ(t−1) for 1982–2020.\nRun Rodionov STARS on v(t) to detect persistent shifts in its mean.\nFor every accepted shift, compute:\n\nshift_year\npre_regime_start / end / length\npost_regime_start / end / length\npre_speed_mean_C_per_yr\npost_speed_mean_C_per_yr\ndelta_speed_C_per_yr = post − pre\ndirection = speed_up / speed_down\npre_speed_sign = negative / near_zero / positive\npost_speed_sign = negative / near_zero / positive\nRSI or equivalent standardized shift magnitude\n\nDerive one lake-level pathway label from the ordered event sequence. Do not force a rich taxonomy before inspecting actual event counts. Start with:\n\nno_persistent_shift\nsingle_speed_up\nsingle_speed_down\nmultiple_shifts\nThen add crossing labels only if both pre/post signs are robustly classified.\n\nEmit a shift calendar by event year, direction, and signed count.\n\n\n\n\nlake_annual_warming_speed.csv                # lake_id,lat,lon,1982,...,2020\nlake_speed_regime_events.csv                 # one row per event\nlake_speed_regimes.csv                       # one row per lake × regime\nlake_speed_regime_pathways.csv               # one row per lake\nspeed_regime_shift_calendar.csv              # global event-year summary\nspeed_regime_qc.csv\nMETADATA.md\nSUMMARY.md\n\n\n\n\nMark the terminal detection window explicitly. With L=7, the final approximately seven years cannot be assessed with equivalent confidence. Any time plot must shade or omit this terminal zone.\nDo not interpret STARS events as instantaneous physical discontinuities; they are detected starts of persistent mean-speed regimes.\nIf the implementation supports autocorrelation adjustment, expose it as an explicit parameter and document the default. Do not silently prewhiten.\nDo not use old analysis/r-data/regime_* outputs as validation data.\n\n\n\n\n\nSmoke test 100 lakes.\nManually inspect 20 stratified lakes: no-shift, single-up, single-down, multiple, high-latitude frozen, tropical.\nConfirm delta_speed = post − pre and direction labels agree for every inspected event.\nCompare L=5/7/10 at global event-calendar and pathway-count level. The exact event count need not be invariant; the major temporal/region patterns should not be wholly parameter artifacts."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-c-expand-chapter-02-into-modes-and-transitions",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-c-expand-chapter-02-into-modes-and-transitions",
+    "title": "Warming acceleration — execution plan",
+    "section": "",
+    "text": "The canonical filename is 02-response-types.qmd; the former regional and temporal-response-mode filenames are retired because the chapter now unifies temporal trajectory, spatial organisation, and warming-speed regimes as properties of response types.\nResponse types\nThe present chapter is not yet genuinely “regional”; it is primarily a trajectory-mode chapter.\n\n\n\nRetain and refine existing content:\n\ncanonical K=5 STL baseline-anomaly clustering;\ncluster map + metric violins;\ncluster summary table;\ntwo-dimensional density of canonical STL warming speed and acceleration.\n\nChange helper data ingestion so warming_speed is stl_annual_trend_sen_slope_40yr, not raw annual slope.\n\n\n\nRead only Step 12 canonical output through a new shared/R/speed-regime-helpers.R.\nRequired figures:\n\nGlobal shift calendar\n\nx: event year\ny: number of speed-up minus speed-down shifts, or two signed bars\nshow global total and continent facets or carefully selected major regions\nterminal non-detectable years shaded\n\nCluster × pathway composition\n\nstacked proportion plot or heatmap\npaths: no persistent shift / speed-up / speed-down / multiple\nsupports or falsifies the interpretation of C1/C2 versus C4/C5\n\nCluster median speed curves\n\nmedian v(t) with IQR ribbon by cluster\nuse one panel/facet per cluster\nno 92k-line spaghetti plot\noptionally annotate group-level STARS events\n\nSpatial transition map\n\nshow modal pathway or proportion speed-up minus speed-down within 5° cells\nonly after pathway QC is stable\n\n\n\n\n\nUse segmented regression only on aggregated speed curves:\ncluster median speed curve\ncluster × continent median speed curve\nDo not fit flexible multi-breakpoint segmented models per lake.\nIf implemented, report:\nbreakpoint year\npre-break acceleration slope\npost-break acceleration slope\nslope change\nuncertainty/bootstrap interval\nThis section is optional. It should be added only if Step 12 shows a small number of coherent aggregate speed transitions. STARS is the canonical lake-level method.\n\n\n\n\nEvery figure distinguishes a shift in speed mean from a shift in acceleration slope.\nThe chapter answers: what modes exist, where they occur, and when speed states changed.\nIt does not claim drivers yet.\nRemove superseded HTML-commented code and stale legend experiments before final render."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-d-add-geographic-context-missing-from-step-11",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-d-add-geographic-context-missing-from-step-11",
+    "title": "Warming acceleration — execution plan",
+    "section": "",
+    "text": "The stated research question includes coast–interior contrast, but current Step 11 has no distance-to-coast measure. Latitude and longitude are insufficient substitutes.\n\n\n\ndata-process/steps/13-geographic-context/\n\n\n\nlake_id\nlat\nlon\ndistance_to_coast_km\ncoastal_class                    # predeclared bins, e.g. &lt;50, 50–200, &gt;200 km\nOptional only if a defensible source exists:\ncontinentality proxy\nbasin outlet/coastal routing class\n\n\n\n\nUse a documented coastline source and geodesic distance, not planar degree distance.\nPreserve lake coordinates from Step 00.\nState coastline resolution, land-mask assumptions, and treatment of islands.\nDo not compute it in a QMD.\n\n\n\n\nManually check representative known lakes: Great Lakes, inland Siberian lake, coastal Scandinavian lake, island lake.\nAfter validation, extend Step 11 to join this table. Do not edit the 308 MB attribution CSV manually; rerun Step 11 when this is a new predictor block."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-e-mechanisms-chapter-and-spatially-robust-attribution",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-e-mechanisms-chapter-and-spatially-robust-attribution",
+    "title": "Warming acceleration — execution plan",
+    "section": "",
+    "text": "Create:\nsite/explorations/warming-acceleration/draft/03-mechanisms.qmd\nsite/shared/R/mechanism-helpers.R\nThis chapter reads lake_warming_attribution_data.csv and later geographic-context output. Helpers may do figure-scale joins and predeclared transformations; model fitting / large resampling must live in a dedicated analysis script, not in QMD chunks.\n\n\n\nMain continuous outcome:\nacceleration = stl_annual_trend_diff_sen_slope_1e3\nSecondary continuous outcome:\nSTL warming speed = stl_annual_trend_sen_slope_40yr\nSupplementary categorical outcome:\nK=5 cluster membership\nDo not use both raw annual slope and STL speed as co-equal primary outcomes.\n\n\n\n\n\n\n\n\n\n\n\nBlock\nVariables\nRole\n\n\n\n\nSpatial background\nspherical lon/lat smooth, abs latitude, elevation, continent, distance to coast\nrequired baseline/confounding control\n\n\nMorphometry\nlog area, lake depth, shape factor, shoreline development, residence time, watershed area, reservoir\nlake response capacity\n\n\nLocal forcing\nwind / pressure / precipitation annual and seasonal means/trends\nregional climatic correlates\n\n\nTeleconnection\nindex-to-anomaly sensitivity only\nseparate temporal pathway analysis; not cross-sectional predictor\n\n\n\n\n\n\nDo not put all ERA5 annual + four-season means + trends into one model. They are strongly collinear.\nFor each region, predeclare a small hypothesis set based on current screening:\nEurope:        DJF precipitation trend, DJF/JJA pressure trends, AO/NAO sensitivity follow-up\nNorth America: annual/JJA precipitation trend, wind background\nAsia:          depth, seasonal wind trend\nSouth America: precipitation trend, ENSO sensitivity\nAfrica:         ENSO sensitivity, pressure background\nBefore model fitting:\n\ninspect pairwise correlation and VIF within each predictor block;\nretain one representative from highly redundant variables, or use a clearly documented block PCA;\ntransform skewed morphometric variables as already provided by Step 00;\nrecord exact feature sets in the model output metadata.\n\n\n\n\n\n\nFit a GAM or equivalent spatial model:\nacceleration ~\n  s(lon, lat, bs = \"sos\") +\n  s(abs_lat) +\n  s(Elevation) +\n  Continent\nPurpose: establish how much geographic structure is predictable before lake-specific properties.\n\n\n\nbaseline +\n  s(log_Lake_area) +\n  s(era5_lake_total_depth_m) +\n  s(era5_lake_shape_factor) +\n  is_reservoir\nTest region-specific depth effects where justified, e.g. s(depth, by = Continent) or separate continent models. Current screening suggests Europe/Asia differ from North America.\n\n\n\nFit regional models, not one indiscriminate global seasonal model. Compare against E2 by spatial-block CV.\nRequired reporting:\nout-of-fold R² / RMSE\nΔR² over previous block\nresidual Moran's I\npartial-effect curves with uncertainty\n\n\n\nUse multinomial logistic regression or a spatially blocked tree model to predict C1–C5. Report balanced accuracy and confusion matrix, not only overall accuracy because clusters are unbalanced.\n\n\n\n\nRandom split validation is forbidden as the primary metric.\nUse predeclared spatial blocks, for example:\n10° × 10° grid cells assigned to 5 folds\nor contiguous spatial folds with comparable lake counts\nReport:\nfold definition\nn lakes / n cells per fold\nout-of-fold performance\nresidual spatial autocorrelation\nThe model analysis script should save tables and metadata in a documented non-QMD analysis location. If it becomes a durable producer, convert it into a proper data-process/steps/&lt;nn&gt;/ producer rather than leaving opaque saved R objects.\n\n\n\nThese are preliminary screening hypotheses from the current corrected data:\nEurope / Asia: deeper lakes tend toward lower acceleration.\nNorth America: negative acceleration associates with increasing annual/JJA precipitation.\nEurope: negative acceleration associates with increasing DJF precipitation and seasonal pressure structure.\nThey become results only if effects remain under spatial block CV and after spatial background control."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-f-teleconnection-as-a-temporal-sensitivity-pathway",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html#work-package-f-teleconnection-as-a-temporal-sensitivity-pathway",
+    "title": "Warming acceleration — execution plan",
+    "section": "",
+    "text": "Step 10 computes annual-index to detrended LSWT-residual correlations for AMO, AO, NAO, Niño3.4, PDO and lags 0–2 years.\n\n\n\n\nmaps of regional sensitivity;\ncluster/continent distributions of r;\nselecting theory-supported region/index/lag pairs;\ntesting whether local forcing anomalies carry the same index signal.\n\n\n\n\n\npredictor columns in E1–E4 cross-sectional acceleration models;\nglobal counts of nominal p &lt; 0.05 as evidence of a global teleconnection effect;\ncausal claims from simple lake-index correlation.\n\n\n\n\nEurope:        AO lag1 and NAO lag0, especially C2 versus C3\nSouth America: Niño3.4 lag0 / lag1\nAfrica:        Niño3.4 lag1\n\n\n\nCreate after Step 12 and before writing strong teleconnection prose. It should:\n\nderive annual detrended anomalies of wind, pressure, and corrected precipitation from Step 08 annual outputs;\ncorrelate them with the same indices/lags using the same valid-year logic as Step 10;\noutput lake-level associations and regional summaries;\nallow a three-link descriptive test:\n\nindex → local forcing anomaly\nlocal forcing anomaly → LSWT anomaly\nindex → LSWT anomaly\nCall this a pathway-consistency or mediation hypothesis, not formal causal mediation unless all temporal/confounding assumptions are explicitly modelled.\n\n\n\n\nEurope: AO lag1 sensitivity map + C2/C3 distributions.\nSouth America/Africa: Niño3.4 regional sensitivity maps with correct lag labels.\nA compact pathway panel only after forcing–teleconnection association outputs exist."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html#figure-and-prose-rules",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html#figure-and-prose-rules",
+    "title": "Warming acceleration — execution plan",
+    "section": "",
+    "text": "Keep figures in QMD; factor all reusable loading, joins, derived labels, and table accessors into chapter helpers.\nUse save_figure() only as a cached asset; every figure must render inline.\nUse @fig-* / @tbl-* references; do not write “the figure above”.\nEvery map of a spatially aggregated statistic must state grid size/minimum lake count and that it is descriptive.\nEvery cluster contour must state that ndensity normalizes each cluster independently and does not show relative cluster abundance.\nNever use significance stars for 92k lake-level correlations as the main evidence. Prefer effect size, regional consistency, and spatially blocked validation.\nRemove dead HTML-commented plotting code and generated *_cache/, *_files/, and Rplots.pdf artifacts from source control after confirming they are not required."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/EXECUTION_PLAN.html#execution-order-and-handoff-checklist",
+    "href": "explorations/warming-acceleration/EXECUTION_PLAN.html#execution-order-and-handoff-checklist",
+    "title": "Warming acceleration — execution plan",
+    "section": "",
+    "text": "Update Chapter 01 and regional helper to use STL warming speed consistently.\nAdd kinematics definition figure and prose.\nRender 01.\n\n\n\n\n\nImplement Step 12 with L=7 canonical run and L=5/10 sensitivity runs.\nInspect stratified lake examples and event QC.\nBuild speed-regime-helpers.R.\nExpand/render 02.\n\n\n\n\n\nImplement/validate coast-distance context if the variable is retained.\nJoin it through Step 11 by rerunning producer, never manual editing.\nBuild spatial-block attribution analysis outside QMD.\nCreate/render 03-mechanisms.qmd with only validated block comparisons.\n\n\n\n\n\nCreate forcing–teleconnection association producer.\nRestrict analyses to theory-supported regions/lags.\nAdd regional sensitivity figures only after local-forcing pathway consistency is checked.\n\n\n\n\ncd site\nquarto render explorations/warming-acceleration/draft/01-global-kinematics.qmd --to html\nquarto render explorations/warming-acceleration/draft/02-response-types.qmd --to html\nquarto render explorations/warming-acceleration/draft/03-mechanisms.qmd --to html\nBefore handing back:\n\nRead generated SUMMARY.md, METADATA.md, and *_qc.csv for every new/changed producer.\nConfirm no raw/archived output was silently used.\nState which findings are descriptive, which survive spatial CV, and which remain hypotheses.\nStage source files changed in the current session; do not stage generated _output/ render artifacts."
+  },
+  {
+    "objectID": "explorations/warming-acceleration/draft/02-warming-patterns.html",
+    "href": "explorations/warming-acceleration/draft/02-warming-patterns.html",
+    "title": "Warming Pattern Decomposition",
+    "section": "",
+    "text": "Long-term warming speed and acceleration compress each lake’s 40-year temperature record into two summary statistics. While these summaries capture the direction and rate of change, they discard the temporal trajectory—when warming occurred, whether it was steady or intermittent, and how it relates to known climate modes. This chapter applies principal component analysis (PCA) to the full annual temperature anomaly trajectory, identifying the dominant modes of warming variation across 92,245 lakes.",
     "crumbs": [
       "Explorations",
       "Warming Acceleration",
       "Draft",
-      "Regional"
+      "Warming Pattern Decomposition"
     ]
   },
   {
-    "objectID": "explorations/warming-acceleration/draft/02-regional.html#temporal-response-types",
-    "href": "explorations/warming-acceleration/draft/02-regional.html#temporal-response-types",
-    "title": "Regional",
-    "section": "",
-    "text": "We classify lakes by the shape of their 1981–2020 annual STL-trend response. The current canonical classification uses per-lake baseline anomalies relative to 1981–1990, PCA retaining 95% of the trajectory variance, and \\(k\\)-means clustering. The selected solution has five clusters (\\(K = 5\\)).\nThese clusters describe low-frequency lake-surface-temperature response types: lakes with similar STL-trend trajectories are grouped together regardless of continental labels. They complement the lake-level warming and acceleration metrics in Chapter 1: those metrics summarize overall change and its recent evolution, whereas the clusters retain the sequence of change through time.\nFigure 1 asks whether these trajectory types have geographic structure. The map and violin panels place each type in the broader distributions of mean temperature, cumulative warming, and acceleration; cluster labels should therefore be read as response descriptions rather than regional categories.\n\n\n\n\n\n\n\n\nFigure 1: STL-trend response clusters and their thermal metric distributions. (A) Global spatial distribution of the five clusters. (B-D) Violin plots of mean temperature, Sen slope, and STL-trend difference slope by cluster.\n\n\n\n\n\n\n\n\nTable 1: Summary of STL-trend response clusters\n\n\n\n\n\nCluster\nResponse type\nn lakes\n2020 anomaly\nShort interpretation\n\n\n\n\nC1\nLate-accelerating moderate warming\n20,444\n+0.86 °C\nSlow early change followed by stronger post-2000 warming\n\n\nC2\nEarly decline / late rebound\n12,072\n+0.67 °C\nFlat or slightly negative early trajectory, then late warming rebound\n\n\nC3\nStrong sustained warming\n8,581\n+1.15 °C\nPersistent warming throughout the full 40-year record\n\n\nC4\nWeak / near-stable warming\n29,657\n+0.15 °C\nLargest low-response class, close to baseline through time\n\n\nC5\nEarly warming then plateau\n21,491\n+0.31 °C\nEarly warming followed by flattening or slight decline\n\n\n\n\n\n\nAs shown in Table 1, C4 is the largest class (29,657 lakes) and remains closest to its baseline by 2020. At the other end, C3 has the largest 2020 anomaly (+1.15 °C) and represents sustained warming. C1 and C2 concentrate the late-accelerating trajectories, while C5 captures early warming followed by a plateau. Their spatial pattern in Figure 1 is structured rather than uniformly mixed, but the classification itself was not fitted to geography.\nFigure 2 compares the joint distributions of warming speed and acceleration. Contours are normalized separately within each cluster, so they show where a cluster’s typical observations lie; they do not compare cluster sample sizes.\n\n\n\n\n\n\n\n\nFigure 2: Two-dimensional density of warming speed and acceleration by STL-trend response cluster. Contour lines show per-cluster density; marginal panels show univariate density by cluster.\n\n\n\n\n\nThe density fields in Figure 2 overlap, indicating that no single pair of summary metrics fully reproduces the trajectory classification. Nevertheless, C1 and C2 occupy more positive-acceleration regions, whereas C4 and C5 extend toward negative acceleration. This separation is consistent with their contrasting late-period responses and shows why the full STL-trend trajectory adds information beyond a single Sen slope.",
+    "objectID": "explorations/warming-acceleration/draft/02-warming-patterns.html#data-preparation",
+    "href": "explorations/warming-acceleration/draft/02-warming-patterns.html#data-preparation",
+    "title": "Warming Pattern Decomposition",
+    "section": "Data preparation",
+    "text": "Data preparation\nAnnual mean lake surface water temperature (LSWT) is computed from daily GLAST observations and smoothed with an STL trend (nt=99) before PCA. Each lake’s low-frequency annual trajectory is expressed as a baseline anomaly relative to the 1981–1990 mean, yielding a 40-year anomaly vector. This separates the trajectory analysis from the raw annual metrics used for warming and acceleration in Chapter 1.\n\n数据来自 GLAST 日尺度 LSWT；年均序列先经 nt=99 的 STL 趋势平滑，再以 1981–1990 为基线计算异常。Chapter 1 的原始年均指标与本章低频轨迹 PCA 保持分工。\n\n\n\n\n\n\n\n\n\nFigure 1: Scree plot showing the proportion of trajectory variance explained by each principal component. The first five components (coloured) explain r fmt_pct(cumvar_pc5, 1)% of total variance; components 6–14 (grey) contribute diminishing additional information.\n\n\n\n\n\nThe scree plot (Figure 1) shows that the first component alone captures 40.0% of trajectory variance, with each subsequent component contributing progressively less. PC1–PC5 together explain 82.1% and are the predefined interpretation set. Components beyond PC5 contribute less than 3% each and are not interpreted in the main text; reaching 95% cumulative variance is a diagnostic rather than a retention rule.\n\n碎石图（Figure 1）显示前五个成分累计解释 82.1%。PC1–PC5 是预先确定的解释集合；95% 只作诊断，不作为保留门槛。",
     "crumbs": [
       "Explorations",
       "Warming Acceleration",
       "Draft",
-      "Regional"
+      "Warming Pattern Decomposition"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/draft/02-warming-patterns.html#dominant-modes-of-warming-variation",
+    "href": "explorations/warming-acceleration/draft/02-warming-patterns.html#dominant-modes-of-warming-variation",
+    "title": "Warming Pattern Decomposition",
+    "section": "Dominant modes of warming variation",
+    "text": "Dominant modes of warming variation\nEach principal component has a loading for every year (the weight that year receives in the component) and a score for every lake (how strongly that lake exhibits the component’s pattern). A lake’s reconstructed anomaly at year \\(t\\) is approximately:\n\\[\n\\Delta T_{\\text{lake}}(t) \\approx \\sum_{k=1}^{5} \\text{score}_k \\times \\text{loading}_k(t)\n\\]\nThe loading time series reveals what temporal pattern each component captures; the score reveals which lakes exhibit that pattern most strongly.\n\n每个成分对每年有一个载荷（权重），对每个湖泊有一个分数（表达强度）。湖泊在某年的温度异常 ≈ 各成分的分数×载荷之和。载荷揭示时间模式，分数揭示空间分布。\n\n\n\n\n\n\n\n\n\nFigure 2: Loading time series for the first five principal components. Each panel shows how a given component weights each year’s contribution. Positive loadings indicate years where lakes with positive scores have warmer anomalies; negative loadings indicate the opposite. Colours distinguish positive (red) from negative (blue) contributions.\n\n\n\n\n\nFigure 2 reveals the temporal structure of each component:\n\nPC1 (40.0%) captures a contrast between early and late years. Loadings are weakly positive in the 1980s and strongly negative after 2015. Lakes with negative PC1 scores therefore have stronger warming in recent decades (negative score × negative loading = positive anomaly). This component represents late-period warming acceleration.\nPC2 (20.1%) peaks around 1996–1998, corresponding to the strong El Niño years. Lakes with high PC2 scores experienced unusually warm conditions in the late 1990s relative to their baseline. This component captures interannual climate variability, particularly ENSO-related warming.\nPC3 (8.0%) has a negative peak around 2005–2006, corresponding to the global warming hiatus period. Lakes with negative PC3 scores experienced a more pronounced cooling or reduced warming during this period.\nPC4 (7.6%) shows a dip around 1989–1992 and a peak around 2010–2012, suggesting a pattern of early cooling followed by recovery.\nPC5 (6.3%) has a complex multi-decadal oscillation with peaks in the mid-1980s and early 2000s.\n\n\nFigure 2 揭示各成分的时间结构：\n\nPC1：早期正载荷、后期强负载荷 → 代表近年增温加速\nPC2：1996–1998 峰值 → 代表 ENSO 相关的年际变率\nPC3：2005–2006 负峰 → 代表 hiatus 期间的冷却\nPC4：1989–1992 低谷 + 2010–2012 峰值 → 早期冷却后恢复\nPC5：多年代际振荡",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Draft",
+      "Warming Pattern Decomposition"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/draft/02-warming-patterns.html#spatial-distribution-of-warming-modes",
+    "href": "explorations/warming-acceleration/draft/02-warming-patterns.html#spatial-distribution-of-warming-modes",
+    "title": "Warming Pattern Decomposition",
+    "section": "Spatial distribution of warming modes",
+    "text": "Spatial distribution of warming modes\n\n\n\n\n\n\n\n\nFigure 3: Spatial distribution of PC1–PC3 scores. Warm colours indicate positive scores (stronger expression of the component’s pattern); cool colours indicate negative scores (opposite pattern). PC1 captures late-period acceleration; PC2 captures 1990s interannual variability; PC3 captures hiatus-period cooling.\n\n\n\n\n\nFigure 3 reveals clear spatial patterns:\n\nPC1: Europe and northern Asia show strongly negative scores, indicating pronounced late-period warming acceleration. The Americas and tropics show more positive scores, indicating relatively less late-period acceleration. This continental-scale contrast is the single most important mode of warming heterogeneity.\nPC2: North America shows strongly positive scores, reflecting the pronounced 1990s warming signal. This is consistent with the strong El Niño influence on North American lake temperatures during 1997–1998.\nPC3: The spatial pattern is more diffuse, with scattered positive and negative scores across continents, consistent with the hiatus being a globally heterogeneous phenomenon rather than a coherent regional signal.\n\n\nFigure 3 揭示清晰的空间格局：\n\nPC1：欧洲和北亚强负分 → 近年加速最明显；美洲和热带正分 → 加速较弱。这是增温异质性最重要的模态。\nPC2：北美强正分 → 1990 年代增温信号突出，与 El Niño 影响一致。\nPC3：空间格局更分散，hiatus 冷却是全球异质性现象。\n\n\n\n\n\n\n\n\n\n\nFigure 4: Joint distribution of PC1 and PC2 scores, coloured by continent. Ellipses show 68% confidence regions. PC1 captures late-period acceleration; PC2 captures 1990s interannual variability.\n\n\n\n\n\nFigure 4 confirms the continental clustering in PC space. European lakes occupy the lower-left quadrant (negative PC1, negative PC2), indicating late-period acceleration with moderate 1990s variability. North American lakes are more dispersed but shifted toward positive PC2, reflecting the strong 1990s warming signal. This separation in continuous PC space is more informative than discrete cluster labels: it reveals that the “European warming acceleration” and “North American 1990s peak” are not sharply distinct types but rather regions of a continuous distribution.\n\nFigure 4 确认了 PC 空间中的大洲聚类。欧洲湖泊位于左下象限（PC1 负、PC2 负），北美偏向 PC2 正方向。这种连续空间中的分离比离散聚类标签更丰富。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Draft",
+      "Warming Pattern Decomposition"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/draft/02-warming-patterns.html#predictors-of-warming-mode-expression",
+    "href": "explorations/warming-acceleration/draft/02-warming-patterns.html#predictors-of-warming-mode-expression",
+    "title": "Warming Pattern Decomposition",
+    "section": "Predictors of warming mode expression",
+    "text": "Predictors of warming mode expression\nWhat factors determine which warming pattern a lake exhibits? To answer this question, we regress PC1–PC3 scores against geographic and morphometric predictors.\n\n什么因素决定了湖泊表现出哪种增温模式？我们将 PC1–PC3 分数对地理和形态因子做回归。\n\n\n\n\n\nTable 1: Regression coefficients for PC1–PC3 scores. Significance: * p&lt;0.05, ** p&lt;0.01, *** p&lt;0.001.\n\n\n\n\n\nPredictor\nPC1 (late accel.)\nPC2 (1990s var.)\nPC3 (hiatus)\n\n\n\n\nIntercept\n+0.118***\n-0.344***\n-0.084***\n\n\nAbsolute latitude\n+0.010***\n-0.001***\n+0.009***\n\n\nElevation (m)\n+0.000188***\n+0.000055***\n+0.000031***\n\n\nlog₁₀(Depth)\n-0.168***\n+0.055***\n+0.004\n\n\nlog₁₀(Area)\n-0.024***\n+0.102***\n-0.032***\n\n\nR²\n0.334\n0.374\n0.052\n\n\n\n\n\n\n\n\nTable 1 显示各预测变量对 PC 分数的回归系数。显著性标记：* p&lt;0.05，** p&lt;0.01，*** p&lt;0.001。\n\n\n\n\n\nTable 2: Continent dummy coefficients for PC1–PC3 scores; Africa is the reference level.\n\n\n\n\n\nContinent (reference: Africa)\nPC1\nPC2\nPC3\n\n\n\n\nAsia\n-0.778***\n+0.251***\n-0.376***\n\n\nEurope\n-1.307***\n-0.185***\n-0.550***\n\n\nNorth America\n-0.149***\n+0.656***\n-0.443***\n\n\nOceania\n+0.018\n-0.108**\n-0.202***\n\n\nSouth America\n+0.234***\n-0.011\n+0.087***\n\n\n\n\n\n\n\n\nTable 2 显示大洲虚拟变量的回归系数（以非洲为参照）。\n\n\n\n\n\nTable 3: Partial R² for each predictor group in explaining PC1–PC3 scores.\n\n\n\n\n\nPredictor group\nPC1\nPC2\nPC3\n\n\n\n\nLatitude\n0.006\n0.000\n0.030\n\n\nElevation\n0.008\n0.001\n0.001\n\n\nDepth\n0.003\n0.001\n0.000\n\n\nArea\n0.000\n0.004\n0.001\n\n\nContinent\n0.309\n0.333\n0.040\n\n\n\n\n\n\n\n\nTable 3 显示各预测变量组对 PC 分数的独立解释方差。\n\nThe regression results reveal a clear hierarchy of predictors. Continent is the dominant predictor group for PC1 and PC2, confirming that the broad organisation of these warming modes is continental in scale. The continent coefficients in Table 2 describe differences from the African reference level; their signs are specific to the arbitrary PCA sign convention and should not be interpreted as a directional physical effect.\n\n回归结果表明，大洲是 PC1 和 PC2 的主导预测变量组，说明这些增温模态在大洲尺度上组织。大洲系数以非洲为参照；其正负受 PCA 符号约定影响，不能直接解释为物理方向效应。\n\nAmong the non-geographic predictors, elevation makes the largest overall independent contribution across PC1–PC3 (Table 3). Depth and lake area contribute less, and their relative importance varies by component: depth exceeds area for PC1, whereas area exceeds depth for PC2 and PC3. Partial R² is an unsigned increment in explained variance: it ranks the independent information contributed by each predictor group but does not give the direction of association. Direction and uncertainty must instead be read from the coefficients in Table 1.\n\n在非地理因子中，跨 PC1–PC3 而言，海拔的总体独立贡献最大（Table 3）。深度和湖泊面积的贡献较小，且相对重要性随成分变化：PC1 中深度高于面积，PC2 和 PC3 中面积高于深度。偏 R² 是无符号的解释方差增量，只比较独立信息量；关联方向和不确定性应见 Table 1。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Draft",
+      "Warming Pattern Decomposition"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/draft/02-warming-patterns.html#comparison-with-discrete-clustering",
+    "href": "explorations/warming-acceleration/draft/02-warming-patterns.html#comparison-with-discrete-clustering",
+    "title": "Warming Pattern Decomposition",
+    "section": "Comparison with discrete clustering",
+    "text": "Comparison with discrete clustering\nAn alternative approach to characterising warming heterogeneity is \\(k\\)-means clustering on the PCA-reduced trajectory space. We evaluated K=4–8 and selected K=5 based on spatial coherence and statistical metrics. A detailed comparison of PCA and clustering approaches, including quantitative metrics and the rationale for preferring continuous scores, is given in PCA vs. Clustering.\n\n用 PCA 降维后的轨迹空间做 K 均值聚类是替代方案。详细比较见 PCA vs. Clustering。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Draft",
+      "Warming Pattern Decomposition"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/draft/02-warming-patterns.html#implications-for-attribution",
+    "href": "explorations/warming-acceleration/draft/02-warming-patterns.html#implications-for-attribution",
+    "title": "Warming Pattern Decomposition",
+    "section": "Implications for attribution",
+    "text": "Implications for attribution\nThe PCA decomposition reveals that lake warming patterns are not random: they are organised by geography (continent, latitude) and lake morphology (depth). The dominant mode (PC1) captures a continental-scale contrast in late-period warming acceleration, while PC2 captures interannual climate variability (likely ENSO-related).\nThese findings motivate the attribution analysis in Chapter 3. The continuous PC scores provide a natural response variable for regression against teleconnection indices (ENSO, PDO, AO), local climate variables (precipitation, wind speed), and lake characteristics (depth, area, ice duration). Unlike discrete cluster labels, PC scores preserve the full spectrum of warming heterogeneity and allow for continuous, quantitative attribution.\n\nPCA 分解揭示增温模式由地理（大洲、纬度）和湖泊形态（深度）组织。PC1 捕捉大洲尺度的近年加速对比，PC2 捕捉年际气候变率。这些发现为第 3 章的归因分析奠定基础：PC 分数可直接作为响应变量，对遥相关指数、本地气候变量和湖泊特征做回归。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Draft",
+      "Warming Pattern Decomposition"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html",
+    "href": "metrics/algorithms.html",
+    "title": "Algorithms",
+    "section": "",
+    "text": "Seasonal-Trend decomposition using LOESS (Cleveland et al. 1990). Decomposes a time series into seasonal, trend, and remainder components.\nKey parameters:\n\nPeriod: seasonal cycle length (12 for monthly data)\nnt: width of the trend LOESS window — controls smoothness. Larger nt → smoother trend, less short-term detail. Sensitivity to nt should always be tested.\nni / no: inner/outer iterations for robustness\n\nUsed in: warming-acceleration.",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html#stl",
+    "href": "metrics/algorithms.html#stl",
+    "title": "Algorithms",
+    "section": "",
+    "text": "Seasonal-Trend decomposition using LOESS (Cleveland et al. 1990). Decomposes a time series into seasonal, trend, and remainder components.\nKey parameters:\n\nPeriod: seasonal cycle length (12 for monthly data)\nnt: width of the trend LOESS window — controls smoothness. Larger nt → smoother trend, less short-term detail. Sensitivity to nt should always be tested.\nni / no: inner/outer iterations for robustness\n\nUsed in: warming-acceleration.",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html#stars",
+    "href": "metrics/algorithms.html#stars",
+    "title": "Algorithms",
+    "section": "STARS",
+    "text": "STARS\nSequential T-test Analysis of Regime Shifts (Rodionov 2004). Detects abrupt, persistent shifts in the mean of a time series.\n\nSequential: processes data in order, near-real-time capable\nTwo parameters: cut-off length \\(l\\) and significance level \\(p\\)\nUses a t-test critical difference and a cumulative Regime Shift Index (RSI) to require persistence after a candidate shift\nA shift in a series mean is distinct from a breakpoint in that series’ slope\n\nIn the warming-acceleration exploration, STARS is applied to annual warming speed \\(v(t)=\\Delta\\tau(t)\\), with \\(L=7\\) and \\(p=0.05\\). It therefore detects a persistent shift from one mean warming-speed regime to another. It does not detect an acceleration-slope breakpoint; segmented regression on \\(v(t)\\) would answer that different question.\nOriginally designed for PDO regime shifts. Applied to lake surface temperature by Woolway et al. (2017).\nAlternatives: Bai-Perron (multiple breakpoints, regression-based), Pettitt (single shift, rank-based), CUSUM (cumulative sum). All are sensitive to algorithm choice and parameterisation; STARS is favoured for its simplicity and climatological track record.\nPaper notes: Rodionov (2004).\nUsed in: warming-acceleration.",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html#k-means-clustering",
+    "href": "metrics/algorithms.html#k-means-clustering",
+    "title": "Algorithms",
+    "section": "K-means clustering",
+    "text": "K-means clustering\nPartitions \\(n\\) observations into \\(K\\) groups by minimising within-cluster sum of squared distances. Requires pre-specification of \\(K\\); sensitive to feature scaling.\nCommon workflow: z-score features → run K-means → order clusters by a meaningful axis (e.g. mean temperature).",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html#theilsen-slope",
+    "href": "metrics/algorithms.html#theilsen-slope",
+    "title": "Algorithms",
+    "section": "Theil–Sen slope",
+    "text": "Theil–Sen slope\nNon-parametric slope estimator: median of all pairwise slopes. Robust to outliers, no normality assumption. Widely used in climate trend analysis.",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/algorithms.html#mannkendall-test",
+    "href": "metrics/algorithms.html#mannkendall-test",
+    "title": "Algorithms",
+    "section": "Mann–Kendall test",
+    "text": "Mann–Kendall test\nNon-parametric trend test. Tests whether a monotonic trend exists. Often paired with Theil–Sen for trend magnitude. Sensitive to autocorrelation — pre-whitening may be needed.",
+    "crumbs": [
+      "Metrics",
+      "Algorithms"
+    ]
+  },
+  {
+    "objectID": "metrics/index.html",
+    "href": "metrics/index.html",
+    "title": "Metrics",
+    "section": "",
+    "text": "Methods, algorithms, indices, data sources, and terminology. Not tied to any specific exploration.",
+    "crumbs": [
+      "Metrics"
+    ]
+  },
+  {
+    "objectID": "metrics/index.html#algorithms",
+    "href": "metrics/index.html#algorithms",
+    "title": "Metrics",
+    "section": "Algorithms",
+    "text": "Algorithms\nSTL, STARS, K-means, Theil–Sen, Mann–Kendall, etc.",
+    "crumbs": [
+      "Metrics"
+    ]
+  },
+  {
+    "objectID": "metrics/index.html#indices",
+    "href": "metrics/index.html#indices",
+    "title": "Metrics",
+    "section": "Indices",
+    "text": "Indices\nENSO, PDO, AMO, NAO, AO — large-scale climate oscillation indices.",
+    "crumbs": [
+      "Metrics"
+    ]
+  },
+  {
+    "objectID": "metrics/index.html#data",
+    "href": "metrics/index.html#data",
+    "title": "Metrics",
+    "section": "Data",
+    "text": "Data\nDatasets, variables, and measurement conventions.",
+    "crumbs": [
+      "Metrics"
+    ]
+  },
+  {
+    "objectID": "metrics/index.html#terms",
+    "href": "metrics/index.html#terms",
+    "title": "Metrics",
+    "section": "Terms",
+    "text": "Terms\nDefinitions of recurring concepts (global warming hiatus, regime shift, etc.).",
+    "crumbs": [
+      "Metrics"
+    ]
+  },
+  {
+    "objectID": "metrics/terms.html",
+    "href": "metrics/terms.html",
+    "title": "Terms",
+    "section": "",
+    "text": "The period roughly 1998–2012 during which the rate of global mean surface temperature increase slowed relative to the preceding and following decades. Attributed to a combination of ocean heat uptake, internal variability (PDO negative phase), volcanic aerosols, and incomplete radiative forcing accounting (Medhaug et al. 2017, Nature).\nNot a pause in warming — total heat content continued to rise — but a slowdown in the rate of surface temperature increase.",
+    "crumbs": [
+      "Metrics",
+      "Terms"
+    ]
+  },
+  {
+    "objectID": "metrics/terms.html#global-warming-hiatus",
+    "href": "metrics/terms.html#global-warming-hiatus",
+    "title": "Terms",
+    "section": "",
+    "text": "The period roughly 1998–2012 during which the rate of global mean surface temperature increase slowed relative to the preceding and following decades. Attributed to a combination of ocean heat uptake, internal variability (PDO negative phase), volcanic aerosols, and incomplete radiative forcing accounting (Medhaug et al. 2017, Nature).\nNot a pause in warming — total heat content continued to rise — but a slowdown in the rate of surface temperature increase.",
+    "crumbs": [
+      "Metrics",
+      "Terms"
+    ]
+  },
+  {
+    "objectID": "metrics/terms.html#regime-shift",
+    "href": "metrics/terms.html#regime-shift",
+    "title": "Terms",
+    "section": "Regime shift",
+    "text": "Regime shift\nAn abrupt, persistent change in the statistical properties (typically the mean) of a time series. Detected by algorithms such as STARS. Not the same as a trend change; a regime shift implies a relatively sudden transition between two quasi-stable states.",
+    "crumbs": [
+      "Metrics",
+      "Terms"
+    ]
+  },
+  {
+    "objectID": "metrics/terms.html#long-term-warming-speed",
+    "href": "metrics/terms.html#long-term-warming-speed",
+    "title": "Terms",
+    "section": "Long-term warming speed",
+    "text": "Long-term warming speed\nFor the warming-acceleration exploration, the canonical quantity is the Theil–Sen slope of the annual STL trend \\(\\tau(t)\\). It estimates the low-frequency warming rate after seasonal and short-term variation have been separated from the monthly LSWT record.\nFor readability, this slope is presented as its 40-year-equivalent change (\\(^\\circ\\)C / 40 yr). This is a rescaled long-term trend estimate, not a raw 40-year temperature difference. The Sen slope from raw annual mean LSWT is reported only as a robustness comparison because it retains more short-term interannual variation.",
+    "crumbs": [
+      "Metrics",
+      "Terms"
+    ]
+  },
+  {
+    "objectID": "metrics/terms.html#annual-warming-speed",
+    "href": "metrics/terms.html#annual-warming-speed",
+    "title": "Terms",
+    "section": "Annual warming speed",
+    "text": "Annual warming speed\nThe annual change in the STL trend:\n\\[v(t) = \\tau(t) - \\tau(t - 1).\\]\nIts unit is \\(^\\circ\\)C yr\\(^{-1}\\). This is the time-varying speed series used to identify persistent warming-speed regimes with STARS.",
+    "crumbs": [
+      "Metrics",
+      "Terms"
+    ]
+  },
+  {
+    "objectID": "metrics/terms.html#acceleration",
+    "href": "metrics/terms.html#acceleration",
+    "title": "Terms",
+    "section": "Acceleration",
+    "text": "Acceleration\nThe long-term rate of change in annual warming speed, estimated as the Sen slope of \\(v(t)\\) over 1982–2020.\nPositive acceleration means the low-frequency warming trend is becoming more positive through time; negative acceleration means it is becoming less positive. Neither sign alone determines whether the lake is presently warming or cooling.",
+    "crumbs": [
+      "Metrics",
+      "Terms"
+    ]
+  },
+  {
+    "objectID": "metrics/indices.html",
+    "href": "metrics/indices.html",
+    "title": "Indices",
+    "section": "",
+    "text": "Large-scale climate oscillation indices, typically derived from sea surface temperature or atmospheric pressure fields.\n\n\n\n\n\n\n\n\n\nIndex\nFull name\nBasin / region\nDominant period\n\n\n\n\nENSO (Niño 3.4)\nEl Niño–Southern Oscillation\nTropical Pacific\n2–7 yr\n\n\nPDO\nPacific Decadal Oscillation\nNorth Pacific\n20–30 yr\n\n\nAMO\nAtlantic Multidecadal Oscillation\nNorth Atlantic\n65–80 yr\n\n\nNAO\nNorth Atlantic Oscillation\nNorth Atlantic\nYear-round\n\n\nAO\nArctic Oscillation\nHemispheric\nYear-round\n\n\n\nAll available as monthly time series from NOAA. Typically converted to annual means for long-term trend analysis.\n\n\n\n Back to top",
+    "crumbs": [
+      "Metrics",
+      "Indices"
     ]
   },
   {
@@ -446,250 +975,68 @@
     ]
   },
   {
-    "objectID": "metrics/indices.html",
-    "href": "metrics/indices.html",
-    "title": "Indices",
+    "objectID": "explorations/warming-acceleration/draft/01-global-kinematics.html",
+    "href": "explorations/warming-acceleration/draft/01-global-kinematics.html",
+    "title": "Global Kinematics",
     "section": "",
-    "text": "Large-scale climate oscillation indices, typically derived from sea surface temperature or atmospheric pressure fields.\n\n\n\n\n\n\n\n\n\nIndex\nFull name\nBasin / region\nDominant period\n\n\n\n\nENSO (Niño 3.4)\nEl Niño–Southern Oscillation\nTropical Pacific\n2–7 yr\n\n\nPDO\nPacific Decadal Oscillation\nNorth Pacific\n20–30 yr\n\n\nAMO\nAtlantic Multidecadal Oscillation\nNorth Atlantic\n65–80 yr\n\n\nNAO\nNorth Atlantic Oscillation\nNorth Atlantic\nYear-round\n\n\nAO\nArctic Oscillation\nHemispheric\nYear-round\n\n\n\nAll available as monthly time series from NOAA. Typically converted to annual means for long-term trend analysis.\n\n\n\n Back to top",
-    "crumbs": [
-      "Metrics",
-      "Indices"
-    ]
-  },
-  {
-    "objectID": "metrics/terms.html",
-    "href": "metrics/terms.html",
-    "title": "Terms",
-    "section": "",
-    "text": "The period roughly 1998–2012 during which the rate of global mean surface temperature increase slowed relative to the preceding and following decades. Attributed to a combination of ocean heat uptake, internal variability (PDO negative phase), volcanic aerosols, and incomplete radiative forcing accounting (Medhaug et al. 2017, Nature).\nNot a pause in warming — total heat content continued to rise — but a slowdown in the rate of surface temperature increase.",
-    "crumbs": [
-      "Metrics",
-      "Terms"
-    ]
-  },
-  {
-    "objectID": "metrics/terms.html#global-warming-hiatus",
-    "href": "metrics/terms.html#global-warming-hiatus",
-    "title": "Terms",
-    "section": "",
-    "text": "The period roughly 1998–2012 during which the rate of global mean surface temperature increase slowed relative to the preceding and following decades. Attributed to a combination of ocean heat uptake, internal variability (PDO negative phase), volcanic aerosols, and incomplete radiative forcing accounting (Medhaug et al. 2017, Nature).\nNot a pause in warming — total heat content continued to rise — but a slowdown in the rate of surface temperature increase.",
-    "crumbs": [
-      "Metrics",
-      "Terms"
-    ]
-  },
-  {
-    "objectID": "metrics/terms.html#regime-shift",
-    "href": "metrics/terms.html#regime-shift",
-    "title": "Terms",
-    "section": "Regime shift",
-    "text": "Regime shift\nAn abrupt, persistent change in the statistical properties (typically the mean) of a time series. Detected by algorithms such as STARS. Not the same as a trend change; a regime shift implies a relatively sudden transition between two quasi-stable states.",
-    "crumbs": [
-      "Metrics",
-      "Terms"
-    ]
-  },
-  {
-    "objectID": "metrics/terms.html#warming",
-    "href": "metrics/terms.html#warming",
-    "title": "Terms",
-    "section": "Warming",
-    "text": "Warming\nIn the context of lake temperature: the total change in LSWT over a study period, typically estimated via Theil–Sen slope × period length.",
-    "crumbs": [
-      "Metrics",
-      "Terms"
-    ]
-  },
-  {
-    "objectID": "metrics/terms.html#acceleration",
-    "href": "metrics/terms.html#acceleration",
-    "title": "Terms",
-    "section": "Acceleration",
-    "text": "Acceleration\nThe rate of change of the warming trend. Positive acceleration means warming is speeding up; negative means warming is slowing (not cooling). Estimated via Sen slope of first-differenced STL trend.",
-    "crumbs": [
-      "Metrics",
-      "Terms"
-    ]
-  },
-  {
-    "objectID": "metrics/index.html",
-    "href": "metrics/index.html",
-    "title": "Metrics",
-    "section": "",
-    "text": "Methods, algorithms, indices, data sources, and terminology. Not tied to any specific exploration.",
-    "crumbs": [
-      "Metrics"
-    ]
-  },
-  {
-    "objectID": "metrics/index.html#algorithms",
-    "href": "metrics/index.html#algorithms",
-    "title": "Metrics",
-    "section": "Algorithms",
-    "text": "Algorithms\nSTL, STARS, K-means, Theil–Sen, Mann–Kendall, etc.",
-    "crumbs": [
-      "Metrics"
-    ]
-  },
-  {
-    "objectID": "metrics/index.html#indices",
-    "href": "metrics/index.html#indices",
-    "title": "Metrics",
-    "section": "Indices",
-    "text": "Indices\nENSO, PDO, AMO, NAO, AO — large-scale climate oscillation indices.",
-    "crumbs": [
-      "Metrics"
-    ]
-  },
-  {
-    "objectID": "metrics/index.html#data",
-    "href": "metrics/index.html#data",
-    "title": "Metrics",
-    "section": "Data",
-    "text": "Data\nDatasets, variables, and measurement conventions.",
-    "crumbs": [
-      "Metrics"
-    ]
-  },
-  {
-    "objectID": "metrics/index.html#terms",
-    "href": "metrics/index.html#terms",
-    "title": "Metrics",
-    "section": "Terms",
-    "text": "Terms\nDefinitions of recurring concepts (global warming hiatus, regime shift, etc.).",
-    "crumbs": [
-      "Metrics"
-    ]
-  },
-  {
-    "objectID": "metrics/algorithms.html",
-    "href": "metrics/algorithms.html",
-    "title": "Algorithms",
-    "section": "",
-    "text": "Seasonal-Trend decomposition using LOESS (Cleveland et al. 1990). Decomposes a time series into seasonal, trend, and remainder components.\nKey parameters:\n\nPeriod: seasonal cycle length (12 for monthly data)\nnt: width of the trend LOESS window — controls smoothness. Larger nt → smoother trend, less short-term detail. Sensitivity to nt should always be tested.\nni / no: inner/outer iterations for robustness\n\nUsed in: warming-acceleration.",
-    "crumbs": [
-      "Metrics",
-      "Algorithms"
-    ]
-  },
-  {
-    "objectID": "metrics/algorithms.html#stl",
-    "href": "metrics/algorithms.html#stl",
-    "title": "Algorithms",
-    "section": "",
-    "text": "Seasonal-Trend decomposition using LOESS (Cleveland et al. 1990). Decomposes a time series into seasonal, trend, and remainder components.\nKey parameters:\n\nPeriod: seasonal cycle length (12 for monthly data)\nnt: width of the trend LOESS window — controls smoothness. Larger nt → smoother trend, less short-term detail. Sensitivity to nt should always be tested.\nni / no: inner/outer iterations for robustness\n\nUsed in: warming-acceleration.",
-    "crumbs": [
-      "Metrics",
-      "Algorithms"
-    ]
-  },
-  {
-    "objectID": "metrics/algorithms.html#stars",
-    "href": "metrics/algorithms.html#stars",
-    "title": "Algorithms",
-    "section": "STARS",
-    "text": "STARS\nSequential T-test Analysis of Regime Shifts (Rodionov 2004). Detects abrupt shifts in the mean of a time series.\n\nSequential: processes data in order, near-real-time capable\nTwo parameters: cut-off length \\(l\\) and significance level \\(p\\)\nUses a moving window to estimate local variance; robust to isolated outliers\nRegime length is not necessarily \\(l\\); a new regime can start at any point after the shift\n\nOriginally designed for PDO regime shifts. Applied to lake surface temperature by Woolway et al. (2017).\nAlternatives: Bai-Perron (multiple breakpoints, regression-based), Pettitt (single shift, rank-based), CUSUM (cumulative sum). All are sensitive to algorithm choice and parameterisation; STARS is favoured for its simplicity and climatological track record.\nPaper notes: Rodionov (2004).\nUsed in: warming-acceleration.",
-    "crumbs": [
-      "Metrics",
-      "Algorithms"
-    ]
-  },
-  {
-    "objectID": "metrics/algorithms.html#k-means-clustering",
-    "href": "metrics/algorithms.html#k-means-clustering",
-    "title": "Algorithms",
-    "section": "K-means clustering",
-    "text": "K-means clustering\nPartitions \\(n\\) observations into \\(K\\) groups by minimising within-cluster sum of squared distances. Requires pre-specification of \\(K\\); sensitive to feature scaling.\nCommon workflow: z-score features → run K-means → order clusters by a meaningful axis (e.g. mean temperature).",
-    "crumbs": [
-      "Metrics",
-      "Algorithms"
-    ]
-  },
-  {
-    "objectID": "metrics/algorithms.html#theilsen-slope",
-    "href": "metrics/algorithms.html#theilsen-slope",
-    "title": "Algorithms",
-    "section": "Theil–Sen slope",
-    "text": "Theil–Sen slope\nNon-parametric slope estimator: median of all pairwise slopes. Robust to outliers, no normality assumption. Widely used in climate trend analysis.",
-    "crumbs": [
-      "Metrics",
-      "Algorithms"
-    ]
-  },
-  {
-    "objectID": "metrics/algorithms.html#mannkendall-test",
-    "href": "metrics/algorithms.html#mannkendall-test",
-    "title": "Algorithms",
-    "section": "Mann–Kendall test",
-    "text": "Mann–Kendall test\nNon-parametric trend test. Tests whether a monotonic trend exists. Often paired with Theil–Sen for trend magnitude. Sensitive to autocorrelation — pre-whitening may be needed.",
-    "crumbs": [
-      "Metrics",
-      "Algorithms"
-    ]
-  },
-  {
-    "objectID": "explorations/warming-acceleration/draft/01-descriptive.html",
-    "href": "explorations/warming-acceleration/draft/01-descriptive.html",
-    "title": "Descriptive",
-    "section": "",
-    "text": "GLAST: 92245 lakes, 1981–2020.",
+    "text": "&lt;environment: R_GlobalEnv&gt;\n\n\nGLAST: 92245 lakes, 1981–2020.",
     "crumbs": [
       "Explorations",
       "Warming Acceleration",
       "Draft",
-      "Descriptive"
+      "Global Kinematics"
     ]
   },
   {
-    "objectID": "explorations/warming-acceleration/draft/01-descriptive.html#sample-coverage",
-    "href": "explorations/warming-acceleration/draft/01-descriptive.html#sample-coverage",
-    "title": "Descriptive",
+    "objectID": "explorations/warming-acceleration/draft/01-global-kinematics.html#sample-coverage",
+    "href": "explorations/warming-acceleration/draft/01-global-kinematics.html#sample-coverage",
+    "title": "Global Kinematics",
     "section": "",
-    "text": "GLAST: 92245 lakes, 1981–2020.",
+    "text": "&lt;environment: R_GlobalEnv&gt;\n\n\nGLAST: 92245 lakes, 1981–2020.",
     "crumbs": [
       "Explorations",
       "Warming Acceleration",
       "Draft",
-      "Descriptive"
+      "Global Kinematics"
     ]
   },
   {
-    "objectID": "explorations/warming-acceleration/draft/01-descriptive.html#lake-density-map",
-    "href": "explorations/warming-acceleration/draft/01-descriptive.html#lake-density-map",
-    "title": "Descriptive",
+    "objectID": "explorations/warming-acceleration/draft/01-global-kinematics.html#lake-density-map",
+    "href": "explorations/warming-acceleration/draft/01-global-kinematics.html#lake-density-map",
+    "title": "Global Kinematics",
     "section": "Lake density map",
     "text": "Lake density map\n\n\n\n\n\n\n\n\nFigure 1: Lake density map with 1° × 1° grid cells.",
     "crumbs": [
       "Explorations",
       "Warming Acceleration",
       "Draft",
-      "Descriptive"
+      "Global Kinematics"
     ]
   },
   {
-    "objectID": "explorations/warming-acceleration/draft/01-descriptive.html#long-term-warming-acceleration",
-    "href": "explorations/warming-acceleration/draft/01-descriptive.html#long-term-warming-acceleration",
-    "title": "Descriptive",
-    "section": "Long-term warming && acceleration",
-    "text": "Long-term warming && acceleration\nTable 1 (a) and Table 1 (b) shows the statistics of warming. Compared with the raw annual mean temperature series, the STL trend component is smoother and more stable, so it identifies warming in more lakes (91,802 / 92,245, 99.5%, versus 85,569 / 92,245, 92.8% for the raw series). It also has a smaller standard deviation and a more concentrated quartile range, although its mean is lower (0.573 versus 0.881 for the raw series).\n\n\nUse Sen’s slope to determine whether a lake is warming and how is the trend like.\nThough almost all the lakes are warming, the warming is not uniform. Acceleration of 51,014 (55.3%) lakes is positive. Standard deviation and quartile range are also large, indicating that the acceleration varies widely across lakes.\n\n\nHere acceleration is measured as Sen’s slope of the annual first-differenced STL trend. Positive values mean faster warming, slower cooling, or a transition toward warming.\n\n\n\n\nTable 1: Summary of warming status.\n\n\n\n\n\n\n\n(a) Raw warming\n\n\n\n\n\nWarming count\n85,569 (92.8%)\n\n\nMean (°C/40yr)\n0.881 ± 0.766\n\n\nQuartile (°C/40yr)\n0.37, 0.73, 1.23\n\n\n\n\n\n\n\n\n\n\n\n(b) STL trend warming\n\n\n\n\n\nWarming count\n91,802 (99.5%)\n\n\nMean (°C/40yr)\n0.573 ± 0.320\n\n\nQuartile (°C/40yr)\n0.34, 0.52, 0.75\n\n\n\n\n\n\n\n\n\n\n\n(c) STL trend acceleration\n\n\n\n\n\nAccelerating count\n51,014 (55.3%)\n\n\nMean (°C/40yr)\n0.304 ± 1.473\n\n\nQuartile (°C/40yr)\n-0.81, 0.21, 1.31\n\n\n\n\n\n\n\n\n\n\n\n\nThe joint warming–acceleration states divide the lakes into four groups:\n\n\n\nTable 2: Joint warming and acceleration states.\n\n\n\n\n\nState\nn\n%\n\n\n\n\nwarming + accelerating\n46,614\n50.53\n\n\nwarming + decelerating\n38,955\n42.23\n\n\ncooling + accelerating\n4,400\n4.77\n\n\ncooling + decelerating\n2,276\n2.47\n\n\n\n\n\n\nThese four states summarize signs rather than effect sizes. In particular, a positive acceleration means that a trend is becoming more positive, not that a lake is necessarily warming rapidly. The pairwise distributions in Figure 2 therefore show both the central structure and the sparse combinations that are obscured by the state counts in Table 2.\n\n\n\n\n\n\n\n\nFigure 2: Pairwise relationships among mean temperature, warming speed, and acceleration. Diagonal panels show probability densities; upper panels show Pearson r (with significance stars), Spearman ρ, and LOESS pseudo-R. Lower panels show KDE contours for observations above the 5th percentile of local density; lower-density observations are shown as points with opacity proportional to local density.\n\n\n\n\n\nMean temperature is negatively associated with cumulative warming (\\(r = -0.47\\)), while the warming–acceleration association is much weaker (\\(r = 0.19\\)). Thus, the widespread warming reported in Table 1 (b) does not imply a common temporal pathway: lakes with similar 40-year warming can be accelerating, decelerating, or changing little in their recent trend.",
+    "objectID": "explorations/warming-acceleration/draft/01-global-kinematics.html#long-term-warming-speed-and-acceleration",
+    "href": "explorations/warming-acceleration/draft/01-global-kinematics.html#long-term-warming-speed-and-acceleration",
+    "title": "Global Kinematics",
+    "section": "Long-term warming speed and acceleration",
+    "text": "Long-term warming speed and acceleration\nLong-term warming speed is the Theil–Sen slope of annual mean lake surface water temperature (LSWT) over 1982–2020, presented as a 40-year-equivalent change in °C. Acceleration is the Sen slope of the annual first difference of warming speed, measured in \\(10^{-3}\\) °C yr\\(^{-2}\\). Both metrics are computed directly from raw annual mean temperature without seasonal decomposition, thereby retaining the full spectrum of interannual climate variability (e.g. ENSO, PDO) that may contribute to observed warming heterogeneity.\n\n本章以年均 LSWT 为主要指标。长期增温速率为 Theil–Sen 斜率（40 年等效变化）；加速度为年际差分的 Sen 斜率。两者直接从原始年均温度计算，保留 ENSO/PDO 等年际变率信息。\n\nTable 1 (a) summarizes the warming metrics computed from raw annual mean LSWT. 92.8% of lakes show positive long-term warming speed, with a median of 0.73 °C per 40 years. However, only 54.7% have positive acceleration, indicating that the direction and magnitude of long-term warming are largely decoupled from changes in warming speed.\n\nTable 1 (a) summarizes the warming metrics computed from raw annual mean LSWT% 湖泊呈正增温速率，但仅54.7% 呈正加速度，增温方向与速度变化基本解耦。\n\n\n\n\n\nTable 1: Summary of warming status.\n\n\n\n\n\n\n\n(a) Raw annual warming speed\n\n\n\n\n\nWarming count\n85,569 (92.8%)\n\n\nMean (°C/40yr)\n0.881 ± 0.766\n\n\nQuartile (°C/40yr)\n0.37, 0.73, 1.23\n\n\n\n\n\n\n\n\n\n\n\n(b) Acceleration\n\n\n\n\n\nAccelerating count\n50,486 (54.7%)\n\n\nMean (°C/40yr)\n2.033 ± 9.940\n\n\nQuartile (°C/40yr)\n-3.66, 0.71, 5.44\n\n\n\n\n\n\n\n\n\n\n\n\nA sign-only classification places 50.8% of lakes in the warming and accelerating quadrant and 42.0% in the warming and decelerating quadrant. These are descriptive sign counts, not stable response types: values close to zero can switch quadrant without a meaningful change in magnitude. The continuous relationships in Figure 2 are therefore the primary summary.\n\n\n\n\n\n\n\n\nFigure 2: Pairwise relationships among mean temperature, long-term warming speed (raw annual Theil–Sen slope), and acceleration. Diagonal panels show probability densities; upper panels show full-sample Pearson r and Spearman ρ, plus a LOESS pseudo-R estimated from a reproducible 15,000-lake sample. Lower panels show KDE contours for the same sample above the 5th percentile of local density; lower-density observations are shown as points with opacity proportional to local density.\n\n\n\n\n\nMean temperature is negatively associated with long-term warming speed (\\(r = -0.47\\)), while the warming-speed–acceleration association is much weaker (\\(r = 0.19\\)). Thus, widespread long-term warming does not imply a common temporal pathway: lakes with similar 40-year-equivalent trend change can be accelerating, decelerating, or changing little in their annual warming speed.",
     "crumbs": [
       "Explorations",
       "Warming Acceleration",
       "Draft",
-      "Descriptive"
+      "Global Kinematics"
     ]
   },
   {
-    "objectID": "explorations/warming-acceleration/draft/01-descriptive.html#spatial-pattern",
-    "href": "explorations/warming-acceleration/draft/01-descriptive.html#spatial-pattern",
-    "title": "Descriptive",
+    "objectID": "explorations/warming-acceleration/draft/01-global-kinematics.html#spatial-pattern",
+    "href": "explorations/warming-acceleration/draft/01-global-kinematics.html#spatial-pattern",
+    "title": "Global Kinematics",
     "section": "Spatial pattern",
-    "text": "Spatial pattern\nThe hexagons in Figure 3 summarize lake-level estimates within 5° cells containing at least five lakes. Comparing the upper and lower panels separates where warming is strongest from where the underlying trend is becoming more or less positive; the two patterns need not coincide.\n\n\n\n\n\n\n\n\nFigure 3: Spatial pattern of lake warming and acceleration. Hexagons aggregate lake-level metrics in 5° geographic bins containing at least five lakes. Colors use a shared divergent scale normalized to fixed rounded mapping limits; the central colorbar shows warming values on the upper axis and acceleration values on the lower axis.\n\n\n\n\n\n\n\n\n\nTable 3: Continent-level spatial summary\n\n\n\n\n\nContinent\nWarming\nAccelerating\nWarming + accelerating\nMean warming\nMean acceleration\n\n\n\n\nNA\n94.9%\n29.2%\n28.0%\n0.77 °C / 40 yr\n-0.51 ×10⁻³ °C / yr²\n\n\nEU\n90.1%\n87.0%\n77.9%\n1.13 °C / 40 yr\n1.38 ×10⁻³ °C / yr²\n\n\nAS\n90.2%\n72.1%\n64.0%\n0.49 °C / 40 yr\n0.59 ×10⁻³ °C / yr²\n\n\nSA\n89.2%\n96.4%\n85.9%\n0.38 °C / 40 yr\n0.91 ×10⁻³ °C / yr²\n\n\nAF\n99.9%\n66.6%\n66.6%\n0.50 °C / 40 yr\n0.27 ×10⁻³ °C / yr²\n\n\nOC\n94.0%\n73.8%\n70.2%\n0.57 °C / 40 yr\n0.77 ×10⁻³ °C / yr²\n\n\n\n\n\n\n\nTable 3 reinforces this distinction. Europe combines high mean warming with predominantly positive acceleration, whereas North America has high warming prevalence but a negative mean acceleration. Continental values are descriptive aggregates: uneven lake coverage and within-continent spatial structure mean they should not be interpreted as area-weighted climate means.",
+    "text": "Spatial pattern\nThe hexagons in Figure 3 summarize lake-level estimates within 5° cells containing at least five lakes. Comparing the upper and lower panels separates where long-term warming speed is strongest from where annual warming speed is becoming more or less positive; the two patterns need not coincide.The hexagons in Figure 3 summarize lake-level estimates within 5° cells containing at least five lakes. Comparing the upper and lower panels separates where long-term warming speed is strongest from where annual warming speed is becoming more or less positive; the two patterns need not coincide.\n\nFigure 3 用六边形汇总 5° 网格内的湖泊指标（≥5 个湖）。上下面板分别展示增温速率和加速度的空间格局，两者不必一致。\n\n\n\n\n\n\n\n\n\nFigure 3: Spatial pattern of lake warming and acceleration. Hexagons aggregate lake-level metrics in 5° geographic bins containing at least five lakes. Colors use a shared divergent scale normalized to fixed rounded mapping limits; the central colorbar shows warming values on the upper axis and acceleration values on the lower axis.\n\n\n\n\n\n\n\n\n\nTable 2: Continent-level spatial summary\n\n\n\n\n\nContinent\nWarming\nAccelerating\nWarming + accelerating\nMean warming\nMean acceleration\n\n\n\n\nNA\n94.9%\n50.5%\n49.0%\n0.77 °C / 40 yr\n-0.18 ×10⁻³ °C / yr²\n\n\nEU\n90.1%\n59.6%\n52.3%\n1.13 °C / 40 yr\n5.57 ×10⁻³ °C / yr²\n\n\nAS\n90.2%\n52.4%\n49.7%\n0.49 °C / 40 yr\n-0.51 ×10⁻³ °C / yr²\n\n\nSA\n89.2%\n72.7%\n63.4%\n0.38 °C / 40 yr\n0.88 ×10⁻³ °C / yr²\n\n\nAF\n99.9%\n48.6%\n48.6%\n0.50 °C / 40 yr\n-0.22 ×10⁻³ °C / yr²\n\n\nOC\n94.0%\n77.3%\n71.3%\n0.57 °C / 40 yr\n1.40 ×10⁻³ °C / yr²\n\n\n\n\n\n\n\nTable 2 reinforces this distinction. Europe combines high mean long-term warming speed with predominantly positive acceleration, whereas North America has high warming prevalence but a negative mean acceleration. Continental values are descriptive aggregates: uneven lake coverage and within-continent spatial structure mean they should not be interpreted as area-weighted climate means.@tbl-spatial-continent-summary reinforces this distinction. Europe combines high mean long-term warming speed with predominantly positive acceleration, whereas North America has high warming prevalence but a negative mean acceleration. Continental values are descriptive aggregates: uneven lake coverage and within-continent spatial structure mean they should not be interpreted as area-weighted climate means.\n\nTable 2 强化了大洲差异。欧洲高增温速率+正加速度，北美高增温比例但负均值加速度。大洲统计值为描述性汇总，非面积加权气候均值。\n\nThese global metrics reduce each lake’s annual warming-speed series to a long-term slope. They show whether warming speed tends to become more or less positive, but not how the temporal pattern of warming differs among lakes or what factors drive those differences. Warming pattern decomposition therefore applies PCA to the full annual temperature trajectory to identify dominant modes of variation and their spatial organisation.\n\n全局指标将年增温速率压缩为长期斜率，但不能揭示增温时间模式的差异。增温模式分解用 PCA 识别主要变异模态及其空间组织。",
     "crumbs": [
       "Explorations",
       "Warming Acceleration",
       "Draft",
-      "Descriptive"
+      "Global Kinematics"
     ]
   },
   {
@@ -729,6 +1076,71 @@
       "Warming Acceleration",
       "Log",
       "2025-12-10"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-07-13.html",
+    "href": "explorations/warming-acceleration/log/2026-07-13.html",
+    "title": "2026-07-13",
+    "section": "",
+    "text": "The active descriptive metrics now use raw annual mean LSWT:\n\nlong-term warming: Theil–Sen slope of raw annual mean LSWT, reported as °C per 40 years;\nannual warming speed: adjacent-year raw annual LSWT difference;\nacceleration: Sen slope of annual warming speed over 1982–2020.\n\nSTL is retained only to construct a low-frequency trajectory before PCA, with nt=99. PCA interprets PC1–PC5 (82.1% cumulative variance); 95% cumulative variance is a diagnostic, not a retention rule.\nSTARS / ST_AIS and Step 12 are retired from the active workflow. They must not re-enter the draft through historical helpers or output directories.",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-07-13"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-07-13.html#analysis-contract-reset",
+    "href": "explorations/warming-acceleration/log/2026-07-13.html#analysis-contract-reset",
+    "title": "2026-07-13",
+    "section": "",
+    "text": "The active descriptive metrics now use raw annual mean LSWT:\n\nlong-term warming: Theil–Sen slope of raw annual mean LSWT, reported as °C per 40 years;\nannual warming speed: adjacent-year raw annual LSWT difference;\nacceleration: Sen slope of annual warming speed over 1982–2020.\n\nSTL is retained only to construct a low-frequency trajectory before PCA, with nt=99. PCA interprets PC1–PC5 (82.1% cumulative variance); 95% cumulative variance is a diagnostic, not a retention rule.\nSTARS / ST_AIS and Step 12 are retired from the active workflow. They must not re-enter the draft through historical helpers or output directories.",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-07-13"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-07-13.html#producer-and-rendering-changes",
+    "href": "explorations/warming-acceleration/log/2026-07-13.html#producer-and-rendering-changes",
+    "title": "2026-07-13",
+    "section": "Producer and rendering changes",
+    "text": "Producer and rendering changes\nStep 06 was extended and rerun for all 92,245 lakes. It now emits raw_annual_mean_temp_diff_sen_slope_1e3, the canonical raw-annual acceleration metric. The nt=99 output has 146 columns and all lakes have finite raw acceleration values.\nChapter data preparation is now separated from composition:\n\nkinematics-helpers.R supplies Chapter 1 inputs and statistics;\npca-helpers.R supplies Chapter 2 PCA, map, and regression data;\nqmd files no longer ingest CSVs or perform reusable joins/reshaping.\n\nBoth Global Kinematics and Warming Pattern Decomposition render with the updated helpers.",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-07-13"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-07-13.html#next-scientific-diagnostic-ice-and-seasonality",
+    "href": "explorations/warming-acceleration/log/2026-07-13.html#next-scientific-diagnostic-ice-and-seasonality",
+    "title": "2026-07-13",
+    "section": "Next scientific diagnostic: ice and seasonality",
+    "text": "Next scientific diagnostic: ice and seasonality\nPotential late-period cooling or deceleration in North American and Eurasian lakes should first be tested as a seasonal diagnostic, not attributed to glacier meltwater. The immediate prediction is disproportionately weak or negative JJA trends in the relevant cohorts, evaluated alongside DJF/MAM/SON and annual ice-duration change.\nA glacier-meltwater mechanism requires later glacier-catchment connectivity and inflow evidence. Geographic proximity alone is insufficient. The full protocol is in Seasonal and Ice Diagnostics.",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-07-13"
+    ]
+  },
+  {
+    "objectID": "explorations/warming-acceleration/log/2026-07-13.html#literature-and-dialogue-provenance",
+    "href": "explorations/warming-acceleration/log/2026-07-13.html#literature-and-dialogue-provenance",
+    "title": "2026-07-13",
+    "section": "Literature and dialogue provenance",
+    "text": "Literature and dialogue provenance\nOnly notes/papers/ is treated as the user-reviewed literature corpus. The old collection and point notes were removed because they were AI-generated aggregations rather than the user’s reading notes. New reading summaries enter Reading Queue first and become paper notes only after review.\nUse Research Dialogue Protocol to distinguish brainstorming, analysis design, audit, decision, and reading-brief turns.",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Log",
+      "2026-07-13"
     ]
   },
   {
@@ -875,99 +1287,146 @@
     ]
   },
   {
-    "objectID": "docs/plans/2026-07-12-regional-visualisation-refactor.html",
-    "href": "docs/plans/2026-07-12-regional-visualisation-refactor.html",
-    "title": "Regional Visualization Refactor Implementation Plan",
+    "objectID": "explorations/warming-acceleration/prose/pca-vs-clustering.html",
+    "href": "explorations/warming-acceleration/prose/pca-vs-clustering.html",
+    "title": "Why PCA instead of clustering for warming pattern characterisation",
     "section": "",
-    "text": "Regional Visualization Refactor Implementation Plan\n\nFor Claude: REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.\n\nGoal: Separate Chapter 2 regional rendering-time data preparation from plotting and remove obsolete commented experiments.\nArchitecture: Keep durable inputs in data-process/; add shared/R/regional-helpers.R for loading, joins, summary statistics, point-size derivation, metric-long data, and contour input preparation. Keep 02-regional.qmd limited to helper calls, plot layers, Quarto tables, and explanatory text.\nTech Stack: Quarto, R, dplyr, tidyr, readr, ggplot2, GGally, patchwork, sf/rnaturalearth.\n\n\nTask 1: Remove obsolete experiments\nFiles:\n\nModify: explorations/warming-acceleration/draft/02-regional.qmd:431-1125\n\nStep 1: Delete HTML-commented R blocks\nDelete the four &lt;!-- ```{r} ... ``` --&gt; regions: the old cluster map/ridges, continent heatmap, regime-shift composition, and empty placeholder. Do not alter the rendered chapter text or the two active figures.\nStep 2: Confirm cleanup\nRun a structural scan and confirm no &lt;!-- ```{r} marker remains and that only active chunks remain.\n\n\nTask 2: Add regional data helpers\nFiles:\n\nCreate: shared/R/regional-helpers.R\nModify: explorations/warming-acceleration/draft/02-regional.qmd:5-10\n\nStep 1: Add stable response-type definitions\nDefine the K=5 cluster palette, names, and interpretations in the helper file. Keep these chapter-specific semantic definitions out of the generic figure-style file.\nStep 2: Add prepare_regional_cluster_data()\nRead the three curated CSV inputs, join cluster assignment, metadata and thermal metrics, derive point_size, construct the cluster summary including the 2020 anomaly and display label, and return all data required by the map, violin plots, and inline table.\nStep 3: Add prepare_cluster_metric_long() and prepare_cluster_density_data()\nMove metric reshaping, finite-value filtering, and density-panel limits to helpers. Return data frames only; keep density contour breaks and visual encodings in qmd.\nStep 4: Source helpers and add an invisible setup chunk\nSource regional-helpers.R from the Chapter 2 setup chunk. Add a cached, include: false setup chunk that calls the helper and exposes named objects for plotting and inline table access.\n\n\nTask 3: Reduce the cluster map/violin figure to plotting\nFiles:\n\nModify: explorations/warming-acceleration/draft/02-regional.qmd:active cluster figure\n\nStep 1: Delete local ingestion, joins, summary functions, coastline conversion, and violin reshaping\nReplace them with the setup outputs. Keep cluster_table_value(), cluster_table_count() and cluster_table_anomaly() in the invisible setup because they serve inline Quarto table cells.\nStep 2: Use shared map elements and tokens\nReplace manual coastline conversion with the_geom_coastline(), and replace hardcoded coastline/grid styles with theme_map_grid() and tokens. Preserve the existing map extent, legend labels, point-size encoding, and composed output.\nStep 3: Keep plot-specific style local\nLeave patchwork geometry, violin width, alpha, legend override, title text and figure layout in qmd because they are part of the figure’s presentation rather than data preparation.\n\n\nTask 4: Reduce the cluster-density figure to plotting\nFiles:\n\nModify: explorations/warming-acceleration/draft/02-regional.qmd:active density figure\n\nStep 1: Consume helper-provided density data\nReplace the in-chunk density_df filter with cluster_density_data from the invisible setup.\nStep 2: Remove dead continuous-colour legend configuration\nThe current polygons and contours use discrete cluster colour plus alpha; the unused continuous scale_colour_gradient() conflicts conceptually with that encoding and should be removed. Preserve the native discrete cluster legend and the per-cluster normalized density contours.\nStep 3: Use shared theme/token primitives\nUse theme_map_grid() or a narrowly scoped theme built from theme_base(grid = TRUE), replacing hardcoded grey grid/contour tokens where their shared equivalents express the same purpose.\n\n\nTask 5: Validate rendered figures\nFiles:\n\nModify: shared/R/regional-helpers.R\nModify: explorations/warming-acceleration/draft/02-regional.qmd\n\nStep 1: Execute active figure chunks\nSource both shared helper files and run the Chapter 2 setup, map/violin, and density chunks in R.\nStep 2: Render Chapter 2\nRun Quarto render for 02-regional.qmd; confirm both figures and the inline cluster summary table render without errors.\nStep 3: Inspect output\nVerify K=5 labels, map geography, violin facets, cluster colours, and contour panel legends remain semantically unchanged.\n\n\n\n\n\n Back to top"
+    "text": "The original analysis plan used \\(k\\)-means clustering on STL-trend baseline anomalies to classify lakes into discrete response types. PCA retaining 95% of trajectory variance served as the dimensionality reduction step before clustering. The selected solution had five clusters (\\(K = 5\\)), each with a descriptive label:\n\n\n\nCluster\nLabel\nInterpretation\n\n\n\n\nC1\nLate-accelerating\nStrong warming in recent decades\n\n\nC2\nEarly decline/late rebound\nCooling then warming\n\n\nC3\nSustained warming\nConsistent positive trend\n\n\nC4\nNear-stable\nMinimal change from baseline\n\n\nC5\nEarly warming/plateau\nInitial warming then flattening\n\n\n\nThis classification produced spatially coherent clusters: European lakes dominated C1, North American lakes spread across C1–C4, and tropical lakes concentrated in C4–C5.\n\n原方案用 K 均值聚类将湖泊分为 5 类，每类有描述性标签。聚类空间聚集性良好。",
+    "crumbs": [
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Why PCA instead of clustering for warming pattern characterisation"
+    ]
   },
   {
-    "objectID": "notes/paper-collection.html",
-    "href": "notes/paper-collection.html",
-    "title": "Hiatus Paper Collection",
+    "objectID": "explorations/warming-acceleration/prose/pca-vs-clustering.html#original-approach-k-means-clustering",
+    "href": "explorations/warming-acceleration/prose/pca-vs-clustering.html#original-approach-k-means-clustering",
+    "title": "Why PCA instead of clustering for warming pattern characterisation",
     "section": "",
-    "text": "Collected sentences and excerpts from related papers, useful for writing the warming acceleration paper.",
+    "text": "The original analysis plan used \\(k\\)-means clustering on STL-trend baseline anomalies to classify lakes into discrete response types. PCA retaining 95% of trajectory variance served as the dimensionality reduction step before clustering. The selected solution had five clusters (\\(K = 5\\)), each with a descriptive label:\n\n\n\nCluster\nLabel\nInterpretation\n\n\n\n\nC1\nLate-accelerating\nStrong warming in recent decades\n\n\nC2\nEarly decline/late rebound\nCooling then warming\n\n\nC3\nSustained warming\nConsistent positive trend\n\n\nC4\nNear-stable\nMinimal change from baseline\n\n\nC5\nEarly warming/plateau\nInitial warming then flattening\n\n\n\nThis classification produced spatially coherent clusters: European lakes dominated C1, North American lakes spread across C1–C4, and tropical lakes concentrated in C4–C5.\n\n原方案用 K 均值聚类将湖泊分为 5 类，每类有描述性标签。聚类空间聚集性良好。",
     "crumbs": [
-      "Notes",
-      "Paper Collection"
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Why PCA instead of clustering for warming pattern characterisation"
     ]
   },
   {
-    "objectID": "notes/paper-collection.html#winslow-et-al.-2018-erl",
-    "href": "notes/paper-collection.html#winslow-et-al.-2018-erl",
-    "title": "Hiatus Paper Collection",
-    "section": "Winslow et al. (2018) — ERL",
-    "text": "Winslow et al. (2018) — ERL\n\n155 lakes globally; 83% exhibited reduced warming rates during the hiatus\nTwo-period comparison (pre-hiatus vs hiatus) rather than changepoint detection\nLake-specific response heterogeneity not explained by morphometric attributes",
+    "objectID": "explorations/warming-acceleration/prose/pca-vs-clustering.html#why-we-moved-to-pca",
+    "href": "explorations/warming-acceleration/prose/pca-vs-clustering.html#why-we-moved-to-pca",
+    "title": "Why PCA instead of clustering for warming pattern characterisation",
+    "section": "Why we moved to PCA",
+    "text": "Why we moved to PCA\n\nDiscrete vs. continuous\nClustering assigns each lake to a single category, discarding the continuous variation within and between types. A lake at the boundary between two clusters receives the same label as one at the cluster’s centre, even though their warming trajectories may differ substantially. PCA scores, by contrast, preserve the full spectrum of heterogeneity: each lake has a score on every component, encoding both the direction and degree of expression.\n\n\nK selection is subjective\nWe evaluated \\(K = 4\\)–\\(8\\) using multiple metrics:\n\n\n\nK\nTotal cost\nCost reduction\nSilhouette\nSpatial coherence\n\n\n\n\n4\n110734\n—\n0.309\nGood (2.3× ratio)\n\n\n5\n102332\n7.6%\n0.288\nBest (NA 55% dominant)\n\n\n6\n95630\n6.5%\n0.275\nPoor (NA fragmented)\n\n\n7\n90003\n5.9%\n0.280\nModerate\n\n\n8\n84922\n5.6%\n0.288\nPoor\n\n\n\nNo clear elbow emerged; \\(K = 5\\) was selected primarily on spatial coherence grounds (North America dominance at \\(K = 5\\) vs. fragmentation at \\(K = 6\\)). The Calinski-Harabasz index actually favoured \\(K = 4\\). This is defensible but not uniquely justified by the data.\n\nK 选择无明确拐点，K=5 主要基于空间一致性选择（北美 55% 归入主导簇），Calinski-Harabasz 指标更支持 K=4。\n\n\n\nAttribution is awkward\nRegressing discrete cluster labels against continuous predictors (ENSO, PDO, lake depth) requires multinomial logit or similar categorical models, which are harder to interpret than linear regression on continuous scores. PCA scores can be directly used as response variables in OLS regression.\n\n\nQuantitative comparison\nThe five clusters from \\(k\\)-means on PCA-reduced data show moderate agreement with the continuous PCA representation. When comparing K=5 cluster assignments across nt=199 and nt=99 STL trend inputs, the adjusted Rand index is 0.89 and normalised mutual information is 0.92, indicating that the clustering structure is robust but the discrete representation discards information that PCA preserves.\n\nK=5 聚类在不同 nt 参数下的一致性很高（ARI=0.89），但离散表示丢失了 PCA 保留的连续信息。",
     "crumbs": [
-      "Notes",
-      "Paper Collection"
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Why PCA instead of clustering for warming pattern characterisation"
     ]
   },
   {
-    "objectID": "notes/paper-collection.html#zhou-et-al.-2023-nature-communications",
-    "href": "notes/paper-collection.html#zhou-et-al.-2023-nature-communications",
-    "title": "Hiatus Paper Collection",
-    "section": "Zhou et al. (2023) — Nature Communications",
-    "text": "Zhou et al. (2023) — Nature Communications\n\n“the rate of lake heating slows as air warms”\nEvaporative cooling as negative feedback on lake warming\nLocal climate (air temp, wind, humidity, irradiance), land cover, geomorphology, and water transparency explain &gt;30% of lake–air temperature difference variance\nClear, cold, deep, high-altitude, undisturbed lakes are most sensitive to air temperature changes",
+    "objectID": "explorations/warming-acceleration/prose/pca-vs-clustering.html#recommendation",
+    "href": "explorations/warming-acceleration/prose/pca-vs-clustering.html#recommendation",
+    "title": "Why PCA instead of clustering for warming pattern characterisation",
+    "section": "Recommendation",
+    "text": "Recommendation\nPCA scores are used as the primary characterisation of warming patterns in Chapter 2. The continuous scores provide a natural response variable for the attribution analysis in Chapter 3, and the component loadings make the results physically interpretable. Discrete clustering remains available as a supplementary visualisation but is not the primary analytical framework.\n\n建议以 PCA 分数作为第 2 章增温模式的主要描述。连续分数为第 3 章归因提供自然响应变量，载荷使结果物理可解释。离散聚类可作为补充可视化。",
     "crumbs": [
-      "Notes",
-      "Paper Collection"
+      "Explorations",
+      "Warming Acceleration",
+      "Prose",
+      "Why PCA instead of clustering for warming pattern characterisation"
     ]
   },
   {
-    "objectID": "notes/paper-collection.html#oreilly-et-al.-2015-grl",
-    "href": "notes/paper-collection.html#oreilly-et-al.-2015-grl",
-    "title": "Hiatus Paper Collection",
-    "section": "O’Reilly et al. (2015) — GRL",
-    "text": "O’Reilly et al. (2015) — GRL\n\nGlobal lake summer SST warming at ~0.34 °C/decade\nGLAST dataset: satellite-derived lake surface water temperature",
+    "objectID": "explorations/index.html",
+    "href": "explorations/index.html",
+    "title": "Explorations",
+    "section": "",
+    "text": "All explorations — finished, cancelled, in-progress, or not started.",
     "crumbs": [
-      "Notes",
-      "Paper Collection"
+      "Explorations"
     ]
   },
   {
-    "objectID": "notes/paper-collection.html#woolway-et-al.-2017-climatic-change",
-    "href": "notes/paper-collection.html#woolway-et-al.-2017-climatic-change",
-    "title": "Hiatus Paper Collection",
-    "section": "Woolway et al. (2017) — Climatic Change",
-    "text": "Woolway et al. (2017) — Climatic Change\n\nWind stilling → extended stratification → surface warming amplification\nUK lake simulations",
+    "objectID": "explorations/index.html#warming-acceleration",
+    "href": "explorations/index.html#warming-acceleration",
+    "title": "Explorations",
+    "section": "Warming Acceleration",
+    "text": "Warming Acceleration\n\nprose · draft · log\n\n\nDo global lakes exhibit heterogeneous warming acceleration — or deceleration — across space and time, and what drives it?\n92,245 lakes, GLAST dataset, 1981–2020.\nMethods: STL decomposition, STARS regime shifts, K-means clustering, teleconnection attribution.\nThe question began with the global warming hiatus as a starting point, but the focus has broadened to the full spatiotemporal structure of lake warming heterogeneity.",
     "crumbs": [
-      "Notes",
-      "Paper Collection"
+      "Explorations"
     ]
   },
   {
-    "objectID": "notes/paper-collection.html#magnuson-et-al.-2000-science",
-    "href": "notes/paper-collection.html#magnuson-et-al.-2000-science",
-    "title": "Hiatus Paper Collection",
-    "section": "Magnuson et al. (2000) — Science",
-    "text": "Magnuson et al. (2000) — Science\n\nSystematic documentation of long-term ice season shortening in N. hemisphere lakes",
-    "crumbs": [
-      "Notes",
-      "Paper Collection"
-    ]
+    "objectID": "docs/plans/2026-07-13-analysis-contract-and-helper-boundaries.html",
+    "href": "docs/plans/2026-07-13-analysis-contract-and-helper-boundaries.html",
+    "title": "Analysis Contract and Helper Boundaries Implementation Plan",
+    "section": "",
+    "text": "Analysis Contract and Helper Boundaries Implementation Plan\n\nFor Claude: REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.\n\nGoal: Make the active raw-annual analysis definitions explicit and remove retired STARS data preparation from the live research site.\nArchitecture: Keep the canonical, renderable analysis contract in site/docs/, with a data-process symlink as a local entry point. Move chapter-level ingestion and reusable preparation into focused R helpers; retain only plot composition, tables, and prose in draft QMD files.\nTech Stack: Quarto, R, dplyr, readr, tidyr, ggplot2.\n\n\nTask 1: Publish canonical definitions\nFiles:\n\nCreate: docs/analysis-contract.qmd\nModify: ../AGENTS.md\nModify: ../data-process/AGENTS.md\nCreate: ../../data-process/ANALYSIS_CONTRACT.md (symlink)\n\nStep 1: State raw annual LSWT as the source for warming, annual warming speed, and acceleration.\nStep 2: State that nt=99 STL is a PCA-only low-frequency representation and that PC1–PC5 are the interpretation set.\nStep 3: State that STARS/ST_AIS is excluded from the active workflow.\nStep 4: Verify all canonical documentation agrees through a targeted text search.\n\n\nTask 2: Create focused rendering helpers\nFiles:\n\nCreate: shared/R/kinematics-helpers.R\nCreate: shared/R/pca-helpers.R\nModify: shared/R/descriptive-helpers.R\nModify: shared/R/regional-helpers.R\n\nStep 1: Move Chapter 1 CSV loading, metric summaries, state summaries, and continent aggregation into prepare_kinematics_data().\nStep 2: Move Chapter 2 PCA loading, metadata joining, regression preparation, and table accessors into prepare_pca_data().\nStep 3: Make spatial hex preparation use raw annual warming values.\nStep 4: Delete the retired STARS loader and transformations.\n\n\nTask 3: Reduce chapters to composition\nFiles:\n\nModify: explorations/warming-acceleration/draft/01-global-kinematics.qmd\nModify: explorations/warming-acceleration/draft/02-warming-patterns.qmd\n\nStep 1: Replace source-data reads and reusable transformations with helper setup objects.\nStep 2: Correct prose and captions so PCA is described as STL-trend anomaly analysis and only five PCs are interpreted.\nStep 3: Remove the retired STARS section/link from Chapter 2.\n\n\nTask 4: Validate without running producers\nFiles:\n\nVerify: shared/R/*-helpers.R\nVerify: both edited draft QMD files\n\nStep 1: Source the helper scripts in R and call their preparation functions.\nStep 2: Run structural scans for retired STARS paths and QMD-level CSV reads.\nStep 3: Render each edited QMD only after helper execution succeeds, then inspect for cross-reference and inline-value errors.\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "notes/paper-collection.html#medhaug-et-al.-2017-nature",
-    "href": "notes/paper-collection.html#medhaug-et-al.-2017-nature",
-    "title": "Hiatus Paper Collection",
-    "section": "Medhaug et al. (2017) — Nature",
-    "text": "Medhaug et al. (2017) — Nature\n\nMulti-mechanism review of the global warming hiatus\nOcean heat uptake, internal variability, incomplete forcings",
-    "crumbs": [
-      "Notes",
-      "Paper Collection"
-    ]
+    "objectID": "docs/helper-debugging.html",
+    "href": "docs/helper-debugging.html",
+    "title": "Debugging Figure Helpers",
+    "section": "",
+    "text": "Figure helpers are a rendering-time data compilation layer. Debug them directly in R before using Quarto: source the helper, load only the relevant inputs, run one prepare_*() function, inspect its output, and make a minimal diagnostic plot."
   },
   {
-    "objectID": "notes/paper-collection.html#lund-et-al.-2023-j.-climate",
-    "href": "notes/paper-collection.html#lund-et-al.-2023-j.-climate",
-    "title": "Hiatus Paper Collection",
-    "section": "Lund et al. (2023) — J. Climate",
-    "text": "Lund et al. (2023) — J. Climate\n\nBest practices for climate changepoint detection\nSensitivity to assumptions; external validation needed for attribution",
-    "crumbs": [
-      "Notes",
-      "Paper Collection"
-    ]
+    "objectID": "docs/helper-debugging.html#the-focused-loop",
+    "href": "docs/helper-debugging.html#the-focused-loop",
+    "title": "Debugging Figure Helpers",
+    "section": "The focused loop",
+    "text": "The focused loop\nsource helper → load inputs → run one prepare function → inspect QC/structure\n→ draw a minimal diagnostic plot → implement or adjust the Quarto figure\nDo not begin by rendering the whole chapter. A chapter render is the final integration check; it is a slow and noisy way to discover that a join, filter, unit, or geometry is wrong.\n\n不要先渲染整章。整章渲染是最后的集成检查；用它排查 join、筛选、单位或几何错误，慢且噪声很大。"
+  },
+  {
+    "objectID": "docs/helper-debugging.html#start-an-isolated-r-session",
+    "href": "docs/helper-debugging.html#start-an-isolated-r-session",
+    "title": "Debugging Figure Helpers",
+    "section": "Start an isolated R session",
+    "text": "Start an isolated R session\nStart R with site/ as the working directory so figure-style.R can find _quarto.yml and set the data-process root correctly.\nsource(\"shared/R/figure-style.R\")\nsource(\"shared/R/descriptive-helpers.R\")\nsource(\"shared/R/kinematics-helpers.R\")\n\ninputs &lt;- load_kinematics_inputs()\nhex &lt;- prepare_hex_data(inputs)\nFor PCA work, source only the PCA helper and call its focused loader/preparation functions:\nsource(\"shared/R/figure-style.R\")\nsource(\"shared/R/pca-helpers.R\")\n\ninputs &lt;- load_pca_inputs()\nloadings &lt;- prepare_loading_data(inputs)\nThe names above describe the target atomic API. While a chapter is transitioning, use the currently available chapter-level preparation function and inspect the returned object in the same way.\n\n在原子化重构完成前，可先调用当前的章节级 prepare_*()，但调试方式不变：检查它返回的对象，而不是先渲染 qmd。"
+  },
+  {
+    "objectID": "docs/helper-debugging.html#check-the-contract-at-each-boundary",
+    "href": "docs/helper-debugging.html#check-the-contract-at-each-boundary",
+    "title": "Debugging Figure Helpers",
+    "section": "Check the contract at each boundary",
+    "text": "Check the contract at each boundary\nCheck inputs before checking aesthetics. For every loader or preparation function, inspect:\n\nprovenance: expected producer branch, years, units, and parameter signature;\nidentity: row count and uniqueness of lake_id;\ncompleteness: finite-value count and the effect of each filter;\nplot readiness: all coordinates, grouping identifiers, labels, and mapped values required by the figure.\n\nstr(hex)\ndplyr::glimpse(hex$summary)\n\nstopifnot(\n  all(c(\"lake_id\", \"lon\", \"lat\") %in% names(inputs$metrics)),\n  !anyDuplicated(inputs$metrics$lake_id)\n)\nPrefer an explicit failure to a plausible-looking wrong figure:\nif (nrow(hex$summary) == 0) {\n  stop(\"No hex cells remain; check min_lakes or coordinate filters.\", call. = FALSE)\n}\n\n先检查数据合同，再检查美学。优先让错误显式失败，不要接受一张“看似合理”的错误图。"
+  },
+  {
+    "objectID": "docs/helper-debugging.html#return-qc-with-each-prepared-payload",
+    "href": "docs/helper-debugging.html#return-qc-with-each-prepared-payload",
+    "title": "Debugging Figure Helpers",
+    "section": "Return QC with each prepared payload",
+    "text": "Return QC with each prepared payload\nEach focused prepare_*() function should return the plot-ready data and a small qc record. QC is not a durable producer output; it is a fast rendering-time audit surface.\nlist(\n  polygons = polygon_data,\n  summary = summary_data,\n  qc = list(\n    n_input = nrow(inputs$metrics),\n    n_finite = nrow(finite_data),\n    n_plot = nrow(summary_data),\n    years = c(min(years), max(years))\n  )\n)\nThen inspect only the quantities that can invalidate the figure:\nhex$qc\nrange(hex$summary$warming_speed, na.rm = TRUE)"
+  },
+  {
+    "objectID": "docs/helper-debugging.html#use-a-minimal-diagnostic-plot",
+    "href": "docs/helper-debugging.html#use-a-minimal-diagnostic-plot",
+    "title": "Debugging Figure Helpers",
+    "section": "Use a minimal diagnostic plot",
+    "text": "Use a minimal diagnostic plot\nBefore working on guides, patchwork, typography, or captions, draw only the geometry and the mapped variable.\nggplot(hex$polygons) +\n  geom_polygon(aes(lon, lat, group = id, fill = warming_speed)) +\n  coord_equal()\nIf this plot is wrong, stay in the helper. If it is correct, move to the qmd and work only on figure composition and appearance.\n\n极简图正确后再进入 qmd；极简图错误时，只改 helper，不要在图层参数中补丁式修复数据问题。"
+  },
+  {
+    "objectID": "docs/helper-debugging.html#debug-one-function-not-a-chapter",
+    "href": "docs/helper-debugging.html#debug-one-function-not-a-chapter",
+    "title": "Debugging Figure Helpers",
+    "section": "Debug one function, not a chapter",
+    "text": "Debug one function, not a chapter\nUse ordinary R debugging tools on a single preparation function:\ndebugonce(prepare_hex_data)\nhex &lt;- prepare_hex_data(inputs)\n\ntrace(prepare_hex_data, tracer = quote(browser()), at = 3)\nFor repeatable checks, keep small assertions close to the transformation that establishes the relevant invariant. For example, assert coordinate finiteness after the coordinate join, and assert non-empty hex cells after aggregation."
+  },
+  {
+    "objectID": "docs/helper-debugging.html#only-then-render",
+    "href": "docs/helper-debugging.html#only-then-render",
+    "title": "Debugging Figure Helpers",
+    "section": "Only then render",
+    "text": "Only then render\nOnce the focused data object and minimal diagnostic plot are correct, render the edited qmd individually:\nquarto render explorations/warming-acceleration/draft/01-global-kinematics.qmd --to html\nUse Quarto to validate inline values, cross-references, figure composition, legends, and page layout—not to discover basic data preparation errors.\n\n数据层正确后再单独渲染 qmd。Quarto 负责验证内联值、交叉引用、图例和版式，不负责替代 helper 调试。"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hola!",
+    "section": "",
+    "text": "This site contains my research explorations, drafts, and progress logs.\nThese materials were previously hosted on my main personal website. However, to separate my research content from my personal content, all research and academic exploration materials are now hosted on this site.\nCheck all explorations, including the finished, cancelled, not started or in-progress ones. Each exploration has its own draft, prose, and log.\nI list frequently discussed metrics (methods, algorithms, parameters, decision records), trying not to make anyone confused.\nNotes collect literature notes, mechanism summaries, and useful excerpts for writing.\n\nTo learn more about me, visit froq.me.\n\n\n\n Back to top"
   },
   {
     "objectID": "notes/papers/fyfe2016.html",
@@ -1018,59 +1477,66 @@
     ]
   },
   {
-    "objectID": "notes/papers/dai2018.html",
-    "href": "notes/papers/dai2018.html",
-    "title": "dai2018: Identifying the Early 2000s Hiatus Associated with Internal Climate Variability",
+    "objectID": "notes/papers/index.html",
+    "href": "notes/papers/index.html",
+    "title": "Papers",
     "section": "",
-    "text": "citation_key: dai2018 (Dai and Wang (2018))\ntitle: Identifying the Early 2000s Hiatus Associated with Internal Climate Variability\nauthor: Xin-Gang Dai, Ping Wang\njournal: Scientific Reports\nyear: 2018\ndoi: 10.1038/s41598-018-31862-z\n\n\n\nThe hiatus is characterized as a near-zero trend on the decadal scale corresponding to the maximum P-value via an F-test in statistics.\n\n\nThe GWH is often attributed to internal climate variability, external forcing, or both. Recent cooling in the middle and eastern regions of the tropical Pacific has seemingly involved a phase change of the Interdecadal Pacific Oscillation (IPO) accompanying intensified trade winds. The GWH may also be associated with an increase in aerosols in the stratosphere during the period 2000–2010 because aerosols can increase optical depth, which generates countervailing forces against global warming. The GWH may also be explained in part by extensive heat uptake by the deep ocean or an extremely low number of sunspots during the latest solar activity cycle.\n\n\n…, which indicates that infilling and bias correction in the datasets increase the temperature, especially during the early 2000s, probably due to rapid warming in the Arctic region. Cohen et al. (2014)\n\n\n\n\ndai2018f1\n\n\n\n\n\n\n Back to topReferences\n\nCohen, Judah, James A. Screen, Jason C. Furtado, et al. 2014. “Recent Arctic Amplification and Extreme Mid-Latitude Weather.” Nature Geoscience 7 (9): 627–37. https://doi.org/10.1038/ngeo2234.\n\n\nDai, Xin-Gang, and Ping Wang. 2018. “Identifying the Early 2000s Hiatus Associated with Internal Climate Variability.” Scientific Reports 8 (1): 13602. https://doi.org/10.1038/s41598-018-31862-z.",
+    "text": "These are user-reviewed per-paper notes. They are distinct from the reading queue: each page records material the user has read and chosen to retain.\n\n此处为用户已阅读并选择保留的逐篇笔记；它不同于候选文献队列。\n\n\nCohen 2014: Arctic amplification\nDai & Wang 2018: Early-2000s hiatus\nFyfe et al. 2016: Warming slowdown\nRodionov 2004: Sequential regime-shift test\nXiao & Ren 2023: North Pacific regime shift\nXie & Kosaka 2017: Causes of the warming hiatus\nYan et al. 2016: Slowdown or redistribution\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "notes/papers/xie2017.html#notes",
+    "href": "notes/papers/xie2017.html#notes",
+    "title": "xie2017: What Caused the Global Surface Warming Hiatus of 1998–2013?",
+    "section": "Notes",
+    "text": "Notes\nGlobal Surface Warming Hiatus(GSWH) is 1998-2013. Approx 0.027 - 0.086 degree Celsius per decade, which is much smaller than the 0.2 degree Celsius per decade during 1970s - 1990s.",
     "crumbs": [
       "Notes",
       "Papers",
-      "dai2018: Identifying the Early 2000s Hiatus Associated with Internal Climate Variability"
+      "xie2017: What Caused the Global Surface Warming Hiatus of 1998–2013?"
     ]
   },
   {
-    "objectID": "notes/index.html",
-    "href": "notes/index.html",
-    "title": "Notes",
+    "objectID": "notes/research-dialogue.html",
+    "href": "notes/research-dialogue.html",
+    "title": "Research Dialogue Protocol",
     "section": "",
-    "text": "Notes organised by form.",
+    "text": "This is the operating protocol for brainstorming, analysis review, decisions, and durable records in the warming-acceleration exploration.",
     "crumbs": [
       "Notes",
-      "All Notes"
+      "Research Dialogue"
     ]
   },
   {
-    "objectID": "notes/index.html#papers",
-    "href": "notes/index.html#papers",
-    "title": "Notes",
-    "section": "Papers",
-    "text": "Papers\nPer-paper notes — one file per paper.",
+    "objectID": "notes/research-dialogue.html#conversation-modes",
+    "href": "notes/research-dialogue.html#conversation-modes",
+    "title": "Research Dialogue Protocol",
+    "section": "Conversation modes",
+    "text": "Conversation modes\n\n\n\nPrompt label\nOutput\nDurable record\n\n\n\n\nbrainstorm:\nCompeting hypotheses, variables, predictions, and falsifiers.\nNone until a hypothesis is selected.\n\n\nanalysis design:\nData contract, response/predictor definitions, confounders, diagnostics, and failure conditions.\nProse diagnostic or implementation plan after approval.\n\n\naudit:\nEvidence boundary, unit/provenance checks, code/data risks, and claims that exceed the analysis.\nLog only if it changes a decision.\n\n\ndecision:\nA concise chosen rule plus rejected alternatives and rationale.\nlog/YYYY-MM-DD.qmd and, if cross-layer, Analysis Contract / AGENTS.\n\n\nreading brief:\nUp to two selected papers with evidence-bounded summaries.\nReading Queue; paper note only after user acceptance.\n\n\n\n\n先在对话中讨论，再决定哪些内容成为 durable record。日志记录决策与证据状态，不记录未经筛选的长篇推演。",
     "crumbs": [
       "Notes",
-      "All Notes"
+      "Research Dialogue"
     ]
   },
   {
-    "objectID": "notes/index.html#points",
-    "href": "notes/index.html#points",
-    "title": "Notes",
-    "section": "Points",
-    "text": "Points\nExtracted observations, arguments, and claims from the literature. Not findings; views worth referencing.",
+    "objectID": "notes/research-dialogue.html#hypothesis-card",
+    "href": "notes/research-dialogue.html#hypothesis-card",
+    "title": "Research Dialogue Protocol",
+    "section": "Hypothesis card",
+    "text": "Hypothesis card\nEvery mechanism-oriented idea should first fit this card:\nClaim: what process may explain what observed pattern?\nPrediction: what data pattern would support it?\nFalsifier: what result would weaken it?\nRequired data: what is missing from current producers?\nAlternatives: what other processes yield the same pattern?\nClaim boundary: descriptive association / pathway consistency / causal claim\nThe glacier-meltwater idea is an example: its JJA prediction is testable now, but its hydrological-connection premise requires additional catchment data.",
     "crumbs": [
       "Notes",
-      "All Notes"
+      "Research Dialogue"
     ]
   },
   {
-    "objectID": "notes/index.html#hiatus-paper-collection",
-    "href": "notes/index.html#hiatus-paper-collection",
-    "title": "Notes",
-    "section": "Hiatus Paper Collection",
-    "text": "Hiatus Paper Collection\nCollected sentences and excerpts from related papers, useful for writing.",
+    "objectID": "notes/research-dialogue.html#record-locations",
+    "href": "notes/research-dialogue.html#record-locations",
+    "title": "Research Dialogue Protocol",
+    "section": "Record locations",
+    "text": "Record locations\n\nexplorations/warming-acceleration/log/: dated decisions, completed work, and changed research state.\nexplorations/warming-acceleration/prose/: durable methodological discussion and diagnostic protocols.\ndocs/analysis-contract.qmd: canonical quantities, parameter choices, and exclusions.\nnotes/papers/: only user-reviewed per-paper notes.\nnotes/reading-queue.qmd: candidate and reviewed literature status.",
     "crumbs": [
       "Notes",
-      "All Notes"
+      "Research Dialogue"
     ]
   }
 ]

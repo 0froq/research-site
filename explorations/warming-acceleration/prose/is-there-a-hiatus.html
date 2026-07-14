@@ -52,8 +52,8 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../explorations/warming-acceleration/log/index.html" rel="next">
-<link href="../../../explorations/warming-acceleration/draft/02-regional.html" rel="prev">
+<link href="../../../explorations/warming-acceleration/prose/pca-vs-clustering.html" rel="next">
+<link href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html" rel="prev">
 <link href="../../../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -66,9 +66,9 @@ div.csl-indent {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e9fc6a94ef31585fd0cabe86ae5e2f96.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-33f8c54c2431d042fdf68481eed37aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-176920a9fedb93692929dcd7d3039778.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-33f8c54c2431d042fdf68481eed37aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-8f04801d8b2bcd27d21687b0bc688c8a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-c9c9b3ed63b935487b7efa5cc39405a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-8f04801d8b2bcd27d21687b0bc688c8a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -358,14 +358,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/draft/01-descriptive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Descriptive</span></a>
+  <a href="../../../explorations/warming-acceleration/draft/01-global-kinematics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Global Kinematics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/draft/02-regional.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Regional</span></a>
+  <a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Warming Pattern Decomposition</span></a>
   </div>
 </li>
       </ul>
@@ -383,6 +383,24 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Whether the Hiatus Actually Exists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-vs-clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Why PCA instead of clustering for warming pattern characterisation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seasonal and Ice Diagnostics for Cooling Trajectories</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/stars-limitations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Limitations of STARS regime-shift detection for lake warming analysis</span></a>
   </div>
 </li>
       </ul>
@@ -538,6 +556,18 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/log/2026-07-08.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2026-07-08</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/log/2026-07-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-12</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/log/2026-07-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-13</span></a>
   </div>
 </li>
       </ul>
@@ -1023,13 +1053,13 @@ Medhaug, Iselin, Martin B. Stolpe, Erich M. Fischer, and Reto Knutti. 2017. <spa
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../explorations/warming-acceleration/draft/02-regional.html" class="pagination-link" aria-label="Regional">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Regional</span>
+      <a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html" class="pagination-link" aria-label="Warming Pattern Decomposition">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Warming Pattern Decomposition</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../explorations/warming-acceleration/log/index.html" class="pagination-link" aria-label="Latest Log">
-        <span class="nav-page-text">Latest Log</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../explorations/warming-acceleration/prose/pca-vs-clustering.html" class="pagination-link" aria-label="Why PCA instead of clustering for warming pattern characterisation">
+        <span class="nav-page-text">Why PCA instead of clustering for warming pattern characterisation</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

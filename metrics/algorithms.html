@@ -47,9 +47,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e9fc6a94ef31585fd0cabe86ae5e2f96.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-33f8c54c2431d042fdf68481eed37aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-176920a9fedb93692929dcd7d3039778.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-33f8c54c2431d042fdf68481eed37aa7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8f04801d8b2bcd27d21687b0bc688c8a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c9c9b3ed63b935487b7efa5cc39405a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-8f04801d8b2bcd27d21687b0bc688c8a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -428,13 +428,14 @@ window.Quarto = {
 </section>
 <section id="stars" class="level2">
 <h2 class="anchored" data-anchor-id="stars">STARS</h2>
-<p>Sequential T-test Analysis of Regime Shifts (Rodionov 2004). Detects abrupt shifts in the mean of a time series.</p>
+<p>Sequential T-test Analysis of Regime Shifts (Rodionov 2004). Detects abrupt, persistent shifts in the <strong>mean</strong> of a time series.</p>
 <ul>
 <li>Sequential: processes data in order, near-real-time capable</li>
 <li>Two parameters: cut-off length <span class="math inline">\(l\)</span> and significance level <span class="math inline">\(p\)</span></li>
-<li>Uses a moving window to estimate local variance; robust to isolated outliers</li>
-<li>Regime length is not necessarily <span class="math inline">\(l\)</span>; a new regime can start at any point after the shift</li>
+<li>Uses a t-test critical difference and a cumulative Regime Shift Index (RSI) to require persistence after a candidate shift</li>
+<li>A shift in a series mean is distinct from a breakpoint in that series’ slope</li>
 </ul>
+<p>In the warming-acceleration exploration, STARS is applied to annual warming speed <span class="math inline">\(v(t)=\Delta\tau(t)\)</span>, with <span class="math inline">\(L=7\)</span> and <span class="math inline">\(p=0.05\)</span>. It therefore detects a persistent shift from one <strong>mean warming-speed regime</strong> to another. It does not detect an acceleration-slope breakpoint; segmented regression on <span class="math inline">\(v(t)\)</span> would answer that different question.</p>
 <p>Originally designed for PDO regime shifts. Applied to lake surface temperature by Woolway et al.&nbsp;(2017).</p>
 <p>Alternatives: Bai-Perron (multiple breakpoints, regression-based), Pettitt (single shift, rank-based), CUSUM (cumulative sum). All are sensitive to algorithm choice and parameterisation; STARS is favoured for its simplicity and climatological track record.</p>
 <p>Paper notes: <a href="../notes/papers/rodionov2004.html">Rodionov (2004)</a>.</p>

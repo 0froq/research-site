@@ -1,17 +1,17 @@
 # Notes
 
-Notes organised by form.
+Notes are organised by provenance. **Papers** are the user-reviewed corpus.
 
-## [Papers](./papers/index.qmd)
+## [Papers](../notes/papers/index.llms.md)
 
 Per-paper notes — one file per paper.
 
-## [Points](./points/index.qmd)
+## [Reading Queue](../notes/reading-queue.llms.md)
 
-Extracted observations, arguments, and claims from the literature. Not findings; views worth referencing.
+Candidate papers and reviewed reading briefs. A paper becomes a durable note only after review.
 
-## [Hiatus Paper Collection](./hiatus-paper-collection.qmd)
+## [Research Dialogue Protocol](../notes/research-dialogue.llms.md)
 
-Collected sentences and excerpts from related papers, useful for writing.
+How brainstorming, analysis review, decisions, and literature briefs become durable records.
 
 Back to top

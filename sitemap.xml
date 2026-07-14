@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://froq.me/research-site/notes/points/lake-warming-hiatus-mechanisms.html</loc>
-    <lastmod>2026-07-06T13:13:38.923Z</lastmod>
+    <loc>https://froq.me/research-site/notes/reading-queue.html</loc>
+    <lastmod>2026-07-13T14:50:42.273Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/notes/papers/xie2017.html</loc>
-    <lastmod>2026-07-06T15:21:33.330Z</lastmod>
+    <loc>https://froq.me/research-site/notes/index.html</loc>
+    <lastmod>2026-07-13T14:49:39.022Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/notes/papers/dai2018.html</loc>
+    <lastmod>2026-07-12T08:31:59.678Z</lastmod>
   </url>
   <url>
     <loc>https://froq.me/research-site/notes/papers/rodionov2004.html</loc>
@@ -21,12 +25,24 @@
     <lastmod>2026-07-06T15:22:07.323Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/index.html</loc>
-    <lastmod>2026-07-06T18:53:15.654Z</lastmod>
+    <loc>https://froq.me/research-site/docs/analysis-contract.html</loc>
+    <lastmod>2026-07-13T08:44:19.283Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/explorations/index.html</loc>
-    <lastmod>2026-07-06T19:49:46.185Z</lastmod>
+    <loc>https://froq.me/research-site/docs/plans/2026-07-12-regional-visualisation-refactor.html</loc>
+    <lastmod>2026-07-11T19:49:56.154Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/docs/plans/2026-07-13-content-reset-and-research-workflow.html</loc>
+    <lastmod>2026-07-13T14:49:38.416Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html</loc>
+    <lastmod>2026-07-13T14:49:38.518Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/explorations/warming-acceleration/prose/stars-limitations.html</loc>
+    <lastmod>2026-07-12T21:20:53.051Z</lastmod>
   </url>
   <url>
     <loc>https://froq.me/research-site/explorations/warming-acceleration/log/2026-04-07.html</loc>
@@ -65,6 +81,10 @@
     <lastmod>2026-07-10T08:52:54.499Z</lastmod>
   </url>
   <url>
+    <loc>https://froq.me/research-site/explorations/warming-acceleration/log/2026-07-12.html</loc>
+    <lastmod>2026-07-13T14:49:38.918Z</lastmod>
+  </url>
+  <url>
     <loc>https://froq.me/research-site/explorations/warming-acceleration/log/2026-05-28.html</loc>
     <lastmod>2026-07-10T07:21:04.084Z</lastmod>
   </url>
@@ -77,32 +97,36 @@
     <lastmod>2026-07-10T07:10:52.862Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/explorations/warming-acceleration/draft/02-regional.html</loc>
-    <lastmod>2026-07-11T20:06:59.225Z</lastmod>
+    <loc>https://froq.me/research-site/explorations/warming-acceleration/EXECUTION_PLAN.html</loc>
+    <lastmod>2026-07-12T15:48:04.744Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/metrics/data.html</loc>
-    <lastmod>2026-07-06T16:57:20.959Z</lastmod>
+    <loc>https://froq.me/research-site/explorations/warming-acceleration/draft/02-warming-patterns.html</loc>
+    <lastmod>2026-07-13T07:45:14.947Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/metrics/indices.html</loc>
-    <lastmod>2026-07-06T16:57:20.959Z</lastmod>
-  </url>
-  <url>
-    <loc>https://froq.me/research-site/metrics/terms.html</loc>
-    <lastmod>2026-07-06T16:57:20.959Z</lastmod>
+    <loc>https://froq.me/research-site/metrics/algorithms.html</loc>
+    <lastmod>2026-07-12T09:28:59.996Z</lastmod>
   </url>
   <url>
     <loc>https://froq.me/research-site/metrics/index.html</loc>
     <lastmod>2026-07-06T17:08:17.595Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/metrics/algorithms.html</loc>
-    <lastmod>2026-07-06T18:08:54.797Z</lastmod>
+    <loc>https://froq.me/research-site/metrics/terms.html</loc>
+    <lastmod>2026-07-12T09:28:21.096Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/explorations/warming-acceleration/draft/01-descriptive.html</loc>
-    <lastmod>2026-07-11T20:06:47.328Z</lastmod>
+    <loc>https://froq.me/research-site/metrics/indices.html</loc>
+    <lastmod>2026-07-06T16:57:20.959Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/metrics/data.html</loc>
+    <lastmod>2026-07-06T16:57:20.959Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/explorations/warming-acceleration/draft/01-global-kinematics.html</loc>
+    <lastmod>2026-07-14T00:00:13.410Z</lastmod>
   </url>
   <url>
     <loc>https://froq.me/research-site/explorations/warming-acceleration/log/2026-04-22.html</loc>
@@ -115,6 +139,10 @@
   <url>
     <loc>https://froq.me/research-site/explorations/warming-acceleration/log/2025-12-10.html</loc>
     <lastmod>2026-07-10T06:16:11.267Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/explorations/warming-acceleration/log/2026-07-13.html</loc>
+    <lastmod>2026-07-13T14:49:38.817Z</lastmod>
   </url>
   <url>
     <loc>https://froq.me/research-site/explorations/warming-acceleration/log/2025-12-03.html</loc>
@@ -157,12 +185,24 @@
     <lastmod>2026-07-10T14:00:47.459Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/docs/plans/2026-07-12-regional-visualisation-refactor.html</loc>
-    <lastmod>2026-07-11T19:49:56.154Z</lastmod>
+    <loc>https://froq.me/research-site/explorations/warming-acceleration/prose/pca-vs-clustering.html</loc>
+    <lastmod>2026-07-12T21:20:35.499Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/notes/paper-collection.html</loc>
-    <lastmod>2026-07-06T16:52:46.974Z</lastmod>
+    <loc>https://froq.me/research-site/explorations/index.html</loc>
+    <lastmod>2026-07-12T09:38:24.153Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/docs/plans/2026-07-13-analysis-contract-and-helper-boundaries.html</loc>
+    <lastmod>2026-07-13T07:36:59.051Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/docs/helper-debugging.html</loc>
+    <lastmod>2026-07-13T08:44:19.184Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/index.html</loc>
+    <lastmod>2026-07-06T18:53:15.654Z</lastmod>
   </url>
   <url>
     <loc>https://froq.me/research-site/notes/papers/fyfe2016.html</loc>
@@ -173,11 +213,15 @@
     <lastmod>2026-07-06T15:15:42.155Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/notes/papers/dai2018.html</loc>
-    <lastmod>2026-07-06T15:13:25.854Z</lastmod>
+    <loc>https://froq.me/research-site/notes/papers/index.html</loc>
+    <lastmod>2026-07-13T14:50:19.804Z</lastmod>
   </url>
   <url>
-    <loc>https://froq.me/research-site/notes/index.html</loc>
-    <lastmod>2026-07-06T15:29:26.382Z</lastmod>
+    <loc>https://froq.me/research-site/notes/papers/xie2017.html</loc>
+    <lastmod>2026-07-06T15:21:33.330Z</lastmod>
+  </url>
+  <url>
+    <loc>https://froq.me/research-site/notes/research-dialogue.html</loc>
+    <lastmod>2026-07-13T14:49:38.716Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,57 @@
+# Why PCA instead of clustering for warming pattern characterisation
+
+## Original approach: K-means clustering
+
+The original analysis plan used \\k\\-means clustering on STL-trend baseline anomalies to classify lakes into discrete response types. PCA retaining 95% of trajectory variance served as the dimensionality reduction step before clustering. The selected solution had five clusters (\\K = 5\\), each with a descriptive label:
+
+| Cluster | Label                      | Interpretation                   |
+|---------|----------------------------|----------------------------------|
+| C1      | Late-accelerating          | Strong warming in recent decades |
+| C2      | Early decline/late rebound | Cooling then warming             |
+| C3      | Sustained warming          | Consistent positive trend        |
+| C4      | Near-stable                | Minimal change from baseline     |
+| C5      | Early warming/plateau      | Initial warming then flattening  |
+
+This classification produced spatially coherent clusters: European lakes dominated C1, North American lakes spread across C1–C4, and tropical lakes concentrated in C4–C5.
+
+> 原方案用 K 均值聚类将湖泊分为 5 类，每类有描述性标签。聚类空间聚集性良好。
+
+## Why we moved to PCA
+
+### Discrete vs. continuous
+
+Clustering assigns each lake to a single category, discarding the continuous variation within and between types. A lake at the boundary between two clusters receives the same label as one at the cluster’s centre, even though their warming trajectories may differ substantially. PCA scores, by contrast, preserve the full spectrum of heterogeneity: each lake has a score on every component, encoding both the direction and degree of expression.
+
+### K selection is subjective
+
+We evaluated \\K = 4\\–\\8\\ using multiple metrics:
+
+| K   | Total cost | Cost reduction | Silhouette | Spatial coherence      |
+|-----|------------|----------------|------------|------------------------|
+| 4   | 110734     | —              | 0.309      | Good (2.3× ratio)      |
+| 5   | 102332     | 7.6%           | 0.288      | Best (NA 55% dominant) |
+| 6   | 95630      | 6.5%           | 0.275      | Poor (NA fragmented)   |
+| 7   | 90003      | 5.9%           | 0.280      | Moderate               |
+| 8   | 84922      | 5.6%           | 0.288      | Poor                   |
+
+No clear elbow emerged; \\K = 5\\ was selected primarily on spatial coherence grounds (North America dominance at \\K = 5\\ vs. fragmentation at \\K = 6\\). The Calinski-Harabasz index actually favoured \\K = 4\\. This is defensible but not uniquely justified by the data.
+
+> K 选择无明确拐点，K=5 主要基于空间一致性选择（北美 55% 归入主导簇），Calinski-Harabasz 指标更支持 K=4。
+
+### Attribution is awkward
+
+Regressing discrete cluster labels against continuous predictors (ENSO, PDO, lake depth) requires multinomial logit or similar categorical models, which are harder to interpret than linear regression on continuous scores. PCA scores can be directly used as response variables in OLS regression.
+
+### Quantitative comparison
+
+The five clusters from \\k\\-means on PCA-reduced data show moderate agreement with the continuous PCA representation. When comparing K=5 cluster assignments across nt=199 and nt=99 STL trend inputs, the adjusted Rand index is 0.89 and normalised mutual information is 0.92, indicating that the clustering structure is robust but the discrete representation discards information that PCA preserves.
+
+> K=5 聚类在不同 nt 参数下的一致性很高（ARI=0.89），但离散表示丢失了 PCA 保留的连续信息。
+
+## Recommendation
+
+PCA scores are used as the primary characterisation of warming patterns in Chapter 2. The continuous scores provide a natural response variable for the attribution analysis in Chapter 3, and the component loadings make the results physically interpretable. Discrete clustering remains available as a supplementary visualisation but is not the primary analytical framework.
+
+> 建议以 PCA 分数作为第 2 章增温模式的主要描述。连续分数为第 3 章归因提供自然响应变量，载荷使结果物理可解释。离散聚类可作为补充可视化。
+
+Back to top

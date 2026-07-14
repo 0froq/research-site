@@ -4,7 +4,7 @@ All explorations — finished, cancelled, in-progress, or not started.
 
 ## Warming Acceleration
 
-[prose](../explorations/warming-acceleration/prose/is-there-a-hiatus.llms.md) · [draft](../explorations/warming-acceleration/draft/01-descriptive.llms.md) · [log](../explorations/warming-acceleration/log/index.llms.md)
+[prose](../explorations/warming-acceleration/prose/is-there-a-hiatus.llms.md) · [draft](../explorations/warming-acceleration/draft/01-global-kinematics.llms.md) · [log](../explorations/warming-acceleration/log/index.llms.md)
 
 Do global lakes exhibit heterogeneous warming acceleration — or deceleration — across space and time, and what drives it?
 
