@@ -24,23 +24,32 @@ Start R with `site/` as the working directory so `figure-style.R` can find `_qua
 ``` r
 source("shared/R/figure-style.R")
 source("shared/R/descriptive-helpers.R")
-source("shared/R/kinematics-helpers.R")
+source("shared/R/01-global-kinematics-helpers.R")
 
-inputs <- load_kinematics_inputs()
-hex <- prepare_hex_data(inputs)
+payload <- prepare_kinematics_data()
+payload$spatial_hex_summary
 ```
 
 For PCA work, source only the PCA helper and call its focused loader/preparation functions:
 
 ``` r
 source("shared/R/figure-style.R")
-source("shared/R/pca-helpers.R")
+source("shared/R/02-warming-patterns-helpers.R")
 
-inputs <- load_pca_inputs()
-loadings <- prepare_loading_data(inputs)
+payload <- prepare_pca_data()
+payload$loading_plot_data
 ```
 
-The names above describe the target atomic API. While a chapter is transitioning, use the currently available chapter-level preparation function and inspect the returned object in the same way.
+For modular prose figures, use the matching helper in exactly the same way:
+
+``` r
+source("shared/R/figure-style.R")
+source("shared/R/seasonal-ice-diagnostics-helpers.R")
+ice <- prepare_seasonal_ice_data()
+
+source("shared/R/era5-association-scope-helpers.R")
+era5 <- prepare_era5_association_data()
+```
 
 > 在原子化重构完成前，可先调用当前的章节级 `prepare_*()`，但调试方式不变：检查它返回的对象，而不是先渲染 qmd。
 
@@ -54,19 +63,19 @@ Check inputs before checking aesthetics. For every loader or preparation functio
 - plot readiness: all coordinates, grouping identifiers, labels, and mapped values required by the figure.
 
 ``` r
-str(hex)
-dplyr::glimpse(hex$summary)
+str(payload)
+dplyr::glimpse(payload$spatial_hex_summary)
 
 stopifnot(
-  all(c("lake_id", "lon", "lat") %in% names(inputs$metrics)),
-  !anyDuplicated(inputs$metrics$lake_id)
+  all(c("lake_id", "lon", "lat") %in% names(payload$lake_warming_metrics)),
+  !anyDuplicated(payload$lake_warming_metrics$lake_id)
 )
 ```
 
 Prefer an explicit failure to a plausible-looking wrong figure:
 
 ``` r
-if (nrow(hex$summary) == 0) {
+if (nrow(payload$spatial_hex_summary) == 0) {
   stop("No hex cells remain; check min_lakes or coordinate filters.", call. = FALSE)
 }
 ```
@@ -93,8 +102,7 @@ list(
 Then inspect only the quantities that can invalidate the figure:
 
 ``` r
-hex$qc
-range(hex$summary$warming_speed, na.rm = TRUE)
+range(payload$spatial_hex_summary$warming_speed, na.rm = TRUE)
 ```
 
 ## Use a minimal diagnostic plot
@@ -102,7 +110,7 @@ range(hex$summary$warming_speed, na.rm = TRUE)
 Before working on guides, patchwork, typography, or captions, draw only the geometry and the mapped variable.
 
 ``` r
-ggplot(hex$polygons) +
+ggplot(payload$spatial_hex_poly) +
   geom_polygon(aes(lon, lat, group = id, fill = warming_speed)) +
   coord_equal()
 ```
@@ -116,10 +124,10 @@ If this plot is wrong, stay in the helper. If it is correct, move to the qmd and
 Use ordinary R debugging tools on a single preparation function:
 
 ``` r
-debugonce(prepare_hex_data)
-hex <- prepare_hex_data(inputs)
+debugonce(prepare_kinematics_data)
+payload <- prepare_kinematics_data()
 
-trace(prepare_hex_data, tracer = quote(browser()), at = 3)
+trace(prepare_kinematics_data, tracer = quote(browser()), at = 3)
 ```
 
 For repeatable checks, keep small assertions close to the transformation that establishes the relevant invariant. For example, assert coordinate finiteness after the coordinate join, and assert non-empty hex cells after aggregation.

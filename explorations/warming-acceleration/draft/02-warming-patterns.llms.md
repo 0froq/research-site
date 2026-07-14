@@ -1,14 +1,14 @@
 # Warming Pattern Decomposition
 
-Long-term warming speed and acceleration compress each lake’s 40-year temperature record into two summary statistics. While these summaries capture direction and rate of change, they discard the trajectory itself—when anomalies occurred and whether their timing was shared across lakes. This chapter applies principal component analysis (PCA) to the full annual temperature anomaly trajectory, identifying dominant temporal contrasts across 92,245 lakes.
+Long-term warming and warming-speed change compress each lake’s 40-year temperature record into two summary statistics. While these summaries capture direction and rate of change, they discard the trajectory itself—when anomalies occurred and whether their timing was shared across lakes. This chapter applies principal component analysis (PCA) to the full annual temperature anomaly trajectory, identifying dominant temporal contrasts across 92,245 lakes.
 
-> 长期增温速率和加速度将每个湖泊 40 年的温度记录压缩为两个统计量。本章对完整的年温度异常轨迹做 PCA，识别全球 92,245 个湖泊增温变异的主要模态。
+> 长期增温与增温速度变化将每个湖泊 40 年记录压缩为两个统计量。本章对完整年温度异常轨迹做 PCA，识别全球 92,245 个湖泊轨迹变异的主要模态。
 
 ## Data preparation
 
-Annual mean lake surface water temperature (LSWT) is computed from daily GLAST observations and smoothed with an STL trend (`nt=99`) before PCA. Each lake’s low-frequency annual trajectory is expressed as a baseline anomaly relative to the 1981–1990 mean, yielding a 40-year anomaly vector. This separates the trajectory analysis from the raw annual metrics used for warming and acceleration in Chapter 1.
+Annual mean reconstructed lake surface water temperature (LSWT) is derived from the GLAST reconstructed/corrected product and smoothed with an STL trend (`nt=99`) before PCA. Each lake’s low-frequency annual trajectory is expressed as a baseline anomaly relative to the 1981–1990 mean, yielding a 40-year anomaly vector. This separates the trajectory analysis from raw annual long-term warming and local-speed metrics used in Chapter 1.
 
-> 数据来自 GLAST 日尺度 LSWT；年均序列先经 `nt=99` 的 STL 趋势平滑，再以 1981–1990 为基线计算异常。Chapter 1 的原始年均指标与本章低频轨迹 PCA 保持分工。
+> 数据来自 GLAST 重建/校正 LSWT 产品；年均序列先经 `nt=99` STL 趋势平滑，再以 1981–1990 为基线计算异常。Ch1 原始年均指标与本章低频轨迹 PCA 保持分工。
 
 ![](02-warming-patterns_files/figure-html/fig-pca-variance-1.png)
 
@@ -143,11 +143,29 @@ Among the non-geographic predictors, **elevation** makes the largest overall ind
 
 > 在非地理因子中，跨 PC1–PC3 而言，**海拔**的总体独立贡献最大（[Table 3](#tbl-partial-r2)）。**深度**和**湖泊面积**的贡献较小，且相对重要性随成分变化：PC1 中深度高于面积，PC2 和 PC3 中面积高于深度。偏 R² 是无符号的解释方差增量，只比较独立信息量；关联方向和不确定性应见 [Table 1](#tbl-pca-regression-coefs)。
 
-## Comparison with discrete clustering
+## Descriptive trajectory typology
 
-An alternative approach to characterising warming heterogeneity is \\k\\-means clustering on the PCA-reduced trajectory space. We evaluated K=4–8 and selected K=5 based on spatial coherence and statistical metrics. A detailed comparison of PCA and clustering approaches, including quantitative metrics and the rationale for preferring continuous scores, is given in [PCA vs. Clustering](../../../explorations/warming-acceleration/prose/pca-vs-clustering.llms.md).
+PCA remains primary: it preserves continuous score geometry. K-means is only a readable partition. The fixed display is K=5 on PC1–PC5; clusters are descriptive labels, not natural response types or regions.
 
-> 用 PCA 降维后的轨迹空间做 K 均值聚类是替代方案。详细比较见 [PCA vs. Clustering](../../../explorations/warming-acceleration/prose/pca-vs-clustering.llms.md)。
+> PCA 是主分析，保留连续轨迹空间；K-means 只提供可读切分。固定展示 PC1–PC5、K=5；cluster 不是自然类型或区域。
+
+![](02-warming-patterns_files/figure-html/fig-cluster-profiles-k5-1.png)
+
+Figure 5: Median baseline-anomaly trajectories for descriptive PC1–PC5 K=5 partition. Ribbons show within-cluster interquartile ranges.
+
+[Figure 5](#fig-cluster-profiles-k5) describes five broad trajectory groups. Boundaries remain algorithmic: lakes near a boundary can change label when K or PC dimensions change, even if continuous scores barely change.
+
+> [Figure 5](#fig-cluster-profiles-k5) 展示五组宽泛轨迹。边界由算法给出；K 或 PC 维数改变时，边界附近湖泊可换组，连续分数变化却很小。
+
+![](02-warming-patterns_files/figure-html/fig-clustering-sensitivity-1.png)
+
+Figure 6: K and PC-dimension sensitivity of descriptive clustering. Cost declines across K=4–8; adjusted Rand index compares K=5 partitions with PC1–PC5 reference.
+
+[Figure 6](#fig-clustering-sensitivity) has no unique elbow across K=4–8. K=5 is fixed display resolution, not estimated true number of lake types. PC-dimension sensitivity is a boundary diagnostic; it does not alter PCA results.
+
+> [Figure 6](#fig-clustering-sensitivity) 没有唯一清晰 elbow。K=5 是固定展示分辨率，不是“真实类型数”；PC 维数敏感性只检验边界，不改变 PCA 结论。
+
+Full methods discussion: [PCA vs. Clustering](../../../explorations/warming-acceleration/prose/pca-vs-clustering.llms.md).
 
 ## Implications for future analysis
 

@@ -10,14 +10,19 @@ This page is the canonical, human-readable contract for the active warming-accel
 
 | Concept | Canonical definition | Role |
 |----|----|----|
-| Annual temperature | Calendar-year mean LSWT calculated directly from valid non-freezing daily GLAST observations. | Input for all primary warming, warming-speed, and acceleration metrics. |
+| Annual temperature | Calendar-year mean LSWT calculated directly from valid non-freezing daily GLAST reconstructed-product values. | Input for all primary warming and warming-speed metrics. |
 | Long-term warming | Theil–Sen slope of the raw annual mean LSWT series, reported as °C per 40 years. | Primary descriptive warming metric. |
-| Annual warming speed | Trailing 10-year Theil–Sen slope of raw annual mean LSWT, indexed to the endpoint year (e.g. 1981–1990 is indexed to 1990), in °C yr⁻¹. | Primary local warming-speed representation in the chapter; it describes temporal and spatial heterogeneity of observed LSWT trajectories. |
-| Acceleration | Sen slope of the raw trailing-10-year warming-speed sequence over its valid 1990–2020 support, in 10⁻³ °C yr⁻². | Defined operationally as a long-term change in local warming speed, not as a resolved instantaneous physical acceleration. The historical adjacent-difference metric is sensitivity-only. |
+| Annual warming speed | Trailing 10-year Theil–Sen slope of raw annual mean LSWT, indexed to the endpoint year (e.g. 1981–1990 is indexed to 1990), in °C yr⁻¹. | Primary local warming-speed representation in the chapter; it describes temporal and spatial heterogeneity of reconstructed LSWT trajectories. |
+| Warming-speed change | Sen slope of the raw trailing-10-year warming-speed sequence over its valid 1990–2020 support, in 10⁻³ °C yr⁻². | Defined operationally as a long-term change in local warming speed, not as a resolved instantaneous physical acceleration. The historical adjacent-difference metric is sensitivity-only. |
 | PCA input | Annual mean of the STL trend with `period=12`, `robust=false`, `ni=5`, `no=0`, and `nt=99`; each lake is expressed as an anomaly from its 1981–1990 mean. | Low-frequency trajectory representation only; not a substitute for the primary warming metrics. |
-| PCA interpretation set | PC1–PC5. | The substantive modes shown, mapped, and interpreted in the chapter. The 95% variance threshold is a diagnostic, not a retention rule. |
+| PCA interpretation set | PC1–PC5. | PC1 is the robust global low-frequency mode. PC2–PC5 are region/sample-composition-sensitive secondary descriptive modes; the 95% variance threshold is a diagnostic, not a retention rule. |
+| PCA role | Defines the continuous low-frequency trajectory-score geometry. | PCA components are covariance modes, not intrinsic lake categories or physical mechanisms. |
+| Clustering role | Descriptive clustering in PCA-score space, used to communicate representative trajectory typologies. | It is a partition of a continuous PCA geometry, not a claim that lakes belong to intrinsic discrete response types. |
+| Clustering configuration | Main display: K=5 using PC1–PC5 scores. | Sensitivity: K=4–8 at PC1–PC5, plus K=5 using PC1, PC1–PC3, PC1–PC7, and PC1–PC9; stability of major profiles, not a single optimisation score, determines whether K=5 remains useful. |
 
-> 原始年均温度负责描述增暖、年增暖速度与加速度；STL `nt=99` 只在 PCA 前提取低频轨迹。正文解释前 5 个主成分，不以累计 95% 方差作为保留阈值。
+> 原始年均温度负责描述增暖、年增暖速度与增温速度变化；STL `nt=99` 只在 PCA 前提取低频轨迹。正文解释前 5 个主成分，不以累计 95% 方差作为保留阈值。
+
+> PCA 定义连续轨迹空间；clustering 只是在该空间中生成便于沟通的代表性 typology。主展示 K=5 / PC1–PC5；K=4–8 与 PC1、PC1–PC3、PC1–PC7、PC1–PC9 进入敏感性，不把 cluster 当作自然离散类别。
 
 ## Analysis layers
 
@@ -27,14 +32,14 @@ The project uses two complementary representations rather than a single series f
 
 | Layer | Representation | Scientific role |
 |----|----|----|
-| Observed-temperature layer | Raw daily LSWT aggregated to raw annual or seasonal means. | Observed long-term warming, cooling cohorts, and seasonal/ice diagnostics. |
+| Reconstructed-temperature layer | Raw daily GLAST LSWT-product values aggregated to raw annual or seasonal means. | Long-term reconstructed-LSWT change, cooling cohorts, and seasonal/ice diagnostics. |
 | Background-trajectory layer | Monthly STL trend with `nt=99`, then annualised. | Smoothed low-frequency trajectory and its evolving background warming speed. |
 
 > 原始层回答实际观测到的长期增温与季节/冰期问题；STL 背景层回答低频轨迹及其速度演化。
 
-STL does not replace observed temperature. Its trend is parameter-dependent; its remainder is not automatically an extreme-event series or a teleconnection signal. Any analysis of seasonal amplitude or remainder structure must first assess ice-state encoding, missingness, endpoints, and STL-parameter sensitivity.
+GLAST is not direct lake-temperature observation: it is a corrected/reconstructed product built from station-temperature information and FLAKE simulations driven by ERA5-Land. “Raw” here means un-smoothed values from that product, not unmodelled in-situ measurements. STL does not replace this reconstructed series. Its trend is parameter-dependent; its remainder is not automatically an extreme-event series or a teleconnection signal.
 
-> STL 不替代观测温度。其 trend 依赖参数；remainder 不自动等于极端或遥相关信号。分析季节振幅或 remainder 前，先做冰态编码、缺失、端点和参数敏感性 QC。
+> GLAST 不是直接湖温观测，而是站点温度信息与 ERA5-Land 驱动 FLAKE 模拟经校正后的重建产品。raw 指该产品未经平滑的值，不是未经模型处理的站点实测；STL 不替代该重建序列。
 
 ## Explicit exclusions
 
@@ -47,6 +52,12 @@ STARS / ST_AIS persistent-regime detection is not part of the active analysis wo
 Every chapter must name the producer branch it reads. A change to any definition above requires the same change in: this contract, the relevant `data-process` producer documentation, `AGENTS.md`, and the affected chapter prose/captions. If only a sensitivity analysis uses a different branch, label it as such rather than changing the canonical wording.
 
 > 每章应明确读取的 producer branch。改动本页定义时，要同步更新 Step 文档、AGENTS 和相关正文/图注；敏感性分支必须明确标记，不能替换 canonical 叙述。
+
+## Frozen manuscript decision
+
+For the current first-author descriptive manuscript, do not introduce a new primary time-series algorithm, a new global partitioning method, STARS, a causal attribution model, or a teleconnection-centred narrative. New analyses are admissible only when they directly implement the definitions above, test their stated sensitivity branches, or complete the modular cooling/ice and constrained association work already specified.
+
+> 当前第一作者描述性论文冻结主方法：不再新增主时间序列算法、全球分区方法、STARS、因果归因模型或遥相关主叙事。后续分析只能实现本契约、完成列明敏感性，或完成既定冰模块与受限关联模块。
 
 ## Related workflow
 

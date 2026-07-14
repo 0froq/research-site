@@ -425,19 +425,15 @@ window.Quarto = {
 </section>
 <section id="long-term-warming-speed" class="level2">
 <h2 class="anchored" data-anchor-id="long-term-warming-speed">Long-term warming speed</h2>
-<p>For the warming-acceleration exploration, the canonical quantity is the Theil–Sen slope of the <strong>annual STL trend</strong> <span class="math inline">\(\tau(t)\)</span>. It estimates the low-frequency warming rate after seasonal and short-term variation have been separated from the monthly LSWT record.</p>
-<p>For readability, this slope is presented as its 40-year-equivalent change (<span class="math inline">\(^\circ\)</span>C / 40 yr). This is a rescaled long-term trend estimate, not a raw 40-year temperature difference. The Sen slope from raw annual mean LSWT is reported only as a robustness comparison because it retains more short-term interannual variation.</p>
+<p>For the warming-acceleration exploration, the canonical quantity is the Theil–Sen slope of raw annual GLAST reconstructed LSWT, presented as its 40-year-equivalent change (<span class="math inline">\(^\circ\)</span>C / 40 yr). This is a rescaled long-term trend estimate, not a raw 40-year temperature difference.</p>
 </section>
 <section id="annual-warming-speed" class="level2">
 <h2 class="anchored" data-anchor-id="annual-warming-speed">Annual warming speed</h2>
-<p>The annual change in the STL trend:</p>
-<p><span class="math display">\[v(t) = \tau(t) - \tau(t - 1).\]</span></p>
-<p>Its unit is <span class="math inline">\(^\circ\)</span>C yr<span class="math inline">\(^{-1}\)</span>. This is the time-varying speed series used to identify persistent warming-speed regimes with STARS.</p>
+<p>The trailing-10-year Theil–Sen slope of raw annual reconstructed LSWT, indexed to its endpoint year. Its unit is <span class="math inline">\(^\circ\)</span>C yr<span class="math inline">\(^{-1}\)</span> and it is the primary local warming-speed representation.</p>
 </section>
 <section id="acceleration" class="level2">
 <h2 class="anchored" data-anchor-id="acceleration">Acceleration</h2>
-<p>The long-term rate of change in annual warming speed, estimated as the Sen slope of <span class="math inline">\(v(t)\)</span> over 1982–2020.</p>
-<p>Positive acceleration means the low-frequency warming trend is becoming more positive through time; negative acceleration means it is becoming less positive. Neither sign alone determines whether the lake is presently warming or cooling.</p>
+<p>The long-term Sen trend of the valid trailing-10-year local warming-speed sequence. It is termed <em>warming-speed change</em> (<span class="math inline">\(10^{-3}\)</span> <span class="math inline">\(^\circ\)</span>C yr<span class="math inline">\(^{-2}\)</span>): an operational trajectory statistic, not a resolved instantaneous physical acceleration.</p>
 
 
 </section>

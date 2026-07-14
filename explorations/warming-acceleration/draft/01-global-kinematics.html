@@ -575,6 +575,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">2026-07-13</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/log/2026-07-15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-15</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -632,7 +638,10 @@ ul.task-list li input[type="checkbox"] {
 <pre><code>&lt;environment: R_GlobalEnv&gt;</code></pre>
 </div>
 </div>
-<p>GLAST: 92245 lakes, 1981–2020.</p>
+<p>GLAST reconstructed LSWT product: 92245 lakes, 1981–2020. It is not direct in-situ observation: station-temperature information and ERA5-Land-driven FLAKE simulations are corrected to produce the dataset. “Raw” below means un-smoothed GLAST product values.</p>
+<blockquote class="blockquote">
+<p>GLAST 是重建 LSWT 产品，不是直接站点实测；它由站点温度信息和 ERA5-Land 驱动的 FLAKE 模拟校正得到。下文 raw 指未经平滑的 GLAST 产品值。</p>
+</blockquote>
 </section>
 <section id="lake-density-map" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="lake-density-map">Lake density map</h2>
@@ -653,23 +662,23 @@ Figure&nbsp;1: Lake density map with 1° × 1° grid cells.
 </section>
 <section id="long-term-warming-and-local-speed-heterogeneity" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="long-term-warming-and-local-speed-heterogeneity">Long-term warming and local-speed heterogeneity</h2>
-<p><strong>Long-term warming</strong> is the Theil–Sen slope of observed annual mean lake surface water temperature (LSWT) over 1982–2020, presented as a 40-year-equivalent change in °C. The primary local <strong>warming speed</strong> is the trailing 10-year Theil–Sen slope of raw annual LSWT, indexed to its endpoint year. Its long-term Sen trend is operationally termed <strong>warming-speed change</strong>: it indicates whether local 10-year warming rates tend to become more or less positive, not a resolved instantaneous physical acceleration. This chapter remains in the observed-temperature layer.</p>
+<p><strong>Long-term warming</strong> is the Theil–Sen slope of reconstructed annual mean lake surface water temperature (LSWT) over 1982–2020, presented as a 40-year-equivalent change in °C. The primary local <strong>warming speed</strong> is the trailing 10-year Theil–Sen slope of raw annual LSWT, indexed to its endpoint year. Its long-term Sen trend is operationally termed <strong>warming-speed change</strong>: it indicates whether local 10-year warming rates tend to become more or less positive, not a resolved instantaneous physical acceleration. This chapter remains in the reconstructed-temperature layer.</p>
 <blockquote class="blockquote">
-<p>本章是观测温度层：年均 LSWT 的长期增温为主要指标；10 年滑动 Sen 为局部增温速度；其长期变化称增温速度变化，不等同于瞬时物理加速度。STL 对比保留在 prose/补充材料。</p>
+<p>本章是重建温度层：年均 LSWT 的长期增温为主要指标；10 年滑动 Sen 为局部增温速度；其长期变化称增温速度变化，不等同于瞬时物理加速度。STL 对比保留在 prose/补充材料。</p>
 </blockquote>
 <p><a href="#tbl-warming-summary-raw" class="quarto-xref">Table&nbsp;1 (a)</a> summarizes observed long-term warming and the change in trailing-10-year warming speed. 92.8% of lakes show positive long-term warming. 47.8% have a positive long-term change in local warming speed; this is an operational trajectory descriptor, not a physical instantaneous acceleration.</p>
 <blockquote class="blockquote">
-<p><a href="#tbl-warming-summary-raw" class="quarto-xref">Table&nbsp;1 (a)</a> summarizes the warming metrics computed from raw annual mean LSWT% 湖泊呈正增温速率，但仅47.8% 呈正加速度，增温方向与速度变化基本解耦。</p>
+<p><a href="#tbl-warming-summary-raw" class="quarto-xref">Table&nbsp;1 (a)</a> 汇总 raw annual LSWT 的长期增温与局部增温速度变化。92.8% 湖泊长期增温为正，47.8% 的局部增温速度长期趋向更正。</p>
 </blockquote>
 <p>The long-term change in local 10-year warming speed is 0.242 ± 3.608 ×10⁻³ °C yr⁻². This operational statistic summarizes whether local background warming rates tend to become more or less positive; it is not a resolved instantaneous physical acceleration.</p>
 <blockquote class="blockquote">
-<p>当前加速度离散度极大；年际差分保留大量短时变率。因此现阶段仅作描述性诊断，不能据此判定单湖加速或减速；定义与稳健性待后续重审。</p>
+<p>此量是 10 年局部 Sen 速度序列的长期趋势；它用于描述轨迹方向，不用于判定瞬时物理加速或减速。</p>
 </blockquote>
 <div class="page-columns page-full">
 <div id="tbl-warming-summary" class="quarto-layout-panel anchored page-columns page-full">
 <figure class="quarto-float quarto-float-tbl figure page-columns page-full">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-warming-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Summary of warming status.
+Table&nbsp;1: Summary of long-term warming and local-speed change.
 </figcaption>
 <div aria-describedby="tbl-warming-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
 <div class="quarto-layout-row column-page-inset">
@@ -677,7 +686,7 @@ Table&nbsp;1: Summary of warming status.
 <div id="tbl-warming-summary-raw" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-warming-summary-raw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Raw annual warming speed
+(a) Raw annual long-term warming
 </figcaption>
 <div aria-describedby="tbl-warming-summary-raw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -701,16 +710,16 @@ Table&nbsp;1: Summary of warming status.
 </div>
 </div>
 <div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-warming-summary" style="flex-basis: 50.0%;justify-content: center;">
-<div id="tbl-accel-summary" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="tbl-speed-change-summary" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-accel-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-speed-change-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Warming-speed change
 </figcaption>
-<div aria-describedby="tbl-accel-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="tbl-speed-change-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Accelerating count</td>
+<td style="text-align: left;">Positive speed-change count</td>
 <td style="text-align: left;">44,107 (47.8%)</td>
 </tr>
 <tr class="even">
@@ -732,15 +741,15 @@ Table&nbsp;1: Summary of warming status.
 </figure>
 </div>
 </div>
-<p>A sign-only classification is only descriptive: values close to zero can switch category without a meaningful change in magnitude. The continuous relationships in <a href="#fig-warming-acceleration-scatterplot-matrix" class="quarto-xref">Figure&nbsp;2</a> are therefore the primary summary.</p>
+<p>Values close to zero should not be interpreted as categorical “acceleration” or “deceleration”. The continuous relationships in <a href="#fig-warming-speed-change-scatterplot-matrix" class="quarto-xref">Figure&nbsp;2</a> are therefore the primary summary.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-warming-acceleration-scatterplot-matrix" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-warming-speed-change-scatterplot-matrix" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-warming-acceleration-scatterplot-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-global-kinematics_files/figure-html/fig-warming-acceleration-scatterplot-matrix-1.png" class="img-fluid figure-img" width="1800">
+<div aria-describedby="fig-warming-speed-change-scatterplot-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-global-kinematics_files/figure-html/fig-warming-speed-change-scatterplot-matrix-1.png" class="img-fluid figure-img" width="1800">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-warming-acceleration-scatterplot-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-warming-speed-change-scatterplot-matrix-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Pairwise relationships among mean temperature, long-term warming, and long-term change in local trailing-10-year warming speed.
 </figcaption>
 </figure>
@@ -766,104 +775,45 @@ Figure&nbsp;3: Global distribution of local warming speeds. Each annual value is
 <blockquote class="blockquote">
 <p><a href="#fig-global-local-speed" class="quarto-xref">Figure&nbsp;3</a> 的中位数变化与持续的四分位距同时显示时间与空间异质性：局部增温速度会随时间演化，同一阶段不同湖泊可处在增温或降温状态。</p>
 </blockquote>
-</section>
-<section id="spatial-heterogeneity-of-local-warming-speed" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="spatial-heterogeneity-of-local-warming-speed">Spatial heterogeneity of local warming speed</h2>
-<p>The hexagons in <a href="#fig-spatial-warming-acceleration-hex" class="quarto-xref">Figure&nbsp;4</a> summarize lake-level estimates within 5° cells containing at least five lakes. The lower panel maps the long-term change in local trailing-10-year warming speed, not instantaneous acceleration.</p>
+<p><a href="#fig-local-speed-endpoint-maps" class="quarto-xref">Figure&nbsp;4</a> makes this second pattern explicit. Each panel uses the same local 10-year speed definition, so contrast across panels is temporal change and contrast within a panel is spatial heterogeneity.</p>
 <blockquote class="blockquote">
-<p><a href="#fig-spatial-warming-acceleration-hex" class="quarto-xref">Figure&nbsp;4</a> 用六边形汇总 5° 网格内的湖泊指标（≥5 个湖）。上下面板分别展示长期增温与局部增温速度变化的空间格局，两者不必一致。</p>
+<p><a href="#fig-local-speed-endpoint-maps" class="quarto-xref">Figure&nbsp;4</a> 用相同 10 年 Sen 速度定义比较四个端点年：面板间是时间变化，面板内是同阶段的空间异质性。</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-spatial-warming-acceleration-hex" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-local-speed-endpoint-maps" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-spatial-warming-acceleration-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-global-kinematics_files/figure-html/fig-spatial-warming-acceleration-hex-1.png" class="img-fluid figure-img" width="2400">
+<div aria-describedby="fig-local-speed-endpoint-maps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-global-kinematics_files/figure-html/fig-local-speed-endpoint-maps-1.png" class="img-fluid figure-img" width="2400">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-warming-acceleration-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Spatial pattern of lake warming and long-term local warming-speed change. Hexagons aggregate lake-level metrics in 5° geographic bins containing at least five lakes.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-local-speed-endpoint-maps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Spatial distribution of trailing-10-year local warming speed at four endpoint years. Hexagons aggregate at least five lakes in 5° geographic bins.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="column-page-inset">
-<div id="tbl-spatial-continent-summary" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-spatial-continent-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Continent-level spatial summary
-</figcaption>
-<div aria-describedby="tbl-spatial-continent-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-spatial-continent-summary" class="caption-top table">
-<thead>
-<tr class="header">
-<th>Continent</th>
-<th>Warming</th>
-<th>Accelerating</th>
-<th>Warming + accelerating</th>
-<th>Mean warming</th>
-<th>Mean acceleration</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>NA</strong></td>
-<td>94.9%</td>
-<td><strong>39.5%</strong></td>
-<td><strong>37.6%</strong></td>
-<td>0.77 °C / 40 yr</td>
-<td><strong>-0.57 ×10⁻³ °C / yr²</strong></td>
-</tr>
-<tr class="even">
-<td>EU</td>
-<td>90.1%</td>
-<td>55.3%</td>
-<td>47.0%</td>
-<td>1.13 °C / 40 yr</td>
-<td>1.34 ×10⁻³ °C / yr²</td>
-</tr>
-<tr class="odd">
-<td>AS</td>
-<td>90.2%</td>
-<td>50.8%</td>
-<td>44.8%</td>
-<td>0.49 °C / 40 yr</td>
-<td>0.02 ×10⁻³ °C / yr²</td>
-</tr>
-<tr class="even">
-<td>SA</td>
-<td>89.2%</td>
-<td>90.9%</td>
-<td>82.3%</td>
-<td>0.38 °C / 40 yr</td>
-<td>1.04 ×10⁻³ °C / yr²</td>
-</tr>
-<tr class="odd">
-<td>AF</td>
-<td>99.9%</td>
-<td>80.2%</td>
-<td>80.1%</td>
-<td>0.50 °C / 40 yr</td>
-<td>0.64 ×10⁻³ °C / yr²</td>
-</tr>
-<tr class="even">
-<td>OC</td>
-<td>94.0%</td>
-<td>82.8%</td>
-<td>77.0%</td>
-<td>0.57 °C / 40 yr</td>
-<td>1.36 ×10⁻³ °C / yr²</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</div>
-<p><a href="#tbl-spatial-continent-summary" class="quarto-xref">Table&nbsp;2</a> is a descriptive aggregation of local-speed change. Continental values are not area-weighted climate means and do not identify physical acceleration or deceleration.</p>
+</section>
+<section id="spatial-heterogeneity-of-local-warming-speed" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-heterogeneity-of-local-warming-speed">Spatial heterogeneity of local warming speed</h2>
+<p>The hexagons in <a href="#fig-spatial-warming-speed-change-hex" class="quarto-xref">Figure&nbsp;5</a> summarize lake-level estimates within 5° cells containing at least five lakes. The lower panel maps the long-term change in local trailing-10-year warming speed, not instantaneous acceleration.</p>
 <blockquote class="blockquote">
-<p><a href="#tbl-spatial-continent-summary" class="quarto-xref">Table&nbsp;2</a> 强化了大洲差异。欧洲高增温速率+正加速度，北美高增温比例但负均值加速度。大洲统计值为描述性汇总，非面积加权气候均值。</p>
+<p><a href="#fig-spatial-warming-speed-change-hex" class="quarto-xref">Figure&nbsp;5</a> 用六边形汇总 5° 网格内的湖泊指标（≥5 个湖）。上下面板分别展示长期增温与局部增温速度变化的空间格局，两者不必一致。</p>
 </blockquote>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-spatial-warming-speed-change-hex" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spatial-warming-speed-change-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-global-kinematics_files/figure-html/fig-spatial-warming-speed-change-hex-1.png" class="img-fluid figure-img" width="2400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-warming-speed-change-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Spatial pattern of lake warming and long-term local warming-speed change. Hexagons aggregate lake-level metrics in 5° geographic bins containing at least five lakes.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 <p>These global metrics reduce each lake’s annual warming-speed series to a long-term slope. They show whether warming speed tends to become more or less positive, but not how the temporal pattern of warming differs among lakes or what factors drive those differences. <a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html">Warming pattern decomposition</a> therefore applies PCA to the full annual temperature trajectory to identify dominant modes of variation and their spatial organisation.</p>
 <blockquote class="blockquote">
 <p>全局指标将年增温速率压缩为长期斜率，但不能揭示增温时间模式的差异。<a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html">增温模式分解</a>用 PCA 识别主要变异模态及其空间组织。</p>

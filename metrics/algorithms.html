@@ -385,7 +385,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#stl" id="toc-stl" class="nav-link active" data-scroll-target="#stl">STL</a></li>
-  <li><a href="#stars" id="toc-stars" class="nav-link" data-scroll-target="#stars">STARS</a></li>
+  <li><a href="#stars-retired-for-this-exploration" id="toc-stars-retired-for-this-exploration" class="nav-link" data-scroll-target="#stars-retired-for-this-exploration">STARS (retired for this exploration)</a></li>
   <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering">K-means clustering</a></li>
   <li><a href="#theilsen-slope" id="toc-theilsen-slope" class="nav-link" data-scroll-target="#theilsen-slope">Theil–Sen slope</a></li>
   <li><a href="#mannkendall-test" id="toc-mannkendall-test" class="nav-link" data-scroll-target="#mannkendall-test">Mann–Kendall test</a></li>
@@ -426,8 +426,8 @@ window.Quarto = {
 </ul>
 <p>Used in: <a href="../explorations/index.html#warming-acceleration">warming-acceleration</a>.</p>
 </section>
-<section id="stars" class="level2">
-<h2 class="anchored" data-anchor-id="stars">STARS</h2>
+<section id="stars-retired-for-this-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="stars-retired-for-this-exploration">STARS (retired for this exploration)</h2>
 <p>Sequential T-test Analysis of Regime Shifts (Rodionov 2004). Detects abrupt, persistent shifts in the <strong>mean</strong> of a time series.</p>
 <ul>
 <li>Sequential: processes data in order, near-real-time capable</li>
@@ -435,7 +435,7 @@ window.Quarto = {
 <li>Uses a t-test critical difference and a cumulative Regime Shift Index (RSI) to require persistence after a candidate shift</li>
 <li>A shift in a series mean is distinct from a breakpoint in that series’ slope</li>
 </ul>
-<p>In the warming-acceleration exploration, STARS is applied to annual warming speed <span class="math inline">\(v(t)=\Delta\tau(t)\)</span>, with <span class="math inline">\(L=7\)</span> and <span class="math inline">\(p=0.05\)</span>. It therefore detects a persistent shift from one <strong>mean warming-speed regime</strong> to another. It does not detect an acceleration-slope breakpoint; segmented regression on <span class="math inline">\(v(t)\)</span> would answer that different question.</p>
+<p>STARS is historical/retired in the warming-acceleration exploration and is not an active chapter input. The current manuscript uses sliding Theil–Sen local speed rather than persistent-regime detection.</p>
 <p>Originally designed for PDO regime shifts. Applied to lake surface temperature by Woolway et al.&nbsp;(2017).</p>
 <p>Alternatives: Bai-Perron (multiple breakpoints, regression-based), Pettitt (single shift, rank-based), CUSUM (cumulative sum). All are sensitive to algorithm choice and parameterisation; STARS is favoured for its simplicity and climatological track record.</p>
 <p>Paper notes: <a href="../notes/papers/rodionov2004.html">Rodionov (2004)</a>.</p>

@@ -12,22 +12,14 @@ An abrupt, persistent change in the statistical properties (typically the mean) 
 
 ## Long-term warming speed
 
-For the warming-acceleration exploration, the canonical quantity is the Theil–Sen slope of the **annual STL trend** \\\tau(t)\\. It estimates the low-frequency warming rate after seasonal and short-term variation have been separated from the monthly LSWT record.
-
-For readability, this slope is presented as its 40-year-equivalent change (\\^\circ\\C / 40 yr). This is a rescaled long-term trend estimate, not a raw 40-year temperature difference. The Sen slope from raw annual mean LSWT is reported only as a robustness comparison because it retains more short-term interannual variation.
+For the warming-acceleration exploration, the canonical quantity is the Theil–Sen slope of raw annual GLAST reconstructed LSWT, presented as its 40-year-equivalent change (\\^\circ\\C / 40 yr). This is a rescaled long-term trend estimate, not a raw 40-year temperature difference.
 
 ## Annual warming speed
 
-The annual change in the STL trend:
-
-\\v(t) = \tau(t) - \tau(t - 1).\\
-
-Its unit is \\^\circ\\C yr\\^{-1}\\. This is the time-varying speed series used to identify persistent warming-speed regimes with STARS.
+The trailing-10-year Theil–Sen slope of raw annual reconstructed LSWT, indexed to its endpoint year. Its unit is \\^\circ\\C yr\\^{-1}\\ and it is the primary local warming-speed representation.
 
 ## Acceleration
 
-The long-term rate of change in annual warming speed, estimated as the Sen slope of \\v(t)\\ over 1982–2020.
-
-Positive acceleration means the low-frequency warming trend is becoming more positive through time; negative acceleration means it is becoming less positive. Neither sign alone determines whether the lake is presently warming or cooling.
+The long-term Sen trend of the valid trailing-10-year local warming-speed sequence. It is termed *warming-speed change* (\\10^{-3}\\ \\^\circ\\C yr\\^{-2}\\): an operational trajectory statistic, not a resolved instantaneous physical acceleration.
 
 Back to top

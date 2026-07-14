@@ -12,7 +12,7 @@ Key parameters:
 
 Used in: [warming-acceleration](../explorations/index.llms.md#warming-acceleration).
 
-## STARS
+## STARS (retired for this exploration)
 
 Sequential T-test Analysis of Regime Shifts (Rodionov 2004). Detects abrupt, persistent shifts in the **mean** of a time series.
 
@@ -21,7 +21,7 @@ Sequential T-test Analysis of Regime Shifts (Rodionov 2004). Detects abrupt, per
 - Uses a t-test critical difference and a cumulative Regime Shift Index (RSI) to require persistence after a candidate shift
 - A shift in a series mean is distinct from a breakpoint in that series’ slope
 
-In the warming-acceleration exploration, STARS is applied to annual warming speed \\v(t)=\Delta\tau(t)\\, with \\L=7\\ and \\p=0.05\\. It therefore detects a persistent shift from one **mean warming-speed regime** to another. It does not detect an acceleration-slope breakpoint; segmented regression on \\v(t)\\ would answer that different question.
+STARS is historical/retired in the warming-acceleration exploration and is not an active chapter input. The current manuscript uses sliding Theil–Sen local speed rather than persistent-regime detection.
 
 Originally designed for PDO regime shifts. Applied to lake surface temperature by Woolway et al. (2017).
 

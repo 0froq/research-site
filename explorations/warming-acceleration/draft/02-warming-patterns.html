@@ -604,6 +604,12 @@ window.Quarto = {
  <span class="menu-text">2026-07-13</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/log/2026-07-15.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-15</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -624,7 +630,7 @@ window.Quarto = {
   <li><a href="#dominant-modes-of-warming-variation" id="toc-dominant-modes-of-warming-variation" class="nav-link" data-scroll-target="#dominant-modes-of-warming-variation">Dominant modes of warming variation</a></li>
   <li><a href="#spatial-distribution-of-warming-modes" id="toc-spatial-distribution-of-warming-modes" class="nav-link" data-scroll-target="#spatial-distribution-of-warming-modes">Spatial distribution of warming modes</a></li>
   <li><a href="#predictors-of-warming-mode-expression" id="toc-predictors-of-warming-mode-expression" class="nav-link" data-scroll-target="#predictors-of-warming-mode-expression">Predictors of warming mode expression</a></li>
-  <li><a href="#comparison-with-discrete-clustering" id="toc-comparison-with-discrete-clustering" class="nav-link" data-scroll-target="#comparison-with-discrete-clustering">Comparison with discrete clustering</a></li>
+  <li><a href="#descriptive-trajectory-typology" id="toc-descriptive-trajectory-typology" class="nav-link" data-scroll-target="#descriptive-trajectory-typology">Descriptive trajectory typology</a></li>
   <li><a href="#implications-for-future-analysis" id="toc-implications-for-future-analysis" class="nav-link" data-scroll-target="#implications-for-future-analysis">Implications for future analysis</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/explorations/warming-acceleration/draft/02-warming-patterns.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/explorations/warming-acceleration/draft/02-warming-patterns.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -652,15 +658,15 @@ window.Quarto = {
 </header>
 
 
-<p>Long-term warming speed and acceleration compress each lake’s 40-year temperature record into two summary statistics. While these summaries capture direction and rate of change, they discard the trajectory itself—when anomalies occurred and whether their timing was shared across lakes. This chapter applies principal component analysis (PCA) to the full annual temperature anomaly trajectory, identifying dominant temporal contrasts across 92,245 lakes.</p>
+<p>Long-term warming and warming-speed change compress each lake’s 40-year temperature record into two summary statistics. While these summaries capture direction and rate of change, they discard the trajectory itself—when anomalies occurred and whether their timing was shared across lakes. This chapter applies principal component analysis (PCA) to the full annual temperature anomaly trajectory, identifying dominant temporal contrasts across 92,245 lakes.</p>
 <blockquote class="blockquote">
-<p>长期增温速率和加速度将每个湖泊 40 年的温度记录压缩为两个统计量。本章对完整的年温度异常轨迹做 PCA，识别全球 92,245 个湖泊增温变异的主要模态。</p>
+<p>长期增温与增温速度变化将每个湖泊 40 年记录压缩为两个统计量。本章对完整年温度异常轨迹做 PCA，识别全球 92,245 个湖泊轨迹变异的主要模态。</p>
 </blockquote>
 <section id="data-preparation" class="level2">
 <h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
-<p>Annual mean lake surface water temperature (LSWT) is computed from daily GLAST observations and smoothed with an STL trend (<code>nt=99</code>) before PCA. Each lake’s low-frequency annual trajectory is expressed as a baseline anomaly relative to the 1981–1990 mean, yielding a 40-year anomaly vector. This separates the trajectory analysis from the raw annual metrics used for warming and acceleration in Chapter 1.</p>
+<p>Annual mean reconstructed lake surface water temperature (LSWT) is derived from the GLAST reconstructed/corrected product and smoothed with an STL trend (<code>nt=99</code>) before PCA. Each lake’s low-frequency annual trajectory is expressed as a baseline anomaly relative to the 1981–1990 mean, yielding a 40-year anomaly vector. This separates the trajectory analysis from raw annual long-term warming and local-speed metrics used in Chapter 1.</p>
 <blockquote class="blockquote">
-<p>数据来自 GLAST 日尺度 LSWT；年均序列先经 <code>nt=99</code> 的 STL 趋势平滑，再以 1981–1990 为基线计算异常。Chapter 1 的原始年均指标与本章低频轨迹 PCA 保持分工。</p>
+<p>数据来自 GLAST 重建/校正 LSWT 产品；年均序列先经 <code>nt=99</code> STL 趋势平滑，再以 1981–1990 为基线计算异常。Ch1 原始年均指标与本章低频轨迹 PCA 保持分工。</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
@@ -999,12 +1005,49 @@ Table&nbsp;3: Partial R² for each predictor group in explaining PC1–PC3 score
 <p>在非地理因子中，跨 PC1–PC3 而言，<strong>海拔</strong>的总体独立贡献最大（<a href="#tbl-partial-r2" class="quarto-xref">Table&nbsp;3</a>）。<strong>深度</strong>和<strong>湖泊面积</strong>的贡献较小，且相对重要性随成分变化：PC1 中深度高于面积，PC2 和 PC3 中面积高于深度。偏 R² 是无符号的解释方差增量，只比较独立信息量；关联方向和不确定性应见 <a href="#tbl-pca-regression-coefs" class="quarto-xref">Table&nbsp;1</a>。</p>
 </blockquote>
 </section>
-<section id="comparison-with-discrete-clustering" class="level2">
-<h2 class="anchored" data-anchor-id="comparison-with-discrete-clustering">Comparison with discrete clustering</h2>
-<p>An alternative approach to characterising warming heterogeneity is <span class="math inline">\(k\)</span>-means clustering on the PCA-reduced trajectory space. We evaluated K=4–8 and selected K=5 based on spatial coherence and statistical metrics. A detailed comparison of PCA and clustering approaches, including quantitative metrics and the rationale for preferring continuous scores, is given in <a href="../../../explorations/warming-acceleration/prose/pca-vs-clustering.html">PCA vs.&nbsp;Clustering</a>.</p>
+<section id="descriptive-trajectory-typology" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-trajectory-typology">Descriptive trajectory typology</h2>
+<p>PCA remains primary: it preserves continuous score geometry. K-means is only a readable partition. The fixed display is K=5 on PC1–PC5; clusters are descriptive labels, not natural response types or regions.</p>
 <blockquote class="blockquote">
-<p>用 PCA 降维后的轨迹空间做 K 均值聚类是替代方案。详细比较见 <a href="../../../explorations/warming-acceleration/prose/pca-vs-clustering.html">PCA vs.&nbsp;Clustering</a>。</p>
+<p>PCA 是主分析，保留连续轨迹空间；K-means 只提供可读切分。固定展示 PC1–PC5、K=5；cluster 不是自然类型或区域。</p>
 </blockquote>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-cluster-profiles-k5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cluster-profiles-k5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-warming-patterns_files/figure-html/fig-cluster-profiles-k5-1.png" class="img-fluid figure-img" width="2400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cluster-profiles-k5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Median baseline-anomaly trajectories for descriptive PC1–PC5 K=5 partition. Ribbons show within-cluster interquartile ranges.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-cluster-profiles-k5" class="quarto-xref">Figure&nbsp;5</a> describes five broad trajectory groups. Boundaries remain algorithmic: lakes near a boundary can change label when K or PC dimensions change, even if continuous scores barely change.</p>
+<blockquote class="blockquote">
+<p><a href="#fig-cluster-profiles-k5" class="quarto-xref">Figure&nbsp;5</a> 展示五组宽泛轨迹。边界由算法给出；K 或 PC 维数改变时，边界附近湖泊可换组，连续分数变化却很小。</p>
+</blockquote>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-clustering-sensitivity" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-clustering-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-warming-patterns_files/figure-html/fig-clustering-sensitivity-1.png" class="img-fluid figure-img" width="2400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-clustering-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: K and PC-dimension sensitivity of descriptive clustering. Cost declines across K=4–8; adjusted Rand index compares K=5 partitions with PC1–PC5 reference.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-clustering-sensitivity" class="quarto-xref">Figure&nbsp;6</a> has no unique elbow across K=4–8. K=5 is fixed display resolution, not estimated true number of lake types. PC-dimension sensitivity is a boundary diagnostic; it does not alter PCA results.</p>
+<blockquote class="blockquote">
+<p><a href="#fig-clustering-sensitivity" class="quarto-xref">Figure&nbsp;6</a> 没有唯一清晰 elbow。K=5 是固定展示分辨率，不是“真实类型数”；PC 维数敏感性只检验边界，不改变 PCA 结论。</p>
+</blockquote>
+<p>Full methods discussion: <a href="../../../explorations/warming-acceleration/prose/pca-vs-clustering.html">PCA vs.&nbsp;Clustering</a>.</p>
 </section>
 <section id="implications-for-future-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="implications-for-future-analysis">Implications for future analysis</h2>

@@ -10,6 +10,14 @@ The first-pass model should report both a geography-only baseline and the increm
 
 > 首轮模型要并列地理基线与加入 ERA5 后的增量解释，并做空间分块验证；所有系数均称关联，不称效应。
 
+![](era5-association-scope_files/figure-html/fig-era5-spatial-block-cv-1.png)
+
+Figure 1: Spatial-block cross-validated R² for PC scores. Geography-only models are compared with geography plus available ERA5 variables; negative values indicate worse-than-mean held-out prediction.
+
+[Figure 1](#fig-era5-spatial-block-cv) is deliberately a predictive association check. It asks whether wind, pressure, and precipitation summaries improve held-out spatial prediction beyond broad geography; it does not estimate physical forcing effects.
+
+> [Figure 1](#fig-era5-spatial-block-cv) 是预测式关联检验：检验现有 ERA5 变量是否改善空间留出预测，不估计物理强迫效应。
+
 ## Missing variables to acquire before attribution
 
 | Missing input | Why it matters | Minimum use |

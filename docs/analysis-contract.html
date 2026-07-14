@@ -298,6 +298,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#analysis-layers" id="toc-analysis-layers" class="nav-link" data-scroll-target="#analysis-layers">Analysis layers</a></li>
   <li><a href="#explicit-exclusions" id="toc-explicit-exclusions" class="nav-link" data-scroll-target="#explicit-exclusions">Explicit exclusions</a></li>
   <li><a href="#provenance-and-change-rule" id="toc-provenance-and-change-rule" class="nav-link" data-scroll-target="#provenance-and-change-rule">Provenance and change rule</a></li>
+  <li><a href="#frozen-manuscript-decision" id="toc-frozen-manuscript-decision" class="nav-link" data-scroll-target="#frozen-manuscript-decision">Frozen manuscript decision</a></li>
   <li><a href="#related-workflow" id="toc-related-workflow" class="nav-link" data-scroll-target="#related-workflow">Related workflow</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/docs/analysis-contract.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/docs/analysis-contract.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -347,8 +348,8 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>Annual temperature</td>
-<td>Calendar-year mean LSWT calculated directly from valid non-freezing daily GLAST observations.</td>
-<td>Input for all primary warming, warming-speed, and acceleration metrics.</td>
+<td>Calendar-year mean LSWT calculated directly from valid non-freezing daily GLAST reconstructed-product values.</td>
+<td>Input for all primary warming and warming-speed metrics.</td>
 </tr>
 <tr class="even">
 <td>Long-term warming</td>
@@ -358,10 +359,10 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>Annual warming speed</td>
 <td>Trailing 10-year Theil–Sen slope of raw annual mean LSWT, indexed to the endpoint year (e.g.&nbsp;1981–1990 is indexed to 1990), in °C yr⁻¹.</td>
-<td>Primary local warming-speed representation in the chapter; it describes temporal and spatial heterogeneity of observed LSWT trajectories.</td>
+<td>Primary local warming-speed representation in the chapter; it describes temporal and spatial heterogeneity of reconstructed LSWT trajectories.</td>
 </tr>
 <tr class="even">
-<td>Acceleration</td>
+<td>Warming-speed change</td>
 <td>Sen slope of the raw trailing-10-year warming-speed sequence over its valid 1990–2020 support, in 10⁻³ °C yr⁻².</td>
 <td>Defined operationally as a long-term change in local warming speed, not as a resolved instantaneous physical acceleration. The historical adjacent-difference metric is sensitivity-only.</td>
 </tr>
@@ -373,12 +374,30 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>PCA interpretation set</td>
 <td>PC1–PC5.</td>
-<td>The substantive modes shown, mapped, and interpreted in the chapter. The 95% variance threshold is a diagnostic, not a retention rule.</td>
+<td>PC1 is the robust global low-frequency mode. PC2–PC5 are region/sample-composition-sensitive secondary descriptive modes; the 95% variance threshold is a diagnostic, not a retention rule.</td>
+</tr>
+<tr class="odd">
+<td>PCA role</td>
+<td>Defines the continuous low-frequency trajectory-score geometry.</td>
+<td>PCA components are covariance modes, not intrinsic lake categories or physical mechanisms.</td>
+</tr>
+<tr class="even">
+<td>Clustering role</td>
+<td>Descriptive clustering in PCA-score space, used to communicate representative trajectory typologies.</td>
+<td>It is a partition of a continuous PCA geometry, not a claim that lakes belong to intrinsic discrete response types.</td>
+</tr>
+<tr class="odd">
+<td>Clustering configuration</td>
+<td>Main display: K=5 using PC1–PC5 scores.</td>
+<td>Sensitivity: K=4–8 at PC1–PC5, plus K=5 using PC1, PC1–PC3, PC1–PC7, and PC1–PC9; stability of major profiles, not a single optimisation score, determines whether K=5 remains useful.</td>
 </tr>
 </tbody>
 </table>
 <blockquote class="blockquote">
-<p>原始年均温度负责描述增暖、年增暖速度与加速度；STL <code>nt=99</code> 只在 PCA 前提取低频轨迹。正文解释前 5 个主成分，不以累计 95% 方差作为保留阈值。</p>
+<p>原始年均温度负责描述增暖、年增暖速度与增温速度变化；STL <code>nt=99</code> 只在 PCA 前提取低频轨迹。正文解释前 5 个主成分，不以累计 95% 方差作为保留阈值。</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>PCA 定义连续轨迹空间；clustering 只是在该空间中生成便于沟通的代表性 typology。主展示 K=5 / PC1–PC5；K=4–8 与 PC1、PC1–PC3、PC1–PC7、PC1–PC9 进入敏感性，不把 cluster 当作自然离散类别。</p>
 </blockquote>
 </section>
 <section id="analysis-layers" class="level2">
@@ -397,9 +416,9 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>Observed-temperature layer</td>
-<td>Raw daily LSWT aggregated to raw annual or seasonal means.</td>
-<td>Observed long-term warming, cooling cohorts, and seasonal/ice diagnostics.</td>
+<td>Reconstructed-temperature layer</td>
+<td>Raw daily GLAST LSWT-product values aggregated to raw annual or seasonal means.</td>
+<td>Long-term reconstructed-LSWT change, cooling cohorts, and seasonal/ice diagnostics.</td>
 </tr>
 <tr class="even">
 <td>Background-trajectory layer</td>
@@ -411,9 +430,9 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>原始层回答实际观测到的长期增温与季节/冰期问题；STL 背景层回答低频轨迹及其速度演化。</p>
 </blockquote>
-<p>STL does not replace observed temperature. Its trend is parameter-dependent; its remainder is not automatically an extreme-event series or a teleconnection signal. Any analysis of seasonal amplitude or remainder structure must first assess ice-state encoding, missingness, endpoints, and STL-parameter sensitivity.</p>
+<p>GLAST is not direct lake-temperature observation: it is a corrected/reconstructed product built from station-temperature information and FLAKE simulations driven by ERA5-Land. “Raw” here means un-smoothed values from that product, not unmodelled in-situ measurements. STL does not replace this reconstructed series. Its trend is parameter-dependent; its remainder is not automatically an extreme-event series or a teleconnection signal.</p>
 <blockquote class="blockquote">
-<p>STL 不替代观测温度。其 trend 依赖参数；remainder 不自动等于极端或遥相关信号。分析季节振幅或 remainder 前，先做冰态编码、缺失、端点和参数敏感性 QC。</p>
+<p>GLAST 不是直接湖温观测，而是站点温度信息与 ERA5-Land 驱动 FLAKE 模拟经校正后的重建产品。raw 指该产品未经平滑的值，不是未经模型处理的站点实测；STL 不替代该重建序列。</p>
 </blockquote>
 </section>
 <section id="explicit-exclusions" class="level2">
@@ -428,6 +447,13 @@ ul.task-list li input[type="checkbox"] {
 <p>Every chapter must name the producer branch it reads. A change to any definition above requires the same change in: this contract, the relevant <code>data-process</code> producer documentation, <code>AGENTS.md</code>, and the affected chapter prose/captions. If only a sensitivity analysis uses a different branch, label it as such rather than changing the canonical wording.</p>
 <blockquote class="blockquote">
 <p>每章应明确读取的 producer branch。改动本页定义时，要同步更新 Step 文档、AGENTS 和相关正文/图注；敏感性分支必须明确标记，不能替换 canonical 叙述。</p>
+</blockquote>
+</section>
+<section id="frozen-manuscript-decision" class="level2">
+<h2 class="anchored" data-anchor-id="frozen-manuscript-decision">Frozen manuscript decision</h2>
+<p>For the current first-author descriptive manuscript, do not introduce a new primary time-series algorithm, a new global partitioning method, STARS, a causal attribution model, or a teleconnection-centred narrative. New analyses are admissible only when they directly implement the definitions above, test their stated sensitivity branches, or complete the modular cooling/ice and constrained association work already specified.</p>
+<blockquote class="blockquote">
+<p>当前第一作者描述性论文冻结主方法：不再新增主时间序列算法、全球分区方法、STARS、因果归因模型或遥相关主叙事。后续分析只能实现本契约、完成列明敏感性，或完成既定冰模块与受限关联模块。</p>
 </blockquote>
 </section>
 <section id="related-workflow" class="level2">

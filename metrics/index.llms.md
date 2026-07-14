@@ -4,7 +4,7 @@ Methods, algorithms, indices, data sources, and terminology. Not tied to any spe
 
 ## [Algorithms](../metrics/algorithms.llms.md)
 
-STL, STARS, K-means, Theil–Sen, Mann–Kendall, etc.
+STL, descriptive PCA-score clustering, Theil–Sen, Mann–Kendall, and historical/retired algorithms such as STARS.
 
 ## [Indices](../metrics/indices.llms.md)
 
