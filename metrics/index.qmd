@@ -7,7 +7,7 @@ Not tied to any specific exploration.
 
 ## [Algorithms](./algorithms.qmd)
 
-STL, STARS, K-means, Theil–Sen, Mann–Kendall, etc.
+STL, descriptive PCA-score clustering, Theil–Sen, Mann–Kendall, and historical/retired algorithms such as STARS.
 
 ## [Indices](./indices.qmd)
 

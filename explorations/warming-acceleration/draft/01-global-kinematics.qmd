@@ -9,20 +9,22 @@ title: Global Kinematics
 
 source("../../../shared/R/figure-style.R")
 source("../../../shared/R/descriptive-helpers.R")
-source("../../../shared/R/kinematics-helpers.R")
-source("../../../shared/R/seasonal-ice-helpers.R")
+source("../../../shared/R/01-global-kinematics-helpers.R")
+source("../../../shared/R/seasonal-ice-diagnostics-helpers.R")
 ```
 
 ## Sample coverage
 
 ```{r}
-#| cache: true
+#| cache: false
 
 list2env(prepare_kinematics_data(), envir = environment())
 list2env(prepare_seasonal_ice_data(), envir = environment())
 ```
 
-GLAST: `r lakes_num` lakes, `r start_year`--`r end_year`.
+GLAST reconstructed LSWT product: `r lakes_num` lakes, `r start_year`--`r end_year`. It is not direct in-situ observation: station-temperature information and ERA5-Land-driven FLAKE simulations are corrected to produce the dataset. “Raw” below means un-smoothed GLAST product values.
+
+> GLAST 是重建 LSWT 产品，不是直接站点实测；它由站点温度信息和 ERA5-Land 驱动的 FLAKE 模拟校正得到。下文 raw 指未经平滑的 GLAST 产品值。
 
 ## Lake density map
 
@@ -101,9 +103,9 @@ draw_fixed_aspect(lake_density_composite, aspect = 6 / 3)
 
 ## Long-term warming and local-speed heterogeneity
 
-**Long-term warming** is the Theil--Sen slope of observed annual mean lake surface water temperature (LSWT) over 1982--2020, presented as a 40-year-equivalent change in °C. The primary local **warming speed** is the trailing 10-year Theil--Sen slope of raw annual LSWT, indexed to its endpoint year. Its long-term Sen trend is operationally termed **warming-speed change**: it indicates whether local 10-year warming rates tend to become more or less positive, not a resolved instantaneous physical acceleration. This chapter remains in the observed-temperature layer.
+**Long-term warming** is the Theil--Sen slope of reconstructed annual mean lake surface water temperature (LSWT) over 1982--2020, presented as a 40-year-equivalent change in °C. The primary local **warming speed** is the trailing 10-year Theil--Sen slope of raw annual LSWT, indexed to its endpoint year. Its long-term Sen trend is operationally termed **warming-speed change**: it indicates whether local 10-year warming rates tend to become more or less positive, not a resolved instantaneous physical acceleration. This chapter remains in the reconstructed-temperature layer.
 
-> 本章是观测温度层：年均 LSWT 的长期增温为主要指标；10 年滑动 Sen 为局部增温速度；其长期变化称增温速度变化，不等同于瞬时物理加速度。STL 对比保留在 prose/补充材料。
+> 本章是重建温度层：年均 LSWT 的长期增温为主要指标；10 年滑动 Sen 为局部增温速度；其长期变化称增温速度变化，不等同于瞬时物理加速度。STL 对比保留在 prose/补充材料。
 
 ```{r}
 #| include: false
@@ -114,13 +116,13 @@ fmt_num <- function(x, digits = 2) formatC(x, format = "f", digits = digits)
 fmt_pct <- function(x, digits = 1) fmt_num(100 * x, digits)
 ```
 
-@tbl-warming-summary-raw summarizes observed long-term warming and the change in trailing-10-year warming speed. `r fmt_pct(raw_warming_summary$prop_warming)`% of lakes show positive long-term warming. `r fmt_pct(accel_summary$prop_positive)`% have a positive long-term change in local warming speed; this is an operational trajectory descriptor, not a physical instantaneous acceleration.
+@tbl-warming-summary-raw summarizes observed long-term warming and the change in trailing-10-year warming speed. `r fmt_pct(raw_warming_summary$prop_warming)`% of lakes show positive long-term warming. `r fmt_pct(speed_change_summary$prop_positive)`% have a positive long-term change in local warming speed; this is an operational trajectory descriptor, not a physical instantaneous acceleration.
 
-> @tbl-warming-summary-raw summarizes the warming metrics computed from raw annual mean LSWT% 湖泊呈正增温速率，但仅`r fmt_pct(accel_summary$prop_positive)`% 呈正加速度，增温方向与速度变化基本解耦。
+> @tbl-warming-summary-raw 汇总 raw annual LSWT 的长期增温与局部增温速度变化。`r fmt_pct(raw_warming_summary$prop_warming)`% 湖泊长期增温为正，`r fmt_pct(speed_change_summary$prop_positive)`% 的局部增温速度长期趋向更正。
 
-The long-term change in local 10-year warming speed is `r fmt_num(accel_summary$mean, 3)` ± `r fmt_num(accel_summary$sd, 3)` ×10⁻³ °C yr⁻². This operational statistic summarizes whether local background warming rates tend to become more or less positive; it is not a resolved instantaneous physical acceleration.
+The long-term change in local 10-year warming speed is `r fmt_num(speed_change_summary$mean, 3)` ± `r fmt_num(speed_change_summary$sd, 3)` ×10⁻³ °C yr⁻². This operational statistic summarizes whether local background warming rates tend to become more or less positive; it is not a resolved instantaneous physical acceleration.
 
-> 当前加速度离散度极大；年际差分保留大量短时变率。因此现阶段仅作描述性诊断，不能据此判定单湖加速或减速；定义与稳健性待后续重审。
+> 此量是 10 年局部 Sen 速度序列的长期趋势；它用于描述轨迹方向，不用于判定瞬时物理加速或减速。
 
 
 ::: {.column-page-inset}
@@ -140,36 +142,36 @@ The long-term change in local 10-year warming speed is `r fmt_num(accel_summary$
     `r fmt_num(raw_warming_summary$median, 2)`,
     `r fmt_num(raw_warming_summary$q75, 2)`
 
-Raw annual warming speed {#tbl-warming-summary-raw}
+Raw annual long-term warming {#tbl-warming-summary-raw}
 :::
 
 ::: {.list-table header-rows=0}
 
-- - Accelerating count
-  - `r fmt_count(accel_summary$n_positive)`
-    (`r fmt_pct(accel_summary$prop_positive)`%)
+- - Positive speed-change count
+  - `r fmt_count(speed_change_summary$n_positive)`
+    (`r fmt_pct(speed_change_summary$prop_positive)`%)
 
 - - Mean (10⁻³ °C/yr²)
-  - `r fmt_num(accel_summary$mean, 3)` ±
-    `r fmt_num(accel_summary$sd, 3)`
+  - `r fmt_num(speed_change_summary$mean, 3)` ±
+    `r fmt_num(speed_change_summary$sd, 3)`
 
 - - Quartile (10⁻³ °C/yr²)
-  - `r fmt_num(accel_summary$q25, 2)`,
-    `r fmt_num(accel_summary$median, 2)`,
-    `r fmt_num(accel_summary$q75, 2)`
+  - `r fmt_num(speed_change_summary$q25, 2)`,
+    `r fmt_num(speed_change_summary$median, 2)`,
+    `r fmt_num(speed_change_summary$q75, 2)`
 
-Warming-speed change {#tbl-accel-summary}
+Warming-speed change {#tbl-speed-change-summary}
 :::
 
-Summary of warming status.
+Summary of long-term warming and local-speed change.
 :::
 :::
 
-A sign-only classification is only descriptive: values close to zero can switch category without a meaningful change in magnitude. The continuous relationships in
-@fig-warming-acceleration-scatterplot-matrix are therefore the primary summary.
+Values close to zero should not be interpreted as categorical “acceleration” or “deceleration”. The continuous relationships in
+@fig-warming-speed-change-scatterplot-matrix are therefore the primary summary.
 
 ```{r}
-#| label: fig-warming-acceleration-scatterplot-matrix
+#| label: fig-warming-speed-change-scatterplot-matrix
 #| fig-cap: "Pairwise relationships among mean temperature, long-term warming, and long-term change in local trailing-10-year warming speed."
 #| fig-width: 6
 #| fig-height: 6
@@ -300,7 +302,7 @@ scatter_matrix <- GGally::ggpairs(
   columns = 1:3,
   columnLabels = c(
     "Mean temperature\n(°C)",
-    "Long-term warming speed\n(raw; °C / 40 yr)",
+    "Long-term warming\n(raw; °C / 40 yr)",
     "Warming-speed change\n(10⁻³ °C / yr²)"
   ),
   upper = list(continuous = scatter_matrix_cor),
@@ -343,16 +345,45 @@ The changing median and persistent interquartile spread in @fig-global-local-spe
 
 > @fig-global-local-speed 的中位数变化与持续的四分位距同时显示时间与空间异质性：局部增温速度会随时间演化，同一阶段不同湖泊可处在增温或降温状态。
 
+@fig-local-speed-endpoint-maps makes this second pattern explicit. Each panel uses the same local 10-year speed definition, so contrast across panels is temporal change and contrast within a panel is spatial heterogeneity.
+
+> @fig-local-speed-endpoint-maps 用相同 10 年 Sen 速度定义比较四个端点年：面板间是时间变化，面板内是同阶段的空间异质性。
+
+```{r}
+#| label: fig-local-speed-endpoint-maps
+#| fig-cap: "Spatial distribution of trailing-10-year local warming speed at four endpoint years. Hexagons aggregate at least five lakes in 5° geographic bins."
+#| fig-width: 8
+#| fig-height: 6
+#| cache: true
+
+ggplot() +
+  geom_polygon(
+    data = endpoint_hex,
+    aes(lon, lat, group = interaction(year, id), fill = speed),
+    color = "white", linewidth = 0.06
+  ) +
+  the_geom_coastline() +
+  facet_wrap(~year, ncol = 2) +
+  scale_fill_paletteer_c(
+    palette = "grDevices::Blue-Red 3", limits = c(-0.2, 0.2), oob = squish,
+    name = "10-year Sen slope\n(°C / yr)"
+  ) +
+  coord_cartesian(xlim = c(lon_min, lon_max), ylim = c(lat_min, lat_max), expand = FALSE) +
+  labs(x = "Longitude", y = "Latitude") +
+  theme_facet(base_size = 9) +
+  theme(legend.position = "bottom")
+```
+
 ## Spatial heterogeneity of local warming speed
 
-The hexagons in @fig-spatial-warming-acceleration-hex summarize lake-level estimates within 5° cells containing at least five lakes. The lower panel maps the long-term change in local trailing-10-year warming speed, not instantaneous acceleration.
+The hexagons in @fig-spatial-warming-speed-change-hex summarize lake-level estimates within 5° cells containing at least five lakes. The lower panel maps the long-term change in local trailing-10-year warming speed, not instantaneous acceleration.
 
-> @fig-spatial-warming-acceleration-hex 用六边形汇总 5° 网格内的湖泊指标（≥5 个湖）。上下面板分别展示长期增温与局部增温速度变化的空间格局，两者不必一致。
+> @fig-spatial-warming-speed-change-hex 用六边形汇总 5° 网格内的湖泊指标（≥5 个湖）。上下面板分别展示长期增温与局部增温速度变化的空间格局，两者不必一致。
 
 
 
 ```{r}
-#| label: fig-spatial-warming-acceleration-hex
+#| label: fig-spatial-warming-speed-change-hex
 #| fig-cap: "Spatial pattern of lake warming and long-term local warming-speed change.
 #|   Hexagons aggregate lake-level metrics in 5° geographic bins containing at least five lakes."
 #| fig-width: 8
@@ -411,7 +442,7 @@ spatial_legend_guide <- legendry::guide_colbar(
     key = legendry::key_manual(
       aesthetic = spatial_legend_breaks,
       label = format_axis_last_unit(
-        spatial_legend_breaks * acceleration_limit,
+        spatial_legend_breaks * speed_change_limit,
         "10⁻³ °C / yr²",
         1
       )
@@ -439,72 +470,17 @@ spatial_warming_map <- ggplot() +
   spatial_map_base +
   spatial_shared_fill_scale()
 
-spatial_acceleration_map <- ggplot() +
-  spatial_hex_layer("acceleration_scaled") +
+spatial_speed_change_map <- ggplot() +
+  spatial_hex_layer("speed_change_scaled") +
   spatial_map_base +
   spatial_shared_fill_scale()
 
-(spatial_warming_map / guide_area() / spatial_acceleration_map) +
+(spatial_warming_map / guide_area() / spatial_speed_change_map) +
   plot_layout(
     heights = c(1, 0.13, 1),
     guides = "collect"
   )
 ```
-
-
-::: {.column-page-inset}
-::: {#tbl-spatial-continent-summary .list-table}
-
-- - Continent
-  - Warming
-  - Accelerating
-  - Warming + accelerating
-  - Mean warming
-  - Mean acceleration
-- - **NA**
-  - `r fmt_pct(continent_stat("NA", "warming_pct"))`%
-  - **`r fmt_pct(continent_stat("NA", "accelerating_pct"))`%**
-  - **`r fmt_pct(continent_stat("NA", "warming_accelerating_pct"))`%**
-  - `r fmt_num(continent_stat("NA", "mean_warming"), 2)` °C / 40 yr
-  - **`r fmt_num(continent_stat("NA", "mean_acceleration"), 2)` ×10⁻³ °C / yr²**
-- - EU
-  - `r fmt_pct(continent_stat("EU", "warming_pct"))`%
-  - `r fmt_pct(continent_stat("EU", "accelerating_pct"))`%
-  - `r fmt_pct(continent_stat("EU", "warming_accelerating_pct"))`%
-  - `r fmt_num(continent_stat("EU", "mean_warming"), 2)` °C / 40 yr
-  - `r fmt_num(continent_stat("EU", "mean_acceleration"), 2)` ×10⁻³ °C / yr²
-- - AS
-  - `r fmt_pct(continent_stat("AS", "warming_pct"))`%
-  - `r fmt_pct(continent_stat("AS", "accelerating_pct"))`%
-  - `r fmt_pct(continent_stat("AS", "warming_accelerating_pct"))`%
-  - `r fmt_num(continent_stat("AS", "mean_warming"), 2)` °C / 40 yr
-  - `r fmt_num(continent_stat("AS", "mean_acceleration"), 2)` ×10⁻³ °C / yr²
-- - SA
-  - `r fmt_pct(continent_stat("SA", "warming_pct"))`%
-  - `r fmt_pct(continent_stat("SA", "accelerating_pct"))`%
-  - `r fmt_pct(continent_stat("SA", "warming_accelerating_pct"))`%
-  - `r fmt_num(continent_stat("SA", "mean_warming"), 2)` °C / 40 yr
-  - `r fmt_num(continent_stat("SA", "mean_acceleration"), 2)` ×10⁻³ °C / yr²
-- - AF
-  - `r fmt_pct(continent_stat("AF", "warming_pct"))`%
-  - `r fmt_pct(continent_stat("AF", "accelerating_pct"))`%
-  - `r fmt_pct(continent_stat("AF", "warming_accelerating_pct"))`%
-  - `r fmt_num(continent_stat("AF", "mean_warming"), 2)` °C / 40 yr
-  - `r fmt_num(continent_stat("AF", "mean_acceleration"), 2)` ×10⁻³ °C / yr²
-- - OC
-  - `r fmt_pct(continent_stat("OC", "warming_pct"))`%
-  - `r fmt_pct(continent_stat("OC", "accelerating_pct"))`%
-  - `r fmt_pct(continent_stat("OC", "warming_accelerating_pct"))`%
-  - `r fmt_num(continent_stat("OC", "mean_warming"), 2)` °C / 40 yr
-  - `r fmt_num(continent_stat("OC", "mean_acceleration"), 2)` ×10⁻³ °C / yr²
-
-Continent-level spatial summary
-:::
-:::
-
-@tbl-spatial-continent-summary is a descriptive aggregation of local-speed change. Continental values are not area-weighted climate means and do not identify physical acceleration or deceleration.
-
-> @tbl-spatial-continent-summary 强化了大洲差异。欧洲高增温速率+正加速度，北美高增温比例但负均值加速度。大洲统计值为描述性汇总，非面积加权气候均值。
 
 
 These global metrics reduce each lake's annual warming-speed series to a

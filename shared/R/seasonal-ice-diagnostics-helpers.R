@@ -49,5 +49,34 @@ prepare_seasonal_ice_data <- function(data_dir = data) {
         summer_dominant_late_cooling == TRUE & abs(lat) >= 45, na.rm = TRUE
       )
     )
-  list(diagnostics = diagnostics, seasonal_long = seasonal_long, cooling_summary = cooling_summary)
+  ice_season_summary <- seasonal_long |>
+    group_by(window, baseline_ice_band, cooling_period, season) |>
+    summarise(
+      median = median(trend_40yr, na.rm = TRUE),
+      q25 = quantile(trend_40yr, .25, na.rm = TRUE),
+      q75 = quantile(trend_40yr, .75, na.rm = TRUE),
+      .groups = "drop"
+    )
+  cooling_map_data <- diagnostics |>
+    transmute(
+      lon, lat,
+      cooling_period = case_when(
+        annual_full_sen_40yr < 0 & annual_late_sen_40yr < 0 ~ "Cooling in both periods",
+        annual_full_sen_40yr < 0 ~ "Full-period cooling only",
+        annual_late_sen_40yr < 0 ~ "Late-period cooling only",
+        TRUE ~ "No cooling in either period"
+      )
+    ) |>
+    filter(is.finite(lon), is.finite(lat)) |>
+    mutate(cooling_period = factor(cooling_period, levels = c(
+      "Cooling in both periods", "Full-period cooling only",
+      "Late-period cooling only", "No cooling in either period"
+    )))
+  list(
+    diagnostics = diagnostics,
+    seasonal_long = seasonal_long,
+    ice_season_summary = ice_season_summary,
+    cooling_map_data = cooling_map_data,
+    cooling_summary = cooling_summary
+  )
 }

@@ -4,7 +4,7 @@
 prepare_pca_data <- function(data_dir = data) {
   pca_dir <- file.path(
     data_dir, "07-warming-response-clustering", "output",
-    "stl_trend_period12_robustfalse_ni5_no0_nt99_baseline1981_1990_pca095_k4-8"
+    "stl_trend_period12_robustfalse_ni5_no0_nt99_baseline1981_1990_pc5_k4-8"
   )
   lake_meta_data <- read_csv(
     file.path(data_dir, "00-lake-metadata", "output", "lake_metadata.csv"),
@@ -18,6 +18,35 @@ prepare_pca_data <- function(data_dir = data) {
     mutate(pc = paste0("PC", pc))
   pca_loadings <- read_csv(file.path(pca_dir, "pca_loadings.csv"), show_col_types = FALSE)
   pca_scores <- read_csv(file.path(pca_dir, "pca_scores.csv"), show_col_types = FALSE)
+  cluster_k5 <- read_csv(file.path(pca_dir, "lake_clusters_K5.csv"), show_col_types = FALSE) |>
+    mutate(cluster = factor(paste0("C", cluster), levels = paste0("C", 1:5)))
+  cluster_profiles_k5 <- read_csv(file.path(pca_dir, "cluster_profiles_K5.csv"), show_col_types = FALSE) |>
+    mutate(cluster = factor(paste0("C", cluster), levels = paste0("C", 1:5)))
+  k_selection_metrics <- read_csv(file.path(pca_dir, "k_selection_metrics.csv"), show_col_types = FALSE)
+
+  adjusted_rand_index <- function(x, y) {
+    tab <- table(x, y)
+    choose2 <- function(z) z * (z - 1) / 2
+    sum_comb <- sum(choose2(tab))
+    row_comb <- sum(choose2(rowSums(tab)))
+    col_comb <- sum(choose2(colSums(tab)))
+    total_comb <- choose2(sum(tab))
+    expected <- row_comb * col_comb / total_comb
+    denominator <- (row_comb + col_comb) / 2 - expected
+    if (denominator == 0) return(NA_real_)
+    (sum_comb - expected) / denominator
+  }
+  pc_dimension_sensitivity <- bind_rows(lapply(c(1, 3, 5, 7, 9), function(n_pc) {
+    dir <- if (n_pc == 5) pca_dir else file.path(
+      data_dir, "07-warming-response-clustering", "output",
+      paste0("stl_trend_period12_robustfalse_ni5_no0_nt99_baseline1981_1990_pc", n_pc, "_k5-5")
+    )
+    assignment <- read_csv(file.path(dir, "lake_clusters_K5.csv"), show_col_types = FALSE) |>
+      select(lake_id, cluster)
+    reference <- cluster_k5 |> transmute(lake_id, reference_cluster = cluster)
+    joined <- assignment |> inner_join(reference, by = "lake_id")
+    tibble(n_pcs = n_pc, adjusted_rand_index = adjusted_rand_index(joined$cluster, joined$reference_cluster))
+  }))
   pca_with_meta <- pca_scores |>
     left_join(
       lake_meta_data |> select(lake_id, Continent, Depth_avg, Lake_area, Elevation),
@@ -121,6 +150,10 @@ prepare_pca_data <- function(data_dir = data) {
     pca_variance = pca_variance, pca_loadings = pca_loadings,
     pca_stability = pca_stability,
     pca_scores = pca_scores, pca_with_meta = pca_with_meta,
+    cluster_k5 = cluster_k5,
+    cluster_profiles_k5 = cluster_profiles_k5,
+    k_selection_metrics = k_selection_metrics,
+    pc_dimension_sensitivity = pc_dimension_sensitivity,
     scree_data = pca_variance |> mutate(is_main = pc <= 5, pc_label = paste0("PC", pc)),
     loading_plot_data = loading_plot_data,
     pc_scatter_data = pca_with_meta |> filter(!is.na(Continent)),

@@ -91,10 +91,10 @@ prepare_spatial_hex <- function(
     transmute(
       lake_id,
       warming_speed = raw_annual_mean_temp_sen_slope_40yr,
-      acceleration = raw_annual_mean_temp_diff_sen_slope_1e3
+      speed_change = raw_annual_mean_temp_diff_sen_slope_1e3
     ) |>
     left_join(metadata |> select(lake_id, lon, lat), by = "lake_id") |>
-    filter(is.finite(lon), is.finite(lat), is.finite(warming_speed), is.finite(acceleration)) |>
+    filter(is.finite(lon), is.finite(lat), is.finite(warming_speed), is.finite(speed_change)) |>
     filter(between(lon, lon_min, lon_max), between(lat, lat_min, lat_max)) |>
     mutate(
       q_float = (2 / 3 * (lon - lon_min)) / hex_side,
@@ -110,7 +110,7 @@ prepare_spatial_hex <- function(
     summarise(
       n = n(),
       warming_speed = mean(warming_speed, na.rm = TRUE),
-      acceleration = mean(acceleration, na.rm = TRUE),
+      speed_change = mean(speed_change, na.rm = TRUE),
       lon_c = lon_min + hex_side * 3 / 2 * first(q_hex),
       lat_c = lat_min + hex_side * sqrt(3) * (first(r_hex) + first(q_hex) / 2),
       .groups = "drop"

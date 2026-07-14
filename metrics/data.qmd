@@ -4,14 +4,12 @@ title: "Data"
 
 ## LSWT
 
-Lake Surface Water Temperature.
-Satellite-derived skin temperature of lake surfaces.
+Lake Surface Water Temperature. In this exploration, values are from a reconstructed/corrected LSWT product rather than direct in-situ lake-temperature observations.
 
 ## GLAST
 
 Global Lake Surface Temperature dataset.
-Daily LSWT for ~92,000 lakes globally, 1981–2020.
-Derived from satellite thermal infrared imagery.
+Daily reconstructed LSWT for ~92,000 lakes globally, 1981–2020. GLAST combines station-temperature information with ERA5-Land-driven FLAKE simulations and correction; it is not a direct observational record. `raw` elsewhere in this site means un-smoothed GLAST product values.
 
 ## ERA5-Land
 

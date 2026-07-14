@@ -9,6 +9,7 @@ _quarto_internal_scss_error.scss
 
 # knitr cache (completely regenerable, huge .rdb files)
 *_cache/
+*_cache-v*/
 
 # R side effects
 .RData

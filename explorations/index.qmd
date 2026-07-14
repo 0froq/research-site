@@ -4,7 +4,7 @@ title: "Explorations"
 
 All explorations — finished, cancelled, in-progress, or not started.
 
-## Warming Acceleration
+## Lake-temperature trajectory heterogeneity
 
 ::: {.align-center .text-xl}
 [prose](./warming-acceleration/prose/is-there-a-hiatus.qmd) ·
@@ -21,14 +21,15 @@ All explorations — finished, cancelled, in-progress, or not started.
 }
 </style>
 
-Do global lakes exhibit heterogeneous warming acceleration — or deceleration —
-across space and time, and what drives it?
+How heterogeneous are reconstructed lake surface water temperature trajectories
+across time and space, and what seasonal/ice contexts characterize cooling
+trajectories?
 
 92,245 lakes, GLAST dataset, 1981–2020.
 
-Methods: STL decomposition, STARS regime shifts, K-means clustering,
-teleconnection attribution.
+Methods: raw annual and moving-window Theil--Sen trends; STL-based low-frequency
+PCA; descriptive PCA-score typology; modular cooling/ice diagnostics.
 
-The question began with the global warming hiatus as a starting point,
-but the focus has broadened to the full spatiotemporal structure of
-lake warming heterogeneity.
+GLAST is a reconstructed/corrected LSWT product, not direct in-situ observation.
+The active work distinguishes descriptive trajectory structure from causal
+attribution.

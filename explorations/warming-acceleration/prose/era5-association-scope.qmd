@@ -2,6 +2,13 @@
 title: ERA5 Association Scope and Missing Driver Data
 ---
 
+```{r}
+#| include: false
+source("../../../shared/R/figure-style.R")
+source("../../../shared/R/era5-association-scope-helpers.R")
+list2env(prepare_era5_association_data(), envir = environment())
+```
+
 ## Available first-pass inputs
 
 The current ERA5 extraction provides lake-nearest-grid monthly and annual summaries for wind speed, surface pressure, and total precipitation over 1981--2020. These variables can be used for descriptive association checks with PCA scores and cooling cohorts; they are not a complete lake heat-budget dataset and cannot support attribution.
@@ -11,6 +18,24 @@ The current ERA5 extraction provides lake-nearest-grid monthly and annual summar
 The first-pass model should report both a geography-only baseline and the incremental association after adding the available ERA5 variables. It should use spatially blocked validation, not only in-sample $R^2$, and should call all coefficients associations rather than effects.
 
 > 首轮模型要并列地理基线与加入 ERA5 后的增量解释，并做空间分块验证；所有系数均称关联，不称效应。
+
+```{r}
+#| label: fig-era5-spatial-block-cv
+#| fig-cap: "Spatial-block cross-validated R² for PC scores. Geography-only models are compared with geography plus available ERA5 variables; negative values indicate worse-than-mean held-out prediction."
+#| fig-width: 7
+#| fig-height: 3.8
+
+ggplot(cv_results, aes(pc, spatial_block_cv_r2, fill = model)) +
+  geom_hline(yintercept = 0, colour = col_text_soft, linewidth = wid_inchart_line) +
+  geom_col(position = position_dodge(.7), width = .62) +
+  scale_fill_manual(values = c("Geography only" = col_grid, "Geography + available ERA5" = pal_direction_fill[["warming"]])) +
+  labs(x = NULL, y = "Spatial-block CV R²", fill = NULL) +
+  theme_base(grid = TRUE) + theme(legend.position = "bottom")
+```
+
+@fig-era5-spatial-block-cv is deliberately a predictive association check. It asks whether wind, pressure, and precipitation summaries improve held-out spatial prediction beyond broad geography; it does not estimate physical forcing effects.
+
+> @fig-era5-spatial-block-cv 是预测式关联检验：检验现有 ERA5 变量是否改善空间留出预测，不估计物理强迫效应。
 
 ## Missing variables to acquire before attribution
 

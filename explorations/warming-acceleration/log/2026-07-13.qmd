@@ -20,8 +20,8 @@ Step 06 was extended and rerun for all 92,245 lakes. It now emits `raw_annual_me
 
 Chapter data preparation is now separated from composition:
 
-- `kinematics-helpers.R` supplies Chapter 1 inputs and statistics;
-- `pca-helpers.R` supplies Chapter 2 PCA, map, and regression data;
+- `01-global-kinematics-helpers.R` supplies Chapter 1 inputs and statistics;
+- `02-warming-patterns-helpers.R` supplies Chapter 2 PCA, map, and regression data;
 - qmd files no longer ingest CSVs or perform reusable joins/reshaping.
 
 Both [Global Kinematics](../draft/01-global-kinematics.qmd) and [Warming Pattern Decomposition](../draft/02-warming-patterns.qmd) render with the updated helpers.

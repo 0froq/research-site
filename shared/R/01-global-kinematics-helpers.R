@@ -44,94 +44,74 @@ prepare_kinematics_data <- function(data_dir = data) {
   )
   rolling_speed <- read_csv(
     file.path(trajectory_dir, "rolling_sen_speed_10yr.csv"), show_col_types = FALSE
-  )
+  ) |>
+    select(lake_id, matches("^X?\\d{4}$"))
+  rolling_speed_long <- rolling_speed |>
+    pivot_longer(cols = matches("^X?\\d{4}$"), names_to = "year", values_to = "speed") |>
+    mutate(year = as.integer(sub("^X", "", year))) |>
+    left_join(lake_meta_data |> select(lake_id, lon, lat), by = "lake_id")
   lake_warming_metrics <- lake_warming_metrics |>
     left_join(trajectory_metrics, by = "lake_id") |>
-    rename(warming_speed_change = annual_roll10_sen_accel_1e3) |>
-    mutate(raw_annual_mean_temp_diff_sen_slope_1e3 = warming_speed_change)
+    rename(warming_speed_change = annual_roll10_sen_accel_1e3)
 
   raw_warming_summary <- summarise_kinematics_metric(
     lake_warming_metrics$raw_annual_mean_temp_sen_slope_40yr,
     "n_warming", "n_cooling"
   ) |>
     mutate(prop_warming = prop_positive)
-  accel_summary <- summarise_kinematics_metric(
+  speed_change_summary <- summarise_kinematics_metric(
     lake_warming_metrics$warming_speed_change,
     "n_positive", "n_negative"
   )
 
-  joint_state_summary <- lake_warming_metrics |>
+  spatial_input <- lake_warming_metrics |>
     transmute(
-      warming_speed = raw_annual_mean_temp_sen_slope_40yr,
-      acceleration = warming_speed_change,
-      state = case_when(
-        warming_speed > 0 & acceleration > 0 ~ "warming + accelerating",
-        warming_speed > 0 & acceleration <= 0 ~ "warming + decelerating",
-        warming_speed <= 0 & acceleration > 0 ~ "cooling + accelerating",
-        warming_speed <= 0 & acceleration <= 0 ~ "cooling + decelerating",
-        TRUE ~ NA_character_
-      )
-    ) |>
-    filter(is.finite(warming_speed), is.finite(acceleration), !is.na(state)) |>
-    count(state, name = "n") |>
-    mutate(
-      prop = n / sum(n),
-      state = factor(state, levels = names(pal_state))
-    ) |>
-    arrange(state)
-
-  state_value <- function(label, column) {
-    value <- joint_state_summary |>
-      filter(state == label) |>
-      (\(x) x[[column]])()
-    if (length(value) == 0) NA_real_ else value[[1]]
-  }
-
+      lake_id,
+      raw_annual_mean_temp_sen_slope_40yr,
+      raw_annual_mean_temp_diff_sen_slope_1e3 = warming_speed_change
+    )
   spatial_hex <- prepare_spatial_hex(
-    metrics = lake_warming_metrics,
+    metrics = spatial_input,
     metadata = lake_meta_data,
     hex_height = 5, min_lakes = 5,
     lon_limits = c(-180, 180), lat_limits = c(-60, 85)
   )
   spatial_hex_summary <- spatial_hex$summary |>
-    mutate(id = row_number(), warming_scaled = warming_speed / 2, acceleration_scaled = acceleration / 3)
+    mutate(id = row_number(), warming_scaled = warming_speed / 2, speed_change_scaled = speed_change / 3)
   spatial_hex_poly <- spatial_hex$polygons |>
     left_join(
-      spatial_hex_summary |> select(id, warming_scaled, acceleration_scaled),
+      spatial_hex_summary |> select(id, warming_scaled, speed_change_scaled),
       by = "id"
     )
-  spatial_continent_summary <- spatial_hex$metrics |>
-    left_join(lake_meta_data |> select(lake_id, Continent), by = "lake_id") |>
+
+  endpoint_years <- c(1995L, 2005L, 2015L, 2020L)
+  endpoint_speed_points <- rolling_speed_long |>
+    filter(year %in% endpoint_years, is.finite(speed), is.finite(lon), is.finite(lat)) |>
+    filter(between(lon, -180, 180), between(lat, -60, 85)) |>
     mutate(
-      Continent = if_else(is.na(Continent) | trimws(Continent) == "", "Unknown", Continent),
-      state = case_when(
-        warming_speed > 0 & acceleration > 0 ~ "warming + accelerating",
-        warming_speed > 0 & acceleration <= 0 ~ "warming + decelerating",
-        warming_speed <= 0 & acceleration > 0 ~ "cooling + accelerating",
-        warming_speed <= 0 & acceleration <= 0 ~ "cooling + decelerating"
-      )
-    ) |>
-    group_by(Continent) |>
+      q_float = (2 / 3 * (lon + 180)) / spatial_hex$hex_side,
+      r_float = (-1 / 3 * (lon + 180) + sqrt(3) / 3 * (lat + 60)) / spatial_hex$hex_side
+    )
+  endpoint_rounded <- hex_round_axial(endpoint_speed_points$q_float, endpoint_speed_points$r_float)
+  endpoint_hex <- endpoint_speed_points |>
+    mutate(q_hex = endpoint_rounded$q, r_hex = endpoint_rounded$r) |>
+    group_by(year, q_hex, r_hex) |>
     summarise(
-      n = n(), warming_pct = mean(warming_speed > 0),
-      accelerating_pct = mean(acceleration > 0),
-      warming_accelerating_pct = mean(state == "warming + accelerating"),
-      mean_warming = mean(warming_speed), mean_acceleration = mean(acceleration),
+      n = n(), speed = mean(speed),
+      lon_c = -180 + spatial_hex$hex_side * 3 / 2 * first(q_hex),
+      lat_c = -60 + spatial_hex$hex_side * sqrt(3) * (first(r_hex) + first(q_hex) / 2),
       .groups = "drop"
     ) |>
-    mutate(continent_abbr = recode(
-      Continent, "Africa" = "AF", "Asia" = "AS", "Europe" = "EU",
-      "North America" = "NA", "South America" = "SA", "Oceania" = "OC",
-      "Antarctica" = "AN", "Unknown" = "UN", .default = toupper(substr(Continent, 1, 2))
-    )) |>
-    arrange(desc(n))
-
-  continent_stat <- function(abbr, column) {
-    value <- spatial_continent_summary |>
-      filter(continent_abbr == abbr) |>
-      (\(x) x[[column]])()
-    if (length(value) == 0 || !is.finite(value[[1]])) NA_real_ else value[[1]]
-  }
+    filter(n >= 5) |>
+    group_by(year) |>
+    mutate(id = row_number()) |>
+    group_modify(\(data, key) {
+      bind_rows(lapply(seq_len(nrow(data)), \(i) {
+        make_hexagon_vertices(data$lon_c[[i]], data$lat_c[[i]], spatial_hex$hex_side, data$id[[i]])
+      })) |>
+        left_join(data |> select(id, n, speed), by = "id")
+    }) |>
+    ungroup()
 
   list(
     raw_monthly = raw_monthly,
@@ -141,14 +121,12 @@ prepare_kinematics_data <- function(data_dir = data) {
     start_year = as.integer(sub(".*?(\\d{4}).*", "\\1", names(raw_monthly)[4])),
     end_year = as.integer(sub(".*?(\\d{4}).*", "\\1", tail(names(raw_monthly), 1))),
     raw_warming_summary = raw_warming_summary,
-    accel_summary = accel_summary,
-    joint_state_summary = joint_state_summary,
-    state_count = function(label) state_value(label, "n"),
-    state_prop = function(label) state_value(label, "prop"),
+    speed_change_summary = speed_change_summary,
+    rolling_speed_long = rolling_speed_long,
     scatter_matrix_data = lake_warming_metrics |>
       transmute(
         `Mean temperature` = raw_annual_mean_temp_mean,
-        `Long-term warming speed` = raw_annual_mean_temp_sen_slope_40yr,
+        `Long-term warming` = raw_annual_mean_temp_sen_slope_40yr,
         `Warming-speed change` = warming_speed_change
       ) |>
       filter(if_all(everything(), is.finite)),
@@ -156,11 +134,10 @@ prepare_kinematics_data <- function(data_dir = data) {
     spatial_metrics = spatial_hex$metrics,
     spatial_hex_summary = spatial_hex_summary,
     spatial_hex_poly = spatial_hex_poly,
+    endpoint_hex = endpoint_hex,
     lon_min = spatial_hex$limits$lon[[1]], lon_max = spatial_hex$limits$lon[[2]],
     lat_min = spatial_hex$limits$lat[[1]], lat_max = spatial_hex$limits$lat[[2]],
-    warming_limit = 2, acceleration_limit = 3,
-    spatial_continent_summary = spatial_continent_summary,
-    continent_stat = continent_stat,
+    warming_limit = 2, speed_change_limit = 3,
     rolling_speed = rolling_speed
   )
 }
