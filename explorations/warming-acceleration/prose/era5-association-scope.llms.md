@@ -1,0 +1,36 @@
+# ERA5 Association Scope and Missing Driver Data
+
+## Available first-pass inputs
+
+The current ERA5 extraction provides lake-nearest-grid monthly and annual summaries for wind speed, surface pressure, and total precipitation over 1981–2020. These variables can be used for descriptive association checks with PCA scores and cooling cohorts; they are not a complete lake heat-budget dataset and cannot support attribution.
+
+> 当前 ERA5 只有风速、地面气压、降水的湖泊最近网格月/年汇总。可先做 PCA 与降温 cohort 的描述性关联，不能构成完整热收支归因。
+
+The first-pass model should report both a geography-only baseline and the incremental association after adding the available ERA5 variables. It should use spatially blocked validation, not only in-sample \\R^2\\, and should call all coefficients associations rather than effects.
+
+> 首轮模型要并列地理基线与加入 ERA5 后的增量解释，并做空间分块验证；所有系数均称关联，不称效应。
+
+## Missing variables to acquire before attribution
+
+| Missing input | Why it matters | Minimum use |
+|----|----|----|
+| 2 m air temperature | Atmospheric thermal forcing and lake–air contrast. | Baseline climate trajectory. |
+| Downward shortwave and longwave radiation | Direct surface energy input; cloud changes cannot be represented without them. | Heat-budget attribution. |
+| Humidity, evaporation / latent heat flux | Evaporative cooling is a major candidate mechanism for LSWT response. | Energy-balance and mediation tests. |
+| Wind components or mixing proxies | Wind speed alone cannot identify directional fetch or mixing regime. | Lake-specific mixing sensitivity. |
+| Glacier inventory, upstream catchments, discharge and inflow temperature | Required to test glacier-connected cold inflow. | Glacier-meltwater hypothesis. |
+| Lake depth, area, clarity / trophic state and catchment land cover | Thermal storage, optical absorption and watershed forcing are confounders/moderators. | Process-stratified modelling. |
+
+> 缺失的关键变量包括气温、短/长波辐射、湿度/蒸发、混合代理、冰川—流域—入流链，以及湖泊与流域属性；补齐前不能做机制归因。
+
+## Interpretation boundary
+
+In an unadjusted first-pass rank correlation, PC1 and PC2 are moderately associated with mean surface pressure (\\\rho=-0.33\\ and \\-0.35\\), while PC3 is associated with the precipitation trend (\\\rho=-0.33\\). All other available annual ERA5 associations are small to modest. These are geographic co-patterns, not driver estimates: surface pressure in particular is strongly structured by elevation and regional circulation.
+
+> 未调整的首轮秩相关中，PC1/PC2 与平均地面气压约为 -0.33/-0.35，PC3 与降水趋势约为 -0.33；其他关联较弱。这些是地理共变，尤其气压受海拔和区域环流强烈影响，不能当作驱动估计。
+
+An association between an ERA5 trend and a PC score can identify a candidate co-varying pattern. It cannot distinguish direct forcing, mediation by radiation or evaporation, common geography, or retrieval artefacts. Glacier meltwater is a separate, untested hypothesis until hydrological connectivity is observed.
+
+> ERA5 与 PC 的关联只能提出共同变化候选机制，不能区分直接强迫、中介、共同地理背景或反演伪影。冰川融水仍需水文连通证据。
+
+Back to top

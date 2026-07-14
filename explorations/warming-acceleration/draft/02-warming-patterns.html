@@ -33,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html" rel="next">
+<link href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html" rel="next">
 <link href="../../../explorations/warming-acceleration/draft/01-global-kinematics.html" rel="prev">
 <link href="../../../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -397,8 +397,26 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acceleration Sensitivity of Raw LSWT Trajectories</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ERA5 Association Scope and Missing Driver Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Whether the Hiatus Actually Exists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-stability-contract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PCA Stability and Association Contract</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -665,6 +683,43 @@ Figure&nbsp;1: Scree plot showing the proportion of trajectory variance explaine
 </section>
 <section id="dominant-modes-of-warming-variation" class="level2">
 <h2 class="anchored" data-anchor-id="dominant-modes-of-warming-variation">Dominant modes of warming variation</h2>
+<p>Before interpretation, PCA loading stability was checked using 50 random half-samples and leave-one-continent-out refits of the same <code>nt=99</code> baseline-anomaly input. Random half-samples reproduce PC1–PC5 nearly exactly (minimum loading congruence 0.998 or higher), but continent omission separates the interpretation set: PC1 remains stable (minimum congruence 0.899), whereas PC2–PC5 can change substantially when a continent is excluded (minimum congruence 0.326, 0.362, 0.195, and 0.138).</p>
+<blockquote class="blockquote">
+<p>PCA 解释前已做 50 次随机半样本和留一大洲检验。随机抽样下 PC1–PC5 都极稳定；但留一大洲后只有 PC1 仍稳健（最低一致性 0.899），PC2–PC5 对大陆样本组成敏感。</p>
+</blockquote>
+<table id="tbl-pca-stability" class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Half-sample minimum congruence</th>
+<th>Leave-continent-out minimum congruence</th>
+<th>Main-text status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PC1</td>
+<td>1.000</td>
+<td>0.899</td>
+<td>Robust spatial-temporal mode</td>
+</tr>
+<tr class="even">
+<td>PC2</td>
+<td>1.000</td>
+<td>0.326</td>
+<td>Continental-composition-sensitive</td>
+</tr>
+<tr class="odd">
+<td>PC3–PC5</td>
+<td>≥ 0.978</td>
+<td>≤ 0.362</td>
+<td>Descriptive only</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>PC1 可作为稳健时空模态解释；PC2 及以后成分保留描述性展示，但不能作跨大陆的强机制解释。</p>
+</blockquote>
 <p>Each principal component has a <strong>loading</strong> for every year (the weight that year receives in the component) and a <strong>score</strong> for every lake (how strongly that lake exhibits the component’s pattern). A lake’s reconstructed anomaly at year <span class="math inline">\(t\)</span> is approximately:</p>
 <p><span class="math display">\[
 \Delta T_{\text{lake}}(t) \approx \sum_{k=1}^{5} \text{score}_k \times \text{loading}_k(t)
@@ -690,8 +745,8 @@ Figure&nbsp;2: Loading time series for the first five principal components. Each
 <p><a href="#fig-pca-loadings" class="quarto-xref">Figure&nbsp;2</a> reveals the temporal structure of each component:</p>
 <ul>
 <li><p><strong>PC1 (40.0%)</strong> contrasts early weakly positive loadings with strongly negative loadings after 2015. Under the displayed sign convention, negative scores combine with negative late loadings to produce positive late-period anomalies. PC1 is therefore an <strong>early-versus-late trajectory contrast</strong>, not direct evidence of acceleration; reversing the PCA sign would reverse both labels without changing the lake trajectories.</p></li>
-<li><p><strong>PC2 (20.1%)</strong> is dominated by a late-1990s excursion. Its scores identify lakes that differ in the magnitude and sign of that temporal feature relative to their baseline. The component alone does not identify its physical driver.</p></li>
-<li><p><strong>PC3 (8.0%)</strong> is dominated by a mid-2000s negative excursion. Its scores identify lakes that differ in this feature, without assigning it to a global pause or a specific forcing.</p></li>
+<li><p><strong>PC2 (20.1%)</strong> is dominated by a late-1990s excursion. It is sensitive to continental composition under leave-one-continent-out refits, so its scores are retained as a descriptive sample pattern only.</p></li>
+<li><p><strong>PC3–PC5</strong> are displayed as lower-variance descriptive patterns, but their leave-continent-out instability precludes strong global interpretation or driver attribution.</p></li>
 <li><p><strong>PC4 (7.6%)</strong> shows a dip around 1989–1992 and a peak around 2010–2012, suggesting a pattern of early cooling followed by recovery.</p></li>
 <li><p><strong>PC5 (6.3%)</strong> has a complex multi-decadal oscillation with peaks in the mid-1980s and early 2000s.</p></li>
 </ul>
@@ -953,6 +1008,10 @@ Table&nbsp;3: Partial R² for each predictor group in explaining PC1–PC3 score
 </section>
 <section id="implications-for-future-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="implications-for-future-analysis">Implications for future analysis</h2>
+<p>PCA stability and the association boundary are specified in <a href="../../../explorations/warming-acceleration/prose/pca-stability-contract.html">the PCA stability contract</a> and <a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html">the ERA5 association scope</a>. These checks are required before treating a retained mode as a robust geographic pattern; neither source supports causal attribution.</p>
+<blockquote class="blockquote">
+<p>PCA 稳定性与 ERA5 关联边界见对应说明。它们用于确认模态是否稳健，不能支持因果归因。</p>
+</blockquote>
 <p>The PCA decomposition shows that trajectory contrasts are structured by geography and lake morphology. PC1 describes an early-versus-late contrast, while PC2 and PC3 describe localized temporal excursions. These are associations in a low-frequency temperature representation, not attribution to external climate modes.</p>
 <blockquote class="blockquote">
 <p>PCA 显示轨迹对比受地理与湖泊形态组织：PC1 为早—晚对比，PC2/PC3 为局部时间异常。它们是低频温度表征中的关联，不是对外部气候模态的归因。</p>
@@ -1386,8 +1445,8 @@ Table&nbsp;3: Partial R² for each predictor group in explaining PC1–PC3 score
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html" class="pagination-link" aria-label="Whether the Hiatus Actually Exists">
-        <span class="nav-page-text">Whether the Hiatus Actually Exists</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html" class="pagination-link" aria-label="Acceleration Sensitivity of Raw LSWT Trajectories">
+        <span class="nav-page-text">Acceleration Sensitivity of Raw LSWT Trajectories</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

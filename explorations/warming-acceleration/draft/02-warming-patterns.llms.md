@@ -20,6 +20,18 @@ The scree plot ([Figure 1](#fig-pca-variance)) shows that the first component a
 
 ## Dominant modes of warming variation
 
+Before interpretation, PCA loading stability was checked using 50 random half-samples and leave-one-continent-out refits of the same `nt=99` baseline-anomaly input. Random half-samples reproduce PC1–PC5 nearly exactly (minimum loading congruence 0.998 or higher), but continent omission separates the interpretation set: PC1 remains stable (minimum congruence 0.899), whereas PC2–PC5 can change substantially when a continent is excluded (minimum congruence 0.326, 0.362, 0.195, and 0.138).
+
+> PCA 解释前已做 50 次随机半样本和留一大洲检验。随机抽样下 PC1–PC5 都极稳定；但留一大洲后只有 PC1 仍稳健（最低一致性 0.899），PC2–PC5 对大陆样本组成敏感。
+
+| Component | Half-sample minimum congruence | Leave-continent-out minimum congruence | Main-text status |
+|----|----|----|----|
+| PC1 | 1.000 | 0.899 | Robust spatial-temporal mode |
+| PC2 | 1.000 | 0.326 | Continental-composition-sensitive |
+| PC3–PC5 | ≥ 0.978 | ≤ 0.362 | Descriptive only |
+
+> PC1 可作为稳健时空模态解释；PC2 及以后成分保留描述性展示，但不能作跨大陆的强机制解释。
+
 Each principal component has a **loading** for every year (the weight that year receives in the component) and a **score** for every lake (how strongly that lake exhibits the component’s pattern). A lake’s reconstructed anomaly at year \\t\\ is approximately:
 
 \\ \Delta T\_{\text{lake}}(t) \approx \sum\_{k=1}^{5} \text{score}\_k \times \text{loading}\_k(t) \\
@@ -36,9 +48,9 @@ Figure 2: Loading time series for the first five principal components. Each pan
 
 - **PC1 (40.0%)** contrasts early weakly positive loadings with strongly negative loadings after 2015. Under the displayed sign convention, negative scores combine with negative late loadings to produce positive late-period anomalies. PC1 is therefore an **early-versus-late trajectory contrast**, not direct evidence of acceleration; reversing the PCA sign would reverse both labels without changing the lake trajectories.
 
-- **PC2 (20.1%)** is dominated by a late-1990s excursion. Its scores identify lakes that differ in the magnitude and sign of that temporal feature relative to their baseline. The component alone does not identify its physical driver.
+- **PC2 (20.1%)** is dominated by a late-1990s excursion. It is sensitive to continental composition under leave-one-continent-out refits, so its scores are retained as a descriptive sample pattern only.
 
-- **PC3 (8.0%)** is dominated by a mid-2000s negative excursion. Its scores identify lakes that differ in this feature, without assigning it to a global pause or a specific forcing.
+- **PC3–PC5** are displayed as lower-variance descriptive patterns, but their leave-continent-out instability precludes strong global interpretation or driver attribution.
 
 - **PC4 (7.6%)** shows a dip around 1989–1992 and a peak around 2010–2012, suggesting a pattern of early cooling followed by recovery.
 
@@ -138,6 +150,10 @@ An alternative approach to characterising warming heterogeneity is \\k\\-means c
 > 用 PCA 降维后的轨迹空间做 K 均值聚类是替代方案。详细比较见 [PCA vs. Clustering](../../../explorations/warming-acceleration/prose/pca-vs-clustering.llms.md)。
 
 ## Implications for future analysis
+
+PCA stability and the association boundary are specified in [the PCA stability contract](../../../explorations/warming-acceleration/prose/pca-stability-contract.llms.md) and [the ERA5 association scope](../../../explorations/warming-acceleration/prose/era5-association-scope.llms.md). These checks are required before treating a retained mode as a robust geographic pattern; neither source supports causal attribution.
+
+> PCA 稳定性与 ERA5 关联边界见对应说明。它们用于确认模态是否稳健，不能支持因果归因。
 
 The PCA decomposition shows that trajectory contrasts are structured by geography and lake morphology. PC1 describes an early-versus-late contrast, while PC2 and PC3 describe localized temporal excursions. These are associations in a low-frequency temperature representation, not attribution to external climate modes.
 

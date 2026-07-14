@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2026-05-28 – Exploration</title>
+<title>Acceleration Sensitivity of Raw LSWT Trajectories – Exploration</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../explorations/warming-acceleration/log/2026-05-31.html" rel="next">
-<link href="../../../explorations/warming-acceleration/log/2026-05-27.html" rel="prev">
+<link href="../../../explorations/warming-acceleration/prose/era5-association-scope.html" rel="next">
+<link href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html" rel="prev">
 <link href="../../../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -77,11 +77,40 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="2026-05-28 – Exploration">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Acceleration Sensitivity of Raw LSWT Trajectories – Exploration">
 <meta property="og:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
 <meta property="og:site_name" content="Exploration">
-<meta name="twitter:title" content="2026-05-28 – Exploration">
+<meta name="twitter:title" content="Acceleration Sensitivity of Raw LSWT Trajectories – Exploration">
 <meta name="twitter:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
 <meta name="twitter:card" content="summary">
 </head>
@@ -290,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/log/index.html">Log</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/log/2026-05-28.html">2026-05-28</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html">Prose</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html">Acceleration Sensitivity of Raw LSWT Trajectories</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -353,16 +382,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Prose</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Acceleration Sensitivity of Raw LSWT Trajectories</span></a>
   </div>
 </li>
@@ -406,13 +435,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Log</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/log/index.html" class="sidebar-item-text sidebar-link">
@@ -529,7 +558,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../explorations/warming-acceleration/log/2026-05-28.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../explorations/warming-acceleration/log/2026-05-28.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2026-05-28</span></a>
   </div>
 </li>
@@ -580,16 +609,23 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#representation-decision" id="toc-representation-decision" class="nav-link active" data-scroll-target="#representation-decision">Representation decision</a></li>
+  <li><a href="#rawstl-comparison-retained-outside-the-main-narrative" id="toc-rawstl-comparison-retained-outside-the-main-narrative" class="nav-link" data-scroll-target="#rawstl-comparison-retained-outside-the-main-narrative">Raw–STL comparison retained outside the main narrative</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/explorations/warming-acceleration/prose/acceleration-sensitivity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/explorations/warming-acceleration/prose/acceleration-sensitivity.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/log/index.html">Log</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/log/2026-05-28.html">2026-05-28</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html">Prose</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html">Acceleration Sensitivity of Raw LSWT Trajectories</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">2026-05-28</h1>
+<h1 class="title">Acceleration Sensitivity of Raw LSWT Trajectories</h1>
 </div>
 
 
@@ -606,10 +642,42 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Rerun STL again. With <code>nt=199</code>, trend component is significantly smoothed, sawtooth basically eliminated.</p>
-<p>And do the STARS regime shift detection on the trend component.</p>
+<p>The current adjacent-difference Sen metric has mean ± SD <span class="math inline">\(2.03 \pm 9.94\times10^{-3}\)</span> °C yr<span class="math inline">\(^{-2}\)</span> across 92,245 lakes. We compared it with a full-period quadratic acceleration and the difference between late (2001–2020) and early (1981–2000) annual Theil–Sen slopes.</p>
+<blockquote class="blockquote">
+<p>当前年际差分 Sen 指标为 <span class="math inline">\(2.03 \pm 9.94\times10^{-3}\)</span> °C yr<span class="math inline">\(^{-2}\)</span>。与全期二次项、早晚期 Sen 斜率差并列比较。</p>
+</blockquote>
+<p>The rank correlation of the adjacent-difference metric with quadratic acceleration is 0.47 and with the early–late contrast is 0.43. In contrast, the quadratic and early–late indicators correlate at 0.90. Thus, the current difference-based measure is sensitive to short-timescale variation and should not be used alone to classify individual lakes as accelerating or decelerating.</p>
+<blockquote class="blockquote">
+<p>年际差分与二次项/早晚期差的秩相关仅 0.47/0.43；后二者为 0.90。差分指标对短时变率敏感，不能单独给单湖贴“加速/减速”标签。</p>
+</blockquote>
+<p>No current indicator is designated as the primary acceleration metric. The adjacent-difference map is historical/provisional only. The next decision is to select an estimand by explicit criteria: interpretable units, robustness to interannual noise, adequate endpoint support, agreement with visually inspectable trajectories, and stability under missingness and window sensitivity. The early–late trend contrast remains useful for cooling cohorts, but it is not a physical acceleration.</p>
+<blockquote class="blockquote">
+<p>目前不指定主要加速度指标。差分图仅是历史/暂定结果。后续按可解释单位、抗年际噪声、端点支持、轨迹可视核验、缺失与窗口敏感性来选择 estimand。早晚期趋势差可用于降温 cohort，但不是物理加速度。</p>
+</blockquote>
+<section id="representation-decision" class="level2">
+<h2 class="anchored" data-anchor-id="representation-decision">Representation decision</h2>
+<p>Raw annual LSWT remains the observed-temperature layer: its full-period Theil–Sen slope is the primary long-term warming result, and its seasonal trends define cooling cohorts. Monthly STL trend (<code>nt=99</code>) is introduced as a separate background-trajectory layer, not as a replacement for raw observations.</p>
+<blockquote class="blockquote">
+<p>raw annual LSWT 仍是观测层：全期 Theil–Sen 是主要长期增温结果，季节趋势用于定义降温 cohort。<code>nt=99</code> monthly STL trend 新增为背景轨迹层，不替代 raw 观测。</p>
+</blockquote>
+<p>Background warming speed will be estimated with a moving-window Sen slope of annualised STL trend and compared with the corresponding raw-annual moving-window speed. The long-term trend of that speed is called <em>change in background warming speed</em>. It is not presented as a resolved instantaneous physical acceleration.</p>
+<blockquote class="blockquote">
+<p>背景增温速度由 annualised STL trend 的滑动 Sen 斜率估计，并与 raw annual 的对应速度比较。其长期趋势称“背景增温速度变化”，不称可精确测得的瞬时物理加速度。</p>
+</blockquote>
+<p>The STL seasonal component may support a separate seasonal-amplitude analysis only after ice-state, missingness, endpoint, and parameter-sensitivity checks. STL remainder is not a pre-defined extreme or teleconnection response series.</p>
+<blockquote class="blockquote">
+<p>STL seasonal component 可在通过冰态、缺失、端点和参数敏感性 QC 后用于季节振幅分析。STL remainder 不是预定义的极端或遥相关响应序列。</p>
+</blockquote>
+</section>
+<section id="rawstl-comparison-retained-outside-the-main-narrative" class="level2">
+<h2 class="anchored" data-anchor-id="rawstl-comparison-retained-outside-the-main-narrative">Raw–STL comparison retained outside the main narrative</h2>
+<p>For the 10-year rolling-Sen speed-change statistic, the raw annual representation has SD 3.61 and the <code>nt=99</code> STL-background representation has SD 1.30 (both <span class="math inline">\(10^{-3}\)</span> °C yr<span class="math inline">\(^{-2}\)</span>). Their lake-level Spearman correlation is 0.558. STL therefore changes the inferred pattern rather than merely denoising raw annual temperature. This comparison is retained here for sensitivity documentation and future supplementary material; the main chapter uses raw annual 10-year speeds to describe observed heterogeneity.</p>
+<blockquote class="blockquote">
+<p>10 年滑动速度变化中，raw annual 的 SD 为 3.61，<code>nt=99</code> STL 背景层为 1.30，逐湖秩相关仅 0.558。STL 改变的不只是噪声，也会改变识别出的模式。此对比保留在 prose/未来补充材料；正文用 raw annual 10 年速度描述观测异质性。</p>
+</blockquote>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1027,13 +1095,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../explorations/warming-acceleration/log/2026-05-27.html" class="pagination-link" aria-label="2026-05-27">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2026-05-27</span>
+      <a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html" class="pagination-link" aria-label="Warming Pattern Decomposition">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Warming Pattern Decomposition</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../explorations/warming-acceleration/log/2026-05-31.html" class="pagination-link" aria-label="2026-05-31">
-        <span class="nav-page-text">2026-05-31</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html" class="pagination-link" aria-label="ERA5 Association Scope and Missing Driver Data">
+        <span class="nav-page-text">ERA5 Association Scope and Missing Driver Data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1051,7 +1119,7 @@ ul.task-list li input[type="checkbox"] {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/explorations/warming-acceleration/log/2026-05-28.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/explorations/warming-acceleration/log/2026-05-28.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/0froq/research-site/edit/main/explorations/warming-acceleration/prose/acceleration-sensitivity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/explorations/warming-acceleration/prose/acceleration-sensitivity.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

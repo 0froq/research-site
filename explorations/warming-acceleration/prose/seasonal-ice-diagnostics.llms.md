@@ -6,28 +6,28 @@ Some lakes in mid- to high-latitude North America and mid-latitude Eurasia may s
 
 > 北美中高纬度和欧亚中纬度部分湖泊可能在后期降温或减速。冰川融水冷入流是可检验假说，但当前数据没有 glacier-catchment 连通性、入流温度或流量，不能直接归因。
 
-The immediate objective is therefore diagnostic: determine whether cooling or deceleration has the seasonal signature expected from a warm-season cold-inflow mechanism, and distinguish that signature from changes in lake ice duration or broader atmospheric forcing.
+The immediate objective is therefore diagnostic: determine whether either full-period or late-period cooling has the seasonal signature expected from a warm-season cold-inflow mechanism, and describe its relationship with lake ice duration and broader atmospheric forcing. No direction of ice-duration change is pre-specified.
 
-> 近期目标是诊断而非归因：检验其季节性指纹是否符合暖季冷入流，并与冰期变化和大气强迫的替代解释区分。
+> 近期目标是诊断而非归因：全期与末段降温均检验其季节性指纹，并描述它与冰期变化和大气强迫的关系；不预设冰期变化方向。
 
 ## Predeclared diagnostic sequence
 
 ### 1. Define response cohorts before inspecting seasonal patterns
 
-Use raw annual mean LSWT, the canonical primary series. Report both a full-period and a late-period definition:
+Use raw annual mean LSWT, the canonical primary series. Report full-period and late-period cooling definitions in parallel; neither is subordinate.
 
 | Cohort | Definition | Purpose |
 |----|----|----|
 | Full-period cooling | Raw annual Theil–Sen slope over 1981–2020 is below zero. | Identifies lakes whose long-run annual LSWT decreases. |
-| Full-period deceleration | Sen slope of raw annual warming speed over 1982–2020 is below zero. | Identifies lakes whose annual warming speed becomes less positive or more negative. |
+| Provisional difference-based deceleration | Sen slope of raw annual warming speed over 1982–2020 is below zero. | Retained only for sensitivity comparison; its dispersion is too high for cohort definition. |
 | Late-period cooling | Theil–Sen slope of raw annual LSWT over a predeclared late window, initially 2001–2020, is below zero. | Separates a late reversal from an overall cooling record. |
 | Late-period slowdown | Late-window slope is lower than the corresponding early-window slope, initially 1981–2000. | Tests a change in trajectory without treating a detected breakpoint as a physical event. |
 
 > 先定义湖泊 cohort，再看季节结果。全期与末段定义应并列报告；不要先看到 JJA 信号后再倒推筛选条件。
 
-The current producer already supports full-period annual and seasonal slopes. Late-period slopes require an explicit parameterised producer extension or a documented analysis step; do not calculate them as an undocumented QMD-side convenience.
+Step 14 (`trajectory-diagnostics`) is the explicit producer for these full- and late-period slopes, seasonal trends, ice-day trends, and three non-equivalent trajectory indicators. The QMD layer only reads its outputs.
 
-> 当前 producer 已有全期年/季节趋势。末段趋势需要显式、可追溯的 producer 参数或分析步骤，不能在 qmd 中临时计算。
+> Step 14 负责全期/早晚期趋势、季节趋势与冰日趋势；qmd 不临时计算。
 
 ### 2. Test the warm-season signature
 
@@ -80,5 +80,27 @@ The same seasonal pattern could arise from cloud/radiation changes, precipitatio
 4.  A decision on whether the observed pattern justifies acquiring glacier-catchment data.
 
 > 交付物依次为：cohort 表、季节趋势对比、描述性空间图，以及是否值得引入 glacier-catchment 数据的决策。
+
+## First-pass results (raw annual/seasonal data)
+
+Step 14 identifies 20,931 lakes with a negative late-period (2001–2020) annual Theil–Sen slope. Of these, 19,864 occur at \\\|latitude\| \geq 45°\\. Their median late-period annual trend is -0.77 °C per 40 years. Their median JJA trend is slightly positive (+0.02 °C per 40 years), while the corresponding non-cooling lakes have a median JJA trend of +1.91 °C per 40 years.
+
+> Step 14 识别出 20,931 个末段年均降温湖泊，其中 19,864 个位于 \|纬度\|≥45°。其年均中位趋势为 -0.77 °C/40 年；JJA 中位趋势略正（+0.02），但显著低于非降温湖泊（+1.91）。
+
+![](seasonal-ice-diagnostics_files/figure-html/fig-ice-seasonal-strata-1.png)
+
+Figure 1: Raw annual and seasonal LSWT trends by cooling history and baseline ice-duration stratum. Points show medians; ranges show interquartile ranges. Full-period and late-period windows are shown separately.
+
+[Figure 1](#fig-ice-seasonal-strata) keeps the ice analysis modular: it reports raw thermal and ice-state strata without making glacier attribution part of Chapter 1. The parent chapter links here only when the cooling branch is retained in a future manuscript.
+
+> [Figure 1](#fig-ice-seasonal-strata) 保持冰模块独立：仅报告原始温度趋势与冰态分层，不把冰川归因写入 Ch1。未来论文是否纳入该支路，可独立决定。
+
+Only 7,638 mid/high-latitude late-cooling lakes (38%) have JJA as their most negative late-period season under the predeclared criterion. This is a meaningful summer-associated subgroup, not a dominant signature of all cooling lakes. The median annual ice-day trend in this group is negative both over the full period (-14.8 days per 40 years) and late period (-16.6 days per 40 years). This documents the observed ice-duration co-pattern; it does not test a pre-specified longer-ice explanation.
+
+> 仅 7,638 个（38%）中高纬末段降温湖泊以 JJA 为最负季节。它是值得研究的夏季关联子群，不是全部降温湖泊的主导指纹。其冰日趋势为缩短；这只是观测到的冰期共变，不对应预设方向。
+
+The summer-associated subgroup is consistent with the proposed cold-inflow hypothesis, but it is equally compatible with radiation, evaporation, wind mixing, precipitation/runoff, or retrieval explanations. Glacier meltwater must remain a hypothesis until lake–catchment connectivity and inflow observations are added.
+
+> 夏季关联子群与冷入流假说相容，但同样可能来自辐射、蒸发、风混合、降水/径流或反演问题。补齐湖泊—流域连通与入流观测前，冰川融水只能是待检验假说。
 
 Back to top

@@ -295,6 +295,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#active-analysis-definitions" id="toc-active-analysis-definitions" class="nav-link active" data-scroll-target="#active-analysis-definitions">Active analysis definitions</a></li>
+  <li><a href="#analysis-layers" id="toc-analysis-layers" class="nav-link" data-scroll-target="#analysis-layers">Analysis layers</a></li>
   <li><a href="#explicit-exclusions" id="toc-explicit-exclusions" class="nav-link" data-scroll-target="#explicit-exclusions">Explicit exclusions</a></li>
   <li><a href="#provenance-and-change-rule" id="toc-provenance-and-change-rule" class="nav-link" data-scroll-target="#provenance-and-change-rule">Provenance and change rule</a></li>
   <li><a href="#related-workflow" id="toc-related-workflow" class="nav-link" data-scroll-target="#related-workflow">Related workflow</a></li>
@@ -356,13 +357,13 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td>Annual warming speed</td>
-<td>Adjacent-year first difference of raw annual mean LSWT, in °C yr⁻¹.</td>
-<td>Input to the acceleration metric.</td>
+<td>Trailing 10-year Theil–Sen slope of raw annual mean LSWT, indexed to the endpoint year (e.g.&nbsp;1981–1990 is indexed to 1990), in °C yr⁻¹.</td>
+<td>Primary local warming-speed representation in the chapter; it describes temporal and spatial heterogeneity of observed LSWT trajectories.</td>
 </tr>
 <tr class="even">
 <td>Acceleration</td>
-<td>Provisional Sen slope of adjacent-year differences in raw annual-mean LSWT over 1982–2020, in 10⁻³ °C yr⁻².</td>
-<td>Descriptive diagnostic only: high dispersion requires robustness review before inferential use.</td>
+<td>Sen slope of the raw trailing-10-year warming-speed sequence over its valid 1990–2020 support, in 10⁻³ °C yr⁻².</td>
+<td>Defined operationally as a long-term change in local warming speed, not as a resolved instantaneous physical acceleration. The historical adjacent-difference metric is sensitivity-only.</td>
 </tr>
 <tr class="odd">
 <td>PCA input</td>
@@ -378,6 +379,41 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <blockquote class="blockquote">
 <p>原始年均温度负责描述增暖、年增暖速度与加速度；STL <code>nt=99</code> 只在 PCA 前提取低频轨迹。正文解释前 5 个主成分，不以累计 95% 方差作为保留阈值。</p>
+</blockquote>
+</section>
+<section id="analysis-layers" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-layers">Analysis layers</h2>
+<p>The project uses two complementary representations rather than a single series for every question.</p>
+<blockquote class="blockquote">
+<p>项目使用两个互补层，而非让所有问题强行共用一条序列。</p>
+</blockquote>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>Representation</th>
+<th>Scientific role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Observed-temperature layer</td>
+<td>Raw daily LSWT aggregated to raw annual or seasonal means.</td>
+<td>Observed long-term warming, cooling cohorts, and seasonal/ice diagnostics.</td>
+</tr>
+<tr class="even">
+<td>Background-trajectory layer</td>
+<td>Monthly STL trend with <code>nt=99</code>, then annualised.</td>
+<td>Smoothed low-frequency trajectory and its evolving background warming speed.</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>原始层回答实际观测到的长期增温与季节/冰期问题；STL 背景层回答低频轨迹及其速度演化。</p>
+</blockquote>
+<p>STL does not replace observed temperature. Its trend is parameter-dependent; its remainder is not automatically an extreme-event series or a teleconnection signal. Any analysis of seasonal amplitude or remainder structure must first assess ice-state encoding, missingness, endpoints, and STL-parameter sensitivity.</p>
+<blockquote class="blockquote">
+<p>STL 不替代观测温度。其 trend 依赖参数；remainder 不自动等于极端或遥相关信号。分析季节振幅或 remainder 前，先做冰态编码、缺失、端点和参数敏感性 QC。</p>
 </blockquote>
 </section>
 <section id="explicit-exclusions" class="level2">

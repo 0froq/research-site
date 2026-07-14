@@ -52,8 +52,8 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../explorations/warming-acceleration/prose/pca-vs-clustering.html" rel="next">
-<link href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html" rel="prev">
+<link href="../../../explorations/warming-acceleration/prose/pca-stability-contract.html" rel="next">
+<link href="../../../explorations/warming-acceleration/prose/era5-association-scope.html" rel="prev">
 <link href="../../../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -309,7 +309,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html">Prose</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html">Whether the Hiatus Actually Exists</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html">Prose</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html">Whether the Hiatus Actually Exists</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -381,8 +381,26 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acceleration Sensitivity of Raw LSWT Trajectories</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ERA5 Association Scope and Missing Driver Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Whether the Hiatus Actually Exists</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-stability-contract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PCA Stability and Association Contract</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -594,7 +612,7 @@ div.csl-indent {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html">Prose</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html">Whether the Hiatus Actually Exists</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html">Prose</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/is-there-a-hiatus.html">Whether the Hiatus Actually Exists</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Whether the Hiatus Actually Exists</h1>
 </div>
@@ -1053,13 +1071,13 @@ Medhaug, Iselin, Martin B. Stolpe, Erich M. Fischer, and Reto Knutti. 2017. <spa
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html" class="pagination-link" aria-label="Warming Pattern Decomposition">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Warming Pattern Decomposition</span>
+      <a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html" class="pagination-link" aria-label="ERA5 Association Scope and Missing Driver Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">ERA5 Association Scope and Missing Driver Data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../explorations/warming-acceleration/prose/pca-vs-clustering.html" class="pagination-link" aria-label="Why PCA instead of clustering for warming pattern characterisation">
-        <span class="nav-page-text">Why PCA instead of clustering for warming pattern characterisation</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../explorations/warming-acceleration/prose/pca-stability-contract.html" class="pagination-link" aria-label="PCA Stability and Association Contract">
+        <span class="nav-page-text">PCA Stability and Association Contract</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
