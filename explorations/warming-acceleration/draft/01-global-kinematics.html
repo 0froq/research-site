@@ -660,13 +660,17 @@ Figure&nbsp;1: Lake density map with 1° × 1° grid cells.
 </section>
 <section id="long-term-warming-speed-and-acceleration" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="long-term-warming-speed-and-acceleration">Long-term warming speed and acceleration</h2>
-<p><strong>Long-term warming speed</strong> is the Theil–Sen slope of annual mean lake surface water temperature (LSWT) over 1982–2020, presented as a 40-year-equivalent change in °C. <strong>Acceleration</strong> is the Sen slope of the annual first difference of warming speed, measured in <span class="math inline">\(10^{-3}\)</span> °C yr<span class="math inline">\(^{-2}\)</span>. Both metrics are computed directly from raw annual mean temperature without seasonal decomposition, thereby retaining the full spectrum of interannual climate variability (e.g.&nbsp;ENSO, PDO) that may contribute to observed warming heterogeneity.</p>
+<p><strong>Long-term warming speed</strong> is the Theil–Sen slope of annual mean lake surface water temperature (LSWT) over 1982–2020, presented as a 40-year-equivalent change in °C. <strong>Acceleration</strong> is presently the Sen slope of adjacent-year differences in raw annual mean temperature, measured in <span class="math inline">\(10^{-3}\)</span> °C yr<span class="math inline">\(^{-2}\)</span>. Both metrics use raw annual means without seasonal decomposition.</p>
 <blockquote class="blockquote">
-<p>本章以年均 LSWT 为主要指标。<strong>长期增温速率</strong>为 Theil–Sen 斜率（40 年等效变化）；<strong>加速度</strong>为年际差分的 Sen 斜率。两者直接从原始年均温度计算，保留 ENSO/PDO 等年际变率信息。</p>
+<p>本章以年均 LSWT 为主要指标。<strong>长期增温速率</strong>为 Theil–Sen 斜率（40 年等效变化）；<strong>加速度</strong>暂定义为原始年均温度年际差分的 Sen 斜率。</p>
 </blockquote>
 <p><a href="#tbl-warming-summary-raw" class="quarto-xref">Table&nbsp;1 (a)</a> summarizes the warming metrics computed from raw annual mean LSWT. 92.8% of lakes show positive long-term warming speed, with a median of 0.73 °C per 40 years. However, only 54.7% have positive acceleration, indicating that the direction and magnitude of long-term warming are largely decoupled from changes in warming speed.</p>
 <blockquote class="blockquote">
 <p><a href="#tbl-warming-summary-raw" class="quarto-xref">Table&nbsp;1 (a)</a> summarizes the warming metrics computed from raw annual mean LSWT% 湖泊呈正增温速率，但仅54.7% 呈正加速度，增温方向与速度变化基本解耦。</p>
+</blockquote>
+<p>The current acceleration distribution is extremely dispersed (2.033 ± 9.940 ×10⁻³ °C yr⁻²). Adjacent-year differences retain substantial short-timescale variability, so this estimator is a provisional descriptive diagnostic rather than evidence for lake-level acceleration or deceleration. Its definition and robustness require revision before inferential use.</p>
+<blockquote class="blockquote">
+<p>当前加速度离散度极大；年际差分保留大量短时变率。因此现阶段仅作描述性诊断，不能据此判定单湖加速或减速；定义与稳健性待后续重审。</p>
 </blockquote>
 <div class="page-columns page-full">
 <div id="tbl-warming-summary" class="quarto-layout-panel anchored page-columns page-full">
@@ -690,11 +694,11 @@ Table&nbsp;1: Summary of warming status.
 <td style="text-align: left;">85,569 (92.8%)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Mean (°C/40yr)</td>
+<td style="text-align: left;">Mean (10⁻³ °C/yr²)</td>
 <td style="text-align: left;">0.881 ± 0.766</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Quartile (°C/40yr)</td>
+<td style="text-align: left;">Quartile (10⁻³ °C/yr²)</td>
 <td style="text-align: left;">0.37, 0.73, 1.23</td>
 </tr>
 </tbody>

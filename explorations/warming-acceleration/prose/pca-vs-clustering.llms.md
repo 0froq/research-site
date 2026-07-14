@@ -40,7 +40,7 @@ No clear elbow emerged; \\K = 5\\ was selected primarily on spatial coherence gr
 
 ### Attribution is awkward
 
-Regressing discrete cluster labels against continuous predictors (ENSO, PDO, lake depth) requires multinomial logit or similar categorical models, which are harder to interpret than linear regression on continuous scores. PCA scores can be directly used as response variables in OLS regression.
+Regressing discrete cluster labels against continuous predictors requires multinomial logit or similar categorical models, which are harder to interpret than linear regression on continuous scores. PCA scores can be directly used as response variables in a future regression once its modelling contract is defined.
 
 ### Quantitative comparison
 
@@ -50,7 +50,7 @@ The five clusters from \\k\\-means on PCA-reduced data show moderate agreement w
 
 ## Recommendation
 
-PCA scores are used as the primary characterisation of warming patterns in Chapter 2. The continuous scores provide a natural response variable for the attribution analysis in Chapter 3, and the component loadings make the results physically interpretable. Discrete clustering remains available as a supplementary visualisation but is not the primary analytical framework.
+PCA scores are used as the primary characterisation of warming patterns in Chapter 2. The continuous scores may become response variables in a future analysis, while component loadings describe temporal contrasts without independently identifying physical drivers. Discrete clustering remains available as a supplementary visualisation but is not the primary analytical framework.
 
 > 建议以 PCA 分数作为第 2 章增温模式的主要描述。连续分数为第 3 章归因提供自然响应变量，载荷使结果物理可解释。离散聚类可作为补充可视化。
 

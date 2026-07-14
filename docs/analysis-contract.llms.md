@@ -13,7 +13,7 @@ This page is the canonical, human-readable contract for the active warming-accel
 | Annual temperature | Calendar-year mean LSWT calculated directly from valid non-freezing daily GLAST observations. | Input for all primary warming, warming-speed, and acceleration metrics. |
 | Long-term warming | Theil–Sen slope of the raw annual mean LSWT series, reported as °C per 40 years. | Primary descriptive warming metric. |
 | Annual warming speed | Adjacent-year first difference of raw annual mean LSWT, in °C yr⁻¹. | Input to the acceleration metric. |
-| Acceleration | Sen slope of annual warming speed over 1982–2020, in 10⁻³ °C yr⁻². | Primary measure of change in warming speed. |
+| Acceleration | Provisional Sen slope of adjacent-year differences in raw annual-mean LSWT over 1982–2020, in 10⁻³ °C yr⁻². | Descriptive diagnostic only: high dispersion requires robustness review before inferential use. |
 | PCA input | Annual mean of the STL trend with `period=12`, `robust=false`, `ni=5`, `no=0`, and `nt=99`; each lake is expressed as an anomaly from its 1981–1990 mean. | Low-frequency trajectory representation only; not a substitute for the primary warming metrics. |
 | PCA interpretation set | PC1–PC5. | The substantive modes shown, mapped, and interpreted in the chapter. The 95% variance threshold is a diagnostic, not a retention rule. |
 

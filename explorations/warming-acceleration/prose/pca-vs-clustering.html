@@ -739,7 +739,7 @@ window.Quarto = {
 </section>
 <section id="attribution-is-awkward" class="level3">
 <h3 class="anchored" data-anchor-id="attribution-is-awkward">Attribution is awkward</h3>
-<p>Regressing discrete cluster labels against continuous predictors (ENSO, PDO, lake depth) requires multinomial logit or similar categorical models, which are harder to interpret than linear regression on continuous scores. PCA scores can be directly used as response variables in OLS regression.</p>
+<p>Regressing discrete cluster labels against continuous predictors requires multinomial logit or similar categorical models, which are harder to interpret than linear regression on continuous scores. PCA scores can be directly used as response variables in a future regression once its modelling contract is defined.</p>
 </section>
 <section id="quantitative-comparison" class="level3">
 <h3 class="anchored" data-anchor-id="quantitative-comparison">Quantitative comparison</h3>
@@ -751,7 +751,7 @@ window.Quarto = {
 </section>
 <section id="recommendation" class="level2">
 <h2 class="anchored" data-anchor-id="recommendation">Recommendation</h2>
-<p>PCA scores are used as the primary characterisation of warming patterns in Chapter 2. The continuous scores provide a natural response variable for the attribution analysis in Chapter 3, and the component loadings make the results physically interpretable. Discrete clustering remains available as a supplementary visualisation but is not the primary analytical framework.</p>
+<p>PCA scores are used as the primary characterisation of warming patterns in Chapter 2. The continuous scores may become response variables in a future analysis, while component loadings describe temporal contrasts without independently identifying physical drivers. Discrete clustering remains available as a supplementary visualisation but is not the primary analytical framework.</p>
 <blockquote class="blockquote">
 <p>建议以 PCA 分数作为第 2 章增温模式的主要描述。连续分数为第 3 章归因提供自然响应变量，载荷使结果物理可解释。离散聚类可作为补充可视化。</p>
 </blockquote>
