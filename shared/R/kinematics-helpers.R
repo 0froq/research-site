@@ -24,10 +24,7 @@ prepare_kinematics_data <- function(data_dir = data) {
   )
   metrics_path <- file.path(data_dir, "06-lake-warming-metrics", "output",
     "period12_robustfalse_ni5_no0_nt99", "lake_warming_metrics.csv")
-  required <- c(
-    "raw_annual_mean_temp_sen_slope_40yr",
-    "raw_annual_mean_temp_diff_sen_slope_1e3"
-  )
+  required <- c("raw_annual_mean_temp_sen_slope_40yr")
   available_columns <- names(read_csv(metrics_path, n_max = 0, show_col_types = FALSE))
   missing_columns <- setdiff(required, available_columns)
   if (length(missing_columns) > 0) {
@@ -40,6 +37,18 @@ prepare_kinematics_data <- function(data_dir = data) {
     metrics_path, show_col_types = FALSE,
     col_select = c(lake_id, raw_annual_mean_temp_mean, all_of(required))
   )
+  trajectory_dir <- file.path(data_dir, "14-trajectory-diagnostics", "output")
+  trajectory_metrics <- read_csv(
+    file.path(trajectory_dir, "trajectory_diagnostics.csv"), show_col_types = FALSE,
+    col_select = c(lake_id, annual_roll10_sen_accel_1e3)
+  )
+  rolling_speed <- read_csv(
+    file.path(trajectory_dir, "rolling_sen_speed_10yr.csv"), show_col_types = FALSE
+  )
+  lake_warming_metrics <- lake_warming_metrics |>
+    left_join(trajectory_metrics, by = "lake_id") |>
+    rename(warming_speed_change = annual_roll10_sen_accel_1e3) |>
+    mutate(raw_annual_mean_temp_diff_sen_slope_1e3 = warming_speed_change)
 
   raw_warming_summary <- summarise_kinematics_metric(
     lake_warming_metrics$raw_annual_mean_temp_sen_slope_40yr,
@@ -47,14 +56,14 @@ prepare_kinematics_data <- function(data_dir = data) {
   ) |>
     mutate(prop_warming = prop_positive)
   accel_summary <- summarise_kinematics_metric(
-    lake_warming_metrics$raw_annual_mean_temp_diff_sen_slope_1e3,
+    lake_warming_metrics$warming_speed_change,
     "n_positive", "n_negative"
   )
 
   joint_state_summary <- lake_warming_metrics |>
     transmute(
       warming_speed = raw_annual_mean_temp_sen_slope_40yr,
-      acceleration = raw_annual_mean_temp_diff_sen_slope_1e3,
+      acceleration = warming_speed_change,
       state = case_when(
         warming_speed > 0 & acceleration > 0 ~ "warming + accelerating",
         warming_speed > 0 & acceleration <= 0 ~ "warming + decelerating",
@@ -140,7 +149,7 @@ prepare_kinematics_data <- function(data_dir = data) {
       transmute(
         `Mean temperature` = raw_annual_mean_temp_mean,
         `Long-term warming speed` = raw_annual_mean_temp_sen_slope_40yr,
-        Acceleration = raw_annual_mean_temp_diff_sen_slope_1e3
+        `Warming-speed change` = warming_speed_change
       ) |>
       filter(if_all(everything(), is.finite)),
     spatial_hex = spatial_hex,
@@ -151,6 +160,7 @@ prepare_kinematics_data <- function(data_dir = data) {
     lat_min = spatial_hex$limits$lat[[1]], lat_max = spatial_hex$limits$lat[[2]],
     warming_limit = 2, acceleration_limit = 3,
     spatial_continent_summary = spatial_continent_summary,
-    continent_stat = continent_stat
+    continent_stat = continent_stat,
+    rolling_speed = rolling_speed
   )
 }

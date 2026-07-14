@@ -11,6 +11,11 @@ prepare_pca_data <- function(data_dir = data) {
     show_col_types = FALSE
   )
   pca_variance <- read_csv(file.path(pca_dir, "pca_variance.csv"), show_col_types = FALSE)
+  pca_stability <- read_csv(
+    file.path(data_dir, "15-pca-stability", "output", "pca_stability_aggregate.csv"),
+    show_col_types = FALSE
+  ) |>
+    mutate(pc = paste0("PC", pc))
   pca_loadings <- read_csv(file.path(pca_dir, "pca_loadings.csv"), show_col_types = FALSE)
   pca_scores <- read_csv(file.path(pca_dir, "pca_scores.csv"), show_col_types = FALSE)
   pca_with_meta <- pca_scores |>
@@ -114,6 +119,7 @@ prepare_pca_data <- function(data_dir = data) {
   list(
     lake_meta_data = lake_meta_data,
     pca_variance = pca_variance, pca_loadings = pca_loadings,
+    pca_stability = pca_stability,
     pca_scores = pca_scores, pca_with_meta = pca_with_meta,
     scree_data = pca_variance |> mutate(is_main = pc <= 5, pc_label = paste0("PC", pc)),
     loading_plot_data = loading_plot_data,

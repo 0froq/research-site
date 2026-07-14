@@ -21,11 +21,11 @@ This page is the canonical, human-readable contract for the active warming-accel
   - Theil--Sen slope of the raw annual mean LSWT series, reported as °C per 40 years.
   - Primary descriptive warming metric.
 - - Annual warming speed
-  - Adjacent-year first difference of raw annual mean LSWT, in °C yr⁻¹.
-  - Input to the acceleration metric.
+  - Trailing 10-year Theil--Sen slope of raw annual mean LSWT, indexed to the endpoint year (e.g. 1981--1990 is indexed to 1990), in °C yr⁻¹.
+  - Primary local warming-speed representation in the chapter; it describes temporal and spatial heterogeneity of observed LSWT trajectories.
 - - Acceleration
-  - Provisional Sen slope of adjacent-year differences in raw annual-mean LSWT over 1982--2020, in 10⁻³ °C yr⁻².
-  - Descriptive diagnostic only: high dispersion requires robustness review before inferential use.
+  - Sen slope of the raw trailing-10-year warming-speed sequence over its valid 1990--2020 support, in 10⁻³ °C yr⁻².
+  - Defined operationally as a long-term change in local warming speed, not as a resolved instantaneous physical acceleration. The historical adjacent-difference metric is sensitivity-only.
 - - PCA input
   - Annual mean of the STL trend with `period=12`, `robust=false`, `ni=5`, `no=0`, and `nt=99`; each lake is expressed as an anomaly from its 1981--1990 mean.
   - Low-frequency trajectory representation only; not a substitute for the primary warming metrics.
@@ -35,6 +35,31 @@ This page is the canonical, human-readable contract for the active warming-accel
 :::
 
 > 原始年均温度负责描述增暖、年增暖速度与加速度；STL `nt=99` 只在 PCA 前提取低频轨迹。正文解释前 5 个主成分，不以累计 95% 方差作为保留阈值。
+
+## Analysis layers
+
+The project uses two complementary representations rather than a single series for every question.
+
+> 项目使用两个互补层，而非让所有问题强行共用一条序列。
+
+::: {.list-table}
+
+- - Layer
+  - Representation
+  - Scientific role
+- - Observed-temperature layer
+  - Raw daily LSWT aggregated to raw annual or seasonal means.
+  - Observed long-term warming, cooling cohorts, and seasonal/ice diagnostics.
+- - Background-trajectory layer
+  - Monthly STL trend with `nt=99`, then annualised.
+  - Smoothed low-frequency trajectory and its evolving background warming speed.
+:::
+
+> 原始层回答实际观测到的长期增温与季节/冰期问题；STL 背景层回答低频轨迹及其速度演化。
+
+STL does not replace observed temperature. Its trend is parameter-dependent; its remainder is not automatically an extreme-event series or a teleconnection signal. Any analysis of seasonal amplitude or remainder structure must first assess ice-state encoding, missingness, endpoints, and STL-parameter sensitivity.
+
+> STL 不替代观测温度。其 trend 依赖参数；remainder 不自动等于极端或遥相关信号。分析季节振幅或 remainder 前，先做冰态编码、缺失、端点和参数敏感性 QC。
 
 ## Explicit exclusions
 
