@@ -5,414 +5,150 @@ title: "Warming Pattern Decomposition"
 ```{r}
 #| label: setup-figures-pca
 #| include: false
-
 source("../../../shared/R/figure-style.R")
+source("../../../shared/R/descriptive-helpers.R")
 source("../../../shared/R/02-warming-patterns-helpers.R")
-
 list2env(prepare_pca_data(), envir = environment())
-fmt_num <- function(x, digits = 2) formatC(x, format = "f", digits = digits)
-fmt_pct <- function(x, digits = 1) fmt_num(100 * x, digits)
+fmt_pct <- function(x, digits = 1) formatC(100 * x, format = "f", digits = digits)
 ```
 
-Long-term warming and warming-speed change compress each lake's 40-year temperature record into two summary statistics. While these summaries capture direction and rate of change, they discard the trajectory itself—when anomalies occurred and whether their timing was shared across lakes. This chapter applies principal component analysis (PCA) to the full annual temperature anomaly trajectory, identifying dominant temporal contrasts across `r scales::comma(nrow(lake_meta_data))` lakes.
+Long-term warming and warming-speed change describe trajectory direction and rate, but not when low-frequency departures occur or whether lakes share their timing. This chapter decomposes baseline-centred annual STL trajectories using spatially balanced PCA.
 
-> 长期增温与增温速度变化将每个湖泊 40 年记录压缩为两个统计量。本章对完整年温度异常轨迹做 PCA，识别全球 `r scales::comma(nrow(lake_meta_data))` 个湖泊轨迹变异的主要模态。
+> 长期增温与增温速度变化描述方向和速率，不能保留低频轨迹何时偏离、湖泊间是否同步。本章对基线中心化的年 STL 轨迹做空间平衡 PCA。
 
-## Data preparation
+## Representation and spatial estimand
 
-Annual mean reconstructed lake surface water temperature (LSWT) is derived from the GLAST reconstructed/corrected product and smoothed with an STL trend (`nt=99`) before PCA. Each lake's low-frequency annual trajectory is expressed as a baseline anomaly relative to the 1981--1990 mean, yielding a 40-year anomaly vector. This separates the trajectory analysis from raw annual long-term warming and local-speed metrics used in Chapter 1.
+Annual reconstructed LSWT is smoothed with the STL trend (nt=99), then each lake trajectory is centred on its 1981--1990 mean. Lakes are averaged within occupied equal-area spherical cells before PCA: 573 cells represent 92,245 lakes. Thus PCA estimates covariance for a typical represented spatial cell, not a typical sampled lake. Individual lake scores are projections onto fixed cell-PCA axes; no lake-equal PCA is refitted.
 
-> 数据来自 GLAST 重建/校正 LSWT 产品；年均序列先经 `nt=99` STL 趋势平滑，再以 1981–1990 为基线计算异常。Ch1 原始年均指标与本章低频轨迹 PCA 保持分工。
+> 年重建 LSWT 先取 nt=99 STL 趋势，再按各湖 1981–1990 均值中心化。PCA 前在等面积球面格网内汇总：92,245 湖形成 573 个格网。它描述典型空间格网的协变；湖泊分数仅投影到固定格网 PCA 轴，不重新做湖泊等权 PCA。
+
+Detailed construction, LOCO alignment, and projection boundary are specified in [the PCA stability contract](../prose/pca-stability-contract.qmd) and [Spatially balanced PCA](../../../metrics/algorithms.qmd#spatially-balanced-pca).
+
+> 算法、LOCO 对齐与投影边界见 PCA stability contract 和 Spatially balanced PCA 指标页。
 
 ```{r}
 #| label: fig-pca-variance
-#| fig-cap: "Scree plot showing the proportion of trajectory variance explained by each principal component. The first five components (coloured) explain `r fmt_pct(cumvar_pc5, 1)`% of total variance; components 6--14 (grey) contribute diminishing additional information."
+#| fig-cap: "Scree plot for equal-area-cell PCA. PC1--PC5 are highlighted; later components add progressively less variance."
 #| fig-width: 6
 #| fig-height: 3.5
-#| cache: true
-
-scree_plot <- ggplot(scree_data, aes(x = pc, y = explained_variance)) +
-  geom_col(aes(fill = is_main), alpha = 0.8, width = 0.7, show.legend = FALSE) +
-  geom_line(aes(y = cumulative_explained_variance), color = col_inchart_line, linewidth = wid_inchart_line) +
-  geom_point(aes(y = cumulative_explained_variance), color = col_inchart_line, size = 1.5) +
-  geom_hline(yintercept = 0.95, linetype = "dashed", color = col_grid_minor, linewidth = wid_grid) +
-  annotate("text", x = 12, y = 0.96, label = "95%", size = 3, color = col_text_soft) +
-  scale_fill_manual(values = c("TRUE" = "steelblue", "FALSE" = col_grid)) +
-  scale_x_continuous(breaks = 1:14, labels = paste0("PC", 1:14)) +
-  scale_y_continuous(
-    labels = scales::label_percent(),
-    sec.axis = sec_axis(~., name = "Cumulative", labels = scales::label_percent())
-  ) +
-  labs(x = "Principal component", y = "Variance explained") +
-  theme_base(grid = TRUE)
-
-save_figure("fig-pca-variance.png", scree_plot, width = 8, height = 4)
-scree_plot
+ggplot(scree_data, aes(pc, explained_variance)) +
+  geom_col(aes(fill = is_main), width = .7, show.legend = FALSE) +
+  geom_line(aes(y = cumulative_explained_variance), colour = col_inchart_line, linewidth = wid_inchart_line) +
+  geom_point(aes(y = cumulative_explained_variance), colour = col_inchart_line, size = 1.5) +
+  scale_fill_manual(values = c("TRUE" = pal_direction[["warming"]], "FALSE" = col_grid)) +
+  scale_x_continuous(breaks = 1:9, labels = paste0("PC", 1:9)) +
+  scale_y_continuous(labels = scales::label_percent(), sec.axis = sec_axis(~., name = "Cumulative", labels = scales::label_percent())) +
+  labs(x = "Principal component", y = "Variance explained") + theme_base(grid = TRUE)
 ```
 
-The scree plot (@fig-pca-variance) shows that the first component alone captures `r fmt_pct(var_pc1, 1)`% of trajectory variance, with each subsequent component contributing progressively less. PC1--PC5 together explain `r fmt_pct(cumvar_pc5, 1)`% and are the predefined interpretation set. Components beyond PC5 contribute less than 3% each and are not interpreted in the main text; reaching 95% cumulative variance is a diagnostic rather than a retention rule.
+PC1 explains most spatial-cell trajectory variance; PC1--PC5 form the predeclared descriptive set. The 95% threshold is diagnostic, not a retention rule.
 
-> 碎石图（@fig-pca-variance）显示前五个成分累计解释 `r fmt_pct(cumvar_pc5, 1)`%。PC1–PC5 是预先确定的解释集合；95% 只作诊断，不作为保留门槛。
+> PC1 解释最多的格网轨迹方差；PC1–PC5 是预先确定的描述集合。95% 仅作诊断，不作为保留阈值。
 
-## Dominant modes of warming variation
+## Temporal covariance modes
 
-Before interpretation, PCA loading stability was checked using 50 random half-samples and leave-one-continent-out refits of the same `nt=99` baseline-anomaly input. Random half-samples reproduce PC1--PC5 nearly exactly (minimum loading congruence 0.998 or higher), but continent omission separates the interpretation set: PC1 remains stable (minimum congruence 0.899), whereas PC2--PC5 can change substantially when a continent is excluded (minimum congruence 0.326, 0.362, 0.195, and 0.138).
+LOCO tests reaggregate retained lakes into equal-area cells before refitting. Secondary modes recur, but their rank can exchange and PC4--PC5 can mix; fixed PC labels are temporal descriptors rather than invariant physical entities.
 
-> PCA 解释前已做 50 次随机半样本和留一大洲检验。随机抽样下 PC1–PC5 都极稳定；但留一大洲后只有 PC1 仍稳健（最低一致性 0.899），PC2–PC5 对大陆样本组成敏感。
-
-::: {#tbl-pca-stability .list-table}
-
-- - Component
-  - Half-sample minimum congruence
-  - Leave-continent-out minimum congruence
-  - Main-text status
-- - PC1
-  - `r fmt_num(filter(pca_stability, design == "half_sample", pc == "PC1")$min_congruence, 3)`
-  - `r fmt_num(filter(pca_stability, design == "leave_continent", pc == "PC1")$min_congruence, 3)`
-  - Robust spatial-temporal mode
-- - PC2
-  - `r fmt_num(filter(pca_stability, design == "half_sample", pc == "PC2")$min_congruence, 3)`
-  - `r fmt_num(filter(pca_stability, design == "leave_continent", pc == "PC2")$min_congruence, 3)`
-  - Continental-composition-sensitive
-- - PC3--PC5
-  - ≥ `r fmt_num(min(filter(pca_stability, design == "half_sample", pc %in% c("PC3", "PC4", "PC5"))$min_congruence), 3)`
-  - ≤ `r fmt_num(max(filter(pca_stability, design == "leave_continent", pc %in% c("PC3", "PC4", "PC5"))$min_congruence), 3)`
-  - Descriptive only
-:::
-
-> PC1 可作为稳健时空模态解释；PC2 及以后成分保留描述性展示，但不能作跨大陆的强机制解释。
-
-Each principal component has a **loading** for every year (the weight that year receives in the component) and a **score** for every lake (how strongly that lake exhibits the component's pattern). A lake's reconstructed anomaly at year $t$ is approximately:
-
-$$
-\Delta T_{\text{lake}}(t) \approx \sum_{k=1}^{5} \text{score}_k \times \text{loading}_k(t)
-$$
-
-The loading time series reveals a temporal contrast; the score reveals which lakes express it. PCA signs are arbitrary: multiplying both a component's loadings and all its scores by −1 leaves the reconstruction unchanged. Therefore, a component is identified by the score × loading pattern, not by a positive or negative score alone.
-
-> 每个成分对每年有一个**载荷**（权重），对每个湖泊有一个**分数**（表达强度）。湖泊在某年的温度异常 ≈ 各成分的分数×载荷之和。PCA 正负号可整体翻转；应解释“分数×载荷”的组合，而非孤立的正负分数。
+> LOCO 每次先对保留湖泊重新格网汇总再拟合。次级模态会重复出现，但排序可交换、PC4/PC5 可混合；PC 标签仅是时间描述，不是固定物理实体。
 
 ```{r}
 #| label: fig-pca-loadings
-#| fig-cap: "Loading time series for the first five principal components. Each panel shows how a given component weights each year's contribution. Positive loadings indicate years where lakes with positive scores have warmer anomalies; negative loadings indicate the opposite. Colours distinguish positive (red) from negative (blue) contributions."
+#| fig-cap: "Equal-area-cell PCA loadings for PC1--PC5. Positive lake scores and positive loadings jointly indicate positive baseline-relative temperature contributions."
 #| fig-width: 8
-#| fig-height: 10
-#| cache: true
-
-loading_plot <- ggplot(loading_plot_data, aes(x = year, y = loading)) +
-  geom_hline(yintercept = 0, color = col_inchart_line, linewidth = wid_grid) +
-  geom_col(aes(fill = is_positive), width = 0.8, alpha = 0.8, show.legend = FALSE) +
+#| fig-height: 9
+ggplot(loading_plot_data, aes(year, loading)) +
+  geom_hline(yintercept = 0, colour = col_inchart_line, linewidth = wid_grid) +
+  geom_col(aes(fill = is_positive), width = .8, show.legend = FALSE) +
   scale_fill_manual(values = c("TRUE" = pal_direction[["warming"]], "FALSE" = pal_direction[["cooling"]])) +
   facet_wrap(~component, ncol = 1, scales = "free_y") +
-  scale_x_continuous(breaks = seq(1980, 2020, by = 5), expand = c(0, 0)) +
-  labs(x = "Year", y = "Loading coefficient") +
-  theme_base(grid = TRUE) +
-  theme_facet(base_size = 8)
-
-save_figure("fig-pca-loadings.png", loading_plot, width = 10, height = 10)
-loading_plot
+  scale_x_continuous(breaks = seq(1980, 2020, 5), expand = c(0, 0)) +
+  labs(x = "Year", y = "Loading") + theme_base(grid = TRUE) + theme_facet(base_size = 8)
 ```
 
-@fig-pca-loadings reveals the temporal structure of each component:
+Each loading is a year weight and each projected lake score is the strength with which a lake expresses that temporal contrast. PCA signs are arbitrary: interpret score-loading combinations, not isolated signs.
 
+> 载荷是年份权重，投影分数是湖泊表达该时间对比的强度。PCA 正负可整体翻转；应解释“分数×载荷”组合，而非孤立正负。
 
-- **PC1 (`r fmt_pct(var_pc1, 1)`%)** contrasts early weakly positive loadings with strongly negative loadings after 2015. Under the displayed sign convention, negative scores combine with negative late loadings to produce positive late-period anomalies. PC1 is therefore an **early-versus-late trajectory contrast**, not direct evidence of acceleration; reversing the PCA sign would reverse both labels without changing the lake trajectories.
-
-- **PC2 (`r fmt_pct(var_pc2, 1)`%)** is dominated by a late-1990s excursion. It is sensitive to continental composition under leave-one-continent-out refits, so its scores are retained as a descriptive sample pattern only.
-
-- **PC3--PC5** are displayed as lower-variance descriptive patterns, but their leave-continent-out instability precludes strong global interpretation or driver attribution.
-
-- **PC4 (`r fmt_pct(var_pc4, 1)`%)** shows a dip around 1989--1992 and a peak around 2010--2012, suggesting a pattern of early cooling followed by recovery.
-
-- **PC5 (`r fmt_pct(var_pc5, 1)`%)** has a complex multi-decadal oscillation with peaks in the mid-1980s and early 2000s.
-
-> @fig-pca-loadings 揭示各成分的时间结构：
->
-> - **PC1**：早期弱正、后期强负载荷；负分数与后期负载荷相乘产生正异常。这是早—晚轨迹对比，不直接等于加速。
-> - **PC2**：以 1990 年代末异常为主；不据此指定物理驱动。
-> - **PC3**：以 2000 年代中期负异常为主；不赋予特定过程名称或强迫。
-> - **PC4**：1989–1992 低谷 + 2010–2012 峰值 → 早期冷却后恢复
-> - **PC5**：多年代际振荡
-
-## Spatial distribution of warming modes
+## Spatial organisation
 
 ```{r}
 #| label: fig-pca-score-maps
-#| fig-cap: "Spatial distribution of PC1--PC3 scores. Warm colours indicate positive scores and cool colours negative scores under the displayed, arbitrary PCA sign convention. PC1 is an early-versus-late trajectory contrast; PC2 is dominated by a late-1990s excursion; PC3 by a mid-2000s negative excursion."
+#| fig-cap: "Projected PC1--PC4 scores, averaged in 1° × 1° cells. Colours express arbitrary PCA signs; panels show spatial organisation of temporal contrasts."
 #| fig-width: 12
-#| fig-height: 10
-#| cache: true
-
+#| fig-height: 7
 make_pca_map <- function(pc_col, title) {
   map_data <- prepare_pca_score_map_data(pc_col)
-
   ggplot() +
+    geom_tile(data = map_data$data, aes(lon_cell + .5, lat_cell + .5, fill = score_clamped), width = 1, height = 1) +
     the_geom_coastline() +
-    geom_point(
-      data = map_data$data,
-      aes(x = lon, y = lat, color = score_clamped, size = point_size),
-      alpha = 0.45, stroke = 0
-    ) +
-    scale_color_distiller(
-      palette = "RdBu",
-      limits = c(-map_data$limit, map_data$limit),
-      oob = scales::squish,
-      name = "Score"
-    ) +
-    scale_size_identity(guide = "none") +
-    scale_x_continuous(breaks = seq(-180, 180, by = 60), expand = c(0, 0)) +
-    scale_y_continuous(breaks = seq(-60, 90, by = 30), expand = c(0, 0)) +
+    scale_fill_distiller(palette = "RdBu", limits = c(-map_data$limit, map_data$limit), oob = scales::squish, name = "Projected score") +
     coord_cartesian(xlim = c(-180, 180), ylim = c(-60, 85), expand = FALSE) +
-    labs(title = title, x = "Longitude", y = "Latitude") +
-    theme_map_grid(base_size = 9) +
-    theme(
-      legend.position = "bottom",
-      legend.key.width = unit(15, "mm")
-    )
+    labs(title = title, x = "Longitude", y = "Latitude") + theme_map_grid(base_size = 9) + theme(legend.position = "bottom")
 }
-
-map_pc1 <- make_pca_map("pc1", paste0("PC1 (", fmt_pct(var_pc1, 1), "%): Early–late contrast"))
-map_pc2 <- make_pca_map("pc2", paste0("PC2 (", fmt_pct(var_pc2, 1), "%): Late-1990s excursion"))
-map_pc3 <- make_pca_map("pc3", paste0("PC3 (", fmt_pct(var_pc3, 1), "%): Mid-2000s excursion"))
-
-(map_pc1 / map_pc2 / map_pc3) +
-  plot_layout(guides = "collect") &
-  theme(legend.position = "bottom")
+maps <- lapply(1:4, \(k) make_pca_map(paste0("pc", k), paste0("PC", k)))
+(maps[[1]] + maps[[2]]) / (maps[[3]] + maps[[4]]) + plot_layout(guides = "collect") & theme(legend.position = "bottom")
 ```
 
-@fig-pca-score-maps reveals clear spatial patterns:
+The maps show continuous spatial organisation, not continental classes. Different temporal contrasts dominate in different neighbouring regions; this is descriptive evidence for spatial heterogeneity, while maps alone do not identify a forcing mechanism.
 
-
-- **PC1**: Europe and northern Asia show negative scores, whereas the Americas and tropics are more positive. Under the displayed sign convention, this maps a continental contrast in the early-versus-late trajectory; it does not establish that one region accelerated more than another.
-
-- **PC2**: North America shows more positive scores, indicating a stronger expression of the late-1990s feature under the displayed convention. No physical driver is identified from this spatial pattern alone.
-
-- **PC3**: The spatial pattern is diffuse, with positive and negative scores across continents. The mid-2000s feature is therefore not a coherent regional mode in these data.
-
-> @fig-pca-score-maps 揭示清晰的空间格局：
->
-> - **PC1**：欧洲和北亚偏负，美洲和热带偏正；表示早—晚轨迹对比的大陆差异，不等于相对加速。
-> - **PC2**：北美偏正；表示 1990 年代末特征更强，不指认驱动。
-> - **PC3**：空间更分散；2000 年代中期特征不构成一致区域模态。
+> 地图展示连续空间组织，而非大洲类别。不同时间对比在不同、且可能相邻的区域强弱不同；这描述空间异质性，但地图本身不识别驱动机制。
 
 ```{r}
-#| label: fig-pc1-pc2-scatter
-#| fig-cap: "Joint distribution of PC1 and PC2 scores, coloured by continent. Ellipses show 68% confidence regions. PC1 is an early-versus-late trajectory contrast; PC2 is dominated by a late-1990s excursion."
-#| fig-width: 8
-#| fig-height: 6
-#| cache: true
-
-pc_scatter <- ggplot(
-  pc_scatter_data,
-  aes(x = pc1, y = pc2, color = Continent)
-) +
-  geom_point(alpha = 0.3, size = 0.8, stroke = 0) +
-  stat_ellipse(level = 0.68, linewidth = 0.8, geom = "polygon", alpha = 0.1) +
-  scale_color_brewer(palette = "Set2", name = NULL) +
-  labs(
-    x = paste0("PC1 (", fmt_pct(var_pc1, 1), "%): Early–late contrast"),
-    y = paste0("PC2 (", fmt_pct(var_pc2, 1), "%): Late-1990s excursion")
-  ) +
-  theme_base(grid = TRUE) +
-  theme(legend.position = "right")
-
-save_figure("fig-pc1-pc2-scatter.png", pc_scatter, width = 10, height = 7)
-pc_scatter
+#| label: fig-pc1-pc2-density
+#| fig-cap: "Joint distribution of projected PC1 and PC2 scores. Contours show dense score-space structure; points show tails below the 5th local-density percentile."
+#| fig-width: 7
+#| fig-height: 5
+pc_density <- split_kde_core(pc_scatter_data |> transmute(x = pc1, y = pc2), core_quantile = .05, contour_n = 7)
+ggplot(pc_density$points, aes(x, y)) +
+  geom_point(data = pc_density$outliers, aes(alpha = density), colour = col_text_soft, size = .35) +
+  geom_path(data = pc_density$contours, aes(x, y, group = group), inherit.aes = FALSE, colour = col_inchart_line, linewidth = wid_inchart_line) +
+  scale_alpha_continuous(range = c(.08, .55), guide = "none") +
+  labs(x = "PC1", y = "PC2") + theme_base(grid = TRUE)
 ```
 
-@fig-pc1-pc2-scatter confirms continental structure in PC space. European lakes occupy the lower-left quadrant under the displayed sign convention, while North American lakes are more dispersed and shifted toward positive PC2. This is a continuous separation in trajectory contrasts, not evidence for discrete response types or a specified climate mechanism.
+@fig-pc1-pc2-density retains continuous score geometry. It neither defines discrete lake types nor supports a regional causal claim.
 
-> @fig-pc1-pc2-scatter 显示 PC 空间存在连续的大洲结构。正负号受 PCA 约定影响；其表示轨迹对比，不指定离散类型或气候机制。
-
-## Predictors of warming mode expression
-
-What factors determine which warming pattern a lake exhibits? To answer this question, we regress PC1--PC3 scores against geographic and morphometric predictors.
-
-> 什么因素决定了湖泊表现出哪种增温模式？我们将 PC1–PC3 分数对地理和形态因子做回归。
-
-
-::: {.column-page-inset}
-::: {#tbl-pca-regression-coefs .list-table}
-
-- - Predictor
-  - PC1 (early–late)
-  - PC2 (late-1990s)
-  - PC3 (mid-2000s)
-- - Intercept
-  - `r coefficient_cell("PC1", "(Intercept)")`
-  - `r coefficient_cell("PC2", "(Intercept)")`
-  - `r coefficient_cell("PC3", "(Intercept)")`
-- - Absolute latitude
-  - `r coefficient_cell("PC1", "abs_lat")`
-  - `r coefficient_cell("PC2", "abs_lat")`
-  - `r coefficient_cell("PC3", "abs_lat")`
-- - Elevation (m)
-  - `r coefficient_cell("PC1", "elevation")`
-  - `r coefficient_cell("PC2", "elevation")`
-  - `r coefficient_cell("PC3", "elevation")`
-- - log₁₀(Depth)
-  - `r coefficient_cell("PC1", "log_depth")`
-  - `r coefficient_cell("PC2", "log_depth")`
-  - `r coefficient_cell("PC3", "log_depth")`
-- - log₁₀(Area)
-  - `r coefficient_cell("PC1", "log_area")`
-  - `r coefficient_cell("PC2", "log_area")`
-  - `r coefficient_cell("PC3", "log_area")`
-- - R²
-  - `r r2_cell("PC1")`
-  - `r r2_cell("PC2")`
-  - `r r2_cell("PC3")`
-
-Regression coefficients for PC1--PC3 scores. Significance: \* p<0.05, \*\* p<0.01, \*\*\* p<0.001.
-:::
-:::
-
-> @tbl-pca-regression-coefs 显示各预测变量对 PC 分数的回归系数。显著性标记：\* p<0.05，\*\* p<0.01，\*\*\* p<0.001。
-
-::: {.column-page-inset}
-::: {#tbl-pca-continent-effects .list-table}
-
-- - Continent (reference: Africa)
-  - PC1
-  - PC2
-  - PC3
-- - Asia
-  - `r continent_cell("PC1", "Asia")`
-  - `r continent_cell("PC2", "Asia")`
-  - `r continent_cell("PC3", "Asia")`
-- - Europe
-  - `r continent_cell("PC1", "Europe")`
-  - `r continent_cell("PC2", "Europe")`
-  - `r continent_cell("PC3", "Europe")`
-- - North America
-  - `r continent_cell("PC1", "North America")`
-  - `r continent_cell("PC2", "North America")`
-  - `r continent_cell("PC3", "North America")`
-- - Oceania
-  - `r continent_cell("PC1", "Oceania")`
-  - `r continent_cell("PC2", "Oceania")`
-  - `r continent_cell("PC3", "Oceania")`
-- - South America
-  - `r continent_cell("PC1", "South America")`
-  - `r continent_cell("PC2", "South America")`
-  - `r continent_cell("PC3", "South America")`
-
-Continent dummy coefficients for PC1--PC3 scores; Africa is the reference level.
-:::
-:::
-
-> @tbl-pca-continent-effects 显示大洲虚拟变量的回归系数（以非洲为参照）。
-
-
-::: {.column-page-inset}
-::: {#tbl-partial-r2 .list-table}
-
-- - Predictor group
-  - PC1
-  - PC2
-  - PC3
-- - Latitude
-  - `r partial_r2_cell("PC1", "Latitude")`
-  - `r partial_r2_cell("PC2", "Latitude")`
-  - `r partial_r2_cell("PC3", "Latitude")`
-- - Elevation
-  - `r partial_r2_cell("PC1", "Elevation")`
-  - `r partial_r2_cell("PC2", "Elevation")`
-  - `r partial_r2_cell("PC3", "Elevation")`
-- - Depth
-  - `r partial_r2_cell("PC1", "Depth")`
-  - `r partial_r2_cell("PC2", "Depth")`
-  - `r partial_r2_cell("PC3", "Depth")`
-- - Area
-  - `r partial_r2_cell("PC1", "Area")`
-  - `r partial_r2_cell("PC2", "Area")`
-  - `r partial_r2_cell("PC3", "Area")`
-- - Continent
-  - `r partial_r2_cell("PC1", "Continent")`
-  - `r partial_r2_cell("PC2", "Continent")`
-  - `r partial_r2_cell("PC3", "Continent")`
-
-Partial R² for each predictor group in explaining PC1--PC3 scores.
-:::
-:::
-
-> @tbl-partial-r2 显示各预测变量组对 PC 分数的独立解释方差。
-
-The regression results reveal a clear hierarchy of predictors. **Continent** is the dominant predictor group for PC1 and PC2, confirming that the broad organisation of these warming modes is continental in scale. The continent coefficients in @tbl-pca-continent-effects describe differences from the African reference level; their signs are specific to the arbitrary PCA sign convention and should not be interpreted as a directional physical effect.
-
-> 回归结果表明，**大洲**是 PC1 和 PC2 的主导预测变量组，说明这些增温模态在大洲尺度上组织。大洲系数以非洲为参照；其正负受 PCA 符号约定影响，不能直接解释为物理方向效应。
-
-Among the non-geographic predictors, **elevation** makes the largest overall independent contribution across PC1--PC3 (@tbl-partial-r2). **Depth** and **lake area** contribute less, and their relative importance varies by component: depth exceeds area for PC1, whereas area exceeds depth for PC2 and PC3. Partial R² is an unsigned increment in explained variance: it ranks the independent information contributed by each predictor group but does not give the direction of association. Direction and uncertainty must instead be read from the coefficients in @tbl-pca-regression-coefs.
-
-> 在非地理因子中，跨 PC1–PC3 而言，**海拔**的总体独立贡献最大（@tbl-partial-r2）。**深度**和**湖泊面积**的贡献较小，且相对重要性随成分变化：PC1 中深度高于面积，PC2 和 PC3 中面积高于深度。偏 R² 是无符号的解释方差增量，只比较独立信息量；关联方向和不确定性应见 @tbl-pca-regression-coefs。
+> @fig-pc1-pc2-density 保留连续分数几何；它不定义离散湖泊类型，也不支持区域因果结论。
 
 ## Descriptive trajectory typology
 
-PCA remains primary: it preserves continuous score geometry. K-means is only a readable partition. The fixed display is K=5 on PC1--PC5; clusters are descriptive labels, not natural response types or regions.
+K-means partitions projected PC1--PC5 scores only for readable trajectory summaries. K=5 is a display resolution, not an estimated number of natural response types.
 
-> PCA 是主分析，保留连续轨迹空间；K-means 只提供可读切分。固定展示 PC1–PC5、K=5；cluster 不是自然类型或区域。
+> K-means 仅切分 projected PC1–PC5 分数，以便展示轨迹摘要。K=5 是展示分辨率，不是自然类型数。
 
 ```{r}
 #| label: fig-cluster-profiles-k5
-#| fig-cap: "Median baseline-anomaly trajectories for descriptive PC1--PC5 K=5 partition. Ribbons show within-cluster interquartile ranges."
+#| fig-cap: "Median baseline-centred trajectories for descriptive K=5 clustering of projected PC1--PC5 scores. Ribbons show within-cluster interquartile ranges."
 #| fig-width: 8
 #| fig-height: 4.5
-
 ggplot(cluster_profiles_k5, aes(year, anomaly_median, colour = cluster, fill = cluster)) +
   geom_ribbon(aes(ymin = anomaly_q25, ymax = anomaly_q75), alpha = .14, colour = NA) +
   geom_line(linewidth = wid_inchart_line) +
-  scale_colour_manual(values = pal_cluster) +
-  scale_fill_manual(values = pal_cluster) +
-  labs(x = NULL, y = "Baseline anomaly (°C)", colour = NULL, fill = NULL) +
-  theme_base(grid = TRUE) +
-  theme(legend.position = "bottom")
+  scale_colour_manual(values = pal_cluster) + scale_fill_manual(values = pal_cluster) +
+  labs(x = NULL, y = "Baseline-centred STL trajectory (°C)", colour = NULL, fill = NULL) +
+  theme_base(grid = TRUE) + theme(legend.position = "bottom")
 ```
-
-@fig-cluster-profiles-k5 describes five broad trajectory groups. Boundaries remain algorithmic: lakes near a boundary can change label when K or PC dimensions change, even if continuous scores barely change.
-
-> @fig-cluster-profiles-k5 展示五组宽泛轨迹。边界由算法给出；K 或 PC 维数改变时，边界附近湖泊可换组，连续分数变化却很小。
 
 ```{r}
 #| label: fig-clustering-sensitivity
-#| fig-cap: "K and PC-dimension sensitivity of descriptive clustering. Cost declines across K=4--8; adjusted Rand index compares K=5 partitions with PC1--PC5 reference."
-#| fig-width: 8
-#| fig-height: 3.5
-
-k_cost_plot <- ggplot(k_selection_metrics, aes(k, cost_per_lake)) +
-  geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) +
-  geom_point(size = 1.8) +
-  scale_x_continuous(breaks = 4:8) +
-  labs(x = "K", y = "Within-cluster cost / lake") +
-  theme_base(grid = TRUE)
-
-pc_sensitivity_plot <- ggplot(pc_dimension_sensitivity, aes(n_pcs, adjusted_rand_index)) +
-  geom_hline(yintercept = 1, colour = col_grid_minor, linewidth = wid_grid) +
-  geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) +
-  geom_point(size = 1.8) +
-  scale_x_continuous(breaks = pc_dimension_sensitivity$n_pcs) +
-  scale_y_continuous(limits = c(0, 1)) +
-  labs(x = "PC dimensions used", y = "ARI vs PC1–PC5") +
-  theme_base(grid = TRUE)
-
-k_cost_plot + pc_sensitivity_plot + plot_layout(widths = c(1, 1))
+#| fig-cap: "Within-cluster cost across K=4--8 for K-means on projected PC1--PC5 scores. No unique elbow is treated as a natural category count."
+#| fig-width: 5.5
+#| fig-height: 3.4
+ggplot(k_selection_metrics, aes(k, cost_per_lake)) +
+  geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) + geom_point(size = 1.8) +
+  scale_x_continuous(breaks = 4:8) + labs(x = "K", y = "Within-cluster cost / lake") + theme_base(grid = TRUE)
 ```
 
-@fig-clustering-sensitivity has no unique elbow across K=4--8. K=5 is fixed display resolution, not estimated true number of lake types. PC-dimension sensitivity is a boundary diagnostic; it does not alter PCA results.
+@fig-clustering-sensitivity has no uniquely privileged K. The partition supplies readable profiles; PCA scores and maps remain primary evidence.
 
-> @fig-clustering-sensitivity 没有唯一清晰 elbow。K=5 是固定展示分辨率，不是“真实类型数”；PC 维数敏感性只检验边界，不改变 PCA 结论。
+> @fig-clustering-sensitivity 没有唯一优选 K。分组提供可读轨迹摘要；主证据仍是 PCA 分数和空间图。
 
-Full methods discussion: [PCA vs. Clustering](../prose/pca-vs-clustering.qmd).
+## Association boundary
 
-## Implications for future analysis
+No predictor model is reported here. A future association analysis must use continuous geographic and climate-background predictors, spatially blocked evaluation, and explicit treatment of spatial autocorrelation; continent dummy variables are not admissible primary explanatory variables. Such a model can identify associations and candidate mechanisms, not causal attribution.
 
-PCA stability and the association boundary are specified in [the PCA stability contract](../prose/pca-stability-contract.qmd) and [the ERA5 association scope](../prose/era5-association-scope.qmd). These checks are required before treating a retained mode as a robust geographic pattern; neither source supports causal attribution.
+> 本章不报告预测因子模型。未来关联分析必须使用连续地理与气候背景变量、空间分块验证，并显式处理空间自相关；大洲虚拟变量不能作为主要解释变量。模型只能识别关联和候选机制，不能作因果归因。
 
-> PCA 稳定性与 ERA5 关联边界见对应说明。它们用于确认模态是否稳健，不能支持因果归因。
+Requirements are specified in [the association contract](../prose/era5-association-scope.qmd). Chapter 3 remains inactive until inputs, temporal alignment, confounding structure, and held-out evaluation are implemented.
 
-The PCA decomposition shows that trajectory contrasts are structured by geography and lake morphology. PC1 describes an early-versus-late contrast, while PC2 and PC3 describe localized temporal excursions. These are associations in a low-frequency temperature representation, not attribution to external climate modes.
-
-> PCA 显示轨迹对比受地理与湖泊形态组织：PC1 为早—晚对比，PC2/PC3 为局部时间异常。它们是低频温度表征中的关联，不是对外部气候模态的归因。
-
-PC scores can become response variables in a future model only after that model's predictors, temporal alignment, confounding control, and interpretation limits are specified. Chapter 3 is not yet an active attribution analysis.
-
-> PC 分数可在未来模型中作为响应变量，但须先明确预测变量、时间对齐、混杂控制与解释边界；Chapter 3 尚未进入归因分析。
+> 具体要求见 association contract。Ch3 在输入、时间对齐、混杂结构和留出评估实现前仍不启动。

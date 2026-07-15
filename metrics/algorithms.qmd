@@ -53,6 +53,35 @@ Requires pre-specification of $K$; sensitive to feature scaling.
 Common workflow: z-score features → run K-means → order clusters
 by a meaningful axis (e.g. mean temperature).
 
+## Spatially balanced PCA
+
+PCA ordinarily gives every input row equal weight. For lake trajectories, this
+means a lake-dense region can dominate covariance merely because it contributes
+many nearby, similar lakes. Spatial balancing changes target population: it
+first centres each lake's nt=99 STL trajectory on its 1981–1990 mean,
+averages trajectories within occupied equal-area spherical cells, and fits PCA
+to one trajectory per cell.
+
+Active grid has 72 longitude bins and 21 bins equally spaced in
+$\sin(\mathrm{latitude})$ over 60°S–85°N. Equal spacing in
+$\sin(\mathrm{latitude})$, rather than degrees of latitude, makes cells equal
+in spherical surface area. It does **not** assert that each cell has equal
+ecological importance; it estimates covariance for a typical represented
+spatial cell rather than a typical sampled lake.
+
+Let $\bar{\mathbf{x}}_c$ be each occupied cell trajectory and
+$\boldsymbol{\mu}_c$ their mean. PCA is fitted to
+$(\bar{\mathbf{x}}_c-\boldsymbol{\mu}_c)$. Lake-level score is then
+
+$$
+s_{ik} = (\mathbf{x}_i-\boldsymbol{\mu}_c)^\mathsf{T}\mathbf{v}_k,
+$$
+
+where $\mathbf{x}_i$ is lake's baseline-centred trajectory and
+$\mathbf{v}_k$ is fixed cell-PCA loading $k$. This projects lakes onto
+spatial-balanced axes; it is not a second, lake-equal PCA. K-means remains a
+descriptive K=5 partition of projected PC1–PC5 scores.
+
 ## Theil–Sen slope
 
 Non-parametric slope estimator: median of all pairwise slopes.

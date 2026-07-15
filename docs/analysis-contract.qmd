@@ -27,25 +27,25 @@ This page is the canonical, human-readable contract for the active warming-accel
   - Sen slope of the raw trailing-10-year warming-speed sequence over its valid 1990--2020 support, in 10⁻³ °C yr⁻².
   - Defined operationally as a long-term change in local warming speed, not as a resolved instantaneous physical acceleration. The historical adjacent-difference metric is sensitivity-only.
 - - PCA input
-  - Annual mean of the STL trend with `period=12`, `robust=false`, `ni=5`, `no=0`, and `nt=99`; each lake is expressed as an anomaly from its 1981--1990 mean.
+  - Annual mean of the STL trend with period=12, robust=false, ni=5, no=0, and nt=99; each lake is centred on its 1981--1990 mean, then trajectories are averaged within occupied equal-area spherical cells before PCA.
   - Low-frequency trajectory representation only; not a substitute for the primary warming metrics.
 - - PCA interpretation set
   - PC1--PC5.
-  - PC1 is the robust global low-frequency mode. PC2--PC5 are region/sample-composition-sensitive secondary descriptive modes; the 95% variance threshold is a diagnostic, not a retention rule.
+  - PC1 is the robust global low-frequency mode. PC2--PC5 are recurring secondary descriptive modes whose rank and separation remain sensitivity-dependent; the 95% variance threshold is a diagnostic, not a retention rule.
 - - PCA role
-  - Defines the continuous low-frequency trajectory-score geometry.
+  - Defines continuous low-frequency trajectory-score geometry for a typical represented spatial cell. Lake scores are projections onto fixed cell-PCA loadings, not lake-level refits.
   - PCA components are covariance modes, not intrinsic lake categories or physical mechanisms.
 - - Clustering role
   - Descriptive clustering in PCA-score space, used to communicate representative trajectory typologies.
   - It is a partition of a continuous PCA geometry, not a claim that lakes belong to intrinsic discrete response types.
 - - Clustering configuration
-  - Main display: K=5 using PC1--PC5 scores.
-  - Sensitivity: K=4--8 at PC1--PC5, plus K=5 using PC1, PC1--PC3, PC1--PC7, and PC1--PC9; stability of major profiles, not a single optimisation score, determines whether K=5 remains useful.
+  - Main display: K=5 using projected PC1--PC5 scores.
+  - Sensitivity: K=4--8 at projected PC1--PC5; no single optimisation score identifies a true category count.
 :::
 
-> 原始年均温度负责描述增暖、年增暖速度与增温速度变化；STL `nt=99` 只在 PCA 前提取低频轨迹。正文解释前 5 个主成分，不以累计 95% 方差作为保留阈值。
+> 原始年均温度负责描述增暖、年增暖速度与增温速度变化；STL nt=99 只在 PCA 前提取低频轨迹。PCA 在等面积格网轨迹上拟合，湖泊仅投影到固定轴；正文解释前 5 个主成分，不以累计 95% 方差作为保留阈值。
 
-> PCA 定义连续轨迹空间；clustering 只是在该空间中生成便于沟通的代表性 typology。主展示 K=5 / PC1–PC5；K=4–8 与 PC1、PC1–PC3、PC1–PC7、PC1–PC9 进入敏感性，不把 cluster 当作自然离散类别。
+> PCA 定义典型空间格网的连续轨迹空间；clustering 只是在 projected PC1–PC5 空间中生成便于沟通的 typology。主展示 K=5，K=4–8 为敏感性；不把 cluster 当作自然离散类别。
 
 ## Analysis layers
 

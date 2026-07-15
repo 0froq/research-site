@@ -103,7 +103,7 @@ draw_fixed_aspect(lake_density_composite, aspect = 6 / 3)
 
 ## Long-term warming and local-speed heterogeneity
 
-**Long-term warming** is the Theil--Sen slope of reconstructed annual mean lake surface water temperature (LSWT) over 1982--2020, presented as a 40-year-equivalent change in °C. The primary local **warming speed** is the trailing 10-year Theil--Sen slope of raw annual LSWT, indexed to its endpoint year. Its long-term Sen trend is operationally termed **warming-speed change**: it indicates whether local 10-year warming rates tend to become more or less positive, not a resolved instantaneous physical acceleration. This chapter remains in the reconstructed-temperature layer.
+**Long-term warming** is the Theil--Sen slope of reconstructed annual mean lake surface water temperature (LSWT) over 1981--2020, presented as a 40-year-equivalent change in °C. The primary local **decadal warming rate** is the trailing 10-year Theil--Sen slope of raw annual LSWT, indexed to its endpoint year. Its long-term Sen trend is operationally termed **warming-speed change**: it indicates whether local decadal warming rates tend to become more or less positive, not a resolved instantaneous physical acceleration. This chapter remains in the reconstructed-temperature layer.
 
 > 本章是重建温度层：年均 LSWT 的长期增温为主要指标；10 年滑动 Sen 为局部增温速度；其长期变化称增温速度变化，不等同于瞬时物理加速度。STL 对比保留在 prose/补充材料。
 
@@ -322,9 +322,9 @@ Widespread long-term warming does not imply a common temporal pathway: lakes wit
 
 ```{r}
 #| label: fig-global-local-speed
-#| fig-cap: "Global distribution of local warming speeds. Each annual value is the median trailing-10-year Theil--Sen slope across lakes; ribbon shows the interquartile range."
+#| fig-cap: "Global median reconstructed annual LSWT (top) and distribution of local decadal warming rates (bottom). Ribbons show interquartile ranges across lakes."
 #| fig-width: 7
-#| fig-height: 3.6
+#| fig-height: 6
 
 speed_time <- rolling_speed |>
   pivot_longer(cols = matches("^X?\\d{4}$"), names_to = "year", values_to = "speed") |>
@@ -333,12 +333,20 @@ speed_time <- rolling_speed |>
   summarise(median = median(speed, na.rm = TRUE), q25 = quantile(speed, .25, na.rm = TRUE), q75 = quantile(speed, .75, na.rm = TRUE), .groups = "drop") |>
   filter(is.finite(median))
 
-ggplot(speed_time, aes(year, median)) +
+temperature_plot <- ggplot(raw_annual_global, aes(year, median)) +
+  geom_ribbon(aes(ymin = q25, ymax = q75), fill = col_inchart_fill, alpha = .28) +
+  geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) +
+  labs(x = NULL, y = "Annual LSWT (°C)") +
+  theme_base(grid = TRUE)
+
+speed_plot <- ggplot(speed_time, aes(year, median)) +
   geom_hline(yintercept = 0, colour = col_text_soft, linewidth = wid_inchart_line) +
   geom_ribbon(aes(ymin = q25, ymax = q75), fill = col_inchart_fill, alpha = .28) +
   geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) +
   labs(x = NULL, y = "10-year Sen slope (°C / yr)") +
   theme_base(grid = TRUE)
+
+temperature_plot / speed_plot
 ```
 
 The changing median and persistent interquartile spread in @fig-global-local-speed show temporal and spatial heterogeneity simultaneously: local warming speeds evolve through time, while lakes at the same endpoint year occupy substantially different warming and cooling regimes.
@@ -351,17 +359,13 @@ The changing median and persistent interquartile spread in @fig-global-local-spe
 
 ```{r}
 #| label: fig-local-speed-endpoint-maps
-#| fig-cap: "Spatial distribution of trailing-10-year local warming speed at four endpoint years. Hexagons aggregate at least five lakes in 5° geographic bins."
+#| fig-cap: "Spatial distribution of trailing-10-year local warming rate at 1990, 2000, 2010, and 2020 endpoints. Each 1° × 1° cell averages at least three lakes."
 #| fig-width: 8
 #| fig-height: 6
 #| cache: true
 
 ggplot() +
-  geom_polygon(
-    data = endpoint_hex,
-    aes(lon, lat, group = interaction(year, id), fill = speed),
-    color = "white", linewidth = 0.06
-  ) +
+  geom_tile(data = endpoint_speed_grid, aes(lon_cell + .5, lat_cell + .5, fill = speed), width = 1, height = 1) +
   the_geom_coastline() +
   facet_wrap(~year, ncol = 2) +
   scale_fill_paletteer_c(
@@ -376,16 +380,16 @@ ggplot() +
 
 ## Spatial heterogeneity of local warming speed
 
-The hexagons in @fig-spatial-warming-speed-change-hex summarize lake-level estimates within 5° cells containing at least five lakes. The lower panel maps the long-term change in local trailing-10-year warming speed, not instantaneous acceleration.
+The 1° cells in @fig-spatial-warming-speed-change-hex summarize lake-level estimates. The lower panel maps long-term change in local trailing-10-year warming rate, not instantaneous acceleration.
 
-> @fig-spatial-warming-speed-change-hex 用六边形汇总 5° 网格内的湖泊指标（≥5 个湖）。上下面板分别展示长期增温与局部增温速度变化的空间格局，两者不必一致。
+> @fig-spatial-warming-speed-change-hex 用 1°格网汇总湖泊指标。上下分别展示长期增温与局部增温速度变化的空间格局，两者不必一致。
 
 
 
 ```{r}
 #| label: fig-spatial-warming-speed-change-hex
 #| fig-cap: "Spatial pattern of lake warming and long-term local warming-speed change.
-#|   Hexagons aggregate lake-level metrics in 5° geographic bins containing at least five lakes."
+#|   Each 1° × 1° cell averages lake-level metrics."
 #| fig-width: 8
 #| fig-height: 8
 #| cache: true
@@ -413,14 +417,12 @@ spatial_map_base <- list(
   )
 )
 
-spatial_hex_layer <- function(value_col) {
-  geom_polygon(
-    data = spatial_hex_poly,
-    aes(x = lon, y = lat, group = id, fill = .data[[value_col]]),
+spatial_grid_layer <- function(value_col) {
+  geom_tile(
+    data = spatial_grid,
+    aes(x = lon_cell + .5, y = lat_cell + .5, fill = .data[[value_col]]),
     inherit.aes = FALSE,
-    color = "white",
-    linewidth = 0.08,
-    alpha = 0.96
+    width = 1, height = 1
   )
 }
 
@@ -466,12 +468,12 @@ spatial_shared_fill_scale <- function() {
 }
 
 spatial_warming_map <- ggplot() +
-  spatial_hex_layer("warming_scaled") +
+  spatial_grid_layer("warming_scaled") +
   spatial_map_base +
   spatial_shared_fill_scale()
 
 spatial_speed_change_map <- ggplot() +
-  spatial_hex_layer("speed_change_scaled") +
+  spatial_grid_layer("speed_change_scaled") +
   spatial_map_base +
   spatial_shared_fill_scale()
 

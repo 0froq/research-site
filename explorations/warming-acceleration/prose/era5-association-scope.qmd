@@ -15,9 +15,9 @@ The current ERA5 extraction provides lake-nearest-grid monthly and annual summar
 
 > 当前 ERA5 只有风速、地面气压、降水的湖泊最近网格月/年汇总。可先做 PCA 与降温 cohort 的描述性关联，不能构成完整热收支归因。
 
-The first-pass model should report both a geography-only baseline and the incremental association after adding the available ERA5 variables. It should use spatially blocked validation, not only in-sample $R^2$, and should call all coefficients associations rather than effects.
+The first-pass model should use projected spatial-balanced PC scores as outcomes, continuous geography and lake-background covariates as its baseline, then quantify any held-out improvement from available ERA5 variables. Latitude, longitude represented with a smooth spatial basis, elevation, lake area, depth, and distance to coast are admissible baseline covariates; continent labels are not. It must use spatially blocked validation, not only in-sample $R^2$, and call all coefficients associations rather than effects.
 
-> 首轮模型要并列地理基线与加入 ERA5 后的增量解释，并做空间分块验证；所有系数均称关联，不称效应。
+> 首轮模型以空间平衡 PC 投影分数为响应，连续地理与湖泊背景变量为基线，再检验 ERA5 的留出预测增量。纬度、经度的平滑空间基、海拔、面积、深度、距海距离可入基线；大洲标签不可。须做空间分块验证；所有系数均称关联，不称效应。
 
 ```{r}
 #| label: fig-era5-spatial-block-cv
@@ -68,9 +68,9 @@ ggplot(cv_results, aes(pc, spatial_block_cv_r2, fill = model)) +
 
 ## Interpretation boundary
 
-In an unadjusted first-pass rank correlation, PC1 and PC2 are moderately associated with mean surface pressure ($\rho=-0.33$ and $-0.35$), while PC3 is associated with the precipitation trend ($\rho=-0.33$). All other available annual ERA5 associations are small to modest. These are geographic co-patterns, not driver estimates: surface pressure in particular is strongly structured by elevation and regional circulation.
+No numerical association result from the retired lake-equal PCA branch transfers automatically to projected spatial-balanced scores. The association branch must be rerun after its predictor table and spatial-block scheme are fixed; until then, this page is a modelling contract, not a result page.
 
-> 未调整的首轮秩相关中，PC1/PC2 与平均地面气压约为 -0.33/-0.35，PC3 与降水趋势约为 -0.33；其他关联较弱。这些是地理共变，尤其气压受海拔和区域环流强烈影响，不能当作驱动估计。
+> 旧湖泊等权 PCA 分支的任何数值关联都不能自动转移到空间平衡投影分数。确定预测变量表和空间分块方案后必须重跑；在此之前，本页是建模契约而非结果页。
 
 An association between an ERA5 trend and a PC score can identify a candidate co-varying pattern. It cannot distinguish direct forcing, mediation by radiation or evaporation, common geography, or retrieval artefacts. Glacier meltwater is a separate, untested hypothesis until hydrological connectivity is observed.
 

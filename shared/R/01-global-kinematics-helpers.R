@@ -46,6 +46,11 @@ prepare_kinematics_data <- function(data_dir = data) {
     file.path(trajectory_dir, "rolling_sen_speed_10yr.csv"), show_col_types = FALSE
   ) |>
     select(lake_id, matches("^X?\\d{4}$"))
+  raw_annual <- read_csv(
+    file.path(data_dir, "02-annual-temperature", "output", "annual_mean_temperature.csv"),
+    show_col_types = FALSE
+  ) |>
+    select(lake_id, matches("^X?\\d{4}$"))
   rolling_speed_long <- rolling_speed |>
     pivot_longer(cols = matches("^X?\\d{4}$"), names_to = "year", values_to = "speed") |>
     mutate(year = as.integer(sub("^X", "", year))) |>
@@ -84,34 +89,44 @@ prepare_kinematics_data <- function(data_dir = data) {
       by = "id"
     )
 
-  endpoint_years <- c(1995L, 2005L, 2015L, 2020L)
-  endpoint_speed_points <- rolling_speed_long |>
+  spatial_grid <- spatial_input |>
+    left_join(lake_meta_data |> select(lake_id, lon, lat), by = "lake_id") |>
+    filter(is.finite(lon), is.finite(lat), between(lon, -180, 180), between(lat, -60, 85)) |>
+    mutate(lon_cell = floor(lon), lat_cell = floor(lat)) |>
+    group_by(lon_cell, lat_cell) |>
+    summarise(
+      n = n(),
+      warming_scaled = mean(raw_annual_mean_temp_sen_slope_40yr, na.rm = TRUE) / 2,
+      speed_change_scaled = mean(raw_annual_mean_temp_diff_sen_slope_1e3, na.rm = TRUE) / 3,
+      .groups = "drop"
+    ) |>
+    filter(n >= 3)
+
+  endpoint_years <- c(1990L, 2000L, 2010L, 2020L)
+  endpoint_speed_grid <- rolling_speed_long |>
     filter(year %in% endpoint_years, is.finite(speed), is.finite(lon), is.finite(lat)) |>
     filter(between(lon, -180, 180), between(lat, -60, 85)) |>
     mutate(
-      q_float = (2 / 3 * (lon + 180)) / spatial_hex$hex_side,
-      r_float = (-1 / 3 * (lon + 180) + sqrt(3) / 3 * (lat + 60)) / spatial_hex$hex_side
-    )
-  endpoint_rounded <- hex_round_axial(endpoint_speed_points$q_float, endpoint_speed_points$r_float)
-  endpoint_hex <- endpoint_speed_points |>
-    mutate(q_hex = endpoint_rounded$q, r_hex = endpoint_rounded$r) |>
-    group_by(year, q_hex, r_hex) |>
+      lon_cell = floor(lon), lat_cell = floor(lat)
+    ) |>
+    group_by(year, lon_cell, lat_cell) |>
     summarise(
       n = n(), speed = mean(speed),
-      lon_c = -180 + spatial_hex$hex_side * 3 / 2 * first(q_hex),
-      lat_c = -60 + spatial_hex$hex_side * sqrt(3) * (first(r_hex) + first(q_hex) / 2),
       .groups = "drop"
     ) |>
-    filter(n >= 5) |>
+    filter(n >= 3)
+
+  raw_annual_global <- raw_annual |>
+    pivot_longer(cols = matches("^X?\\d{4}$"), names_to = "year", values_to = "temperature") |>
+    mutate(year = as.integer(sub("^X", "", year))) |>
     group_by(year) |>
-    mutate(id = row_number()) |>
-    group_modify(\(data, key) {
-      bind_rows(lapply(seq_len(nrow(data)), \(i) {
-        make_hexagon_vertices(data$lon_c[[i]], data$lat_c[[i]], spatial_hex$hex_side, data$id[[i]])
-      })) |>
-        left_join(data |> select(id, n, speed), by = "id")
-    }) |>
-    ungroup()
+    summarise(
+      median = median(temperature, na.rm = TRUE),
+      q25 = quantile(temperature, .25, na.rm = TRUE),
+      q75 = quantile(temperature, .75, na.rm = TRUE),
+      .groups = "drop"
+    ) |>
+    filter(is.finite(median))
 
   list(
     raw_monthly = raw_monthly,
@@ -134,7 +149,9 @@ prepare_kinematics_data <- function(data_dir = data) {
     spatial_metrics = spatial_hex$metrics,
     spatial_hex_summary = spatial_hex_summary,
     spatial_hex_poly = spatial_hex_poly,
-    endpoint_hex = endpoint_hex,
+    spatial_grid = spatial_grid,
+    endpoint_speed_grid = endpoint_speed_grid,
+    raw_annual_global = raw_annual_global,
     lon_min = spatial_hex$limits$lon[[1]], lon_max = spatial_hex$limits$lon[[2]],
     lat_min = spatial_hex$limits$lat[[1]], lat_max = spatial_hex$limits$lat[[2]],
     warming_limit = 2, speed_change_limit = 3,
