@@ -72,9 +72,9 @@ Lake-equal PCA estimates covariance for a typical sampled lake; dense regions th
 
 > 湖泊等权 PCA 描述典型被采样湖泊的协变，湖泊密集区权重更大。空间平衡敏感性分析先在等面积球面格网内汇总基线中心化轨迹，再令每个格网一票；它改变的是估计对象，不是“纠正”湖泊数量。
 
-The fitted cell-PCA axes are then made available at lake resolution without refitting PCA. Each lake's baseline-centred trajectory is centred by the equal-area-cell mean trajectory used in PCA and projected onto the fixed loading vectors. Thus lake score maps and descriptive K-means clustering retain the spatial-balanced covariance geometry, while still locating individual lakes within it. This projection is necessary: running a second PCA on lake trajectories would restore the original density weighting.
+The fitted cell-PCA axes are then made available at lake resolution without refitting PCA. Each lake's baseline-centred trajectory is centred by the equal-area-cell mean trajectory used in PCA and projected onto the fixed loading vectors. Thus lake score maps retain the spatial-balanced covariance geometry while still locating individual lakes within it. This projection is necessary: running a second PCA on lake trajectories would restore the original density weighting.
 
-> 拟合后的格网 PCA 轴可投影回湖泊尺度，而不重新拟合 PCA：每个湖泊先减去 PCA 使用的格网轨迹均值，再投影到固定载荷。湖泊地图与描述性 K-means 因而保留空间平衡的协方差几何；若重新对湖泊做 PCA，则会重新引入湖泊密度权重。
+> 拟合后的格网 PCA 轴可投影回湖泊尺度，而不重新拟合 PCA：每个湖泊先减去 PCA 使用的格网轨迹均值，再投影到固定载荷。湖泊地图因而保留空间平衡的协方差几何；若重新对湖泊做 PCA，则会重新引入湖泊密度权重。
 
 Under spatial balancing, best cross-component matches for PC2--PC5 remain at least 0.70, 0.80, 0.70, and 0.65 across continental omissions, respectively. North-American omission cleanly exchanges the second and third ranked axes (reference PC2 matches refitted PC3, 0.701; reference PC3 matches refitted PC2, 0.995); PC5 remains stable (0.917). Europe preserves PC2 directly (0.979) and PC3 moderately (0.797), while PC4 and PC5 mix. This is stronger evidence that secondary temporal contrasts recur globally, but it does not make rank labels or physical meanings invariant to grid resolution and sample composition.
 

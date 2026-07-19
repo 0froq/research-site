@@ -1,5 +1,5 @@
 ---
-title: "Warming Pattern Decomposition"
+title: "Archived Detailed PCA Exploration"
 ---
 
 ```{r}
@@ -73,9 +73,9 @@ Each loading is a year weight and each projected lake score is the strength with
 
 ```{r}
 #| label: fig-pca-score-maps
-#| fig-cap: "Projected PC1--PC4 scores, averaged in 1° × 1° cells. Colours express arbitrary PCA signs; panels show spatial organisation of temporal contrasts."
+#| fig-cap: "Projected PC1--PC5 scores, averaged in 1° × 1° cells. Colours express arbitrary PCA signs; panels show spatial organisation of temporal contrasts."
 #| fig-width: 12
-#| fig-height: 7
+#| fig-height: 10
 make_pca_map <- function(pc_col, title) {
   map_data <- prepare_pca_score_map_data(pc_col)
   ggplot() +
@@ -85,13 +85,65 @@ make_pca_map <- function(pc_col, title) {
     coord_cartesian(xlim = c(-180, 180), ylim = c(-60, 85), expand = FALSE) +
     labs(title = title, x = "Longitude", y = "Latitude") + theme_map_grid(base_size = 9) + theme(legend.position = "bottom")
 }
-maps <- lapply(1:4, \(k) make_pca_map(paste0("pc", k), paste0("PC", k)))
-(maps[[1]] + maps[[2]]) / (maps[[3]] + maps[[4]]) + plot_layout(guides = "collect") & theme(legend.position = "bottom")
+maps <- lapply(1:5, \(k) make_pca_map(paste0("pc", k), paste0("PC", k)))
+wrap_plots(maps, ncol = 2) & theme(legend.position = "bottom")
 ```
 
 The maps show continuous spatial organisation, not continental classes. Different temporal contrasts dominate in different neighbouring regions; this is descriptive evidence for spatial heterogeneity, while maps alone do not identify a forcing mechanism.
 
 > 地图展示连续空间组织，而非大洲类别。不同时间对比在不同、且可能相邻的区域强弱不同；这描述空间异质性，但地图本身不识别驱动机制。
+
+## Score-pole trajectory composites
+
+For each component, cells in the lower and upper score quintiles are retained as two display poles; these are not classes. Their baseline-centred trajectories are composited with equal cell weight. STL trajectories reproduce the PCA representation, while raw annual LSWT trajectories test whether the displayed contrast is visible before smoothing.
+
+> 每个 PC 取 lower / upper score 五分位作为两个展示极，不是类别。对极端格网等权复合基线中心化轨迹。STL 轨迹对应 PCA 表征；raw annual LSWT 轨迹检验该对比在平滑前是否仍可见。
+
+```{r}
+#| label: fig-pca-score-poles
+#| fig-cap: "Equal-area cell trajectory composites for lower and higher PC-score poles. Ribbons are cell interquartile ranges; poles are display quantiles, not response classes."
+#| fig-width: 12
+#| fig-height: 8
+
+ggplot(pc_pole_composites, aes(year, anomaly_mean, colour = pole, fill = pole)) +
+  geom_hline(yintercept = 0, colour = col_axis, linewidth = wid_axis) +
+  geom_ribbon(aes(ymin = anomaly_q25, ymax = anomaly_q75), alpha = .14, colour = NA) +
+  geom_line(linewidth = wid_inchart_line) +
+  facet_grid(representation ~ component, scales = "free_y") +
+  scale_colour_manual(values = c("Lower-score pole" = pal_direction[["cooling"]], "Higher-score pole" = pal_direction[["warming"]])) +
+  scale_fill_manual(values = c("Lower-score pole" = pal_direction[["cooling"]], "Higher-score pole" = pal_direction[["warming"]])) +
+  scale_x_continuous(breaks = seq(1980, 2020, 10), expand = c(0, 0)) +
+  labs(x = "Year", y = "Baseline-centred anomaly (°C)", colour = NULL, fill = NULL) +
+  theme_base(grid = TRUE) +
+  theme_facet(base_size = 8) +
+  theme(legend.position = "bottom")
+```
+
+Read every pole pair jointly with its loading in @fig-pca-loadings. PC1 supplies the primary global contrast; PC2--PC5 receive the same loading, map, and pole-composite inspection. Their placement in the result hierarchy follows observed variance and LOCO alignment: recurring matched forms can be reported prominently, whereas rank-exchanging or mixed forms are reported later as lower-stability descriptive detail. No component alone is treated as a mechanism-bearing entity.
+
+> 每组极端轨迹都必须与 @fig-pca-loadings 的 loading 联读。PC1 是主要全球对比；PC2–PC5 都做 loading、空间图和极端复合检查。呈现层级由实测方差与 LOCO 对齐决定：重复的匹配形式可突出，排序交换或混合的形式则后置为低稳定性描述细节；任何 PC 都不单独承担机制解释。
+
+## Stability-ranked results
+
+At the target grid, PC1--PC5 explain 84.6% of cell-trajectory variance; PC4 and PC5 contribute 5.69% and 4.56%. Across the coarser, target, and finer equal-area grids, their shares remain 5.69--6.42% and 4.55--4.97%, respectively. Thus neither is a resolution-specific residual pattern.
+
+> 目标格网中 PC1–PC5 共解释 84.6% 的格网轨迹方差；PC4、PC5 分别为 5.69%、4.56%。在粗、中、细三种等面积格网中，两者分别维持在 5.69–6.42% 与 4.55–4.97%，不是某一分辨率特有的残余模式。
+
+LOCO provides the ordering rule. PC2 and PC3 recur strongly but exchange rank when North America is omitted (reference PC2 matches refitted PC3, 0.701; reference PC3 matches refitted PC2, 0.995). PC4 and PC5 also recur: their weakest best matches are 0.704 and 0.651, respectively. The limiting case is Europe omission, where PC4 is best recovered by refitted PC5 (0.710) and PC5 by refitted PC4 (0.651). We therefore report PC4--PC5 as a recurring but partially mixed secondary subspace, after the robust PC1 and the clearer PC2--PC3 contrasts.
+
+> LOCO 决定结果层级。去北美后 PC2/PC3 强烈重现但交换排序（参考 PC2 对应新 PC3：0.701；参考 PC3 对应新 PC2：0.995）。PC4/PC5 也会重现，其最低最佳匹配分别为 0.704、0.651；限制情形是去欧洲后 PC4 最接近新 PC5（0.710），PC5 最接近新 PC4（0.651）。故 PC4/PC5 报告为可重复、但部分混合的次级子空间，置于稳健 PC1 与更清晰 PC2/PC3 对比之后。
+
+Under the displayed sign orientation, PC1 distinguishes cells with stronger versus weaker common late warming. PC2 expresses a later-strengthening contrast, whereas PC3 expresses the opposing earlier-versus-later contrast. These timing relations persist among cells with comparable total raw warming. PC4 has a similar late-weakening association but lower stability; PC5 has no consistent warming-speed bridge. The cell-level diagnostics and their limits are shown in [the PCA--kinematics bridge](../prose/pca-kinematics-bridge.qmd).
+
+> 按当前展示的符号方向，PC1 区分共同后期增温较强／较弱的格网；PC2 表达后期增强对比，PC3 表达相反的早期／后期对比。它们在总 raw 增温相近的格网中仍存在。PC4 有相似后期减弱关联但稳定性较低；PC5 暂无一致的增温速度桥接。格网诊断及边界见 PCA--kinematics bridge。
+
+PC2 and PC3 should be read jointly as a rank-exchanging secondary subspace, rather than as two fixed physical modes or a newly rotated component. The currently available geography, morphology, wind, and precipitation panel has no stable held-out association with this joint subspace or with parallel raw warming-speed change. The external-interpretation boundary is documented in [External Interpretation of Spatially Balanced PCA](../prose/pca-external-interpretation.qmd).
+
+> PC2、PC3 应作为可交换排序的次级子空间联读，不当作两种固定物理模态，也不另造旋转成分。现有地理、形态、风速、降水面板，对该联合子空间及平行 raw 增温速度变化均无稳定留出关联；解释边界见 External Interpretation of Spatially Balanced PCA。
+
+A separate bounded screen gives one external consistency result. The joint PC2--PC3 scores improve held-out prediction of the spatial field of contemporaneous, detrended annual LSWT sensitivity to the correlated NAO/AO family and to PDO, beyond geography/lake morphology; this repeats across block sizes, equal-area grids, and LOCO refits. It links secondary low-frequency trajectory heterogeneity to where lakes have different interannual circulation sensitivity. It does not identify a unique index, pathway, or causal driver. Details and limits are in [Teleconnection-Sensitivity Screen](../prose/pca-teleconnection-screen.qmd).
+
+> 另一受限筛查给出一个外部一致性结果：在地理/形态之外，联合 PC2–PC3 分数可提高对同期、去趋势年 LSWT 对相关 NAO/AO family 及 PDO 敏感性空间场的留出预测；该结果在不同 block、等面积格网和 LOCO 重拟中重复。它将次级低频轨迹异质性与湖泊年际环流敏感性不同的空间位置联系起来；不识别唯一指数、路径或因果驱动。细节和限制见 Teleconnection-Sensitivity Screen。
 
 ```{r}
 #| label: fig-pc1-pc2-density
@@ -109,39 +161,6 @@ ggplot(pc_density$points, aes(x, y)) +
 @fig-pc1-pc2-density retains continuous score geometry. It neither defines discrete lake types nor supports a regional causal claim.
 
 > @fig-pc1-pc2-density 保留连续分数几何；它不定义离散湖泊类型，也不支持区域因果结论。
-
-## Descriptive trajectory typology
-
-K-means partitions projected PC1--PC5 scores only for readable trajectory summaries. K=5 is a display resolution, not an estimated number of natural response types.
-
-> K-means 仅切分 projected PC1–PC5 分数，以便展示轨迹摘要。K=5 是展示分辨率，不是自然类型数。
-
-```{r}
-#| label: fig-cluster-profiles-k5
-#| fig-cap: "Median baseline-centred trajectories for descriptive K=5 clustering of projected PC1--PC5 scores. Ribbons show within-cluster interquartile ranges."
-#| fig-width: 8
-#| fig-height: 4.5
-ggplot(cluster_profiles_k5, aes(year, anomaly_median, colour = cluster, fill = cluster)) +
-  geom_ribbon(aes(ymin = anomaly_q25, ymax = anomaly_q75), alpha = .14, colour = NA) +
-  geom_line(linewidth = wid_inchart_line) +
-  scale_colour_manual(values = pal_cluster) + scale_fill_manual(values = pal_cluster) +
-  labs(x = NULL, y = "Baseline-centred STL trajectory (°C)", colour = NULL, fill = NULL) +
-  theme_base(grid = TRUE) + theme(legend.position = "bottom")
-```
-
-```{r}
-#| label: fig-clustering-sensitivity
-#| fig-cap: "Within-cluster cost across K=4--8 for K-means on projected PC1--PC5 scores. No unique elbow is treated as a natural category count."
-#| fig-width: 5.5
-#| fig-height: 3.4
-ggplot(k_selection_metrics, aes(k, cost_per_lake)) +
-  geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) + geom_point(size = 1.8) +
-  scale_x_continuous(breaks = 4:8) + labs(x = "K", y = "Within-cluster cost / lake") + theme_base(grid = TRUE)
-```
-
-@fig-clustering-sensitivity has no uniquely privileged K. The partition supplies readable profiles; PCA scores and maps remain primary evidence.
-
-> @fig-clustering-sensitivity 没有唯一优选 K。分组提供可读轨迹摘要；主证据仍是 PCA 分数和空间图。
 
 ## Association boundary
 

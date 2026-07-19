@@ -6,11 +6,7 @@ prepare_pca_data <- function(data_dir = data) {
   pca_variance <- read_csv(file.path(pca_dir, "pca_variance.csv"), show_col_types = FALSE)
   pca_loadings <- read_csv(file.path(pca_dir, "pca_loadings.csv"), show_col_types = FALSE)
   pca_scores <- read_csv(file.path(pca_dir, "lake_projected_scores.csv"), show_col_types = FALSE)
-  cluster_profiles_k5 <- read_csv(file.path(pca_dir, "cluster_profiles_K5.csv"), show_col_types = FALSE) |>
-    transmute(cluster = factor(paste0("C", cluster), levels = paste0("C", 1:5)),
-      year, anomaly_median = trajectory_median, anomaly_q25 = trajectory_q25, anomaly_q75 = trajectory_q75)
-  k_selection_metrics <- read_csv(file.path(pca_dir, "k_selection_metrics.csv"), show_col_types = FALSE)
-
+  pca_cell_scores <- read_csv(file.path(pca_dir, "spatial_cell_scores.csv"), show_col_types = FALSE)
   loading_plot_data <- pca_loadings |>
     pivot_longer(cols = starts_with("pc"), names_to = "component", values_to = "loading") |>
     filter(component %in% paste0("pc", 1:5)) |>
@@ -30,14 +26,108 @@ prepare_pca_data <- function(data_dir = data) {
       limit = max(abs(lower), abs(upper)))
   }
 
+  # Match the canonical 72 × 21 sin(latitude) equal-area PCA grid.
+  assign_pca_cell <- function(data) {
+    sinlat_min <- sin(-60 * pi / 180)
+    sinlat_max <- sin(85 * pi / 180)
+    data |>
+      filter(is.finite(lat), is.finite(lon), between(lat, -60, 85)) |>
+      mutate(
+        lon_bin = pmin(floor((lon + 180) / 360 * 72) + 1, 72),
+        sinlat_bin = pmin(floor((sin(lat * pi / 180) - sinlat_min) / (sinlat_max - sinlat_min) * 21) + 1, 21)
+      )
+  }
+
+  pc_mode_composition <- pca_cell_scores |>
+    select(cell_id, lon_bin, sinlat_bin, lon, lat, n_lakes, all_of(paste0("pc", 1:5))) |>
+    mutate(total_energy = rowSums(across(all_of(paste0("pc", 1:5)))^2)) |>
+    pivot_longer(starts_with("pc"), names_to = "component", values_to = "score") |>
+    mutate(
+      relative_energy = score^2 / total_energy,
+      component = factor(component, levels = paste0("pc", 1:5), labels = paste0("PC", 1:5))
+    )
+
+  pc_mode_dominance <- pc_mode_composition |>
+    group_by(cell_id, lon_bin, sinlat_bin, lon, lat, n_lakes) |>
+    summarise(
+      pc1_energy_fraction = relative_energy[component == "PC1"],
+      secondary_energy_fraction = 1 - pc1_energy_fraction,
+      effective_mode_count = exp(-sum(relative_energy * log(pmax(relative_energy, .Machine$double.eps)))),
+      .groups = "drop"
+    )
+
+  aggregate_cell_anomalies <- function(path) {
+    wide <- read_csv(path, show_col_types = FALSE)
+    year_cols <- names(wide)[4:ncol(wide)]
+    baseline_cols <- year_cols[year_cols %in% as.character(1981:1990)]
+    length(baseline_cols) == 10 || stop("Expected 1981–1990 baseline columns: ", path)
+    baseline <- rowMeans(as.matrix(wide[, baseline_cols]), na.rm = TRUE)
+    wide |>
+      mutate(.baseline = baseline) |>
+      mutate(across(all_of(year_cols), ~ .x - .baseline)) |>
+      select(-.baseline) |>
+      assign_pca_cell() |>
+      group_by(lon_bin, sinlat_bin) |>
+      summarise(across(all_of(year_cols), ~ mean(.x, na.rm = TRUE)), .groups = "drop") |>
+      pivot_longer(all_of(year_cols), names_to = "year", values_to = "anomaly") |>
+      mutate(year = as.integer(year))
+  }
+
+  make_pole_composites <- function(cell_trajectories, representation) {
+    memberships <- lapply(paste0("pc", 1:5), function(pc_col) {
+      q <- quantile(pca_cell_scores[[pc_col]], c(.2, .8), na.rm = TRUE)
+      pca_cell_scores |>
+        transmute(
+          lon_bin, sinlat_bin,
+          component = toupper(pc_col),
+          pole = case_when(
+            .data[[pc_col]] <= q[[1]] ~ "Lower-score pole",
+            .data[[pc_col]] >= q[[2]] ~ "Higher-score pole",
+            .default = NA_character_
+          )
+        ) |>
+        filter(!is.na(pole))
+    }) |>
+      bind_rows()
+    cell_trajectories |>
+      inner_join(memberships, by = c("lon_bin", "sinlat_bin"), relationship = "many-to-many") |>
+      group_by(component, pole, year) |>
+      summarise(
+        anomaly_mean = mean(anomaly, na.rm = TRUE),
+        anomaly_q25 = quantile(anomaly, .25, na.rm = TRUE),
+        anomaly_q75 = quantile(anomaly, .75, na.rm = TRUE),
+        n_cells = n(),
+        .groups = "drop"
+      ) |>
+      mutate(representation = representation)
+  }
+
+  raw_cell_trajectories <- aggregate_cell_anomalies(
+    file.path(data_dir, "02-annual-temperature", "output", "annual_mean_temperature.csv")
+  )
+  stl_cell_trajectories <- aggregate_cell_anomalies(
+    file.path(data_dir, "05-annual-stl-trend", "output", "period12_robustfalse_ni5_no0_nt99", "annual_stl_trend.csv")
+  )
+  pc_pole_composites <- bind_rows(
+    make_pole_composites(raw_cell_trajectories, "Raw annual LSWT"),
+    make_pole_composites(stl_cell_trajectories, "STL trend")
+  ) |>
+    mutate(
+      component = factor(component, levels = paste0("PC", 1:5)),
+      pole = factor(pole, levels = c("Lower-score pole", "Higher-score pole")),
+      representation = factor(representation, levels = c("STL trend", "Raw annual LSWT"))
+    )
+
   list(
     lake_meta_data = lake_meta_data,
     pca_variance = pca_variance,
     pca_loadings = pca_loadings,
     pca_scores = pca_scores,
+    pca_cell_scores = pca_cell_scores,
+    pc_mode_composition = pc_mode_composition,
+    pc_mode_dominance = pc_mode_dominance,
+    pc_pole_composites = pc_pole_composites,
     loading_plot_data = loading_plot_data,
-    cluster_profiles_k5 = cluster_profiles_k5,
-    k_selection_metrics = k_selection_metrics,
     pc_scatter_data = pca_scores |> filter(is.finite(pc1), is.finite(pc2)),
     prepare_pca_score_map_data = prepare_pca_score_map_data,
     scree_data = pca_variance |> mutate(is_main = pc <= 5),

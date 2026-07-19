@@ -48,8 +48,8 @@ source("shared/R/figure-style.R")
 source("shared/R/seasonal-ice-diagnostics-helpers.R")
 ice <- prepare_seasonal_ice_data()
 
-source("shared/R/era5-association-scope-helpers.R")
-era5 <- prepare_era5_association_data()
+source("shared/R/pca-kinematics-bridge-helpers.R")
+bridge <- prepare_pca_kinematics_bridge_data()
 ```
 
 > 在原子化重构完成前，可先调用当前的章节级 `prepare_*()`，但调试方式不变：检查它返回的对象，而不是先渲染 qmd。

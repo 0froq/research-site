@@ -26,26 +26,56 @@ This page is the canonical, human-readable contract for the active warming-accel
 - - Warming-speed change
   - Sen slope of the raw trailing-10-year warming-speed sequence over its valid 1990--2020 support, in 10⁻³ °C yr⁻².
   - Defined operationally as a long-term change in local warming speed, not as a resolved instantaneous physical acceleration. The historical adjacent-difference metric is sensitivity-only.
+- - Rolling temperature dynamics
+  - Trailing 10-year Theil--Sen slopes of raw annual, DJF, MAM, JJA, SON, annual maximum 30-day, and annual minimum 30-day temperature, indexed to 1990--2020 endpoints.
+  - Descriptive within-lake local-rate sequences for seasonal and extreme-temperature heterogeneity; not additive annual-trend contributions. A frozen all-ice / no-valid-nonfreezing period is finite `0.0 °C`, not missing.
+- - Seasonal thermal asymmetry
+  - Annual `JJA - DJF` warm--cold contrast, four-season range, and four-season standard deviation each receive an endpoint-aligned trailing-10-year Theil--Sen rate.
+  - Positive contrast/range change means warm-season temperature changes faster relative to cold-season temperature; negative change means observed seasonal thermal states converge. These are descriptive relative-asymmetry metrics, not seasonal contribution fractions; frozen-state interpretation remains separate from seasonal ice days.
+- - Rolling ice-duration state
+  - Trailing 10-year arithmetic mean of annual ice days, indexed to the same 1990--2020 endpoints.
+  - Descriptive ice-state background for comparison with local temperature rates; not a warming-speed measure or glacier proxy.
+- - Seasonal ice dynamics
+  - DJF, MAM, JJA, and SON ice-day sums constructed from monthly ice-day counts. Step 14 retains both trailing-10-year seasonal ice means and ice-loss rates, defined as the negative trailing-10-year Sen slope of seasonal ice days (positive = fewer ice days yr⁻¹).
+  - Descriptive seasonal ice state/change context. Alignment with annual temperature rate is not causal attribution.
+- - Sign-conditioned alignment
+  - Overall Spearman alignment is supplemented by alignments evaluated only at positive or only at negative annual local-rate endpoints; at least eight finite endpoint pairs are required.
+  - Separates warming-state and cooling-state co-variation. It does not yield additive seasonal contributions, independent-observation inference, or a causal driver ranking.
 - - PCA input
   - Annual mean of the STL trend with period=12, robust=false, ni=5, no=0, and nt=99; each lake is centred on its 1981--1990 mean, then trajectories are averaged within occupied equal-area spherical cells before PCA.
   - Low-frequency trajectory representation only; not a substitute for the primary warming metrics.
 - - PCA interpretation set
   - PC1--PC5.
   - PC1 is the robust global low-frequency mode. PC2--PC5 are recurring secondary descriptive modes whose rank and separation remain sensitivity-dependent; the 95% variance threshold is a diagnostic, not a retention rule.
+  - All five components receive the same loading, spatial-score, and score-pole diagnostics. Their result prominence is assigned after observing explained variance and LOCO alignment, not pre-assigned by component number.
 - - PCA role
   - Defines continuous low-frequency trajectory-score geometry for a typical represented spatial cell. Lake scores are projections onto fixed cell-PCA loadings, not lake-level refits.
   - PCA components are covariance modes, not intrinsic lake categories or physical mechanisms.
-- - Clustering role
-  - Descriptive clustering in PCA-score space, used to communicate representative trajectory typologies.
-  - It is a partition of a continuous PCA geometry, not a claim that lakes belong to intrinsic discrete response types.
-- - Clustering configuration
-  - Main display: K=5 using projected PC1--PC5 scores.
-  - Sensitivity: K=4--8 at projected PC1--PC5; no single optimisation score identifies a true category count.
+- - PCA external interpretation
+  - Fixed PCA score geometry is compared with predeclared cell-aggregated predictor families: geography/lake morphology, then available ERA5-Land wind and precipitation summaries. PC1 is a scalar response; PC2--PC3 is evaluated as a joint two-dimensional response so component rank exchange does not determine the estimand. Raw long-term warming and raw warming-speed change are parallel outcomes.
+  - Spatial-block held-out prediction measures association only. A predictor family requires positive held-out gain at all tested block scales and support in a parallel raw outcome before entering the manuscript interpretation. Current panel lacks air temperature, radiation, humidity, evaporation, runoff, and independent forcing data; surface pressure is not a heat-budget driver.
+- - Teleconnection sensitivity screen
+  - Lake-level Pearson correlations between detrended raw annual LSWT anomalies and predeclared annual teleconnection indices are Fisher-z transformed, then aggregated to PCA equal-area cells. The screen uses Niño 3.4, PDO, NAO, and AO at index leads 0 and 1 year; NAO/AO form one correlated family. It evaluates whether PC1 or the joint PC2--PC3 spatial score subspace adds held-out prediction beyond geography/lake morphology.
+  - A spatial co-location diagnostic only. It does not correlate PCA loading time series with indices, use lake-level nominal p values or best-index fields, identify a driver, or attribute PCA structure. AMO is excluded because the 40-year overlap cannot resolve its multidecadal behaviour. Any promoted result requires positive increment at all block scales, grid sensitivity, and LOCO checks.
+- - Seasonal teleconnection discovery branch
+  - Step 17 repeats the detrended-anomaly sensitivity calculation separately for matching DJF, MAM, JJA, and SON temperature/index seasons, at lags 0 and 1 years. Frozen `0.0 °C` seasonal states are excluded. It uses NAO, AO, PDO, and Niño 3.4; AMO remains excluded. This branch is a discovery screen designed to recover seasonal phase and spatial sign information lost by annual means.
+  - A screen-selected result remains exploratory until it has positive PC2--PC3 increment across target-grid blocks, all three equal-area grids, and LOCO refits; NAO requires AO-family replication. It may describe where and when sensitivity fields differ, but cannot identify a circulation pathway or establish that a teleconnection causes a low-frequency PCA trajectory.
+  - The targeted JJA NAO/AO lag-1 branch also uses leave-one-decade-out validation. Each omission removes an entire decade from both index/temperature pairs and refits each lake's JJA trend on retained years. Its explicit 28-pair threshold reflects the 28--29 pairs left by a lag-1, 30-year sample; it tests decade dependence and does not replace the main 30-pair screen.
+- - Seasonal lag-surface discovery branch
+  - Step 18 computes a descriptive 72 × 21 equal-area **cell-mean residual** lag surface. Seasonal LSWT uses lag 0--12 quarters: lag 0 is matching season, lag 1 is preceding season, lag 4 is matching season in prior year, and lag 12 is three years earlier. Annual LSWT is paired with each predictor season at lags 0--3 years.
+  - It describes seasonal and regional lag heterogeneity. It does not select a best global/cell lag, replace Step 17's lake-level Fisher-z field, or support causal/pathway claims. Candidate lags chosen after inspection require a new lake-level grid, LOCO, and LODO validation pass.
+- - Selected seasonal-lag confirmation branch
+  - Step 19 fixes a small set of candidates after Step 18 inspection, then recalculates lake-level detrended LSWT/index correlations and four leave-one-decade-out fields. It intentionally does not use the global median absolute correlation to rank candidates: a field may have modest typical local correlation yet align strongly with PCA score geometry.
+  - A candidate is described by its response season, index season, and exact quarter/year lag. Its Fisher-z cell field is tested against geography/lake morphology, PC1, PC2, PC3, and their combinations using spatial hold-out prediction. Three grid resolutions, leave-one-continent-out PCA refits, and leave-one-decade-out correlations distinguish broad stability from continent- or decade-sensitive observations.
+  - This is a spatial co-location test. It does not prove circulation-to-lake causality, identify a physical pathway, or treat a post-discovery candidate as independent confirmation.
+- - Clustering status
+  - K-means in projected PC1--PC5 score space is retained only as a documented exploratory sensitivity branch.
+  - It is not part of the active Chapter 2 evidence or a claim that lakes belong to intrinsic discrete response types.
 :::
 
 > 原始年均温度负责描述增暖、年增暖速度与增温速度变化；STL nt=99 只在 PCA 前提取低频轨迹。PCA 在等面积格网轨迹上拟合，湖泊仅投影到固定轴；正文解释前 5 个主成分，不以累计 95% 方差作为保留阈值。
 
-> PCA 定义典型空间格网的连续轨迹空间；clustering 只是在 projected PC1–PC5 空间中生成便于沟通的 typology。主展示 K=5，K=4–8 为敏感性；不把 cluster 当作自然离散类别。
+> PCA 定义典型空间格网的连续轨迹空间。clustering 仅保留为已记录的探索性敏感性分支，不进入 Ch2 主证据，也不把 cluster 当作自然离散类别。
 
 ## Analysis layers
 
@@ -60,7 +90,7 @@ The project uses two complementary representations rather than a single series f
   - Scientific role
 - - Reconstructed-temperature layer
   - Raw daily GLAST LSWT-product values aggregated to raw annual or seasonal means.
-  - Long-term reconstructed-LSWT change, cooling cohorts, and seasonal/ice diagnostics.
+  - Long-term reconstructed-LSWT change and rolling seasonal/extreme-temperature/ice dynamics.
 - - Background-trajectory layer
   - Monthly STL trend with `nt=99`, then annualised.
   - Smoothed low-frequency trajectory and its evolving background warming speed.
