@@ -387,6 +387,12 @@ window.Quarto = {
   <li><a href="#stl" id="toc-stl" class="nav-link active" data-scroll-target="#stl">STL</a></li>
   <li><a href="#stars-retired-for-this-exploration" id="toc-stars-retired-for-this-exploration" class="nav-link" data-scroll-target="#stars-retired-for-this-exploration">STARS (retired for this exploration)</a></li>
   <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering">K-means clustering</a></li>
+  <li><a href="#spatially-balanced-pca" id="toc-spatially-balanced-pca" class="nav-link" data-scroll-target="#spatially-balanced-pca">Spatially balanced PCA</a>
+  <ul class="collapse">
+  <li><a href="#external-interpretation-of-pca-scores" id="toc-external-interpretation-of-pca-scores" class="nav-link" data-scroll-target="#external-interpretation-of-pca-scores">External interpretation of PCA scores</a></li>
+  <li><a href="#teleconnection-sensitivity-screen" id="toc-teleconnection-sensitivity-screen" class="nav-link" data-scroll-target="#teleconnection-sensitivity-screen">Teleconnection sensitivity screen</a></li>
+  <li><a href="#seasonal-lagged-association-screen" id="toc-seasonal-lagged-association-screen" class="nav-link" data-scroll-target="#seasonal-lagged-association-screen">Seasonal lagged association screen</a></li>
+  </ul></li>
   <li><a href="#theilsen-slope" id="toc-theilsen-slope" class="nav-link" data-scroll-target="#theilsen-slope">Theil–Sen slope</a></li>
   <li><a href="#mannkendall-test" id="toc-mannkendall-test" class="nav-link" data-scroll-target="#mannkendall-test">Mann–Kendall test</a></li>
   </ul>
@@ -445,6 +451,34 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="k-means-clustering">K-means clustering</h2>
 <p>Partitions <span class="math inline">\(n\)</span> observations into <span class="math inline">\(K\)</span> groups by minimising within-cluster sum of squared distances. Requires pre-specification of <span class="math inline">\(K\)</span>; sensitive to feature scaling.</p>
 <p>Common workflow: z-score features → run K-means → order clusters by a meaningful axis (e.g.&nbsp;mean temperature).</p>
+<p>In this project, projected PC1–PC5 clustering is retained only as an exploratory sensitivity branch. It is not active Chapter 2 evidence: PCA score geometry and score-pole composites are used instead.</p>
+</section>
+<section id="spatially-balanced-pca" class="level2">
+<h2 class="anchored" data-anchor-id="spatially-balanced-pca">Spatially balanced PCA</h2>
+<p>PCA ordinarily gives every input row equal weight. For lake trajectories, this means a lake-dense region can dominate covariance merely because it contributes many nearby, similar lakes. Spatial balancing changes target population: it first centres each lake’s nt=99 STL trajectory on its 1981–1990 mean, averages trajectories within occupied equal-area spherical cells, and fits PCA to one trajectory per cell.</p>
+<p>Active grid has 72 longitude bins and 21 bins equally spaced in <span class="math inline">\(\sin(\mathrm{latitude})\)</span> over 60°S–85°N. Equal spacing in <span class="math inline">\(\sin(\mathrm{latitude})\)</span>, rather than degrees of latitude, makes cells equal in spherical surface area. It does <strong>not</strong> assert that each cell has equal ecological importance; it estimates covariance for a typical represented spatial cell rather than a typical sampled lake.</p>
+<p>Let <span class="math inline">\(\bar{\mathbf{x}}_c\)</span> be each occupied cell trajectory and <span class="math inline">\(\boldsymbol{\mu}\)</span> be mean trajectory across occupied cells. PCA is fitted to <span class="math inline">\((\bar{\mathbf{x}}_c-\boldsymbol{\mu})\)</span>. Lake-level score is then</p>
+<p><span class="math display">\[
+s_{ik} = (\mathbf{x}_i-\boldsymbol{\mu})^\mathsf{T}\mathbf{v}_k,
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{x}_i\)</span> is lake’s baseline-centred trajectory and <span class="math inline">\(\mathbf{v}_k\)</span> is fixed cell-PCA loading <span class="math inline">\(k\)</span>. This projects lakes onto spatial-balanced axes; it is not a second, lake-equal PCA.</p>
+<section id="external-interpretation-of-pca-scores" class="level3">
+<h3 class="anchored" data-anchor-id="external-interpretation-of-pca-scores">External interpretation of PCA scores</h3>
+<p>PCA is an unsupervised covariance decomposition. External interpretation keeps its loading vectors fixed and models cell scores against predeclared external predictor families. PC1 can be evaluated as a scalar response. When adjacent secondary PCs exchange rank under sensitivity tests, model their score vector jointly; total squared prediction error for an orthogonal score subspace does not depend on a relabelling or rotation inside that subspace.</p>
+<p>For this exploration, predictors are aggregated to the same equal-area cells as PCA and tested by contiguous spatial-block hold-outs. Geography/lake morphology forms the baseline. Currently available ERA5-Land wind and precipitation summaries form a restricted second family. A held-out increment is an association, not attribution; it must be stable across block scales and agree with a parallel raw-temperature outcome before supporting interpretation.</p>
+</section>
+<section id="teleconnection-sensitivity-screen" class="level3">
+<h3 class="anchored" data-anchor-id="teleconnection-sensitivity-screen">Teleconnection sensitivity screen</h3>
+<p>Teleconnection indices are not regressed against PCA loading time series here: the PCA representation is low-frequency, while annual indices and their interannual lake responses operate on a different time scale. Instead, each lake’s correlation between detrended annual LSWT anomalies and a predeclared index/lead combination is Fisher-z transformed and aggregated to PCA cells. The resulting spatial sensitivity field can be tested against fixed PC scores after geography/lake morphology is controlled by spatial block hold-outs.</p>
+<p>This asks whether locations expressing different PCA score geometry also differ in their interannual teleconnection sensitivity. It does not establish that an index drives a PCA mode. Do not use nominal lake-level correlation p values, post-hoc best-index labels, or a 40-year AMO screen as evidence.</p>
+<p>The predeclared screen is Niño 3.4, PDO, NAO, and AO, at lags 0 and 1 only; at least 30 valid paired years are required. Lake correlations are transformed as <span class="math inline">\(z=\operatorname{atanh}(r)\)</span> and aggregated within each cell with weight <span class="math inline">\(n-3\)</span>. Geography/lake morphology is the baseline. PC1 and the joint PC2–PC3 score pair are additions, evaluated by contiguous spatial block held-out <span class="math inline">\(R^2\)</span>. A finding is retained only when its positive PC increment repeats across three block partitions, three equal-area PCA grids, and leave-one-continent-out PCA refits. NAO and AO are a correlated family, so passing results cannot rank them as separate mechanisms. See <a href="../explorations/warming-acceleration/prose/pca-teleconnection-screen.html">teleconnection-sensitivity screen</a> for result-specific boundaries.</p>
+</section>
+<section id="seasonal-lagged-association-screen" class="level3">
+<h3 class="anchored" data-anchor-id="seasonal-lagged-association-screen">Seasonal lagged association screen</h3>
+<p>Step 17 repeats this association construction for DJF, MAM, JJA, and SON, using matching-season three-month index means. For DJF year <span class="math inline">\(y\)</span>, the index is December <span class="math inline">\(y-1\)</span> plus January–February <span class="math inline">\(y\)</span>, matching the temperature producer. All-ice seasonal observations encoded as 0 °C are excluded before a per-lake linear seasonal detrend. The active discovery subset is JJA temperature in year <span class="math inline">\(t\)</span> against JJA NAO/AO in <span class="math inline">\(t-1\)</span>; its cell response is called a <strong>lagged seasonal association field</strong>, not a causal sensitivity field.</p>
+<p>Screen promotion requires positive PC2–PC3 spatial-block gain at three equal-area grids and every LOCO refit. Targeted leave-one-decade-out checks recompute lake trends and correlations after removing an entire decade; their 28-pair minimum is a deliberate consequence of lagged 30-year samples, not a replacement for the main 30-pair screen. See <a href="../explorations/warming-acceleration/prose/pca-seasonal-teleconnection.html">seasonal teleconnection association</a> for retained result, figures, and interpretation limits.</p>
+<p>Available lake and watershed attributes can enter an explicit exclusion check, not a post-hoc causal model. The active expanded context is residence time, discharge, watershed area, volume, shoreline development, local slope, and reservoir fraction. It must use one shared context-complete cell set, compare the expanded baseline with PC additions under the same spatial blocks, and repeat its PC2–PC3 increment across grid, LOCO, and LODO checks. See <a href="../explorations/warming-acceleration/prose/pca-seasonal-teleconnection-lake-context.html">lake context exclusion</a>.</p>
+</section>
 </section>
 <section id="theilsen-slope" class="level2">
 <h2 class="anchored" data-anchor-id="theilsen-slope">Theil–Sen slope</h2>

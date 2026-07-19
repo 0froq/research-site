@@ -1,113 +1,223 @@
-# Seasonal and Ice Diagnostics for Cooling Trajectories
+# Seasonal, Extreme-Temperature, and Ice Dynamics
 
-## Question and evidentiary boundary
+## Question and boundary
 
-Some lakes in mid- to high-latitude North America and mid-latitude Eurasia may show late-period cooling or a reduction in warming speed. One possible explanation is increased cold-season or warm-season inflow from glacier melt. This is a useful hypothesis, but the present lake-temperature and ice-duration outputs cannot establish it: they do not identify glacier-connected catchments or measure inflow temperature and discharge.
+This module asks how each lake’s changing local annual warming rate co-varies through time with seasonal rates, warm/cold 30-day temperature rates, and ice-duration state. It does not begin by classifying lakes as full-period, late-period, or decelerating cooling types.
 
-> 北美中高纬度和欧亚中纬度部分湖泊可能在后期降温或减速。冰川融水冷入流是可检验假说，但当前数据没有 glacier-catchment 连通性、入流温度或流量，不能直接归因。
+> 本模块考察每个湖的局部年增温率如何随时间与季节速率、最暖/最冷 30 天温度速率及冰期状态共同变化。不以全期、末段或减速降温标签作为入口。
 
-The immediate objective is therefore diagnostic: determine whether either full-period or late-period cooling has the seasonal signature expected from a warm-season cold-inflow mechanism, and describe its relationship with lake ice duration. No direction of ice-duration change is pre-specified.
+The module is descriptive. A synchronised seasonal rate is not a formal contribution to annual warming, because Theil–Sen slopes are not additive across annual and seasonal series. A temperature–ice correlation is not a causal response estimate, and neither pattern identifies glacier meltwater.
 
-> 近期目标是诊断而非归因：全期与末段降温均检验其季节性指纹，并描述它与冰期变化和大气强迫的关系；不预设冰期变化方向。
+> 本模块是描述性的。季节 Sen slope 不能相加为年均 slope，故同步变化不是严格贡献；温度—冰期相关不是因果响应，也不能识别冰川融水。
 
-## Predeclared diagnostic sequence
+## Common endpoint axis
 
-### 1. Define response cohorts before inspecting seasonal patterns
+All temperature series use a trailing 10-year Theil–Sen slope, indexed to its endpoint year. The 1981–1990 slope is stored at 1990, producing a common 1990–2020 local-rate axis for annual, DJF, MAM, JJA, SON, annual maximum 30-day temperature, and annual minimum 30-day temperature.
 
-Use raw annual mean LSWT, the canonical primary series. Report full-period and late-period cooling definitions in parallel; neither is subordinate.
+> 所有温度序列均用终点对齐的 10 年 Theil–Sen slope；1981–1990 窗口记为 1990。annual、四季、最暖 30 天和最冷 30 天因此共享 1990–2020 轴。
 
-| Cohort | Definition | Purpose |
-|----|----|----|
-| Full-period cooling | Raw annual Theil–Sen slope over 1981–2020 is below zero. | Identifies lakes whose long-run annual LSWT decreases. |
-| Late-period cooling | Theil–Sen slope of raw annual LSWT over a predeclared late window, initially 2001–2020, is below zero. | Separates a late reversal from an overall cooling record. |
-| Late-period slowdown | Late-window slope is lower than the corresponding early-window slope, initially 1981–2000. | Tests a change in trajectory without treating a detected breakpoint as a physical event. |
+Annual ice days use a trailing 10-year arithmetic mean on that same endpoint axis. Ice duration is treated as a state background, not converted into a warming-speed analogue.
 
-> 先定义湖泊 cohort，再看季节结果。全期与末段定义应并列报告；不要先看到 JJA 信号后再倒推筛选条件。
+> 年冰日使用同一终点轴的 10 年滑动均值。冰期是状态背景，不被强行转为“增温速度”。
 
-Step 14 (`trajectory-diagnostics`) is the explicit producer for these full- and late-period slopes, seasonal trends, ice-day trends, and three non-equivalent trajectory indicators. The QMD layer only reads its outputs.
+In the current producer, an all-ice / no-valid-nonfreezing aggregation period is recorded as finite `0.0 °C`; it is not an `NA`. Consequently, an undefined Spearman coefficient can arise from a constant rolling-rate sequence, especially for persistently frozen seasons. Step 14 records this separately from the number of endpoint pairs.
 
-> Step 14 负责全期/早晚期趋势、季节趋势与冰日趋势；qmd 不临时计算。
+> 当前 producer 将全冰或无有效非冻结日时段记为有限的 `0.0 °C`，不记为 `NA`。因此 Spearman 不可定义可能来自恒定的滚动 rate，尤其是持续冻结季节；Step 14 将其与 endpoint 对数分开记录。
 
-### 2. Test the warm-season signature
+## Diagnostic layers
 
-Glacier meltwater is expected to be most relevant during the warm season, when melt and discharge are largest. The primary seasonal diagnostic is therefore the JJA raw LSWT slope. For every cohort, compare JJA with DJF, MAM, and SON slopes rather than examining JJA alone.
+### Seasonal dynamics
 
-> 冰川融水的首要季节诊断是 JJA，但必须与 DJF、MAM、SON 并列比较，不能只挑选夏季结果。
+For each lake and each season, retain the full local-rate sequence and calculate its cross-endpoint Spearman alignment with annual local rate:
 
-Support for the hypothesis would require a coherent pattern: cooling/decelerating lakes should have disproportionately negative or weakened JJA trends relative to comparable non-cooling lakes, with an interpretable geographical concentration. A negative JJA slope alone is not sufficient.
+\\ \rho_s=\operatorname{Spearman}(r\_{\mathrm{annual}}(t),r_s(t)). \\
 
-> 支持性证据应是连贯组合：冷却/减速 cohort 的 JJA 趋势相对对照组更负或更弱，并有可解释的空间集中；单独的 JJA 负趋势不够。
+Report all four values rather than assigning a single dominant season. Maps describe continuous spatial variation in seasonal alignment and in endpoint-rate change. A summer-associated pattern requires JJA to be distinct relative to DJF, MAM, and SON, not merely negative.
 
-### 3. Separate ice-state and liquid-water interpretations
+> 每湖、每季保留完整局部 rate 序列，并计算其与 annual rate 的跨终点 Spearman 对齐。四季均报告，不强制指定单一主导季节。夏季关联必须相对其他季节具有特异性，不能只看 JJA 为负。
 
-Annual LSWT includes the 0 °C all-ice state. Compare annual ice-day trends and, where necessary, seasonal temperature trends within strata of baseline ice duration. The key question is whether annual cooling/deceleration is primarily associated with changing ice exposure or remains visible in the warm-season liquid-water signal.
+### Extreme-temperature dynamics
 
-> 年均 LSWT 混合冰态与液态水温。应按基线冰期分层，比较年冰日趋势和季节温度趋势，判断信号是否仍存在于暖季液态水温中。
+The same analysis is applied to annual maximum and minimum 30-day temperatures. Their alignments with annual rate distinguish whether changing peak warmth or changing cold-period warmth more closely co-varies with a lake’s local annual-rate history.
 
-Useful contrasts include:
+> 对年最暖/最冷 30 天温度做同样分析。它们与 annual rate 的对齐可描述局部年速率历史更接近 peak warmth 还是 cold-period warmth 的变化。
 
-- seasonally frozen versus low-ice lakes;
-- decreasing versus stable/increasing annual ice duration;
-- similar latitude/elevation bands, to avoid treating the global thermal gradient as a mechanism.
+The occurrence dates of those 30-day periods are retained for later circular-date analysis but are not part of the first-pass inference.
 
-### 4. Require catchment evidence before invoking glacier meltwater
+> 两个 30 天窗口的出现日期保留给后续环形日期分析，暂不进入首轮推断。
 
-An eventual glacial-inflow claim requires at least one external glacier or catchment data source and a lake-to-upstream-catchment linkage. Geographic proximity to a glacier, latitude, elevation, or continent is not evidence of hydrological connection.
+### Ice-duration dynamics
 
-> 若要声称冰川融水机制，至少需要外部冰川/流域数据和湖泊—上游流域连通关系。仅凭距冰川近、纬度、海拔或大洲都不是水文连通证据。
+For each lake, calculate:
 
-The minimum evidence chain is:
+\\ \rho\_{\mathrm{ice}}= \operatorname{Spearman}(r\_{\mathrm{annual}}(t),\bar I\_{10}(t)). \\
 
-``` text
-glacier-connected catchment
-  → warm-season melt/discharge or cold-inflow indicator
-  → disproportionate JJA cooling or slowdown
-  → robustness after ice-duration and atmospheric-forcing contrasts
-```
+Also retain baseline ice duration and 1990–2020 ice-state change. Interpret positive, negative, and near-zero values as distinct response patterns, not as evidence for a universal ice mechanism.
 
-## Alternative explanations to retain
+> 每湖计算 annual rate 与 10 年冰日均值的 Spearman 对齐，并保留基线冰期和 1990–2020 冰态变化。正、负、近零都是不同响应模式，不代表统一冰机制。
 
-The same seasonal pattern could arise from cloud/radiation changes, precipitation and non-glacial runoff, wind-driven mixing, evaporative cooling, local land-cover change, satellite retrieval issues, or sampling/ice-state artefacts. The diagnostic should report these as alternatives, not as residual footnotes.
+## Statistical boundary
 
-> 相同季节信号也可能来自辐射、降水与非冰川径流、风混合、蒸发冷却、土地覆盖、遥感反演或冰态处理。它们应是并列替代解释，而非附注。
+All 31 endpoints share overlapping observations. Cross-endpoint correlations are therefore descriptive alignment measures: no ordinary correlation p-values, causal language, or strict seasonal contribution fractions will be reported. Spatial aggregation requires a minimum lake count per cell and reports distributional summaries rather than area-weighted global fields.
 
-## Planned deliverables
+> 31 个 endpoint 高度重叠。相关性仅描述对齐结构：不报告普通相关 p 值、不作因果表述、不计算严格季节贡献比例。空间图需设置每格最小湖泊数，报告分布汇总，不作面积加权全球场。
 
-1.  A cohort table with full-period and late-period definitions.
-2.  A seasonal slope comparison for annual/DJF/MAM/JJA/SON, stratified by baseline ice duration.
-3.  A map of the diagnostic cohorts, explicitly descriptive.
-4.  A decision on whether the observed pattern justifies acquiring glacier-catchment data.
+## Warming- and cooling-state branches
 
-> 交付物依次为：cohort 表、季节趋势对比、描述性空间图，以及是否值得引入 glacier-catchment 数据的决策。
+Overall alignment can conceal different behaviour when annual local rate is positive versus negative. Step 14 therefore repeats each seasonal and extreme-temperature comparison using only endpoints with positive annual rate, and only endpoints with negative annual rate. Each branch requires at least eight finite endpoint pairs and non-constant ranked values.
 
-## First-pass results (raw annual/seasonal data)
+> overall 对齐可能掩盖 annual rate 为正与为负时的不同表现。Step 14 因此分别只用 annual rate 为正、只用 annual rate 为负的 endpoint 重算季节与极值对齐。每个分支至少需 8 个有限 endpoint 对，且秩序列不能恒定。
 
-Step 14 identifies 20,931 lakes with a negative late-period (2001–2020) annual Theil–Sen slope. Of these, 19,864 occur at \\\|latitude\| \geq 45°\\. Their median late-period annual trend is -0.77 °C per 40 years. Their median JJA trend is slightly positive (+0.02 °C per 40 years), while the corresponding non-cooling lakes have a median JJA trend of +1.91 °C per 40 years.
+These sign-conditioned coefficients quantify relative co-variation within warming or cooling states. They do not identify which season contributes an additive share of annual warming, because rolling Theil–Sen rates across seasonal series are not decomposable in that way.
 
-> Step 14 识别出 20,931 个末段年均降温湖泊，其中 19,864 个位于 \|纬度\|≥45°。其年均中位趋势为 -0.77 °C/40 年；JJA 中位趋势略正（+0.02），但显著低于非降温湖泊（+1.91）。
+> 这些条件相关量化增温或降温状态内的相对协变，不能识别某季节对 annual warming 的可加贡献；不同季节的滚动 Theil–Sen rate 不可这样分解。
 
-![](seasonal-ice-diagnostics_files/figure-html/fig-ice-seasonal-strata-1.png)
+## Seasonal ice branch
 
-Figure 1: Raw annual and seasonal LSWT trends by cooling history and baseline ice-duration stratum. Points show medians; ranges show interquartile ranges. Full-period and late-period windows are shown separately.
+Monthly ice-day counts are summed into DJF, MAM, JJA, and SON series using the same DJF year convention as temperature. For each season, retain a trailing-10-year ice-duration mean and an ice-loss rate, defined as the negative trailing-10-year Sen slope of ice days. Positive ice-loss rate means fewer seasonal ice days per year.
 
-[Figure 1](#fig-ice-seasonal-strata) keeps the ice analysis modular: it reports raw thermal and ice-state strata without making glacier attribution part of Chapter 1. The parent chapter links here only when the cooling branch is retained in a future manuscript.
+> 月冰日按与温度一致的 DJF 年份规则汇总为四季冰日。每季保留 10 年冰期均值与冰损失 rate；后者为冰日 10 年 Sen slope 取负，正值表示该季每年冰日减少。
 
-> [Figure 1](#fig-ice-seasonal-strata) 保持冰模块独立：仅报告原始温度趋势与冰态分层，不把冰川归因写入 Ch1。未来论文是否纳入该支路，可独立决定。
+Annual-rate alignment with seasonal ice loss is a targeted descriptive test of synchronous thermal-rate and ice-loss change. It is more appropriate than treating a persistent winter/spring `0.0 °C` frozen state as a continuously varying thermal signal. It remains neither a glacier-meltwater test nor causal evidence.
 
-![](seasonal-ice-diagnostics_files/figure-html/fig-cooling-cohorts-map-1.png)
+> annual rate 与季节冰损失的对齐用于描述同步热速率与失冰变化；相比把持续冬春 `0.0 °C` 冻结状态当连续温度信号更合适。但它仍不是冰川融水检验或因果证据。
 
-Figure 2: Spatial distribution of full-period and late-period cooling cohorts. Points are lakes, not area-weighted fields.
+## Outputs and decision gate
 
-[Figure 2](#fig-cooling-cohorts-map) is a cohort-location diagnostic, not a regional classification. It establishes where full-period and late-period cooling occur before any future catchment test.
+Step 14 produces lake-by-endpoint rate/state files and a per-lake alignment summary. The first outputs are:
 
-> [Figure 2](#fig-cooling-cohorts-map) 只显示 cohort 位置，不把连续空间强行分区；它为未来流域连通性检验提供候选位置。
+1.  multi-series trajectories for representative lakes and spatially aggregated dynamics;
+2.  maps of seasonal, maximum/minimum-temperature, and ice-state alignment;
+3.  continuous distributions of endpoint-rate and ice-state change.
 
-Only 7,638 mid/high-latitude late-cooling lakes (38%) have JJA as their most negative late-period season under the predeclared criterion. This is a meaningful summer-associated subgroup, not a dominant signature of all cooling lakes. The median annual ice-day trend in this group is negative both over the full period (-14.8 days per 40 years) and late period (-16.6 days per 40 years). This documents the observed ice-duration co-pattern; it does not test a pre-specified longer-ice explanation.
+> Step 14 输出逐湖逐终点 rate/state 文件和对齐摘要。首轮产物是代表湖多序列轨迹、空间汇总动态图、季节/极值/冰态对齐地图，以及 endpoint 变化的连续分布。
 
-> 仅 7,638 个（38%）中高纬末段降温湖泊以 JJA 为最负季节。它是值得研究的夏季关联子群，不是全部降温湖泊的主导指纹。其冰日趋势为缩短；这只是观测到的冰期共变，不对应预设方向。
+## First-pass spatial diagnostics
 
-The summer-associated subgroup is consistent with the proposed cold-inflow hypothesis, but it is equally compatible with radiation, evaporation, wind mixing, precipitation/runoff, or retrieval explanations. Glacier meltwater must remain a hypothesis until lake–catchment connectivity and inflow observations are added.
+Before interpreting a correlation map, its availability must be shown. Figure [Figure 1](#fig-alignment-availability) gives the fraction of lakes in each occupied 1° cell for which the annual-rate comparison is defined. A low fraction normally indicates a constant seasonal, extreme-temperature, or ice-state sequence; it does not indicate missing temperature observations.
 
-> 夏季关联子群与冷入流假说相容，但同样可能来自辐射、蒸发、风混合、降水/径流或反演问题。补齐湖泊—流域连通与入流观测前，冰川融水只能是待检验假说。
+> 解释相关地图前，需先显示其可定义性。[Figure 1](#fig-alignment-availability) 给出每个有湖的 1° 格网中 annual-rate 比较可定义的湖泊比例。低比例通常表示季节、极值或冰态序列恒定，并非温度观测缺失。
+
+![](seasonal-ice-diagnostics_files/figure-html/fig-alignment-availability-1.png)
+
+Figure 1: Fraction of lakes per 1° cell with a defined annual-rate alignment. Cells contain at least three lakes.
+
+Where at least three correlations are defined, Figure [Figure 2](#fig-alignment-strength) maps the within-cell median alignment. This is a descriptive spatial aggregation, not an area-weighted global field and not a causal seasonal contribution map.
+
+> 对至少有 3 个可定义相关的格网，[Figure 2](#fig-alignment-strength) 显示其中位对齐。它是描述性空间汇总，不是面积加权全球场，也不是季节因果贡献图。
+
+![](seasonal-ice-diagnostics_files/figure-html/fig-alignment-strength-1.png)
+
+Figure 2: Median within-lake Spearman alignment between annual local warming rate and each rolling seasonal, extreme-temperature, or ice-state sequence, summarized within 1° cells.
+
+Figure [Figure 3](#fig-alignment-distribution) retains the lake-level distribution behind these medians. It distinguishes a globally weak comparison from a geographically mixed comparison with positive and negative modes that cancel in the median.
+
+> [Figure 3](#fig-alignment-distribution) 保留这些中位数背后的湖泊尺度分布。它区分“全球普遍弱”与“正负模式并存、在中位数中抵消”的情况。
+
+![](seasonal-ice-diagnostics_files/figure-html/fig-alignment-distribution-1.png)
+
+Figure 3: Distribution of within-lake Spearman alignment between annual local rate and seasonal, extreme-temperature, ice-state, or thermal-asymmetry rate. Only defined correlations enter each panel.
+
+At the lake level, JJA, SON, and maximum-30-day alignments are defined for 99.6%, 99.9%, and 99.3% of lakes, respectively. Their median alignments are 0.79, 0.51, and 0.68. Thus, across the broad set of lakes where a comparison is possible, local annual-rate dynamics most often co-vary with warm-season and warm-extreme dynamics.
+
+> 湖泊尺度上，JJA、SON 与最暖 30 天对齐分别在 99.6%、99.9%、99.3% 湖泊中可定义；中位相关分别为 0.79、0.51、0.68。故在可比较湖泊中，annual rate 更常与暖季及暖极值动态协变。
+
+DJF, MAM, and especially minimum-30-day comparisons are conditional branches, not globally comparable layers: their alignment is defined for only 24.1%, 32.8%, and 8.4% of lakes. Persistent `0.0 °C` frozen states make their local-rate sequences constant. These layers remain useful for the subset with temporal variation, but cannot be used to generalise about global cold-season control.
+
+> DJF、MAM，尤其最冷 30 天是条件性分支，不是可全球比较的层：可定义比例仅为 24.1%、32.8%、8.4%。持续 `0.0 °C` 冻结状态使局部 rate 恒定。它们仍可用于有时间变异的子集，但不能外推为全球冷季主导结论。
+
+The ice-state alignment is defined for 94.1% of lakes, but its median is -0.01. This does not support a single global ice-duration response. The spatial field should instead be used to locate contrasting response settings for later, explicitly conditional investigation.
+
+> 冰态对齐在 94.1% 湖泊中可定义，但中位数仅为 -0.01。这不支持单一的全球冰期响应；空间图应只用于定位对比性响应环境，供后续有条件地深入调查。
+
+## Sign-conditioned temperature alignment
+
+Among endpoints with positive annual local rate, median alignment is 0.60 for JJA, 0.39 for SON, and 0.50 for maximum 30-day temperature. For negative annual-rate endpoints, corresponding values are 0.58, 0.29, and 0.50.
+
+> 在 annual local rate 为正的 endpoint 中，JJA、SON、最暖 30 天的中位对齐分别为 0.60、0.39、0.50；annual rate 为负时分别为 0.58、0.29、0.50。
+
+Figure [Figure 4](#fig-sign-conditioned-temperature) maps these two conditional profiles. Tile opacity is the fraction of lakes in the cell with a defined conditional correlation, preventing sparse branches from looking equally certain.
+
+> [Figure 4](#fig-sign-conditioned-temperature) 显示两种条件 profile 的空间分布。格网透明度表示其中条件相关可定义的湖泊比例，避免稀疏分支看似同样可靠。
+
+![](seasonal-ice-diagnostics_files/figure-html/fig-sign-conditioned-temperature-1.png)
+
+Figure 4: Median conditional Spearman alignment between annual local rate and warm-season or warm-extreme rate. Rows condition on the sign of annual local rate; opacity shows fraction of lakes with a defined conditional alignment.
+
+## Seasonal ice-loss alignment
+
+The seasonal ice-loss branch replaces frozen-season temperature rate with a directly interpretable ice-change sequence. For positive annual-rate endpoints, JJA ice-loss alignment has median 0.42; for negative annual-rate endpoints it is 0.35. Figure [Figure 5](#fig-sign-conditioned-ice) shows whether this and the winter/spring branches are geographically coherent.
+
+> 季节冰损失分支以可解释的冰变化序列替代冻结季节 temperature rate。annual rate 为正时，JJA 冰损失对齐中位数为 0.42；annual rate 为负时为 0.35。[Figure 5](#fig-sign-conditioned-ice) 用于查看这一模式及冬春分支是否具有空间连贯性。
+
+![](seasonal-ice-diagnostics_files/figure-html/fig-sign-conditioned-ice-1.png)
+
+Figure 5: Median conditional Spearman alignment between annual local rate and seasonal ice-loss rate. Positive ice loss means fewer ice days yr⁻¹; opacity shows fraction of lakes with a defined conditional alignment.
+
+## Seasonal thermal asymmetry
+
+Correlation maps ask whether two local-rate sequences co-vary. They do not show whether a particular 10-year annual change is thermally concentrated in the warm or cold part of the year. Step 14 therefore adds three annual thermal-state diagnostics before calculating their endpoint-aligned 10-year Sen rates: fixed warm–cold contrast (`JJA − DJF`), four-season range, and four-season standard deviation. A positive contrast-rate means JJA warms relative to DJF; a negative value means the observable JJA–DJF thermal contrast contracts. Range and standard-deviation rates test whether the conclusion depends on fixing JJA and DJF as the warm/cold pair.
+
+> 相关图回答两个 rate 是否协变，不能显示某个 10 年年均变化在暖季还是冷季更集中。故 Step 14 新增 JJA−DJF 热对比、四季极差和四季标准差，并对其计算终点对齐的 10 年 Sen rate。对比 rate 为正表示 JJA 相对 DJF 增温更快；为负表示可观测的 JJA−DJF 热差收敛。极差与标准差用于检验结论是否依赖固定 JJA/DJF。
+
+These measures are seasonal asymmetry diagnostics, not additive seasonal contributions. For ice-covered lakes, winter temperatures can remain fixed at `0 °C`; a contracting contrast then describes the observed LSWT seasonal cycle, while seasonal ice-day changes retain the separate frozen-state information.
+
+> 这些量是季节不均衡诊断，不是可加的季节贡献。冰湖冬季温度可固定在 `0 °C`；此时热差收敛描述的是可观测 LSWT 年内循环，冻结状态仍需由季节冰日单独表达。
+
+For endpoints with positive annual rate, a positive thermal-asymmetry rate identifies warmer-season-relative amplification; a negative rate identifies cold-season-relative amplification. For endpoints with negative annual rate, signs reverse their interpretation: positive asymmetry means cold-season-relative cooling, while negative asymmetry means warm-season-relative cooling. The terms *relative* and *observed* are essential: both seasons can warm or cool in any quadrant.
+
+> 对 annual rate 为正的 endpoint，热不均衡 rate 为正表示暖季相对强化，为负表示冷季相对强化；对 annual rate 为负的 endpoint，正值表示冷季相对降温更快，负值表示暖季相对降温更快。必须保留“相对”和“可观测”：每个象限中各季均可能同向变化。
+
+Figure [Figure 6](#fig-thermal-asymmetry-space) maps the within-lake median thermal-asymmetry rate among positive and negative annual-rate endpoints. Tile fill is the median across lakes in each 1° cell, and opacity records the within-lake median fraction of endpoints with positive asymmetry. This separates spatial heterogeneity from a global median that can mix opposite response modes.
+
+> [Figure 6](#fig-thermal-asymmetry-space) 显示正／负 annual-rate endpoint 内，每湖热不均衡 rate 的中位数，再按 1° 格网汇总。填色为格网内中位 rate，透明度为各湖“热不均衡为正” endpoint 比例的中位数。这样可避免全球中位数混合相反响应模式。
+
+![](seasonal-ice-diagnostics_files/figure-html/fig-thermal-asymmetry-space-1.png)
+
+Figure 6: Seasonal thermal-asymmetry rates conditional on annual local-rate sign. Fill: within-cell median of each lake’s median endpoint rate; opacity: within-cell median fraction of positive diagnostic rates. Positive JJA − DJF change means warm-season-relative amplification.
+
+At lake level, the positive-annual-rate branch has median JJA–DJF contrast rate 0.10 °C yr⁻¹; the negative-annual-rate branch has -0.06 °C yr⁻¹. These global summaries are only reference values; interpretation should follow the spatially organised sign mixtures in [Figure 6](#fig-thermal-asymmetry-space).
+
+> 湖泊尺度上，正 annual-rate 分支的 JJA−DJF 热对比 rate 中位数为 0.10 °C yr⁻¹；负分支为 -0.06 °C yr⁻¹。这些全球汇总只作参照；解释应回到 [Figure 6](#fig-thermal-asymmetry-space) 中空间组织化的正负混合。
+
+## Paired seasonal ice alignments
+
+Different seasonal ice-loss medians can arise either because the same lakes have opposite seasonal alignments or because each seasonal comparison is defined for a different lake population. These alternatives are tested directly in the overlap set: pair JJA with SON, and DJF with MAM, only where both within-lake annual-rate alignments are defined.
+
+> 不同季节冰损失的中位对齐差异，可能来自同一湖在不同季节相反，也可能只是不同季节的可定义湖群不同。故直接在重叠样本检验 JJA–SON 与 DJF–MAM：仅保留两季 annual-rate 对齐都可定义的湖泊。
+
+The JJA–SON pair contains 70,078 lakes; its between-season Spearman association is 0.55, and 51.0% have opposite signs. The DJF–MAM overlap contains 15,236 lakes, with corresponding values 0.40 and 23.3%.
+
+> JJA–SON 重叠样本有 70,078 湖；两季间 Spearman 为 0.55，符号相反比例为 51.0%。DJF–MAM 重叠样本有 15,236 湖，对应为 0.40 和 23.3%。
+
+Figure [Figure 7](#fig-paired-ice-alignment-space) maps the modal sign combination within each occupied 1° cell. Opacity is the share of lakes belonging to that modal combination. It distinguishes genuinely mixed local seasonal responses from broad cells dominated by one paired response pattern.
+
+> [Figure 7](#fig-paired-ice-alignment-space) 显示每个 1° 格网中最常见的季节冰对齐符号组合；透明度为该组合在格网中的湖泊比例。它区分同地混合的季节响应与被单一组合主导的格网。
+
+![](seasonal-ice-diagnostics_files/figure-html/fig-paired-ice-alignment-space-1.png)
+
+Figure 7: Modal paired sign combination of annual-rate alignment with seasonal ice-loss rate within 1° cells. Only lakes with both seasonal alignments defined enter each pair; opacity is modal-class fraction.
+
+For JJA–SON, opposite signs are not a minor tail: the modal cross-season pattern is positive JJA alignment and negative SON alignment. Thus the positive global JJA median and slightly negative SON median do not describe one uniform annual-ice response; they combine spatially organised seasonal phase differences. DJF–MAM is more often jointly negative, but its non-zero opposite-sign branch likewise prevents a universal winter/spring ice interpretation.
+
+> 对 JJA–SON，异号不是小尾部：最常见模式是 JJA 对齐为正、SON 对齐为负。因此 JJA 的全球正中位数与 SON 的略负中位数并非单一统一冰响应，而是空间组织化的季节相位差。DJF–MAM 更常同时为负，但异号分支也排除了统一的冬春冰期解释。
+
+## Direct JJA–SON ice-loss configurations
+
+The preceding paired analysis compares *correlations with annual temperature rate*; it cannot determine whether JJA and SON ice days themselves change in opposite directions. This direct diagnostic instead classifies every lake-endpoint pair by the signs of its JJA and SON ice-loss rates, then reports the direct annual ice-loss rate in the same endpoint. Positive ice loss means fewer ice days per year; negative ice loss means more ice days per year. JJA and SON are calendar seasons: their warm/cold interpretation is Northern-Hemisphere-specific and must be stratified by hemisphere before phenological inference.
+
+> 前述配对分析比较的是“与 annual temperature rate 的相关”，不能判断 JJA 与 SON 冰日本身是否反向变化。本节直接按每个湖—endpoint 的 JJA、SON 冰损失 rate 符号分类，并报告同 endpoint 的全年冰损失 rate。正值表示每年冰日减少；负值表示每年冰日增加。JJA/SON 是日历季节；在南半球其暖冷含义相反，任何物候解释必须先分半球。
+
+The `JJA and SON loss` configuration has median annual ice loss 1.62 days yr⁻¹ (IQR 1.00 to 2.25). The opposite direct configurations are near annual balance: `JJA loss / SON gain` has median 0.20, and `JJA gain / SON loss` has median -0.00 days yr⁻¹.
+
+> `JJA and SON loss` 的全年冰损失中位数为 1.62 天 yr⁻¹（IQR：1.00 至 2.25）。两种直接反向组合接近全年平衡：`JJA loss / SON gain` 中位数为 0.20，`JJA gain / SON loss` 为 -0.00 天 yr⁻¹。
+
+Figure [Figure 8](#fig-direct-ice-phase) tests the proposed distinction without imposing an arbitrary annual-loss threshold. Joint JJA–SON loss is consistent with overall shortening; opposite direct signs are consistent with calendar-season redistribution. They do not by themselves prove a delayed freeze-up or earlier break-up, which requires monthly or daily transition-date analysis within hemisphere.
+
+> [Figure 8](#fig-direct-ice-phase) 不设任意全年失冰阈值，直接检验上述区分。JJA–SON 同时失冰与全年缩短一致；两季直接异号与日历季节再分配一致。但它们本身不能证明冻结后移或融化提前，后者需要分半球的逐月或逐日转折日期分析。
+
+![](seasonal-ice-diagnostics_files/figure-html/fig-direct-ice-phase-1.png)
+
+Figure 8: Direct annual ice-loss rate conditional on the signs of JJA and SON ice-loss rates. Points are medians; intervals are interquartile ranges across lake-endpoint observations. Positive means fewer annual ice days yr⁻¹.
 
 Back to top

@@ -4,7 +4,7 @@ Methods, algorithms, indices, data sources, and terminology. Not tied to any spe
 
 ## [Algorithms](../metrics/algorithms.llms.md)
 
-STL, descriptive PCA-score clustering, Theil–Sen, Mann–Kendall, and historical/retired algorithms such as STARS.
+STL, spatially balanced PCA, exploratory PCA-score clustering, Theil–Sen, Mann–Kendall, and historical/retired algorithms such as STARS.
 
 ## [Indices](../metrics/indices.llms.md)
 

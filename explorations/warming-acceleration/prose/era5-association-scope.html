@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ERA5 Association Scope and Missing Driver Data – Exploration</title>
+<title>Association Scope and Missing Driver Data – Exploration</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -107,18 +107,12 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="ERA5 Association Scope and Missing Driver Data – Exploration">
+<meta property="og:title" content="Association Scope and Missing Driver Data – Exploration">
 <meta property="og:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
-<meta property="og:image" content="https://froq.me/research-site/explorations/warming-acceleration/prose/era5-association-scope_files/figure-html/fig-era5-spatial-block-cv-1.png">
 <meta property="og:site_name" content="Exploration">
-<meta property="og:image:height" content="2280">
-<meta property="og:image:width" content="4200">
-<meta name="twitter:title" content="ERA5 Association Scope and Missing Driver Data – Exploration">
+<meta name="twitter:title" content="Association Scope and Missing Driver Data – Exploration">
 <meta name="twitter:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
-<meta name="twitter:image" content="https://froq.me/research-site/explorations/warming-acceleration/prose/era5-association-scope_files/figure-html/fig-era5-spatial-block-cv-1.png">
-<meta name="twitter:image-height" content="2280">
-<meta name="twitter:image-width" content="4200">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -325,7 +319,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html">Prose</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html">ERA5 Association Scope and Missing Driver Data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html">Prose</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html">Association Scope and Missing Driver Data</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -380,8 +374,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/draft/02-seasonal-ice-context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seasonal and Ice-State Context</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Warming Pattern Decomposition</span></a>
+ <span class="menu-text">Archived Detailed PCA Exploration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/draft/03-warming-pattern-decomposition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Low-Frequency Warming Pattern Decomposition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/draft/04-teleconnection-sensitivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spatially Heterogeneous Teleconnection Sensitivity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/draft/05-discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discussion and Study Boundaries</span></a>
   </div>
 </li>
       </ul>
@@ -404,7 +422,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">ERA5 Association Scope and Missing Driver Data</span></a>
+ <span class="menu-text">Association Scope and Missing Driver Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -415,8 +433,62 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-association-diagnostics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Restricted PCA Association Diagnostics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-external-interpretation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">External Interpretation of Spatially Balanced PCA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-kinematics-bridge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PCA–Kinematics Bridge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-morphology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory PC2–PC3 Rotation: Why It Is Not Active Evidence</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-seasonal-teleconnection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seasonal Teleconnection Association of Secondary Lake-Warming Structure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-seasonal-teleconnection-lag-surface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seasonal Teleconnection Lag Surface</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-seasonal-teleconnection-lake-context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lake-Context Exclusion Check for Seasonal Teleconnection Association</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-selected-seasonal-teleconnection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selected seasonal teleconnection candidates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/prose/pca-stability-contract.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PCA Stability and Association Contract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-teleconnection-screen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teleconnection-Sensitivity Screen for Secondary PCA Structure</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -428,7 +500,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seasonal and Ice Diagnostics for Cooling Trajectories</span></a>
+ <span class="menu-text">Seasonal, Extreme-Temperature, and Ice Dynamics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -610,6 +682,24 @@ window.Quarto = {
  <span class="menu-text">2026-07-15</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/log/2026-07-16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-16</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/log/2026-07-17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-17</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/log/2026-07-19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-19</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -626,9 +716,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#available-first-pass-inputs" id="toc-available-first-pass-inputs" class="nav-link active" data-scroll-target="#available-first-pass-inputs">Available first-pass inputs</a></li>
-  <li><a href="#missing-variables-to-acquire-before-attribution" id="toc-missing-variables-to-acquire-before-attribution" class="nav-link" data-scroll-target="#missing-variables-to-acquire-before-attribution">Missing variables to acquire before attribution</a></li>
-  <li><a href="#interpretation-boundary" id="toc-interpretation-boundary" class="nav-link" data-scroll-target="#interpretation-boundary">Interpretation boundary</a></li>
+  <li><a href="#status" id="toc-status" class="nav-link active" data-scroll-target="#status">Status</a></li>
+  <li><a href="#available-and-missing-inputs" id="toc-available-and-missing-inputs" class="nav-link" data-scroll-target="#available-and-missing-inputs">Available and missing inputs</a></li>
+  <li><a href="#predeclared-future-design" id="toc-predeclared-future-design" class="nav-link" data-scroll-target="#predeclared-future-design">Predeclared future design</a></li>
+  <li><a href="#start-gate" id="toc-start-gate" class="nav-link" data-scroll-target="#start-gate">Start gate</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/explorations/warming-acceleration/prose/era5-association-scope.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/explorations/warming-acceleration/prose/era5-association-scope.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -636,9 +727,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html">Prose</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html">ERA5 Association Scope and Missing Driver Data</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html">Prose</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html">Association Scope and Missing Driver Data</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">ERA5 Association Scope and Missing Driver Data</h1>
+<h1 class="title">Association Scope and Missing Driver Data</h1>
 </div>
 
 
@@ -655,91 +746,70 @@ window.Quarto = {
 </header>
 
 
-<section id="available-first-pass-inputs" class="level2">
-<h2 class="anchored" data-anchor-id="available-first-pass-inputs">Available first-pass inputs</h2>
-<p>The current ERA5 extraction provides lake-nearest-grid monthly and annual summaries for wind speed, surface pressure, and total precipitation over 1981–2020. These variables can be used for descriptive association checks with PCA scores and cooling cohorts; they are not a complete lake heat-budget dataset and cannot support attribution.</p>
+<section id="status" class="level2">
+<h2 class="anchored" data-anchor-id="status">Status</h2>
+<p>The former lake-level model and its rendered cross-validation figure used an archived <code>nt=199</code> lake-equal PCA and cluster branch, so none of its numerical results transfer to the current spatially balanced PCA. Step 11 likewise joins that archived response branch and is not an admissible current analysis input. The active cell-level restricted diagnostic is documented separately below.</p>
 <blockquote class="blockquote">
-<p>当前 ERA5 只有风速、地面气压、降水的湖泊最近网格月/年汇总。可先做 PCA 与降温 cohort 的描述性关联，不能构成完整热收支归因。</p>
-</blockquote>
-<p>The first-pass model should report both a geography-only baseline and the incremental association after adding the available ERA5 variables. It should use spatially blocked validation, not only in-sample <span class="math inline">\(R^2\)</span>, and should call all coefficients associations rather than effects.</p>
-<blockquote class="blockquote">
-<p>首轮模型要并列地理基线与加入 ERA5 后的增量解释，并做空间分块验证；所有系数均称关联，不称效应。</p>
-</blockquote>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-era5-spatial-block-cv" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-era5-spatial-block-cv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="era5-association-scope_files/figure-html/fig-era5-spatial-block-cv-1.png" class="img-fluid figure-img" width="2100">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-era5-spatial-block-cv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Spatial-block cross-validated R² for PC scores. Geography-only models are compared with geography plus available ERA5 variables; negative values indicate worse-than-mean held-out prediction.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p><a href="#fig-era5-spatial-block-cv" class="quarto-xref">Figure&nbsp;1</a> is deliberately a predictive association check. It asks whether wind, pressure, and precipitation summaries improve held-out spatial prediction beyond broad geography; it does not estimate physical forcing effects.</p>
-<blockquote class="blockquote">
-<p><a href="#fig-era5-spatial-block-cv" class="quarto-xref">Figure&nbsp;1</a> 是预测式关联检验：检验现有 ERA5 变量是否改善空间留出预测，不估计物理强迫效应。</p>
+<p>旧湖泊尺度模型及其图使用归档的 <code>nt=199</code> 湖泊等权 PCA 与 cluster 分支，数值不能迁移到现有空间平衡 PCA。Step 11 同样连接旧响应分支，不能作为当前输入；当前格网尺度受限诊断另行记录。</p>
 </blockquote>
 </section>
-<section id="missing-variables-to-acquire-before-attribution" class="level2">
-<h2 class="anchored" data-anchor-id="missing-variables-to-acquire-before-attribution">Missing variables to acquire before attribution</h2>
+<section id="available-and-missing-inputs" class="level2">
+<h2 class="anchored" data-anchor-id="available-and-missing-inputs">Available and missing inputs</h2>
+<p>Step 09 provides 1981–2020 lake-nearest-grid summaries for ERA5-Land wind speed, surface pressure, and total precipitation. It also provides annual and seasonal means, interannual variability, and 40-year Sen trends. These inputs are sufficient only for an exploratory predictive association branch.</p>
+<blockquote class="blockquote">
+<p>Step 09 提供 1981–2020 ERA5-Land 最近格网的风速、地面气压、降水汇总，以及年/季节均值、年际变异和 40 年 Sen 趋势。它们只足以支持探索性预测关联分支。</p>
+</blockquote>
+<p>The branch lacks 2 m air temperature, downward shortwave and longwave radiation, humidity or evaporation/latent-heat variables, and a lake-specific mixing proxy. These are central heat-budget terms. Surface pressure is primarily an elevation/background proxy and is not treated as an independent physical forcing predictor. Because ERA5-Land-driven FLAKE information participates in GLAST reconstruction, an ERA5 association cannot be read as independent forcing evidence.</p>
+<blockquote class="blockquote">
+<p>分支缺少 2 m 气温、向下短/长波辐射、湿度或蒸发/潜热变量，以及湖泊特异的混合代理；它们才是热收支关键项。地面气压主要是海拔/背景代理，不作为独立物理强迫预测变量。ERA5-Land 驱动 FLAKE 信息参与 GLAST 重建，故 ERA5 关联不能被读作独立强迫证据。</p>
+</blockquote>
+</section>
+<section id="predeclared-future-design" class="level2">
+<h2 class="anchored" data-anchor-id="predeclared-future-design">Predeclared future design</h2>
+<p>The analysis unit is the 573 occupied equal-area PCA cells, not individual lakes. PC1 is a scalar response. PC2–PC3 is a joint secondary subspace because LOCO shows rank exchange; it is not a pair of separate mechanism targets. PC4–PC5 remain descriptive only. Lake attributes and ERA5 summaries are aggregated inside the same cells before modelling.</p>
+<blockquote class="blockquote">
+<p>分析单位为 573 个占据的等面积 PCA 格网，而非单个湖泊。PC1 为单响应；PC2–PC3 因 LOCO 会交换排序，作为联合次级子空间，不作两种独立机制目标。PC4–PC5 仅保留描述。湖泊属性与 ERA5 汇总均先在相同格网内聚合。</p>
+</blockquote>
+<p>Model comparison is predeclared as:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Missing input</th>
-<th>Why it matters</th>
-<th>Minimum use</th>
+<th>Model</th>
+<th>Predictor block</th>
+<th>Role</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>2 m air temperature</td>
-<td>Atmospheric thermal forcing and lake–air contrast.</td>
-<td>Baseline climate trajectory.</td>
+<td>Background</td>
+<td>Continuous spatial basis, elevation, log lake area, depth, and distance to coast.</td>
+<td>Describe broad geographic and lake-setting association.</td>
 </tr>
 <tr class="even">
-<td>Downward shortwave and longwave radiation</td>
-<td>Direct surface energy input; cloud changes cannot be represented without them.</td>
-<td>Heat-budget attribution.</td>
+<td>Background plus ERA5</td>
+<td>Background block plus wind-speed and precipitation summaries/trends selected before fitting.</td>
+<td>Test incremental held-out predictive association, not a forcing effect.</td>
 </tr>
 <tr class="odd">
-<td>Humidity, evaporation / latent heat flux</td>
-<td>Evaporative cooling is a major candidate mechanism for LSWT response.</td>
-<td>Energy-balance and mediation tests.</td>
-</tr>
-<tr class="even">
-<td>Wind components or mixing proxies</td>
-<td>Wind speed alone cannot identify directional fetch or mixing regime.</td>
-<td>Lake-specific mixing sensitivity.</td>
-</tr>
-<tr class="odd">
-<td>Glacier inventory, upstream catchments, discharge and inflow temperature</td>
-<td>Required to test glacier-connected cold inflow.</td>
-<td>Glacier-meltwater hypothesis.</td>
-</tr>
-<tr class="even">
-<td>Lake depth, area, clarity / trophic state and catchment land cover</td>
-<td>Thermal storage, optical absorption and watershed forcing are confounders/moderators.</td>
-<td>Process-stratified modelling.</td>
+<td>Sensitivity</td>
+<td>Alternative predeclared spatial basis and cell aggregation summaries.</td>
+<td>Check whether conclusions depend on representational choices.</td>
 </tr>
 </tbody>
 </table>
 <blockquote class="blockquote">
-<p>缺失的关键变量包括气温、短/长波辐射、湿度/蒸发、混合代理、冰川—流域—入流链，以及湖泊与流域属性；补齐前不能做机制归因。</p>
+<p>预先定义模型比较：地理/湖泊背景；再加入预先选择的风速与降水 ERA5 指标；最后做空间基与格网汇总敏感性。目标是检验留出预测增量，不估计强迫效应。</p>
+</blockquote>
+<p>Continent labels, the retired teleconnection branch, and post-hoc screening across many seasonal predictors are excluded. Spatially contiguous blocks must be defined before fitting; primary evidence is held-out <span class="math inline">\(R^2\)</span> and its geography-to-ERA5 increment, not in-sample fit or coefficient significance. Any result is reported as an association with a PCA timing pattern, never as causal attribution.</p>
+<blockquote class="blockquote">
+<p>不使用大洲标签、归档遥相关分支或大量季节预测变量的事后筛选。空间连续 block 须在拟合前定义；主证据为留出 <span class="math inline">\(R^2\)</span> 及 geography 到 ERA5 的增量，不是样本内拟合或系数显著性。所有结果只称与 PCA 时间模式的关联，不称因果归因。</p>
 </blockquote>
 </section>
-<section id="interpretation-boundary" class="level2">
-<h2 class="anchored" data-anchor-id="interpretation-boundary">Interpretation boundary</h2>
-<p>In an unadjusted first-pass rank correlation, PC1 and PC2 are moderately associated with mean surface pressure (<span class="math inline">\(\rho=-0.33\)</span> and <span class="math inline">\(-0.35\)</span>), while PC3 is associated with the precipitation trend (<span class="math inline">\(\rho=-0.33\)</span>). All other available annual ERA5 associations are small to modest. These are geographic co-patterns, not driver estimates: surface pressure in particular is strongly structured by elevation and regional circulation.</p>
+<section id="start-gate" class="level2">
+<h2 class="anchored" data-anchor-id="start-gate">Start gate</h2>
+<p>The restricted exploratory branch uses only the predeclared current predictor table and spatial-block sensitivity design. It does not pass the interpretation gate for PC2–PC3 or raw warming-speed change. Heat-budget attribution remains inactive until missing thermal inputs are acquired. The current result is reported in <a href="../../../explorations/warming-acceleration/prose/pca-external-interpretation.html">External Interpretation of Spatially Balanced PCA</a>.</p>
 <blockquote class="blockquote">
-<p>未调整的首轮秩相关中，PC1/PC2 与平均地面气压约为 -0.33/-0.35，PC3 与降水趋势约为 -0.33；其他关联较弱。这些是地理共变，尤其气压受海拔和区域环流强烈影响，不能当作驱动估计。</p>
-</blockquote>
-<p>An association between an ERA5 trend and a PC score can identify a candidate co-varying pattern. It cannot distinguish direct forcing, mediation by radiation or evaporation, common geography, or retrieval artefacts. Glacier meltwater is a separate, untested hypothesis until hydrological connectivity is observed.</p>
-<blockquote class="blockquote">
-<p>ERA5 与 PC 的关联只能提出共同变化候选机制，不能区分直接强迫、中介、共同地理背景或反演伪影。冰川融水仍需水文连通证据。</p>
+<p>受限探索分支只使用预先定义的现有变量表与空间 block 敏感性设计。它未通过 PC2–PC3 或 raw 增温速度变化的解释门槛。热收支归因在补齐缺失热变量前保持未启动；当前结果见 External Interpretation of Spatially Balanced PCA。</p>
 </blockquote>
 
 

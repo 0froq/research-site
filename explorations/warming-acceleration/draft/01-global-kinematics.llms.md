@@ -18,7 +18,7 @@ Figure 1: Lake density map with 1° × 1° grid cells.
 
 ## Long-term warming and local-speed heterogeneity
 
-**Long-term warming** is the Theil–Sen slope of reconstructed annual mean lake surface water temperature (LSWT) over 1982–2020, presented as a 40-year-equivalent change in °C. The primary local **warming speed** is the trailing 10-year Theil–Sen slope of raw annual LSWT, indexed to its endpoint year. Its long-term Sen trend is operationally termed **warming-speed change**: it indicates whether local 10-year warming rates tend to become more or less positive, not a resolved instantaneous physical acceleration. This chapter remains in the reconstructed-temperature layer.
+**Long-term warming** is the Theil–Sen slope of reconstructed annual mean lake surface water temperature (LSWT) over 1981–2020, presented as a 40-year-equivalent change in °C. The primary local **decadal warming rate** is the trailing 10-year Theil–Sen slope of raw annual LSWT, indexed to its endpoint year. Its long-term Sen trend is operationally termed **warming-speed change**: it indicates whether local decadal warming rates tend to become more or less positive, not a resolved instantaneous physical acceleration. This chapter remains in the reconstructed-temperature layer.
 
 > 本章是重建温度层：年均 LSWT 的长期增温为主要指标；10 年滑动 Sen 为局部增温速度；其长期变化称增温速度变化，不等同于瞬时物理加速度。STL 对比保留在 prose/补充材料。
 
@@ -58,7 +58,7 @@ Widespread long-term warming does not imply a common temporal pathway: lakes wit
 
 ![](01-global-kinematics_files/figure-html/fig-global-local-speed-1.png)
 
-Figure 3: Global distribution of local warming speeds. Each annual value is the median trailing-10-year Theil–Sen slope across lakes; ribbon shows the interquartile range.
+Figure 3: Global median reconstructed annual LSWT (top) and distribution of local decadal warming rates (bottom). Ribbons show interquartile ranges across lakes.
 
 The changing median and persistent interquartile spread in [Figure 3](#fig-global-local-speed) show temporal and spatial heterogeneity simultaneously: local warming speeds evolve through time, while lakes at the same endpoint year occupy substantially different warming and cooling regimes.
 
@@ -70,17 +70,17 @@ The changing median and persistent interquartile spread in [Figure 3](#fig-glob
 
 ![](01-global-kinematics_files/figure-html/fig-local-speed-endpoint-maps-1.png)
 
-Figure 4: Spatial distribution of trailing-10-year local warming speed at four endpoint years. Hexagons aggregate at least five lakes in 5° geographic bins.
+Figure 4: Spatial distribution of trailing-10-year local warming rate at 1990, 2000, 2010, and 2020 endpoints. Each 1° × 1° cell averages at least three lakes.
 
 ## Spatial heterogeneity of local warming speed
 
-The hexagons in [Figure 5](#fig-spatial-warming-speed-change-hex) summarize lake-level estimates within 5° cells containing at least five lakes. The lower panel maps the long-term change in local trailing-10-year warming speed, not instantaneous acceleration.
+The 1° cells in [Figure 5](#fig-spatial-warming-speed-change-hex) summarize lake-level estimates. The lower panel maps long-term change in local trailing-10-year warming rate, not instantaneous acceleration.
 
-> [Figure 5](#fig-spatial-warming-speed-change-hex) 用六边形汇总 5° 网格内的湖泊指标（≥5 个湖）。上下面板分别展示长期增温与局部增温速度变化的空间格局，两者不必一致。
+> [Figure 5](#fig-spatial-warming-speed-change-hex) 用 1°格网汇总湖泊指标。上下分别展示长期增温与局部增温速度变化的空间格局，两者不必一致。
 
 ![](01-global-kinematics_files/figure-html/fig-spatial-warming-speed-change-hex-1.png)
 
-Figure 5: Spatial pattern of lake warming and long-term local warming-speed change. Hexagons aggregate lake-level metrics in 5° geographic bins containing at least five lakes.
+Figure 5: Spatial pattern of lake warming and long-term local warming-speed change. Each 1° × 1° cell averages lake-level metrics.
 
 These global metrics reduce each lake’s annual warming-speed series to a long-term slope. They show whether warming speed tends to become more or less positive, but not how the temporal pattern of warming differs among lakes or what factors drive those differences. [Warming pattern decomposition](../../../explorations/warming-acceleration/draft/02-warming-patterns.llms.md) therefore applies PCA to the full annual temperature trajectory to identify dominant modes of variation and their spatial organisation.
 

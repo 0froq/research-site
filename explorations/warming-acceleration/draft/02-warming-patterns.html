@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Warming Pattern Decomposition – Exploration</title>
+<title>Archived Detailed PCA Exploration – Exploration</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html" rel="next">
-<link href="../../../explorations/warming-acceleration/draft/01-global-kinematics.html" rel="prev">
+<link href="../../../explorations/warming-acceleration/draft/03-warming-pattern-decomposition.html" rel="next">
+<link href="../../../explorations/warming-acceleration/draft/02-seasonal-ice-context.html" rel="prev">
 <link href="../../../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -77,43 +77,14 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Warming Pattern Decomposition – Exploration">
+<meta property="og:title" content="Archived Detailed PCA Exploration – Exploration">
 <meta property="og:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
 <meta property="og:image" content="https://froq.me/research-site/explorations/warming-acceleration/draft/02-warming-patterns_files/figure-html/fig-pca-variance-1.png">
 <meta property="og:site_name" content="Exploration">
 <meta property="og:image:height" content="2100">
 <meta property="og:image:width" content="3600">
-<meta name="twitter:title" content="Warming Pattern Decomposition – Exploration">
+<meta name="twitter:title" content="Archived Detailed PCA Exploration – Exploration">
 <meta name="twitter:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
 <meta name="twitter:image" content="https://froq.me/research-site/explorations/warming-acceleration/draft/02-warming-patterns_files/figure-html/fig-pca-variance-1.png">
 <meta name="twitter:image-height" content="2100">
@@ -325,7 +296,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/01-global-kinematics.html">Draft</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html">Warming Pattern Decomposition</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/01-global-kinematics.html">Draft</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html">Archived Detailed PCA Exploration</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -380,8 +351,32 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/draft/02-seasonal-ice-context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seasonal and Ice-State Context</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Warming Pattern Decomposition</span></a>
+ <span class="menu-text">Archived Detailed PCA Exploration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/draft/03-warming-pattern-decomposition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Low-Frequency Warming Pattern Decomposition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/draft/04-teleconnection-sensitivity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spatially Heterogeneous Teleconnection Sensitivity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/draft/05-discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discussion and Study Boundaries</span></a>
   </div>
 </li>
       </ul>
@@ -404,7 +399,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ERA5 Association Scope and Missing Driver Data</span></a>
+ <span class="menu-text">Association Scope and Missing Driver Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -415,8 +410,62 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-association-diagnostics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Restricted PCA Association Diagnostics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-external-interpretation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">External Interpretation of Spatially Balanced PCA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-kinematics-bridge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PCA–Kinematics Bridge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-morphology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory PC2–PC3 Rotation: Why It Is Not Active Evidence</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-seasonal-teleconnection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seasonal Teleconnection Association of Secondary Lake-Warming Structure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-seasonal-teleconnection-lag-surface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Seasonal Teleconnection Lag Surface</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-seasonal-teleconnection-lake-context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lake-Context Exclusion Check for Seasonal Teleconnection Association</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-selected-seasonal-teleconnection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selected seasonal teleconnection candidates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/prose/pca-stability-contract.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PCA Stability and Association Contract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/prose/pca-teleconnection-screen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teleconnection-Sensitivity Screen for Secondary PCA Structure</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -428,7 +477,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Seasonal and Ice Diagnostics for Cooling Trajectories</span></a>
+ <span class="menu-text">Seasonal, Extreme-Temperature, and Ice Dynamics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -610,6 +659,24 @@ window.Quarto = {
  <span class="menu-text">2026-07-15</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/log/2026-07-16.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-16</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/log/2026-07-17.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-17</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/log/2026-07-19.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-19</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -626,22 +693,22 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link active" data-scroll-target="#data-preparation">Data preparation</a></li>
-  <li><a href="#dominant-modes-of-warming-variation" id="toc-dominant-modes-of-warming-variation" class="nav-link" data-scroll-target="#dominant-modes-of-warming-variation">Dominant modes of warming variation</a></li>
-  <li><a href="#spatial-distribution-of-warming-modes" id="toc-spatial-distribution-of-warming-modes" class="nav-link" data-scroll-target="#spatial-distribution-of-warming-modes">Spatial distribution of warming modes</a></li>
-  <li><a href="#predictors-of-warming-mode-expression" id="toc-predictors-of-warming-mode-expression" class="nav-link" data-scroll-target="#predictors-of-warming-mode-expression">Predictors of warming mode expression</a></li>
-  <li><a href="#descriptive-trajectory-typology" id="toc-descriptive-trajectory-typology" class="nav-link" data-scroll-target="#descriptive-trajectory-typology">Descriptive trajectory typology</a></li>
-  <li><a href="#implications-for-future-analysis" id="toc-implications-for-future-analysis" class="nav-link" data-scroll-target="#implications-for-future-analysis">Implications for future analysis</a></li>
+  <li><a href="#representation-and-spatial-estimand" id="toc-representation-and-spatial-estimand" class="nav-link active" data-scroll-target="#representation-and-spatial-estimand">Representation and spatial estimand</a></li>
+  <li><a href="#temporal-covariance-modes" id="toc-temporal-covariance-modes" class="nav-link" data-scroll-target="#temporal-covariance-modes">Temporal covariance modes</a></li>
+  <li><a href="#spatial-organisation" id="toc-spatial-organisation" class="nav-link" data-scroll-target="#spatial-organisation">Spatial organisation</a></li>
+  <li><a href="#score-pole-trajectory-composites" id="toc-score-pole-trajectory-composites" class="nav-link" data-scroll-target="#score-pole-trajectory-composites">Score-pole trajectory composites</a></li>
+  <li><a href="#stability-ranked-results" id="toc-stability-ranked-results" class="nav-link" data-scroll-target="#stability-ranked-results">Stability-ranked results</a></li>
+  <li><a href="#association-boundary" id="toc-association-boundary" class="nav-link" data-scroll-target="#association-boundary">Association boundary</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/explorations/warming-acceleration/draft/02-warming-patterns.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/explorations/warming-acceleration/draft/02-warming-patterns.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/01-global-kinematics.html">Draft</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html">Warming Pattern Decomposition</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../explorations/index.html">Explorations</a></li><li class="breadcrumb-item">Warming Acceleration</li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/01-global-kinematics.html">Draft</a></li><li class="breadcrumb-item"><a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html">Archived Detailed PCA Exploration</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Warming Pattern Decomposition</h1>
+<h1 class="title">Archived Detailed PCA Exploration</h1>
 </div>
 
 
@@ -658,15 +725,19 @@ window.Quarto = {
 </header>
 
 
-<p>Long-term warming and warming-speed change compress each lake’s 40-year temperature record into two summary statistics. While these summaries capture direction and rate of change, they discard the trajectory itself—when anomalies occurred and whether their timing was shared across lakes. This chapter applies principal component analysis (PCA) to the full annual temperature anomaly trajectory, identifying dominant temporal contrasts across 92,245 lakes.</p>
+<p>Long-term warming and warming-speed change describe trajectory direction and rate, but not when low-frequency departures occur or whether lakes share their timing. This chapter decomposes baseline-centred annual STL trajectories using spatially balanced PCA.</p>
 <blockquote class="blockquote">
-<p>长期增温与增温速度变化将每个湖泊 40 年记录压缩为两个统计量。本章对完整年温度异常轨迹做 PCA，识别全球 92,245 个湖泊轨迹变异的主要模态。</p>
+<p>长期增温与增温速度变化描述方向和速率，不能保留低频轨迹何时偏离、湖泊间是否同步。本章对基线中心化的年 STL 轨迹做空间平衡 PCA。</p>
 </blockquote>
-<section id="data-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
-<p>Annual mean reconstructed lake surface water temperature (LSWT) is derived from the GLAST reconstructed/corrected product and smoothed with an STL trend (<code>nt=99</code>) before PCA. Each lake’s low-frequency annual trajectory is expressed as a baseline anomaly relative to the 1981–1990 mean, yielding a 40-year anomaly vector. This separates the trajectory analysis from raw annual long-term warming and local-speed metrics used in Chapter 1.</p>
+<section id="representation-and-spatial-estimand" class="level2">
+<h2 class="anchored" data-anchor-id="representation-and-spatial-estimand">Representation and spatial estimand</h2>
+<p>Annual reconstructed LSWT is smoothed with the STL trend (nt=99), then each lake trajectory is centred on its 1981–1990 mean. Lakes are averaged within occupied equal-area spherical cells before PCA: 573 cells represent 92,245 lakes. Thus PCA estimates covariance for a typical represented spatial cell, not a typical sampled lake. Individual lake scores are projections onto fixed cell-PCA axes; no lake-equal PCA is refitted.</p>
 <blockquote class="blockquote">
-<p>数据来自 GLAST 重建/校正 LSWT 产品；年均序列先经 <code>nt=99</code> STL 趋势平滑，再以 1981–1990 为基线计算异常。Ch1 原始年均指标与本章低频轨迹 PCA 保持分工。</p>
+<p>年重建 LSWT 先取 nt=99 STL 趋势，再按各湖 1981–1990 均值中心化。PCA 前在等面积球面格网内汇总：92,245 湖形成 573 个格网。它描述典型空间格网的协变；湖泊分数仅投影到固定格网 PCA 轴，不重新做湖泊等权 PCA。</p>
+</blockquote>
+<p>Detailed construction, LOCO alignment, and projection boundary are specified in <a href="../../../explorations/warming-acceleration/prose/pca-stability-contract.html">the PCA stability contract</a> and <a href="../../../metrics/algorithms.html#spatially-balanced-pca">Spatially balanced PCA</a>.</p>
+<blockquote class="blockquote">
+<p>算法、LOCO 对齐与投影边界见 PCA stability contract 和 Spatially balanced PCA 指标页。</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
@@ -676,63 +747,22 @@ window.Quarto = {
 <img src="02-warming-patterns_files/figure-html/fig-pca-variance-1.png" class="img-fluid figure-img" width="1800">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pca-variance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Scree plot showing the proportion of trajectory variance explained by each principal component. The first five components (coloured) explain <code>r fmt_pct(cumvar_pc5, 1)</code>% of total variance; components 6–14 (grey) contribute diminishing additional information.
+Figure&nbsp;1: Scree plot for equal-area-cell PCA. PC1–PC5 are highlighted; later components add progressively less variance.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The scree plot (<a href="#fig-pca-variance" class="quarto-xref">Figure&nbsp;1</a>) shows that the first component alone captures 40.0% of trajectory variance, with each subsequent component contributing progressively less. PC1–PC5 together explain 82.1% and are the predefined interpretation set. Components beyond PC5 contribute less than 3% each and are not interpreted in the main text; reaching 95% cumulative variance is a diagnostic rather than a retention rule.</p>
+<p>PC1 explains most spatial-cell trajectory variance; PC1–PC5 form the predeclared descriptive set. The 95% threshold is diagnostic, not a retention rule.</p>
 <blockquote class="blockquote">
-<p>碎石图（<a href="#fig-pca-variance" class="quarto-xref">Figure&nbsp;1</a>）显示前五个成分累计解释 82.1%。PC1–PC5 是预先确定的解释集合；95% 只作诊断，不作为保留门槛。</p>
+<p>PC1 解释最多的格网轨迹方差；PC1–PC5 是预先确定的描述集合。95% 仅作诊断，不作为保留阈值。</p>
 </blockquote>
 </section>
-<section id="dominant-modes-of-warming-variation" class="level2">
-<h2 class="anchored" data-anchor-id="dominant-modes-of-warming-variation">Dominant modes of warming variation</h2>
-<p>Before interpretation, PCA loading stability was checked using 50 random half-samples and leave-one-continent-out refits of the same <code>nt=99</code> baseline-anomaly input. Random half-samples reproduce PC1–PC5 nearly exactly (minimum loading congruence 0.998 or higher), but continent omission separates the interpretation set: PC1 remains stable (minimum congruence 0.899), whereas PC2–PC5 can change substantially when a continent is excluded (minimum congruence 0.326, 0.362, 0.195, and 0.138).</p>
+<section id="temporal-covariance-modes" class="level2">
+<h2 class="anchored" data-anchor-id="temporal-covariance-modes">Temporal covariance modes</h2>
+<p>LOCO tests reaggregate retained lakes into equal-area cells before refitting. Secondary modes recur, but their rank can exchange and PC4–PC5 can mix; fixed PC labels are temporal descriptors rather than invariant physical entities.</p>
 <blockquote class="blockquote">
-<p>PCA 解释前已做 50 次随机半样本和留一大洲检验。随机抽样下 PC1–PC5 都极稳定；但留一大洲后只有 PC1 仍稳健（最低一致性 0.899），PC2–PC5 对大陆样本组成敏感。</p>
-</blockquote>
-<table id="tbl-pca-stability" class="caption-top table">
-<thead>
-<tr class="header">
-<th>Component</th>
-<th>Half-sample minimum congruence</th>
-<th>Leave-continent-out minimum congruence</th>
-<th>Main-text status</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>PC1</td>
-<td>1.000</td>
-<td>0.899</td>
-<td>Robust spatial-temporal mode</td>
-</tr>
-<tr class="even">
-<td>PC2</td>
-<td>1.000</td>
-<td>0.326</td>
-<td>Continental-composition-sensitive</td>
-</tr>
-<tr class="odd">
-<td>PC3–PC5</td>
-<td>≥ 0.978</td>
-<td>≤ 0.362</td>
-<td>Descriptive only</td>
-</tr>
-</tbody>
-</table>
-<blockquote class="blockquote">
-<p>PC1 可作为稳健时空模态解释；PC2 及以后成分保留描述性展示，但不能作跨大陆的强机制解释。</p>
-</blockquote>
-<p>Each principal component has a <strong>loading</strong> for every year (the weight that year receives in the component) and a <strong>score</strong> for every lake (how strongly that lake exhibits the component’s pattern). A lake’s reconstructed anomaly at year <span class="math inline">\(t\)</span> is approximately:</p>
-<p><span class="math display">\[
-\Delta T_{\text{lake}}(t) \approx \sum_{k=1}^{5} \text{score}_k \times \text{loading}_k(t)
-\]</span></p>
-<p>The loading time series reveals a temporal contrast; the score reveals which lakes express it. PCA signs are arbitrary: multiplying both a component’s loadings and all its scores by −1 leaves the reconstruction unchanged. Therefore, a component is identified by the score × loading pattern, not by a positive or negative score alone.</p>
-<blockquote class="blockquote">
-<p>每个成分对每年有一个<strong>载荷</strong>（权重），对每个湖泊有一个<strong>分数</strong>（表达强度）。湖泊在某年的温度异常 ≈ 各成分的分数×载荷之和。PCA 正负号可整体翻转；应解释“分数×载荷”的组合，而非孤立的正负分数。</p>
+<p>LOCO 每次先对保留湖泊重新格网汇总再拟合。次级模态会重复出现，但排序可交换、PC4/PC5 可混合；PC 标签仅是时间描述，不是固定物理实体。</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
@@ -742,33 +772,19 @@ Figure&nbsp;1: Scree plot showing the proportion of trajectory variance explaine
 <img src="02-warming-patterns_files/figure-html/fig-pca-loadings-1.png" class="img-fluid figure-img" width="2400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pca-loadings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Loading time series for the first five principal components. Each panel shows how a given component weights each year’s contribution. Positive loadings indicate years where lakes with positive scores have warmer anomalies; negative loadings indicate the opposite. Colours distinguish positive (red) from negative (blue) contributions.
+Figure&nbsp;2: Equal-area-cell PCA loadings for PC1–PC5. Positive lake scores and positive loadings jointly indicate positive baseline-relative temperature contributions.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-pca-loadings" class="quarto-xref">Figure&nbsp;2</a> reveals the temporal structure of each component:</p>
-<ul>
-<li><p><strong>PC1 (40.0%)</strong> contrasts early weakly positive loadings with strongly negative loadings after 2015. Under the displayed sign convention, negative scores combine with negative late loadings to produce positive late-period anomalies. PC1 is therefore an <strong>early-versus-late trajectory contrast</strong>, not direct evidence of acceleration; reversing the PCA sign would reverse both labels without changing the lake trajectories.</p></li>
-<li><p><strong>PC2 (20.1%)</strong> is dominated by a late-1990s excursion. It is sensitive to continental composition under leave-one-continent-out refits, so its scores are retained as a descriptive sample pattern only.</p></li>
-<li><p><strong>PC3–PC5</strong> are displayed as lower-variance descriptive patterns, but their leave-continent-out instability precludes strong global interpretation or driver attribution.</p></li>
-<li><p><strong>PC4 (7.6%)</strong> shows a dip around 1989–1992 and a peak around 2010–2012, suggesting a pattern of early cooling followed by recovery.</p></li>
-<li><p><strong>PC5 (6.3%)</strong> has a complex multi-decadal oscillation with peaks in the mid-1980s and early 2000s.</p></li>
-</ul>
+<p>Each loading is a year weight and each projected lake score is the strength with which a lake expresses that temporal contrast. PCA signs are arbitrary: interpret score-loading combinations, not isolated signs.</p>
 <blockquote class="blockquote">
-<p><a href="#fig-pca-loadings" class="quarto-xref">Figure&nbsp;2</a> 揭示各成分的时间结构：</p>
-<ul>
-<li><strong>PC1</strong>：早期弱正、后期强负载荷；负分数与后期负载荷相乘产生正异常。这是早—晚轨迹对比，不直接等于加速。</li>
-<li><strong>PC2</strong>：以 1990 年代末异常为主；不据此指定物理驱动。</li>
-<li><strong>PC3</strong>：以 2000 年代中期负异常为主；不赋予特定过程名称或强迫。</li>
-<li><strong>PC4</strong>：1989–1992 低谷 + 2010–2012 峰值 → 早期冷却后恢复</li>
-<li><strong>PC5</strong>：多年代际振荡</li>
-</ul>
+<p>载荷是年份权重，投影分数是湖泊表达该时间对比的强度。PCA 正负可整体翻转；应解释“分数×载荷”组合，而非孤立正负。</p>
 </blockquote>
 </section>
-<section id="spatial-distribution-of-warming-modes" class="level2">
-<h2 class="anchored" data-anchor-id="spatial-distribution-of-warming-modes">Spatial distribution of warming modes</h2>
+<section id="spatial-organisation" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-organisation">Spatial organisation</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-pca-score-maps" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -777,291 +793,92 @@ Figure&nbsp;2: Loading time series for the first five principal components. Each
 <img src="02-warming-patterns_files/figure-html/fig-pca-score-maps-1.png" class="img-fluid figure-img" width="3600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pca-score-maps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Spatial distribution of PC1–PC3 scores. Warm colours indicate positive scores and cool colours negative scores under the displayed, arbitrary PCA sign convention. PC1 is an early-versus-late trajectory contrast; PC2 is dominated by a late-1990s excursion; PC3 by a mid-2000s negative excursion.
+Figure&nbsp;3: Projected PC1–PC5 scores, averaged in 1° × 1° cells. Colours express arbitrary PCA signs; panels show spatial organisation of temporal contrasts.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-pca-score-maps" class="quarto-xref">Figure&nbsp;3</a> reveals clear spatial patterns:</p>
-<ul>
-<li><p><strong>PC1</strong>: Europe and northern Asia show negative scores, whereas the Americas and tropics are more positive. Under the displayed sign convention, this maps a continental contrast in the early-versus-late trajectory; it does not establish that one region accelerated more than another.</p></li>
-<li><p><strong>PC2</strong>: North America shows more positive scores, indicating a stronger expression of the late-1990s feature under the displayed convention. No physical driver is identified from this spatial pattern alone.</p></li>
-<li><p><strong>PC3</strong>: The spatial pattern is diffuse, with positive and negative scores across continents. The mid-2000s feature is therefore not a coherent regional mode in these data.</p></li>
-</ul>
+<p>The maps show continuous spatial organisation, not continental classes. Different temporal contrasts dominate in different neighbouring regions; this is descriptive evidence for spatial heterogeneity, while maps alone do not identify a forcing mechanism.</p>
 <blockquote class="blockquote">
-<p><a href="#fig-pca-score-maps" class="quarto-xref">Figure&nbsp;3</a> 揭示清晰的空间格局：</p>
-<ul>
-<li><strong>PC1</strong>：欧洲和北亚偏负，美洲和热带偏正；表示早—晚轨迹对比的大陆差异，不等于相对加速。</li>
-<li><strong>PC2</strong>：北美偏正；表示 1990 年代末特征更强，不指认驱动。</li>
-<li><strong>PC3</strong>：空间更分散；2000 年代中期特征不构成一致区域模态。</li>
-</ul>
+<p>地图展示连续空间组织，而非大洲类别。不同时间对比在不同、且可能相邻的区域强弱不同；这描述空间异质性，但地图本身不识别驱动机制。</p>
+</blockquote>
+</section>
+<section id="score-pole-trajectory-composites" class="level2">
+<h2 class="anchored" data-anchor-id="score-pole-trajectory-composites">Score-pole trajectory composites</h2>
+<p>For each component, cells in the lower and upper score quintiles are retained as two display poles; these are not classes. Their baseline-centred trajectories are composited with equal cell weight. STL trajectories reproduce the PCA representation, while raw annual LSWT trajectories test whether the displayed contrast is visible before smoothing.</p>
+<blockquote class="blockquote">
+<p>每个 PC 取 lower / upper score 五分位作为两个展示极，不是类别。对极端格网等权复合基线中心化轨迹。STL 轨迹对应 PCA 表征；raw annual LSWT 轨迹检验该对比在平滑前是否仍可见。</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-pc1-pc2-scatter" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-pca-score-poles" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pc1-pc2-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-warming-patterns_files/figure-html/fig-pc1-pc2-scatter-1.png" class="img-fluid figure-img" width="2400">
+<div aria-describedby="fig-pca-score-poles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-warming-patterns_files/figure-html/fig-pca-score-poles-1.png" class="img-fluid figure-img" width="3600">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pc1-pc2-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Joint distribution of PC1 and PC2 scores, coloured by continent. Ellipses show 68% confidence regions. PC1 is an early-versus-late trajectory contrast; PC2 is dominated by a late-1990s excursion.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pca-score-poles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Equal-area cell trajectory composites for lower and higher PC-score poles. Ribbons are cell interquartile ranges; poles are display quantiles, not response classes.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-pc1-pc2-scatter" class="quarto-xref">Figure&nbsp;4</a> confirms continental structure in PC space. European lakes occupy the lower-left quadrant under the displayed sign convention, while North American lakes are more dispersed and shifted toward positive PC2. This is a continuous separation in trajectory contrasts, not evidence for discrete response types or a specified climate mechanism.</p>
+<p>Read every pole pair jointly with its loading in <a href="#fig-pca-loadings" class="quarto-xref">Figure&nbsp;2</a>. PC1 supplies the primary global contrast; PC2–PC5 receive the same loading, map, and pole-composite inspection. Their placement in the result hierarchy follows observed variance and LOCO alignment: recurring matched forms can be reported prominently, whereas rank-exchanging or mixed forms are reported later as lower-stability descriptive detail. No component alone is treated as a mechanism-bearing entity.</p>
 <blockquote class="blockquote">
-<p><a href="#fig-pc1-pc2-scatter" class="quarto-xref">Figure&nbsp;4</a> 显示 PC 空间存在连续的大洲结构。正负号受 PCA 约定影响；其表示轨迹对比，不指定离散类型或气候机制。</p>
+<p>每组极端轨迹都必须与 <a href="#fig-pca-loadings" class="quarto-xref">Figure&nbsp;2</a> 的 loading 联读。PC1 是主要全球对比；PC2–PC5 都做 loading、空间图和极端复合检查。呈现层级由实测方差与 LOCO 对齐决定：重复的匹配形式可突出，排序交换或混合的形式则后置为低稳定性描述细节；任何 PC 都不单独承担机制解释。</p>
 </blockquote>
 </section>
-<section id="predictors-of-warming-mode-expression" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="predictors-of-warming-mode-expression">Predictors of warming mode expression</h2>
-<p>What factors determine which warming pattern a lake exhibits? To answer this question, we regress PC1–PC3 scores against geographic and morphometric predictors.</p>
+<section id="stability-ranked-results" class="level2">
+<h2 class="anchored" data-anchor-id="stability-ranked-results">Stability-ranked results</h2>
+<p>At the target grid, PC1–PC5 explain 84.6% of cell-trajectory variance; PC4 and PC5 contribute 5.69% and 4.56%. Across the coarser, target, and finer equal-area grids, their shares remain 5.69–6.42% and 4.55–4.97%, respectively. Thus neither is a resolution-specific residual pattern.</p>
 <blockquote class="blockquote">
-<p>什么因素决定了湖泊表现出哪种增温模式？我们将 PC1–PC3 分数对地理和形态因子做回归。</p>
+<p>目标格网中 PC1–PC5 共解释 84.6% 的格网轨迹方差；PC4、PC5 分别为 5.69%、4.56%。在粗、中、细三种等面积格网中，两者分别维持在 5.69–6.42% 与 4.55–4.97%，不是某一分辨率特有的残余模式。</p>
 </blockquote>
-<div class="column-page-inset">
-<div id="tbl-pca-regression-coefs" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pca-regression-coefs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Regression coefficients for PC1–PC3 scores. Significance: * p&lt;0.05, ** p&lt;0.01, *** p&lt;0.001.
-</figcaption>
-<div aria-describedby="tbl-pca-regression-coefs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-pca-regression-coefs" class="caption-top table">
-<thead>
-<tr class="header">
-<th>Predictor</th>
-<th>PC1 (early–late)</th>
-<th>PC2 (late-1990s)</th>
-<th>PC3 (mid-2000s)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Intercept</td>
-<td>+0.118***</td>
-<td>-0.344***</td>
-<td>-0.084***</td>
-</tr>
-<tr class="even">
-<td>Absolute latitude</td>
-<td>+0.010***</td>
-<td>-0.001***</td>
-<td>+0.009***</td>
-</tr>
-<tr class="odd">
-<td>Elevation (m)</td>
-<td>+0.000188***</td>
-<td>+0.000055***</td>
-<td>+0.000031***</td>
-</tr>
-<tr class="even">
-<td>log₁₀(Depth)</td>
-<td>-0.168***</td>
-<td>+0.055***</td>
-<td>+0.004</td>
-</tr>
-<tr class="odd">
-<td>log₁₀(Area)</td>
-<td>-0.024***</td>
-<td>+0.102***</td>
-<td>-0.032***</td>
-</tr>
-<tr class="even">
-<td>R²</td>
-<td>0.334</td>
-<td>0.374</td>
-<td>0.052</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</div>
+<p>LOCO provides the ordering rule. PC2 and PC3 recur strongly but exchange rank when North America is omitted (reference PC2 matches refitted PC3, 0.701; reference PC3 matches refitted PC2, 0.995). PC4 and PC5 also recur: their weakest best matches are 0.704 and 0.651, respectively. The limiting case is Europe omission, where PC4 is best recovered by refitted PC5 (0.710) and PC5 by refitted PC4 (0.651). We therefore report PC4–PC5 as a recurring but partially mixed secondary subspace, after the robust PC1 and the clearer PC2–PC3 contrasts.</p>
 <blockquote class="blockquote">
-<p><a href="#tbl-pca-regression-coefs" class="quarto-xref">Table&nbsp;1</a> 显示各预测变量对 PC 分数的回归系数。显著性标记：* p&lt;0.05，** p&lt;0.01，*** p&lt;0.001。</p>
+<p>LOCO 决定结果层级。去北美后 PC2/PC3 强烈重现但交换排序（参考 PC2 对应新 PC3：0.701；参考 PC3 对应新 PC2：0.995）。PC4/PC5 也会重现，其最低最佳匹配分别为 0.704、0.651；限制情形是去欧洲后 PC4 最接近新 PC5（0.710），PC5 最接近新 PC4（0.651）。故 PC4/PC5 报告为可重复、但部分混合的次级子空间，置于稳健 PC1 与更清晰 PC2/PC3 对比之后。</p>
 </blockquote>
-<div class="column-page-inset">
-<div id="tbl-pca-continent-effects" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pca-continent-effects-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Continent dummy coefficients for PC1–PC3 scores; Africa is the reference level.
-</figcaption>
-<div aria-describedby="tbl-pca-continent-effects-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-pca-continent-effects" class="caption-top table">
-<thead>
-<tr class="header">
-<th>Continent (reference: Africa)</th>
-<th>PC1</th>
-<th>PC2</th>
-<th>PC3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Asia</td>
-<td>-0.778***</td>
-<td>+0.251***</td>
-<td>-0.376***</td>
-</tr>
-<tr class="even">
-<td>Europe</td>
-<td>-1.307***</td>
-<td>-0.185***</td>
-<td>-0.550***</td>
-</tr>
-<tr class="odd">
-<td>North America</td>
-<td>-0.149***</td>
-<td>+0.656***</td>
-<td>-0.443***</td>
-</tr>
-<tr class="even">
-<td>Oceania</td>
-<td>+0.018</td>
-<td>-0.108**</td>
-<td>-0.202***</td>
-</tr>
-<tr class="odd">
-<td>South America</td>
-<td>+0.234***</td>
-<td>-0.011</td>
-<td>+0.087***</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</div>
+<p>Under the displayed sign orientation, PC1 distinguishes cells with stronger versus weaker common late warming. PC2 expresses a later-strengthening contrast, whereas PC3 expresses the opposing earlier-versus-later contrast. These timing relations persist among cells with comparable total raw warming. PC4 has a similar late-weakening association but lower stability; PC5 has no consistent warming-speed bridge. The cell-level diagnostics and their limits are shown in <a href="../../../explorations/warming-acceleration/prose/pca-kinematics-bridge.html">the PCA–kinematics bridge</a>.</p>
 <blockquote class="blockquote">
-<p><a href="#tbl-pca-continent-effects" class="quarto-xref">Table&nbsp;2</a> 显示大洲虚拟变量的回归系数（以非洲为参照）。</p>
+<p>按当前展示的符号方向，PC1 区分共同后期增温较强／较弱的格网；PC2 表达后期增强对比，PC3 表达相反的早期／后期对比。它们在总 raw 增温相近的格网中仍存在。PC4 有相似后期减弱关联但稳定性较低；PC5 暂无一致的增温速度桥接。格网诊断及边界见 PCA–kinematics bridge。</p>
 </blockquote>
-<div class="column-page-inset">
-<div id="tbl-partial-r2" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-partial-r2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Partial R² for each predictor group in explaining PC1–PC3 scores.
-</figcaption>
-<div aria-describedby="tbl-partial-r2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-partial-r2" class="caption-top table">
-<thead>
-<tr class="header">
-<th>Predictor group</th>
-<th>PC1</th>
-<th>PC2</th>
-<th>PC3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Latitude</td>
-<td>0.006</td>
-<td>0.000</td>
-<td>0.030</td>
-</tr>
-<tr class="even">
-<td>Elevation</td>
-<td>0.008</td>
-<td>0.001</td>
-<td>0.001</td>
-</tr>
-<tr class="odd">
-<td>Depth</td>
-<td>0.003</td>
-<td>0.001</td>
-<td>0.000</td>
-</tr>
-<tr class="even">
-<td>Area</td>
-<td>0.000</td>
-<td>0.004</td>
-<td>0.001</td>
-</tr>
-<tr class="odd">
-<td>Continent</td>
-<td>0.309</td>
-<td>0.333</td>
-<td>0.040</td>
-</tr>
-</tbody>
-</table>
-</div>
-</figure>
-</div>
-</div>
+<p>PC2 and PC3 should be read jointly as a rank-exchanging secondary subspace, rather than as two fixed physical modes or a newly rotated component. The currently available geography, morphology, wind, and precipitation panel has no stable held-out association with this joint subspace or with parallel raw warming-speed change. The external-interpretation boundary is documented in <a href="../../../explorations/warming-acceleration/prose/pca-external-interpretation.html">External Interpretation of Spatially Balanced PCA</a>.</p>
 <blockquote class="blockquote">
-<p><a href="#tbl-partial-r2" class="quarto-xref">Table&nbsp;3</a> 显示各预测变量组对 PC 分数的独立解释方差。</p>
+<p>PC2、PC3 应作为可交换排序的次级子空间联读，不当作两种固定物理模态，也不另造旋转成分。现有地理、形态、风速、降水面板，对该联合子空间及平行 raw 增温速度变化均无稳定留出关联；解释边界见 External Interpretation of Spatially Balanced PCA。</p>
 </blockquote>
-<p>The regression results reveal a clear hierarchy of predictors. <strong>Continent</strong> is the dominant predictor group for PC1 and PC2, confirming that the broad organisation of these warming modes is continental in scale. The continent coefficients in <a href="#tbl-pca-continent-effects" class="quarto-xref">Table&nbsp;2</a> describe differences from the African reference level; their signs are specific to the arbitrary PCA sign convention and should not be interpreted as a directional physical effect.</p>
+<p>A separate bounded screen gives one external consistency result. The joint PC2–PC3 scores improve held-out prediction of the spatial field of contemporaneous, detrended annual LSWT sensitivity to the correlated NAO/AO family and to PDO, beyond geography/lake morphology; this repeats across block sizes, equal-area grids, and LOCO refits. It links secondary low-frequency trajectory heterogeneity to where lakes have different interannual circulation sensitivity. It does not identify a unique index, pathway, or causal driver. Details and limits are in <a href="../../../explorations/warming-acceleration/prose/pca-teleconnection-screen.html">Teleconnection-Sensitivity Screen</a>.</p>
 <blockquote class="blockquote">
-<p>回归结果表明，<strong>大洲</strong>是 PC1 和 PC2 的主导预测变量组，说明这些增温模态在大洲尺度上组织。大洲系数以非洲为参照；其正负受 PCA 符号约定影响，不能直接解释为物理方向效应。</p>
-</blockquote>
-<p>Among the non-geographic predictors, <strong>elevation</strong> makes the largest overall independent contribution across PC1–PC3 (<a href="#tbl-partial-r2" class="quarto-xref">Table&nbsp;3</a>). <strong>Depth</strong> and <strong>lake area</strong> contribute less, and their relative importance varies by component: depth exceeds area for PC1, whereas area exceeds depth for PC2 and PC3. Partial R² is an unsigned increment in explained variance: it ranks the independent information contributed by each predictor group but does not give the direction of association. Direction and uncertainty must instead be read from the coefficients in <a href="#tbl-pca-regression-coefs" class="quarto-xref">Table&nbsp;1</a>.</p>
-<blockquote class="blockquote">
-<p>在非地理因子中，跨 PC1–PC3 而言，<strong>海拔</strong>的总体独立贡献最大（<a href="#tbl-partial-r2" class="quarto-xref">Table&nbsp;3</a>）。<strong>深度</strong>和<strong>湖泊面积</strong>的贡献较小，且相对重要性随成分变化：PC1 中深度高于面积，PC2 和 PC3 中面积高于深度。偏 R² 是无符号的解释方差增量，只比较独立信息量；关联方向和不确定性应见 <a href="#tbl-pca-regression-coefs" class="quarto-xref">Table&nbsp;1</a>。</p>
-</blockquote>
-</section>
-<section id="descriptive-trajectory-typology" class="level2">
-<h2 class="anchored" data-anchor-id="descriptive-trajectory-typology">Descriptive trajectory typology</h2>
-<p>PCA remains primary: it preserves continuous score geometry. K-means is only a readable partition. The fixed display is K=5 on PC1–PC5; clusters are descriptive labels, not natural response types or regions.</p>
-<blockquote class="blockquote">
-<p>PCA 是主分析，保留连续轨迹空间；K-means 只提供可读切分。固定展示 PC1–PC5、K=5；cluster 不是自然类型或区域。</p>
+<p>另一受限筛查给出一个外部一致性结果：在地理/形态之外，联合 PC2–PC3 分数可提高对同期、去趋势年 LSWT 对相关 NAO/AO family 及 PDO 敏感性空间场的留出预测；该结果在不同 block、等面积格网和 LOCO 重拟中重复。它将次级低频轨迹异质性与湖泊年际环流敏感性不同的空间位置联系起来；不识别唯一指数、路径或因果驱动。细节和限制见 Teleconnection-Sensitivity Screen。</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-cluster-profiles-k5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-pc1-pc2-density" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cluster-profiles-k5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-warming-patterns_files/figure-html/fig-cluster-profiles-k5-1.png" class="img-fluid figure-img" width="2400">
+<div aria-describedby="fig-pc1-pc2-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-warming-patterns_files/figure-html/fig-pc1-pc2-density-1.png" class="img-fluid figure-img" width="2100">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cluster-profiles-k5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Median baseline-anomaly trajectories for descriptive PC1–PC5 K=5 partition. Ribbons show within-cluster interquartile ranges.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pc1-pc2-density-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Joint distribution of projected PC1 and PC2 scores. Contours show dense score-space structure; points show tails below the 5th local-density percentile.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-cluster-profiles-k5" class="quarto-xref">Figure&nbsp;5</a> describes five broad trajectory groups. Boundaries remain algorithmic: lakes near a boundary can change label when K or PC dimensions change, even if continuous scores barely change.</p>
+<p><a href="#fig-pc1-pc2-density" class="quarto-xref">Figure&nbsp;5</a> retains continuous score geometry. It neither defines discrete lake types nor supports a regional causal claim.</p>
 <blockquote class="blockquote">
-<p><a href="#fig-cluster-profiles-k5" class="quarto-xref">Figure&nbsp;5</a> 展示五组宽泛轨迹。边界由算法给出；K 或 PC 维数改变时，边界附近湖泊可换组，连续分数变化却很小。</p>
+<p><a href="#fig-pc1-pc2-density" class="quarto-xref">Figure&nbsp;5</a> 保留连续分数几何；它不定义离散湖泊类型，也不支持区域因果结论。</p>
 </blockquote>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-clustering-sensitivity" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-clustering-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02-warming-patterns_files/figure-html/fig-clustering-sensitivity-1.png" class="img-fluid figure-img" width="2400">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-clustering-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: K and PC-dimension sensitivity of descriptive clustering. Cost declines across K=4–8; adjusted Rand index compares K=5 partitions with PC1–PC5 reference.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p><a href="#fig-clustering-sensitivity" class="quarto-xref">Figure&nbsp;6</a> has no unique elbow across K=4–8. K=5 is fixed display resolution, not estimated true number of lake types. PC-dimension sensitivity is a boundary diagnostic; it does not alter PCA results.</p>
-<blockquote class="blockquote">
-<p><a href="#fig-clustering-sensitivity" class="quarto-xref">Figure&nbsp;6</a> 没有唯一清晰 elbow。K=5 是固定展示分辨率，不是“真实类型数”；PC 维数敏感性只检验边界，不改变 PCA 结论。</p>
-</blockquote>
-<p>Full methods discussion: <a href="../../../explorations/warming-acceleration/prose/pca-vs-clustering.html">PCA vs.&nbsp;Clustering</a>.</p>
 </section>
-<section id="implications-for-future-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="implications-for-future-analysis">Implications for future analysis</h2>
-<p>PCA stability and the association boundary are specified in <a href="../../../explorations/warming-acceleration/prose/pca-stability-contract.html">the PCA stability contract</a> and <a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html">the ERA5 association scope</a>. These checks are required before treating a retained mode as a robust geographic pattern; neither source supports causal attribution.</p>
+<section id="association-boundary" class="level2">
+<h2 class="anchored" data-anchor-id="association-boundary">Association boundary</h2>
+<p>No predictor model is reported here. A future association analysis must use continuous geographic and climate-background predictors, spatially blocked evaluation, and explicit treatment of spatial autocorrelation; continent dummy variables are not admissible primary explanatory variables. Such a model can identify associations and candidate mechanisms, not causal attribution.</p>
 <blockquote class="blockquote">
-<p>PCA 稳定性与 ERA5 关联边界见对应说明。它们用于确认模态是否稳健，不能支持因果归因。</p>
+<p>本章不报告预测因子模型。未来关联分析必须使用连续地理与气候背景变量、空间分块验证，并显式处理空间自相关；大洲虚拟变量不能作为主要解释变量。模型只能识别关联和候选机制，不能作因果归因。</p>
 </blockquote>
-<p>The PCA decomposition shows that trajectory contrasts are structured by geography and lake morphology. PC1 describes an early-versus-late contrast, while PC2 and PC3 describe localized temporal excursions. These are associations in a low-frequency temperature representation, not attribution to external climate modes.</p>
+<p>Requirements are specified in <a href="../../../explorations/warming-acceleration/prose/era5-association-scope.html">the association contract</a>. Chapter 3 remains inactive until inputs, temporal alignment, confounding structure, and held-out evaluation are implemented.</p>
 <blockquote class="blockquote">
-<p>PCA 显示轨迹对比受地理与湖泊形态组织：PC1 为早—晚对比，PC2/PC3 为局部时间异常。它们是低频温度表征中的关联，不是对外部气候模态的归因。</p>
-</blockquote>
-<p>PC scores can become response variables in a future model only after that model’s predictors, temporal alignment, confounding control, and interpretation limits are specified. Chapter 3 is not yet an active attribution analysis.</p>
-<blockquote class="blockquote">
-<p>PC 分数可在未来模型中作为响应变量，但须先明确预测变量、时间对齐、混杂控制与解释边界；Chapter 3 尚未进入归因分析。</p>
+<p>具体要求见 association contract。Ch3 在输入、时间对齐、混杂结构和留出评估实现前仍不启动。</p>
 </blockquote>
 
 
@@ -1483,13 +1300,13 @@ Figure&nbsp;6: K and PC-dimension sensitivity of descriptive clustering. Cost de
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../explorations/warming-acceleration/draft/01-global-kinematics.html" class="pagination-link" aria-label="Global Kinematics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Global Kinematics</span>
+      <a href="../../../explorations/warming-acceleration/draft/02-seasonal-ice-context.html" class="pagination-link" aria-label="Seasonal and Ice-State Context">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Seasonal and Ice-State Context</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html" class="pagination-link" aria-label="Acceleration Sensitivity of Raw LSWT Trajectories">
-        <span class="nav-page-text">Acceleration Sensitivity of Raw LSWT Trajectories</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../explorations/warming-acceleration/draft/03-warming-pattern-decomposition.html" class="pagination-link" aria-label="Low-Frequency Warming Pattern Decomposition">
+        <span class="nav-page-text">Low-Frequency Warming Pattern Decomposition</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

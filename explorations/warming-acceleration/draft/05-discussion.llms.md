@@ -1,0 +1,31 @@
+# Discussion and Study Boundaries
+
+## Global heterogeneity is temporal as well as spatial
+
+The global lake-warming signal is widespread, but it is not a common trajectory. Raw annual long-term warming, trailing 10-year Sen speed, and the long-term change in that speed describe different aspects of the reconstructed LSWT record. Lakes can have similar 40-year change yet differ in whether their recent local warming rate strengthens, weakens, or reverses. Seasonal diagnostics further show that annual behaviour cannot be assumed to represent a uniform change through the year.
+
+> 全球湖泊增温广泛，但不是共同轨迹。raw 年均长期增温、10 年 Sen speed、速度长期变化描述重建 LSWT 的不同方面。40 年变化相近的湖泊，近期局部增温速度可增强、减弱或反转。季节诊断进一步表明，年均变化不能被假定为全年均匀变化。
+
+## PCA describes a continuous trajectory geometry
+
+Spatially balanced PCA separates a robust common low-frequency background from recurring secondary trajectory contrasts. This representation does not partition lakes into natural response types. Equal-area aggregation reduces disproportionate influence from dense lake regions, and LOCO tests show that PC2–PC3 should be interpreted as a recurring joint subspace because their order can exchange. The useful scientific result is therefore a continuous geography of trajectory timing and persistence, not a catalogue of discrete global warming patterns.
+
+> 空间平衡 PCA 将稳健共同低频背景与可重复次级轨迹对比分开。它不把湖泊划分为自然响应类型。等面积汇总减少湖泊密集区的过度影响；LOCO 表明 PC2–PC3 应作为可重复联合子空间解释，因为其排序可交换。有用的科学结果是轨迹时间和持续性的连续地理，而不是离散全球模式目录。
+
+## Circulation sensitivity is one external organisation of secondary trajectories
+
+The retained seasonal result does not attribute long-term warming to NAO or AO. It shows that the spatial field of detrended JJA LSWT sensitivity to prior-summer NAO/AO is better aligned with PC2–PC3 than with PC1, beyond the available continuous geography and lake-morphology background. Positive and negative association poles also differ in late local warming-speed evolution. This establishes a reproducible association between secondary trajectory heterogeneity and heterogeneous circulation sensitivity, while leaving mechanism unresolved.
+
+> 保留的季节结果不将长期增温归因于 NAO 或 AO。它显示：前年夏季 NAO/AO 与当年 JJA 去趋势 LSWT 敏感性场，在现有连续地理与湖泊形态背景之外，与 PC2–PC3 的空间对齐优于 PC1。正负关联端后期局部增温速度也不同。这建立次级轨迹异质性与环流敏感性异质性的可重复关联，但机制仍未解决。
+
+## Limitations and next tests
+
+GLAST is a reconstructed and corrected lake-temperature product informed by station information and ERA5-Land/FLAKE inputs; it is not direct in situ observation. Its relationship with ERA5 means that reanalysis-based analyses should be interpreted as background consistency, not independent proof. The 1981–2020 overlap limits multidecadal inference and makes serial persistence, index autocorrelation, and post-screen candidate selection important constraints. Lake-level correlations are aggregated before spatial modelling, and nominal per-lake p values are not used as evidence. Finally, frozen seasonal states restrict cold-season coverage and prevent a complete annual physical heat-budget interpretation.
+
+> GLAST 是由站点信息和 ERA5-Land/FLAKE 输入参与校正的重建湖温产品，不是直接原位观测。其与 ERA5 的关系意味着再分析结果只能作为背景一致性，不能当作独立证明。1981–2020 重叠期限制多年际推断，序列持续性、指数自相关和筛查后候选选择都是重要约束。逐湖相关先聚合后再做空间模型，不使用逐湖名义 p 值作证据。冻结季节状态限制冷季覆盖，也阻止完整年尺度热收支解释。
+
+Future work should test pathway hypotheses with independent observations and a predeclared seasonal energy-balance panel including air temperature, radiation, humidity, evaporation, wind, runoff, and lake mixing context. Those data can assess mechanisms; they are not required to support the present descriptive result.
+
+> 后续工作应以独立观测和预先定义的季节能量平衡变量面板检验路径假说，包括气温、辐射、湿度、蒸发、风、径流和湖泊混合背景。这些数据可检验机制，但不是当前描述性结果成立的前提。
+
+Back to top

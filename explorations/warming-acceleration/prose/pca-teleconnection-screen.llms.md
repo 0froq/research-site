@@ -1,0 +1,51 @@
+# Teleconnection-Sensitivity Screen for Secondary PCA Structure
+
+## Question and design
+
+This is a bounded external-coherence screen, not a teleconnection attribution analysis. For each lake, Step 10 first removes a linear trend from raw annual LSWT values, excludes the 0 °C frozen-state encoding, and correlates residual annual anomalies with a predeclared annual index. Correlations with at least 30 paired years are Fisher-\\z\\ transformed and aggregated to the same equal-area cells used by PCA. The spatial question is then whether fixed PC1, or the joint rank-exchanging PC2–PC3 score pair, improves held-out prediction of that cell sensitivity after continuous geography and lake morphology are already included.
+
+> 这是受限的外部一致性筛查，不是遥相关归因。Step 10 先对每湖 raw 年均 LSWT 去线性趋势，排除 0 °C 冰冻编码，再与预先指定的年指数相关；至少 30 个配对年后 Fisher-\\z\\ 转换，并汇总至 PCA 等面积格网。问题是：在连续地理与湖泊形态已纳入后，固定 PC1 或可换序的 PC2–PC3 联合分数，能否提高对格网敏感性的空间留出预测。
+
+The predeclared screen contains Niño 3.4, PDO, NAO, and AO at contemporaneous and one-year-leading positions. AMO is excluded: 40 years cannot resolve a multidecadal index. NAO and AO are treated as one correlated North Atlantic/Arctic circulation family, not independent mechanisms. PCA loading time series are never correlated directly with these indices. Positive index lead means index value in \\t-1\\ is paired with lake anomaly in \\t\\.
+
+> 预先指定 Niño 3.4、PDO、NAO、AO 的同期与提前一年位置。AMO 不纳入：40 年不足以解析多年代指数。NAO 与 AO 作为相关的北大西洋/北极环流 family，不视为独立机制；不直接将 PCA loading 时间序列与指数相关。正 lead 表示 \\t-1\\ 年指数对应 \\t\\ 年湖泊异常。
+
+## Main screen
+
+![](pca-teleconnection-screen_files/figure-html/fig-pca-teleconnection-screen-1.png)
+
+Figure 1: Spatial-block held-out R² increment beyond geography and lake morphology for PC1 or the joint PC2–PC3 score pair. Positive values improve prediction of a cell’s Fisher-z transformed annual LSWT–index sensitivity. Each column uses contiguous blocks of a different size.
+
+At lag 0, adding PC2–PC3 raises held-out \\R^2\\ at every block scale for NAO, AO, PDO, and Niño 3.4. NAO rises from about \\-0.08\\–\\0.01\\ under geography/morphology to \\0.25\\–\\0.30\\ with PC2–PC3. PDO rises from \\0.28\\–\\0.32\\ to \\0.45\\–\\0.48\\. PC1 adds no stable gain. One-year leads do not show the same repeated PC2–PC3 pattern.
+
+> 同期下，PC2–PC3 在 NAO、AO、PDO、Niño 3.4 的全部 block 尺度均提高留出 \\R^2\\。NAO 由地理/形态下约 \\-0.08\\–\\0.01\\ 升至 \\0.25\\–\\0.30\\；PDO 由 \\0.28\\–\\0.32\\ 升至 \\0.45\\–\\0.48\\。PC1 没有稳定增益；提前一年也未重现这种 PC2–PC3 模式。
+
+This result has passed only first gate. A common temperature source can still create a spatial association: PCA uses low-frequency STL trajectories, while sensitivity uses detrended raw annual anomalies, but both originate from GLAST. The screen therefore identifies a reproducible cross-scale co-location, not an independent demonstration of forcing.
+
+> 此结果只通过第一道门槛。PCA 使用低频 STL 轨迹，敏感性使用去趋势 raw 年异常，尺度不同但均来自 GLAST；共同数据源仍可造成空间关联。因此它识别可重复的跨尺度共定位，不是独立 forcing 证据。
+
+## Independent spatial robustness checks
+
+![](pca-teleconnection-screen_files/figure-html/fig-pca-teleconnection-grid-loco-1.png)
+
+Figure 2: Robustness of held-out R² increments for contemporaneous NAO and PDO sensitivity. Left: three equal-area PCA grids with comparable physical block sizes. Right: target-grid leave-one-continent-out PCA refits; each point is one omitted continent.
+
+The NAO/AO family and PDO pass the full gate. Their PC2–PC3 increments remain positive at 36 × 11, 72 × 21, and 144 × 42 equal-area grids. They also remain positive after every continent is omitted and PCA is refitted. Niño 3.4 fails this stricter test because its PC2–PC3 increment vanishes when North America is omitted. It is not promoted.
+
+> NAO/AO family 与 PDO 通过完整门槛。PC2–PC3 增益在 36 × 11、72 × 21、144 × 42 格网均为正；去除任一大洲并重拟 PCA 后也为正。Niño 3.4 在去北美时增益消失，未通过更严格检验，不提升为结果。
+
+## Spatial fields and interpretation limit
+
+![](pca-teleconnection-screen_files/figure-html/fig-pca-teleconnection-sensitivity-maps-1.png)
+
+Figure 3: Equal-area-cell Fisher-z transformed contemporaneous annual LSWT sensitivity to NAO, AO, and PDO. Values summarize lake-level correlations after each lake’s linear annual trend is removed. These maps are sensitivity fields, not maps of causal forcing or statistical significance.
+
+The supported statement is narrow: cells that differ along the recurring PC2–PC3 low-frequency trajectory subspace also differ, beyond this geography/morphology baseline, in how detrended annual lake anomalies co-vary with contemporaneous North Atlantic/Arctic and North Pacific circulation indices. This gives PCA an external climate-consistency interpretation: secondary trajectory heterogeneity is geographically structured in the same places as interannual circulation sensitivity.
+
+> 可支持的表述很窄：沿可重复 PC2–PC3 低频轨迹子空间不同的格网，在控制此处地理/形态基线后，对同期北大西洋/北极及北太平洋环流指数的去趋势年异常协变敏感性也不同。这给 PCA 一个外部气候一致性解释：次级轨迹异质性与年际环流敏感性在空间上同位。
+
+It does not identify a unique index, establish a pathway, or show that NAO, AO, or PDO causes a PCA mode. NAO and AO are correlated. Step 10 uses ordinary Pearson correlations after linear detrending, without time-series autocorrelation correction; lake-level nominal \\p\\ values and post-hoc strongest-index labels are not used. Spatial block CV tests geographic generalization only. Seasonal index analysis is not opened yet: it requires an independent seasonal hypothesis and temporal-autocorrelation-aware inference.
+
+> 它不识别唯一指数、不建立作用路径、不证明 NAO、AO 或 PDO 造成某个 PCA 模态。NAO/AO 相互相关；Step 10 为线性去趋势后的普通 Pearson 相关，未校正时间自相关；不使用逐湖名义 \\p\\ 值或事后最强指数标签。空间 block CV 只检验地理泛化。暂不扩展季节指数分析，除非先有独立季节假说与考虑时间自相关的推断方案。
+
+Back to top

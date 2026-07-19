@@ -388,6 +388,12 @@ window.Quarto = {
   <li><a href="#long-term-warming-speed" id="toc-long-term-warming-speed" class="nav-link" data-scroll-target="#long-term-warming-speed">Long-term warming speed</a></li>
   <li><a href="#annual-warming-speed" id="toc-annual-warming-speed" class="nav-link" data-scroll-target="#annual-warming-speed">Annual warming speed</a></li>
   <li><a href="#acceleration" id="toc-acceleration" class="nav-link" data-scroll-target="#acceleration">Acceleration</a></li>
+  <li><a href="#rolling-seasonal-and-extreme-temperature-rate" id="toc-rolling-seasonal-and-extreme-temperature-rate" class="nav-link" data-scroll-target="#rolling-seasonal-and-extreme-temperature-rate">Rolling seasonal and extreme-temperature rate</a></li>
+  <li><a href="#seasonal-thermal-asymmetry-rate" id="toc-seasonal-thermal-asymmetry-rate" class="nav-link" data-scroll-target="#seasonal-thermal-asymmetry-rate">Seasonal thermal-asymmetry rate</a></li>
+  <li><a href="#rolling-ice-duration-state" id="toc-rolling-ice-duration-state" class="nav-link" data-scroll-target="#rolling-ice-duration-state">Rolling ice-duration state</a></li>
+  <li><a href="#seasonal-ice-loss-rate" id="toc-seasonal-ice-loss-rate" class="nav-link" data-scroll-target="#seasonal-ice-loss-rate">Seasonal ice-loss rate</a></li>
+  <li><a href="#direct-annual-ice-loss-rate" id="toc-direct-annual-ice-loss-rate" class="nav-link" data-scroll-target="#direct-annual-ice-loss-rate">Direct annual ice-loss rate</a></li>
+  <li><a href="#sign-conditioned-seasonal-alignment" id="toc-sign-conditioned-seasonal-alignment" class="nav-link" data-scroll-target="#sign-conditioned-seasonal-alignment">Sign-conditioned seasonal alignment</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/metrics/terms.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/metrics/terms.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -434,6 +440,30 @@ window.Quarto = {
 <section id="acceleration" class="level2">
 <h2 class="anchored" data-anchor-id="acceleration">Acceleration</h2>
 <p>The long-term Sen trend of the valid trailing-10-year local warming-speed sequence. It is termed <em>warming-speed change</em> (<span class="math inline">\(10^{-3}\)</span> <span class="math inline">\(^\circ\)</span>C yr<span class="math inline">\(^{-2}\)</span>): an operational trajectory statistic, not a resolved instantaneous physical acceleration.</p>
+</section>
+<section id="rolling-seasonal-and-extreme-temperature-rate" class="level2">
+<h2 class="anchored" data-anchor-id="rolling-seasonal-and-extreme-temperature-rate">Rolling seasonal and extreme-temperature rate</h2>
+<p>For each raw annual, DJF, MAM, JJA, SON, maximum 30-day, and minimum 30-day temperature series, the local rate is the trailing-10-year Theil–Sen slope indexed to its endpoint year. These aligned sequences describe whether a lake’s annual local rate co-varies with seasonal or extreme-temperature dynamics. They are not additive components of the annual Theil–Sen slope.</p>
+</section>
+<section id="seasonal-thermal-asymmetry-rate" class="level2">
+<h2 class="anchored" data-anchor-id="seasonal-thermal-asymmetry-rate">Seasonal thermal-asymmetry rate</h2>
+<p>For each year, calculate <code>warm_cold_contrast = JJA - DJF</code>, four-season <code>seasonal_range</code>, and four-season <code>seasonal_sd</code>. The local rate for each is its trailing-10-year Theil–Sen slope indexed to the endpoint year, in °C yr⁻¹. Positive contrast/range rate means warm-season temperature rises relative to cold-season temperature; negative rate means the observed annual thermal cycle contracts. These diagnose relative seasonal asymmetry, not additive seasonal contributions. Frozen <code>0.0 °C</code> states remain finite, so their thermal interpretation does not replace seasonal ice-day diagnostics.</p>
+</section>
+<section id="rolling-ice-duration-state" class="level2">
+<h2 class="anchored" data-anchor-id="rolling-ice-duration-state">Rolling ice-duration state</h2>
+<p>Trailing 10-year arithmetic mean of annual ice days, indexed to the same endpoint years as rolling temperature rates. Its within-lake correlation with annual local warming rate is a descriptive alignment statistic; overlapping windows preclude ordinary independent-sample correlation inference. A finite <code>0.0 °C</code> frozen-state value is not missing. The producer records endpoint overlap and a correlation-defined flag separately, so a constant rate sequence is not misread as a data gap.</p>
+</section>
+<section id="seasonal-ice-loss-rate" class="level2">
+<h2 class="anchored" data-anchor-id="seasonal-ice-loss-rate">Seasonal ice-loss rate</h2>
+<p>For each DJF, MAM, JJA, and SON ice-day series, calculate its trailing-10-year Theil–Sen slope and multiply by <span class="math inline">\(-1\)</span>. Units are ice days yr⁻¹, so a positive value means seasonal ice duration is shortening. This supports a descriptive comparison of annual local warming rate with contemporaneous seasonal ice loss; it is not evidence that ice loss caused temperature change.</p>
+</section>
+<section id="direct-annual-ice-loss-rate" class="level2">
+<h2 class="anchored" data-anchor-id="direct-annual-ice-loss-rate">Direct annual ice-loss rate</h2>
+<p>The negated trailing-10-year Theil–Sen slope of annual ice days, in ice days yr⁻¹. Positive means total annual ice duration is shortening; negative means it is lengthening. Comparing this direct quantity with the signs of JJA and SON ice-loss rates distinguishes joint seasonal loss from opposed seasonal change. Opposed signs are consistent with calendar redistribution of ice days but do not establish freeze-up or break-up timing without monthly or daily transition dates.</p>
+</section>
+<section id="sign-conditioned-seasonal-alignment" class="level2">
+<h2 class="anchored" data-anchor-id="sign-conditioned-seasonal-alignment">Sign-conditioned seasonal alignment</h2>
+<p>For a lake, calculate the annual-rate/seasonal-rate Spearman alignment on all finite endpoints, then repeat using only endpoints with positive annual local rate and only endpoints with negative annual local rate. Each branch requires at least eight finite pairs and a non-constant rank sequence. These are conditional co-variation profiles for warming and cooling states, not seasonal contribution fractions or causal-effect estimates.</p>
 
 
 </section>

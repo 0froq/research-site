@@ -1,44 +1,45 @@
-# ERA5 Association Scope and Missing Driver Data
+# Association Scope and Missing Driver Data
 
-## Available first-pass inputs
+## Status
 
-The current ERA5 extraction provides lake-nearest-grid monthly and annual summaries for wind speed, surface pressure, and total precipitation over 1981–2020. These variables can be used for descriptive association checks with PCA scores and cooling cohorts; they are not a complete lake heat-budget dataset and cannot support attribution.
+The former lake-level model and its rendered cross-validation figure used an archived `nt=199` lake-equal PCA and cluster branch, so none of its numerical results transfer to the current spatially balanced PCA. Step 11 likewise joins that archived response branch and is not an admissible current analysis input. The active cell-level restricted diagnostic is documented separately below.
 
-> 当前 ERA5 只有风速、地面气压、降水的湖泊最近网格月/年汇总。可先做 PCA 与降温 cohort 的描述性关联，不能构成完整热收支归因。
+> 旧湖泊尺度模型及其图使用归档的 `nt=199` 湖泊等权 PCA 与 cluster 分支，数值不能迁移到现有空间平衡 PCA。Step 11 同样连接旧响应分支，不能作为当前输入；当前格网尺度受限诊断另行记录。
 
-The first-pass model should report both a geography-only baseline and the incremental association after adding the available ERA5 variables. It should use spatially blocked validation, not only in-sample \\R^2\\, and should call all coefficients associations rather than effects.
+## Available and missing inputs
 
-> 首轮模型要并列地理基线与加入 ERA5 后的增量解释，并做空间分块验证；所有系数均称关联，不称效应。
+Step 09 provides 1981–2020 lake-nearest-grid summaries for ERA5-Land wind speed, surface pressure, and total precipitation. It also provides annual and seasonal means, interannual variability, and 40-year Sen trends. These inputs are sufficient only for an exploratory predictive association branch.
 
-![](era5-association-scope_files/figure-html/fig-era5-spatial-block-cv-1.png)
+> Step 09 提供 1981–2020 ERA5-Land 最近格网的风速、地面气压、降水汇总，以及年/季节均值、年际变异和 40 年 Sen 趋势。它们只足以支持探索性预测关联分支。
 
-Figure 1: Spatial-block cross-validated R² for PC scores. Geography-only models are compared with geography plus available ERA5 variables; negative values indicate worse-than-mean held-out prediction.
+The branch lacks 2 m air temperature, downward shortwave and longwave radiation, humidity or evaporation/latent-heat variables, and a lake-specific mixing proxy. These are central heat-budget terms. Surface pressure is primarily an elevation/background proxy and is not treated as an independent physical forcing predictor. Because ERA5-Land-driven FLAKE information participates in GLAST reconstruction, an ERA5 association cannot be read as independent forcing evidence.
 
-[Figure 1](#fig-era5-spatial-block-cv) is deliberately a predictive association check. It asks whether wind, pressure, and precipitation summaries improve held-out spatial prediction beyond broad geography; it does not estimate physical forcing effects.
+> 分支缺少 2 m 气温、向下短/长波辐射、湿度或蒸发/潜热变量，以及湖泊特异的混合代理；它们才是热收支关键项。地面气压主要是海拔/背景代理，不作为独立物理强迫预测变量。ERA5-Land 驱动 FLAKE 信息参与 GLAST 重建，故 ERA5 关联不能被读作独立强迫证据。
 
-> [Figure 1](#fig-era5-spatial-block-cv) 是预测式关联检验：检验现有 ERA5 变量是否改善空间留出预测，不估计物理强迫效应。
+## Predeclared future design
 
-## Missing variables to acquire before attribution
+The analysis unit is the 573 occupied equal-area PCA cells, not individual lakes. PC1 is a scalar response. PC2–PC3 is a joint secondary subspace because LOCO shows rank exchange; it is not a pair of separate mechanism targets. PC4–PC5 remain descriptive only. Lake attributes and ERA5 summaries are aggregated inside the same cells before modelling.
 
-| Missing input | Why it matters | Minimum use |
+> 分析单位为 573 个占据的等面积 PCA 格网，而非单个湖泊。PC1 为单响应；PC2–PC3 因 LOCO 会交换排序，作为联合次级子空间，不作两种独立机制目标。PC4–PC5 仅保留描述。湖泊属性与 ERA5 汇总均先在相同格网内聚合。
+
+Model comparison is predeclared as:
+
+| Model | Predictor block | Role |
 |----|----|----|
-| 2 m air temperature | Atmospheric thermal forcing and lake–air contrast. | Baseline climate trajectory. |
-| Downward shortwave and longwave radiation | Direct surface energy input; cloud changes cannot be represented without them. | Heat-budget attribution. |
-| Humidity, evaporation / latent heat flux | Evaporative cooling is a major candidate mechanism for LSWT response. | Energy-balance and mediation tests. |
-| Wind components or mixing proxies | Wind speed alone cannot identify directional fetch or mixing regime. | Lake-specific mixing sensitivity. |
-| Glacier inventory, upstream catchments, discharge and inflow temperature | Required to test glacier-connected cold inflow. | Glacier-meltwater hypothesis. |
-| Lake depth, area, clarity / trophic state and catchment land cover | Thermal storage, optical absorption and watershed forcing are confounders/moderators. | Process-stratified modelling. |
+| Background | Continuous spatial basis, elevation, log lake area, depth, and distance to coast. | Describe broad geographic and lake-setting association. |
+| Background plus ERA5 | Background block plus wind-speed and precipitation summaries/trends selected before fitting. | Test incremental held-out predictive association, not a forcing effect. |
+| Sensitivity | Alternative predeclared spatial basis and cell aggregation summaries. | Check whether conclusions depend on representational choices. |
 
-> 缺失的关键变量包括气温、短/长波辐射、湿度/蒸发、混合代理、冰川—流域—入流链，以及湖泊与流域属性；补齐前不能做机制归因。
+> 预先定义模型比较：地理/湖泊背景；再加入预先选择的风速与降水 ERA5 指标；最后做空间基与格网汇总敏感性。目标是检验留出预测增量，不估计强迫效应。
 
-## Interpretation boundary
+Continent labels, the retired teleconnection branch, and post-hoc screening across many seasonal predictors are excluded. Spatially contiguous blocks must be defined before fitting; primary evidence is held-out \\R^2\\ and its geography-to-ERA5 increment, not in-sample fit or coefficient significance. Any result is reported as an association with a PCA timing pattern, never as causal attribution.
 
-In an unadjusted first-pass rank correlation, PC1 and PC2 are moderately associated with mean surface pressure (\\\rho=-0.33\\ and \\-0.35\\), while PC3 is associated with the precipitation trend (\\\rho=-0.33\\). All other available annual ERA5 associations are small to modest. These are geographic co-patterns, not driver estimates: surface pressure in particular is strongly structured by elevation and regional circulation.
+> 不使用大洲标签、归档遥相关分支或大量季节预测变量的事后筛选。空间连续 block 须在拟合前定义；主证据为留出 \\R^2\\ 及 geography 到 ERA5 的增量，不是样本内拟合或系数显著性。所有结果只称与 PCA 时间模式的关联，不称因果归因。
 
-> 未调整的首轮秩相关中，PC1/PC2 与平均地面气压约为 -0.33/-0.35，PC3 与降水趋势约为 -0.33；其他关联较弱。这些是地理共变，尤其气压受海拔和区域环流强烈影响，不能当作驱动估计。
+## Start gate
 
-An association between an ERA5 trend and a PC score can identify a candidate co-varying pattern. It cannot distinguish direct forcing, mediation by radiation or evaporation, common geography, or retrieval artefacts. Glacier meltwater is a separate, untested hypothesis until hydrological connectivity is observed.
+The restricted exploratory branch uses only the predeclared current predictor table and spatial-block sensitivity design. It does not pass the interpretation gate for PC2–PC3 or raw warming-speed change. Heat-budget attribution remains inactive until missing thermal inputs are acquired. The current result is reported in [External Interpretation of Spatially Balanced PCA](../../../explorations/warming-acceleration/prose/pca-external-interpretation.llms.md).
 
-> ERA5 与 PC 的关联只能提出共同变化候选机制，不能区分直接强迫、中介、共同地理背景或反演伪影。冰川融水仍需水文连通证据。
+> 受限探索分支只使用预先定义的现有变量表与空间 block 敏感性设计。它未通过 PC2–PC3 或 raw 增温速度变化的解释门槛。热收支归因在补齐缺失热变量前保持未启动；当前结果见 External Interpretation of Spatially Balanced PCA。
 
 Back to top
