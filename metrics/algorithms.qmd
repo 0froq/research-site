@@ -17,6 +17,17 @@ Key parameters:
 
 Used in: [warming-acceleration](../explorations/index.qmd#warming-acceleration).
 
+For the active PCA branch, STL is not treated as an interchangeable moving
+average. It first estimates and removes monthly seasonality, then estimates a
+low-frequency trend. A 7-, 9-, and 11-year centred annual moving-average
+sensitivity branch produced internally smooth, LOCO-stable PCs, but did not
+retain the external JJA NAO/AO association pattern carried by the STL PC2--PC3
+score subspace. Therefore the project retains STL `nt=99` for PCA only.
+
+The teleconnection association itself remains calculated from linearly
+detrended, un-smoothed seasonal LSWT. Smoothed trajectories are never used to
+estimate a lag-0 or lag-1 teleconnection correlation.
+
 ## STARS (retired for this exploration)
 
 Sequential T-test Analysis of Regime Shifts (Rodionov 2004).

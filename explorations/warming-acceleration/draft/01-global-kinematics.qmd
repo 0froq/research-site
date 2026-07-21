@@ -10,7 +10,6 @@ title: Global Kinematics
 source("../../../shared/R/figure-style.R")
 source("../../../shared/R/descriptive-helpers.R")
 source("../../../shared/R/01-global-kinematics-helpers.R")
-source("../../../shared/R/seasonal-ice-diagnostics-helpers.R")
 ```
 
 ## Sample coverage
@@ -19,10 +18,9 @@ source("../../../shared/R/seasonal-ice-diagnostics-helpers.R")
 #| cache: false
 
 list2env(prepare_kinematics_data(), envir = environment())
-list2env(prepare_seasonal_ice_data(), envir = environment())
 ```
 
-GLAST reconstructed LSWT product: `r lakes_num` lakes, `r start_year`--`r end_year`. It is not direct in-situ observation: station-temperature information and ERA5-Land-driven FLAKE simulations are corrected to produce the dataset. “Raw” below means un-smoothed GLAST product values.
+GLAST reconstructed LSWT product: `r lakes_num` lakes, `r start_year`--`r end_year`. It is not direct in-situ observation: station-temperature information and ERA5-Land-driven FLAKE simulations are corrected to produce the dataset [@tong2023]. “Raw” below means un-smoothed GLAST product values.
 
 > GLAST 是重建 LSWT 产品，不是直接站点实测；它由站点温度信息和 ERA5-Land 驱动的 FLAKE 模拟校正得到。下文 raw 指未经平滑的 GLAST 产品值。
 
@@ -116,9 +114,9 @@ fmt_num <- function(x, digits = 2) formatC(x, format = "f", digits = digits)
 fmt_pct <- function(x, digits = 1) fmt_num(100 * x, digits)
 ```
 
-@tbl-warming-summary-raw summarizes observed long-term warming and the change in trailing-10-year warming speed. `r fmt_pct(raw_warming_summary$prop_warming)`% of lakes show positive long-term warming. `r fmt_pct(speed_change_summary$prop_positive)`% have a positive long-term change in local warming speed; this is an operational trajectory descriptor, not a physical instantaneous acceleration.
+@tbl-warming-summary-raw summarizes observed long-term warming and the change in trailing-10-year warming speed. `r fmt_pct(raw_warming_summary$prop_warming)`% of lakes show positive long-term warming. `r fmt_pct(speed_change_summary$prop_positive)`% have a positive long-term change in local warming speed: over the 40-year record, their decadal warming rates tend to become more positive. This includes lakes whose warming accelerates and lakes that shift from decadal cooling toward warming; it is not a resolved instantaneous physical acceleration.
 
-> @tbl-warming-summary-raw 汇总 raw annual LSWT 的长期增温与局部增温速度变化。`r fmt_pct(raw_warming_summary$prop_warming)`% 湖泊长期增温为正，`r fmt_pct(speed_change_summary$prop_positive)`% 的局部增温速度长期趋向更正。
+> @tbl-warming-summary-raw 汇总 raw annual LSWT 的长期增温与局部增温速度变化。`r fmt_pct(raw_warming_summary$prop_warming)`% 湖泊长期增温为正；`r fmt_pct(speed_change_summary$prop_positive)`% 在 40 年间的 10 年增温速度趋向更正，既可表示增温更快，也可表示从局部降温转向增温。
 
 The long-term change in local 10-year warming speed is `r fmt_num(speed_change_summary$mean, 3)` ± `r fmt_num(speed_change_summary$sd, 3)` ×10⁻³ °C yr⁻². This operational statistic summarizes whether local background warming rates tend to become more or less positive; it is not a resolved instantaneous physical acceleration.
 
@@ -170,6 +168,10 @@ Summary of long-term warming and local-speed change.
 Values close to zero should not be interpreted as categorical “acceleration” or “deceleration”. The continuous relationships in
 @fig-warming-speed-change-scatterplot-matrix are therefore the primary summary.
 
+In the upper triangle of @fig-warming-speed-change-scatterplot-matrix, $r$ is Pearson correlation, $\rho$ is Spearman rank correlation, and $R[L]$ is the signed square root of the LOESS pseudo-$R^2$ on the displayed reproducible sample. The first two summarize linear and rank association; $R[L]$ is only a descriptive measure of visible nonlinear fit, not an independent inferential statistic.
+
+> @fig-warming-speed-change-scatterplot-matrix 上三角中，$r$ 为 Pearson 相关，$\rho$ 为 Spearman 秩相关，$R[L]$ 为显示样本上 LOESS 伪 $R^2$ 的带符号平方根。前两者描述线性/秩关联；$R[L]$ 只描述可见的非线性拟合，不是独立推断统计量。
+
 ```{r}
 #| label: fig-warming-speed-change-scatterplot-matrix
 #| fig-cap: "Pairwise relationships among mean temperature, long-term warming, and long-term change in local trailing-10-year warming speed."
@@ -205,7 +207,7 @@ scatter_matrix_lower <- function(data, mapping, ...) {
       data = kde$outliers,
       aes(alpha = density),
       colour = col_text_soft,
-      size = 0.28,
+      size = 0.52,
       stroke = 0
     ) +
     scale_alpha_continuous(
@@ -227,7 +229,7 @@ scatter_matrix_lower <- function(data, mapping, ...) {
       se = TRUE,
       span = 0.65,
       color = col_inchart_line,
-      alpha = 0.8,
+      alpha = 0.22,
       linewidth = wid_inchart_line,
       na.rm = TRUE
     ) +
@@ -235,14 +237,19 @@ scatter_matrix_lower <- function(data, mapping, ...) {
 }
 
 scatter_matrix_density <- function(data, mapping, ...) {
-  ggplot(data = data, mapping = mapping) +
-    geom_density(
-      aes(y = after_stat(density)),
-      fill = scales::alpha(col_inchart_fill, 0.28),
-      color = col_inchart_line,
-      linewidth = wid_inchart_line,
-      na.rm = TRUE
-    ) +
+  x <- rlang::eval_tidy(mapping$x, data)
+  x <- x[is.finite(x)]
+  density_data <- density(x, na.rm = TRUE)
+  density_frame <- tibble(x = density_data$x, y = density_data$y)
+  qs <- quantile(x, c(.25, .5, .75), na.rm = TRUE)
+  ggplot(density_frame, aes(x, y)) +
+    geom_area(data = filter(density_frame, x <= qs[[1]]), fill = scales::alpha("#8FB9D5", .5)) +
+    geom_area(data = filter(density_frame, x >= qs[[1]], x <= qs[[3]]), fill = scales::alpha(col_inchart_fill, .28)) +
+    geom_area(data = filter(density_frame, x >= qs[[3]]), fill = scales::alpha("#D7A0A0", .5)) +
+    geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) +
+    geom_vline(xintercept = 0, colour = col_grid, linewidth = wid_grid) +
+    geom_point(data = tibble(x = qs[[2]], y = approx(density_frame$x, density_frame$y, xout = qs[[2]])$y),
+      aes(x, y), shape = 25, size = 2.3, fill = col_inchart_line, colour = col_inchart_line) +
     theme_scatter_matrix(grid = FALSE)
 }
 
@@ -322,7 +329,7 @@ Widespread long-term warming does not imply a common temporal pathway: lakes wit
 
 ```{r}
 #| label: fig-global-local-speed
-#| fig-cap: "Global median reconstructed annual LSWT (top) and distribution of local decadal warming rates (bottom). Ribbons show interquartile ranges across lakes."
+#| fig-cap: "Lake-equal and equal-area global reconstructed annual LSWT (top), and corresponding 10-year Sen-rate summaries (bottom). Lake-equal ribbons show interquartile ranges."
 #| fig-width: 7
 #| fig-height: 6
 
@@ -336,55 +343,40 @@ speed_time <- rolling_speed |>
 temperature_plot <- ggplot(raw_annual_global, aes(year, median)) +
   geom_ribbon(aes(ymin = q25, ymax = q75), fill = col_inchart_fill, alpha = .28) +
   geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) +
+  geom_line(data = equal_area_annual_global, aes(year, mean, colour = "Equal-area mean"),
+    linewidth = wid_inchart_line) +
+  scale_colour_manual(values = c("Equal-area mean" = pal_direction[["warming"]]), name = NULL) +
+  scale_x_continuous(limits = c(1981, 2020), expand = c(0, 0)) +
   labs(x = NULL, y = "Annual LSWT (°C)") +
-  theme_base(grid = TRUE)
+  theme_base(grid = TRUE) + theme(legend.position = "bottom")
 
 speed_plot <- ggplot(speed_time, aes(year, median)) +
   geom_hline(yintercept = 0, colour = col_text_soft, linewidth = wid_inchart_line) +
   geom_ribbon(aes(ymin = q25, ymax = q75), fill = col_inchart_fill, alpha = .28) +
   geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) +
+  geom_line(data = equal_area_speed_global, aes(year, mean, colour = "Equal-area mean"),
+    linewidth = wid_inchart_line) +
+  scale_colour_manual(values = c("Equal-area mean" = pal_direction[["warming"]]), name = NULL) +
+  scale_x_continuous(limits = c(1981, 2020), expand = c(0, 0)) +
   labs(x = NULL, y = "10-year Sen slope (°C / yr)") +
-  theme_base(grid = TRUE)
+  theme_base(grid = TRUE) + theme(legend.position = "bottom")
 
 temperature_plot / speed_plot
 ```
+
+The lake-equal median and the equal-area mean are intentionally not expected to have the same temperature level: lake sampling is concentrated in cold, lake-dense high-latitude regions, whereas the equal-area summary gives each occupied spatial cell one vote. They are shown together as complementary aggregations, not as interchangeable global temperatures.
+
+> 湖泊等权中位数与等面积均值的温度水平本就不应相同：样本密集在高纬寒冷湖区，而等面积均值让每个被占据格网各占一票。两者互补，不是可互换的单一“全球温度”。
 
 The changing median and persistent interquartile spread in @fig-global-local-speed show temporal and spatial heterogeneity simultaneously: local warming speeds evolve through time, while lakes at the same endpoint year occupy substantially different warming and cooling regimes.
 
 > @fig-global-local-speed 的中位数变化与持续的四分位距同时显示时间与空间异质性：局部增温速度会随时间演化，同一阶段不同湖泊可处在增温或降温状态。
 
-@fig-local-speed-endpoint-maps makes this second pattern explicit. Each panel uses the same local 10-year speed definition, so contrast across panels is temporal change and contrast within a panel is spatial heterogeneity.
-
-> @fig-local-speed-endpoint-maps 用相同 10 年 Sen 速度定义比较四个端点年：面板间是时间变化，面板内是同阶段的空间异质性。
-
-```{r}
-#| label: fig-local-speed-endpoint-maps
-#| fig-cap: "Spatial distribution of trailing-10-year local warming rate at 1990, 2000, 2010, and 2020 endpoints. Each 1° × 1° cell averages at least three lakes."
-#| fig-width: 8
-#| fig-height: 6
-#| cache: true
-
-ggplot() +
-  geom_tile(data = endpoint_speed_grid, aes(lon_cell + .5, lat_cell + .5, fill = speed), width = 1, height = 1) +
-  the_geom_coastline() +
-  facet_wrap(~year, ncol = 2) +
-  scale_fill_paletteer_c(
-    palette = "grDevices::Blue-Red 3", limits = c(-0.2, 0.2), oob = squish,
-    name = "10-year Sen slope\n(°C / yr)"
-  ) +
-  coord_cartesian(xlim = c(lon_min, lon_max), ylim = c(lat_min, lat_max), expand = FALSE) +
-  labs(x = "Longitude", y = "Latitude") +
-  theme_facet(base_size = 9) +
-  theme(legend.position = "bottom")
-```
-
 ## Spatial heterogeneity of local warming speed
 
-The 1° cells in @fig-spatial-warming-speed-change-hex summarize lake-level estimates. The lower panel maps long-term change in local trailing-10-year warming rate, not instantaneous acceleration.
+The 1° cells in @fig-spatial-warming-speed-change-hex summarize lake-level estimates before the endpoint maps examine selected decades. The lower panel maps the long-term change in local trailing-10-year warming rate, not instantaneous acceleration.
 
-> @fig-spatial-warming-speed-change-hex 用 1°格网汇总湖泊指标。上下分别展示长期增温与局部增温速度变化的空间格局，两者不必一致。
-
-
+> @fig-spatial-warming-speed-change-hex 先以 1°格网汇总全球湖泊指标；随后端点图再深入展示特定时期。下图为局部 10 年增温速度的长期变化，不是瞬时物理加速度。
 
 ```{r}
 #| label: fig-spatial-warming-speed-change-hex
@@ -457,9 +449,8 @@ spatial_legend_guide <- legendry::guide_colbar(
 )
 
 spatial_shared_fill_scale <- function() {
-  scale_fill_paletteer_c(
-    palette = "grDevices::Blue-Red 3",
-    direction = 1,
+  scale_fill_gradient2(
+    low = "#2166AC", mid = "grey85", high = "#B2182B",
     limits = c(-1, 1),
     oob = squish,
     name = NULL,
@@ -484,15 +475,34 @@ spatial_speed_change_map <- ggplot() +
   )
 ```
 
+@fig-local-speed-endpoint-maps makes this second pattern explicit. Each panel uses the same local 10-year speed definition, so contrast across panels is temporal change and contrast within a panel is spatial heterogeneity.
+
+> @fig-local-speed-endpoint-maps 用相同 10 年 Sen 速度定义比较四个端点年：面板间是时间变化，面板内是同阶段的空间异质性。
+
+```{r}
+#| label: fig-local-speed-endpoint-maps
+#| fig-cap: "Spatial distribution of trailing-10-year local warming rate at 1990, 2000, 2010, and 2020 endpoints. Each 1° × 1° cell averages at least three lakes."
+#| fig-width: 8
+#| fig-height: 6
+#| cache: true
+
+ggplot() +
+  geom_tile(data = endpoint_speed_grid, aes(lon_cell + .5, lat_cell + .5, fill = speed), width = 1, height = 1) +
+  the_geom_coastline() +
+  facet_wrap(~year, ncol = 2) +
+  scale_fill_gradient2(
+    low = "#2166AC", mid = "grey85", high = "#B2182B", limits = c(-0.2, 0.2), oob = squish,
+    name = "10-year Sen slope\n(°C / yr)"
+  ) +
+  coord_cartesian(xlim = c(lon_min, lon_max), ylim = c(lat_min, lat_max), expand = FALSE) +
+  labs(x = "Longitude", y = "Latitude") +
+  theme_map_grid(base_size = 9) +
+  theme(legend.position = "bottom")
+```
+
 
 These global metrics reduce each lake's annual warming-speed series to a
 long-term slope. They show whether warming speed tends to become more or less
-positive, but not how the temporal pattern of warming differs among lakes or what factors drive those differences. [Warming pattern decomposition](02-warming-patterns.qmd) therefore applies PCA to the full annual temperature trajectory to identify dominant modes of variation and their spatial organisation.
+positive, but not how the temporal pattern of warming differs among lakes or what factors drive those differences. [Warming pattern decomposition](03-warming-pattern-decomposition.qmd) therefore applies PCA to the full annual temperature trajectory to identify dominant modes of variation and their spatial organisation.
 
-> 全局指标将年增温速率压缩为长期斜率，但不能揭示增温时间模式的差异。[增温模式分解](02-warming-patterns.qmd)用 PCA 识别主要变异模态及其空间组织。
-
-## Optional ice module
-
-Cooling trajectories are part of the observed heterogeneity. Their seasonal and ice-duration context is maintained as a separate, optional [seasonal and ice diagnostics module](../prose/seasonal-ice-diagnostics.qmd), so it can be included or omitted from a future manuscript without changing this chapter's kinematic core.
-
-> 降温轨迹属于观测异质性。其季节与冰期背景独立维护为可选模块；未来论文可独立决定纳入与否，不改变本章运动学核心。
+> 全局指标将年增温速率压缩为长期斜率，但不能揭示增温时间模式的差异。[增温模式分解](03-warming-pattern-decomposition.qmd)用 PCA 识别主要变异模态及其空间组织。

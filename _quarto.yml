@@ -42,6 +42,9 @@ website:
           contents:
             - section: Warming Acceleration
               contents:
+                - section: Manuscript
+                  contents:
+                    - auto: explorations/warming-acceleration/manuscript/*.qmd
                 - section: Draft
                   contents:
                     - auto: explorations/warming-acceleration/draft/*.qmd

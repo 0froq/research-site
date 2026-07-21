@@ -7,7 +7,7 @@ title: "Archived Detailed PCA Exploration"
 #| include: false
 source("../../../shared/R/figure-style.R")
 source("../../../shared/R/descriptive-helpers.R")
-source("../../../shared/R/02-warming-patterns-helpers.R")
+source("../../../shared/R/03-warming-pattern-decomposition-helpers.R")
 list2env(prepare_pca_data(), envir = environment())
 fmt_pct <- function(x, digits = 1) formatC(100 * x, format = "f", digits = digits)
 ```

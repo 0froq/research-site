@@ -128,6 +128,35 @@ prepare_kinematics_data <- function(data_dir = data) {
     ) |>
     filter(is.finite(median))
 
+  # Equal-area counterpart to lake-equal global summaries. One occupied PCA
+  # cell contributes one trajectory, so dense lake regions cannot dominate the
+  # displayed global line merely through sampling density.
+  assign_equal_area_cell <- function(frame) {
+    sinlat_min <- sin(-60 * pi / 180); sinlat_max <- sin(85 * pi / 180)
+    frame |>
+      filter(is.finite(lat), is.finite(lon), between(lat, -60, 85)) |>
+      mutate(
+        lon_bin = pmin(floor((lon + 180) / 360 * 72) + 1, 72),
+        sinlat_bin = pmin(floor((sin(lat * pi / 180) - sinlat_min) /
+          (sinlat_max - sinlat_min) * 21) + 1, 21)
+      )
+  }
+  equal_area_annual_global <- raw_annual |>
+    left_join(lake_meta_data |> select(lake_id, lon, lat), by = "lake_id") |>
+    assign_equal_area_cell() |>
+    pivot_longer(matches("^X?\\d{4}$"), names_to = "year", values_to = "temperature") |>
+    mutate(year = as.integer(sub("^X", "", year))) |>
+    group_by(lon_bin, sinlat_bin, year) |>
+    summarise(cell_temperature = mean(temperature, na.rm = TRUE), .groups = "drop") |>
+    group_by(year) |>
+    summarise(mean = mean(cell_temperature, na.rm = TRUE), .groups = "drop")
+  equal_area_speed_global <- rolling_speed_long |>
+    assign_equal_area_cell() |>
+    group_by(lon_bin, sinlat_bin, year) |>
+    summarise(cell_speed = mean(speed, na.rm = TRUE), .groups = "drop") |>
+    group_by(year) |>
+    summarise(mean = mean(cell_speed, na.rm = TRUE), .groups = "drop")
+
   list(
     raw_monthly = raw_monthly,
     lake_meta_data = lake_meta_data,
@@ -152,6 +181,8 @@ prepare_kinematics_data <- function(data_dir = data) {
     spatial_grid = spatial_grid,
     endpoint_speed_grid = endpoint_speed_grid,
     raw_annual_global = raw_annual_global,
+    equal_area_annual_global = equal_area_annual_global,
+    equal_area_speed_global = equal_area_speed_global,
     lon_min = spatial_hex$limits$lon[[1]], lon_max = spatial_hex$limits$lon[[2]],
     lat_min = spatial_hex$limits$lat[[1]], lat_max = spatial_hex$limits$lat[[2]],
     warming_limit = 2, speed_change_limit = 3,

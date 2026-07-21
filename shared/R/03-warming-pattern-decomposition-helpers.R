@@ -10,9 +10,16 @@ prepare_pca_data <- function(data_dir = data) {
   loading_plot_data <- pca_loadings |>
     pivot_longer(cols = starts_with("pc"), names_to = "component", values_to = "loading") |>
     filter(component %in% paste0("pc", 1:5)) |>
-    mutate(component = factor(component, levels = paste0("pc", 1:5),
-      labels = paste0("PC", 1:5, " (", round(pca_variance$explained_variance[1:5] * 100, 1), "%)")),
-      is_positive = loading > 0)
+    mutate(
+      component_group = case_when(
+        component == "pc1" ~ "PC1",
+        component %in% c("pc2", "pc3") ~ "PC2–PC3",
+        .default = "PC4–PC5"
+      ),
+      component = factor(component, levels = paste0("pc", 1:5),
+        labels = paste0("PC", 1:5, " (", round(pca_variance$explained_variance[1:5] * 100, 1), "%)")),
+      is_positive = loading > 0,
+    )
 
   prepare_pca_score_map_data <- function(pc_col) {
     grid_data <- pca_scores |>
@@ -55,6 +62,55 @@ prepare_pca_data <- function(data_dir = data) {
       effective_mode_count = exp(-sum(relative_energy * log(pmax(relative_energy, .Machine$double.eps)))),
       .groups = "drop"
     )
+
+  # Spatial continuity is not the same as a unique regional type. These
+  # diagnostics look for score-vector similarity among cells that are far
+  # apart, using all five retained PC scores after standardisation.
+  pc_cols <- paste0("pc", 1:5)
+  score_matrix <- as.matrix(pca_cell_scores[, pc_cols])
+  score_z <- scale(score_matrix)
+  pair_index <- which(upper.tri(matrix(0, nrow(score_z), nrow(score_z))), arr.ind = TRUE)
+  haversine_km <- function(lon1, lat1, lon2, lat2) {
+    rad <- pi / 180
+    dlat <- (lat2 - lat1) * rad; dlon <- (lon2 - lon1) * rad
+    a <- sin(dlat / 2)^2 + cos(lat1 * rad) * cos(lat2 * rad) * sin(dlon / 2)^2
+    6371 * 2 * atan2(sqrt(a), sqrt(1 - a))
+  }
+  pair_scores <- tibble(
+    cell_a = pair_index[, 1], cell_b = pair_index[, 2],
+    distance_km = haversine_km(
+      pca_cell_scores$lon[pair_index[, 1]], pca_cell_scores$lat[pair_index[, 1]],
+      pca_cell_scores$lon[pair_index[, 2]], pca_cell_scores$lat[pair_index[, 2]]
+    ),
+    score_distance = sqrt(rowSums((score_z[pair_index[, 1], , drop = FALSE] -
+      score_z[pair_index[, 2], , drop = FALSE])^2))
+  ) |>
+    left_join(pca_cell_scores |> transmute(cell_a = cell_id, lon_a = lon, lat_a = lat, n_lakes_a = n_lakes), by = "cell_a") |>
+    left_join(pca_cell_scores |> transmute(cell_b = cell_id, lon_b = lon, lat_b = lat, n_lakes_b = n_lakes), by = "cell_b")
+  distant_similarity_pairs <- pair_scores |>
+    filter(distance_km >= 3000) |>
+    arrange(score_distance, desc(distance_km)) |>
+    slice_head(n = 12)
+  distant_similarity_summary <- pair_scores |>
+    filter(distance_km >= 3000) |>
+    summarise(
+      n_remote_pairs = n(),
+      score_distance_q05 = quantile(score_distance, .05),
+      best_score_distance = min(score_distance),
+      best_distance_km = distance_km[which.min(score_distance)]
+    )
+
+  neighbour_pair_rows <- bind_rows(lapply(pc_cols, function(pc_col) {
+    cells <- pca_cell_scores |> select(lon_bin, sinlat_bin, score = all_of(pc_col))
+    east <- inner_join(mutate(cells, lon_bin = lon_bin + 1L), cells,
+      by = c("lon_bin", "sinlat_bin"), suffix = c("_a", "_b"))
+    north <- inner_join(mutate(cells, sinlat_bin = sinlat_bin + 1L), cells,
+      by = c("lon_bin", "sinlat_bin"), suffix = c("_a", "_b"))
+    tibble(component = toupper(pc_col), neighbour_correlation = cor(
+      c(east$score_a, north$score_a), c(east$score_b, north$score_b)
+    ), n_pairs = nrow(east) + nrow(north))
+  }))
+  loco_subspace_stability <- read_csv(file.path(pca_dir, "loco_subspace_stability.csv"), show_col_types = FALSE)
 
   aggregate_cell_anomalies <- function(path) {
     wide <- read_csv(path, show_col_types = FALSE)
@@ -126,11 +182,15 @@ prepare_pca_data <- function(data_dir = data) {
     pca_cell_scores = pca_cell_scores,
     pc_mode_composition = pc_mode_composition,
     pc_mode_dominance = pc_mode_dominance,
+    distant_similarity_pairs = distant_similarity_pairs,
+    distant_similarity_summary = distant_similarity_summary,
+    neighbour_pair_rows = neighbour_pair_rows,
+    loco_subspace_stability = loco_subspace_stability,
     pc_pole_composites = pc_pole_composites,
     loading_plot_data = loading_plot_data,
     pc_scatter_data = pca_scores |> filter(is.finite(pc1), is.finite(pc2)),
     prepare_pca_score_map_data = prepare_pca_score_map_data,
-    scree_data = pca_variance |> mutate(is_main = pc <= 5),
+    scree_data = pca_variance |> filter(pc <= 10) |> mutate(is_main = pc <= 5),
     var_pc1 = pca_variance |> filter(pc == 1) |> pull(explained_variance),
     cumvar_pc5 = pca_variance |> filter(pc == 5) |> pull(cumulative_explained_variance)
   )

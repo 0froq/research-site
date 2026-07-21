@@ -43,6 +43,15 @@ prepare_seasonal_ice_data <- function(data_dir = data) {
       )
     )
 
+  # Deterministic visual sample: one point represents roughly 100 lakes.
+  alignment_visual_sample <- alignment_long |>
+    filter(is.finite(spearman_alignment)) |>
+    group_by(series) |>
+    group_modify(\(frame, key) slice_sample(
+      frame, n = max(1L, ceiling(nrow(frame) / 100))
+    )) |>
+    ungroup()
+
   conditional_alignment_long <- dynamics_summary |>
     select(
       lake_id, lat, lon,
@@ -392,6 +401,7 @@ prepare_seasonal_ice_data <- function(data_dir = data) {
   list(
     dynamics_summary = dynamics_summary,
     alignment_long = alignment_long,
+    alignment_visual_sample = alignment_visual_sample,
     alignment_status_long = alignment_status_long,
     conditional_alignment_long = conditional_alignment_long,
     thermal_state_long = thermal_state_long,

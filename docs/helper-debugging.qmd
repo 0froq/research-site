@@ -35,7 +35,7 @@ For PCA work, source only the PCA helper and call its focused loader/preparation
 
 ```r
 source("shared/R/figure-style.R")
-source("shared/R/02-warming-patterns-helpers.R")
+source("shared/R/03-warming-pattern-decomposition-helpers.R")
 
 payload <- prepare_pca_data()
 payload$loading_plot_data

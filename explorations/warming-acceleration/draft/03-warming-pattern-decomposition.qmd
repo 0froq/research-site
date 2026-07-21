@@ -6,7 +6,7 @@ title: "Low-Frequency Warming Pattern Decomposition"
 #| include: false
 source("../../../shared/R/figure-style.R")
 source("../../../shared/R/descriptive-helpers.R")
-source("../../../shared/R/02-warming-patterns-helpers.R")
+source("../../../shared/R/03-warming-pattern-decomposition-helpers.R")
 list2env(prepare_pca_data(), envir = environment())
 ```
 
@@ -16,22 +16,33 @@ This chapter decomposes baseline-centred annual STL trajectories after equal-are
 
 ## Spatially balanced trajectory space
 
-PCA is fitted to 573 occupied equal-area cells representing 92,245 lakes. It estimates covariance for a represented spatial cell rather than for a typical sampled lake; lake scores are projections onto fixed cell axes.
+PCA is fitted to 573 occupied equal-area cells representing 92,245 lakes. A lake-dense region may contain many nearly redundant trajectories; giving every lake one row would let sampling density, rather than spatial extent, dominate covariance. Cell aggregation gives each represented area one trajectory. It therefore estimates covariance for a represented spatial cell rather than for a typical sampled lake; lake scores are projections onto the resulting fixed cell axes.
 
 > PCA 拟合于 573 个被占据的等面积格网，代表 92,245 湖。它描述代表性空间格网协变，不描述典型抽样湖泊；湖泊分数仅投影到固定格网轴。
 
 ```{r}
 #| label: fig-pattern-scree
-#| fig-cap: "Explained and cumulative variance of spatially balanced PCA."
+#| fig-cap: "Explained and cumulative variance for the first ten spatially balanced principal components."
+scree_scale <- max(scree_data$explained_variance)
 ggplot(scree_data, aes(pc, explained_variance)) +
   geom_col(aes(fill = is_main), show.legend = FALSE) +
+  geom_line(aes(y = cumulative_explained_variance * scree_scale),
+    colour = col_inchart_line, linewidth = wid_inchart_line) +
+  geom_point(aes(y = cumulative_explained_variance * scree_scale),
+    colour = col_inchart_line, size = 1.4) +
   scale_fill_manual(values = c("TRUE" = pal_direction[["warming"]], "FALSE" = col_grid)) +
+  scale_y_continuous(
+    labels = scales::label_percent(accuracy = 1),
+    sec.axis = sec_axis(~ . / scree_scale, labels = scales::label_percent(accuracy = 1),
+      name = "Cumulative variance explained")
+  ) +
+  scale_x_continuous(breaks = 1:10) +
   labs(x = "Principal component", y = "Variance explained") + theme_base(grid = TRUE)
 ```
 
-PC1 is the robust common low-frequency background. PC2--PC3 form a recurring secondary subspace whose rank can exchange; PC4--PC5 are retained as lower-prominence, partly mixed descriptive modes.
+PC1 is the dominant common low-frequency background. PC2--PC5 are successively smaller temporal contrasts. Whether any of these ranked axes recur after geographic omission is tested below; the initial PCA ordering alone does not establish a stable subspace.
 
-> PC1 是稳健共同低频背景。PC2–PC3 构成可重复、但排序可交换的次级子空间；PC4–PC5 保留为呈现优先级较低、部分混合的描述模态。
+> PC1 是主要共同低频背景。PC2–PC5 是依次较小的时间对比；是否能在地理删除后重复，要在后文 LOCO 检验中判断，不能仅由初始排序宣布为稳定子空间。
 
 ## Temporal and spatial modes
 
@@ -41,43 +52,59 @@ Loadings identify the temporal contrast expressed by a score. PCA signs are arbi
 
 ```{r}
 #| label: fig-pattern-loadings
-#| fig-cap: "Equal-area PCA loadings for PC1--PC5."
+#| fig-cap: "Equal-area PCA loadings for PC1--PC5. PC1 is shown alone; PC2--PC3 and PC4--PC5 use matched vertical scales within each pair."
 #| fig-width: 8
 #| fig-height: 9
-ggplot(loading_plot_data, aes(year, loading)) +
-  geom_hline(yintercept = 0, colour = col_grid, linewidth = wid_grid) +
-  geom_col(aes(fill = is_positive), width = .8, show.legend = FALSE) +
-  scale_fill_manual(values = c("TRUE" = pal_direction[["warming"]], "FALSE" = pal_direction[["cooling"]])) +
-  facet_wrap(~component, ncol = 1, scales = "free_y") +
-  labs(x = "Year", y = "Loading") + theme_base(grid = TRUE) + theme_facet(base_size = 8)
+make_loading_panel <- function(components, ncol = length(components)) {
+  ggplot(filter(loading_plot_data, component %in% components), aes(year, loading)) +
+    geom_hline(yintercept = 0, colour = col_grid, linewidth = wid_grid) +
+    geom_col(aes(fill = is_positive), width = .8, show.legend = FALSE) +
+    scale_fill_manual(values = c("TRUE" = pal_direction[["warming"]], "FALSE" = pal_direction[["cooling"]])) +
+    scale_y_continuous(limits = c(-.4, .4)) +
+    facet_wrap(~component, ncol = ncol) +
+    labs(x = "Year", y = "Loading") + theme_base(grid = TRUE) + theme_facet(base_size = 8)
+}
+pc_labels <- levels(loading_plot_data$component)
+make_loading_panel(pc_labels[1], 1) /
+  make_loading_panel(pc_labels[2:3], 2) /
+  make_loading_panel(pc_labels[4:5], 2)
 ```
 
 ```{r}
 #| label: fig-pattern-score-maps
-#| fig-cap: "Spatial organisation of projected PC scores, averaged in 1° cells."
+#| fig-cap: "Spatial organisation of projected PC scores, averaged in 1° cells. PC2--PC3 and PC4--PC5 use matched score limits within each pair."
 #| fig-width: 12
 #| fig-height: 10
-make_pca_map <- function(pc_col, title) {
+make_pca_map <- function(pc_col, title, limit) {
   map_data <- prepare_pca_score_map_data(pc_col)
   ggplot() +
     geom_tile(data = map_data$data, aes(lon_cell + .5, lat_cell + .5, fill = score_clamped), width = 1, height = 1) +
     the_geom_coastline() +
-    scale_fill_distiller(palette = "RdBu", limits = c(-map_data$limit, map_data$limit), oob = scales::squish, name = "Score") +
+    scale_fill_gradient2(low = "#542788", mid = "white", high = "#1B7837",
+      limits = c(-limit, limit), oob = scales::squish, name = "Score") +
     coord_cartesian(xlim = c(-180, 180), ylim = c(-60, 85), expand = FALSE) +
     labs(title = title, x = "Longitude", y = "Latitude") + theme_map_grid(base_size = 8)
 }
-wrap_plots(lapply(1:5, \(k) make_pca_map(paste0("pc", k), paste0("PC", k))), ncol = 2)
+score_limits <- lapply(paste0("pc", 1:5), prepare_pca_score_map_data) |>
+  lapply(\(x) x$limit) |> unlist()
+pc1_map <- make_pca_map("pc1", "PC1", score_limits[[1]])
+pc23_limit <- max(score_limits[2:3])
+pc45_limit <- max(score_limits[4:5])
+pc1_map /
+  (make_pca_map("pc2", "PC2", pc23_limit) | make_pca_map("pc3", "PC3", pc23_limit)) /
+  (make_pca_map("pc4", "PC4", pc45_limit) | make_pca_map("pc5", "PC5", pc45_limit)) +
+  plot_layout(heights = c(2, 1, 1))
 ```
 
-The score maps show continuous spatial organisation. They do not define continental types: adjacent regions can differ, and distant regions can express similar score combinations. This is the spatial form of heterogeneous warming trajectories.
+The score maps show continuous spatial organisation. They do not define continental types: adjacent regions can differ, and distant regions can express similar score combinations. Neighbour correlations range from `r sprintf("%.2f", min(neighbour_pair_rows$neighbour_correlation))` to `r sprintf("%.2f", max(neighbour_pair_rows$neighbour_correlation))` across PC1--PC5, confirming local continuity. Yet among `r scales::comma(distant_similarity_summary$n_remote_pairs)` cell pairs at least 3,000 km apart, the closest five-score pair is `r sprintf("%.0f", distant_similarity_summary$best_distance_km)` km apart with a standardised five-score distance of `r sprintf("%.2f", distant_similarity_summary$best_score_distance)`. Distant similarity is therefore a descriptive recurrence of trajectory geometry, not evidence that two regions share one mechanism.
 
-> 分数地图显示连续空间组织，不定义大洲类型：相邻区域可不同，远距区域也可有相似分数组合。这就是异质增温轨迹的空间形式。
+> 分数地图显示连续空间组织，不定义大洲类型：PC1–PC5 的邻接相关为 `r sprintf("%.2f", min(neighbour_pair_rows$neighbour_correlation))`–`r sprintf("%.2f", max(neighbour_pair_rows$neighbour_correlation))`。但相距至少 3,000 km 的格网对中，也存在五维分数接近的组合。它只说明轨迹几何可在远距地区重复，不说明共享同一机制。
 
 ## Reproducibility and result hierarchy
 
-At the reference grid PC1--PC5 explain 84.6% of cell-trajectory variance. PC2 and PC3 recur under leave-one-continent-out refits, but can exchange order; PC4--PC5 recur more weakly and partly mix. We therefore retain PC1 as the common background, PC2--PC3 as the main secondary descriptive subspace, and PC4--PC5 as lower-prominence detail.
+At the reference grid PC1--PC5 explain 84.6% of cell-trajectory variance. LOCO is the evidence that changes the interpretation of the ranked axes: PC2--PC3 retain a recurring joint temporal plane despite occasional rank exchange, whereas PC4--PC5 recur more weakly and partly mix. Score-pole composites show how the ends of each continuous score axis differ in trajectory; the targeted leave-one-decade test of the external JJA NAO/AO association remains positive for PC2--PC3. We therefore retain PC1 as the common background, PC2--PC3 as the main secondary descriptive subspace, and PC4--PC5 as lower-prominence detail.
 
-> 参考格网中 PC1–PC5 共解释 84.6% 格网轨迹方差。PC2、PC3 在 LOCO 重拟中重复但可交换排序；PC4、PC5 重复更弱且部分混合。因此 PC1 为共同背景，PC2–PC3 为主要次级描述子空间，PC4–PC5 为较低优先级细节。
+> 参考格网中 PC1–PC5 共解释 84.6% 格网轨迹方差。LOCO 证明 PC2、PC3 可重复但可交换排序；PC4、PC5 重复更弱且部分混合。score-pole 复合展示每个连续分数轴两端的轨迹差异；外部 JJA NAO/AO 关联的定向 LODO 检验也保留 PC2–PC3 增益。因此 PC1 为共同背景，PC2–PC3 为主要次级描述子空间，PC4–PC5 为较低优先级细节。
 
 Detailed loading interpretation, score-pole composites, and LOCO matching are retained in [PCA Stability Contract](../prose/pca-stability-contract.qmd). PCA identifies reproducible covariance structure; it does not identify a forcing mechanism by itself.
 

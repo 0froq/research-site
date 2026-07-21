@@ -1,0 +1,52 @@
+---
+title: "Discussion and conclusions"
+---
+
+## Global lake warming differs in timing as well as magnitude
+
+The principal contribution is a shift from a one-slope description of global
+lake warming to a trajectory description. Widespread warming does not imply a
+common temporal history: lakes with similar four-decade change may have
+strengthening, weakening, or reversing local decadal rates.
+
+> 核心贡献是从单一长期 slope 描述转向轨迹描述。广泛增温不表示共同时间历史：40 年变化相近的湖泊可有增强、减弱或反转的局地十年速度。
+
+## The relevant spatial structure is continuous
+
+Spatially balanced PCA supports a continuous geography of trajectory timing and
+persistence. It does not support a universal set of discrete lake-response
+types. Equal-area aggregation changes the estimand from a typical sampled lake
+to a represented spatial cell, which is necessary for a global spatial claim.
+
+> 空间平衡 PCA 支持轨迹时间和持续性的连续地理，不支持一组普适离散湖泊类型。等面积汇总将对象从典型抽样湖泊改为代表性空间格网，这是全球空间结论所必需的。
+
+## Seasonal state and circulation sensitivity provide context, not attribution
+
+Warm-season diagnostics help locate the annual trajectory signal, whereas
+cold-season diagnostics are constrained by ice states. The NAO/AO result adds
+one external organisation of secondary trajectory structure: circulation
+sensitivity is spatially heterogeneous and aligns with PC2--PC3 more than PC1.
+Neither result identifies a heat-budget pathway or establishes causal forcing.
+
+> 暖季诊断有助于定位年轨迹信号，冷季诊断受冰状态约束。NAO/AO 结果为次级轨迹结构提供一种外部组织：环流敏感性具有空间异质性，且与 PC2–PC3 的对齐强于 PC1。两者都不识别热收支路径或建立因果强迫。
+
+## Limitations
+
+Inference concerns reconstructed surface conditions, not the full water column
+or direct in-situ measurements. The 1981--2020 period limits multidecadal
+inference. PCA stability does not turn components into mechanisms, and the
+teleconnection screen remains susceptible to unresolved circulation pathways,
+serial dependence, and post-screen selection. Future work should use an
+independent, predeclared seasonal energy-balance panel to test mechanisms.
+
+> 推断针对重建表层状态，不涉及完整水柱或直接原位观测。1981–2020 年限限制多年际推断。PCA 稳定性不把成分变成机制；遥相关筛查仍受未解析环流路径、序列依赖和筛查后选择限制。后续应以独立、预先定义的季节能量平衡面板检验机制。
+
+## Conclusion
+
+Global lakes are not adequately represented by a single warming rate. Their
+warming follows spatially structured temporal pathways: a shared low-frequency
+background is accompanied by recurring secondary timing structures and
+heterogeneous local-rate histories. This framework provides a descriptive
+baseline for future physical attribution and ecological risk assessment.
+
+> 全球湖泊不能由单一增温速率充分表征。其增温遵循具有空间组织的时间路径：共同低频背景之外存在可重复次级时间结构与异质局地速度历史。该框架为后续物理归因和生态风险评估提供描述性基线。

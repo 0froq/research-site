@@ -21,11 +21,17 @@ Warm-season rates are usually the most available and most directly comparable pa
 
 ```{r}
 #| label: fig-seasonal-ice-rate-alignment
-#| fig-cap: "Lake-level alignment of annual and seasonal trailing 10-year Sen rates. This is descriptive co-variation, not additive seasonal attribution."
+#| fig-cap: "Distribution of lake-level Spearman alignment between annual and diagnostic trailing 10-year Sen rates. Points are a deterministic visual sample of about one per 100 lakes; this is descriptive co-variation, not additive seasonal attribution."
 ggplot(filter(seasonal_ice$alignment_long, is.finite(spearman_alignment)),
   aes(series, spearman_alignment)) +
   geom_hline(yintercept = 0, colour = col_grid, linewidth = wid_grid) +
-  geom_boxplot(outlier.alpha = .12) +
+  geom_violin(fill = scales::alpha(col_inchart_fill, .35), colour = col_inchart_line,
+    linewidth = wid_inchart_line, trim = FALSE) +
+  geom_boxplot(width = .15, outlier.shape = NA, fill = "white",
+    colour = col_inchart_line, linewidth = wid_inchart_line) +
+  geom_point(data = seasonal_ice$alignment_visual_sample,
+    position = position_jitter(width = .13, height = 0, seed = 20260720),
+    colour = col_text_soft, alpha = .16, size = .45) +
   coord_flip() +
   labs(x = NULL, y = "Lake Spearman alignment with annual rate") +
   theme_base(grid = TRUE)

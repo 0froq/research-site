@@ -43,7 +43,7 @@ This page is the canonical, human-readable contract for the active warming-accel
   - Separates warming-state and cooling-state co-variation. It does not yield additive seasonal contributions, independent-observation inference, or a causal driver ranking.
 - - PCA input
   - Annual mean of the STL trend with period=12, robust=false, ni=5, no=0, and nt=99; each lake is centred on its 1981--1990 mean, then trajectories are averaged within occupied equal-area spherical cells before PCA.
-  - Low-frequency trajectory representation only; not a substitute for the primary warming metrics.
+  - Low-frequency trajectory representation only; not a substitute for the primary warming metrics. A centred 7-, 9-, and 11-year raw-annual moving-average branch is retained as a sensitivity test, not an alternative active input: it changes secondary spatial scores and does not retain the external JJA NAO/AO PC2--PC3 association.
 - - PCA interpretation set
   - PC1--PC5.
   - PC1 is the robust global low-frequency mode. PC2--PC5 are recurring secondary descriptive modes whose rank and separation remain sensitivity-dependent; the 95% variance threshold is a diagnostic, not a retention rule.
@@ -68,6 +68,7 @@ This page is the canonical, human-readable contract for the active warming-accel
   - Step 19 fixes a small set of candidates after Step 18 inspection, then recalculates lake-level detrended LSWT/index correlations and four leave-one-decade-out fields. It intentionally does not use the global median absolute correlation to rank candidates: a field may have modest typical local correlation yet align strongly with PCA score geometry.
   - A candidate is described by its response season, index season, and exact quarter/year lag. Its Fisher-z cell field is tested against geography/lake morphology, PC1, PC2, PC3, and their combinations using spatial hold-out prediction. Three grid resolutions, leave-one-continent-out PCA refits, and leave-one-decade-out correlations distinguish broad stability from continent- or decade-sensitive observations.
   - This is a spatial co-location test. It does not prove circulation-to-lake causality, identify a physical pathway, or treat a post-discovery candidate as independent confirmation.
+  - The lake-level lagged association is always estimated from linearly detrended, un-smoothed raw seasonal LSWT. STL/PCA supplies only the separate low-frequency spatial-score representation; it is not used to calculate lag-0, lag-1, or seasonal-quarter correlations.
 - - Clustering status
   - K-means in projected PC1--PC5 score space is retained only as a documented exploratory sensitivity branch.
   - It is not part of the active Chapter 2 evidence or a claim that lakes belong to intrinsic discrete response types.

@@ -25,7 +25,7 @@ quarto render --cache-refresh
 
 # 2. Commit & push source changes to main
 echo "==> Pushing source to main..."
-git add -A -- .gitignore '*.qmd' '*.R' '*.scss' '*.yml' '*.sh' '*.bib' '*.svg'
+git add -A -- .gitignore '*.md' '*.qmd' '*.R' '*.scss' '*.yml' '*.sh' '*.bib' '*.svg'
 if git diff --cached --quiet; then
 	echo "(nothing to commit)"
 else
