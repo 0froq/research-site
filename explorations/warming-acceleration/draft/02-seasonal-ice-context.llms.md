@@ -12,7 +12,7 @@ Warm-season rates are usually the most available and most directly comparable pa
 
 ![](02-seasonal-ice-context_files/figure-html/fig-seasonal-ice-rate-alignment-1.png)
 
-Figure 1: Lake-level alignment of annual and seasonal trailing 10-year Sen rates. This is descriptive co-variation, not additive seasonal attribution.
+Figure 1: Distribution of lake-level Spearman alignment between annual and diagnostic trailing 10-year Sen rates. Points are a deterministic visual sample of about one per 100 lakes; this is descriptive co-variation, not additive seasonal attribution.
 
 ## Ice-state context
 

@@ -12,10 +12,28 @@ PCA identifies empirical modes of covariance; it does not establish a physical p
 |----|----|----|
 | Random split stability | Refit PCA on repeated independent half-samples; align component signs to the reference loading. | Variance explained and loading cosine congruence for PC1–PC5. |
 | Leave-continent-out stability | Refit after omitting each represented continent. | Whether a retained component is dominated by one continental sample. |
-| Input representation sensitivity | Compare current `nt=99` STL-trend anomaly PCA with the archived raw-annual anomaly branch. | Loading correlation and ordering of major temporal features. |
+| Input representation sensitivity | Compare current `nt=99` STL-trend anomaly PCA with raw annual and 7-, 9-, and 11-year centred raw-annual moving-average branches. | Loading/subspace alignment, score alignment, geographic omission stability, and retention of the separate raw-seasonal association-field result. |
 | Score association robustness | Fit geography-only and geography-plus-ERA5 associations with deterministic spatial blocks. | Held-out performance increment, not only in-sample \\R^2\\. |
 
 > 必做：随机半样本、留一大洲、输入表征敏感性，以及空间分块关联模型验证。报告留出性能，不只报告样本内 \\R^2\\。
+
+## Why the active PCA input remains STL
+
+The moving-average branch is not rejected because it is rough or unstable. In fact, a 9-year annual centred mean gives a smooth PC1 and a more geographically stable PC2–PC3 subspace than the active STL run. Its temporal loading subspace also overlaps the STL PC2–PC3 subspace. This internal agreement is insufficient: the corresponding cell scores differ materially, and the external spatial association test changes.
+
+> 移动平均并非因“粗糙”或“内部不稳定”而被排除。9 年年度居中平均的 PC1 平滑，PC2–PC3 的地理遗漏稳定性甚至高于 STL，时间载荷子空间也与 STL 重叠。但内部一致不足以决定方法，因为格网分数不同，外部空间关联结果也随之改变。
+
+With STL, adding the joint PC2–PC3 score pair to the geography/morphology baseline increases spatial held-out \\R^2\\ by 0.411 for the JJA NAO prior-summer field and by 0.323 for its AO-family replication. The corresponding increments are 0.114/0.022 for a 7-year mean, 0.077/\\-0.012\\ for a 9-year mean, and 0.042/\\-0.022\\ for an 11-year mean. PC1 remains near zero under STL and all moving-average branches. Thus a simple annual low-pass filter does not preserve the particular secondary spatial geometry that has external climate consistency in this project.
+
+> STL 下，PC2–PC3 相对地理/形态基线的空间留出 \\R^2\\ 增量：JJA NAO 去年夏季场为 0.411，AO-family 为 0.323。7 年移动平均为 0.114/0.022；9 年为 0.077/\\-0.012\\；11 年为 0.042/\\-0.022\\。所有表征中 PC1 都接近零。故简单年度低通滤波未保留本项目具外部气候一致性的次级空间几何。
+
+This does not mean that STL reveals a causal teleconnection signal. The lagged association field is calculated separately from linearly detrended, **un-smoothed** raw JJA temperature. PCA is only used to ask where that raw association field is spatially located. A centred nine-year mean would mechanically blur a temperature response over approximately four years on either side, so it is unsuitable for estimating annual or seasonal lag directly. STL trends are likewise not used for that purpose.
+
+> 这不代表 STL 揭示因果遥相关信号。滞后关联场独立由线性去趋势、**未平滑**的 raw JJA 温度计算；PCA 只问该 raw 关联场位于何种空间轨迹几何。9 年居中平均会在前后约 4 年机械扩散温度响应，不能直接估计年或季节 lag；STL trend 同样不用于该任务。
+
+Removing the first and last four PCA years (1985–2016) leaves the held-out PC2–PC3 increments almost unchanged (NAO 0.404, AO 0.329), while PC1 remains near zero. The 1985–2016 PC1 and PC2 loadings still align strongly with their full-period counterparts on overlapping years. Its LOCO subspace stability weakens because the test discards one fifth of the 40-year trajectory, so it is not evidence that the full-period endpoint estimates are artefacts. It is a boundary check: the retained external result is not created solely by the first or last four years.
+
+> 去掉 PCA 首末各 4 年（1985–2016）后，PC2–PC3 留出增量仍为 NAO 0.404、AO 0.329，PC1 仍接近零。重叠年份的 PC1、PC2 载荷仍与全期高度一致。LOCO 稳定性下降是因时间轨迹少了五分之一，不能反推全期端点为伪影；该检验只说明外部结果并非仅由首末 4 年制造。
 
 ## Alignment rule
 

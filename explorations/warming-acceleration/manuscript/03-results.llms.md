@@ -1,0 +1,43 @@
+# Results
+
+## Widespread warming masks heterogeneous local-rate histories
+
+Report the fraction of lakes with positive long-term warming, the distribution of 40-year-equivalent trends, and the distribution of warming-speed change. The result to establish is that long-term warming is widespread, whereas local 10-year rates at a common endpoint range from cooling to warming and evolve through time.
+
+> 本节报告长期增温为正的湖泊比例、40 年变化分布和增温速度变化分布。要建立的结果是：长期增温广泛，但同一端点年的局地 10 年速度可从降温到增温，并随时间演化。
+
+**Main figure target:** global long-term warming and warming-speed-change maps, followed by global lake-equal/equal-area trajectories and four endpoint maps.
+
+> **主图目标：** 全球长期增温与速度变化地图；湖泊等权/等面积全球曲线；四个端点年的局地速度地图。
+
+## Seasonal and ice-state context is asymmetric
+
+Describe warm-season alignment with annual local rates and explicitly state the restricted interpretation of cold-season diagnostics under frozen states. Keep this section concise unless its spatial patterns yield a result that remains independent after manuscript review.
+
+> 描述暖季与年局地速度的对齐，并明确冷季受冻结状态限制的解释边界。本节应保持简短；只有在空间格局经审阅后仍独立成立时才扩大。
+
+**Main or supplementary decision:** retain one compact distribution figure only if it directly supports the main claim; otherwise move the full module to the supplement.
+
+> **主文或补充材料决策：** 只有直接支撑主线时保留一张紧凑分布图；否则完整模块转补充材料。
+
+## A common background contains recurring secondary temporal structures
+
+Report the variance spectrum, loading trajectories, spatial score maps, and LOCO evidence. PC1 is the largest common low-frequency background. PC2–PC3 form the main recurring secondary temporal structure: their rank may exchange after continental omission, so interpretation concerns their joint plane rather than two invariant mechanisms. PC4–PC5 remain lower-prominence detail.
+
+> 报告方差谱、loading 轨迹、空间分数图和 LOCO 证据。PC1 是最大的共同低频背景。PC2–PC3 是主要可重复次级时间结构：去除大洲后排序可交换，故解释其联合平面，而非两种不变机制。PC4–PC5 为较低优先级细节。
+
+**Main figure target:** scree and loading panels; PC1-alone plus paired PC2–PC3 and PC4–PC5 score maps; a compact LOCO summary. Full grid and matching details belong in the supplement.
+
+> **主图目标：** scree 与 loading 面板；PC1 单图、PC2–PC3 和 PC4–PC5 配对分数图；紧凑 LOCO 摘要。完整格网和匹配细节转补充材料。
+
+## Secondary trajectories co-locate with heterogeneous circulation sensitivity
+
+The retained external result is a continuous, signed field of association between prior-summer NAO/AO and current-summer detrended JJA LSWT. PC1 provides little held-out localisation skill, whereas PC2 and the PC2–PC3 plane provide stable increment across spatial blocks, grids, continent omissions, and decade omissions. This is a co-location result: it does not show that circulation indices cause the trajectory structures.
+
+> 保留的外部结果是上一年夏季 NAO/AO 与当年夏季去趋势 JJA LSWT 的连续有符号关联场。PC1 对空间定位的留出增益很小；PC2 和 PC2–PC3 平面则在空间分块、不同格网、去大洲和去十年检查中有稳定增益。这是共定位，不表示环流指数造成轨迹结构。
+
+**Main figure target:** paired NAO/AO Fisher-z fields, PC2 comparison, and positive/negative association-pole local-speed composites.
+
+> **主图目标：** NAO/AO Fisher-z 关联场、PC2 对比及正负关联端的局地速度复合。
+
+Back to top

@@ -6,17 +6,17 @@ This chapter decomposes baseline-centred annual STL trajectories after equal-are
 
 ## Spatially balanced trajectory space
 
-PCA is fitted to 573 occupied equal-area cells representing 92,245 lakes. It estimates covariance for a represented spatial cell rather than for a typical sampled lake; lake scores are projections onto fixed cell axes.
+PCA is fitted to 573 occupied equal-area cells representing 92,245 lakes. A lake-dense region may contain many nearly redundant trajectories; giving every lake one row would let sampling density, rather than spatial extent, dominate covariance. Cell aggregation gives each represented area one trajectory. It therefore estimates covariance for a represented spatial cell rather than for a typical sampled lake; lake scores are projections onto the resulting fixed cell axes.
 
 > PCA 拟合于 573 个被占据的等面积格网，代表 92,245 湖。它描述代表性空间格网协变，不描述典型抽样湖泊；湖泊分数仅投影到固定格网轴。
 
 ![](03-warming-pattern-decomposition_files/figure-html/fig-pattern-scree-1.png)
 
-Figure 1: Explained and cumulative variance of spatially balanced PCA.
+Figure 1: Explained and cumulative variance for the first ten spatially balanced principal components.
 
-PC1 is the robust common low-frequency background. PC2–PC3 form a recurring secondary subspace whose rank can exchange; PC4–PC5 are retained as lower-prominence, partly mixed descriptive modes.
+PC1 is the dominant common low-frequency background. PC2–PC5 are successively smaller temporal contrasts. Whether any of these ranked axes recur after geographic omission is tested below; the initial PCA ordering alone does not establish a stable subspace.
 
-> PC1 是稳健共同低频背景。PC2–PC3 构成可重复、但排序可交换的次级子空间；PC4–PC5 保留为呈现优先级较低、部分混合的描述模态。
+> PC1 是主要共同低频背景。PC2–PC5 是依次较小的时间对比；是否能在地理删除后重复，要在后文 LOCO 检验中判断，不能仅由初始排序宣布为稳定子空间。
 
 ## Temporal and spatial modes
 
@@ -26,21 +26,21 @@ Loadings identify the temporal contrast expressed by a score. PCA signs are arbi
 
 ![](03-warming-pattern-decomposition_files/figure-html/fig-pattern-loadings-1.png)
 
-Figure 2: Equal-area PCA loadings for PC1–PC5.
+Figure 2: Equal-area PCA loadings for PC1–PC5. PC1 is shown alone; PC2–PC3 and PC4–PC5 use matched vertical scales within each pair.
 
 ![](03-warming-pattern-decomposition_files/figure-html/fig-pattern-score-maps-1.png)
 
-Figure 3: Spatial organisation of projected PC scores, averaged in 1° cells.
+Figure 3: Spatial organisation of projected PC scores, averaged in 1° cells. PC2–PC3 and PC4–PC5 use matched score limits within each pair.
 
-The score maps show continuous spatial organisation. They do not define continental types: adjacent regions can differ, and distant regions can express similar score combinations. This is the spatial form of heterogeneous warming trajectories.
+The score maps show continuous spatial organisation. They do not define continental types: adjacent regions can differ, and distant regions can express similar score combinations. Neighbour correlations range from 0.70 to 0.81 across PC1–PC5, confirming local continuity. Yet among 147,741 cell pairs at least 3,000 km apart, the closest five-score pair is 15938 km apart with a standardised five-score distance of 0.20. Distant similarity is therefore a descriptive recurrence of trajectory geometry, not evidence that two regions share one mechanism.
 
-> 分数地图显示连续空间组织，不定义大洲类型：相邻区域可不同，远距区域也可有相似分数组合。这就是异质增温轨迹的空间形式。
+> 分数地图显示连续空间组织，不定义大洲类型：PC1–PC5 的邻接相关为 0.70–0.81。但相距至少 3,000 km 的格网对中，也存在五维分数接近的组合。它只说明轨迹几何可在远距地区重复，不说明共享同一机制。
 
 ## Reproducibility and result hierarchy
 
-At the reference grid PC1–PC5 explain 84.6% of cell-trajectory variance. PC2 and PC3 recur under leave-one-continent-out refits, but can exchange order; PC4–PC5 recur more weakly and partly mix. We therefore retain PC1 as the common background, PC2–PC3 as the main secondary descriptive subspace, and PC4–PC5 as lower-prominence detail.
+At the reference grid PC1–PC5 explain 84.6% of cell-trajectory variance. LOCO is the evidence that changes the interpretation of the ranked axes: PC2–PC3 retain a recurring joint temporal plane despite occasional rank exchange, whereas PC4–PC5 recur more weakly and partly mix. Score-pole composites show how the ends of each continuous score axis differ in trajectory; the targeted leave-one-decade test of the external JJA NAO/AO association remains positive for PC2–PC3. We therefore retain PC1 as the common background, PC2–PC3 as the main secondary descriptive subspace, and PC4–PC5 as lower-prominence detail.
 
-> 参考格网中 PC1–PC5 共解释 84.6% 格网轨迹方差。PC2、PC3 在 LOCO 重拟中重复但可交换排序；PC4、PC5 重复更弱且部分混合。因此 PC1 为共同背景，PC2–PC3 为主要次级描述子空间，PC4–PC5 为较低优先级细节。
+> 参考格网中 PC1–PC5 共解释 84.6% 格网轨迹方差。LOCO 证明 PC2、PC3 可重复但可交换排序；PC4、PC5 重复更弱且部分混合。score-pole 复合展示每个连续分数轴两端的轨迹差异；外部 JJA NAO/AO 关联的定向 LODO 检验也保留 PC2–PC3 增益。因此 PC1 为共同背景，PC2–PC3 为主要次级描述子空间，PC4–PC5 为较低优先级细节。
 
 Detailed loading interpretation, score-pole composites, and LOCO matching are retained in [PCA Stability Contract](../../../explorations/warming-acceleration/prose/pca-stability-contract.llms.md). PCA identifies reproducible covariance structure; it does not identify a forcing mechanism by itself.
 

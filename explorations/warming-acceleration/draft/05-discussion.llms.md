@@ -16,7 +16,7 @@ Spatially balanced PCA separates a robust common low-frequency background from r
 
 The retained seasonal result does not attribute long-term warming to NAO or AO. It shows that the spatial field of detrended JJA LSWT sensitivity to prior-summer NAO/AO is better aligned with PC2–PC3 than with PC1, beyond the available continuous geography and lake-morphology background. Positive and negative association poles also differ in late local warming-speed evolution. This establishes a reproducible association between secondary trajectory heterogeneity and heterogeneous circulation sensitivity, while leaving mechanism unresolved.
 
-> 保留的季节结果不将长期增温归因于 NAO 或 AO。它显示：前年夏季 NAO/AO 与当年 JJA 去趋势 LSWT 敏感性场，在现有连续地理与湖泊形态背景之外，与 PC2–PC3 的空间对齐优于 PC1。正负关联端后期局部增温速度也不同。这建立次级轨迹异质性与环流敏感性异质性的可重复关联，但机制仍未解决。
+> 保留的季节结果不将长期增温归因于 NAO 或 AO。它显示：上一年夏季 NAO/AO 与当年 JJA 去趋势 LSWT 敏感性场，在现有连续地理与湖泊形态背景之外，与 PC2–PC3 的空间对齐优于 PC1。正负关联端后期局部增温速度也不同。这建立次级轨迹异质性与环流敏感性异质性的可重复关联，但机制仍未解决。
 
 ## Limitations and next tests
 

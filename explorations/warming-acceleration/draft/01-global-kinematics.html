@@ -23,7 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -34,7 +53,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../explorations/warming-acceleration/draft/02-seasonal-ice-context.html" rel="next">
-<link href="../../../explorations/index.html" rel="prev">
+<link href="../../../explorations/warming-acceleration/manuscript/04-discussion.html" rel="prev">
 <link href="../../../assets/favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -77,6 +96,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="Global Kinematics – Exploration">
 <meta property="og:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
@@ -336,13 +384,48 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Draft</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Manuscript</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/manuscript/01-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/manuscript/02-methods.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/manuscript/03-results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Results</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../explorations/warming-acceleration/manuscript/04-discussion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discussion and conclusions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Draft</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/draft/01-global-kinematics.html" class="sidebar-item-text sidebar-link active">
@@ -383,13 +466,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Prose</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/prose/acceleration-sensitivity.html" class="sidebar-item-text sidebar-link">
@@ -490,13 +573,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">Log</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../explorations/warming-acceleration/log/index.html" class="sidebar-item-text sidebar-link">
@@ -697,7 +780,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#lake-density-map" id="toc-lake-density-map" class="nav-link" data-scroll-target="#lake-density-map">Lake density map</a></li>
   <li><a href="#long-term-warming-and-local-speed-heterogeneity" id="toc-long-term-warming-and-local-speed-heterogeneity" class="nav-link" data-scroll-target="#long-term-warming-and-local-speed-heterogeneity">Long-term warming and local-speed heterogeneity</a></li>
   <li><a href="#spatial-heterogeneity-of-local-warming-speed" id="toc-spatial-heterogeneity-of-local-warming-speed" class="nav-link" data-scroll-target="#spatial-heterogeneity-of-local-warming-speed">Spatial heterogeneity of local warming speed</a></li>
-  <li><a href="#optional-ice-module" id="toc-optional-ice-module" class="nav-link" data-scroll-target="#optional-ice-module">Optional ice module</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/explorations/warming-acceleration/draft/01-global-kinematics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/explorations/warming-acceleration/draft/01-global-kinematics.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -730,11 +812,8 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;environment: R_GlobalEnv&gt;</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;environment: R_GlobalEnv&gt;</code></pre>
 </div>
-</div>
-<p>GLAST reconstructed LSWT product: 92245 lakes, 1981–2020. It is not direct in-situ observation: station-temperature information and ERA5-Land-driven FLAKE simulations are corrected to produce the dataset. “Raw” below means un-smoothed GLAST product values.</p>
+<p>GLAST reconstructed LSWT product: 92245 lakes, 1981–2020. It is not direct in-situ observation: station-temperature information and ERA5-Land-driven FLAKE simulations are corrected to produce the dataset <span class="citation" data-cites="tong2023">(<a href="#ref-tong2023" role="doc-biblioref">Tong et al. 2023</a>)</span>. “Raw” below means un-smoothed GLAST product values.</p>
 <blockquote class="blockquote">
 <p>GLAST 是重建 LSWT 产品，不是直接站点实测；它由站点温度信息和 ERA5-Land 驱动的 FLAKE 模拟校正得到。下文 raw 指未经平滑的 GLAST 产品值。</p>
 </blockquote>
@@ -762,9 +841,9 @@ Figure&nbsp;1: Lake density map with 1° × 1° grid cells.
 <blockquote class="blockquote">
 <p>本章是重建温度层：年均 LSWT 的长期增温为主要指标；10 年滑动 Sen 为局部增温速度；其长期变化称增温速度变化，不等同于瞬时物理加速度。STL 对比保留在 prose/补充材料。</p>
 </blockquote>
-<p><a href="#tbl-warming-summary-raw" class="quarto-xref">Table&nbsp;1 (a)</a> summarizes observed long-term warming and the change in trailing-10-year warming speed. 92.8% of lakes show positive long-term warming. 47.8% have a positive long-term change in local warming speed; this is an operational trajectory descriptor, not a physical instantaneous acceleration.</p>
+<p><a href="#tbl-warming-summary-raw" class="quarto-xref">Table&nbsp;1 (a)</a> summarizes observed long-term warming and the change in trailing-10-year warming speed. 92.8% of lakes show positive long-term warming. 47.8% have a positive long-term change in local warming speed: over the 40-year record, their decadal warming rates tend to become more positive. This includes lakes whose warming accelerates and lakes that shift from decadal cooling toward warming; it is not a resolved instantaneous physical acceleration.</p>
 <blockquote class="blockquote">
-<p><a href="#tbl-warming-summary-raw" class="quarto-xref">Table&nbsp;1 (a)</a> 汇总 raw annual LSWT 的长期增温与局部增温速度变化。92.8% 湖泊长期增温为正，47.8% 的局部增温速度长期趋向更正。</p>
+<p><a href="#tbl-warming-summary-raw" class="quarto-xref">Table&nbsp;1 (a)</a> 汇总 raw annual LSWT 的长期增温与局部增温速度变化。92.8% 湖泊长期增温为正；47.8% 在 40 年间的 10 年增温速度趋向更正，既可表示增温更快，也可表示从局部降温转向增温。</p>
 </blockquote>
 <p>The long-term change in local 10-year warming speed is 0.242 ± 3.608 ×10⁻³ °C yr⁻². This operational statistic summarizes whether local background warming rates tend to become more or less positive; it is not a resolved instantaneous physical acceleration.</p>
 <blockquote class="blockquote">
@@ -838,6 +917,10 @@ Table&nbsp;1: Summary of long-term warming and local-speed change.
 </div>
 </div>
 <p>Values close to zero should not be interpreted as categorical “acceleration” or “deceleration”. The continuous relationships in <a href="#fig-warming-speed-change-scatterplot-matrix" class="quarto-xref">Figure&nbsp;2</a> are therefore the primary summary.</p>
+<p>In the upper triangle of <a href="#fig-warming-speed-change-scatterplot-matrix" class="quarto-xref">Figure&nbsp;2</a>, <span class="math inline">\(r\)</span> is Pearson correlation, <span class="math inline">\(\rho\)</span> is Spearman rank correlation, and <span class="math inline">\(R[L]\)</span> is the signed square root of the LOESS pseudo-<span class="math inline">\(R^2\)</span> on the displayed reproducible sample. The first two summarize linear and rank association; <span class="math inline">\(R[L]\)</span> is only a descriptive measure of visible nonlinear fit, not an independent inferential statistic.</p>
+<blockquote class="blockquote">
+<p><a href="#fig-warming-speed-change-scatterplot-matrix" class="quarto-xref">Figure&nbsp;2</a> 上三角中，<span class="math inline">\(r\)</span> 为 Pearson 相关，<span class="math inline">\(\rho\)</span> 为 Spearman 秩相关，<span class="math inline">\(R[L]\)</span> 为显示样本上 LOESS 伪 <span class="math inline">\(R^2\)</span> 的带符号平方根。前两者描述线性/秩关联；<span class="math inline">\(R[L]\)</span> 只描述可见的非线性拟合，不是独立推断统计量。</p>
+</blockquote>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-warming-speed-change-scatterplot-matrix" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -861,40 +944,26 @@ Figure&nbsp;2: Pairwise relationships among mean temperature, long-term warming,
 <img src="01-global-kinematics_files/figure-html/fig-global-local-speed-1.png" class="img-fluid figure-img" width="2100">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-global-local-speed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Global median reconstructed annual LSWT (top) and distribution of local decadal warming rates (bottom). Ribbons show interquartile ranges across lakes.
+Figure&nbsp;3: Lake-equal and equal-area global reconstructed annual LSWT (top), and corresponding 10-year Sen-rate summaries (bottom). Lake-equal ribbons show interquartile ranges.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>The lake-equal median and the equal-area mean are intentionally not expected to have the same temperature level: lake sampling is concentrated in cold, lake-dense high-latitude regions, whereas the equal-area summary gives each occupied spatial cell one vote. They are shown together as complementary aggregations, not as interchangeable global temperatures.</p>
+<blockquote class="blockquote">
+<p>湖泊等权中位数与等面积均值的温度水平本就不应相同：样本密集在高纬寒冷湖区，而等面积均值让每个被占据格网各占一票。两者互补，不是可互换的单一“全球温度”。</p>
+</blockquote>
 <p>The changing median and persistent interquartile spread in <a href="#fig-global-local-speed" class="quarto-xref">Figure&nbsp;3</a> show temporal and spatial heterogeneity simultaneously: local warming speeds evolve through time, while lakes at the same endpoint year occupy substantially different warming and cooling regimes.</p>
 <blockquote class="blockquote">
 <p><a href="#fig-global-local-speed" class="quarto-xref">Figure&nbsp;3</a> 的中位数变化与持续的四分位距同时显示时间与空间异质性：局部增温速度会随时间演化，同一阶段不同湖泊可处在增温或降温状态。</p>
 </blockquote>
-<p><a href="#fig-local-speed-endpoint-maps" class="quarto-xref">Figure&nbsp;4</a> makes this second pattern explicit. Each panel uses the same local 10-year speed definition, so contrast across panels is temporal change and contrast within a panel is spatial heterogeneity.</p>
-<blockquote class="blockquote">
-<p><a href="#fig-local-speed-endpoint-maps" class="quarto-xref">Figure&nbsp;4</a> 用相同 10 年 Sen 速度定义比较四个端点年：面板间是时间变化，面板内是同阶段的空间异质性。</p>
-</blockquote>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-local-speed-endpoint-maps" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-local-speed-endpoint-maps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-global-kinematics_files/figure-html/fig-local-speed-endpoint-maps-1.png" class="img-fluid figure-img" width="2400">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-local-speed-endpoint-maps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Spatial distribution of trailing-10-year local warming rate at 1990, 2000, 2010, and 2020 endpoints. Each 1° × 1° cell averages at least three lakes.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
 </section>
 <section id="spatial-heterogeneity-of-local-warming-speed" class="level2">
 <h2 class="anchored" data-anchor-id="spatial-heterogeneity-of-local-warming-speed">Spatial heterogeneity of local warming speed</h2>
-<p>The 1° cells in <a href="#fig-spatial-warming-speed-change-hex" class="quarto-xref">Figure&nbsp;5</a> summarize lake-level estimates. The lower panel maps long-term change in local trailing-10-year warming rate, not instantaneous acceleration.</p>
+<p>The 1° cells in <a href="#fig-spatial-warming-speed-change-hex" class="quarto-xref">Figure&nbsp;4</a> summarize lake-level estimates before the endpoint maps examine selected decades. The lower panel maps the long-term change in local trailing-10-year warming rate, not instantaneous acceleration.</p>
 <blockquote class="blockquote">
-<p><a href="#fig-spatial-warming-speed-change-hex" class="quarto-xref">Figure&nbsp;5</a> 用 1°格网汇总湖泊指标。上下分别展示长期增温与局部增温速度变化的空间格局，两者不必一致。</p>
+<p><a href="#fig-spatial-warming-speed-change-hex" class="quarto-xref">Figure&nbsp;4</a> 先以 1°格网汇总全球湖泊指标；随后端点图再深入展示特定时期。下图为局部 10 年增温速度的长期变化，不是瞬时物理加速度。</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
@@ -904,28 +973,44 @@ Figure&nbsp;4: Spatial distribution of trailing-10-year local warming rate at 19
 <img src="01-global-kinematics_files/figure-html/fig-spatial-warming-speed-change-hex-1.png" class="img-fluid figure-img" width="2400">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-warming-speed-change-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Spatial pattern of lake warming and long-term local warming-speed change. Each 1° × 1° cell averages lake-level metrics.
+Figure&nbsp;4: Spatial pattern of lake warming and long-term local warming-speed change. Each 1° × 1° cell averages lake-level metrics.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>These global metrics reduce each lake’s annual warming-speed series to a long-term slope. They show whether warming speed tends to become more or less positive, but not how the temporal pattern of warming differs among lakes or what factors drive those differences. <a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html">Warming pattern decomposition</a> therefore applies PCA to the full annual temperature trajectory to identify dominant modes of variation and their spatial organisation.</p>
+<p><a href="#fig-local-speed-endpoint-maps" class="quarto-xref">Figure&nbsp;5</a> makes this second pattern explicit. Each panel uses the same local 10-year speed definition, so contrast across panels is temporal change and contrast within a panel is spatial heterogeneity.</p>
 <blockquote class="blockquote">
-<p>全局指标将年增温速率压缩为长期斜率，但不能揭示增温时间模式的差异。<a href="../../../explorations/warming-acceleration/draft/02-warming-patterns.html">增温模式分解</a>用 PCA 识别主要变异模态及其空间组织。</p>
+<p><a href="#fig-local-speed-endpoint-maps" class="quarto-xref">Figure&nbsp;5</a> 用相同 10 年 Sen 速度定义比较四个端点年：面板间是时间变化，面板内是同阶段的空间异质性。</p>
 </blockquote>
-</section>
-<section id="optional-ice-module" class="level2">
-<h2 class="anchored" data-anchor-id="optional-ice-module">Optional ice module</h2>
-<p>Cooling trajectories are part of the observed heterogeneity. Their seasonal and ice-duration context is maintained as a separate, optional <a href="../../../explorations/warming-acceleration/prose/seasonal-ice-diagnostics.html">seasonal and ice diagnostics module</a>, so it can be included or omitted from a future manuscript without changing this chapter’s kinematic core.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-local-speed-endpoint-maps" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-local-speed-endpoint-maps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-global-kinematics_files/figure-html/fig-local-speed-endpoint-maps-1.png" class="img-fluid figure-img" width="2400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-local-speed-endpoint-maps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Spatial distribution of trailing-10-year local warming rate at 1990, 2000, 2010, and 2020 endpoints. Each 1° × 1° cell averages at least three lakes.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>These global metrics reduce each lake’s annual warming-speed series to a long-term slope. They show whether warming speed tends to become more or less positive, but not how the temporal pattern of warming differs among lakes or what factors drive those differences. <a href="../../../explorations/warming-acceleration/draft/03-warming-pattern-decomposition.html">Warming pattern decomposition</a> therefore applies PCA to the full annual temperature trajectory to identify dominant modes of variation and their spatial organisation.</p>
 <blockquote class="blockquote">
-<p>降温轨迹属于观测异质性。其季节与冰期背景独立维护为可选模块；未来论文可独立决定纳入与否，不改变本章运动学核心。</p>
+<p>全局指标将年增温速率压缩为长期斜率，但不能揭示增温时间模式的差异。<a href="../../../explorations/warming-acceleration/draft/03-warming-pattern-decomposition.html">增温模式分解</a>用 PCA 识别主要变异模态及其空间组织。</p>
 </blockquote>
+
 
 
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-tong2023" class="csl-entry" role="listitem">
+Tong, Yan, Lian Feng, Xinchi Wang, Xuehui Pi, Wang Xu, and R. Iestyn Woolway. 2023. <span>“Global Lakes Are Warming Slower Than Surface Air Temperature Due to Accelerated Evaporation.”</span> <em>Nature Water</em> 1 (11): 929–40. <a href="https://doi.org/10.1038/s44221-023-00148-8">https://doi.org/10.1038/s44221-023-00148-8</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1341,8 +1426,8 @@ Figure&nbsp;5: Spatial pattern of lake warming and long-term local warming-speed
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../explorations/index.html" class="pagination-link" aria-label="Explorations">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Explorations</span>
+      <a href="../../../explorations/warming-acceleration/manuscript/04-discussion.html" class="pagination-link" aria-label="Discussion and conclusions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Discussion and conclusions</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
