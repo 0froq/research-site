@@ -41,7 +41,7 @@ Partitions \\n\\ observations into \\K\\ groups by minimising within-cluster sum
 
 Common workflow: z-score features → run K-means → order clusters by a meaningful axis (e.g. mean temperature).
 
-In this project, projected PC1–PC5 clustering is retained only as an exploratory sensitivity branch. It is not active Chapter 2 evidence: PCA score geometry and score-pole composites are used instead.
+In this project, projected PC1–PC5 clustering is retained only as an exploratory sensitivity branch. It is not active manuscript evidence: the retained analysis uses continuous PCA score geometry and score-pole composites rather than natural lake classes.
 
 ## Spatially balanced PCA
 
@@ -67,7 +67,7 @@ Teleconnection indices are not regressed against PCA loading time series here: t
 
 This asks whether locations expressing different PCA score geometry also differ in their interannual teleconnection sensitivity. It does not establish that an index drives a PCA mode. Do not use nominal lake-level correlation p values, post-hoc best-index labels, or a 40-year AMO screen as evidence.
 
-The predeclared screen is Niño 3.4, PDO, NAO, and AO, at lags 0 and 1 only; at least 30 valid paired years are required. Lake correlations are transformed as \\z=\operatorname{atanh}(r)\\ and aggregated within each cell with weight \\n-3\\. Geography/lake morphology is the baseline. PC1 and the joint PC2–PC3 score pair are additions, evaluated by contiguous spatial block held-out \\R^2\\. A finding is retained only when its positive PC increment repeats across three block partitions, three equal-area PCA grids, and leave-one-continent-out PCA refits. NAO and AO are a correlated family, so passing results cannot rank them as separate mechanisms. See [teleconnection-sensitivity screen](../../explorations/warming-temporal-pathways/investigations/pca-teleconnection-screen.llms.md) for result-specific boundaries.
+The initial annual screen uses Niño 3.4, PDO, NAO, and AO at leads 0 and 1 year. The seasonal lag-surface branch maps wider seasonal-quarter lags as exploratory context; at least 30 valid paired years are required. Lake correlations are transformed as \\z=\operatorname{atanh}(r)\\ and aggregated within each cell with weight \\n-3\\. Geography/lake morphology is the baseline. PC1 and the joint PC2–PC3 score pair are additions, evaluated by contiguous spatial block held-out \\R^2\\. A finding is retained only when its positive PC increment repeats across three block partitions, three equal-area PCA grids, and leave-one-continent-out PCA refits. NAO and AO are a correlated family, so passing results cannot rank them as separate mechanisms. See [teleconnection-sensitivity screen](../../explorations/warming-temporal-pathways/investigations/pca-teleconnection-screen.llms.md) for result-specific boundaries.
 
 ### Seasonal lagged association screen
 
