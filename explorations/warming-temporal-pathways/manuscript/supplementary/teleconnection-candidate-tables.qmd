@@ -1,5 +1,7 @@
 ---
 title: "Candidate Results tables"
+aliases:
+  - "/explorations/warming-temporal-pathways/manuscript/results/07-candidate-tables.html"
 ---
 
 ```{r}

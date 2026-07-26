@@ -6,7 +6,7 @@ last-modified: 2026-07-27
 ## 说明
 
 `redirect.html` 中实现了重定向，
-打开后会前往 `https://froq.me/research-site/explorations/warming-temporal-pathways/draft/01-global-kinematics.html`。
+打开后会前往 `https://froq.me/research-site/explorations/warming-temporal-pathways/manuscript/results/01-global-kinematics.html`。
 
 当上面的网站更新后，我**一定**会在 `redirect.html` 中加一条带时间的 log，
 通常情况下不需要查看

@@ -10,4 +10,4 @@ how the work progressed, but they are not the authoritative source of retained
 scientific claims.
 
 For the current conclusion and its limits, start with the
-[exploration overview](../index.qmd) and then the [draft](../draft/index.qmd).
+[exploration overview](../index.qmd) and then the formal [manuscript](../manuscript/index.qmd).

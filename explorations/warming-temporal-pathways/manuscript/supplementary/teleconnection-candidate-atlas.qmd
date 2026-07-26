@@ -1,5 +1,7 @@
 ---
 title: "Teleconnection candidate atlas"
+aliases:
+  - "/explorations/warming-temporal-pathways/manuscript/results/06-teleconnection-candidate-atlas.html"
 ---
 
 ```{r}

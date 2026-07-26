@@ -1,7 +1,0 @@
----
-title: "Moved: climate-link candidate atlas"
----
-
-<meta http-equiv="refresh" content="0; url=../supplementary/teleconnection-candidate-atlas.html">
-
-This supplementary analysis moved to [Climate-link candidate atlas](../supplementary/teleconnection-candidate-atlas.qmd).

@@ -3,14 +3,16 @@ title: "Temporal pathways of global lake warming"
 subtitle: "Manuscript workspace"
 aliases:
   - "/explorations/warming-acceleration/manuscript/index.html"
+  - "/explorations/warming-acceleration/draft/index.html"
+  - "/explorations/warming-temporal-pathways/draft/index.html"
 ---
 
 This directory is the formal-paper layer of the project. It turns the retained
-evidence in `draft/` into a concise manuscript. It does not contain exploratory
+retained evidence into a concise manuscript. It does not contain exploratory
 analysis, durable data preparation, source-note extracts, or supplementary
 sensitivity figures.
 
-> 本目录是正式论文层：把 `draft/` 中保留的证据收敛为可投稿手稿。不放探索分析、持久数据处理、文献摘录或补充敏感性图。
+> 本目录是正式论文层：把保留证据收敛为可投稿手稿。不放探索分析、持久数据处理、文献摘录或补充敏感性图。
 
 ## Central claim
 

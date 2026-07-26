@@ -1,5 +1,10 @@
 ---
 title: "Dominant warming trajectories"
+aliases:
+  - "/explorations/warming-acceleration/draft/02-warming-patterns.html"
+  - "/explorations/warming-acceleration/draft/03-warming-pattern-decomposition.html"
+  - "/explorations/warming-temporal-pathways/draft/02-warming-patterns.html"
+  - "/explorations/warming-temporal-pathways/draft/03-warming-pattern-decomposition.html"
 ---
 
 ```{r}

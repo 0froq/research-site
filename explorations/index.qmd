@@ -8,7 +8,7 @@ All explorations — finished, cancelled, in-progress, or not started.
 
 ::: {.align-center .text-xl}
 [overview](./warming-temporal-pathways/index.qmd) ·
-[draft](./warming-temporal-pathways/draft/01-global-kinematics.qmd) ·
+[manuscript](./warming-temporal-pathways/manuscript/index.qmd) ·
 [investigations](./warming-temporal-pathways/investigations/local-rate-change-sensitivity.qmd) ·
 [log (raw)](./warming-temporal-pathways/log/index.qmd)
 :::

@@ -1,5 +1,8 @@
 ---
 title: "Widespread but heterogeneous lake warming"
+aliases:
+  - "/explorations/warming-acceleration/draft/01-global-kinematics.html"
+  - "/explorations/warming-temporal-pathways/draft/01-global-kinematics.html"
 ---
 
 ```{r}

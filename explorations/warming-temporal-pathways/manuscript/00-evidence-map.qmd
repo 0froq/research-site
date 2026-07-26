@@ -17,7 +17,8 @@ results, or literature extracts.
 2. The reason a source matters to this question, including its local role and
    reading question, remains in the exploration [Literature map](../literature/index.qmd).
 3. Reproducible analytical detail, sensitivity checks, and negative results
-   remain in [Draft](../draft/index.qmd) and [Investigations](../investigations/local-rate-change-sensitivity.qmd).
+   remain in the formal [Results](results/01-global-kinematics.qmd) and
+   [Investigations](../investigations/local-rate-change-sensitivity.qmd).
 4. This manuscript contains only the retained argument and links back when a
    reader needs the condition, robustness evidence, or source record.
 

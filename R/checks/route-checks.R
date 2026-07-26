@@ -51,21 +51,9 @@ if (!identical(route_map, expected_map)) {
   stop("Legacy route map does not match the current Quarto aliases. Regenerate it intentionally.")
 }
 
-targets <- file.path("_output", sub("\\.qmd$", ".html", aliases$source))
+output_dir <- Sys.getenv("SITE_OUTPUT_DIR", unset = "_output")
+targets <- file.path(output_dir, sub("\\.qmd$", ".html", aliases$source))
 missing <- aliases$source[!file.exists(targets)]
 if (length(missing)) stop("Rendered target missing for: ", paste(missing, collapse = ", "))
 
-moved <- c(
-  "explorations/warming-temporal-pathways/manuscript/results/02-seasonal-ice-context.qmd",
-  "explorations/warming-temporal-pathways/manuscript/results/06-teleconnection-candidate-atlas.qmd",
-  "explorations/warming-temporal-pathways/manuscript/results/07-candidate-tables.qmd"
-)
-for (path in moved) {
-  target <- sub("\\.qmd$", ".html", file.path("_output", path))
-  text <- paste(readLines(target, warn = FALSE), collapse = "\n")
-  if (!grepl('http-equiv="refresh"', text, fixed = TRUE)) {
-    stop("Moved route lacks a redirect: ", path)
-  }
-}
-
-message("Route checks passed for ", nrow(aliases), " legacy aliases and ", length(moved), " moved pages.")
+message("Route checks passed for ", nrow(aliases), " legacy aliases.")

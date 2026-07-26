@@ -4,5 +4,5 @@ aliases: ["/explorations/warming-acceleration/log/2026-07-12.html"]
 ---
 
 The former descriptive and regional chapters need reconstruction.
-The active replacements are [Global Kinematics](../draft/01-global-kinematics.qmd) and
-[Warming Pattern Decomposition](../draft/02-warming-patterns.qmd).
+The active replacements are [Global Kinematics](../manuscript/results/01-global-kinematics.qmd) and
+[Dominant warming trajectories](../manuscript/results/03-warming-patterns.qmd).

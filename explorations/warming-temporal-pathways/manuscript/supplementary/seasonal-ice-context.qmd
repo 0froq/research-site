@@ -1,5 +1,9 @@
 ---
 title: "Seasonal and ice-state context"
+aliases:
+  - "/explorations/warming-acceleration/draft/02-seasonal-ice-context.html"
+  - "/explorations/warming-temporal-pathways/draft/02-seasonal-ice-context.html"
+  - "/explorations/warming-temporal-pathways/manuscript/results/02-seasonal-ice-context.html"
 ---
 
 ```{r}

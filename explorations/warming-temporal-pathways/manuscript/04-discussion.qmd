@@ -2,6 +2,8 @@
 title: "Discussion and conclusions"
 aliases:
   - "/explorations/warming-acceleration/manuscript/04-discussion.html"
+  - "/explorations/warming-acceleration/draft/05-discussion.html"
+  - "/explorations/warming-temporal-pathways/draft/05-discussion.html"
 ---
 
 ## Global lake warming differs in timing as well as magnitude

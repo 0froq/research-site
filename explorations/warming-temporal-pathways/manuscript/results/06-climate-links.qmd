@@ -1,5 +1,8 @@
 ---
 title: "Climate-variability links"
+aliases:
+  - "/explorations/warming-acceleration/draft/04-teleconnection-sensitivity.html"
+  - "/explorations/warming-temporal-pathways/draft/04-teleconnection-sensitivity.html"
 ---
 
 ```{r}

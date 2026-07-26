@@ -7,6 +7,7 @@ project:
     - "!**/*.rmarkdown"
     - "!**/*.knit.md"
     - "!explorations/warming-temporal-pathways/archive/**"
+    - "!nas-README.md"
 
 website:
   title: "Exploration"
@@ -52,9 +53,6 @@ website:
               contents:
                 - text: Overview
                   href: explorations/warming-temporal-pathways/index.qmd
-                - section: Drafts
-                  contents:
-                    - auto: explorations/warming-temporal-pathways/draft/*md
                 - section: Investigations
                   contents:
                     - auto: explorations/warming-temporal-pathways/investigations/*md
@@ -65,9 +63,6 @@ website:
                   contents:
                     - explorations/warming-temporal-pathways/log/index.qmd
                     - auto: explorations/warming-temporal-pathways/log/*md
-                - section: Decisions
-                  contents:
-                    - auto: explorations/warming-temporal-pathways/decisions/*md
                 - section: Manuscript
                   contents:
                     - auto: explorations/warming-temporal-pathways/manuscript/*md

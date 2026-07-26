@@ -1,5 +1,7 @@
 # Quarto render artifacts
 _output/
+.deploy-check-*/
+.deploy-output/
 .quarto/
 _freeze/
 *_files/

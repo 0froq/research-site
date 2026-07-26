@@ -1,7 +1,0 @@
----
-title: "Moved: climate-link candidate tables"
----
-
-<meta http-equiv="refresh" content="0; url=../supplementary/teleconnection-candidate-tables.html">
-
-This supplementary analysis moved to [Climate-link candidate tables](../supplementary/teleconnection-candidate-tables.qmd).

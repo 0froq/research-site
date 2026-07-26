@@ -1,6 +1,15 @@
 ---
 title: Analysis Contract
 description: Canonical definitions and parameter choices for the lake-warming exploration.
+aliases:
+  - "/explorations/warming-acceleration/decisions/index.html"
+  - "/explorations/warming-acceleration/decisions/raw-annual-primary-metrics.html"
+  - "/explorations/warming-acceleration/decisions/spatially-balanced-pca.html"
+  - "/explorations/warming-acceleration/decisions/teleconnection-association-boundary.html"
+  - "/explorations/warming-temporal-pathways/decisions/index.html"
+  - "/explorations/warming-temporal-pathways/decisions/raw-annual-primary-metrics.html"
+  - "/explorations/warming-temporal-pathways/decisions/spatially-balanced-pca.html"
+  - "/explorations/warming-temporal-pathways/decisions/teleconnection-association-boundary.html"
 ---
 
 This page is the canonical, human-readable contract for the active warming-temporal-pathways analysis. It defines the quantities used in the draft chapters; producer-specific implementation and output provenance remain in `data-process/pipeline/manifest.toml`, `data-process/tasks/*/README.md`, and generated `METADATA.md` files.
@@ -122,5 +131,3 @@ For the current first-author descriptive manuscript, do not introduce a new prim
 > 当前第一作者描述性论文冻结主方法：不再新增主时间序列算法、全球分区方法、STARS、因果归因模型或遥相关主叙事。后续分析只能实现本契约、完成列明敏感性，或完成既定冰模块与受限关联模块。
 
 ## Related workflow
-
-For the focused R workflow used to validate one figure's rendering-time data preparation before a chapter render, see [Debugging Figure Helpers](helper-debugging.qmd).

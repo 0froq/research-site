@@ -17,7 +17,7 @@ long-term and decadal-rate heterogeneity; spatially balanced PCA describes
 recurring low-frequency pathways; seasonal, ice, and circulation analyses
 provide bounded context rather than causal attribution.
 
-The current draft and manuscript pages are authoritative for retained claims.
+The manuscript pages are authoritative for retained claims.
 The raw log records the work process, including superseded ideas and negative
 results.
 
@@ -34,7 +34,6 @@ lake-level heat-budget mechanism or a universal set of lake-response types.
 
 ## Reading path
 
-- [Draft](draft/index.qmd) — retained working results, credibility, and limitations.
 - [Manuscript](manuscript/index.qmd) — formal-paper argument, retained figures,
   and evidence route.
 - [Investigations](investigations/local-rate-change-sensitivity.qmd) — parameter
@@ -42,5 +41,5 @@ lake-level heat-budget mechanism or a universal set of lake-response types.
 - [Literature map](literature/index.qmd) — why independent paper notes matter
   for this question.
 - [Log (raw)](log/index.qmd) — dated operational history.
-- [Decisions](decisions/index.qmd) — durable choices affecting interpretation
-  and reproducibility.
+- [Analysis contract](../../docs/analysis-contract.qmd) — active definitions,
+  parameters, and scope boundaries.

@@ -1,7 +1,0 @@
----
-title: "Moved: seasonal and ice context"
----
-
-<meta http-equiv="refresh" content="0; url=../supplementary/seasonal-ice-context.html">
-
-This supplementary analysis moved to [Seasonal and ice context](../supplementary/seasonal-ice-context.qmd).
