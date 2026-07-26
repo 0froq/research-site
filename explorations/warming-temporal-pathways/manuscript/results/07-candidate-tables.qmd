@@ -1,43 +1,7 @@
 ---
-title: "Candidate Results tables"
+title: "Moved: climate-link candidate tables"
 ---
 
-```{r}
-#| include: false
-source("../../../../shared/R/figure-style.R")
-source("../../../../shared/R/results-candidate-tables-helpers.R")
-list2env(prepare_results_candidate_tables(), envir = environment())
-emit_list_table <- function(frame, digits = 2) {
-  frame <- frame |> mutate(across(where(is.numeric), ~formatC(.x, format = "f", digits = digits)))
-  lines <- apply(rbind(names(frame), as.matrix(frame)), 1, function(row) paste0("- ", paste(paste0("- ", row), collapse = "\n  ")))
-  knitr::asis_output(paste(c("::: {.list-table}", lines, ":::"), collapse = "\n"))
-}
-```
+<meta http-equiv="refresh" content="0; url=../supplementary/teleconnection-candidate-tables.html">
 
-These tables are candidate supplementary material. They report descriptive
-sample composition and PCA stability. They do not contain trend-significance,
-formal group tests, or temporal-block-omission inference because those analyses
-have not yet been defined and run.
-
-> 本页是候选补充表，报告描述性样本组成和 PCA 稳健性。不含趋势显著性、正式组间检验或时间块遗漏推断，因为这些分析尚未定义并运行。
-
-## Lake warming by continent
-
-```{r}
-#| results: asis
-emit_list_table(continent_summary |> arrange(desc(n)))
-```
-
-## PCA variance spectrum
-
-```{r}
-#| results: asis
-emit_list_table(pca_variance |> select(pc, explained_pct, cumulative_pct))
-```
-
-## LOCO subspace stability
-
-```{r}
-#| results: asis
-emit_list_table(loco |> select(omitted_continent, subspace, min_cosine, max_angle_deg, mean_angle_deg, occupied_cells))
-```
+This supplementary analysis moved to [Climate-link candidate tables](../supplementary/teleconnection-candidate-tables.qmd).

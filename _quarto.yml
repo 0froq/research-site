@@ -79,6 +79,12 @@ website:
                         - explorations/warming-temporal-pathways/manuscript/results/04-spatial-organization.qmd
                         - explorations/warming-temporal-pathways/manuscript/results/05-trajectory-robustness.qmd
                         - explorations/warming-temporal-pathways/manuscript/results/06-climate-links.qmd
+                    - section: Supplementary analyses
+                      href: explorations/warming-temporal-pathways/manuscript/supplementary/index.qmd
+                      contents:
+                        - explorations/warming-temporal-pathways/manuscript/supplementary/seasonal-ice-context.qmd
+                        - explorations/warming-temporal-pathways/manuscript/supplementary/teleconnection-candidate-atlas.qmd
+                        - explorations/warming-temporal-pathways/manuscript/supplementary/teleconnection-candidate-tables.qmd
     - title: Reference
       collapse-level: 2
       contents:

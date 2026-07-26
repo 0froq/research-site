@@ -4,10 +4,10 @@ title: "Spatial organization of trajectory modes"
 
 ```{r}
 #| include: false
-source("../../../../shared/R/figure-style.R")
-source("../../../../shared/R/descriptive-helpers.R")
-source("../../../../shared/R/03-warming-pattern-decomposition-helpers.R")
-source("../../../../shared/R/results-pca-helpers.R")
+source("../../../../R/core/style.R")
+source("../../../../R/core/spatial.R")
+source("../../../../R/domains/pathways.R")
+source("../../../../R/figures/results/04-spatial-organization.R")
 pca <- prepare_pca_data()
 list2env(prepare_results_pca_data(pca), envir = environment())
 ```

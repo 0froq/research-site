@@ -4,8 +4,8 @@ title: "Robustness of trajectory modes"
 
 ```{r}
 #| include: false
-source("../../../../shared/R/figure-style.R")
-source("../../../../shared/R/results-robustness-helpers.R")
+source("../../../../R/core/style.R")
+source("../../../../R/figures/results/05-trajectory-robustness.R")
 list2env(prepare_results_robustness_data(), envir = environment())
 ```
 

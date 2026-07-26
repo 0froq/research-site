@@ -4,10 +4,10 @@ title: "Widespread but heterogeneous lake warming"
 
 ```{r}
 #| include: false
-source("../../../../shared/R/figure-style.R")
-source("../../../../shared/R/descriptive-helpers.R")
-source("../../../../shared/R/01-global-kinematics-helpers.R")
-source("../../../../shared/R/results-kinematics-helpers.R")
+source("../../../../R/core/style.R")
+source("../../../../R/core/spatial.R")
+source("../../../../R/domains/kinematics.R")
+source("../../../../R/figures/results/01-global-kinematics.R")
 list2env(prepare_kinematics_data(), envir = environment())
 list2env(prepare_results_kinematics_data(), envir = environment())
 fmt_num <- function(x, digits = 2) formatC(x, format = "f", digits = digits)

@@ -4,10 +4,10 @@ title: "Contrasting within-period pathways"
 
 ```{r}
 #| include: false
-source("../../../../shared/R/figure-style.R")
-source("../../../../shared/R/descriptive-helpers.R")
-source("../../../../shared/R/01-global-kinematics-helpers.R")
-source("../../../../shared/R/results-kinematics-helpers.R")
+source("../../../../R/core/style.R")
+source("../../../../R/core/spatial.R")
+source("../../../../R/domains/kinematics.R")
+source("../../../../R/figures/results/01-global-kinematics.R")
 kinematics <- prepare_kinematics_data()
 list2env(kinematics, envir = environment())
 list2env(prepare_results_kinematics_data(kinematics), envir = environment())
@@ -331,4 +331,3 @@ Together with the population-level spread quantified above,
 they establish the descriptive problem for the next section:
 whether this diversity is idiosyncratic to individual lakes
 or organised by a limited number of recurrent low-frequency trajectories.
-

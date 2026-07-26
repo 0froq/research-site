@@ -32,9 +32,17 @@ shared/assets/
 .DS_Store
 
 # Editor
+.obsidian/
+.pandoc/
+.snippets/
+.vscode/
 *.swp
 *.swo
 *~
 .session.vim
+
+# Local exploratory render and figure caches
+/cache/
+/figure/
 
 /.quarto/

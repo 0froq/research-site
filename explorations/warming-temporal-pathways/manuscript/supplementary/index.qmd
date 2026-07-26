@@ -1,0 +1,10 @@
+---
+title: "Supplementary analyses"
+---
+
+These pages contain retained descriptive checks and candidate material that is
+not part of the six-section Results narrative.
+
+- [Seasonal and ice context](seasonal-ice-context.qmd)
+- [Climate-link candidate atlas](teleconnection-candidate-atlas.qmd)
+- [Climate-link candidate tables](teleconnection-candidate-tables.qmd)

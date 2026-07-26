@@ -6,9 +6,9 @@ aliases:
 
 ```{r}
 #| include: false
-source("../../../shared/R/figure-style.R")
-source("../../../shared/R/descriptive-helpers.R")
-source("../../../shared/R/methods-data-helpers.R")
+source("../../../R/core/style.R")
+source("../../../R/core/spatial.R")
+source("../../../R/figures/methods/dataset-coverage.R")
 list2env(prepare_methods_data(), envir = environment())
 ```
 
