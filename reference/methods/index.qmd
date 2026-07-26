@@ -53,7 +53,8 @@ Pettitt (single shift, rank-based), CUSUM (cumulative sum).
 All are sensitive to algorithm choice and parameterisation;
 STARS is favoured for its simplicity and climatological track record.
 
-Paper notes: [Rodionov (2004)](../../notes/papers/rodionov2004.md).
+Rodionov (2004) remains a historical method reference; no local paper note is
+currently maintained for it.
 
 Used in: [warming temporal pathways](../../explorations/index.qmd#global-lake-warming-temporal-pathways).
 

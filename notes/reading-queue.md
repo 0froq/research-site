@@ -84,7 +84,7 @@ Question
 State
 : queued
 
-## [@schutgens2016](./papers/schutgens2016.md)
+## @schutgens2016
 
 Role now
 : method audit
@@ -107,7 +107,7 @@ Question
 State
 : queued
 
-## [@roberts2017](./papers/roberts2017.md)
+## @roberts2017
 
 Role now
 : method audit
