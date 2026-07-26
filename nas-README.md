@@ -1,6 +1,6 @@
 ---
 created: 2026-07-12
-last-modified: 2026-07-20 14:49:22
+last-modified: 2026-07-27
 ---
 
 ## 说明
@@ -17,6 +17,36 @@ last-modified: 2026-07-20 14:49:22
 可作为导读。
 
 ## 更新记录
+
+### 2026-07-27
+
+#### 管线与站点重构
+
+- `data-process/` 已成为独立的源码 Git 仓库。活动任务由编号 `steps/` 重组为语义化
+  `tasks/`：foundation、temperature、metrics、pathways、context 和 experimental。
+  原始数据与 `derived/` 输出仍不进入 Git。
+- `pipeline/manifest.toml` 现在是唯一活动任务/DAG/dataset catalog；Julia 和 R 都通过
+  dataset id 解析输入输出路径。旧 `steps/` 仅保留为本地兼容层，活动代码与页面不再依赖它。
+- `site/R/` 分为 core、domains、figures 和 checks。主图 helper 可单独 source/run；QMD
+  只负责图层、文字和交叉引用。
+- manuscript 现稳定为六个 Results 小节；季节冰、候选表和候选 atlas 位于 supplementary
+  或 investigations。86 个历史公开路径已映射到有效的新页面。
+
+#### 验证
+
+- 使用既有 canonical `monthly-stl nt=99` 输出，重新运行 manuscript profile 的其余活动
+  producer；lake metadata、annual/ice、annual STL、metrics、trajectory、空间 PCA、
+  robustness 与两类描述性 teleconnection 输出均已完成。
+- 新 runner 支持显式 `--reuse <task-id>`：只在声明输出存在且非空时复用昂贵上游数据，
+  不会静默跳过。
+- 完整站点 106 页 render 成功；活动 helper contract、dataset manifest、真实输出完整性、
+  legacy route 和活动旧路径检查均通过。
+
+#### 说明
+
+- 未重跑月度 STL 本身。它是唯一显著慢的 producer；本次只为验证重构而复用先前的
+  canonical `nt=99` 输出。以后在更换原始输入或 STL 算法时，需显式重跑该任务。
+- GitHub Pages 尚未推送；先在本地分支审阅本次结构变化。
 
 ### 2026-07-12
 
