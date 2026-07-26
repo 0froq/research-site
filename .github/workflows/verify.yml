@@ -10,5 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: r-lib/actions/setup-r@v2
+      - uses: quarto-dev/quarto-actions/setup@v2
       - run: Rscript R/checks/route-source-check.R
       - run: Rscript R/checks/no-legacy-active-dependencies.R
+      # These pages are deliberately data-free redirect contracts. Full helper
+      # contracts and the 106-page render remain local gates because the large
+      # research datasets are intentionally absent from CI.
+      - run: quarto render explorations/warming-temporal-pathways/investigations/pca-stability-contract.qmd
+      - run: quarto render explorations/warming-temporal-pathways/investigations/pca-teleconnection-screen.qmd
