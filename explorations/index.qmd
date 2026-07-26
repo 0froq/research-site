@@ -22,14 +22,13 @@ All explorations — finished, cancelled, in-progress, or not started.
 }
 </style>
 
-How heterogeneous are reconstructed lake surface water temperature trajectories
-across time and space, and what seasonal/ice contexts characterize cooling
-trajectories?
+How heterogeneous are reconstructed lake surface-water-temperature trajectories
+across time and space?
 
 92,245 lakes, GLAST dataset, 1981–2020.
 
 Methods: raw annual and moving-window Theil--Sen trends; STL-based low-frequency
-PCA; descriptive PCA-score structure; modular cooling/ice diagnostics.
+PCA; descriptive PCA-score structure; modular seasonal/ice diagnostics.
 
 GLAST is a reconstructed/corrected LSWT product, not direct in-situ observation.
 The active work distinguishes descriptive trajectory structure from causal

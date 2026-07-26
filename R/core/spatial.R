@@ -1,4 +1,4 @@
-# Helpers used by the descriptive chapter. Depends on shared/R/figure-style.R.
+# Shared spatial helpers for active figures. Uses the current R/core style layer.
 
 bin_lake_locations <- function(lake_xy, bin_size = 1, lat_min = -60) {
   lake_xy <- lake_xy |>

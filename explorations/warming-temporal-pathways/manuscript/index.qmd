@@ -7,8 +7,8 @@ aliases:
   - "/explorations/warming-temporal-pathways/draft/index.html"
 ---
 
-This directory is the formal-paper layer of the project. It turns the retained
-retained evidence into a concise manuscript. It does not contain exploratory
+This directory is the formal-paper layer of the project. It turns retained
+evidence into a concise manuscript. It does not contain exploratory
 analysis, durable data preparation, source-note extracts, or supplementary
 sensitivity figures.
 

@@ -20,6 +20,33 @@ last-modified: 2026-07-27
 
 ### 2026-07-27
 
+#### 当前交接状态（以此为准）
+
+- 网站公开结构已收敛为：manuscript（六个 Results 小节）、supplementary、investigations、
+  literature、log、reference 与 notes。`draft/`、`decisions/` 和 helper debugging 页面已移除。
+- manuscript 的六个 Results 文件是正式论证链；seasonal/ice 与 teleconnection candidate
+  material 位于 supplementary。investigations 承载模块化探索，不自动提升为论文结论。
+- literature 暂时保留三页结构，但已标记为待整体优化；后续应从实际手稿证据 task 出发，
+  再决定领域综述、创新性、直接对比、方法审计与机制/边界等分类。
+- `site/zotero.bib` 已作为普通 Git 文件提交，远程渲染可复现引用；不再依赖本机绝对链接。
+- 部署脚本现在从干净 Git worktree 渲染，避免本地 `_output` 缓存将已删除页面重新发布。
+  历史 draft、decision 和被移动页面 URL 保留为自动跳转，不是独立内容页。
+- GitHub Pages 已部署。全站当前 render 为 90 页；route source、route 和活动旧路径检查通过。
+  已知遗留警告是 Results 01 的 `@tbl-spatial-autocorrelation` 尚未解析。
+- 交接检查时，一个完整 `pipeline/run.jl run manuscript --force` 和独立的 `ice-days`
+  producer 仍在本机运行；前者已写完 canonical `monthly-stl nt=99` 输出，后续任务尚未
+  完成。下一位 agent 应先查看 `/tmp/explore-quarto-manuscript-rerun.log` 与
+  `/tmp/explore-quarto-manuscript-rerun.exit`，不得并发启动第二个 full run。
+
+#### 后续工作
+
+1. 以 manuscript 六节为唯一正式写作链，逐段补全证据与行文；不要重建 draft 层。
+2. 先从具体 manuscript claim 创建 literature task，再更新 reading queue 和 paper notes；
+   暂不提前重构 literature 分类。
+3. 若改动 producer，先用 `pipeline/run.jl plan manuscript` 确认依赖；仅在需要时重跑
+   昂贵 STL，普通页面渲染不得生产 durable data。
+4. 修复或移除 Results 01 中未定义的空间自相关表交叉引用。
+
 #### 管线与站点重构
 
 - `data-process/` 已成为独立的源码 Git 仓库。活动任务由编号 `steps/` 重组为语义化
@@ -46,9 +73,9 @@ last-modified: 2026-07-27
 
 - 未重跑月度 STL 本身。它是唯一显著慢的 producer；本次只为验证重构而复用先前的
   canonical `nt=99` 输出。以后在更换原始输入或 STL 算法时，需显式重跑该任务。
-- GitHub Pages 尚未推送；先在本地分支审阅本次结构变化。
+- 此条为当时状态；当前版本已在 GitHub Pages 部署，以上「当前交接状态」为准。
 
-### 2026-07-12
+### 2026-07-12（历史记录，非当前工作计划）
 
 #### 进展
 
@@ -75,7 +102,7 @@ last-modified: 2026-07-27
 - 聚类尝试严格物理解释。
 - GAM 模型。
 
-### 2026-07-20
+### 2026-07-20（历史记录，核心定义仍有效）
 
 #### 进展
 
