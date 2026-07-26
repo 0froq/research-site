@@ -11,12 +11,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: r-lib/actions/setup-r@v2
       - uses: quarto-dev/quarto-actions/setup@v2
-      # `zotero.bib` is intentionally a local absolute symlink. CI only
-      # renders data-free redirect contracts, so a minimal local placeholder
-      # is sufficient and avoids coupling Actions to a personal bibliography.
-      - run: |
-          mv zotero.bib zotero.bib.local-link
-          printf '@comment{ci_placeholder}\n' > zotero.bib
       - run: Rscript R/checks/route-source-check.R
       - run: Rscript R/checks/no-legacy-active-dependencies.R
       # These pages are deliberately data-free redirect contracts. Full helper
