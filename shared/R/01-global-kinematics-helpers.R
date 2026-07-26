@@ -14,9 +14,12 @@ summarise_kinematics_metric <- function(x, positive_name, nonpositive_name) {
 }
 
 prepare_kinematics_data <- function(data_dir = data) {
+  # This chapter only needs coverage coordinates from monthly output. Reading
+  # every monthly column here makes a render needlessly memory-heavy.
   raw_monthly <- read_csv(
     file.path(data_dir, "01-monthly-temperature", "output", "monthly_temperature.csv"),
-    show_col_types = FALSE
+    show_col_types = FALSE,
+    col_select = c(lake_id, lon, lat)
   )
   lake_meta_data <- read_csv(
     file.path(data_dir, "00-lake-metadata", "output", "lake_metadata.csv"),
@@ -57,10 +60,11 @@ prepare_kinematics_data <- function(data_dir = data) {
     left_join(lake_meta_data |> select(lake_id, lon, lat), by = "lake_id")
   lake_warming_metrics <- lake_warming_metrics |>
     left_join(trajectory_metrics, by = "lake_id") |>
-    rename(warming_speed_change = annual_roll10_sen_accel_1e3)
+    rename(warming_speed_change = annual_roll10_sen_accel_1e3) |>
+    mutate(long_term_warming_decade = raw_annual_mean_temp_sen_slope_40yr / 4)
 
   raw_warming_summary <- summarise_kinematics_metric(
-    lake_warming_metrics$raw_annual_mean_temp_sen_slope_40yr,
+    lake_warming_metrics$long_term_warming_decade,
     "n_warming", "n_cooling"
   ) |>
     mutate(prop_warming = prop_positive)
@@ -72,7 +76,7 @@ prepare_kinematics_data <- function(data_dir = data) {
   spatial_input <- lake_warming_metrics |>
     transmute(
       lake_id,
-      raw_annual_mean_temp_sen_slope_40yr,
+      raw_annual_mean_temp_sen_slope_40yr = long_term_warming_decade,
       raw_annual_mean_temp_diff_sen_slope_1e3 = warming_speed_change
     )
   spatial_hex <- prepare_spatial_hex(
@@ -82,7 +86,7 @@ prepare_kinematics_data <- function(data_dir = data) {
     lon_limits = c(-180, 180), lat_limits = c(-60, 85)
   )
   spatial_hex_summary <- spatial_hex$summary |>
-    mutate(id = row_number(), warming_scaled = warming_speed / 2, speed_change_scaled = speed_change / 3)
+    mutate(id = row_number(), warming_scaled = warming_speed / .5, speed_change_scaled = speed_change / 3)
   spatial_hex_poly <- spatial_hex$polygons |>
     left_join(
       spatial_hex_summary |> select(id, warming_scaled, speed_change_scaled),
@@ -96,7 +100,7 @@ prepare_kinematics_data <- function(data_dir = data) {
     group_by(lon_cell, lat_cell) |>
     summarise(
       n = n(),
-      warming_scaled = mean(raw_annual_mean_temp_sen_slope_40yr, na.rm = TRUE) / 2,
+      warming_scaled = mean(raw_annual_mean_temp_sen_slope_40yr, na.rm = TRUE) / .5,
       speed_change_scaled = mean(raw_annual_mean_temp_diff_sen_slope_1e3, na.rm = TRUE) / 3,
       .groups = "drop"
     ) |>
@@ -162,15 +166,15 @@ prepare_kinematics_data <- function(data_dir = data) {
     lake_meta_data = lake_meta_data,
     lake_warming_metrics = lake_warming_metrics,
     lakes_num = nrow(raw_monthly),
-    start_year = as.integer(sub(".*?(\\d{4}).*", "\\1", names(raw_monthly)[4])),
-    end_year = as.integer(sub(".*?(\\d{4}).*", "\\1", tail(names(raw_monthly), 1))),
+    start_year = 1981L,
+    end_year = 2020L,
     raw_warming_summary = raw_warming_summary,
     speed_change_summary = speed_change_summary,
     rolling_speed_long = rolling_speed_long,
     scatter_matrix_data = lake_warming_metrics |>
       transmute(
         `Mean temperature` = raw_annual_mean_temp_mean,
-        `Long-term warming` = raw_annual_mean_temp_sen_slope_40yr,
+        `Long-term warming` = long_term_warming_decade,
         `Warming-speed change` = warming_speed_change
       ) |>
       filter(if_all(everything(), is.finite)),
@@ -185,7 +189,8 @@ prepare_kinematics_data <- function(data_dir = data) {
     equal_area_speed_global = equal_area_speed_global,
     lon_min = spatial_hex$limits$lon[[1]], lon_max = spatial_hex$limits$lon[[2]],
     lat_min = spatial_hex$limits$lat[[1]], lat_max = spatial_hex$limits$lat[[2]],
-    warming_limit = 2, speed_change_limit = 3,
-    rolling_speed = rolling_speed
+    warming_limit = .5, speed_change_limit = 3,
+    rolling_speed = rolling_speed,
+    raw_annual = raw_annual
   )
 }

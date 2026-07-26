@@ -6,7 +6,7 @@ last-modified: 2026-07-20 14:49:22
 ## 说明
 
 `redirect.html` 中实现了重定向，
-打开后会前往 `https://froq.me/research-site/explorations/warming-acceleration/draft/01-global-kinematics.html`。
+打开后会前往 `https://froq.me/research-site/explorations/warming-temporal-pathways/draft/01-global-kinematics.html`。
 
 当上面的网站更新后，我**一定**会在 `redirect.html` 中加一条带时间的 log，
 通常情况下不需要查看
@@ -84,7 +84,7 @@ last-modified: 2026-07-20 14:49:22
 - `data-process/` 不在 Git 中，含原始数据和大体积处理产物，仍由 Syncthing/NAS 同步。
   页面渲染只读取其中已产出的 curated outputs，不会在渲染时写入持久分析数据。
 - 正式定义见 `site/docs/analysis-contract.qmd`；指标算法说明见
-  `site/metrics/algorithms.qmd`。
+  `site/reference/methods/index.qmd`。
 
 #### 下一步
 

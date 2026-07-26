@@ -2,16 +2,14 @@
 title: "Notes"
 ---
 
-Notes are organised by provenance. **Papers** are the user-reviewed corpus.
+Notes are organised by provenance. Paper notes are the source-centric,
+user-reviewed literature corpus; they are independent of any one exploration.
 
-## [Papers](./papers/index.qmd)
+## [Paper notes](papers/index.md)
 
-Per-paper notes — one file per paper.
+One durable record per reviewed source.
 
-## [Reading Queue](./reading-queue.qmd)
+## [Reading queue](reading-queue.md)
 
-Candidate papers and reviewed reading briefs. A paper becomes a durable note only after review.
-
-## [Research Dialogue Protocol](./research-dialogue.qmd)
-
-How brainstorming, analysis review, decisions, and literature briefs become durable records.
+Candidate papers and their immediate reading task. A paper becomes a durable
+note only after review.

@@ -1,0 +1,58 @@
+---
+title: "2026-07-15"
+aliases: ["/explorations/warming-acceleration/log/2026-07-15.html"]
+---
+
+## Research framing frozen
+
+The manuscript's working main line is
+**spatiotemporal heterogeneity
+in reconstructed lake surface water temperature change worldwide**.
+GLAST is a corrected/reconstructed LSWT product
+built from station-temperature information and
+ERA5-Land-driven FLAKE simulations;
+it is not direct in-situ lake-temperature observation.
+In this project, `raw` means un-smoothed GLAST product values.
+
+The primary descriptive chain is:
+
+```text
+raw annual reconstructed LSWT
+  → long-term Theil--Sen warming
+  → trailing-10-year local Theil--Sen warming speed
+  → Sen trend of valid local-speed sequence (warming-speed change)
+```
+
+The final quantity is an operational long-term change in local warming speed,
+not resolved instantaneous physical acceleration.
+
+## PCA, clustering, and ice module
+
+PCA uses annualised `nt=99` STL trend baseline anomalies.
+It defines continuous low-frequency trajectory geometry.
+PC1 is a stable global mode under random-half-sample and
+leave-continent-out checks;
+PC2--PC5 are region/sample-composition-sensitive secondary descriptive modes.
+
+Clustering is restored only as a descriptive typology in PCA-score space:
+PCA supplies continuous geometry, clustering supplies representative profiles.
+Main display is K=5 / PC1--PC5;
+K=4--8 and PC1--PC9 are sensitivity branches.
+Clusters are not intrinsic natural lake categories.
+
+Cooling is a separate, optional ice module.
+It compares full- and late-period cooling, seasonal raw trends,
+and baseline ice-duration strata.
+A summer-associated cooling subset can motivate future glacier-catchment work,
+but glacier meltwater is not attributed without connectivity, discharge,
+and inflow evidence.
+
+## Scope boundary
+
+No new primary time-series algorithm,
+global partitioning method, STARS branch, causal attribution model,
+or teleconnection-centred narrative will be added to this manuscript.
+ERA5 is a constrained association input only,
+with explicit acknowledgement that
+ERA5-Land already participates in the GLAST construction chain.
+

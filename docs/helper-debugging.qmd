@@ -138,7 +138,7 @@ For repeatable checks, keep small assertions close to the transformation that es
 Once the focused data object and minimal diagnostic plot are correct, render the edited qmd individually:
 
 ```bash
-quarto render explorations/warming-acceleration/draft/01-global-kinematics.qmd --to html
+quarto render explorations/warming-temporal-pathways/draft/01-global-kinematics.qmd --to html
 ```
 
 Use Quarto to validate inline values, cross-references, figure composition, legends, and page layout—not to discover basic data preparation errors.

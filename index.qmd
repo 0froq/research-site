@@ -11,14 +11,15 @@ all research and academic exploration materials are now hosted on this site.
 
 Check [all explorations](./explorations/index.qmd),
 including the finished, cancelled, not started or in-progress ones.
-Each exploration has its own draft, prose, and log.
+Each exploration has its own draft, investigations, literature map, decisions,
+manuscript workspace, and raw work log.
 
-I list frequently discussed [metrics](./metrics/index.qmd)
-(methods, algorithms, parameters, decision records),
-trying not to make anyone confused.
+The [reference](./reference/index.qmd) section holds reusable methods,
+datasets, indices, concepts, and formal metrics.
 
-[Notes](./notes/index.qmd) collect literature notes,
-mechanism summaries, and useful excerpts for writing.
+[Notes](./notes/index.qmd) collect source-centric literature records and their
+reading status; exploration literature maps link to those notes without copying
+their evidence blocks.
 
 ---
 

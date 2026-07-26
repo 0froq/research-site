@@ -324,6 +324,8 @@ theme_facet <- function(base_size = 10) {
 theme_map <- function(base_size = 10) {
   theme_base(base_size = base_size) + theme(
     aspect.ratio = 5 / 12,
+    legend.position = "inside",
+    legend.justification = c(0.5, 0),
   )
 }
 

@@ -1,0 +1,28 @@
+---
+title: "Reference"
+aliases:
+  - "/metrics/index.html"
+---
+
+Reusable definitions, methods, datasets, indices, concepts, and formal metrics.
+These pages are not paper summaries and are not owned by one exploration.
+
+## [Methods](./methods/index.qmd)
+
+STL, spatially balanced PCA, exploratory PCA-score clustering, Theil–Sen, Mann–Kendall, and historical/retired algorithms such as STARS.
+
+## [Datasets](./datasets/index.qmd)
+
+GLAST, ERA5-Land, HydroLAKES, and measurement conventions.
+
+## [Indices](./indices/index.qmd)
+
+ENSO, PDO, AMO, NAO, AO — large-scale climate oscillation indices.
+
+## [Concepts](./concepts/index.qmd)
+
+Reusable terminology for recurring climate and time-series ideas.
+
+## [Metrics](./metrics/index.qmd)
+
+Formal variables: definitions, units, estimation, and scope.

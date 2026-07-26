@@ -1,0 +1,105 @@
+---
+title: "2026-07-16"
+aliases: ["/explorations/warming-acceleration/log/2026-07-16.html"]
+---
+
+## PCA result hierarchy fixed
+
+Spatially balanced PCA retains PC1--PC5 as one descriptive set.
+PC1 is the robust global mode;
+PC2--PC3 are recurring contrasts that can exchange rank;
+PC4--PC5 are recurring but partly mixed secondary subspace.
+All five receive the same loading, score-map, and score-pole inspection.
+Result prominence follows explained variance and LOCO alignment,
+rather than being pre-assigned by component number.
+
+## Frozen progressive deepening route
+
+1. **PCA--kinematics bridge.**
+   At the same equal-area-cell scale,
+   compare PC1--PC5 scores with raw annual long-term warming,
+   the distribution and temporal change of trailing-10-year Sen warming speed,
+   and warming/cooling endpoint prevalence.
+   The central test is whether PC2--PC5 still distinguish timing structures
+   among cells with comparable total long-term warming.
+2. **Five-PC result cards.**
+   For every PC, record explained variance, loading contrast,
+   score-pole raw/STL composites, spatial organisation, LOCO correspondence,
+   and bridge result.
+   PC4--PC5 are not omitted;
+   weaker evidence only changes their placement.
+3. **Continuous mode-composition test.**
+   Test whether low PC1 energy or high effective-mode count co-occurs
+   with stronger local warming-speed heterogeneity.
+   This remains a descriptive association between representations.
+4. **Constrained association stage.**
+   Only after steps 1--3,
+   construct geography-only and then ERA5-augmented spatially blocked models.
+   Continuous PC scores or a documented PC4--PC5 subspace are responses;
+   results identify associations, not causal drivers.
+5. **Seasonal/ice module.**
+   Retain it as modular supplementary/prose evidence.
+   Do not use it to force a PCA explanation
+   or reopen a glacier-meltwater attribution claim.
+
+## Decision gate
+
+The bridge advances into the main result
+only if it shows a non-trivial temporal distinction at comparable total warming.
+A simple PC1--warming correlation is expected but insufficient.
+No new time-series algorithm, categorical partition, teleconnection narrative,
+or causal attribution method is added while this route is evaluated.
+
+## First bridge diagnostic
+
+The first equal-area-cell bridge meets the decision gate for PC2 and PC3.
+PC2 has near-zero alignment with total long-term warming (Spearman rho -0.056)
+but positive warming-speed-change alignment
+in every total-warming quintile (0.37--0.51).
+PC3 likewise has near-zero total-warming alignment (-0.077)
+but negative warming-speed-change alignment in every quintile (-0.40 to -0.25).
+PC4 is predominantly negative but less uniform;
+PC5 has no consistent speed-change signal.
+These are descriptive spatial associations only.
+
+Continuous mode composition also links to speed heterogeneity
+rather than speed-change direction:
+PC1 relative energy has rho -0.327 with trailing-10-year speed variability,
+while secondary relative energy and effective mode count have 0.327 and 0.252.
+Thus cells represented by several modes have less temporally steady local rates,
+without a uniform acceleration/deceleration tendency.
+
+## Restricted ERA5 association diagnostic
+
+The current exploratory association uses 573 equal-area PCA cells,
+continuous geography/lake-background predictors,
+and only wind-speed plus precipitation ERA5 summaries.
+Across three contiguous spatial-block scales,
+available ERA5 improves PC1 held-out $R^2$ by about 0.07--0.09,
+but reduces held-out performance for PC2 and PC3.
+Thus current ERA5 inputs provide no predictive association
+for the two clearest secondary timing contrasts.
+This is a constrained negative result,
+not evidence against climatic control or a causal attribution.
+
+## PC2--PC3 timing-morphology diagnostic
+
+Because PC2 and PC3 can exchange rank under LOCO,
+the fixed component labels are not the target of the next diagnostic.
+A rotation inside their joint cell-score plane
+was aligned to raw trailing-10-year warming-speed change.
+At the 72 × 21 reference grid its direction is `0.595 PC2 - 0.804 PC3`
+and explains 20.4% of cross-cell speed-change variance.
+A separately defined 2011--2020 minus 1990--1999 local-speed contrast
+gives a near-identical direction (cosine 0.951).
+The primary direction has grid cosines 0.964 and 0.995 at 36 × 11 and 144 × 42;
+45 spatial hold-out blocks yield a minimum training-direction cosine of 0.992
+and median test-block Spearman alignment of 0.503.
+
+The axis is not invariant to spatial composition:
+leaving out Europe or North America reduces its LOCO cosine to 0.842 or 0.800,
+coinciding with the weakest PC2--PC3 subspace congruence.
+The frozen wording is therefore a reproducible, spatially organised,
+composition-sensitive warming-speed timing continuum,
+rather than two fixed physical PCs or a mechanism claim.
+

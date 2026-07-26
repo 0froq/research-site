@@ -1,6 +1,11 @@
 project:
   type: website
   output-dir: _output
+  render:
+    - "**/*.qmd"
+    - "**/*.md"
+    - "!**/*.rmarkdown"
+    - "!**/*.knit.md"
 
 website:
   title: "Exploration"
@@ -26,8 +31,8 @@ website:
     left:
       - text: Explorations
         href: explorations/index.qmd
-      - text: Metrics
-        href: metrics/index.qmd
+      - text: Reference
+        href: reference/index.qmd
       - text: Notes
         href: notes/index.qmd
     right: []
@@ -36,42 +41,81 @@ website:
     - title: Explorations
       style: floating
       search: true
+      collapse-level: 2
       contents:
         - section: Explorations
           href: explorations/index.qmd
           contents:
-            - section: Warming Acceleration
+            - section: Warming Temporal Pathways
+              href: explorations/warming-temporal-pathways/index.qmd
               contents:
+                - text: Overview
+                  href: explorations/warming-temporal-pathways/index.qmd
+                - section: Drafts
+                  contents:
+                    - auto: explorations/warming-temporal-pathways/draft/*md
+                - section: Investigations
+                  contents:
+                    - auto: explorations/warming-temporal-pathways/investigations/*md
+                - section: Literature
+                  contents:
+                    - auto: explorations/warming-temporal-pathways/literature/*md
+                - section: Log (raw)
+                  contents:
+                    - explorations/warming-temporal-pathways/log/index.qmd
+                    - auto: explorations/warming-temporal-pathways/log/*md
+                - section: Decisions
+                  contents:
+                    - auto: explorations/warming-temporal-pathways/decisions/*md
                 - section: Manuscript
                   contents:
-                    - auto: explorations/warming-acceleration/manuscript/*.qmd
-                - section: Draft
-                  contents:
-                    - auto: explorations/warming-acceleration/draft/*.qmd
-                - section: Prose
-                  contents:
-                    - auto: explorations/warming-acceleration/prose/*.qmd
-                - section: Log
-                  contents:
-                    - explorations/warming-acceleration/log/index.qmd
-                    - auto: explorations/warming-acceleration/log/*.qmd
-    - title: Metrics
+                    - auto: explorations/warming-temporal-pathways/manuscript/*md
+                    - section: Results
+                      href: explorations/warming-temporal-pathways/manuscript/results/index.md
+                      contents:
+                        - explorations/warming-temporal-pathways/manuscript/results/01-global-kinematics.qmd
+                        - explorations/warming-temporal-pathways/manuscript/results/02-within-period-pathways.qmd
+                        - explorations/warming-temporal-pathways/manuscript/results/03-warming-patterns.qmd
+                        - explorations/warming-temporal-pathways/manuscript/results/04-spatial-organization.qmd
+                        - explorations/warming-temporal-pathways/manuscript/results/05-trajectory-robustness.qmd
+                        - explorations/warming-temporal-pathways/manuscript/results/06-climate-links.qmd
+    - title: Reference
+      collapse-level: 2
       contents:
-        - section: Metrics
-          href: metrics/index.qmd
+        - section: Reference
+          href: reference/index.qmd
           contents:
-            - auto: metrics/*.qmd
+            - section: Methods
+              href: reference/methods/index.qmd
+              contents:
+                - auto: reference/methods/*md
+            - section: Datasets
+              href: reference/datasets/index.qmd
+              contents:
+                - auto: reference/datasets/*md
+            - section: Indices
+              href: reference/indices/index.qmd
+              contents:
+                - auto: reference/indices/*md
+            - section: Concepts
+              href: reference/concepts/index.qmd
+              contents:
+                - auto: reference/concepts/*md
+            - section: Metrics
+              href: reference/metrics/index.qmd
+              contents:
+                - auto: reference/metrics/*md
     - title: Notes
+      collapse-level: 2
       contents:
         - text: All Notes
           href: notes/index.qmd
-        - section: Papers
-          contents:
-            - auto: notes/papers/*.qmd
         - text: Reading Queue
-          href: notes/reading-queue.qmd
-        - text: Research Dialogue
-          href: notes/research-dialogue.qmd
+          href: notes/reading-queue.md
+        - section: Papers
+          href: notes/papers/index.md
+          contents:
+            - auto: notes/papers/*md
 
 
   page-footer:
@@ -96,6 +140,9 @@ format:
     tbl-cap-location: top
     code-fold: false
     code-tools: false
+    mainfont: "Source Sans 3 Variable"
+    monofont: "Recursive"
+    reference-location: margin
   # pdf:
   #   documentclass: article
   #   papersize: a4

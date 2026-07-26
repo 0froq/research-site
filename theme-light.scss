@@ -29,7 +29,7 @@ $accent-active-border: $tw-stone-950;
 // === Bootstrap / Quarto variables ===
 $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
 $font-family-serif: "EB Garamond Variable", "Songti SC", "Times New Roma", serif;
-$font-family-monospace: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
+$font-family-monospace: "Recursive", "SFMono-Regular", ui-monospace, monospace;
 
 $body-bg: $surface;
 $body-color: $text;
@@ -370,13 +370,37 @@ main.content div.sourceCode {
   margin-bottom: 1.15rem;
 }
 
+main.content li > * {
+  margin: 0;
+}
+
 main.content h2 {
-  margin-top: 2.6rem;
-  margin-bottom: 1.15rem;
+  font-size: 1.875rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 main.content h3 {
-  margin-top: 2.1rem;
+  fons-size: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+main.content h4 {
+  fons-size: 1.25rem;
+  margin-top: 1.125rem;
+  margin-bottom: 1.125rem;
+}
+
+main.content h5 {
+  fons-size: 1.125rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+main.content h6 {
+  fons-size: 1rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -429,6 +453,54 @@ main.content blockquote {
 // 11. figure
 main.content figure img {
   border: 1px solid $tw-stone-300;
+}
+
+// 12. definition
+main.content dl {
+
+  & dt {
+    color: $text-strong;
+  }
+
+  & dd {
+    position: relative;
+    margin-left: 1em;
+
+    &::before {
+      content: "⤿";
+      position: absolute;
+      left: -1em;
+    }
+
+    & ul,
+    & ol {
+      margin: 0;
+    }
+  }
+}
+
+// 13. checkbox
+main.content ul > li input[type=checkbox] {
+  appearance: none;
+  border: 1px solid $text;
+  width: 1em;
+  height: 1em;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: $text-strong;
+    width: 0.5em;
+    height: 0.5em;
+    left: 0.2em;
+    top: 0.2em;
+    transform: scale(0);
+  }
+
+  &[checked]::before {
+    transform: scale(1);
+  }
 }
 
 // Code copy button: keep it in grayscale, not the theme accent color.

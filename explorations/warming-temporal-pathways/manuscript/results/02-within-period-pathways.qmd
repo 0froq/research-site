@@ -1,0 +1,334 @@
+---
+title: "Contrasting within-period pathways"
+---
+
+```{r}
+#| include: false
+source("../../../../shared/R/figure-style.R")
+source("../../../../shared/R/descriptive-helpers.R")
+source("../../../../shared/R/01-global-kinematics-helpers.R")
+source("../../../../shared/R/results-kinematics-helpers.R")
+kinematics <- prepare_kinematics_data()
+list2env(kinematics, envir = environment())
+list2env(prepare_results_kinematics_data(kinematics), envir = environment())
+fmt_num <- function(x, digits = 2) formatC(x, format = "f", digits = digits)
+```
+
+## Long-term trends conceal contrasting within-period warming trajectories
+
+To resolve changes within the 1981--2020 record,
+we calculated a trailing, endpoint-aligned
+10-year Sen slope for each lake.
+This produced 31 local warming-rate estimates,
+indexed from the 1990 endpoint (1981--1990 window)
+to the 2020 endpoint (2011--2020 window).
+The lake-equal distribution changed over time, but not in one direction.
+Its median local rate was 0.010°C yr^-1^ in 1990, 0.016°C yr^-1^ in 2000,
+−0.011°C yr^-1^ in 2010, and 0.024°C yr^-1^ in 2020;
+the proportion of positive local rates ranged from 45.3% to 58.6%
+across these endpoints
+(@fig-results-local-rate-history).
+At every endpoint,
+the interquartile range included both warming and cooling rates.
+
+```{r}
+#| label: fig-results-local-rate-history
+#| fig-cap: "Lake-equal median and interquartile range of endpoint-aligned trailing-10-year raw annual local warming rates. The ribbon is the lake-level interquartile range, not an uncertainty interval."
+#| fig-width: 8
+#| fig-height: 4
+
+labelled_endpoints <- speed_time_distribution |>
+  filter(year %in% c(1990, 2000, 2010, 2020)) |>
+  mutate(label = sprintf("%.3f", median))
+
+ggplot(speed_time_distribution, aes(year, median)) +
+  geom_hline(yintercept = 0, colour = col_grid, linewidth = wid_grid) +
+  geom_ribbon(aes(ymin = q25, ymax = q75), fill = col_inchart_fill, alpha = .45) +
+  geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) +
+  geom_point(
+    data = labelled_endpoints, shape = 21,
+    fill = pal_direction[["warming"]], colour = col_text, size = 2.4
+  ) +
+  geom_text(
+    data = labelled_endpoints, aes(label = label),
+    vjust = -0.9, size = 2.8, colour = col_text
+  ) +
+  scale_x_continuous(limits = c(1990, 2020), expand = c(0, 0)) +
+  labs(x = "Endpoint year", y = "10-year Sen slope (°C yr⁻¹)") +
+  theme_base(grid = TRUE)
+```
+
+These distributions rule out a single temporal description for the global lake
+population. Neither universal acceleration, universal stalling, nor a shared
+hiatus describes all lakes: positive and negative local rates coexisted
+throughout the record.
+
+> 这些分布排除单一全球时间描述。整个记录期内，增温和降温局地速度并存；不存在可描述全部湖泊的普遍加速、普遍停滞或共同 hiatus。
+
+We next reduced each lake's 31 local rates to their Theil--Sen trend, termed
+local-rate tendency. Positive and negative tendencies occurred in nearly equal
+proportions (47.8% and 52.2%, respectively), and the distribution was centred
+on zero (interquartile range: −1.89 to 1.86 × 10^-3^ °C yr^-2^;
+@fig-results-local-rate-tendency). This compact statistic identifies a net
+monotonic tendency only. A tendency near zero can still contain substantial
+strengthening followed by weakening, or the reverse.
+
+> 随后将每湖 31 个局地速度压缩为其 Theil--Sen trend，称为局地速度倾向。正、负倾向比例接近（47.8% 与 52.2%），分布以零为中心（IQR：−1.89 至 1.86 × 10^-3^ °C yr^-2^）。该统计量只识别净单调倾向；接近零仍可包含先增强后减弱，或相反过程。
+
+```{r}
+#| label: fig-results-local-rate-tendency
+#| fig-cap: "Spatial distribution and global density of local-rate tendency. Map: lake-equal mean tendency in every occupied 1° cell. Positive values indicate net strengthening of local 10-year warming rates; negative values indicate net weakening. Diagonal hatching marks cells where at least half of lakes have a significant full-period Mann–Kendall trend, using the same definition as Fig. 1. Inset: distribution of lake-level local-rate tendencies."
+#| fig-width: 8
+#| fig-height: 4
+
+hatch_segments <- fig1_grid |>
+  filter(hatch) |>
+  transmute(x = lon_cell, y = lat_cell, xend = lon_cell + 1, yend = lat_cell + 1)
+
+local_rate_tendency_map <- ggplot(local_rate_tendency_grid) +
+  geom_tile(
+    aes(lon_cell + .5, lat_cell + .5, fill = local_rate_tendency),
+    width = 1, height = 1
+  ) +
+  geom_segment(
+    data = hatch_segments,
+    aes(x = x, y = y, xend = xend, yend = yend),
+    inherit.aes = FALSE,
+    colour = "grey15", linewidth = .17, alpha = .7
+  ) +
+  the_geom_coastline() +
+  scale_fill_gradient2(
+    low = pal_direction[["cooling"]], mid = "grey92",
+    high = pal_direction[["warming"]],
+    limits = c(-8, 8), oob = scales::squish,
+    name = "Local-rate tendency\n(10⁻³ °C yr⁻²)"
+  ) +
+  scale_x_continuous(breaks = seq(-180, 180, 60), expand = c(0, 0)) +
+  scale_y_continuous(breaks = seq(-60, 90, 30), expand = c(0, 0)) +
+  coord_cartesian(xlim = c(-180, 180), ylim = c(-60, 90), expand = FALSE) +
+  labs(x = "Longitude", y = "Latitude") +
+  theme_map_grid()
+
+tendency_stats <- rate_tendency_distribution |>
+  summarise(q25 = quantile(rate_tendency, .25), q75 = quantile(rate_tendency, .75))
+local_rate_tendency_density <- ggplot(rate_tendency_distribution, aes(rate_tendency)) +
+  geom_density(colour = col_text, linewidth = wid_inchart_line, adjust = 1) +
+  geom_vline(xintercept = 0, colour = col_text_soft, linewidth = wid_axis) +
+  geom_vline(xintercept = tendency_stats$q25, colour = "#2166AC", linewidth = .45) +
+  geom_vline(xintercept = tendency_stats$q75, colour = "#B2182B", linewidth = .45) +
+  coord_cartesian(
+    xlim = quantile(rate_tendency_distribution$rate_tendency, c(.005, .995), na.rm = TRUE)
+  ) +
+  labs(x = "Local-rate tendency (10⁻³ °C yr⁻²)", y = NULL) +
+  theme_base(grid = FALSE) +
+  theme(
+    panel.background = element_rect(fill = "white", colour = NA),
+    axis.text.y = element_blank(), axis.ticks.y = element_blank()
+  )
+
+draw_fixed_aspect(
+  ggdraw(local_rate_tendency_map) +
+    draw_plot(local_rate_tendency_density, x = .04, y = .15, width = .25, height = .35),
+  aspect = 2
+)
+```
+
+Local-rate tendency was also spatially heterogeneous. Net strengthening of
+local warming rates was concentrated across northern Siberia, whereas net
+weakening occurred in parts of Alaska, northwestern Canada, and far eastern
+Siberia (@fig-results-local-rate-tendency). These patterns describe the
+40-year balance of local-rate evolution; they do not imply that all lakes in a
+region followed the same trajectory. Diagonal hatching marks cells where at
+least half of lakes had a significant full-period Mann--Kendall trend,
+using the Fig. 1 criterion. It is not a significance test of local-rate
+tendency. Indeed, 60.3% of hatched cells and 56.3% of unhatched cells had
+positive mean tendency; their medians were 0.384 and 0.309 × 10^-3^ °C yr^-2^,
+respectively.
+Long-term trend detectability and the direction of local-rate evolution are
+therefore distinct descriptive properties.
+
+At lake level, this difference from the long-term-slope result was equally
+clear. The fraction with a significant full-period trend was 36.2%, 33.3%,
+36.4%, and 29.6% across increasing signed local-rate-tendency quartiles; the
+Spearman correlation between tendency and trend significance was −0.044. Even
+the largest absolute-tendency quartile had only 36.6% significant trends.
+Thus, the magnitude of net local-rate evolution did not determine whether a
+lake's 40-year temperature trend was detectable.
+
+This contrasts with Fig. 1, where larger long-term warming was much more often
+detectable as a significant full-period trend. The contrast is expected but
+important: long-term slope and its significance both concern cumulative,
+approximately monotonic change across the same 40-year record, whereas
+local-rate tendency describes whether the shorter-window rates changed through
+that record. Strong rate evolution can therefore cancel between earlier and
+later periods without producing a detectable net long-term trend.
+
+> 局地速度倾向也具有空间异质性。北西伯利亚集中出现局地速度净增强；阿拉斯加、加拿大西北部和远东西伯利亚部分地区集中出现净减弱。斜线表示沿用 Fig. 1 标准、至少半数湖泊全期趋势显著的格网，不检验局地速度倾向本身。斜线与非斜线格网的正倾向比例为 60.3% 与 56.3%，median 为 0.384 与 0.309 × 10^-3^ °C yr^-2^；长期趋势可检出性与局地速度演变方向是不同描述属性。湖泊层级上，四个 signed tendency 四分位的显著比例为 36.2%、33.3%、36.4%、29.6%，与显著性的 Spearman ρ = −0.044；绝对 tendency 最大四分位也只有 36.6% 显著。局地速度演变幅度不决定 40 年趋势是否可检出。与 Fig. 1 对比，长期 slope 与显著性均针对同一 40 年累计、近似单调变化，故关联更直接；局地速度倾向描述短窗口速度是否改变，早晚变化可相互抵消而不形成显著净长期趋势。
+
+Long-term warming magnitude and local-rate tendency were weakly related
+(Spearman ρ = −0.18). The two metrics answer different questions: long-term
+slope measures net displacement, whereas tendency measures whether local
+10-year rates strengthened or weakened through the record. The weak relation
+therefore means that net warming alone did not constrain timing. In the central
+decile of long-term warming (0.162--0.203°C decade^-1^; n = 9,225),
+late-minus-early local rate had an interquartile range of −0.038 to
+0.032°C yr^-1^. Comparable net warming thus included both late strengthening
+and late weakening histories. The corresponding interquartile width was
+0.070°C yr^-1^, while the median within-record local-rate standard deviation
+was 0.104°C yr^-1^; these values quantify pathway diversity after holding net
+warming approximately constant.
+
+> 长期增温幅度与局地速度倾向关系弱（Spearman ρ = −0.18）。两指标回答不同问题：长期 slope 表示净位移，tendency 表示记录内 10 年局地速度是增强还是减弱。故相近净增温不能约束变化时机。在长期增温 central decile（0.162--0.203°C decade^-1^；n = 9,225）中，晚期减早期局地速度的 IQR 为 −0.038 至 0.032°C yr^-1^；同等净增温同时包含后期增强与后期减弱。该 IQR 宽度为 0.070°C yr^-1^，局地速度记录内 SD 的 median 为 0.104°C yr^-1^；这些数值量化了固定净增温后仍存在的路径差异。
+
+```{r}
+#| label: fig-results-pathway-examples
+#| fig-cap: "Geographically dispersed representative lakes with comparable net long-term warming but contrasting local-rate histories. All examples are restricted to the central decile of long-term warming, drawn from separate continents for visual comparison, and selected by pre-specified descriptors: minimum local-rate variability (relative even), maximum positive or negative local-rate tendency (late warming or cooling), and near-zero final local rate. Top: continental-scale locations. Middle: raw annual LSWT anomalies. Bottom: endpoint-aligned trailing-10-year Sen slopes. Dashed lines are Theil--Sen fits for each of the four displayed series. In each time-series panel, the focal lake is coloured and all other examples are light grey. Examples do not define lake classes; lake names are shown when present in source metadata."
+#| fig-width: 12
+#| fig-height: 9
+path_colours <- c(
+  "Relative even" = "#756BB1",
+  "Late warming" = "#D95F0E",
+  "Late cooling" = pal_direction[["cooling"]],
+  "Near-zero late rate" = "#1B9E77"
+)
+axis_years <- tibble(year = c(1990, 2000, 2010, 2020))
+axis_extent <- function(x, increment, padding = .08) {
+  outer_tick <- ceiling(max(abs(x), na.rm = TRUE) / increment) * increment
+  list(tick = outer_tick, limits = c(-1, 1) * outer_tick * (1 + padding))
+}
+raw_axis <- axis_extent(example_raw_overlay$anomaly, increment = .5)
+rate_axis <- axis_extent(example_rate_overlay$speed, increment = .05)
+
+region_limits <- function(lake) {
+  switch(
+    as.character(lake$Continent),
+    "South America" = list(x = c(-85, -30), y = c(-60, 15)),
+    "North America" = list(x = c(-170, -40), y = c(5, 85)),
+    "Europe" = list(x = c(-15, 60), y = c(30, 75)),
+    "Oceania" = list(x = c(110, 180), y = c(-50, 0)),
+    "Africa" = list(x = c(-25, 60), y = c(-40, 40)),
+    list(x = c(25, 180), y = c(5, 85))
+  )
+}
+
+location_inset <- function(lake) {
+  limits <- region_limits(lake)
+  ggplot() +
+    the_geom_coastline() +
+    geom_point(
+      data = lake, aes(lon, lat),
+      colour = pal_direction[["warming"]], fill = "white",
+      shape = 21, stroke = .35, size = 1.6
+    ) +
+    coord_quickmap(xlim = limits$x, ylim = limits$y, expand = FALSE) +
+    labs(title = as.character(lake$path_type), x = NULL, y = NULL) +
+    theme_map_grid(base_size = 6) +
+    theme(
+      axis.text = element_blank(), axis.ticks = element_blank(),
+      axis.title = element_blank(), legend.position = "none",
+      panel.grid = element_blank(),
+      aspect.ratio = .72,
+      plot.title = element_text(size = 8, hjust = .5, face = "plain"),
+      plot.margin = margin(3, 3, 3, 3)
+    )
+}
+
+path_panel_theme <- function() {
+  theme_base(grid = FALSE) +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+      plot.title = element_text(size = 8, hjust = .5, face = "plain"),
+      plot.margin = margin(3, 3, 3, 3)
+    )
+}
+
+make_path_panel <- function(focus_id, metric = c("raw", "rate")) {
+  metric <- match.arg(metric)
+  lake <- example_lakes |> filter(as.character(lake_label) == focus_id)
+  focus_type <- as.character(lake$path_type)
+  colour <- path_colours[[focus_type]]
+  axis_spec <- if (metric == "raw") raw_axis else rate_axis
+  y_breaks <- c(-axis_spec$tick, 0, axis_spec$tick)
+  y_limits <- axis_spec$limits
+  tick_height <- diff(y_limits) * .025
+  label_y <- -diff(y_limits) * .035
+  data <- if (metric == "raw") {
+    example_raw_overlay |> filter(.data$focus_label == focus_id)
+  } else {
+    example_rate_overlay |> filter(.data$focus_label == focus_id)
+  }
+  value <- if (metric == "raw") "anomaly" else "speed"
+  trend <- if (metric == "raw") {
+    example_raw_sen_lines |> filter(.data$focus_label == focus_id)
+  } else {
+    example_rate_sen_lines |> filter(.data$focus_label == focus_id)
+  }
+  base <- ggplot(data, aes(year, .data[[value]], group = lake_label)) +
+    geom_hline(yintercept = c(y_breaks[[1]], y_breaks[[3]]),
+      colour = col_grid, linetype = "dashed", linewidth = wid_grid
+    ) +
+    geom_hline(yintercept = 0, colour = col_axis, linewidth = wid_axis) +
+    geom_segment(
+      data = axis_years,
+      aes(x = year, xend = year, y = -tick_height, yend = tick_height),
+      inherit.aes = FALSE, colour = col_axis, linewidth = wid_axis
+    ) +
+    geom_text(
+      data = axis_years,
+      aes(x = year, y = label_y, label = year),
+      inherit.aes = FALSE, size = 2.1, vjust = 1
+    ) +
+    geom_line(
+      data = data |> filter(!is_focus),
+      colour = col_text_soft, alpha = .32, linewidth = .45
+    ) +
+    geom_line(
+      data = data |> filter(is_focus),
+      colour = colour, linewidth = .7
+    ) +
+    geom_abline(
+      data = trend |> filter(!is_focus),
+      aes(slope = sen_slope, intercept = sen_intercept, group = lake_label),
+      inherit.aes = FALSE, colour = col_text_soft, alpha = .55,
+      linetype = "dashed", linewidth = .32
+    ) +
+    geom_abline(
+      data = trend |> filter(is_focus),
+      aes(slope = sen_slope, intercept = sen_intercept),
+      inherit.aes = FALSE, colour = colour,
+      linetype = "dashed", linewidth = .45
+    ) +
+    scale_x_continuous(
+      limits = c(1981, 2020),
+      expand = expansion(mult = c(.025, .045))
+    ) +
+    scale_y_continuous(breaks = y_breaks, limits = y_limits) +
+    labs(
+      title = focus_type,
+      x = NULL,
+      y = if (metric == "raw") "Annual anomaly (°C)" else "10-year Sen slope (°C yr⁻¹)"
+    ) +
+    path_panel_theme()
+  base
+}
+
+focuses <- as.character(example_lakes$lake_label)
+location_panels <- lapply(example_lakes |> split(seq_len(nrow(example_lakes))), location_inset)
+raw_panels <- lapply(focuses, make_path_panel, metric = "raw")
+rate_panels <- lapply(focuses, make_path_panel, metric = "rate")
+plot_grid(
+  plot_grid(plotlist = location_panels, nrow = 1, align = "hv"),
+  plot_grid(plotlist = raw_panels, nrow = 1, align = "hv"),
+  plot_grid(plotlist = rate_panels, nrow = 1, align = "hv"),
+  ncol = 1, align = "v", rel_heights = c(1, 1, 1)
+)
+```
+
+Comparable net warming can show relatively even local rates,
+or can end in local warming, cooling, or near-zero rate.
+Together with the population-level spread quantified above,
+they establish the descriptive problem for the next section:
+whether this diversity is idiosyncratic to individual lakes
+or organised by a limited number of recurrent low-frequency trajectories.
+

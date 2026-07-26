@@ -187,6 +187,7 @@ prepare_pca_data <- function(data_dir = data) {
     neighbour_pair_rows = neighbour_pair_rows,
     loco_subspace_stability = loco_subspace_stability,
     pc_pole_composites = pc_pole_composites,
+    stl_cell_trajectories = stl_cell_trajectories,
     loading_plot_data = loading_plot_data,
     pc_scatter_data = pca_scores |> filter(is.finite(pc1), is.finite(pc2)),
     prepare_pca_score_map_data = prepare_pca_score_map_data,

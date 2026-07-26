@@ -4,12 +4,13 @@ title: "Explorations"
 
 All explorations — finished, cancelled, in-progress, or not started.
 
-## Lake-temperature trajectory heterogeneity
+## [Global lake warming: temporal pathways](./warming-temporal-pathways/index.qmd)
 
 ::: {.align-center .text-xl}
-[prose](./warming-acceleration/prose/is-there-a-hiatus.qmd) ·
-[draft](./warming-acceleration/draft/01-global-kinematics.qmd) ·
-[log](./warming-acceleration/log/index.qmd)
+[overview](./warming-temporal-pathways/index.qmd) ·
+[draft](./warming-temporal-pathways/draft/01-global-kinematics.qmd) ·
+[investigations](./warming-temporal-pathways/investigations/local-rate-change-sensitivity.qmd) ·
+[log (raw)](./warming-temporal-pathways/log/index.qmd)
 :::
 
 <style>
@@ -28,7 +29,7 @@ trajectories?
 92,245 lakes, GLAST dataset, 1981–2020.
 
 Methods: raw annual and moving-window Theil--Sen trends; STL-based low-frequency
-PCA; descriptive PCA-score typology; modular cooling/ice diagnostics.
+PCA; descriptive PCA-score structure; modular cooling/ice diagnostics.
 
 GLAST is a reconstructed/corrected LSWT product, not direct in-situ observation.
 The active work distinguishes descriptive trajectory structure from causal

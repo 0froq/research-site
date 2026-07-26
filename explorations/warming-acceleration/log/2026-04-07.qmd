@@ -1,8 +1,0 @@
----
-title: "2026-04-07"
----
-
-Finished a draft.
-
-Downloading GloboLakes, ARC-Lake and HydroLAKES data.
-

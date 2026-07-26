@@ -3,7 +3,7 @@ title: Analysis Contract
 description: Canonical definitions and parameter choices for the lake-warming exploration.
 ---
 
-This page is the canonical, human-readable contract for the active warming-acceleration analysis. It defines the quantities used in the draft chapters; producer-specific implementation and output provenance remain in `data-process/steps/*/README.md` and generated `METADATA.md` files.
+This page is the canonical, human-readable contract for the active warming-temporal-pathways analysis. It defines the quantities used in the draft chapters; producer-specific implementation and output provenance remain in `data-process/steps/*/README.md` and generated `METADATA.md` files.
 
 > 本页是当前增暖探索的分析合同：统一指标定义、参数和适用边界。数据生产细节仍以各 Step 的 README、METADATA 和 SUMMARY 为准。
 
@@ -18,7 +18,7 @@ This page is the canonical, human-readable contract for the active warming-accel
   - Calendar-year mean LSWT calculated directly from valid non-freezing daily GLAST reconstructed-product values.
   - Input for all primary warming and warming-speed metrics.
 - - Long-term warming
-  - Theil--Sen slope of the raw annual mean LSWT series, reported as °C per 40 years.
+  - Theil--Sen slope of the raw annual mean LSWT series, reported as °C decade⁻¹.
   - Primary descriptive warming metric.
 - - Annual warming speed
   - Trailing 10-year Theil--Sen slope of raw annual mean LSWT, indexed to the endpoint year (e.g. 1981--1990 is indexed to 1990), in °C yr⁻¹.

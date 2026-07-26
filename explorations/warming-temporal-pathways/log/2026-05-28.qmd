@@ -1,0 +1,9 @@
+---
+title: "2026-05-28"
+aliases: ["/explorations/warming-acceleration/log/2026-05-28.html"]
+---
+
+Rerun STL again. With `nt=199`, trend component is significantly smoothed,
+sawtooth basically eliminated.
+
+And do the STARS regime shift detection on the trend component.

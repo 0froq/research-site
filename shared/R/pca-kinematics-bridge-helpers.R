@@ -16,7 +16,7 @@ prepare_pca_kinematics_bridge_data <- function(data_dir = data) {
     show_col_types = FALSE,
     col_select = c(lake_id, lat, lon, raw_annual_mean_temp_sen_slope_40yr)
   ) |>
-    rename(long_warming_40yr = raw_annual_mean_temp_sen_slope_40yr)
+    transmute(lake_id, lat, lon, long_warming_decade = raw_annual_mean_temp_sen_slope_40yr / 4)
   speed_change <- read_csv(
     file.path(trajectory_dir, "trajectory_diagnostics.csv"),
     show_col_types = FALSE,
@@ -65,14 +65,14 @@ prepare_pca_kinematics_bridge_data <- function(data_dir = data) {
     summarise(
       n_lakes_kinematics = n(),
       across(
-        c(long_warming_40yr, speed_change_1e3, speed_mean, speed_sd,
+        c(long_warming_decade, speed_change_1e3, speed_mean, speed_sd,
           speed_positive_fraction, speed_early, speed_late, speed_late_minus_early),
         ~ mean(.x, na.rm = TRUE)
       ),
       .groups = "drop"
     ) |>
     inner_join(cell_scores, by = c("lon_bin", "sinlat_bin")) |>
-    mutate(long_warming_quintile = ntile(long_warming_40yr, 5))
+    mutate(long_warming_quintile = ntile(long_warming_decade, 5))
 
   mode_composition <- cell_scores |>
     pivot_longer(starts_with("pc"), names_to = "component", values_to = "score") |>
@@ -91,7 +91,7 @@ prepare_pca_kinematics_bridge_data <- function(data_dir = data) {
     inner_join(cell_kinematics, by = "cell_id")
 
   metric_labels <- c(
-    long_warming_40yr = "Long-term warming",
+    long_warming_decade = "Long-term warming",
     speed_mean = "Mean 10-year speed",
     speed_sd = "10-year speed variability",
     speed_positive_fraction = "Warming-speed endpoint fraction",
@@ -136,7 +136,7 @@ prepare_pca_kinematics_bridge_data <- function(data_dir = data) {
     )
 
   composition_metric_labels <- c(
-    long_warming_40yr = "Long-term warming",
+    long_warming_decade = "Long-term warming",
     speed_mean = "Mean 10-year speed",
     speed_sd = "10-year speed variability",
     speed_positive_fraction = "Warming-speed endpoint fraction",
@@ -162,11 +162,71 @@ prepare_pca_kinematics_bridge_data <- function(data_dir = data) {
       metric = factor(metric, levels = names(composition_metric_labels), labels = unname(composition_metric_labels))
     )
 
+  # A deliberately strict cross-geography check. Raw local-rate poles are
+  # defined before looking at PCA contributions. The PC2--PC3 reconstruction
+  # is rotation-invariant within that subspace, so a LOCO failure cannot be
+  # repaired by relabelling PC2 and PC3.
+  rate_poles <- cell_kinematics |>
+    select(cell_id, speed_late_minus_early) |>
+    filter(is.finite(speed_late_minus_early)) |>
+    mutate(
+      quintile = ntile(speed_late_minus_early, 5),
+      pole = case_when(
+        quintile == 1 ~ "Late-rate weakening",
+        quintile == 5 ~ "Late-rate strengthening",
+        .default = NA_character_
+      )
+    ) |>
+    filter(!is.na(pole))
+
+  reference_scores <- read_csv(file.path(pca_dir, "spatial_cell_scores.csv"), show_col_types = FALSE) |>
+    mutate(omitted_continent = "Reference")
+  reference_loadings <- read_csv(file.path(pca_dir, "pca_loadings.csv"), show_col_types = FALSE) |>
+    mutate(omitted_continent = "Reference")
+  loco_scores <- read_csv(file.path(pca_dir, "loco_refit_cell_scores.csv"), show_col_types = FALSE)
+  loco_loadings <- read_csv(file.path(pca_dir, "loco_refit_loadings.csv"), show_col_types = FALSE)
+
+  pc23_loco_rate_poles <- bind_rows(reference_scores, loco_scores) |>
+    inner_join(rate_poles, by = "cell_id") |>
+    select(omitted_continent, cell_id, pole, pc2, pc3) |>
+    pivot_longer(c(pc2, pc3), names_to = "component", values_to = "score") |>
+    inner_join(
+      bind_rows(reference_loadings, loco_loadings) |>
+        select(omitted_continent, year, pc2, pc3) |>
+        pivot_longer(c(pc2, pc3), names_to = "component", values_to = "loading"),
+      by = c("omitted_continent", "component"), relationship = "many-to-many"
+    ) |>
+    mutate(
+      contribution = score * loading,
+      period = case_when(
+        between(year, 1990, 1999) ~ "early",
+        between(year, 2011, 2020) ~ "late",
+        .default = NA_character_
+      )
+    ) |>
+    filter(!is.na(period)) |>
+    group_by(omitted_continent, pole, period) |>
+    summarise(
+      contribution = sum(contribution) / n_distinct(cell_id),
+      .groups = "drop"
+    ) |>
+    pivot_wider(names_from = period, values_from = contribution) |>
+    mutate(late_minus_early = late - early) |>
+    select(omitted_continent, pole, late_minus_early) |>
+    pivot_wider(names_from = pole, values_from = late_minus_early) |>
+    mutate(
+      pole_contrast = `Late-rate strengthening` - `Late-rate weakening`,
+      omitted_continent = factor(omitted_continent,
+        levels = c("Reference", "Africa", "Asia", "Europe", "North America", "Oceania", "South America")
+      )
+    )
+
   list(
     cell_kinematics = cell_kinematics,
     overall_associations = overall_associations,
     within_warming_quintile = within_warming_quintile,
     composition_kinematics = composition_kinematics,
-    composition_associations = composition_associations
+    composition_associations = composition_associations,
+    pc23_loco_rate_poles = pc23_loco_rate_poles
   )
 }

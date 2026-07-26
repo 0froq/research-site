@@ -1,0 +1,49 @@
+---
+title: 'baldwin2009: Spatial Weighting and Iterative Projection Methods for EOFs'
+created: 2026-07-24
+last_modified: 2026-07-24
+---
+
+:::{.callout-note collapse="true"}
+## Abstract
+
+Abstract Often there is a need to consider spatial weighting in methods for finding spatial patterns in climate data. The focus of this paper is on techniques that maximize variance, such as empirical orthogonal functions (EOFs). A weighting matrix is introduced into a generalized framework for dealing with spatial weighting. One basic principal in the design of the weighting matrix is that the resulting spatial patterns are independent of the grid used to represent the data. A weighting matrix can also be used for other purposes, such as to compensate for the neglect of unrepresented subgrid-scale variance or, in the form of a prewhitening filter, to maximize the signal-to-noise ratio of EOFs. The new methodology is applicable to other types of climate pattern analysis, such as extended EOF analysis and maximum covariance analysis. The increasing availability of large datasets of three-dimensional gridded variables (e.g., reanalysis products and model output) raises special issues for data-reduction methods such as EOFs. Fast, memory-efficient methods are required in order to extract leading EOFs from such large datasets. This study proposes one such approach based on a simple iteration of successive projections of the data onto time series and spatial maps. It is also demonstrated that spatial weighting can be combined with the iterative methods. Throughout the paper, multivariate statistics notation is used, simplifying implementation as matrix commands in high-level computing languages.
+:::
+
+:::{.column-margin}
+Citation key
+: baldwin2009 (@baldwin2009)
+
+Title
+: Spatial Weighting and Iterative Projection Methods for EOFs
+
+Author
+: Baldwin, Mark P. and Stephenson, David B. and Jolliffe, Ian T.
+
+Journal, year
+: Journal of Climate, 2009
+
+Doi
+: 10.1175/2008JCLI2147.1
+:::
+
+---
+
+## Source scope
+
+
+## One-sentence contribution
+
+
+## Reusable claims
+
+
+## Method relevance
+
+
+## Limts and disagreement
+
+
+## Open questions / re-read triggers
+
+
