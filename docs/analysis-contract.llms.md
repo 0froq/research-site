@@ -2,7 +2,7 @@
 
 Canonical definitions and parameter choices for the lake-warming exploration.
 
-This page is the canonical, human-readable contract for the active warming-acceleration analysis. It defines the quantities used in the draft chapters; producer-specific implementation and output provenance remain in `data-process/steps/*/README.md` and generated `METADATA.md` files.
+This page is the canonical, human-readable contract for the active warming-temporal-pathways analysis. It defines the quantities used in the draft chapters; producer-specific implementation and output provenance remain in `data-process/pipeline/manifest.toml`, `data-process/tasks/*/README.md`, and generated `METADATA.md` files.
 
 > 本页是当前增暖探索的分析合同：统一指标定义、参数和适用边界。数据生产细节仍以各 Step 的 README、METADATA 和 SUMMARY 为准。
 
@@ -11,7 +11,7 @@ This page is the canonical, human-readable contract for the active warming-accel
 | Concept | Canonical definition | Role |
 |----|----|----|
 | Annual temperature | Calendar-year mean LSWT calculated directly from valid non-freezing daily GLAST reconstructed-product values. | Input for all primary warming and warming-speed metrics. |
-| Long-term warming | Theil–Sen slope of the raw annual mean LSWT series, reported as °C per 40 years. | Primary descriptive warming metric. |
+| Long-term warming | Theil–Sen slope of the raw annual mean LSWT series, reported as °C decade⁻¹. | Primary descriptive warming metric. |
 | Annual warming speed | Trailing 10-year Theil–Sen slope of raw annual mean LSWT, indexed to the endpoint year (e.g. 1981–1990 is indexed to 1990), in °C yr⁻¹. | Primary local warming-speed representation in the chapter; it describes temporal and spatial heterogeneity of reconstructed LSWT trajectories. |
 | Warming-speed change | Sen slope of the raw trailing-10-year warming-speed sequence over its valid 1990–2020 support, in 10⁻³ °C yr⁻². | Defined operationally as a long-term change in local warming speed, not as a resolved instantaneous physical acceleration. The historical adjacent-difference metric is sensitivity-only. |
 | Rolling temperature dynamics | Trailing 10-year Theil–Sen slopes of raw annual, DJF, MAM, JJA, SON, annual maximum 30-day, and annual minimum 30-day temperature, indexed to 1990–2020 endpoints. | Descriptive within-lake local-rate sequences for seasonal and extreme-temperature heterogeneity; not additive annual-trend contributions. A frozen all-ice / no-valid-nonfreezing period is finite `0.0 °C`, not missing. |

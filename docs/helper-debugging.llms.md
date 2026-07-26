@@ -19,12 +19,12 @@ Do not begin by rendering the whole chapter. A chapter render is the final integ
 
 ## Start an isolated R session
 
-Start R with `site/` as the working directory so `figure-style.R` can find `_quarto.yml` and set the data-process root correctly.
+Start R with `site/` as the working directory so `R/core/style.R` can find `_quarto.yml`, load the dataset catalog, and set the data-process root correctly.
 
 ``` r
-source("shared/R/figure-style.R")
-source("shared/R/descriptive-helpers.R")
-source("shared/R/01-global-kinematics-helpers.R")
+source("R/core/style.R")
+source("R/core/spatial.R")
+source("R/domains/kinematics.R")
 
 payload <- prepare_kinematics_data()
 payload$spatial_hex_summary
@@ -33,8 +33,8 @@ payload$spatial_hex_summary
 For PCA work, source only the PCA helper and call its focused loader/preparation functions:
 
 ``` r
-source("shared/R/figure-style.R")
-source("shared/R/03-warming-pattern-decomposition-helpers.R")
+source("R/core/style.R")
+source("R/domains/pathways.R")
 
 payload <- prepare_pca_data()
 payload$loading_plot_data
@@ -43,12 +43,12 @@ payload$loading_plot_data
 For modular prose figures, use the matching helper in exactly the same way:
 
 ``` r
-source("shared/R/figure-style.R")
-source("shared/R/seasonal-ice-diagnostics-helpers.R")
+source("R/core/style.R")
+source("R/domains/seasonal-ice.R")
 ice <- prepare_seasonal_ice_data()
 
-source("shared/R/pca-kinematics-bridge-helpers.R")
-bridge <- prepare_pca_kinematics_bridge_data()
+source("R/figures/results/04-spatial-organization.R")
+bridge <- prepare_results_pca_data()
 ```
 
 > 在原子化重构完成前，可先调用当前的章节级 `prepare_*()`，但调试方式不变：检查它返回的对象，而不是先渲染 qmd。
@@ -137,7 +137,7 @@ For repeatable checks, keep small assertions close to the transformation that es
 Once the focused data object and minimal diagnostic plot are correct, render the edited qmd individually:
 
 ``` bash
-quarto render explorations/warming-acceleration/draft/01-global-kinematics.qmd --to html
+quarto render explorations/warming-temporal-pathways/draft/01-global-kinematics.qmd --to html
 ```
 
 Use Quarto to validate inline values, cross-references, figure composition, legends, and page layout—not to discover basic data preparation errors.

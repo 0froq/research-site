@@ -41,14 +41,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e9fc6a94ef31585fd0cabe86ae5e2f96.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-efb0671faf21d0116d696f9501e79374.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e9fc6a94ef31585fd0cabe86ae5e2f96.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fbd8f23dad50cb3c7de16f557e60bc50.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-58708f28126e8c34bc5a069f29a96b6f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fbd8f23dad50cb3c7de16f557e60bc50.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8f04801d8b2bcd27d21687b0bc688c8a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-c9c9b3ed63b935487b7efa5cc39405a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-8f04801d8b2bcd27d21687b0bc688c8a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-56ed61b579068ea6867496fd219136b2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-4db0c0e9cb599f8077f323afadcab3fd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-56ed61b579068ea6867496fd219136b2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -268,8 +268,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Explorations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../metrics/index.html"> 
-<span class="menu-text">Metrics</span></a>
+    <a class="nav-link" href="../reference/index.html"> 
+<span class="menu-text">Reference</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../notes/index.html"> 
@@ -331,7 +331,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This page is the canonical, human-readable contract for the active warming-acceleration analysis. It defines the quantities used in the draft chapters; producer-specific implementation and output provenance remain in <code>data-process/steps/*/README.md</code> and generated <code>METADATA.md</code> files.</p>
+<p>This page is the canonical, human-readable contract for the active warming-temporal-pathways analysis. It defines the quantities used in the draft chapters; producer-specific implementation and output provenance remain in <code>data-process/pipeline/manifest.toml</code>, <code>data-process/tasks/*/README.md</code>, and generated <code>METADATA.md</code> files.</p>
 <blockquote class="blockquote">
 <p>本页是当前增暖探索的分析合同：统一指标定义、参数和适用边界。数据生产细节仍以各 Step 的 README、METADATA 和 SUMMARY 为准。</p>
 </blockquote>
@@ -353,7 +353,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>Long-term warming</td>
-<td>Theil–Sen slope of the raw annual mean LSWT series, reported as °C per 40 years.</td>
+<td>Theil–Sen slope of the raw annual mean LSWT series, reported as °C decade⁻¹.</td>
 <td>Primary descriptive warming metric.</td>
 </tr>
 <tr class="odd">

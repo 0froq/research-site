@@ -1,15 +1,49 @@
-# Papers
+# Paper notes
 
-These are user-reviewed per-paper notes. They are distinct from the reading queue: each page records material the user has read and chosen to retain.
+Paper notes are source-centric records. They remain meaningful when no exploration is linked: each preserves source facts, relevant locations, citation-ready claims, method or mechanism evidence, limits, and a next action.
 
-> 此处为用户已阅读并选择保留的逐篇笔记；它不同于候选文献队列。
+New notes should use this front matter and body structure:
 
-- [Cohen 2014: Arctic amplification](../../notes/papers/cohen2014.llms.md)
-- [Dai & Wang 2018: Early-2000s hiatus](../../notes/papers/dai2018.llms.md)
-- [Fyfe et al. 2016: Warming slowdown](../../notes/papers/fyfe2016.llms.md)
-- [Rodionov 2004: Sequential regime-shift test](../../notes/papers/rodionov2004.llms.md)
-- [Xiao & Ren 2023: North Pacific regime shift](../../notes/papers/xiao2023.llms.md)
-- [Xie & Kosaka 2017: Causes of the warming hiatus](../../notes/papers/xie2017.llms.md)
-- [Yan et al. 2016: Slowdown or redistribution](../../notes/papers/yan2016.llms.md)
+    ---
+    title: 'citekey: Full Title'
+    created: YYYY-MM-DD
+    last_modified: YYYY-MM-DD
+    ---
+
+    :::{.callout-note collapse="true"}
+    ## Abstract
+
+    {abstract}
+    :::
+
+    :::{.column-margin}
+    Citation key
+    : citekey (@citekey)
+
+    Title
+    : Full Title
+
+    Author
+    : Last, First and Last, First ...
+
+    Journal, year
+    : Journal Name, YYYY
+    :::
+
+    ## Source scope
+
+    ## One-sentence contribution
+
+    ## Reusable claims
+
+    ## Method relevance
+
+    ## Limts and disagreement
+
+    ## Open questions / re-read triggers
+
+The `::{.callout-note collapse="true"}` block wraps a collapsed abstract and keeps the page compact. The `::{.column-margin}` block places citation metadata in the margin on wide viewports, using a Quarto definition list.
+
+Minimum sections for a newly reviewed paper are: **Source scope**, **One-sentence contribution**, **Reusable claims**, **Method relevance**, **Limits and disagreement**, and **Open questions / re-read triggers**.
 
 Back to top

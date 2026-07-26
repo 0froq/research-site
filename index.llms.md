@@ -4,11 +4,11 @@ This site contains my research explorations, drafts, and progress logs.
 
 These materials were previously hosted on [my main personal website](https://froq.me). However, to separate my research content from my personal content, all research and academic exploration materials are now hosted on this site.
 
-Check [all explorations](explorations/index.llms.md), including the finished, cancelled, not started or in-progress ones. Each exploration has its own draft, prose, and log.
+Check [all explorations](explorations/index.llms.md), including the finished, cancelled, not started or in-progress ones. Each exploration has its own draft, investigations, literature map, decisions, manuscript workspace, and raw work log.
 
-I list frequently discussed [metrics](metrics/index.llms.md) (methods, algorithms, parameters, decision records), trying not to make anyone confused.
+The [reference](reference/index.llms.md) section holds reusable methods, datasets, indices, concepts, and formal metrics.
 
-[Notes](notes/index.llms.md) collect literature notes, mechanism summaries, and useful excerpts for writing.
+[Notes](notes/index.llms.md) collect source-centric literature records and their reading status; exploration literature maps link to those notes without copying their evidence blocks.
 
 ------------------------------------------------------------------------
 

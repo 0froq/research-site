@@ -1,0 +1,33 @@
+# Climate-variability links
+
+## Exploratory screening identifies a retained summer association family
+
+For each lake, raw liquid-water JJA LSWT is linearly detrended, then residual anomalies are correlated with predeclared circulation-index seasons. Candidate indices, seasons, and lags were screened before this focused comparison. Most combinations were weak, region-limited, or did not survive the geographic robustness sequence. We therefore report the retained prior-summer NAO/AO family and retain the rest as exploratory comparisons.
+
+> 对每湖 raw 液态 JJA LSWT 做线性去趋势，再将残差与预设环流指数季节相关。候选指数、季节和滞后先经筛查；多数关联弱、区域受限或未通过地理稳健性序列。故正文报告保留的前年夏季 NAO/AO 关联族，其余仍为探索性比较。
+
+We ask where this association differs, and whether its spatial field co-locates with PCA scores. This is descriptive association, not teleconnection attribution.
+
+> 对每湖 raw 液态 JJA LSWT 线性去趋势，再将残差与预设环流指数季节相关。问题是关联在哪里不同、是否与 PCA 分数空间共定位。这是描述性关联，不是遥相关归因。
+
+![](06-climate-links_files/figure-html/fig-results-tele-primary-fields-1.png)
+
+Figure 1: Signed Fisher-z association fields for JJA NAO/AO in year t−1 and JJA LSWT in year t. Purple/green encode sign, not warming/cooling: near-white cells are weak association, saturated cells are stronger signed association.
+
+Prior-summer NAO/AO and current-summer LSWT form strongest retained family. Fields are spatially continuous: neighbour correlations are 0.71 and 0.73 across 908 pairs. Strong opposite-sign neighbours are rare: NAO 5 of 213, AO 3 of 193. PDO, MAM NAO and DJF PDO remain regional or coverage-limited comparisons.
+
+> 上一年夏季 NAO/AO 与当年夏季 LSWT 是最强保留关联族。场在 908 个邻接格网对中的相关为 0.71、0.73；强异号邻接很少，NAO 为 5/213，AO 为 3/193。PDO、MAM NAO 和 DJF PDO 仍只是区域性或覆盖受限比较。
+
+PC1 adds little held-out prediction of this sensitivity field. PC2 and joint PC2–PC3 scores add stable skill across grid choices, continent omissions and decade omissions. Positive and negative association poles differ in PC2 and in late local warming-speed history: by 2020 positive poles are near 0.069 °C yr⁻¹; negative poles near −0.014 (NAO) and −0.018 (AO).
+
+> PC1 对该敏感性场的空间留出预测几乎无增益；PC2 和联合 PC2–PC3 在格网、大陆删除与年代删除中保持稳定增益。关联正负端在 PC2 和后期局部增温速度历史上不同：2020 年正端约 0.069 °C yr⁻¹，负端约 −0.014（NAO）和 −0.018（AO）。
+
+![](06-climate-links_files/figure-html/fig-results-tele-speed-poles-1.png)
+
+Figure 2: Trailing 10-year annual and JJA Sen-speed composites for negative and positive NAO/AO association poles.
+
+This co-location does not show NAO/AO causes PC2, nor identify circulation pathway. Grid, LOCO and LODO tests test stability, not independent discovery.
+
+> 此共定位不表示 NAO/AO 造成 PC2，也不识别环流路径。格网、LOCO 和 LODO 检验稳定性，不是独立发现。
+
+Back to top

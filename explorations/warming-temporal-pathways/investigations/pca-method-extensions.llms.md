@@ -1,0 +1,46 @@
+# EOF, fPCA, and other PCA extensions
+
+## Purpose
+
+This page records method branches considered after the active spatially balanced trajectory PCA. It separates methods that would change the scientific estimand from methods that only rename or smooth the existing decomposition.
+
+> 本页记录空间平衡轨迹 PCA 之后考虑的方法分支。区分会改变科学估计对象的方法，与只重命名或再次平滑既有分解的方法。
+
+## EOF: equivalent notation, not an independent analysis
+
+The active input matrix has equal-area cells as rows and baseline-centred annual STL trajectories as columns. PCA of its year-by-year covariance matrix is the temporal EOF formulation: the current loading vectors are temporal EOFs and the cell scores are their spatial amplitudes. An EOF rerun on the same centred matrix therefore returns the same subspaces, up to sign and rank ordering.
+
+> 当前矩阵以等面积格网为行、基线中心化年 STL 轨迹为列。对年份协方差矩阵做 PCA 就是 temporal EOF：现有 loading 是时间 EOF，格网分数是空间振幅。对同一矩阵重跑 EOF 只会得到相同子空间，差别仅可能是符号或排序。
+
+No duplicate EOF result is produced. A distinct EOF branch would require a different estimand, for example spatial EOF of an independent atmospheric field or a joint/multivariate field. Such a branch belongs to external-mechanism work, not to a replacement of lake-trajectory PCA.
+
+> 因此不重复生成“EOF 结果”。只有改变估计对象，例如对独立大气场做 spatial EOF、或对多变量场做联合 EOF，才构成独立分支；它属于外部机制工作，不替代湖泊轨迹 PCA。
+
+## Functional PCA: deferred, with a defined entry condition
+
+Functional PCA would first represent every 40-year cell trajectory by a smooth function, then decompose covariance among functions. It may be useful when the research question concerns derivatives, phase shifts, irregular sampling, or uncertainty from a declared functional-smoothing model.
+
+> fPCA 先把每个 40 年格网轨迹表示为平滑函数，再分解函数间协方差。它适用于研究导数、相位移动、不规则采样，或已声明函数平滑模型的不确定性。
+
+It is not run as an alternative headline result now. The active representation already uses a specified `nt=99` STL low-frequency preprocessing for PCA, while raw annual LSWT remains the observational kinematics layer. Adding a spline basis, roughness penalty, and basis dimension would introduce further choices without solving a current missing-data or derivative-estimation problem.
+
+> 当前不将 fPCA 作为替代性主结果。活跃 PCA 已指定 `nt=99` STL 低频预处理，而 raw 年均 LSWT 仍是运动学观测层。再加入样条基、粗糙度惩罚和基维数，会增加选择，却不解决当前缺失数据或导数估计问题。
+
+A future fPCA run is admissible only if all checks below are passed:
+
+- predeclare basis family, basis dimension, and smoothing selection;
+- compare the PC1 and PC2–PC3 loading subspaces with active PCA;
+- rerun equal-area, LOCO, and spatially blocked external-coherence checks;
+- report whether any difference changes an interpretable conclusion, rather than reporting smoother curves as an improvement.
+
+> 后续 fPCA 只有在预先指定基函数/维数/平滑选择，并重做等面积、LOCO、空间留出外部一致性检验时才可运行；必须报告是否改变可解释结论，不能把曲线更平滑当作改进。
+
+## Other deferred branches
+
+- **LFCA / multichannel SSA:** useful for explicitly separating oscillatory and low-frequency variability, but 40 annual points provide limited independent low-frequency support after STL preprocessing.
+- **Rotated PCA:** could localise patterns, but would hide the observed PC2–PC3 rank exchange behind a rotation choice.
+- **MCA / CCA:** appropriate only with genuinely independent, physically motivated external fields and spatially blocked validation. A lake-temperature sensitivity field derived from the same LSWT record is not an independent MCA target.
+
+> LFCA/MSSA、rotation、MCA/CCA 均保留为未来分支。当前分别受 40 年长度、PC2–PC3 换序、以及外场独立性不足限制；不进入活跃主线。
+
+Back to top
