@@ -7,6 +7,8 @@ era5-lake-forcing,derived/experimental/era5-lake-forcing,era5-lake-forcing,exper
 era5-land,raw/era5-var,external,external,external
 geographic-context,derived/metrics/geographic-context,geographic-context,metrics,canonical
 glast-daily,raw/glast-per-lake,external,external,external
+gshhg-coastline,raw/gshhg,external,external,external
+hydrolakes,raw/hydro-lakes_polys_v10_shp/HydroLAKES_polys_v10_shp,external,external,external
 lake-metadata,derived/foundation/lake-metadata,lake-metadata,foundation,canonical
 monthly-ice-days,derived/temperature/ice-days,ice-days,temperature,canonical
 monthly-lswt,derived/temperature/monthly-lswt,monthly-lswt,temperature,canonical
