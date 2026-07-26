@@ -70,6 +70,4 @@ For the current first-author descriptive manuscript, do not introduce a new prim
 
 ## Related workflow
 
-For the focused R workflow used to validate one figure’s rendering-time data preparation before a chapter render, see [Debugging Figure Helpers](../docs/helper-debugging.llms.md).
-
 Back to top

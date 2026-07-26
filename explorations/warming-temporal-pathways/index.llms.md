@@ -8,7 +8,7 @@ How heterogeneous are reconstructed lake surface-water-temperature trajectories 
 
 This active exploration analyses 92,245 lakes in the 1981–2020 GLAST reconstruction. Its current evidence is descriptive: raw annual LSWT establishes long-term and decadal-rate heterogeneity; spatially balanced PCA describes recurring low-frequency pathways; seasonal, ice, and circulation analyses provide bounded context rather than causal attribution.
 
-The current draft and manuscript pages are authoritative for retained claims. The raw log records the work process, including superseded ideas and negative results.
+The manuscript pages are authoritative for retained claims. The raw log records the work process, including superseded ideas and negative results.
 
 ## Current conclusion and boundary
 
@@ -18,11 +18,10 @@ The retained conclusion is descriptive: global lake warming is widespread, but i
 
 ## Reading path
 
-- [Draft](../../explorations/warming-temporal-pathways/draft/index.llms.md) — retained working results, credibility, and limitations.
 - [Manuscript](../../explorations/warming-temporal-pathways/manuscript/index.llms.md) — formal-paper argument, retained figures, and evidence route.
 - [Investigations](../../explorations/warming-temporal-pathways/investigations/local-rate-change-sensitivity.llms.md) — parameter choices, sensitivity checks, and branches not necessarily retained as claims.
 - [Literature map](../../explorations/warming-temporal-pathways/literature/index.llms.md) — why independent paper notes matter for this question.
 - [Log (raw)](../../explorations/warming-temporal-pathways/log/index.llms.md) — dated operational history.
-- [Decisions](../../explorations/warming-temporal-pathways/decisions/index.llms.md) — durable choices affecting interpretation and reproducibility.
+- [Analysis contract](../../docs/analysis-contract.llms.md) — active definitions, parameters, and scope boundaries.
 
 Back to top

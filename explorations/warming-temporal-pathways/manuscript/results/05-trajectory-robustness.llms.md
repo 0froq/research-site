@@ -8,7 +8,7 @@ We evaluated robustness at the level at which each result is interpreted. PC1 wa
 
 ### Spatial omission
 
-PC1 was highly stable in leave-one-continent-out (LOCO) refits. Its direct temporal-loading cosine with the full-data PC1 ranged from 0.986 to 1.000 (median 0.999; Fig. [../../../../Figure 1](#fig-results-loco-pc1-alignment)). Thus, no individual continent supplied the leading low-frequency trajectory by itself.
+PC1 was highly stable in leave-one-continent-out (LOCO) refits. Its direct temporal-loading cosine with the full-data PC1 ranged from 0.986 to 1.000 (median 0.999; Fig. [Figure 1](#fig-results-loco-pc1-alignment)). Thus, no individual continent supplied the leading low-frequency trajectory by itself.
 
 > LOCO 中 PC1 与完整分析的直接 loading cosine 为 0.986–1.000，中位数 0.999。没有任何单一大陆独自制造这个主低频轨迹。
 
@@ -16,7 +16,7 @@ PC1 was highly stable in leave-one-continent-out (LOCO) refits. Its direct tempo
 
 Figure 1: PC1 temporal-loading alignment after omitting each continent. Cosine is sign-invariant; values near one indicate the same one-dimensional temporal axis.
 
-The PC2–PC3 plane also recurred across continental omissions, although less uniformly. Its minimum principal-angle cosine ranged from 0.702 to 0.998 (median 0.990; Fig. [../../../../Figure 2](#fig-results-loco-subspace-stability)). North America (0.702; maximum angle 45.4°) and Europe (0.800; 36.9°) were the two limiting omissions. The result supports a recurring secondary plane, with its weakest reproduction when a large, spatially coherent lake population is removed.
+The PC2–PC3 plane also recurred across continental omissions, although less uniformly. Its minimum principal-angle cosine ranged from 0.702 to 0.998 (median 0.990; Fig. [Figure 2](#fig-results-loco-subspace-stability)). North America (0.702; maximum angle 45.4°) and Europe (0.800; 36.9°) were the two limiting omissions. The result supports a recurring secondary plane, with its weakest reproduction when a large, spatially coherent lake population is removed.
 
 > PC2–PC3 平面在各大陆遗漏下也重复出现，最小 principal-angle cosine 为 0.702–0.998，中位数 0.990。去北美与去欧洲最弱，说明大而连续的湖泊样本被移除时，次级平面的复现会下降。
 
@@ -24,13 +24,13 @@ The PC2–PC3 plane also recurred across continental omissions, although less un
 
 Figure 2: LOCO stability of the PC2–PC3 temporal subspace. Bars show the conservative minimum principal-angle cosine; labels give the maximum principal angle.
 
-Axis order nevertheless changed under North-American omission. The full-data PC2 aligned best with refitted PC3 (\|cosine\| = 0.701), whereas full-data PC3 aligned best with refitted PC2 (0.995; Fig. [../../../../Figure 3](#fig-results-loco-axis-exchange)). This is why the secondary result is retained as a plane rather than presented as two independently fixed global modes.
+Axis order nevertheless changed under North-American omission. The full-data PC2 aligned best with refitted PC3 (\|cosine\| = 0.701), whereas full-data PC3 aligned best with refitted PC2 (0.995; Fig. [Figure 3](#fig-results-loco-axis-exchange)). This is why the secondary result is retained as a plane rather than presented as two independently fixed global modes.
 
 > 去北美时，完整分析 PC2 最接近重拟合 PC3（0.701），完整 PC3 最接近重拟合 PC2（0.995）。因此次级结果应表述为 PC2–PC3 平面，不能把两个轴当作各自固定的全球模态。
 
 ![](05-trajectory-robustness_files/figure-html/fig-results-loco-axis-exchange-1.png)
 
-Figure 3: Cross-component loading congruence after North-American omission. The off-diagonal maximum for reference PC3 demonstrates rank exchange; it does not itself establish subspace stability, which is quantified in Fig. [../../../../Figure 2](#fig-results-loco-subspace-stability).
+Figure 3: Cross-component loading congruence after North-American omission. The off-diagonal maximum for reference PC3 demonstrates rank exchange; it does not itself establish subspace stability, which is quantified in Fig. [Figure 2](#fig-results-loco-subspace-stability).
 
 ### Temporal block omission
 
@@ -38,7 +38,7 @@ We then omitted each contiguous ten-year block and refit the same equal-area PCA
 
 > 随后每次删除连续十年，并以剩余 30 年重拟合 PCA。这是 temporal block-omission test：记录有意保留缺口，因此只在完整与重拟合共同的 30 年上比较；基线也只用最早的十个保留年份重算，不使用被删除的观测。
 
-PC1 remained close to the full-data axis under every omission (cosine 0.957–1.000; Fig. [../../../../Figure 4](#fig-results-lodo-stability)). The PC2–PC3 subspace was more sensitive to the two record edges: its minimum cosine was 0.569 after omitting 1981–1990 and 0.617 after omitting 2011–2020, but 0.914 and 0.893 after omitting the two central decades. Thus the leading mode is robust to this temporal perturbation, whereas the exact secondary plane depends partly on information at the beginning and end of the record. We therefore retain the secondary plane as a reproducible *spatial-omission* structure, but do not claim that it is fully insensitive to all temporal truncation.
+PC1 remained close to the full-data axis under every omission (cosine 0.957–1.000; Fig. [Figure 4](#fig-results-lodo-stability)). The PC2–PC3 subspace was more sensitive to the two record edges: its minimum cosine was 0.569 after omitting 1981–1990 and 0.617 after omitting 2011–2020, but 0.914 and 0.893 after omitting the two central decades. Thus the leading mode is robust to this temporal perturbation, whereas the exact secondary plane depends partly on information at the beginning and end of the record. We therefore retain the secondary plane as a reproducible *spatial-omission* structure, but do not claim that it is fully insensitive to all temporal truncation.
 
 > PC1 对四种十年删除均接近完整轴（0.957–1.000）。PC2–PC3 对首末十年更敏感：去 1981–1990 为 0.569、去 2011–2020 为 0.617；去两个中段十年则为 0.914、0.893。因此主模态通过时间扰动检验；次级平面对记录两端信息有依赖，不能声称其对所有时间截断都不敏感。
 
@@ -48,7 +48,7 @@ Figure 4: Temporal block-omission stability. Each refit omits one contiguous de
 
 ### Input and grid sensitivity
 
-The active representation also has identifiable limits. Across the two coarser or finer equal-area grids, PC1 remained the best-matched reference axis (\|cosine\| = 0.940–0.951); the first five components explained 83.7–85.7% of cell-level variance. Replacing STL trends with raw annual temperatures or centred 7-, 9-, or 11-year rolling means preserved a related leading contrast (PC1 \|cosine\| = 0.855–0.909), but changed the ordered secondary axes (Fig. [../../../../Figure 5](#fig-results-pca-input-sensitivity)). This supports the use of STL as a low-frequency PCA preprocessing choice, while making clear that PC2 and PC3 are not preprocessing-invariant labels.
+The active representation also has identifiable limits. Across the two coarser or finer equal-area grids, PC1 remained the best-matched reference axis (\|cosine\| = 0.940–0.951); the first five components explained 83.7–85.7% of cell-level variance. Replacing STL trends with raw annual temperatures or centred 7-, 9-, or 11-year rolling means preserved a related leading contrast (PC1 \|cosine\| = 0.855–0.909), but changed the ordered secondary axes (Fig. [Figure 5](#fig-results-pca-input-sensitivity)). This supports the use of STL as a low-frequency PCA preprocessing choice, while making clear that PC2 and PC3 are not preprocessing-invariant labels.
 
 > 两种替代等面积格网下，PC1 仍是最佳对应轴（0.940–0.951），前五 PC 解释 83.7–85.7% 方差。以 raw annual 或不同滑动均值替代 STL 后，主对比仍相关（PC1 为 0.855–0.909），但次级有序轴会改变。因此 STL 适合作为 PCA 的低频预处理；PC2、PC3 的轴标签不能被说成对预处理不变。
 

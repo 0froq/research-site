@@ -4,6 +4,12 @@ These pages hold project-specific evidence tasks. Add a task only when writing o
 
 > 本目录记录研究写作中出现的证据 task，不是按论文组织的文献表。原文条件、摘录、页码和可复用 claim 均以论文笔记为准。
 
+## Status: structure pending review
+
+The current three-page organisation is retained temporarily. It will be revised after the manuscript identifies its actual evidence needs, likely separating field reviews, novelty claims, direct comparators, method audit, and mechanism or boundary evidence.
+
+> 当前三页结构仅暂时保留。待手稿明确实际证据需求后，再整体重组；候选分类包括领域综述、创新性、直接对比、方法审计，以及机制或边界证据。
+
 - [Novelty and comparators](../../../explorations/warming-temporal-pathways/literature/novelty-and-comparators.llms.md)
 - [Method audit](../../../explorations/warming-temporal-pathways/literature/method-audit.llms.md)
 - [Mechanisms and boundaries](../../../explorations/warming-temporal-pathways/literature/mechanisms.llms.md)

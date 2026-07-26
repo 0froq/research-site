@@ -4,7 +4,7 @@ All explorations — finished, cancelled, in-progress, or not started.
 
 ## [Global lake warming: temporal pathways](../explorations/warming-temporal-pathways/index.llms.md)
 
-[overview](../explorations/warming-temporal-pathways/index.llms.md) · [draft](../explorations/warming-temporal-pathways/draft/01-global-kinematics.llms.md) · [investigations](../explorations/warming-temporal-pathways/investigations/local-rate-change-sensitivity.llms.md) · [log (raw)](../explorations/warming-temporal-pathways/log/index.llms.md)
+[overview](../explorations/warming-temporal-pathways/index.llms.md) · [manuscript](../explorations/warming-temporal-pathways/manuscript/index.llms.md) · [investigations](../explorations/warming-temporal-pathways/investigations/local-rate-change-sensitivity.llms.md) · [log (raw)](../explorations/warming-temporal-pathways/log/index.llms.md)
 
 How heterogeneous are reconstructed lake surface water temperature trajectories across time and space, and what seasonal/ice contexts characterize cooling trajectories?
 

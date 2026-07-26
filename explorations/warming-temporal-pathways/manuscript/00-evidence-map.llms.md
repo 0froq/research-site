@@ -8,7 +8,7 @@ This page is the audit boundary for the formal manuscript. It records where a ma
 
 1.  Exact source conditions, quotations, and reusable claims remain in [Paper notes](../../../notes/papers/index.llms.md).
 2.  The reason a source matters to this question, including its local role and reading question, remains in the exploration [Literature map](../../../explorations/warming-temporal-pathways/literature/index.llms.md).
-3.  Reproducible analytical detail, sensitivity checks, and negative results remain in [Draft](../../../explorations/warming-temporal-pathways/draft/index.llms.md) and [Investigations](../../../explorations/warming-temporal-pathways/investigations/local-rate-change-sensitivity.llms.md).
+3.  Reproducible analytical detail, sensitivity checks, and negative results remain in the formal [Results](../../../explorations/warming-temporal-pathways/manuscript/results/01-global-kinematics.llms.md) and [Investigations](../../../explorations/warming-temporal-pathways/investigations/local-rate-change-sensitivity.llms.md).
 4.  This manuscript contains only the retained argument and links back when a reader needs the condition, robustness evidence, or source record.
 
 > 证据路径分四层：论文笔记保存来源条件、摘录和可复用论点；Literature map 说明它为何与本研究相关；Draft 与 Investigations 保存可重复的分析、敏感性和负结果；Manuscript 只保留已收敛的论证，并回链到相应证据。

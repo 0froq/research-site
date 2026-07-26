@@ -9,6 +9,6 @@ Results follow one six-step argument. Candidate atlases and tables remain availa
 5.  [Robustness of trajectory modes](../../../../explorations/warming-temporal-pathways/manuscript/results/05-trajectory-robustness.llms.md)
 6.  [Climate-variability links](../../../../explorations/warming-temporal-pathways/manuscript/results/06-climate-links.llms.md)
 
-Candidate material: [teleconnection atlas](../../../../explorations/warming-temporal-pathways/manuscript/results/06-teleconnection-candidate-atlas.llms.md) and [tables](../../../../explorations/warming-temporal-pathways/manuscript/results/07-candidate-tables.llms.md).
+Candidate material: [teleconnection atlas](06-teleconnection-candidate-atlas.qmd) and [tables](07-candidate-tables.qmd).
 
 Back to top
