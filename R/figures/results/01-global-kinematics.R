@@ -269,8 +269,8 @@ prepare_results_kinematics_data <- function(kinematics = prepare_kinematics_data
       summarise(median = median(speed), q25 = quantile(speed, .25), q75 = quantile(speed, .75), .groups = "drop")
   }
   window_summary <- bind_rows(
-    read_window_summary(file.path(data, "14-trajectory-diagnostics", "output", "rolling_sen_speed_7yr.csv"), "7-year"),
-    read_window_summary(file.path(data, "14-trajectory-diagnostics", "output", "rolling_sen_speed_10yr.csv"), "10-year")
+    read_window_summary(dataset_file("trajectory-diagnostics", "rolling_sen_speed_7yr.csv"), "7-year"),
+    read_window_summary(dataset_file("trajectory-diagnostics", "rolling_sen_speed_10yr.csv"), "10-year")
   )
 
   # Representative paths are selected from lakes with comparable net warming:

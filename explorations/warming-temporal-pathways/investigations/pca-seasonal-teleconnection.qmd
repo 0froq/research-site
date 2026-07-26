@@ -8,8 +8,8 @@ aliases:
 ```{r}
 #| label: setup-pca-seasonal-teleconnection
 #| include: false
-source("../../../shared/R/figure-style.R")
-source("../../../shared/R/pca-seasonal-teleconnection-helpers.R")
+source("../../../R/core/style.R")
+source("../../../R/domains/climate-links-seasonal.R")
 list2env(prepare_pca_jja_teleconnection_display(), envir = environment())
 ```
 

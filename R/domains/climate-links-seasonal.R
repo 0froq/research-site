@@ -195,8 +195,7 @@ prepare_pca_seasonal_teleconnection_screen <- function(data_dir = data) {
 }
 
 prepare_pca_seasonal_teleconnection_decade_loco <- function(data_dir = data, shared_inputs = list()) {
-  path <- file.path(data_dir, "17-seasonal-teleconnection-association", "output",
-    "lake_JJA_NAO_AO_lag1_leave_decade_out.csv")
+  path <- dataset_file("seasonal-teleconnection-screen", "lake_JJA_NAO_AO_lag1_leave_decade_out.csv")
   decades <- tibble(
     omitted_decade = c("1981–1990", "1991–2000", "2001–2010", "2011–2020"),
     first_year = c(1981L, 1991L, 2001L, 2011L),
@@ -264,7 +263,7 @@ prepare_pca_seasonal_teleconnection_grid_sensitivity <- function(data_dir = data
 }
 
 prepare_pca_seasonal_teleconnection_loco_sensitivity <- function(data_dir = data, screen, shared_inputs = list()) {
-  pca_dir <- file.path(data_dir, "16-spatial-balanced-pca", "output", "sinlat_equalarea_72x21_mean")
+  pca_dir <- file.path(dataset_dir("spatial-pca"), "sinlat_equalarea_72x21_mean")
   continents <- read_csv(file.path(pca_dir, "loco_refit_cell_scores.csv"), show_col_types = FALSE) |>
     distinct(omitted_continent) |>
     pull(omitted_continent)
@@ -332,11 +331,11 @@ prepare_seasonal_sensitivity_trajectory_composites <- function(
   }
   trajectories <- bind_rows(
     aggregate_cell_anomalies(
-      file.path(data_dir, "02-annual-temperature", "output", "annual_mean_temperature.csv"),
+      dataset_file("annual-lswt", "annual_mean_temperature.csv"),
       "Raw annual LSWT"
     ),
     aggregate_cell_anomalies(
-      file.path(data_dir, "02-annual-temperature", "output", paste0(response_season, "_temperature.csv")),
+      dataset_file("annual-lswt", paste0(response_season, "_temperature.csv")),
       paste0("Raw ", response_season, " LSWT")
     )
   ) |>
@@ -432,20 +431,18 @@ prepare_pca_jja_teleconnection_display <- function(data_dir = data) {
     block_label = c("4 × 3 bins", "6 × 3 bins", "8 × 3 bins")
   )
   metadata_data <- read_csv(
-    file.path(data_dir, "00-lake-metadata", "output", "lake_metadata.csv"),
+    dataset_file("lake-metadata", "lake_metadata.csv"),
     show_col_types = FALSE,
     col_select = c(lake_id, lat, lon, Continent, Lake_area, Depth_avg, Elevation,
       Res_time, Dis_avg, Wshd_area, Vol_total, Shore_dev, Slope_100, is_reservoir)
   )
   coast_data <- read_csv(
-    file.path(data_dir, "13-geographic-context", "output", "lake_geographic_context.csv"),
+    dataset_file("geographic-context", "lake_geographic_context.csv"),
     show_col_types = FALSE, col_select = c(lake_id, distance_to_coast_km)
   )
   main_shared_inputs <- list(
     metadata_data = metadata_data, coast_data = coast_data,
-    correlations_data = read_csv(file.path(data_dir,
-      "17-seasonal-teleconnection-association", "output",
-      "lake_seasonal_teleconnection_correlations.csv"), show_col_types = FALSE)
+    correlations_data = read_csv(dataset_file("seasonal-teleconnection-screen", "lake_seasonal_teleconnection_correlations.csv"), show_col_types = FALSE)
   )
   target <- do.call(prepare_pca_seasonal_teleconnection_data,
     c(list(data_dir = data_dir, screen = screen), main_shared_inputs))
@@ -522,8 +519,7 @@ prepare_pca_jja_teleconnection_display <- function(data_dir = data) {
   gc()
   decade_shared_inputs <- list(
     metadata_data = metadata_data, coast_data = coast_data,
-    correlations_data = read_csv(file.path(data_dir,
-      "17-seasonal-teleconnection-association", "output",
+    correlations_data = read_csv(dataset_file("seasonal-teleconnection-screen",
       "lake_JJA_NAO_AO_lag1_leave_decade_out.csv"), show_col_types = FALSE)
   )
   decade_payload <- prepare_pca_seasonal_teleconnection_decade_loco(
@@ -588,20 +584,18 @@ prepare_pca_jja_teleconnection_display <- function(data_dir = data) {
 prepare_pca_jja_lake_context_display <- function(data_dir = data) {
   screen <- tibble(response_season = "JJA", index = c("NAO", "AO"), lag_years = 1L)
   metadata_data <- read_csv(
-    file.path(data_dir, "00-lake-metadata", "output", "lake_metadata.csv"),
+    dataset_file("lake-metadata", "lake_metadata.csv"),
     show_col_types = FALSE,
     col_select = c(lake_id, lat, lon, Continent, Lake_area, Depth_avg, Elevation,
       Res_time, Dis_avg, Wshd_area, Vol_total, Shore_dev, Slope_100, is_reservoir)
   )
   coast_data <- read_csv(
-    file.path(data_dir, "13-geographic-context", "output", "lake_geographic_context.csv"),
+    dataset_file("geographic-context", "lake_geographic_context.csv"),
     show_col_types = FALSE, col_select = c(lake_id, distance_to_coast_km)
   )
   shared_inputs <- list(
     metadata_data = metadata_data, coast_data = coast_data,
-    correlations_data = read_csv(file.path(data_dir,
-      "17-seasonal-teleconnection-association", "output",
-      "lake_seasonal_teleconnection_correlations.csv"), show_col_types = FALSE)
+    correlations_data = read_csv(dataset_file("seasonal-teleconnection-screen", "lake_seasonal_teleconnection_correlations.csv"), show_col_types = FALSE)
   )
   block_layouts <- tibble(
     block_lon_bins = c(4, 6, 8), block_sinlat_bins = c(3, 3, 3),
@@ -644,8 +638,7 @@ prepare_pca_jja_lake_context_display <- function(data_dir = data) {
   gc()
   decade_inputs <- list(
     metadata_data = metadata_data, coast_data = coast_data,
-    correlations_data = read_csv(file.path(data_dir,
-      "17-seasonal-teleconnection-association", "output",
+    correlations_data = read_csv(dataset_file("seasonal-teleconnection-screen",
       "lake_JJA_NAO_AO_lag1_leave_decade_out.csv"), show_col_types = FALSE)
   )
   decade_payload <- prepare_pca_seasonal_teleconnection_decade_loco(

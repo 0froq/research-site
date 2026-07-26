@@ -8,8 +8,8 @@ aliases:
 ```{r}
 #| label: setup-pca-external-interpretation
 #| include: false
-source("../../../shared/R/figure-style.R")
-source("../../../shared/R/pca-external-interpretation-helpers.R")
+source("../../../R/core/style.R")
+source("../../../R/figures/investigations/pca-external-interpretation.R")
 list2env(prepare_pca_external_interpretation_sensitivity(), envir = environment())
 ```
 

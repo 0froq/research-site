@@ -12,8 +12,8 @@ aliases:
 ```{r}
 #| label: setup-pca-association-diagnostics
 #| include: false
-source("../../../shared/R/figure-style.R")
-source("../../../shared/R/pca-association-helpers.R")
+source("../../../R/core/style.R")
+source("../../../R/figures/investigations/pca-association.R")
 list2env(prepare_pca_association_sensitivity_data(), envir = environment())
 ```
 

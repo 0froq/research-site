@@ -35,7 +35,11 @@ data_process_dir <- file.path(repo_root, "data-process")
 
 knitr::opts_knit$set(root.dir = data_process_dir)
 
-data <- file.path(data_process_dir, "steps")
+# Transitional function signatures may still accept `data_dir = data`, but
+# active helpers must resolve all durable inputs through dataset ids. Point the
+# compatibility value at the producer root so it cannot silently recreate a
+# dependency on the retired numbered `steps/` tree.
+data <- data_process_dir
 out <- file.path(project_dir, "shared", "assets")
 
 # All new helpers resolve curated inputs through the generated dataset catalog.

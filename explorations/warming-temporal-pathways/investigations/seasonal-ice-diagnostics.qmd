@@ -109,8 +109,8 @@ Step 14 produces lake-by-endpoint rate/state files and a per-lake alignment summ
 #| include: false
 #| cache: false
 
-source("../../../shared/R/figure-style.R")
-source("../../../shared/R/seasonal-ice-diagnostics-helpers.R")
+source("../../../R/core/style.R")
+source("../../../R/domains/seasonal-ice.R")
 list2env(prepare_seasonal_ice_data(), envir = environment())
 
 alignment_availability_grid <- prepare_alignment_availability_grids(min_lakes = 3)

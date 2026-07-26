@@ -9,9 +9,9 @@ aliases:
 #| include: false
 #| cache: false
 
-source("../../../shared/R/figure-style.R")
-source("../../../shared/R/descriptive-helpers.R")
-source("../../../shared/R/01-global-kinematics-helpers.R")
+source("../../../R/core/style.R")
+source("../../../R/core/spatial.R")
+source("../../../R/domains/kinematics.R")
 ```
 
 ## Sample coverage

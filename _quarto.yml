@@ -6,6 +6,7 @@ project:
     - "**/*.md"
     - "!**/*.rmarkdown"
     - "!**/*.knit.md"
+    - "!explorations/warming-temporal-pathways/archive/**"
 
 website:
   title: "Exploration"

@@ -6,8 +6,8 @@ aliases:
 
 ```{r}
 #| include: false
-source("../../../shared/R/figure-style.R")
-source("../../../shared/R/seasonal-ice-diagnostics-helpers.R")
+source("../../../R/core/style.R")
+source("../../../R/domains/seasonal-ice.R")
 seasonal_ice <- prepare_seasonal_ice_data()
 ```
 

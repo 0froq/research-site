@@ -7,8 +7,8 @@ aliases:
 ```{r}
 #| label: setup-pca-pathway-spatial-context
 #| include: false
-source("../../../shared/R/figure-style.R")
-source("../../../shared/R/pca-pathway-spatial-context-helpers.R")
+source("../../../R/core/style.R")
+source("../../../R/figures/investigations/pca-pathway-spatial-context.R")
 list2env(prepare_pca_pathway_spatial_context_data(), envir = environment())
 ```
 

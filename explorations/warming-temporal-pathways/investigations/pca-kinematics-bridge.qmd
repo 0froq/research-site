@@ -8,8 +8,8 @@ aliases:
 ```{r}
 #| label: setup-pca-kinematics-bridge
 #| include: false
-source("../../../shared/R/figure-style.R")
-source("../../../shared/R/pca-kinematics-bridge-helpers.R")
+source("../../../R/core/style.R")
+source("../../../R/figures/investigations/pca-kinematics-bridge.R")
 list2env(prepare_pca_kinematics_bridge_data(), envir = environment())
 ```
 

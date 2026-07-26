@@ -3,6 +3,7 @@
 
 source_files <- list.files(".", pattern = "\\.qmd$", recursive = TRUE, full.names = TRUE)
 source_files <- source_files[!grepl("^./_output/", source_files)]
+source_files <- source_files[!grepl("^./explorations/warming-temporal-pathways/archive/", source_files)]
 
 front_matter <- function(path) {
   lines <- readLines(path, warn = FALSE)
