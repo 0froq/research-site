@@ -4,7 +4,7 @@ annual-lswt,derived/temperature/annual-lswt,annual-lswt,temperature,canonical
 annual-stl-nt99,derived/temperature/annual-stl/period12_robustfalse_ni5_no0_nt99,annual-stl,temperature,canonical
 era5-forcing-summary,derived/experimental/era5-forcing-summary,era5-forcing-summary,experimental,experimental
 era5-lake-forcing,derived/experimental/era5-lake-forcing,era5-lake-forcing,experimental,experimental
-era5-land,raw/era5-land,external,external,external
+era5-land,raw/era5-var,external,external,external
 geographic-context,derived/metrics/geographic-context,geographic-context,metrics,canonical
 glast-daily,raw/glast-per-lake,external,external,external
 lake-metadata,derived/foundation/lake-metadata,lake-metadata,foundation,canonical
