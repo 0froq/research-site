@@ -18,20 +18,6 @@ fmt_num <- function(x, digits = 2) formatC(x, format = "f", digits = digits)
 
 ## Long-term warming is widespread
 
-:::{.callout-tip}
-- Stress the spatial heterogeneity, since the warming states were already described in @tong2023.
-- Here we use lake-equal mean, focusing on the lake individuals,
-  but @tong2023 used area-weighted
-  (2 layers:
-  every grid is lake-area-weighted, and global is grid-area-weighted), focusing
-  on a reasonable global state.
-  So it is natural we are stressing the heterogeneity, by showing the range,
-  quantiles and so on.
-- Here we use Sen slope, but @tong2023 used linear slope.
-  In supplementary we can diff the results to check which regions are
-  "not that stable".
-:::
-
 Lake warming was widespread during 1981--2020,
 although the magnitude of warming varied markedly among individual lakes
 (@fig-long-term-warming-distribution).
@@ -43,6 +29,8 @@ whereas the lake-equal mean was 0.22 ± 0.19 °C decade^-1^.
 The distribution has a positive high-warming tail,
 in which a relatively small subset of rapidly warming lakes
 contributes disproportionately to the lake-equal mean.
+
+> Fig. @fig-long-term-warming-distribution 同时显示“92.8% 为正”和宽分布。正高值尾部抬高 mean，区域比较需说明所用汇总量。
 
 ```{r}
 #| label: fig-long-term-warming-distribution
@@ -133,30 +121,6 @@ fig1_distribution <- ggplot() +
     linetype = "dashed",
     linewidth = .45
   ) +
-  annotate(
-    "text",
-    x = .78,
-    y = 4.35,
-    label = sprintf(
-      "Lake-equal (solid): skewness %.2f",
-      distribution_skewness[["lake_equal"]]
-    ),
-    hjust = 1,
-    colour = col_text,
-    size = 2.15
-  ) +
-  annotate(
-    "text",
-    x = .78,
-    y = 4.05,
-    label = sprintf(
-      "Area-weighted (dashed): skewness %.2f",
-      distribution_skewness[["area_weighted"]]
-    ),
-    hjust = 1,
-    colour = col_text,
-    size = 2.15
-  ) +
   coord_cartesian(xlim = c(-.5, .8)) +
   labs(x = "Sen slope (°C decade⁻¹)", y = NULL) + theme_base(grid = FALSE) +
   theme(
@@ -188,25 +152,15 @@ Notably,
 89% of lakes with cooling trends were located in Europe and North America.
 These geographical patterns were strongly spatially autocorrelated
 and were unlikely to arise from a spatially random distribution
-(Moran’s I = 0.43, permutation P = 0.001; @tbl-spatial-autocorrelation).
+(Moran’s I = 0.43, permutation P = 0.001).
 
-> 长期增温率具有明确空间组织。高增温集中在北极西伯利亚中东部、加拿大北部和阿拉斯加；慢增温和少数降温湖集中在西西伯利亚—乌拉尔、芬诺斯堪的纳维亚北部与加拿大西至西北部。89% 降温湖位于欧洲和北美。空间分布显著非随机。
+> 地图显示连续区域的长期趋势异质性。降温湖的地理集中提示路径分析需要超出全球均值；成因留待独立过程研究。
 
-::: {#tbl-spatial-autocorrelation .list-table}
+The spatial unit, neighbour graph and permutation design underlying this
+descriptive autocorrelation result are recorded in the
+[supplementary core-result tables](../supplementary/core-result-tables.qmd).
 
-- - Statistic
-  - Value
-- - Spatial unit
-  - Occupied 1° cells; lake-equal mean long-term Sen slope
-- - Occupied cells
-  - `r spatial_autocorrelation$n_cells`
-- - Queen-neighbour pairs
-  - `r spatial_autocorrelation$n_neighbour_pairs`
-- - Moran’s I
-  - `r fmt_num(spatial_autocorrelation$moran_i, 2)`
-- - Two-sided permutation P
-  - `r fmt_num(spatial_autocorrelation$permutation_p, 3)` (999 permutations)
-:::
+> 补充表记录空间单元、邻接图和置换设定，使 Moran’s I 的适用范围可核查。
 
 Warming rates also differed markedly among latitude bands.
 Lakes at 60--85°N had a median warming rate of 0.258°C decade^-1^,
@@ -219,16 +173,18 @@ followed by North America (0.166°C decade^-1^),
 whereas medians in Africa, Asia, Oceania and South America
 ranged from 0.103 to 0.162°C decade^-1^.
 Full distributions are shown in
-@fig-long-term-warming-latitude-bands
-and @fig-long-term-warming-continent-distributions.
+@fig-long-term-warming-geographic-distributions.
+
+> 纬度比较为描述性结果。阅读图时结合 median、分布重叠和 bootstrap 区间；大陆分类只作地理汇总。
 
 ```{r}
-#| label: fig-long-term-warming-latitude-bands
-#| fig-cap: "Long-term lake warming rates by latitude band. Violin width shows the within-band distribution; points show medians. Values are lake-equal and each lake contributes one observation."
-#| fig-width: 8
-#| fig-height: 4
+#| include: false
 
-ggplot(latitude_summary, aes(latitude_band, long_term_warming_decade)) +
+distribution_y_limits <- quantile(
+  c(latitude_summary$long_term_warming_decade, continent_summary$long_term_warming_decade),
+  c(.01, .99), na.rm = TRUE
+)
+p_latitude_distribution <- ggplot(latitude_summary, aes(latitude_band, long_term_warming_decade)) +
   geom_hline(yintercept = 0, colour = col_text_soft, linewidth = wid_axis) +
   geom_violin(
     fill = col_inchart_fill, alpha = .45, colour = col_inchart_line,
@@ -239,7 +195,7 @@ ggplot(latitude_summary, aes(latitude_band, long_term_warming_decade)) +
     fill = pal_direction[["warming"]], size = 2
   ) +
   coord_cartesian(
-    ylim = quantile(latitude_summary$long_term_warming_decade, c(.01, .99))
+    ylim = distribution_y_limits
   ) +
   labs(x = NULL, y = "Long-term Sen slope (°C decade⁻¹)") +
   theme_base(grid = TRUE) +
@@ -247,12 +203,7 @@ ggplot(latitude_summary, aes(latitude_band, long_term_warming_decade)) +
 ```
 
 ```{r}
-#| label: fig-long-term-warming-continent-distributions
-#| fig-cap: "Long-term lake warming rates by continent. Violin width shows the distribution of sampled lakes; points show medians. Continental categories are descriptive geographic summaries, not causal groups."
-#| fig-width: 8
-#| fig-height: 4
-
-ggplot(continent_summary, aes(Continent, long_term_warming_decade)) +
+p_continent_distribution <- ggplot(continent_summary, aes(Continent, long_term_warming_decade)) +
   geom_hline(yintercept = 0, colour = col_text_soft, linewidth = wid_axis) +
   geom_violin(
     fill = col_inchart_fill, alpha = .45, colour = col_inchart_line,
@@ -263,11 +214,21 @@ ggplot(continent_summary, aes(Continent, long_term_warming_decade)) +
     fill = pal_direction[["warming"]], size = 2
   ) +
   coord_cartesian(
-    ylim = quantile(continent_summary$long_term_warming_decade, c(.01, .99))
+    ylim = distribution_y_limits
   ) +
   labs(x = NULL, y = "Long-term Sen slope (°C decade⁻¹)") +
   theme_base(grid = TRUE) +
   theme(axis.text.x = element_text(angle = 25, hjust = 1))
+```
+
+```{r}
+#| label: fig-long-term-warming-geographic-distributions
+#| fig-cap: "Lake-equal long-term warming-rate distributions by latitude band and continent. Violin width shows within-group density; points show medians. The common vertical scale supports geographic comparison, while categories remain descriptive summaries rather than causal groups."
+#| fig-width: 12
+#| fig-height: 4.5
+(p_latitude_distribution | p_continent_distribution) +
+  plot_annotation(tag_levels = "a") &
+  theme(plot.tag = element_text(face = "bold", size = 11))
 ```
 
 Trend significance broadly followed warming magnitude.
@@ -277,9 +238,4 @@ compared with 18.6% of remaining lakes.
 Thus, stronger net warming was more likely to yield a detectable long-term trend,
 although significant warming was not restricted to the fastest-warming regions.
 
-<!-- Neither net warming magnitude nor trend significance identifies
-when warming occurred within the 40-year record.
-Lakes with similar long-term slopes can still follow
-contrasting local-rate histories.
-We therefore examined endpoint-aligned trailing-10-year Sen slopes
-to resolve within-period changes in warming rate. -->
+> 显著性随净 warming 增大而提高，符合累计信号的统计特征。该图不提供路径发生时间的信息。

@@ -27,21 +27,23 @@ Its median local rate was 0.010°C yr^-1^ in 1990, 0.016°C yr^-1^ in 2000,
 −0.011°C yr^-1^ in 2010, and 0.024°C yr^-1^ in 2020;
 the proportion of positive local rates ranged from 45.3% to 58.6%
 across these endpoints
-(@fig-results-local-rate-history).
+(@fig-results-local-rate-dynamics).
 At every endpoint,
 the interquartile range included both warming and cooling rates.
 
+> 图 2a 以每个十年窗口终点排序。中位数随时间起伏，四分位范围持续跨越正负速率，提示总体变化并不代表每个湖泊同向变化。
+
 ```{r}
-#| label: fig-results-local-rate-history
-#| fig-cap: "Lake-equal median and interquartile range of endpoint-aligned trailing-10-year raw annual local warming rates. The ribbon is the lake-level interquartile range, not an uncertainty interval."
-#| fig-width: 8
-#| fig-height: 4
+#| include: false
 
 labelled_endpoints <- speed_time_distribution |>
   filter(year %in% c(1990, 2000, 2010, 2020)) |>
-  mutate(label = sprintf("%.3f", median))
+  mutate(
+    label = sprintf("%.3f", median),
+    hjust = case_when(year == 1990 ~ -0.1, year == 2020 ~ 1.1, TRUE ~ 0.5)
+  )
 
-ggplot(speed_time_distribution, aes(year, median)) +
+p_local_rate_history <- ggplot(speed_time_distribution, aes(year, median)) +
   geom_hline(yintercept = 0, colour = col_grid, linewidth = wid_grid) +
   geom_ribbon(aes(ymin = q25, ymax = q75), fill = col_inchart_fill, alpha = .45) +
   geom_line(colour = col_inchart_line, linewidth = wid_inchart_line) +
@@ -50,36 +52,33 @@ ggplot(speed_time_distribution, aes(year, median)) +
     fill = pal_direction[["warming"]], colour = col_text, size = 2.4
   ) +
   geom_text(
-    data = labelled_endpoints, aes(label = label),
+    data = labelled_endpoints, aes(label = label, hjust = hjust),
     vjust = -0.9, size = 2.8, colour = col_text
   ) +
   scale_x_continuous(limits = c(1990, 2020), expand = c(0, 0)) +
   labs(x = "Endpoint year", y = "10-year Sen slope (°C yr⁻¹)") +
-  theme_base(grid = TRUE)
+  theme_base(grid = TRUE) +
+  theme(plot.margin = margin(5.5, 12, 5.5, 12))
 ```
 
-These distributions rule out a single temporal description for the global lake
-population. Neither universal acceleration, universal stalling, nor a shared
-hiatus describes all lakes: positive and negative local rates coexisted
-throughout the record.
+The coexistence of positive and negative local rates throughout the record
+precludes a single temporal label for the global lake population, including
+universal acceleration, stalling or a shared hiatus.
 
-> 这些分布排除单一全球时间描述。整个记录期内，增温和降温局地速度并存；不存在可描述全部湖泊的普遍加速、普遍停滞或共同 hiatus。
+> 速度分布表明全球不存在统一时间标签。总体长期趋势为正时，局地十年速率仍可在不同湖泊和年份朝相反方向变化。
 
 We next reduced each lake's 31 local rates to their Theil--Sen trend, termed
 local-rate tendency. Positive and negative tendencies occurred in nearly equal
 proportions (47.8% and 52.2%, respectively), and the distribution was centred
 on zero (interquartile range: −1.89 to 1.86 × 10^-3^ °C yr^-2^;
-@fig-results-local-rate-tendency). This compact statistic identifies a net
+@fig-results-local-rate-dynamics). This compact statistic identifies a net
 monotonic tendency only. A tendency near zero can still contain substantial
 strengthening followed by weakening, or the reverse.
 
-> 随后将每湖 31 个局地速度压缩为其 Theil--Sen trend，称为局地速度倾向。正、负倾向比例接近（47.8% 与 52.2%），分布以零为中心（IQR：−1.89 至 1.86 × 10^-3^ °C yr^-2^）。该统计量只识别净单调倾向；接近零仍可包含先增强后减弱，或相反过程。
+> *warming-speed change* 是用于比较的轨迹摘要。正负几乎平衡；接近零可来自相反阶段的抵消。
 
 ```{r}
-#| label: fig-results-local-rate-tendency
-#| fig-cap: "Spatial distribution and global density of local-rate tendency. Map: lake-equal mean tendency in every occupied 1° cell. Positive values indicate net strengthening of local 10-year warming rates; negative values indicate net weakening. Diagonal hatching marks cells where at least half of lakes have a significant full-period Mann–Kendall trend, using the same definition as Fig. 1. Inset: distribution of lake-level local-rate tendencies."
-#| fig-width: 8
-#| fig-height: 4
+#| include: false
 
 hatch_segments <- fig1_grid |>
   filter(hatch) |>
@@ -126,17 +125,36 @@ local_rate_tendency_density <- ggplot(rate_tendency_distribution, aes(rate_tende
     axis.text.y = element_blank(), axis.ticks.y = element_blank()
   )
 
-draw_fixed_aspect(
+p_local_rate_tendency <- draw_fixed_aspect(
   ggdraw(local_rate_tendency_map) +
     draw_plot(local_rate_tendency_density, x = .04, y = .15, width = .25, height = .35),
   aspect = 2
 )
 ```
 
+```{r}
+#| label: fig-results-local-rate-dynamics
+#| fig-cap: "Within-period dynamics of global lake warming. a, Lake-equal median and interquartile range of endpoint-aligned trailing-10-year raw annual local warming rates. The ribbon is the lake-level interquartile range, not an uncertainty interval. b, Spatial distribution and global density of local-rate tendency. Map: lake-equal mean tendency in every occupied 1° cell. Positive values indicate net strengthening of local 10-year warming rates; negative values indicate net weakening. Diagonal hatching marks cells where at least half of lakes have a significant full-period Mann–Kendall trend, using the same definition as Fig. 1. Inset: distribution of lake-level local-rate tendencies."
+#| fig-width: 12
+#| fig-height: 4.5
+
+plot_grid(
+  p_local_rate_history,
+  p_local_rate_tendency,
+  nrow = 1,
+  rel_widths = c(.95, 1),
+  labels = c("a", "b"),
+  label_fontface = "bold",
+  label_size = 11,
+  label_x = .01,
+  label_y = .99
+)
+```
+
 Local-rate tendency was also spatially heterogeneous. Net strengthening of
 local warming rates was concentrated across northern Siberia, whereas net
 weakening occurred in parts of Alaska, northwestern Canada, and far eastern
-Siberia (@fig-results-local-rate-tendency). These patterns describe the
+Siberia (@fig-results-local-rate-dynamics). These patterns describe the
 40-year balance of local-rate evolution; they do not imply that all lakes in a
 region followed the same trajectory. Diagonal hatching marks cells where at
 least half of lakes had a significant full-period Mann--Kendall trend,
@@ -147,6 +165,8 @@ respectively.
 Long-term trend detectability and the direction of local-rate evolution are
 therefore distinct descriptive properties.
 
+> 地图的正负 tendency 表示四十年内局地速度的净增强或净减弱。斜线沿用长期趋势显著性，用于对照两个属性。
+
 At lake level, this difference from the long-term-slope result was equally
 clear. The fraction with a significant full-period trend was 36.2%, 33.3%,
 36.4%, and 29.6% across increasing signed local-rate-tendency quartiles; the
@@ -154,6 +174,8 @@ Spearman correlation between tendency and trend significance was −0.044. Even
 the largest absolute-tendency quartile had only 36.6% significant trends.
 Thus, the magnitude of net local-rate evolution did not determine whether a
 lake's 40-year temperature trend was detectable.
+
+> 四个 tendency 四分位的显著趋势比例接近，Spearman ρ 接近零。可检出长期变化与速度变化大小属于不同维度。
 
 This contrasts with Fig. 1, where larger long-term warming was much more often
 detectable as a significant full-period trend. The contrast is expected but
@@ -163,7 +185,7 @@ local-rate tendency describes whether the shorter-window rates changed through
 that record. Strong rate evolution can therefore cancel between earlier and
 later periods without producing a detectable net long-term trend.
 
-> 局地速度倾向也具有空间异质性。北西伯利亚集中出现局地速度净增强；阿拉斯加、加拿大西北部和远东西伯利亚部分地区集中出现净减弱。斜线表示沿用 Fig. 1 标准、至少半数湖泊全期趋势显著的格网，不检验局地速度倾向本身。斜线与非斜线格网的正倾向比例为 60.3% 与 56.3%，median 为 0.384 与 0.309 × 10^-3^ °C yr^-2^；长期趋势可检出性与局地速度演变方向是不同描述属性。湖泊层级上，四个 signed tendency 四分位的显著比例为 36.2%、33.3%、36.4%、29.6%，与显著性的 Spearman ρ = −0.044；绝对 tendency 最大四分位也只有 36.6% 显著。局地速度演变幅度不决定 40 年趋势是否可检出。与 Fig. 1 对比，长期 slope 与显著性均针对同一 40 年累计、近似单调变化，故关联更直接；局地速度倾向描述短窗口速度是否改变，早晚变化可相互抵消而不形成显著净长期趋势。
+> 长期 slope 与显著性基于累计量；局地速度倾向允许早晚阶段相互抵消。“无显著长期趋势”仍可能包含明显时间结构。
 
 Long-term warming magnitude and local-rate tendency were weakly related
 (Spearman ρ = −0.18). The two metrics answer different questions: long-term
@@ -178,7 +200,7 @@ and late weakening histories. The corresponding interquartile width was
 was 0.104°C yr^-1^; these values quantify pathway diversity after holding net
 warming approximately constant.
 
-> 长期增温幅度与局地速度倾向关系弱（Spearman ρ = −0.18）。两指标回答不同问题：长期 slope 表示净位移，tendency 表示记录内 10 年局地速度是增强还是减弱。故相近净增温不能约束变化时机。在长期增温 central decile（0.162--0.203°C decade^-1^；n = 9,225）中，晚期减早期局地速度的 IQR 为 −0.038 至 0.032°C yr^-1^；同等净增温同时包含后期增强与后期减弱。该 IQR 宽度为 0.070°C yr^-1^，局地速度记录内 SD 的 median 为 0.104°C yr^-1^；这些数值量化了固定净增温后仍存在的路径差异。
+> 固定在相近长期增温量后，晚期相对早期的局地速度仍横跨正负。这构成路径异质性的直接证据。
 
 ```{r}
 #| label: fig-results-pathway-examples
@@ -331,3 +353,5 @@ Together with the population-level spread quantified above,
 they establish the descriptive problem for the next section:
 whether this diversity is idiosyncratic to individual lakes
 or organised by a limited number of recurrent low-frequency trajectories.
+
+> 这些示例服务于逻辑过渡：它们展示个体层面的差异，下一节检验这种差异是否具有可重复的低频空间结构。

@@ -1,0 +1,14 @@
+---
+title: "2026-07-27"
+---
+
+## Manuscript evidence decision
+
+Reviewed the existing spatially blocked external-interpretation branch before
+considering a new GLAST/HydroLAKES/ERA5 producer. The available annual and
+seasonal wind/precipitation panel improves PC1 prediction only; it supplies no
+stable positive cross-scale gain for PC2--PC3 or raw warming-speed change.
+Because key heat-budget variables and independent forcing remain absent, no
+new driver result is promoted to the manuscript and no raw ERA5 job is run.
+
+> 已审查现有外部解释分支。风速/降水面板只改善 PC1 预测，未为 PC2--PC3 或 raw 速度变化提供跨尺度正增益；关键热收支变量和独立 forcing 缺失。故不新开驱动主结果，也不运行原始 ERA5。

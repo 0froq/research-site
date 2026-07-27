@@ -87,6 +87,8 @@ prepare_results_robustness_data <- function() {
     "7-year rolling" = "rolling7_annual_sinlat_equalarea_72x21_mean",
     "9-year rolling" = "rolling9_annual_sinlat_equalarea_72x21_mean",
     "11-year rolling" = "rolling11_annual_sinlat_equalarea_72x21_mean",
+    "Median aggregation" = "sinlat_equalarea_72x21_median",
+    "≥5 lakes per cell" = "sinlat_equalarea_72x21_mean_minlakes5",
     "36 × 11 grid" = "sinlat_equalarea_36x11_mean",
     "144 × 42 grid" = "sinlat_equalarea_144x42_mean"
   )

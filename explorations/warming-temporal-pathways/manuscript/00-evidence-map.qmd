@@ -40,8 +40,11 @@ results, or literature extracts.
   evidence, but must respect the boundary in
   [Mechanisms and boundaries](../literature/mechanisms.qmd). No descriptive
   association is promoted to causal attribution.
+- [Conclusion](05-conclusion.qmd): consolidates the central contribution,
+  decisive evidence, practical use and claim boundary. It introduces no new
+  analysis, external mechanism or citation.
 
-> 各章边界：Introduction 的外部事实与新意论断要有引文和已审阅笔记；Methods 必须与 analysis contract 一致，替代方法放入审查层；Results 只保留有 draft 溯源的图与数值；Discussion 可使用已审阅的机制证据，但不得把描述关联提升为因果归因。
+> 各章边界：Discussion 解释结果、比较既有研究并说明限制；Conclusion 只收束本稿已有证据的贡献、用途与边界。两章分工避免重复 Results，也避免在结尾引入新证据。
 
 ## Writing gate
 
@@ -51,4 +54,4 @@ has a reviewed source record; and its wording does not exceed the relevant
 method or association boundary. A missing item is an evidence task, not a
 reason to strengthen the prose.
 
-> 一段文字进入手稿前，确认四件事：论断在研究范围内；支持它的结果已保留；外部事实有已审阅来源；措辞不越过方法或关联边界。缺少其中一项时，应建立证据任务，而不是增强语气。
+> 一段文字进入手稿前，确认四件事：论断在研究范围内；支持它的结果已保留；外部事实有已审阅来源；措辞不越过方法或关联边界。缺项应形成证据任务，等待补足后再进入正文。

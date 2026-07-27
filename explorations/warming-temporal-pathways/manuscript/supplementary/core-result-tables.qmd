@@ -1,0 +1,98 @@
+---
+title: "Core-result tables"
+---
+
+```{r}
+#| include: false
+source("../../../../R/core/style.R")
+source("../../../../R/core/spatial.R")
+source("../../../../R/domains/kinematics.R")
+source("../../../../R/figures/results/01-global-kinematics.R")
+list2env(prepare_kinematics_data(), envir = environment())
+list2env(prepare_results_kinematics_data(), envir = environment())
+fmt_num <- function(x, digits = 2) formatC(x, format = "f", digits = digits)
+```
+
+The main text reports the statistics that carry the argument. These tables
+retain the associated design details and complete association matrix without
+adding display items to the main article.
+
+> 主文保留推进论证的数值；本页记录其空间检验设计和完整关联矩阵，便于核查。
+
+::: {#tbl-supplementary-long-term-spatial-autocorrelation .list-table tbl-cap="Spatial-autocorrelation design for equal-area long-term warming fields."}
+
+- - Statistic
+  - Value
+- - Spatial unit
+  - Occupied 1° cells; lake-equal mean long-term Sen slope
+- - Occupied cells
+  - `r spatial_autocorrelation$n_cells`
+- - Queen-neighbour pairs
+  - `r spatial_autocorrelation$n_neighbour_pairs`
+- - Moran’s I
+  - `r fmt_num(spatial_autocorrelation$moran_i, 2)`
+- - Two-sided permutation P
+  - `r fmt_num(spatial_autocorrelation$permutation_p, 3)` (999 permutations)
+
+:::
+
+::: {#tbl-supplementary-pca-spatial-autocorrelation .list-table tbl-cap="Spatial autocorrelation of equal-area PCA score fields."}
+
+- - Spatial field
+  - Moran's I
+  - Permutation P (999 permutations)
+- - PC1 score (display orientation)
+  - 0.703
+  - 0.001
+- - PC2 score
+  - 0.651
+  - 0.001
+- - PC3 score
+  - 0.798
+  - 0.001
+- - PC2–PC3 magnitude
+  - 0.556
+  - 0.001
+
+:::
+
+::: {#tbl-supplementary-pca-information-overlap .list-table tbl-cap="Information overlap between raw trajectory metrics and PCA coordinates at equal-area cell level."}
+
+- - Response
+  - PCA coordinate
+  - Spearman ρ
+  - Linear R²
+- - 40-year Sen slope
+  - PC1 score (display orientation)
+  - 0.672
+  - 0.314
+- - 40-year Sen slope
+  - PC2 score
+  - -0.056
+  - 0.001
+- - 40-year Sen slope
+  - PC3 score
+  - -0.077
+  - 0.019
+- - 40-year Sen slope
+  - PC2–PC3 magnitude
+  - 0.135
+  - 0.013
+- - Local-rate tendency
+  - PC1 score (display orientation)
+  - -0.260
+  - 0.049
+- - Local-rate tendency
+  - PC2 score
+  - 0.421
+  - 0.100
+- - Local-rate tendency
+  - PC3 score
+  - -0.305
+  - 0.122
+- - Local-rate tendency
+  - PC2–PC3 magnitude
+  - -0.020
+  - 0.006
+
+:::

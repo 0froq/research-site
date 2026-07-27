@@ -1,56 +1,190 @@
 ---
-title: "Discussion and conclusions"
+title: "Discussion"
 aliases:
   - "/explorations/warming-acceleration/manuscript/04-discussion.html"
   - "/explorations/warming-acceleration/draft/05-discussion.html"
   - "/explorations/warming-temporal-pathways/draft/05-discussion.html"
 ---
 
-## Global lake warming differs in timing as well as magnitude
+## A global warming signal contains diverse temporal histories
 
-The principal contribution is a shift from a one-slope description of global
-lake warming to a trajectory description. Widespread warming does not imply a
-common temporal history: lakes with similar four-decade change may have
-strengthening, weakening, or reversing local decadal rates.
+The central result is straightforward: widespread positive long-term LSWT
+trends coexist with markedly different histories of decadal warming rate. The
+40-year Theil--Sen slope identifies how far a lake moved between the beginning
+and end of the record. It does not preserve the order of changes within the
+record. Results 01 and 02 show why that lost information matters. At comparable
+net warming, some lakes experienced stronger late-period local rates, others
+weaker late-period rates, and many showed histories for which a single
+monotonic tendency is only a compact summary. This pattern occurs across the
+global population rather than within a small collection of case-study lakes.
 
-> 核心贡献是从单一长期 slope 描述转向轨迹描述。广泛增温不表示共同时间历史：40 年变化相近的湖泊可有增强、减弱或反转的局地十年速度。
+> 核心发现：全球长期增温很广泛，形成同一净增温的过程却多样。长期 slope 保留终点差值；局地速率历史保留变化发生的阶段。
 
-## The relevant spatial structure is continuous
+This contribution extends, rather than replaces, previous evidence for
+period-dependent lake warming. A global study of 155 lakes compared rates
+before and during the late-1990s to early-2010s slowdown [@winslow2018], and
+Central European observations documented an abrupt late-1980s shift
+[@woolway2017]. Our analysis supplies a common endpoint-aligned rate record for
+92,245 lakes, allowing the distribution of pathways to be evaluated over the
+same 1981--2020 interval. The analysis therefore avoids treating one globally
+chosen breakpoint as the only temporal contrast of interest. It also shows
+that a shared total temperature change provides a weak constraint on the
+timing of that change.
 
-Spatially balanced PCA supports a continuous geography of trajectory timing and
-persistence. It does not support a universal set of discrete lake-response
-types. Equal-area aggregation changes the estimand from a typical sampled lake
-to a represented spatial cell, which is necessary for a global spatial claim.
+> 与既有时期比较相比，本文使用全记录连续端点的十年速率。重点从某个固定断点转向每个湖泊的完整速率历史。
 
-> 空间平衡 PCA 支持轨迹时间和持续性的连续地理，不支持一组普适离散湖泊类型。等面积汇总将对象从典型抽样湖泊改为代表性空间格网，这是全球空间结论所必需的。
+The pathway perspective changes the questions that can be asked of lake
+warming. A net trend remains essential for describing cumulative exposure and
+for comparing global distributions. A local-rate history adds information
+about when a lake entered a period of rapid change, when a previous rate
+weakened, and whether these episodes offset over four decades. Those
+distinctions are relevant to ecological exposure because ice, stratification,
+oxygen and habitat conditions respond to seasonal and multiyear temperature
+states [@woolway2020; @kraemer2021]. The present data do not connect each
+trajectory to a biological response. They provide a temperature framework in
+which that connection can be tested with temporally matched ecological records.
 
-## Seasonal state and circulation sensitivity provide context, not attribution
+> 路径表述扩大了可提问题的范围：净变化适合累计暴露，速率历史适合定位快速变化的阶段。生态后果需要与独立生态观测共同检验。
 
-Warm-season diagnostics help locate the annual trajectory signal, whereas
-cold-season diagnostics are constrained by ice states. The NAO/AO result adds
-one external organisation of secondary trajectory structure: circulation
-sensitivity is spatially heterogeneous and aligns with PC2--PC3 more than PC1.
-Neither result identifies a heat-budget pathway or establishes causal forcing.
+This distinction also changes the appropriate unit of comparison. A lake that
+has the same 40-year slope as another lake may have entered its rapid-warming
+period decades later, or may have reached a similar net change after an early
+episode followed by a slower phase. Grouping lakes only by total trend can
+therefore mix records with different temporal exposure histories. The pathway
+coordinates offer a way to define comparison sets that retain this history,
+while the raw annual series remain available for studies that need the original
+temperature record rather than a reduced representation.
 
-> 暖季诊断有助于定位年轨迹信号，冷季诊断受冰状态约束。NAO/AO 结果为次级轨迹结构提供一种外部组织：环流敏感性具有空间异质性，且与 PC2–PC3 的对齐强于 PC1。两者都不识别热收支路径或建立因果强迫。
+> 相同长期 slope 的湖泊可能在不同阶段经历快速变化。路径坐标可用于构造保留时间历史的比较组；原始年序列仍是需要逐年温度时的依据。
 
-## Limitations
+## Spatial organisation is continuous and geographically structured
 
-Inference concerns reconstructed surface conditions, not the full water column
-or direct in-situ measurements. The 1981--2020 period limits multidecadal
-inference. PCA stability does not turn components into mechanisms, and the
-teleconnection screen remains susceptible to unresolved circulation pathways,
-serial dependence, and post-screen selection. Future work should use an
-independent, predeclared seasonal energy-balance panel to test mechanisms.
+The temporal differences were spatially organised. Equal-area cell PCA found a
+dominant low-frequency background and a recurring secondary PC2--PC3 timing
+plane, while score maps formed broad continuous fields. The associated Moran's
+I values and correlograms show that the maps contain spatial dependence beyond
+visual impression. This result has a practical interpretation: global lake
+warming cannot be reduced to one common trajectory plus unstructured
+lake-to-lake residual variation. Regional coherence is part of the empirical
+description and should be retained when future studies select comparison sites,
+aggregate ecological impacts or build spatial prediction models.
 
-> 推断针对重建表层状态，不涉及完整水柱或直接原位观测。1981–2020 年限限制多年际推断。PCA 稳定性不把成分变成机制；遥相关筛查仍受未解析环流路径、序列依赖和筛查后选择限制。后续应以独立、预先定义的季节能量平衡面板检验机制。
+> 路径差异形成连续空间场，Moran’s I 和 correlogram 为地图提供量化支撑。全球变化不能概括为一条共同曲线加随机残差。
 
-## Conclusion
+The continuous geometry also places a limit on categorical interpretation.
+PCA scores describe locations in a covariance space. They do not identify
+intrinsic lake classes, and the secondary axes can exchange order when the data
+are perturbed. The PC2--PC3 magnitude is more stable for spatial description
+because it remains unchanged under a rotation of the two axes. This is why the
+main spatial result focuses on broad score fields and secondary-plane
+magnitude, rather than assigning lakes to named pathway types. Categories may
+still become useful in an application with an externally defined management or
+ecological threshold; such categories would require a separate validation
+design.
 
-Global lakes are not adequately represented by a single warming rate. Their
-warming follows spatially structured temporal pathways: a shared low-frequency
-background is accompanied by recurring secondary timing structures and
-heterogeneous local-rate histories. This framework provides a descriptive
-baseline for future physical attribution and ecological risk assessment.
+> PCA 给出连续坐标。次级单轴可换序，PC2--PC3 振幅更适合表达偏离主轨迹的强度。湖泊类别需要外部阈值和单独验证。
 
-> 全球湖泊不能由单一增温速率充分表征。其增温遵循具有空间组织的时间路径：共同低频背景之外存在可重复次级时间结构与异质局地速度历史。该框架为后续物理归因和生态风险评估提供描述性基线。
+The comparison with global thermal regions clarifies the scope of this result.
+Thermal-region frameworks classify the form of the annual temperature cycle and
+provide a strong basis for analysing seasonal change [@maberly2020]. Our PCA
+uses annual low-frequency trajectories and asks how their timing differs among
+represented cells during 1981--2020. The two frameworks can be used together:
+seasonal thermal form may help interpret the physical setting in which a
+trajectory develops, while trajectory coordinates may identify regions with
+similar multidecadal timing. Neither framework supplies the other's estimand.
+
+> 季节 thermal region 描述年内循环；本文 PCA 描述四十年年均低频轨迹。两者可以互补，不能互相替代。
+
+Spatial balance is consequential here because it specifies whose covariance
+defines the global trajectory space. The PCA represents occupied equal-area
+cells, then projects individual lakes onto the fixed cell-derived axes. It
+therefore avoids allowing regions with many mapped lakes to determine the
+global modes solely through sample count. This does not make every cell a
+physical replicate or remove spatial dependence. It gives the geographic
+estimand a transparent form and makes the cell-level maps directly interpretable
+as the population used to fit the axes.
+
+> 等面积平衡明确 PCA 由哪些空间单元定义。它避免高采样区仅凭湖泊数量主导轴，同时不把 cell 当作独立物理重复。
+
+## Robustness defines what can be carried forward
+
+The robustness analysis supports the leading trajectory strongly and gives a
+more qualified account of the secondary plane. PC1 remained closely aligned
+after continental omission, temporal block omission, changes in grid size,
+cell aggregation and exclusion of the sparsest cells. Its interpretation as a
+dominant low-frequency background is consequently supported across several
+plausible representations of the same data. The median aggregation refit
+shows that a small number of atypical lakes within a cell do not generate the
+principal contrasts. The minimum-five-lakes-per-cell refit similarly preserves
+the matched PC1--PC3 axes after removing 115 sparse cells.
+
+> PC1 经大陆、时间、格网、汇总量和 cell 样本数扰动后仍复现。中位数与 `n≥5` 检验削弱了异常湖和极稀疏 cell 主导结果的担忧。
+
+The secondary result requires more care. The PC2--PC3 plane recurs under most
+continental omissions and retains its role as a description of timing beyond
+PC1. Its weakest replication occurs when North America is omitted, and becomes
+weaker in the minimum-cell-count refit. The temporal block tests also show
+sensitivity at the beginning and end of the record. These observations do not
+erase the secondary structure. They specify its evidential status: a recurring
+spatial timing plane whose exact orientation and strength depend partly on the
+continental and temporal support of the record. This is a more useful outcome
+than a binary stable/unstable label, because it identifies the data support
+needed for replication.
+
+> 次级平面在多数扰动下出现，北美遗漏、首末十年遗漏和 `n≥5` 分支给出其最清晰的边界。正文保留这些限制，避免将 PC2、PC3 写成固定全球模式。
+
+These robustness results also guide how the pathway coordinates should be
+used. PC1 can support comparisons that require a leading low-frequency
+background across alternative representations. The secondary plane is better
+used as a joint coordinate for describing regional timing differences, with
+the reference period and spatial support reported alongside it. Treating PC2
+and PC3 as named, independently transportable modes would discard the observed
+axis exchange and make a stronger claim than the refits support. The resulting
+framework is therefore deliberately asymmetric: strong inference for the
+leading background and conditional inference for secondary timing geometry.
+
+> 稳健性决定使用方式：PC1 可作为主低频背景；次级结构应以联合平面、参考期和空间支持共同报告。轴交换不能被省略。
+
+## Climate associations locate a research target
+
+The prior-summer NAO/AO association belongs to this framework as spatial
+context. The retained fields co-locate with the secondary trajectory geometry
+more than with PC1 after comparison against geographic and morphological
+covariates. This result identifies regions where circulation-linked summer
+sensitivity and pathway timing appear together. It does not resolve the heat
+budget through which that co-location arises. Atmospheric circulation can
+affect radiation, wind, humidity, cloud, precipitation and ice conditions, and
+these influences may interact with basin morphology and local catchment
+conditions. The current screen contains no independent measures capable of
+separating these routes.
+
+> NAO/AO 结果定位了值得研究的空间背景。热收支环节、因果方向和湖盆条件仍缺独立证据。
+
+The appropriate next step is therefore a designed attribution analysis rather
+than a larger catalogue of climate indices. Such a study would assemble
+predeclared, seasonally matched energy-balance variables; define the spatial
+and temporal hold-outs before model selection; and test whether a candidate
+pathway remains after morphology, ice state and local forcing are represented.
+The pathway map developed here supplies a target for that design. It tells an
+attribution study which temporal contrasts require explanation and where those
+contrasts occur.
+
+> 下一步应建立预定义的能量收支与混杂控制设计。本文提供待解释的路径坐标和空间位置。
+
+## Scope and limitations
+
+All inferences concern reconstructed lake-surface conditions from GLAST. They
+do not describe full-water-column heat content or substitute for direct
+in-situ validation in individual basins. We did not propagate a product-level
+reconstruction-uncertainty model through the slope or PCA estimates; map and
+lake-level patterns should therefore be read at the support of the GLAST
+product. The 1981--2020 record supports a four-decade description and cannot
+establish behaviour on longer climatic timescales. The overlapping local-rate
+windows deliberately smooth the annual series and should not be treated as
+independent observations. PCA supplies a compact covariance description,
+while mechanisms require independent physical measurements. Finally, the
+teleconnection result follows a candidate screen; its wording remains limited
+to reproducible association until it is evaluated in an independent,
+predeclared analysis.
+
+> 研究范围是 GLAST 重建的表层状态与 1981--2020 记录。未将产品级重建不确定性传递到 slope 或 PCA；局地窗口、PCA 和遥相关各有明确用途，机制归因仍需独立物理观测。

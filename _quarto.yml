@@ -7,6 +7,7 @@ project:
     - "!**/*.rmarkdown"
     - "!**/*.knit.md"
     - "!explorations/warming-temporal-pathways/archive/**"
+    - "!explorations/warming-temporal-pathways/manuscript/submission/**"
     - "!nas-README.md"
 
 website:
@@ -79,7 +80,11 @@ website:
                       href: explorations/warming-temporal-pathways/manuscript/supplementary/index.qmd
                       contents:
                         - explorations/warming-temporal-pathways/manuscript/supplementary/seasonal-ice-context.qmd
+                        - explorations/warming-temporal-pathways/manuscript/supplementary/pca-diagnostics.qmd
+                        - explorations/warming-temporal-pathways/manuscript/supplementary/pca-spatial-autocorrelation.qmd
+                        - explorations/warming-temporal-pathways/manuscript/supplementary/core-result-tables.qmd
                         - explorations/warming-temporal-pathways/manuscript/supplementary/teleconnection-candidate-atlas.qmd
+                        - explorations/warming-temporal-pathways/manuscript/supplementary/teleconnection-pole-trajectories.qmd
                         - explorations/warming-temporal-pathways/manuscript/supplementary/teleconnection-candidate-tables.qmd
     - title: Reference
       collapse-level: 2

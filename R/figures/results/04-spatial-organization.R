@@ -16,8 +16,7 @@ prepare_results_pca_data <- function(pca = prepare_pca_data()) {
   cell_scores <- pca$pca_cell_scores |>
     mutate(
       pc1_display = pc1 * pc1_sign,
-      pc23_magnitude = sqrt(pc2^2 + pc3^2),
-      pc23_angle = atan2(pc3, pc2)
+      pc23_magnitude = sqrt(pc2^2 + pc3^2)
     )
   loading_display <- pca$pca_loadings |>
     mutate(pc1_display = pc1 * pc1_sign)
@@ -172,12 +171,6 @@ prepare_results_pca_data <- function(pca = prepare_pca_data()) {
       magnitude_iqr = IQR(pc23_magnitude)
     )
 
-  continent_scores <- pca$pca_scores |>
-    left_join(metadata |> select(lake_id, Continent), by = "lake_id") |>
-    filter(!is.na(Continent)) |>
-    pivot_longer(c(pc1, pc2, pc3, pc4, pc5), names_to = "component", values_to = "score") |>
-    mutate(component = factor(toupper(component), levels = paste0("PC", 1:5)))
-
   list(
     cell_scores = cell_scores,
     cell_map_data = cell_map_data,
@@ -190,7 +183,6 @@ prepare_results_pca_data <- function(pca = prepare_pca_data()) {
     central_band_pc23 = central_band_pc23,
     central_band_summary = central_band_summary,
     moran_summary = moran_summary,
-    correlogram = correlogram,
-    continent_scores = continent_scores
+    correlogram = correlogram
   )
 }

@@ -5,6 +5,12 @@ title: "Supplementary analyses"
 These pages contain retained descriptive checks and candidate material that is
 not part of the six-section Results narrative.
 
+> 补充页保留支撑性诊断、数值表与候选材料；它们不扩展六节 Results 的主论证。
+
 - [Seasonal and ice context](seasonal-ice-context.qmd)
+- [PCA diagnostic loadings](pca-diagnostics.qmd)
+- [PCA spatial-autocorrelation diagnostic](pca-spatial-autocorrelation.qmd)
+- [Core-result tables](core-result-tables.qmd)
 - [Climate-link candidate atlas](teleconnection-candidate-atlas.qmd)
+- [Association-pole trajectory composites](teleconnection-pole-trajectories.qmd)
 - [Climate-link candidate tables](teleconnection-candidate-tables.qmd)
