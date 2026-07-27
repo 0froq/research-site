@@ -16,10 +16,6 @@ The background model contains a continuous spatial basis, elevation, log lake ar
 
 ## Spatial-block sensitivity
 
-![](pca-association-diagnostics_files/figure-html/fig-pca-association-spatial-cv-1.png)
-
-Figure 1: Spatial-block cross-validated R² for background versus restricted-ERA5 models. Three contiguous equal-area block sizes test whether the result depends on a single spatial hold-out scale. Negative values indicate worse-than-mean held-out prediction.
-
 For PC1, background-only held-out \\R^2\\ is 0.25–0.29 and rises to 0.32–0.38 after adding the restricted ERA5 block. PC2 has negative held-out \\R^2\\ at every block size, and PC3 has small positive background-only values (0.04–0.11); restricted ERA5 lowers both PC2 and PC3 performance at every tested scale. Thus the available ERA5 subset has no demonstrated predictive association with the two clearest secondary timing contrasts.
 
 > 对 PC1，背景模型留出 \\R^2\\ 为 0.25–0.29；加入受限 ERA5 块后升至 0.32–0.38。PC2 在全部 block 尺度均为负留出 \\R^2\\；PC3 背景模型仅为 0.04–0.11；加入 ERA5 后二者在每个尺度均下降。因此现有 ERA5 子集未显示对两个最清晰次级时间对比的预测关联。

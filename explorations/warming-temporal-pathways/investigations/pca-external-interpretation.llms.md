@@ -12,10 +12,6 @@ The first-pass panel is deliberately restricted to curated inputs already availa
 
 ## Spatial hold-out result
 
-![](pca-external-interpretation_files/figure-html/fig-pca-external-cv-1.png)
-
-Figure 1: Contiguous spatial-block held-out R² for nested external-association models. PC2–PC3 is evaluated jointly as a two-dimensional subspace. Negative values are worse than the held-out mean.
-
 For PC1, geography/morphology yields held-out \\R^2=0.247\\–\\0.289\\. Adding annual wind and precipitation raises it to \\0.318\\–\\0.377\\ at all three block scales. Adding JJA-minus-DJF contrast terms adds no further gain. Raw long-term warming has only a small annual-forcing increment (\\0.012\\–\\0.015\\), and the seasonal extension removes it. Thus the current panel predicts part of PC1 score geography, but does not provide a matched and robust explanation of raw long-term warming.
 
 > PC1 中，地理/形态模型留出 \\R^2=0.247\\–\\0.289\\；加入年风速与降水后，在三种 block 尺度升至 \\0.318\\–\\0.377\\。再加入 JJA 减 DJF 对比项没有增益。raw 长期增温的年 forcing 增益仅为 \\0.012\\–\\0.015\\，季节扩展后消失。因此当前面板可预测部分 PC1 空间 score，却不能稳健解释 raw 长期增温。

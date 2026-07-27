@@ -94,25 +94,25 @@ Step 14 produces lake-by-endpoint rate/state files and a per-lake alignment summ
 
 ## First-pass spatial diagnostics
 
-Before interpreting a correlation map, its availability must be shown. Figure [Figure 1](#fig-alignment-availability) gives the fraction of lakes in each occupied 1° cell for which the annual-rate comparison is defined. A low fraction normally indicates a constant seasonal, extreme-temperature, or ice-state sequence; it does not indicate missing temperature observations.
+Before interpreting a correlation map, its availability must be shown. Figure [../../../Figure 1](#fig-alignment-availability) gives the fraction of lakes in each occupied 1° cell for which the annual-rate comparison is defined. A low fraction normally indicates a constant seasonal, extreme-temperature, or ice-state sequence; it does not indicate missing temperature observations.
 
-> 解释相关地图前，需先显示其可定义性。[Figure 1](#fig-alignment-availability) 给出每个有湖的 1° 格网中 annual-rate 比较可定义的湖泊比例。低比例通常表示季节、极值或冰态序列恒定，并非温度观测缺失。
+> 解释相关地图前，需先显示其可定义性。[../../../Figure 1](#fig-alignment-availability) 给出每个有湖的 1° 格网中 annual-rate 比较可定义的湖泊比例。低比例通常表示季节、极值或冰态序列恒定，并非温度观测缺失。
 
 ![](seasonal-ice-diagnostics_files/figure-html/fig-alignment-availability-1.png)
 
 Figure 1: Fraction of lakes per 1° cell with a defined annual-rate alignment. Cells contain at least three lakes.
 
-Where at least three correlations are defined, Figure [Figure 2](#fig-alignment-strength) maps the within-cell median alignment. This is a descriptive spatial aggregation, not an area-weighted global field and not a causal seasonal contribution map.
+Where at least three correlations are defined, Figure [../../../Figure 2](#fig-alignment-strength) maps the within-cell median alignment. This is a descriptive spatial aggregation, not an area-weighted global field and not a causal seasonal contribution map.
 
-> 对至少有 3 个可定义相关的格网，[Figure 2](#fig-alignment-strength) 显示其中位对齐。它是描述性空间汇总，不是面积加权全球场，也不是季节因果贡献图。
+> 对至少有 3 个可定义相关的格网，[../../../Figure 2](#fig-alignment-strength) 显示其中位对齐。它是描述性空间汇总，不是面积加权全球场，也不是季节因果贡献图。
 
 ![](seasonal-ice-diagnostics_files/figure-html/fig-alignment-strength-1.png)
 
 Figure 2: Median within-lake Spearman alignment between annual local warming rate and each rolling seasonal, extreme-temperature, or ice-state sequence, summarized within 1° cells.
 
-Figure [Figure 3](#fig-alignment-distribution) retains the lake-level distribution behind these medians. It distinguishes a globally weak comparison from a geographically mixed comparison with positive and negative modes that cancel in the median.
+Figure [../../../Figure 3](#fig-alignment-distribution) retains the lake-level distribution behind these medians. It distinguishes a globally weak comparison from a geographically mixed comparison with positive and negative modes that cancel in the median.
 
-> [Figure 3](#fig-alignment-distribution) 保留这些中位数背后的湖泊尺度分布。它区分“全球普遍弱”与“正负模式并存、在中位数中抵消”的情况。
+> [../../../Figure 3](#fig-alignment-distribution) 保留这些中位数背后的湖泊尺度分布。它区分“全球普遍弱”与“正负模式并存、在中位数中抵消”的情况。
 
 ![](seasonal-ice-diagnostics_files/figure-html/fig-alignment-distribution-1.png)
 
@@ -136,9 +136,9 @@ Among endpoints with positive annual local rate, median alignment is 0.60 for JJ
 
 > 在 annual local rate 为正的 endpoint 中，JJA、SON、最暖 30 天的中位对齐分别为 0.60、0.39、0.50；annual rate 为负时分别为 0.58、0.29、0.50。
 
-Figure [Figure 4](#fig-sign-conditioned-temperature) maps these two conditional profiles. Tile opacity is the fraction of lakes in the cell with a defined conditional correlation, preventing sparse branches from looking equally certain.
+Figure [../../../Figure 4](#fig-sign-conditioned-temperature) maps these two conditional profiles. Tile opacity is the fraction of lakes in the cell with a defined conditional correlation, preventing sparse branches from looking equally certain.
 
-> [Figure 4](#fig-sign-conditioned-temperature) 显示两种条件 profile 的空间分布。格网透明度表示其中条件相关可定义的湖泊比例，避免稀疏分支看似同样可靠。
+> [../../../Figure 4](#fig-sign-conditioned-temperature) 显示两种条件 profile 的空间分布。格网透明度表示其中条件相关可定义的湖泊比例，避免稀疏分支看似同样可靠。
 
 ![](seasonal-ice-diagnostics_files/figure-html/fig-sign-conditioned-temperature-1.png)
 
@@ -146,9 +146,9 @@ Figure 4: Median conditional Spearman alignment between annual local rate and w
 
 ## Seasonal ice-loss alignment
 
-The seasonal ice-loss branch replaces frozen-season temperature rate with a directly interpretable ice-change sequence. For positive annual-rate endpoints, JJA ice-loss alignment has median 0.42; for negative annual-rate endpoints it is 0.35. Figure [Figure 5](#fig-sign-conditioned-ice) shows whether this and the winter/spring branches are geographically coherent.
+The seasonal ice-loss branch replaces frozen-season temperature rate with a directly interpretable ice-change sequence. For positive annual-rate endpoints, JJA ice-loss alignment has median 0.42; for negative annual-rate endpoints it is 0.35. Figure [../../../Figure 5](#fig-sign-conditioned-ice) shows whether this and the winter/spring branches are geographically coherent.
 
-> 季节冰损失分支以可解释的冰变化序列替代冻结季节 temperature rate。annual rate 为正时，JJA 冰损失对齐中位数为 0.42；annual rate 为负时为 0.35。[Figure 5](#fig-sign-conditioned-ice) 用于查看这一模式及冬春分支是否具有空间连贯性。
+> 季节冰损失分支以可解释的冰变化序列替代冻结季节 temperature rate。annual rate 为正时，JJA 冰损失对齐中位数为 0.42；annual rate 为负时为 0.35。[../../../Figure 5](#fig-sign-conditioned-ice) 用于查看这一模式及冬春分支是否具有空间连贯性。
 
 ![](seasonal-ice-diagnostics_files/figure-html/fig-sign-conditioned-ice-1.png)
 
@@ -168,17 +168,17 @@ For endpoints with positive annual rate, a positive thermal-asymmetry rate ident
 
 > 对 annual rate 为正的 endpoint，热不均衡 rate 为正表示暖季相对强化，为负表示冷季相对强化；对 annual rate 为负的 endpoint，正值表示冷季相对降温更快，负值表示暖季相对降温更快。必须保留“相对”和“可观测”：每个象限中各季均可能同向变化。
 
-Figure [Figure 6](#fig-thermal-asymmetry-space) maps the within-lake median thermal-asymmetry rate among positive and negative annual-rate endpoints. Tile fill is the median across lakes in each 1° cell, and opacity records the within-lake median fraction of endpoints with positive asymmetry. This separates spatial heterogeneity from a global median that can mix opposite response modes.
+Figure [../../../Figure 6](#fig-thermal-asymmetry-space) maps the within-lake median thermal-asymmetry rate among positive and negative annual-rate endpoints. Tile fill is the median across lakes in each 1° cell, and opacity records the within-lake median fraction of endpoints with positive asymmetry. This separates spatial heterogeneity from a global median that can mix opposite response modes.
 
-> [Figure 6](#fig-thermal-asymmetry-space) 显示正／负 annual-rate endpoint 内，每湖热不均衡 rate 的中位数，再按 1° 格网汇总。填色为格网内中位 rate，透明度为各湖“热不均衡为正” endpoint 比例的中位数。这样可避免全球中位数混合相反响应模式。
+> [../../../Figure 6](#fig-thermal-asymmetry-space) 显示正／负 annual-rate endpoint 内，每湖热不均衡 rate 的中位数，再按 1° 格网汇总。填色为格网内中位 rate，透明度为各湖“热不均衡为正” endpoint 比例的中位数。这样可避免全球中位数混合相反响应模式。
 
 ![](seasonal-ice-diagnostics_files/figure-html/fig-thermal-asymmetry-space-1.png)
 
 Figure 6: Seasonal thermal-asymmetry rates conditional on annual local-rate sign. Fill: within-cell median of each lake’s median endpoint rate; opacity: within-cell median fraction of positive diagnostic rates. Positive JJA − DJF change means warm-season-relative amplification.
 
-At lake level, the positive-annual-rate branch has median JJA–DJF contrast rate 0.10 °C yr⁻¹; the negative-annual-rate branch has -0.06 °C yr⁻¹. These global summaries are only reference values; interpretation should follow the spatially organised sign mixtures in [Figure 6](#fig-thermal-asymmetry-space).
+At lake level, the positive-annual-rate branch has median JJA–DJF contrast rate 0.10 °C yr⁻¹; the negative-annual-rate branch has -0.06 °C yr⁻¹. These global summaries are only reference values; interpretation should follow the spatially organised sign mixtures in [../../../Figure 6](#fig-thermal-asymmetry-space).
 
-> 湖泊尺度上，正 annual-rate 分支的 JJA−DJF 热对比 rate 中位数为 0.10 °C yr⁻¹；负分支为 -0.06 °C yr⁻¹。这些全球汇总只作参照；解释应回到 [Figure 6](#fig-thermal-asymmetry-space) 中空间组织化的正负混合。
+> 湖泊尺度上，正 annual-rate 分支的 JJA−DJF 热对比 rate 中位数为 0.10 °C yr⁻¹；负分支为 -0.06 °C yr⁻¹。这些全球汇总只作参照；解释应回到 [../../../Figure 6](#fig-thermal-asymmetry-space) 中空间组织化的正负混合。
 
 ## Paired seasonal ice alignments
 
@@ -190,9 +190,9 @@ The JJA–SON pair contains 70,078 lakes; its between-season Spearman associatio
 
 > JJA–SON 重叠样本有 70,078 湖；两季间 Spearman 为 0.55，符号相反比例为 51.0%。DJF–MAM 重叠样本有 15,236 湖，对应为 0.40 和 23.3%。
 
-Figure [Figure 7](#fig-paired-ice-alignment-space) maps the modal sign combination within each occupied 1° cell. Opacity is the share of lakes belonging to that modal combination. It distinguishes genuinely mixed local seasonal responses from broad cells dominated by one paired response pattern.
+Figure [../../../Figure 7](#fig-paired-ice-alignment-space) maps the modal sign combination within each occupied 1° cell. Opacity is the share of lakes belonging to that modal combination. It distinguishes genuinely mixed local seasonal responses from broad cells dominated by one paired response pattern.
 
-> [Figure 7](#fig-paired-ice-alignment-space) 显示每个 1° 格网中最常见的季节冰对齐符号组合；透明度为该组合在格网中的湖泊比例。它区分同地混合的季节响应与被单一组合主导的格网。
+> [../../../Figure 7](#fig-paired-ice-alignment-space) 显示每个 1° 格网中最常见的季节冰对齐符号组合；透明度为该组合在格网中的湖泊比例。它区分同地混合的季节响应与被单一组合主导的格网。
 
 ![](seasonal-ice-diagnostics_files/figure-html/fig-paired-ice-alignment-space-1.png)
 
@@ -212,9 +212,9 @@ The `JJA and SON loss` configuration has median annual ice loss 1.62 days yr⁻�
 
 > `JJA and SON loss` 的全年冰损失中位数为 1.62 天 yr⁻¹（IQR：1.00 至 2.25）。两种直接反向组合接近全年平衡：`JJA loss / SON gain` 中位数为 0.20，`JJA gain / SON loss` 为 -0.00 天 yr⁻¹。
 
-Figure [Figure 8](#fig-direct-ice-phase) tests the proposed distinction without imposing an arbitrary annual-loss threshold. Joint JJA–SON loss is consistent with overall shortening; opposite direct signs are consistent with calendar-season redistribution. They do not by themselves prove a delayed freeze-up or earlier break-up, which requires monthly or daily transition-date analysis within hemisphere.
+Figure [../../../Figure 8](#fig-direct-ice-phase) tests the proposed distinction without imposing an arbitrary annual-loss threshold. Joint JJA–SON loss is consistent with overall shortening; opposite direct signs are consistent with calendar-season redistribution. They do not by themselves prove a delayed freeze-up or earlier break-up, which requires monthly or daily transition-date analysis within hemisphere.
 
-> [Figure 8](#fig-direct-ice-phase) 不设任意全年失冰阈值，直接检验上述区分。JJA–SON 同时失冰与全年缩短一致；两季直接异号与日历季节再分配一致。但它们本身不能证明冻结后移或融化提前，后者需要分半球的逐月或逐日转折日期分析。
+> [../../../Figure 8](#fig-direct-ice-phase) 不设任意全年失冰阈值，直接检验上述区分。JJA–SON 同时失冰与全年缩短一致；两季直接异号与日历季节再分配一致。但它们本身不能证明冻结后移或融化提前，后者需要分半球的逐月或逐日转折日期分析。
 
 ![](seasonal-ice-diagnostics_files/figure-html/fig-direct-ice-phase-1.png)
 

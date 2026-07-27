@@ -4,7 +4,7 @@
 
 This atlas retains every planned seasonal and annual lag display before manuscript selection. Cell-level median absolute correlation is a landscape description. It does not select an optimal physical delay and does not provide causal attribution.
 
-> 本图集保留所有计划中的季节和年尺度 lag 图，供后续筛选。格网中位绝对相关只描述关联图景，不选择物理最优延迟，也不提供因果归因。
+> 本图集保留所有计划中的季节和年尺度 lag 图，供后续筛选。格网中位绝对相关用于呈现关联图景；物理延迟与因果归因需要后续研究。
 
 ![](teleconnection-candidate-atlas_files/figure-html/fig-results-seasonal-lag-heatmap-1.png)
 
@@ -28,7 +28,7 @@ Figure 3: Descriptive peak quarterly lag by response season and climate index. 
 
 The following comparison is a candidate screen, not a discovery replication: candidates were chosen after inspecting the lag landscape. It nevertheless shows explicitly whether PC1, PC2, PC3, their joint PC2–PC3 plane, or their full combination adds held-out spatial prediction beyond geography and lake morphology.
 
-> 下图是候选筛查，不是独立发现重复，因为候选来自 lag 图景之后。它仍明确比较 PC1、PC2、PC3、PC2–PC3 联合平面及全组合，是否在地理和湖泊形态之外增加空间留出预测。
+> 下图属于候选筛查，候选来自先前的 lag 图景。它比较 PC1、PC2、PC3、PC2–PC3 联合平面及全组合在地理和湖泊形态基础上的空间留出预测增量。
 
 ![](teleconnection-candidate-atlas_files/figure-html/fig-results-tele-pca-additions-all-candidates-1.png)
 

@@ -77,18 +77,47 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="Climate-variability links – Exploration">
 <meta property="og:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
 <meta property="og:image" content="https://froq.me/research-site/explorations/warming-temporal-pathways/manuscript/results/06-climate-links_files/figure-html/fig-results-tele-primary-fields-1.png">
 <meta property="og:site_name" content="Exploration">
-<meta property="og:image:height" content="3000">
-<meta property="og:image:width" content="4200">
+<meta property="og:image:height" content="2700">
+<meta property="og:image:width" content="7200">
 <meta name="twitter:title" content="Climate-variability links – Exploration">
 <meta name="twitter:description" content="Some scientific exploration about geography, limnology, hydrology, oceanography, climatology and so on.">
 <meta name="twitter:image" content="https://froq.me/research-site/explorations/warming-temporal-pathways/manuscript/results/06-climate-links_files/figure-html/fig-results-tele-primary-fields-1.png">
-<meta name="twitter:image-height" content="3000">
-<meta name="twitter:image-width" content="4200">
+<meta name="twitter:image-height" content="2700">
+<meta name="twitter:image-width" content="7200">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -689,6 +718,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">2026-07-25</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../explorations/warming-temporal-pathways/log/2026-07-27.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2026-07-27</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -720,8 +755,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../../explorations/warming-temporal-pathways/manuscript/03-abstract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Abstract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../../explorations/warming-temporal-pathways/manuscript/04-discussion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Discussion and conclusions</span></a>
+ <span class="menu-text">Discussion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../explorations/warming-temporal-pathways/manuscript/05-conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusion</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
@@ -748,19 +795,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../explorations/warming-temporal-pathways/manuscript/results/03-warming-patterns.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dominant warming trajectories</span></a>
+ <span class="menu-text">Low-frequency warming trajectories</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../explorations/warming-temporal-pathways/manuscript/results/04-spatial-organization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Spatial organization of trajectory modes</span></a>
+ <span class="menu-text">Spatial organization of warming pathways</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../explorations/warming-temporal-pathways/manuscript/results/05-trajectory-robustness.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Robustness of trajectory modes</span></a>
+ <span class="menu-text">Stability boundaries of trajectory modes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -788,8 +835,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../../explorations/warming-temporal-pathways/manuscript/supplementary/pca-diagnostics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PCA diagnostic loadings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../explorations/warming-temporal-pathways/manuscript/supplementary/pca-spatial-autocorrelation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PCA spatial-autocorrelation diagnostic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../explorations/warming-temporal-pathways/manuscript/supplementary/core-result-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Core-result tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../../explorations/warming-temporal-pathways/manuscript/supplementary/teleconnection-candidate-atlas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teleconnection candidate atlas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../explorations/warming-temporal-pathways/manuscript/supplementary/teleconnection-pole-trajectories.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Association-pole trajectory composites</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -816,7 +887,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exploratory-screening-identifies-a-retained-summer-association-family" id="toc-exploratory-screening-identifies-a-retained-summer-association-family" class="nav-link active" data-scroll-target="#exploratory-screening-identifies-a-retained-summer-association-family">Exploratory screening identifies a retained summer association family</a></li>
+  <li><a href="#exploratory-screening-retains-a-summer-association-family" id="toc-exploratory-screening-retains-a-summer-association-family" class="nav-link active" data-scroll-target="#exploratory-screening-retains-a-summer-association-family">Exploratory screening retains a summer association family</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/0froq/research-site/edit/main/explorations/warming-temporal-pathways/manuscript/results/06-climate-links.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/0froq/research-site/blob/main/explorations/warming-temporal-pathways/manuscript/results/06-climate-links.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/0froq/research-site/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -843,22 +914,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="exploratory-screening-identifies-a-retained-summer-association-family" class="level2">
-<h2 class="anchored" data-anchor-id="exploratory-screening-identifies-a-retained-summer-association-family">Exploratory screening identifies a retained summer association family</h2>
-<p>For each lake, raw liquid-water JJA LSWT is linearly detrended, then residual anomalies are correlated with predeclared circulation-index seasons. Candidate indices, seasons, and lags were screened before this focused comparison. Most combinations were weak, region-limited, or did not survive the geographic robustness sequence. We therefore report the retained prior-summer NAO/AO family and retain the rest as exploratory comparisons.</p>
+<section id="exploratory-screening-retains-a-summer-association-family" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-screening-retains-a-summer-association-family">Exploratory screening retains a summer association family</h2>
+<p>For each lake, we linearly detrended raw liquid-water JJA LSWT and correlated the residual anomalies with predeclared circulation-index seasons. Candidate indices, seasons and lags were screened before this focused comparison. Most combinations were weak, region-limited, or did not persist through the geographic stability sequence. We therefore report the retained prior-summer NAO/AO family and leave the remaining combinations as exploratory comparisons.</p>
 <blockquote class="blockquote">
-<p>对每湖 raw 液态 JJA LSWT 做线性去趋势，再将残差与预设环流指数季节相关。候选指数、季节和滞后先经筛查；多数关联弱、区域受限或未通过地理稳健性序列。故正文报告保留的前年夏季 NAO/AO 关联族，其余仍为探索性比较。</p>
+<p>筛查先于正文选择。保留 NAO/AO 关联族作为稳定性检查后的报告对象，其余候选留在探索层。</p>
 </blockquote>
 <p>We ask where this association differs, and whether its spatial field co-locates with PCA scores. This is descriptive association, not teleconnection attribution.</p>
 <blockquote class="blockquote">
-<p>对每湖 raw 液态 JJA LSWT 线性去趋势，再将残差与预设环流指数季节相关。问题是关联在哪里不同、是否与 PCA 分数空间共定位。这是描述性关联，不是遥相关归因。</p>
+<p>问题是关联在何处变化，以及其空间场是否与 PCA 分数共定位。本节提供描述性空间证据；遥相关归因需要独立设计。</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-results-tele-primary-fields" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-results-tele-primary-fields-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-climate-links_files/figure-html/fig-results-tele-primary-fields-1.png" class="img-fluid figure-img" width="2100">
+<img src="06-climate-links_files/figure-html/fig-results-tele-primary-fields-1.png" class="img-fluid figure-img" width="3600">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-results-tele-primary-fields-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Signed Fisher-z association fields for JJA NAO/AO in year t−1 and JJA LSWT in year t. Purple/green encode sign, not warming/cooling: near-white cells are weak association, saturated cells are stronger signed association.
@@ -871,27 +942,13 @@ Figure&nbsp;1: Signed Fisher-z association fields for JJA NAO/AO in year t−1 a
 <blockquote class="blockquote">
 <p>上一年夏季 NAO/AO 与当年夏季 LSWT 是最强保留关联族。场在 908 个邻接格网对中的相关为 0.71、0.73；强异号邻接很少，NAO 为 5/213，AO 为 3/193。PDO、MAM NAO 和 DJF PDO 仍只是区域性或覆盖受限比较。</p>
 </blockquote>
-<p>PC1 adds little held-out prediction of this sensitivity field. PC2 and joint PC2–PC3 scores add stable skill across grid choices, continent omissions and decade omissions. Positive and negative association poles differ in PC2 and in late local warming-speed history: by 2020 positive poles are near 0.069 °C yr⁻¹; negative poles near −0.014 (NAO) and −0.018 (AO).</p>
+<p>PC1 added little held-out predictive information beyond geographic and lake morphology covariates. PC2 and the joint PC2–PC3 representation retained positive increments across the grid, continental-omission and decade-omission checks. Association poles also differed in PC2 and in late local warming-rate history: by 2020, the positive pole was near 0.069 °C yr<span class="math inline">\(^{-1}\)</span>, whereas the negative poles were near −0.014 °C yr<span class="math inline">\(^{-1}\)</span> for NAO and −0.018 °C yr<span class="math inline">\(^{-1}\)</span> for AO. The associated annual and summer local-rate composites are retained as a <a href="../../../../explorations/warming-temporal-pathways/manuscript/supplementary/teleconnection-pole-trajectories.html">supplementary descriptive check</a>.</p>
 <blockquote class="blockquote">
-<p>PC1 对该敏感性场的空间留出预测几乎无增益；PC2 和联合 PC2–PC3 在格网、大陆删除与年代删除中保持稳定增益。关联正负端在 PC2 和后期局部增温速度历史上不同：2020 年正端约 0.069 °C yr⁻¹，负端约 −0.014（NAO）和 −0.018（AO）。</p>
+<p>比较基线为 geography + morphology。PC1 增量很小；次级几何在多种留出设计中保留正增量。速度差异描述 association poles 的轨迹背景。</p>
 </blockquote>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-results-tele-speed-poles" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-results-tele-speed-poles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-climate-links_files/figure-html/fig-results-tele-speed-poles-1.png" class="img-fluid figure-img" width="3600">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-results-tele-speed-poles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Trailing 10-year annual and JJA Sen-speed composites for negative and positive NAO/AO association poles.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>This co-location does not show NAO/AO causes PC2, nor identify circulation pathway. Grid, LOCO and LODO tests test stability, not independent discovery.</p>
+<p>This co-location does not show that NAO/AO causes PC2–PC3 structure, nor does it identify a circulation pathway. Grid, LOCO and LODO analyses assess stability after screening; they do not provide independent discovery.</p>
 <blockquote class="blockquote">
-<p>此共定位不表示 NAO/AO 造成 PC2，也不识别环流路径。格网、LOCO 和 LODO 检验稳定性，不是独立发现。</p>
+<p>本节最强结论为：次级轨迹几何与异质夏季敏感性共定位。因果方向、能量收支环节与候选选择独立性仍待后续设计处理。</p>
 </blockquote>
 
 
@@ -1313,8 +1370,8 @@ Figure&nbsp;2: Trailing 10-year annual and JJA Sen-speed composites for negative
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../../explorations/warming-temporal-pathways/manuscript/results/05-trajectory-robustness.html" class="pagination-link" aria-label="Robustness of trajectory modes">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Robustness of trajectory modes</span>
+      <a href="../../../../explorations/warming-temporal-pathways/manuscript/results/05-trajectory-robustness.html" class="pagination-link" aria-label="Stability boundaries of trajectory modes">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Stability boundaries of trajectory modes</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

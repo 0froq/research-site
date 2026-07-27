@@ -45,7 +45,7 @@ Using in-situ and satellite, find 1985–2009 global lake summer surface water t
 >
 > Evidance  
 > - Results and Discussion, mean 0.34°C decade⁻¹, range -0.7–1.3°C decade⁻¹.
-> - [Figure 1](#fig-oreilly2015f2), see y-axis for LSSWT trend.
+> - [../../Figure 1](#fig-oreilly2015f2), see y-axis for LSSWT trend.
 >
 > Conditions  
 > Summer; 235 lakes;

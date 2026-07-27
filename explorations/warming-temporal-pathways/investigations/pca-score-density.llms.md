@@ -26,9 +26,9 @@ This argues against restoring K-means or treating the two lake-density humps as 
 
 ## Three-dimensional density surface
 
-Both surfaces use the middle KDE bandwidth and scale their own maximum to one. Height therefore compares shape within a distribution, not lake density against cell density. Drag to rotate; the PC2 and PC3 axes are shared with [Figure 1](#fig-pc23-score-density).
+Both surfaces use the middle KDE bandwidth and scale their own maximum to one. Height therefore compares shape within a distribution, not lake density against cell density. Drag to rotate; the PC2 and PC3 axes are shared with [../../../Figure 1](#fig-pc23-score-density).
 
-> 两个曲面均使用中等 KDE 带宽，并将各自最大值缩放为一。高度比较的是各自分布内部的形状，不能比较湖泊密度与格网密度的绝对大小。可拖拽旋转；PC2、PC3 坐标轴与 [Figure 1](#fig-pc23-score-density) 相同。
+> 两个曲面均使用中等 KDE 带宽，并将各自最大值缩放为一。高度比较的是各自分布内部的形状，不能比较湖泊密度与格网密度的绝对大小。可拖拽旋转；PC2、PC3 坐标轴与 [../../../Figure 1](#fig-pc23-score-density) 相同。
 
 Figure 2: Interactive PC2–PC3 KDE surfaces. Lake and equal-area-cell KDE maxima are separately normalised to one; surfaces show score-space shape only.
 

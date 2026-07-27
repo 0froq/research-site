@@ -10,11 +10,11 @@ Figure 1: Distribution of lake-level Spearman alignment between annual and diag
 
 Warm-season trends are most available and normally align more closely with annual local-rate histories. Winter and spring must be interpreted with ice state: repeated 0 °C days are a finite frozen state, not ordinary liquid-water observations. Therefore low cold-season alignment is an information boundary, not evidence that cold seasons are unimportant.
 
-> 暖季趋势最完整，通常与年均局部速度历史更一致。冬春必须结合冰状态：反复出现的 0 °C 是冻结状态，不是普通液态温度。冷季对齐较弱主要是信息边界，不能解读为冷季不重要。
+> 暖季趋势最完整，通常与年均局部速度历史更一致。冬春需结合冰状态：反复出现的 0 °C 对应冻结状态，与液态温度观测不同。冷季对齐较弱反映信息边界，冷季作用仍需独立研究。
 
-Ice duration supplies a second state diagnostic. Its association with annual local rates varies among lakes and regions. It does not establish glacier-meltwater forcing, nor解释每条降温轨迹。
+Ice duration supplies a second state diagnostic. Its association with annual local rates varies among lakes and regions. It does not establish glacier-meltwater forcing or explain every cooling trajectory.
 
-> 冰期长度提供第二种状态诊断。它与年局部 rate 的关系因湖泊和地区而异；不证明冰川融水驱动，也不解释每条降温轨迹。
+> 冰期长度提供第二种状态诊断。它与年局部 rate 的关系因湖泊和地区而异；冰川融水过程与各条降温轨迹需要额外证据。
 
 Detailed sign-conditioned comparisons and frozen-state limitations remain in [Seasonal and Ice Diagnostics](../../../../explorations/warming-temporal-pathways/investigations/seasonal-ice-diagnostics.llms.md).
 
