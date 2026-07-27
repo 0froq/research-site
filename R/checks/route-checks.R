@@ -15,14 +15,15 @@ front_matter <- function(path) {
 
 alias_rows <- lapply(source_files, function(path) {
   header <- front_matter(path)
-  values <- grep("warming-acceleration|warming-temporal-pathways", header, value = TRUE)
-  if (!length(values)) return(NULL)
-  route <- sub("^\\s*-\\s*", "", values)
-  route <- gsub('"', "", route, fixed = TRUE)
-  route <- gsub("'", "", route, fixed = TRUE)
-  route <- gsub("[", "", route, fixed = TRUE)
-  route <- gsub("]", "", route, fixed = TRUE)
-  data.frame(source = path, route = trimws(route), stringsAsFactors = FALSE)
+  # Accept both YAML forms used in the archive: an inline aliases list and a
+  # multi-line list. Extract the route itself rather than retaining `aliases:`.
+  matches <- regmatches(
+    header,
+    gregexpr("/explorations/(warming-acceleration|warming-temporal-pathways)/[^\"'\\]\\s,]+", header, perl = TRUE)
+  )
+  routes <- unlist(matches, use.names = FALSE)
+  if (!length(routes)) return(NULL)
+  data.frame(source = path, route = routes, stringsAsFactors = FALSE)
 })
 aliases <- do.call(rbind, Filter(Negate(is.null), alias_rows))
 

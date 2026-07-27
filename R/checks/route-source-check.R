@@ -14,10 +14,13 @@ front_matter <- function(path) {
 }
 
 rows <- lapply(source_files, function(path) {
-  values <- grep("warming-acceleration|warming-temporal-pathways", front_matter(path), value = TRUE)
-  if (!length(values)) return(NULL)
-  route <- trimws(sub("^\\s*-\\s*", "", values))
-  for (token in c('"', "'", "[", "]")) route <- gsub(token, "", route, fixed = TRUE)
+  header <- front_matter(path)
+  matches <- regmatches(
+    header,
+    gregexpr("/explorations/(warming-acceleration|warming-temporal-pathways)/[^\"'\\]\\s,]+", header, perl = TRUE)
+  )
+  route <- unlist(matches, use.names = FALSE)
+  if (!length(route)) return(NULL)
   data.frame(
     legacy_path = route,
     source_path = sub("^\\./", "", path),
@@ -30,10 +33,18 @@ if (is.null(aliases) || !nrow(aliases) || anyDuplicated(aliases$legacy_path)) {
   stop("Legacy aliases are missing or duplicated.")
 }
 
-route_map <- read.csv(file.path("config", "legacy-routes.csv"), stringsAsFactors = FALSE)
 aliases <- aliases[order(aliases$legacy_path), ]
-route_map <- route_map[order(route_map$legacy_path), ]
 row.names(aliases) <- NULL
+
+route_map_path <- file.path("config", "legacy-routes.csv")
+if (identical(Sys.getenv("REGENERATE_LEGACY_ROUTE_MAP"), "1")) {
+  write.csv(aliases, route_map_path, row.names = FALSE, quote = TRUE)
+  message("Regenerated legacy route map for ", nrow(aliases), " routes.")
+  quit(save = "no", status = 0)
+}
+
+route_map <- read.csv(route_map_path, stringsAsFactors = FALSE)
+route_map <- route_map[order(route_map$legacy_path), ]
 row.names(route_map) <- NULL
 if (!identical(aliases, route_map)) stop("Legacy route map is stale or incomplete.")
 message("Legacy source map valid for ", nrow(aliases), " routes.")
